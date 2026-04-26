@@ -15,9 +15,8 @@ function GoogleIcon() {
 }
 
 export default function LoginPage() {
-  const supabase = createClient()
-
   async function signInWithGoogle() {
+    const supabase = createClient()
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: `${location.origin}/auth/callback` },

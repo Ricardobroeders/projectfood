@@ -21,7 +21,6 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // Refresh session — do not run any logic between this and returning supabaseResponse
   const { data: { user } } = await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
