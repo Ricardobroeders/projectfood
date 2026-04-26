@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { UsernameForm } from './UsernameForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -9,6 +10,12 @@ export default async function AccountPage() {
   const name = user?.user_metadata?.full_name ?? user?.user_metadata?.name ?? null
   const email = user?.email ?? null
   const avatar = user?.user_metadata?.avatar_url ?? null
+
+  const { data: settings } = await supabase
+    .from('user_settings')
+    .select('username')
+    .eq('user_id', user!.id)
+    .single()
 
   return (
     <div className="px-5 pt-6 pb-8 space-y-6">
@@ -31,7 +38,7 @@ export default async function AccountPage() {
         </div>
       </div>
 
-      {/* Settings placeholder */}
+      {/* Settings */}
       <div>
         <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-2 px-1">
           Settings
@@ -40,9 +47,9 @@ export default async function AccountPage() {
           className="rounded-[24px] bg-white divide-y divide-[#F4EFE8]"
           style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
         >
+          <UsernameForm userId={user!.id} initial={settings?.username ?? null} />
           {[
             { label: 'Weekly goal', value: '30 plants' },
-            { label: 'Timezone', value: 'Auto' },
             { label: 'Notifications', value: 'Coming soon' },
           ].map(({ label, value }) => (
             <div key={label} className="flex items-center justify-between px-5 py-4">
