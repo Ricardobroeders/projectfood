@@ -1,9 +1,179 @@
-export default function HomePage() {
+export const dynamic = 'force-dynamic'
+
+import { createClient } from '@/lib/supabase/server'
+import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
+
+function ProgressRing({ value, max }: { value: number; max: number }) {
+  const size = 128
+  const stroke = 12
+  const r = (size - stroke) / 2
+  const c = 2 * Math.PI * r
+  const pct = Math.min(value / max, 1)
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-3 text-center px-6">
-      <div className="text-4xl">🏠</div>
-      <h2 className="text-lg font-semibold text-zinc-800">Home</h2>
-      <p className="text-sm text-zinc-400">Your weekly progress will live here.</p>
+    <div className="relative inline-grid place-items-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+        <circle cx={size / 2} cy={size / 2} r={r} stroke="#F4EFE8" strokeWidth={stroke} fill="none" />
+        <circle
+          cx={size / 2} cy={size / 2} r={r}
+          stroke="#F5C518" strokeWidth={stroke} fill="none"
+          strokeDasharray={c}
+          strokeDashoffset={c * (1 - pct)}
+          strokeLinecap="round"
+        />
+      </svg>
+      <div className="absolute inset-0 grid place-items-center text-center">
+        <div>
+          <div className="text-4xl font-extrabold leading-none text-[#1F1B16]">{value}</div>
+          <div className="text-xs font-mono text-[#6B645C] mt-1">/ {max}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default async function HomePage() {
+  const supabase = await createClient()
+
+  const today = new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+
+  const [
+    { data: weekPlants },
+    { data: variety },
+    { data: streak },
+    { data: fillRate },
+    { data: todayLogs },
+  ] = await Promise.all([
+    supabase.rpc('current_week_plants'),
+    supabase.rpc('weekly_variety'),
+    supabase.rpc('current_streak'),
+    supabase.rpc('fill_rate'),
+    supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
+  ])
+
+  const weekCount = (variety as number) ?? 0
+  const streakCount = (streak as number) ?? 0
+  const fillRateVal = Math.round((fillRate as number) ?? 0)
+
+  const dayOfWeek = new Date().getDay()
+  const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
+  const daysLeft = 6 - dayIdx
+
+  // Group weekly plants by category, preserving CAT_ORDER
+  const byCategory: Partial<Record<Category, string[]>> = {}
+  for (const plant of (weekPlants as any[]) ?? []) {
+    const cat = plant.category as Category
+    if (!byCategory[cat]) byCategory[cat] = []
+    byCategory[cat]!.push(plant.name)
+  }
+
+  const todayPlants = [...new Map(
+    ((todayLogs ?? []) as any[])
+      .map((l) => l.plants)
+      .filter(Boolean)
+      .map((p: any) => [p.id, p])
+  ).values()]
+
+  return (
+    <div className="px-5 pt-4 pb-6 space-y-4">
+      {/* Hero progress card */}
+      <div className="rounded-[24px] p-6 bg-[#FBEDB5]">
+        <div className="flex items-center justify-between mb-5">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">This week</span>
+          <span className="text-[11px] font-mono text-[#6B645C]">{daysLeft}d left</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <ProgressRing value={weekCount} max={30} />
+          <div className="mt-3 text-center">
+            <p className="text-base font-semibold text-[#1F1B16]">{weekCount} of 30 plants</p>
+            {weekCount < 30 && (
+              <p className="text-sm text-[#6B645C] mt-0.5">{30 - weekCount} to go</p>
+            )}
+            {weekCount >= 30 && (
+              <p className="text-sm text-[#4F7A3D] font-semibold mt-0.5">Goal reached! 🎉</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Streak + fill rate */}
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-[24px] p-4 bg-[#DDEACB]">
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-1">Streak</div>
+          <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
+            {streakCount}
+            <span className="text-sm font-normal text-[#6B645C] ml-1">wks</span>
+          </div>
+        </div>
+        <div className="rounded-[24px] p-4 bg-[#E5D6EE]">
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-1">Fill rate</div>
+          <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
+            {fillRateVal}
+            <span className="text-sm font-normal text-[#6B645C] ml-1">%</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Today's plants */}
+      {todayPlants.length > 0 && (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-2">Today</h3>
+          <div className="flex flex-wrap gap-2">
+            {todayPlants.map((p: any) => {
+              const c = CATS[p.category as Category]
+              return (
+                <span
+                  key={p.id}
+                  className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[13px] font-medium"
+                  style={{ background: c.bg, color: c.fg }}
+                >
+                  {c.emoji} {p.name}
+                </span>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* This week's collection by category */}
+      {CAT_ORDER.some((cat) => byCategory[cat]?.length) ? (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-3">This week&apos;s collection</h3>
+          <div className="space-y-3">
+            {CAT_ORDER.filter((cat) => byCategory[cat]?.length).map((cat) => {
+              const c = CATS[cat]
+              const names = byCategory[cat]!
+              return (
+                <div key={cat} className="rounded-[18px] p-4" style={{ background: c.bg }}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: c.fg }}>
+                      <span>{c.emoji}</span>
+                      <span>{c.label}</span>
+                    </div>
+                    <span className="font-mono text-xs" style={{ color: c.fg }}>{names.length}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {names.map((name) => (
+                      <span
+                        key={name}
+                        className="inline-flex items-center h-7 px-3 rounded-full text-xs font-medium bg-white/70"
+                        style={{ color: c.fg }}
+                      >
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      ) : (
+        <div className="text-center py-10">
+          <div className="text-4xl mb-3">🌱</div>
+          <p className="text-base font-semibold text-[#1F1B16]">Log your first plant</p>
+          <p className="text-sm text-[#6B645C] mt-1">Head to the Log tab to get started.</p>
+        </div>
+      )}
     </div>
   )
 }

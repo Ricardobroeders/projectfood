@@ -24,14 +24,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-zinc-50 px-6">
-      <div className="w-full max-w-sm space-y-8">
-        <div className="text-center space-y-2">
-          <div className="text-5xl">🥦</div>
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900">Project Food</h1>
-          <p className="text-sm text-zinc-500">Track 30 plants a week. Good gut, good life.</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#F4EFE8] px-6">
+      <div className="w-full max-w-sm space-y-10">
+        <div className="text-center space-y-3">
+          <div className="text-6xl">🥦</div>
+          <h1 className="text-3xl font-extrabold tracking-tight text-[#1F1B16]">Project Food</h1>
+          <p className="text-sm font-medium text-[#6B645C]">Track 30 plants a week. Good gut, good life.</p>
         </div>
-        <Button variant="outline" className="w-full gap-3 h-12 text-base" onClick={signInWithGoogle}>
+        <Button
+          className="w-full gap-3 h-12 text-base font-semibold bg-[#F5C518] text-[#1F1B16] hover:bg-[#F59A0E] border-0 rounded-full shadow-none"
+          onClick={signInWithGoogle}
+        >
           <GoogleIcon />
           Continue with Google
         </Button>
