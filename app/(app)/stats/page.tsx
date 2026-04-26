@@ -111,15 +111,6 @@ export default async function StatsPage() {
         </div>
       </div>
 
-      {/* Sign out */}
-      <form action="/auth/signout" method="post" className="flex justify-center pt-2">
-        <button
-          type="submit"
-          className="text-xs text-[#A39B91] underline underline-offset-4 hover:text-[#6B645C] transition-colors"
-        >
-          Sign out
-        </button>
-      </form>
     </div>
   )
 }
