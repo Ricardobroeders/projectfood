@@ -19,7 +19,6 @@ export default function LogPage() {
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
-  const [submitCategory, setSubmitCategory] = useState<Category | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -50,7 +49,6 @@ export default function LogPage() {
   // Reset submission state when query changes
   useEffect(() => {
     setSubmitStatus('idle')
-    setSubmitCategory(null)
   }, [query])
 
   const filtered = plants.filter((p) => {
@@ -109,7 +107,6 @@ export default function LogPage() {
     await supabase.from('plant_submissions').insert({
       submitted_by: userId,
       proposed_name: query.trim(),
-      proposed_category: submitCategory ?? null,
     })
     setSubmitStatus('done')
   }
@@ -194,37 +191,12 @@ export default function LogPage() {
                 className="rounded-[18px] p-5"
                 style={{ background: '#FFFFFF', boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
               >
-                <p className="text-[13px] font-semibold text-[#1F1B16] mb-1">
+                <p className="text-[16px] font-semibold text-[#1F1B16] mb-1">
                   Missing from our list?
                 </p>
-                <p className="text-[13px] text-[#6B645C] mb-4">
+                <p className="text-[15px] text-[#6B645C] mb-4">
                   Suggest <span className="font-semibold">&ldquo;{query}&rdquo;</span> and we&apos;ll add it if it qualifies.
                 </p>
-
-                {/* Category picker */}
-                <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-2">
-                  Category (optional)
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {CAT_ORDER.map((cat) => {
-                    const c = CATS[cat]
-                    const sel = submitCategory === cat
-                    return (
-                      <button
-                        key={cat}
-                        onClick={() => setSubmitCategory(sel ? null : cat)}
-                        className="inline-flex items-center gap-1 h-8 px-3 rounded-full text-[12px] font-medium transition-colors"
-                        style={
-                          sel
-                            ? { background: c.dot, color: '#FFFFFF' }
-                            : { background: c.bg, color: c.fg }
-                        }
-                      >
-                        {c.emoji} {c.label}
-                      </button>
-                    )
-                  })}
-                </div>
 
                 <button
                   onClick={submitSuggestion}
