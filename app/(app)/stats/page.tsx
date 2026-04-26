@@ -18,7 +18,7 @@ export default async function StatsPage() {
   ] = await Promise.all([
     supabase.rpc('current_streak'),
     supabase.rpc('fill_rate'),
-    supabase.rpc('weekly_history', { p_weeks: 8 }),
+    supabase.rpc('weekly_history', { p_weeks: 5 }),
     supabase.rpc('category_breakdown'),
   ])
 
