@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-import { Search, Check } from 'lucide-react'
+import { Search, Check, Send } from 'lucide-react'
 
 type Plant = { id: string; name: string; category: Category }
 type Toast = { id: string; name: string }
@@ -18,6 +18,8 @@ export default function LogPage() {
   const [toast, setToast] = useState<Toast | null>(null)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
+  const [submitCategory, setSubmitCategory] = useState<Category | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -44,6 +46,12 @@ export default function LogPage() {
         if (data) setLoggedToday(new Set(data.map((r) => r.plant_id)))
       })
   }, [])
+
+  // Reset submission state when query changes
+  useEffect(() => {
+    setSubmitStatus('idle')
+    setSubmitCategory(null)
+  }, [query])
 
   const filtered = plants.filter((p) => {
     const matchesCat = activeCategory ? p.category === activeCategory : true
@@ -94,6 +102,18 @@ export default function LogPage() {
     })
   }
 
+  async function submitSuggestion() {
+    if (!userId || !query.trim()) return
+    setSubmitStatus('sending')
+    const supabase = createClient()
+    await supabase.from('plant_submissions').insert({
+      submitted_by: userId,
+      proposed_name: query.trim(),
+      proposed_category: submitCategory ?? null,
+    })
+    setSubmitStatus('done')
+  }
+
   return (
     <div className="flex flex-col h-full">
       {/* Search bar */}
@@ -111,10 +131,7 @@ export default function LogPage() {
             className="flex-1 text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] bg-transparent outline-none"
           />
           {query && (
-            <button
-              onClick={() => setQuery('')}
-              className="text-[#A39B91] text-sm"
-            >
+            <button onClick={() => setQuery('')} className="text-[#A39B91] text-sm">
               ✕
             </button>
           )}
@@ -156,12 +173,80 @@ export default function LogPage() {
 
       {/* Plant list */}
       <div className="flex-1 overflow-y-auto px-5 pb-6 space-y-2">
-        {filtered.length === 0 && (
+        {filtered.length === 0 && query.trim() && (
+          <div className="pt-6">
+            <div className="text-center mb-6 text-[#A39B91]">
+              <div className="text-3xl mb-2">🔍</div>
+              <p className="text-sm">No plants found for <span className="font-semibold text-[#1F1B16]">&ldquo;{query}&rdquo;</span></p>
+            </div>
+
+            {submitStatus === 'done' ? (
+              <div
+                className="rounded-[18px] p-5 text-center"
+                style={{ background: '#DDEACB' }}
+              >
+                <div className="text-2xl mb-2">🌱</div>
+                <p className="text-[15px] font-semibold text-[#2D4A22]">Suggestion sent!</p>
+                <p className="text-[13px] text-[#4F7A3D] mt-1">We&apos;ll review and add it soon.</p>
+              </div>
+            ) : (
+              <div
+                className="rounded-[18px] p-5"
+                style={{ background: '#FFFFFF', boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+              >
+                <p className="text-[13px] font-semibold text-[#1F1B16] mb-1">
+                  Missing from our list?
+                </p>
+                <p className="text-[13px] text-[#6B645C] mb-4">
+                  Suggest <span className="font-semibold">&ldquo;{query}&rdquo;</span> and we&apos;ll add it if it qualifies.
+                </p>
+
+                {/* Category picker */}
+                <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-2">
+                  Category (optional)
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {CAT_ORDER.map((cat) => {
+                    const c = CATS[cat]
+                    const sel = submitCategory === cat
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => setSubmitCategory(sel ? null : cat)}
+                        className="inline-flex items-center gap-1 h-8 px-3 rounded-full text-[12px] font-medium transition-colors"
+                        style={
+                          sel
+                            ? { background: c.dot, color: '#FFFFFF' }
+                            : { background: c.bg, color: c.fg }
+                        }
+                      >
+                        {c.emoji} {c.label}
+                      </button>
+                    )
+                  })}
+                </div>
+
+                <button
+                  onClick={submitSuggestion}
+                  disabled={submitStatus === 'sending'}
+                  className="w-full h-11 rounded-full flex items-center justify-center gap-2 text-[14px] font-semibold transition-opacity"
+                  style={{ background: '#F5C518', color: '#1F1B16', opacity: submitStatus === 'sending' ? 0.6 : 1 }}
+                >
+                  <Send size={15} />
+                  {submitStatus === 'sending' ? 'Sending…' : 'Submit suggestion'}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {filtered.length === 0 && !query.trim() && (
           <div className="text-center py-16 text-[#A39B91]">
             <div className="text-3xl mb-2">🔍</div>
             <p className="text-sm">No plants found</p>
           </div>
         )}
+
         {filtered.map((plant) => {
           const c = CATS[plant.category]
           const logged = loggedToday.has(plant.id)
