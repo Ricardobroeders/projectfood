@@ -1,5 +1,6 @@
 export const dynamic = 'force-dynamic'
 
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
@@ -89,7 +90,7 @@ export default async function StatsPage() {
             const pct = Math.round((unique / total) * 100)
             const c = CATS[cat]
             return (
-              <div key={cat} className="rounded-[18px] p-4" style={{ background: c.bg }}>
+              <Link key={cat} href={`/stats/${cat}`} className="block rounded-[18px] p-4" style={{ background: c.bg }}>
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: c.fg }}>
                     <span>{c.emoji}</span>
@@ -105,7 +106,7 @@ export default async function StatsPage() {
                     style={{ width: `${pct}%`, background: c.dot }}
                   />
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>
