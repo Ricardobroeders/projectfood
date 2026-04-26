@@ -73,6 +73,27 @@ export default function LogPage() {
     })
   }
 
+  async function unlogPlant(plant: Plant) {
+    const supabase = createClient()
+    const today = new Date().toLocaleDateString('en-CA')
+
+    startTransition(async () => {
+      const { error } = await supabase
+        .from('plant_logs')
+        .delete()
+        .eq('plant_id', plant.id)
+        .eq('logged_on', today)
+      if (error) return
+
+      setLoggedToday((prev) => {
+        const next = new Set(prev)
+        next.delete(plant.id)
+        return next
+      })
+      router.refresh()
+    })
+  }
+
   return (
     <div className="flex flex-col h-full">
       {/* Search bar */}
@@ -147,9 +168,13 @@ export default function LogPage() {
           return (
             <button
               key={plant.id}
-              onClick={() => !logged && logPlant(plant)}
-              className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] bg-white text-left transition-opacity"
-              style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)', opacity: isPending ? 0.7 : 1 }}
+              onClick={() => logged ? unlogPlant(plant) : logPlant(plant)}
+              className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all"
+              style={{
+                background: logged ? '#FBEDB5' : '#FFFFFF',
+                boxShadow: '0 2px 6px rgba(31,27,22,0.04)',
+                opacity: isPending ? 0.7 : 1,
+              }}
             >
               <div
                 className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"

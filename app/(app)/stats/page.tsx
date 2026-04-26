@@ -47,10 +47,11 @@ export default async function StatsPage() {
         <h3 className="text-base font-bold text-[#1F1B16] mb-3">Weekly history</h3>
         <div className="rounded-[18px] bg-white p-4 space-y-3" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
           {weeks.map((w) => {
-            const label = new Date(w.week_start + 'T12:00:00').toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-            })
+            const start = new Date(w.week_start + 'T12:00:00')
+          const end = new Date(start)
+          end.setDate(end.getDate() + 6)
+          const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+          const label = `${fmt(start)} – ${fmt(end)}`
             const pct = Math.min((w.variety / 30) * 100, 100)
             return (
               <div key={w.week_start}>
