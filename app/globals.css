@@ -128,7 +128,7 @@
     border-color: transparent;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-medium;
     font-family: var(--font-sans), sans-serif;
   }
 }
