@@ -1,7 +1,8 @@
-export const dynamic = 'force-dynamic'
+'use client'
 
-import { createClient } from '@/lib/supabase/server'
-import { getTranslations } from 'next-intl/server'
+import useSWR from 'swr'
+import { createClient } from '@/lib/supabase/client'
+import { useTranslations } from 'next-intl'
 
 type LeaderboardRow = {
   rank: number
@@ -12,11 +13,18 @@ type LeaderboardRow = {
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
-export default async function LeaderboardPage() {
-  const supabase = await createClient()
-  const t = await getTranslations('leaderboard')
-  const { data } = await supabase.rpc('leaderboard', { p_limit: 15 })
-  const rows = (data as LeaderboardRow[]) ?? []
+function Skeleton({ className }: { className?: string }) {
+  return <div className={`animate-pulse bg-[#F4EFE8] rounded-[18px] ${className ?? ''}`} />
+}
+
+export default function LeaderboardPage() {
+  const t = useTranslations('leaderboard')
+
+  const { data: rows, isLoading } = useSWR('leaderboard', async () => {
+    const supabase = createClient()
+    const { data } = await supabase.rpc('leaderboard', { p_limit: 15 })
+    return (data as LeaderboardRow[]) ?? []
+  })
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-4">
@@ -24,15 +32,19 @@ export default async function LeaderboardPage() {
       <p className="text-[13px] text-[#A39B91] -mt-2">{t('subtitle')}</p>
 
       <div className="space-y-2">
-        {rows.map((row) => {
+        {isLoading && Array.from({ length: 8 }).map((_, i) => (
+          <Skeleton key={i} className="h-[60px]" />
+        ))}
+
+        {!isLoading && rows?.map((row) => {
           const medal = MEDALS[row.rank - 1]
           return (
             <div
               key={row.rank}
               className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
               style={{
-                background: row.is_me ? '#FBEDB5' : '#FFFFFF',
-                boxShadow: '0 2px 6px rgba(31,27,22,0.04)',
+                background: row.is_me ? 'rgb(224 215 203)' : '#FFFFFF',
+                boxShadow: row.is_me ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
               }}
             >
               <div className="w-9 text-center shrink-0">
@@ -58,7 +70,7 @@ export default async function LeaderboardPage() {
           )
         })}
 
-        {rows.length === 0 && (
+        {!isLoading && rows?.length === 0 && (
           <div className="text-center py-16 text-[#A39B91]">
             <div className="text-3xl mb-2">🏆</div>
             <p className="text-sm">{t('noEntries')}</p>

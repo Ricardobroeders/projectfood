@@ -1,34 +1,62 @@
-export const dynamic = 'force-dynamic'
+'use client'
 
+import useSWR from 'swr'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
-import { getTranslations } from 'next-intl/server'
+import { createClient } from '@/lib/supabase/client'
+import { useTranslations } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
 type WeekRow = { week_start: string; variety: number; hit_goal: boolean }
 type CatRow = { category: Category; unique_count: number; total_in_category: number }
 
-export default async function StatsPage() {
-  const supabase = await createClient()
-  const t = await getTranslations('stats')
-  const tCat = await getTranslations('categories')
+function Skeleton({ className }: { className?: string }) {
+  return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
+}
 
-  const [
-    { data: streak },
-    { data: fillRate },
-    { data: history },
-    { data: breakdown },
-  ] = await Promise.all([
-    supabase.rpc('current_streak'),
-    supabase.rpc('fill_rate'),
-    supabase.rpc('weekly_history', { p_weeks: 5 }),
-    supabase.rpc('category_breakdown'),
-  ])
+export default function StatsPage() {
+  const t = useTranslations('stats')
+  const tCat = useTranslations('categories')
 
-  const streakCount = (streak as number) ?? 0
-  const fillRateVal = Math.round((fillRate as number) ?? 0)
-  const weeks = (history as WeekRow[]) ?? []
-  const cats = (breakdown as CatRow[]) ?? []
+  const { data, isLoading } = useSWR('stats', async () => {
+    const supabase = createClient()
+    const [
+      { data: streak },
+      { data: fillRate },
+      { data: history },
+      { data: breakdown },
+    ] = await Promise.all([
+      supabase.rpc('current_streak'),
+      supabase.rpc('fill_rate'),
+      supabase.rpc('weekly_history', { p_weeks: 5 }),
+      supabase.rpc('category_breakdown'),
+    ])
+
+    return {
+      streakCount: (streak as number) ?? 0,
+      fillRateVal: Math.round((fillRate as number) ?? 0),
+      weeks: (history as WeekRow[]) ?? [],
+      cats: (breakdown as CatRow[]) ?? [],
+    }
+  })
+
+  if (isLoading || !data) {
+    return (
+      <div className="px-5 pt-4 pb-8 space-y-6">
+        <div className="grid grid-cols-2 gap-3">
+          <Skeleton className="h-28" />
+          <Skeleton className="h-28" />
+        </div>
+        <Skeleton className="h-48" />
+        <div className="space-y-2">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="h-16" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  const { streakCount, fillRateVal, weeks, cats } = data
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-6">
@@ -114,7 +142,6 @@ export default async function StatsPage() {
           })}
         </div>
       </div>
-
     </div>
   )
 }

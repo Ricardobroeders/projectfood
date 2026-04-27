@@ -1,28 +1,53 @@
-import { createClient } from '@/lib/supabase/server'
-import { getTranslations, getLocale } from 'next-intl/server'
+'use client'
+
+import useSWR from 'swr'
+import { createClient } from '@/lib/supabase/client'
+import { useTranslations, useLocale } from 'next-intl'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
 import { LanguageSwitcher } from '@/components/language-switcher'
 
-export const dynamic = 'force-dynamic'
+function Skeleton({ className }: { className?: string }) {
+  return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
+}
 
-export default async function AccountPage() {
-  const supabase = await createClient()
-  const t = await getTranslations('account')
-  const locale = await getLocale()
-  const { data: { user } } = await supabase.auth.getUser()
+export default function AccountPage() {
+  const t = useTranslations('account')
+  const locale = useLocale()
 
-  const name = user?.user_metadata?.full_name ?? user?.user_metadata?.name ?? null
-  const email = user?.email ?? null
-  const avatar = user?.user_metadata?.avatar_url ?? null
+  const { data, isLoading } = useSWR(['account', locale], async () => {
+    const supabase = createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return null
 
-  const { data: settings } = await supabase
-    .from('user_settings')
-    .select('username, locale')
-    .eq('user_id', user!.id)
-    .single()
+    const { data: settings } = await supabase
+      .from('user_settings')
+      .select('username, locale')
+      .eq('user_id', user.id)
+      .single()
 
-  const currentLocale = (settings?.locale ?? locale) as 'en' | 'nl' | 'it'
+    return {
+      userId: user.id,
+      name: user.user_metadata?.full_name ?? user.user_metadata?.name ?? null,
+      email: user.email ?? null,
+      avatar: user.user_metadata?.avatar_url ?? null,
+      username: settings?.username ?? null,
+      currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
+    }
+  })
+
+  if (isLoading || !data) {
+    return (
+      <div className="px-5 pt-6 pb-8 space-y-6">
+        <Skeleton className="h-24" />
+        <Skeleton className="h-48" />
+        <Skeleton className="h-16" />
+        <Skeleton className="h-16" />
+      </div>
+    )
+  }
+
+  const { userId, name, email, avatar, username, currentLocale } = data
 
   return (
     <div className="px-5 pt-6 pb-8 space-y-6">
@@ -54,8 +79,8 @@ export default async function AccountPage() {
           className="rounded-[24px] bg-white divide-y divide-[#F4EFE8]"
           style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
         >
-          <UsernameForm userId={user!.id} initial={settings?.username ?? null} />
-          <LanguageSwitcher userId={user!.id} currentLocale={currentLocale} />
+          <UsernameForm userId={userId} initial={username} />
+          <LanguageSwitcher userId={userId} currentLocale={currentLocale} />
           {[
             { label: t('weeklyGoal'), value: t('weeklyGoalValue') },
             { label: t('notifications'), value: t('comingSoon') },

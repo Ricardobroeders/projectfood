@@ -1,7 +1,8 @@
-export const dynamic = 'force-dynamic'
+'use client'
 
-import { createClient } from '@/lib/supabase/server'
-import { getTranslations, getLocale } from 'next-intl/server'
+import useSWR from 'swr'
+import { createClient } from '@/lib/supabase/client'
+import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
@@ -32,55 +33,79 @@ function ProgressRing({ value, max }: { value: number; max: number }) {
   )
 }
 
-export default async function HomePage() {
-  const supabase = await createClient()
-  const t = await getTranslations('home')
-  const tCat = await getTranslations('categories')
-  const locale = await getLocale()
+function Skeleton({ className }: { className?: string }) {
+  return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
+}
 
-  const today = new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+export default function HomePage() {
+  const t = useTranslations('home')
+  const tCat = useTranslations('categories')
+  const locale = useLocale()
 
-  const [
-    { data: weekPlants },
-    { data: variety },
-    { data: streak },
-    { data: fillRate },
-    { data: todayLogs },
-    { data: translations },
-  ] = await Promise.all([
-    supabase.rpc('current_week_plants'),
-    supabase.rpc('weekly_variety'),
-    supabase.rpc('current_streak'),
-    supabase.rpc('fill_rate'),
-    supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
-    supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
-  ])
+  const { data, isLoading } = useSWR(['home', locale], async () => {
+    const supabase = createClient()
+    const today = new Date().toLocaleDateString('en-CA')
 
-  const nameByPlantId = Object.fromEntries(
-    ((translations ?? []) as { plant_id: string; name: string }[]).map((t) => [t.plant_id, t.name])
-  )
+    const [
+      { data: weekPlants },
+      { data: variety },
+      { data: streak },
+      { data: fillRate },
+      { data: todayLogs },
+      { data: translations },
+    ] = await Promise.all([
+      supabase.rpc('current_week_plants'),
+      supabase.rpc('weekly_variety'),
+      supabase.rpc('current_streak'),
+      supabase.rpc('fill_rate'),
+      supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
+      supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
+    ])
 
-  const weekCount = (variety as number) ?? 0
-  const streakCount = (streak as number) ?? 0
-  const fillRateVal = Math.round((fillRate as number) ?? 0)
+    const nameByPlantId = Object.fromEntries(
+      ((translations ?? []) as { plant_id: string; name: string }[]).map((tr) => [tr.plant_id, tr.name])
+    )
 
-  const dayOfWeek = new Date().getDay()
-  const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
-  const daysLeft = 6 - dayIdx
+    const weekCount = (variety as number) ?? 0
+    const streakCount = (streak as number) ?? 0
+    const fillRateVal = Math.round((fillRate as number) ?? 0)
 
-  const byCategory: Partial<Record<Category, string[]>> = {}
-  for (const plant of (weekPlants as any[]) ?? []) {
-    const cat = plant.category as Category
-    if (!byCategory[cat]) byCategory[cat] = []
-    byCategory[cat]!.push(nameByPlantId[plant.id] ?? plant.name)
+    const dayOfWeek = new Date().getDay()
+    const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
+    const daysLeft = 6 - dayIdx
+
+    const byCategory: Partial<Record<Category, string[]>> = {}
+    for (const plant of (weekPlants as any[]) ?? []) {
+      const cat = plant.category as Category
+      if (!byCategory[cat]) byCategory[cat] = []
+      byCategory[cat]!.push(nameByPlantId[plant.id] ?? plant.name)
+    }
+
+    const todayPlants = [...new Map(
+      ((todayLogs ?? []) as any[])
+        .map((l) => l.plants)
+        .filter(Boolean)
+        .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
+    ).values()]
+
+    return { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants }
+  })
+
+  if (isLoading || !data) {
+    return (
+      <div className="px-5 pt-4 pb-6 space-y-4">
+        <Skeleton className="h-[220px]" />
+        <div className="grid grid-cols-2 gap-3">
+          <Skeleton className="h-24" />
+          <Skeleton className="h-24" />
+        </div>
+        <Skeleton className="h-32" />
+        <Skeleton className="h-48" />
+      </div>
+    )
   }
 
-  const todayPlants = [...new Map(
-    ((todayLogs ?? []) as any[])
-      .map((l) => l.plants)
-      .filter(Boolean)
-      .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
-  ).values()]
+  const { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants } = data
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">

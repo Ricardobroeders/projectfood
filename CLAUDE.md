@@ -19,7 +19,7 @@
 - **Login page is a Client Component** — avoids server component / redirect conflicts.
 - `logged_on` is client-computed (YYYY-MM-DD via `toLocaleDateString('en-CA')`) to avoid timezone-bucket issues.
 - `plant_logs` is append-only; fix mistakes by delete + re-insert.
-- Home and Stats pages use `export const dynamic = 'force-dynamic'` — always fetch fresh data.
+- All app pages are Client Components using SWR for instant cached navigation; no server pages in `(app)/`.
 - `user_id` must be passed explicitly on `plant_logs` inserts (no column default; required by RLS).
 
 ## Design system
