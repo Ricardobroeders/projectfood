@@ -70,7 +70,7 @@ export default async function CategoryDetailPage({
               <div
                 key={plant.id}
                 className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
-                style={{ background: '#FBEDB5' }}
+                style={{ background: 'rgb(224 215 203)' }}
               >
                 <div
                   className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"

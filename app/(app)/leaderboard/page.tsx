@@ -29,8 +29,8 @@ export default async function LeaderboardPage() {
               key={row.rank}
               className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
               style={{
-                background: row.is_me ? '#FBEDB5' : '#FFFFFF',
-                boxShadow: '0 2px 6px rgba(31,27,22,0.04)',
+                background: row.is_me ? 'rgb(224 215 203)' : '#FFFFFF',
+                boxShadow: row.is_me ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
               }}
             >
               <div className="w-9 text-center shrink-0">

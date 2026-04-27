@@ -228,8 +228,8 @@ export default function LogPage() {
               onClick={() => logged ? unlogPlant(plant) : logPlant(plant)}
               className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all"
               style={{
-                background: logged ? '#FBEDB5' : '#FFFFFF',
-                boxShadow: '0 2px 6px rgba(31,27,22,0.04)',
+                background: logged ? 'rgb(224 215 203)' : '#FFFFFF',
+                boxShadow: logged ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
                 opacity: isPending ? 0.7 : 1,
               }}
             >

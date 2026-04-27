@@ -92,6 +92,7 @@
   /* Design system tokens */
   --color-accent-pressed: #F59A0E;
   --color-accent-soft: #FBEDB5;
+  --color-selected: rgb(224 215 203);
   --color-bg1: #FFFFFF;
   --color-bg2: #F4EFE8;
   --color-ink: #1F1B16;
