@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Download, CheckCircle2 } from 'lucide-react'
 
 type BeforeInstallPromptEvent = Event & {
@@ -9,6 +10,7 @@ type BeforeInstallPromptEvent = Event & {
 }
 
 export function InstallButton() {
+  const t = useTranslations('account')
   const [prompt, setPrompt] = useState<BeforeInstallPromptEvent | null>(null)
   const [isStandalone, setIsStandalone] = useState(false)
 
@@ -41,12 +43,12 @@ export function InstallButton() {
     return (
       <div className="px-5 py-4 flex items-center justify-between">
         <div>
-          <p className="text-[15px] font-medium text-[#1F1B16]">Install app</p>
-          <p className="text-[12px] text-[#A39B91]">Running from home screen</p>
+          <p className="text-[15px] font-medium text-[#1F1B16]">{t('installApp')}</p>
+          <p className="text-[12px] text-[#A39B91]">{t('runningFromHomeScreen')}</p>
         </div>
         <div className="flex items-center gap-1.5 text-[13px] font-semibold text-green-600">
           <CheckCircle2 size={16} />
-          Installed
+          {t('installed')}
         </div>
       </div>
     )
@@ -57,8 +59,8 @@ export function InstallButton() {
   return (
     <div className="px-5 py-4 flex items-center justify-between">
       <div>
-        <p className="text-[15px] font-medium text-[#1F1B16]">Install app</p>
-        <p className="text-[12px] text-[#A39B91]">Add to your home screen</p>
+        <p className="text-[15px] font-medium text-[#1F1B16]">{t('installApp')}</p>
+        <p className="text-[12px] text-[#A39B91]">{t('addToHomeScreen')}</p>
       </div>
       <button
         onClick={install}
@@ -66,7 +68,7 @@ export function InstallButton() {
         style={{ background: '#F5C518', color: '#1F1B16' }}
       >
         <Download size={14} />
-        Install
+        {t('install')}
       </button>
     </div>
   )

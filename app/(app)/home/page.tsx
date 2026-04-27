@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { createClient } from '@/lib/supabase/server'
+import { getTranslations, getLocale } from 'next-intl/server'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
@@ -33,6 +34,9 @@ function ProgressRing({ value, max }: { value: number; max: number }) {
 
 export default async function HomePage() {
   const supabase = await createClient()
+  const t = await getTranslations('home')
+  const tCat = await getTranslations('categories')
+  const locale = await getLocale()
 
   const today = new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
 
@@ -42,13 +46,19 @@ export default async function HomePage() {
     { data: streak },
     { data: fillRate },
     { data: todayLogs },
+    { data: translations },
   ] = await Promise.all([
     supabase.rpc('current_week_plants'),
     supabase.rpc('weekly_variety'),
     supabase.rpc('current_streak'),
     supabase.rpc('fill_rate'),
     supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
+    supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
   ])
+
+  const nameByPlantId = Object.fromEntries(
+    ((translations ?? []) as { plant_id: string; name: string }[]).map((t) => [t.plant_id, t.name])
+  )
 
   const weekCount = (variety as number) ?? 0
   const streakCount = (streak as number) ?? 0
@@ -58,19 +68,18 @@ export default async function HomePage() {
   const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
   const daysLeft = 6 - dayIdx
 
-  // Group weekly plants by category, preserving CAT_ORDER
   const byCategory: Partial<Record<Category, string[]>> = {}
   for (const plant of (weekPlants as any[]) ?? []) {
     const cat = plant.category as Category
     if (!byCategory[cat]) byCategory[cat] = []
-    byCategory[cat]!.push(plant.name)
+    byCategory[cat]!.push(nameByPlantId[plant.id] ?? plant.name)
   }
 
   const todayPlants = [...new Map(
     ((todayLogs ?? []) as any[])
       .map((l) => l.plants)
       .filter(Boolean)
-      .map((p: any) => [p.id, p])
+      .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
   ).values()]
 
   return (
@@ -78,18 +87,18 @@ export default async function HomePage() {
       {/* Hero progress card */}
       <div className="rounded-[24px] p-6 bg-[#FBEDB5]">
         <div className="flex items-center justify-between mb-5">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">This week</span>
-          <span className="text-[11px] font-mono text-[#6B645C]">{daysLeft}d left</span>
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">{t('thisWeek')}</span>
+          <span className="text-[11px] font-mono text-[#6B645C]">{t('daysLeft', { days: daysLeft })}</span>
         </div>
         <div className="flex flex-col items-center">
           <ProgressRing value={weekCount} max={30} />
           <div className="mt-3 text-center">
-            <p className="text-base font-semibold text-[#1F1B16]">{weekCount} of 30 plants</p>
+            <p className="text-base font-semibold text-[#1F1B16]">{t('plantsOfGoal', { count: weekCount, goal: 30 })}</p>
             {weekCount < 30 && (
-              <p className="text-sm text-[#6B645C] mt-0.5">{30 - weekCount} to go</p>
+              <p className="text-sm text-[#6B645C] mt-0.5">{t('toGo', { n: 30 - weekCount })}</p>
             )}
             {weekCount >= 30 && (
-              <p className="text-sm text-[#4F7A3D] font-semibold mt-0.5">Goal reached! 🎉</p>
+              <p className="text-sm text-[#4F7A3D] font-semibold mt-0.5">{t('goalReached')}</p>
             )}
           </div>
         </div>
@@ -98,14 +107,14 @@ export default async function HomePage() {
       {/* Streak + fill rate */}
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-[24px] p-4 bg-[#DDEACB]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-1">Streak</div>
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-1">{t('streak')}</div>
           <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
             {streakCount}
-            <span className="text-sm font-normal text-[#6B645C] ml-1">wks</span>
+            <span className="text-sm font-normal text-[#6B645C] ml-1">{t('weeks')}</span>
           </div>
         </div>
         <div className="rounded-[24px] p-4 bg-[#E5D6EE]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-1">Fill rate</div>
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-1">{t('fillRate')}</div>
           <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
             {fillRateVal}
             <span className="text-sm font-normal text-[#6B645C] ml-1">%</span>
@@ -116,7 +125,7 @@ export default async function HomePage() {
       {/* Today's plants */}
       {todayPlants.length > 0 && (
         <div>
-          <h3 className="text-base font-bold text-[#1F1B16] mb-2">Today</h3>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-2">{t('today')}</h3>
           <div className="flex flex-wrap gap-2">
             {todayPlants.map((p: any) => {
               const c = CATS[p.category as Category]
@@ -137,7 +146,7 @@ export default async function HomePage() {
       {/* This week's collection by category */}
       {CAT_ORDER.some((cat) => byCategory[cat]?.length) ? (
         <div>
-          <h3 className="text-base font-bold text-[#1F1B16] mb-3">This week&apos;s collection</h3>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-3">{t('thisWeeksCollection')}</h3>
           <div className="space-y-3">
             {CAT_ORDER.filter((cat) => byCategory[cat]?.length).map((cat) => {
               const c = CATS[cat]
@@ -147,7 +156,7 @@ export default async function HomePage() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: c.fg }}>
                       <span>{c.emoji}</span>
-                      <span>{c.label}</span>
+                      <span>{tCat(cat)}</span>
                     </div>
                     <span className="font-mono text-xs" style={{ color: c.fg }}>{names.length}</span>
                   </div>
@@ -170,8 +179,8 @@ export default async function HomePage() {
       ) : (
         <div className="text-center py-10">
           <div className="text-4xl mb-3">🌱</div>
-          <p className="text-base font-semibold text-[#1F1B16]">Log your first plant</p>
-          <p className="text-sm text-[#6B645C] mt-1">Head to the Log tab to get started.</p>
+          <p className="text-base font-semibold text-[#1F1B16]">{t('logFirstPlant')}</p>
+          <p className="text-sm text-[#6B645C] mt-1">{t('logFirstPlantSub')}</p>
         </div>
       )}
     </div>

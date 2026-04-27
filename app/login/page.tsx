@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 
@@ -15,6 +16,8 @@ function GoogleIcon() {
 }
 
 export default function LoginPage() {
+  const t = useTranslations('login')
+
   async function signInWithGoogle() {
     const supabase = createClient()
     await supabase.auth.signInWithOAuth({
@@ -29,14 +32,14 @@ export default function LoginPage() {
         <div className="text-center space-y-3">
           <div className="text-6xl">🥦</div>
           <h1 className="text-3xl font-extrabold tracking-tight text-[#1F1B16]">Project Food</h1>
-          <p className="text-sm font-medium text-[#6B645C]">Track 30 plants a week. Good gut, good life.</p>
+          <p className="text-sm font-medium text-[#6B645C]">{t('tagline')}</p>
         </div>
         <Button
           className="w-full gap-3 h-12 text-base font-semibold bg-[#F5C518] text-[#1F1B16] hover:bg-[#F59A0E] border-0 rounded-full shadow-none"
           onClick={signInWithGoogle}
         >
           <GoogleIcon />
-          Continue with Google
+          {t('continueWithGoogle')}
         </Button>
       </div>
     </div>

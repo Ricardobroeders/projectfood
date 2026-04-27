@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Thuis",
+    "log": "Log",
+    "stats": "Stats",
+    "leaderboard": "Top 15",
+    "account": "Account"
+  },
+  "home": {
+    "thisWeek": "Deze week",
+    "daysLeft": "Nog {days}d",
+    "plantsOfGoal": "{count} van {goal} planten",
+    "toGo": "Nog {n} te gaan",
+    "goalReached": "Doel bereikt! 🎉",
+    "streak": "Reeks",
+    "weeks": "wkn",
+    "fillRate": "Activiteit",
+    "today": "Vandaag",
+    "thisWeeksCollection": "Collectie deze week",
+    "logFirstPlant": "Log je eerste plant",
+    "logFirstPlantSub": "Ga naar het Log-tabblad om te beginnen."
+  },
+  "log": {
+    "searchPlaceholder": "Zoek 150+ planten…",
+    "all": "Alles",
+    "noResults": "Geen planten gevonden voor \"{query}\"",
+    "noResultsEmpty": "Geen planten gevonden",
+    "missingTitle": "Staat hij er niet tussen?",
+    "missingBody": "Stel \"{query}\" voor en we voegen hem toe als hij in aanmerking komt.",
+    "submitSuggestion": "Suggestie versturen",
+    "sending": "Versturen…",
+    "suggestionSent": "Suggestie verzonden!",
+    "suggestionSentSub": "We beoordelen het en voegen het snel toe.",
+    "logged": "Gelogd: {name}"
+  },
+  "stats": {
+    "streak": "Reeks",
+    "weeks": "weken",
+    "fillRate": "Activiteit",
+    "last30Days": "afgelopen 30 dagen",
+    "weeklyHistory": "Wekelijkse geschiedenis",
+    "noData": "Nog geen gegevens",
+    "plantsTried": "Geprobeerde planten",
+    "tried": "Geprobeerd",
+    "notYetTried": "Nog niet geprobeerd"
+  },
+  "leaderboard": {
+    "title": "Ranglijst",
+    "subtitle": "Meeste unieke planten gegeten, ooit",
+    "you": "jij",
+    "plants": "planten",
+    "noEntries": "Nog geen vermeldingen"
+  },
+  "account": {
+    "settingsSection": "Instellingen",
+    "accountSection": "Account",
+    "username": "Gebruikersnaam",
+    "chooseName": "Kies een naam",
+    "weeklyGoal": "Weekdoel",
+    "notifications": "Meldingen",
+    "comingSoon": "Binnenkort",
+    "installApp": "App installeren",
+    "addToHomeScreen": "Voeg toe aan beginscherm",
+    "runningFromHomeScreen": "Gestart vanaf beginscherm",
+    "installed": "Geïnstalleerd",
+    "install": "Installeren",
+    "signOut": "Uitloggen",
+    "language": "Taal",
+    "usernameTaken": "Gebruikersnaam al in gebruik.",
+    "saveError": "Kon niet opslaan. Probeer opnieuw.",
+    "save": "Opslaan",
+    "saving": "…",
+    "saved": "Opgeslagen"
+  },
+  "login": {
+    "tagline": "30 planten per week bijhouden. Goede darmen, goed leven.",
+    "continueWithGoogle": "Doorgaan met Google"
+  },
+  "categories": {
+    "fruit": "Fruit",
+    "vegetable": "Groente",
+    "herb": "Kruid & specerij",
+    "nut_seed": "Noot & zaad",
+    "legume": "Peulvrucht",
+    "whole_grain": "Volkoren graan"
+  }
+}

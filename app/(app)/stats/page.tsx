@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
+import { getTranslations } from 'next-intl/server'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
 type WeekRow = { week_start: string; variety: number; hit_goal: boolean }
@@ -9,6 +10,8 @@ type CatRow = { category: Category; unique_count: number; total_in_category: num
 
 export default async function StatsPage() {
   const supabase = await createClient()
+  const t = await getTranslations('stats')
+  const tCat = await getTranslations('categories')
 
   const [
     { data: streak },
@@ -32,27 +35,27 @@ export default async function StatsPage() {
       {/* Summary cards */}
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-[24px] p-5 bg-[#DDEACB]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-2">Streak</div>
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-2">{t('streak')}</div>
           <div className="text-[40px] font-extrabold leading-none text-[#1F1B16]">{streakCount}</div>
-          <div className="text-sm text-[#6B645C] mt-1">weeks</div>
+          <div className="text-sm text-[#6B645C] mt-1">{t('weeks')}</div>
         </div>
         <div className="rounded-[24px] p-5 bg-[#E5D6EE]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-2">Fill rate</div>
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-2">{t('fillRate')}</div>
           <div className="text-[40px] font-extrabold leading-none text-[#1F1B16]">{fillRateVal}%</div>
-          <div className="text-sm text-[#6B645C] mt-1">last 30 days</div>
+          <div className="text-sm text-[#6B645C] mt-1">{t('last30Days')}</div>
         </div>
       </div>
 
       {/* Weekly history */}
       <div>
-        <h3 className="text-base font-bold text-[#1F1B16] mb-3">Weekly history</h3>
+        <h3 className="text-base font-bold text-[#1F1B16] mb-3">{t('weeklyHistory')}</h3>
         <div className="rounded-[18px] bg-white p-4 space-y-3" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
           {weeks.map((w) => {
             const start = new Date(w.week_start + 'T12:00:00')
-          const end = new Date(start)
-          end.setDate(end.getDate() + 6)
-          const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-          const label = `${fmt(start)} – ${fmt(end)}`
+            const end = new Date(start)
+            end.setDate(end.getDate() + 6)
+            const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+            const label = `${fmt(start)} – ${fmt(end)}`
             const pct = Math.min((w.variety / 30) * 100, 100)
             return (
               <div key={w.week_start}>
@@ -74,14 +77,14 @@ export default async function StatsPage() {
             )
           })}
           {weeks.length === 0 && (
-            <p className="text-sm text-[#A39B91] text-center py-4">No data yet</p>
+            <p className="text-sm text-[#A39B91] text-center py-4">{t('noData')}</p>
           )}
         </div>
       </div>
 
       {/* Category breakdown */}
       <div>
-        <h3 className="text-base font-bold text-[#1F1B16] mb-3">Plants tried</h3>
+        <h3 className="text-base font-bold text-[#1F1B16] mb-3">{t('plantsTried')}</h3>
         <div className="space-y-2">
           {CAT_ORDER.map((cat) => {
             const row = cats.find((r) => r.category === cat)
@@ -94,7 +97,7 @@ export default async function StatsPage() {
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: c.fg }}>
                     <span>{c.emoji}</span>
-                    <span>{c.label}</span>
+                    <span>{tCat(cat)}</span>
                   </div>
                   <span className="font-mono text-[12px]" style={{ color: c.fg }}>
                     {unique}/{total}

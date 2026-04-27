@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Check } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
+import { getTranslations, getLocale } from 'next-intl/server'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 
 type Plant = { id: string; name: string }
@@ -18,9 +19,12 @@ export default async function CategoryDetailPage({
   if (!CAT_ORDER.includes(category)) notFound()
 
   const supabase = await createClient()
+  const t = await getTranslations('stats')
+  const tCat = await getTranslations('categories')
+  const locale = await getLocale()
   const { data: { user } } = await supabase.auth.getUser()
 
-  const [{ data: plants }, { data: logs }] = await Promise.all([
+  const [{ data: plants }, { data: logs }, { data: translations }] = await Promise.all([
     supabase
       .from('plants')
       .select('id, name')
@@ -31,10 +35,23 @@ export default async function CategoryDetailPage({
       .from('plant_logs')
       .select('plant_id')
       .eq('user_id', user!.id),
+    supabase
+      .from('plant_translations')
+      .select('plant_id, name')
+      .eq('locale', locale),
   ])
 
+  const nameByPlantId = Object.fromEntries(
+    ((translations ?? []) as { plant_id: string; name: string }[]).map((tr) => [tr.plant_id, tr.name])
+  )
+
   const triedSet = new Set((logs ?? []).map((r) => r.plant_id))
-  const allPlants = (plants ?? []) as Plant[]
+  const allPlants: Plant[] = ((plants ?? []) as Plant[]).map((p) => ({
+    ...p,
+    name: nameByPlantId[p.id] ?? p.name,
+  }))
+  allPlants.sort((a, b) => a.name.localeCompare(b.name))
+
   const tried = allPlants.filter((p) => triedSet.has(p.id))
   const untried = allPlants.filter((p) => !triedSet.has(p.id))
   const c = CATS[category]
@@ -52,7 +69,7 @@ export default async function CategoryDetailPage({
         </Link>
         <div className="flex items-center gap-2">
           <span className="text-2xl">{c.emoji}</span>
-          <h1 className="text-xl font-extrabold text-[#1F1B16]">{c.label}</h1>
+          <h1 className="text-xl font-extrabold text-[#1F1B16]">{tCat(category)}</h1>
         </div>
         <span className="ml-auto text-sm font-mono text-[#A39B91]">
           {tried.length}<span className="text-[#F4EFE8]">/</span>{allPlants.length}
@@ -63,14 +80,14 @@ export default async function CategoryDetailPage({
       {tried.length > 0 && (
         <div className="mb-5">
           <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
-            Tried
+            {t('tried')}
           </p>
           <div className="space-y-2">
             {tried.map((plant) => (
               <div
                 key={plant.id}
                 className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
-                style={{ background: 'rgb(224 215 203)' }}
+                style={{ background: '#FBEDB5' }}
               >
                 <div
                   className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
@@ -92,7 +109,7 @@ export default async function CategoryDetailPage({
       {untried.length > 0 && (
         <div>
           <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
-            Not yet tried
+            {t('notYetTried')}
           </p>
           <div className="space-y-2">
             {untried.map((plant) => (

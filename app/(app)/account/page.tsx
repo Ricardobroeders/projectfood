@@ -1,11 +1,15 @@
 import { createClient } from '@/lib/supabase/server'
+import { getTranslations, getLocale } from 'next-intl/server'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
+import { LanguageSwitcher } from '@/components/language-switcher'
 
 export const dynamic = 'force-dynamic'
 
 export default async function AccountPage() {
   const supabase = await createClient()
+  const t = await getTranslations('account')
+  const locale = await getLocale()
   const { data: { user } } = await supabase.auth.getUser()
 
   const name = user?.user_metadata?.full_name ?? user?.user_metadata?.name ?? null
@@ -14,9 +18,11 @@ export default async function AccountPage() {
 
   const { data: settings } = await supabase
     .from('user_settings')
-    .select('username')
+    .select('username, locale')
     .eq('user_id', user!.id)
     .single()
+
+  const currentLocale = (settings?.locale ?? locale) as 'en' | 'nl'
 
   return (
     <div className="px-5 pt-6 pb-8 space-y-6">
@@ -42,16 +48,17 @@ export default async function AccountPage() {
       {/* Settings */}
       <div>
         <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-2 px-1">
-          Settings
+          {t('settingsSection')}
         </p>
         <div
           className="rounded-[24px] bg-white divide-y divide-[#F4EFE8]"
           style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
         >
           <UsernameForm userId={user!.id} initial={settings?.username ?? null} />
+          <LanguageSwitcher userId={user!.id} currentLocale={currentLocale} />
           {[
-            { label: 'Weekly goal', value: '30 plants' },
-            { label: 'Notifications', value: 'Coming soon' },
+            { label: t('weeklyGoal'), value: '30 plants' },
+            { label: t('notifications'), value: t('comingSoon') },
           ].map(({ label, value }) => (
             <div key={label} className="flex items-center justify-between px-5 py-4">
               <span className="text-[15px] font-medium text-[#1F1B16]">{label}</span>
@@ -72,7 +79,7 @@ export default async function AccountPage() {
       {/* Sign out */}
       <div>
         <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-2 px-1">
-          Account
+          {t('accountSection')}
         </p>
         <div
           className="rounded-[24px] bg-white"
@@ -83,7 +90,7 @@ export default async function AccountPage() {
               type="submit"
               className="w-full text-left px-5 py-4 text-[15px] font-medium text-red-500"
             >
-              Sign out
+              {t('signOut')}
             </button>
           </form>
         </div>

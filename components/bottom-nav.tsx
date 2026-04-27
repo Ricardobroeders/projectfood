@@ -2,23 +2,25 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Home, Plus, BarChart2, Trophy, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const tabs = [
-  { href: '/home',        label: 'Home',    Icon: Home     },
-  { href: '/log',         label: 'Log',     Icon: Plus      },
-  { href: '/stats',       label: 'Stats',   Icon: BarChart2 },
-  { href: '/leaderboard', label: 'Top 15',  Icon: Trophy    },
-  { href: '/account',     label: 'Account', Icon: User      },
-]
+  { href: '/home',        key: 'home',        Icon: Home     },
+  { href: '/log',         key: 'log',         Icon: Plus      },
+  { href: '/stats',       key: 'stats',       Icon: BarChart2 },
+  { href: '/leaderboard', key: 'leaderboard', Icon: Trophy    },
+  { href: '/account',     key: 'account',     Icon: User      },
+] as const
 
 export function BottomNav() {
   const pathname = usePathname()
+  const t = useTranslations('nav')
 
   return (
     <nav className="fixed bottom-0 inset-x-0 h-16 bg-white flex items-center" style={{ boxShadow: '0 -2px 6px rgba(31,27,22,0.04)' }}>
-      {tabs.map(({ href, label, Icon }) => {
+      {tabs.map(({ href, key, Icon }) => {
         const active = pathname.startsWith(href)
         return (
           <Link
@@ -30,7 +32,7 @@ export function BottomNav() {
             )}
           >
             <Icon className="size-5" />
-            {label}
+            {t(key)}
           </Link>
         )
       })}

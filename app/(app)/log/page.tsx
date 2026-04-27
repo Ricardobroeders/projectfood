@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { Search, Check, Send } from 'lucide-react'
@@ -9,8 +10,16 @@ import { Search, Check, Send } from 'lucide-react'
 type Plant = { id: string; name: string; category: Category }
 type Toast = { id: string; name: string }
 
+function getLocaleFromCookie(): string {
+  if (typeof document === 'undefined') return 'en'
+  const match = document.cookie.match(/pf_locale=([^;]+)/)
+  return match?.[1] ?? 'en'
+}
+
 export default function LogPage() {
   const router = useRouter()
+  const t = useTranslations('log')
+  const tCat = useTranslations('categories')
   const [plants, setPlants] = useState<Plant[]>([])
   const [userId, setUserId] = useState<string | null>(null)
   const [query, setQuery] = useState('')
@@ -24,26 +33,33 @@ export default function LogPage() {
 
   useEffect(() => {
     const supabase = createClient()
+    const locale = getLocaleFromCookie()
 
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) setUserId(user.id)
     })
 
-    supabase
-      .from('plants')
-      .select('id, name, category')
-      .eq('is_active', true)
-      .order('name')
-      .then(({ data }) => setPlants((data as Plant[]) ?? []))
-
-    const today = new Date().toLocaleDateString('en-CA')
-    supabase
-      .from('plant_logs')
-      .select('plant_id')
-      .eq('logged_on', today)
-      .then(({ data }) => {
-        if (data) setLoggedToday(new Set(data.map((r) => r.plant_id)))
-      })
+    Promise.all([
+      supabase
+        .from('plant_translations')
+        .select('plant_id, name, plants!inner(id, category, is_active)')
+        .eq('locale', locale)
+        .eq('plants.is_active', true)
+        .order('name'),
+      supabase
+        .from('plant_logs')
+        .select('plant_id')
+        .eq('logged_on', new Date().toLocaleDateString('en-CA')),
+    ]).then(([{ data: translationRows }, { data: logs }]) => {
+      const plantList: Plant[] = ((translationRows ?? []) as any[]).map((row) => ({
+        id: row.plants.id,
+        name: row.name,
+        category: row.plants.category as Category,
+      }))
+      plantList.sort((a, b) => a.name.localeCompare(b.name))
+      setPlants(plantList)
+      if (logs) setLoggedToday(new Set(logs.map((r) => r.plant_id)))
+    })
   }, [])
 
   // Reset submission state when query changes
@@ -124,7 +140,7 @@ export default function LogPage() {
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 150+ plants…"
+            placeholder={t('searchPlaceholder')}
             className="flex-1 text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] bg-transparent outline-none"
           />
           {query && (
@@ -146,7 +162,7 @@ export default function LogPage() {
               : { background: '#F4EFE8', color: '#6B645C' }
           }
         >
-          All
+          {t('all')}
         </button>
         {CAT_ORDER.map((cat) => {
           const c = CATS[cat]
@@ -162,7 +178,7 @@ export default function LogPage() {
                   : { background: c.bg, color: c.fg }
               }
             >
-              {c.emoji} {c.label}
+              {c.emoji} {tCat(cat)}
             </button>
           )
         })}
@@ -174,7 +190,7 @@ export default function LogPage() {
           <div className="pt-6">
             <div className="text-center mb-6 text-[#A39B91]">
               <div className="text-3xl mb-2">🔍</div>
-              <p className="text-sm">No plants found for <span className="font-semibold text-[#1F1B16]">&ldquo;{query}&rdquo;</span></p>
+              <p className="text-sm">{t('noResults', { query })}</p>
             </div>
 
             {submitStatus === 'done' ? (
@@ -183,8 +199,8 @@ export default function LogPage() {
                 style={{ background: '#DDEACB' }}
               >
                 <div className="text-2xl mb-2">🌱</div>
-                <p className="text-[15px] font-semibold text-[#2D4A22]">Suggestion sent!</p>
-                <p className="text-[13px] text-[#4F7A3D] mt-1">We&apos;ll review and add it soon.</p>
+                <p className="text-[15px] font-semibold text-[#2D4A22]">{t('suggestionSent')}</p>
+                <p className="text-[13px] text-[#4F7A3D] mt-1">{t('suggestionSentSub')}</p>
               </div>
             ) : (
               <div
@@ -192,10 +208,10 @@ export default function LogPage() {
                 style={{ background: '#FFFFFF', boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
               >
                 <p className="text-[16px] font-semibold text-[#1F1B16] mb-1">
-                  Missing from our list?
+                  {t('missingTitle')}
                 </p>
                 <p className="text-[15px] text-[#6B645C] mb-4">
-                  Suggest <span className="font-semibold">&ldquo;{query}&rdquo;</span> and we&apos;ll add it if it qualifies.
+                  {t('missingBody', { query })}
                 </p>
 
                 <button
@@ -205,7 +221,7 @@ export default function LogPage() {
                   style={{ background: '#F5C518', color: '#1F1B16', opacity: submitStatus === 'sending' ? 0.6 : 1 }}
                 >
                   <Send size={15} />
-                  {submitStatus === 'sending' ? 'Sending…' : 'Submit suggestion'}
+                  {submitStatus === 'sending' ? t('sending') : t('submitSuggestion')}
                 </button>
               </div>
             )}
@@ -215,7 +231,7 @@ export default function LogPage() {
         {filtered.length === 0 && !query.trim() && (
           <div className="text-center py-16 text-[#A39B91]">
             <div className="text-3xl mb-2">🔍</div>
-            <p className="text-sm">No plants found</p>
+            <p className="text-sm">{t('noResultsEmpty')}</p>
           </div>
         )}
 
@@ -228,8 +244,8 @@ export default function LogPage() {
               onClick={() => logged ? unlogPlant(plant) : logPlant(plant)}
               className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all"
               style={{
-                background: logged ? 'rgb(224 215 203)' : '#FFFFFF',
-                boxShadow: logged ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
+                background: logged ? '#FBEDB5' : '#FFFFFF',
+                boxShadow: '0 2px 6px rgba(31,27,22,0.04)',
                 opacity: isPending ? 0.7 : 1,
               }}
             >
@@ -241,7 +257,7 @@ export default function LogPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
-                <p className="text-[12px] text-[#A39B91]">{c.label}</p>
+                <p className="text-[12px] text-[#A39B91]">{tCat(plant.category)}</p>
               </div>
               <div
                 className="w-10 h-10 rounded-full grid place-items-center shrink-0 transition-colors"
@@ -268,7 +284,7 @@ export default function LogPage() {
             <div className="w-8 h-8 rounded-full grid place-items-center bg-[#F5C518] text-[#1F1B16]">
               <Check size={14} strokeWidth={3} />
             </div>
-            Logged: {toast.name}
+            {t('logged', { name: toast.name })}
           </div>
         </div>
       )}

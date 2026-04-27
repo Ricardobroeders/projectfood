@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "log": "Log",
+    "stats": "Stats",
+    "leaderboard": "Top 15",
+    "account": "Account"
+  },
+  "home": {
+    "thisWeek": "This week",
+    "daysLeft": "{days}d left",
+    "plantsOfGoal": "{count} of {goal} plants",
+    "toGo": "{n} to go",
+    "goalReached": "Goal reached! 🎉",
+    "streak": "Streak",
+    "weeks": "wks",
+    "fillRate": "Fill rate",
+    "today": "Today",
+    "thisWeeksCollection": "This week's collection",
+    "logFirstPlant": "Log your first plant",
+    "logFirstPlantSub": "Head to the Log tab to get started."
+  },
+  "log": {
+    "searchPlaceholder": "Search 150+ plants…",
+    "all": "All",
+    "noResults": "No plants found for \"{query}\"",
+    "noResultsEmpty": "No plants found",
+    "missingTitle": "Missing from our list?",
+    "missingBody": "Suggest \"{query}\" and we'll add it if it qualifies.",
+    "submitSuggestion": "Submit suggestion",
+    "sending": "Sending…",
+    "suggestionSent": "Suggestion sent!",
+    "suggestionSentSub": "We'll review and add it soon.",
+    "logged": "Logged: {name}"
+  },
+  "stats": {
+    "streak": "Streak",
+    "weeks": "weeks",
+    "fillRate": "Fill rate",
+    "last30Days": "last 30 days",
+    "weeklyHistory": "Weekly history",
+    "noData": "No data yet",
+    "plantsTried": "Plants tried",
+    "tried": "Tried",
+    "notYetTried": "Not yet tried"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": "Most unique plants eaten, all time",
+    "you": "you",
+    "plants": "plants",
+    "noEntries": "No entries yet"
+  },
+  "account": {
+    "settingsSection": "Settings",
+    "accountSection": "Account",
+    "username": "Username",
+    "chooseName": "Choose a name",
+    "weeklyGoal": "Weekly goal",
+    "notifications": "Notifications",
+    "comingSoon": "Coming soon",
+    "installApp": "Install app",
+    "addToHomeScreen": "Add to your home screen",
+    "runningFromHomeScreen": "Running from home screen",
+    "installed": "Installed",
+    "install": "Install",
+    "signOut": "Sign out",
+    "language": "Language",
+    "usernameTaken": "Username already taken.",
+    "saveError": "Could not save. Try again.",
+    "save": "Save",
+    "saving": "…",
+    "saved": "Saved"
+  },
+  "login": {
+    "tagline": "Track 30 plants a week. Good gut, good life.",
+    "continueWithGoogle": "Continue with Google"
+  },
+  "categories": {
+    "fruit": "Fruit",
+    "vegetable": "Vegetable",
+    "herb": "Herb & spice",
+    "nut_seed": "Nut & seed",
+    "legume": "Legume",
+    "whole_grain": "Whole grain"
+  }
+}
