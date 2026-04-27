@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "log": "Log",
+    "stats": "Stats",
+    "leaderboard": "Top 15",
+    "account": "Account"
+  },
+  "home": {
+    "thisWeek": "Questa settimana",
+    "daysLeft": "{days}g rimasti",
+    "plantsOfGoal": "{count} di {goal} piante",
+    "toGo": "{n} ancora",
+    "goalReached": "Obiettivo raggiunto! 🎉",
+    "streak": "Serie",
+    "weeks": "sett.",
+    "fillRate": "Attività",
+    "today": "Oggi",
+    "thisWeeksCollection": "Collezione di questa settimana",
+    "logFirstPlant": "Registra la tua prima pianta",
+    "logFirstPlantSub": "Vai alla scheda Log per iniziare."
+  },
+  "log": {
+    "searchPlaceholder": "Cerca 150+ piante…",
+    "all": "Tutte",
+    "noResults": "Nessuna pianta trovata per \"{query}\"",
+    "noResultsEmpty": "Nessuna pianta trovata",
+    "missingTitle": "Non è nella lista?",
+    "missingBody": "Suggerisci \"{query}\" e la aggiungeremo se qualificata.",
+    "submitSuggestion": "Invia suggerimento",
+    "sending": "Invio…",
+    "suggestionSent": "Suggerimento inviato!",
+    "suggestionSentSub": "Lo esamineremo e lo aggiungeremo presto.",
+    "logged": "Registrato: {name}"
+  },
+  "stats": {
+    "streak": "Serie",
+    "weeks": "settimane",
+    "fillRate": "Attività",
+    "last30Days": "ultimi 30 giorni",
+    "weeklyHistory": "Storico settimanale",
+    "noData": "Nessun dato ancora",
+    "plantsTried": "Piante provate",
+    "tried": "Provate",
+    "notYetTried": "Non ancora provate"
+  },
+  "leaderboard": {
+    "title": "Classifica",
+    "subtitle": "Più piante uniche mangiate, di sempre",
+    "you": "tu",
+    "plants": "piante",
+    "noEntries": "Nessuna voce ancora"
+  },
+  "account": {
+    "settingsSection": "Impostazioni",
+    "accountSection": "Account",
+    "username": "Nome utente",
+    "chooseName": "Scegli un nome",
+    "weeklyGoal": "Obiettivo settimanale",
+    "weeklyGoalValue": "30 piante",
+    "notifications": "Notifiche",
+    "comingSoon": "Presto disponibile",
+    "installApp": "Installa l'app",
+    "addToHomeScreen": "Aggiungi alla schermata Home",
+    "runningFromHomeScreen": "Avviato dalla schermata Home",
+    "installed": "Installata",
+    "install": "Installa",
+    "signOut": "Disconnetti",
+    "language": "Lingua",
+    "usernameTaken": "Nome utente già in uso.",
+    "saveError": "Impossibile salvare. Riprova.",
+    "save": "Salva",
+    "saving": "…",
+    "saved": "Salvato"
+  },
+  "login": {
+    "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",
+    "continueWithGoogle": "Continua con Google"
+  },
+  "categories": {
+    "fruit": "Frutta",
+    "vegetable": "Verdura",
+    "herb": "Erba e spezia",
+    "nut_seed": "Noci e semi",
+    "legume": "Legume",
+    "whole_grain": "Cereale integrale"
+  }
+}

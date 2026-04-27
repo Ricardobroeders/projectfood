@@ -5,11 +5,12 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 
-type Locale = 'en' | 'nl'
+type Locale = 'en' | 'nl' | 'it'
 
 const LOCALES: { code: Locale; label: string; flag: string }[] = [
   { code: 'en', label: 'English',    flag: '/flags/en.svg' },
   { code: 'nl', label: 'Nederlands', flag: '/flags/nl.svg' },
+  { code: 'it', label: 'Italiano',   flag: '/flags/it.svg' },
 ]
 
 export function LanguageSwitcher({

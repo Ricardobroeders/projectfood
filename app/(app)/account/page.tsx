@@ -22,7 +22,7 @@ export default async function AccountPage() {
     .eq('user_id', user!.id)
     .single()
 
-  const currentLocale = (settings?.locale ?? locale) as 'en' | 'nl'
+  const currentLocale = (settings?.locale ?? locale) as 'en' | 'nl' | 'it'
 
   return (
     <div className="px-5 pt-6 pb-8 space-y-6">
@@ -57,7 +57,7 @@ export default async function AccountPage() {
           <UsernameForm userId={user!.id} initial={settings?.username ?? null} />
           <LanguageSwitcher userId={user!.id} currentLocale={currentLocale} />
           {[
-            { label: t('weeklyGoal'), value: '30 plants' },
+            { label: t('weeklyGoal'), value: t('weeklyGoalValue') },
             { label: t('notifications'), value: t('comingSoon') },
           ].map(({ label, value }) => (
             <div key={label} className="flex items-center justify-between px-5 py-4">
