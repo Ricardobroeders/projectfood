@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { UsernameForm } from './UsernameForm'
+import { InstallButton } from './InstallButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -58,6 +59,14 @@ export default async function AccountPage() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Install app */}
+      <div
+        className="rounded-[24px] bg-white"
+        style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+      >
+        <InstallButton />
       </div>
 
       {/* Sign out */}
