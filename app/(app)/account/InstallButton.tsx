@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Download } from 'lucide-react'
+import { Download, CheckCircle2 } from 'lucide-react'
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>
@@ -10,27 +10,49 @@ type BeforeInstallPromptEvent = Event & {
 
 export function InstallButton() {
   const [prompt, setPrompt] = useState<BeforeInstallPromptEvent | null>(null)
-  const [installed, setInstalled] = useState(false)
+  const [isStandalone, setIsStandalone] = useState(false)
 
   useEffect(() => {
+    const standalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      ('standalone' in navigator && (navigator as { standalone?: boolean }).standalone === true)
+    setIsStandalone(standalone)
+
     const handler = (e: Event) => {
       e.preventDefault()
       setPrompt(e as BeforeInstallPromptEvent)
     }
     window.addEventListener('beforeinstallprompt', handler)
-    window.addEventListener('appinstalled', () => setInstalled(true))
+    window.addEventListener('appinstalled', () => setIsStandalone(true))
     return () => window.removeEventListener('beforeinstallprompt', handler)
   }, [])
-
-  if (!prompt || installed) return null
 
   async function install() {
     if (!prompt) return
     await prompt.prompt()
     const { outcome } = await prompt.userChoice
-    if (outcome === 'accepted') setInstalled(true)
-    setPrompt(null)
+    if (outcome === 'accepted') {
+      setIsStandalone(true)
+      setPrompt(null)
+    }
   }
+
+  if (isStandalone) {
+    return (
+      <div className="px-5 py-4 flex items-center justify-between">
+        <div>
+          <p className="text-[15px] font-medium text-[#1F1B16]">Install app</p>
+          <p className="text-[12px] text-[#A39B91]">Running from home screen</p>
+        </div>
+        <div className="flex items-center gap-1.5 text-[13px] font-semibold text-green-600">
+          <CheckCircle2 size={16} />
+          Installed
+        </div>
+      </div>
+    )
+  }
+
+  if (!prompt) return null
 
   return (
     <div className="px-5 py-4 flex items-center justify-between">
