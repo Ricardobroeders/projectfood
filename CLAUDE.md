@@ -22,6 +22,10 @@
 - All app pages are Client Components using SWR for instant cached navigation; no server pages in `(app)/`.
 - `user_id` must be passed explicitly on `plant_logs` inserts (no column default; required by RLS).
 
+## Translations
+
+The app has three locales: **en**, **nl**, **it** — files in `messages/`. When adding or changing any user-facing string, always update all three files. Never add a key to one locale without adding it to the others.
+
 ## Design system
 
 Tokens live in `app/globals.css`. Key values:

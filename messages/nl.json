@@ -65,6 +65,8 @@
     "runningFromHomeScreen": "Gestart vanaf beginscherm",
     "installed": "Geïnstalleerd",
     "install": "Installeren",
+    "iosHint": "Tik op Delen → Zet op beginscherm",
+    "desktopHint": "Beschikbaar op mobiel",
     "signOut": "Uitloggen",
     "language": "Taal",
     "usernameTaken": "Gebruikersnaam al in gebruik.",

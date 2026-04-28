@@ -65,6 +65,8 @@
     "runningFromHomeScreen": "Avviato dalla schermata Home",
     "installed": "Installata",
     "install": "Installa",
+    "iosHint": "Tocca Condividi → Aggiungi a Home",
+    "desktopHint": "Disponibile su mobile",
     "signOut": "Disconnetti",
     "language": "Lingua",
     "usernameTaken": "Nome utente già in uso.",

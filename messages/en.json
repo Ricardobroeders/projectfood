@@ -65,6 +65,8 @@
     "runningFromHomeScreen": "Running from home screen",
     "installed": "Installed",
     "install": "Install",
+    "iosHint": "Tap Share → Add to Home Screen",
+    "desktopHint": "Available on mobile",
     "signOut": "Sign out",
     "language": "Language",
     "usernameTaken": "Username already taken.",
