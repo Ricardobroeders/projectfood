@@ -80,6 +80,18 @@ export function InstallButton() {
     )
   }
 
+  if (!isMobile) {
+    return (
+      <div className="px-5 py-4 flex items-center justify-between">
+        <div>
+          <p className="text-[15px] font-medium text-[#1F1B16]">{t('installApp')}</p>
+          <p className="text-[12px] text-[#A39B91]">{t('desktopHint')}</p>
+        </div>
+        <Monitor size={18} className="text-[#A39B91] shrink-0" />
+      </div>
+    )
+  }
+
   if (isIOS) {
     return (
       <div className="px-5 py-4 flex items-center justify-between">
@@ -92,25 +104,5 @@ export function InstallButton() {
     )
   }
 
-  if (isMobile) {
-    return (
-      <div className="px-5 py-4 flex items-center justify-between">
-        <div>
-          <p className="text-[15px] font-medium text-[#1F1B16]">{t('installApp')}</p>
-          <p className="text-[12px] text-[#A39B91]">{t('addToHomeScreen')}</p>
-        </div>
-        <Download size={18} className="text-[#A39B91] shrink-0" />
-      </div>
-    )
-  }
-
-  return (
-    <div className="px-5 py-4 flex items-center justify-between">
-      <div>
-        <p className="text-[15px] font-medium text-[#1F1B16]">{t('installApp')}</p>
-        <p className="text-[12px] text-[#A39B91]">{t('desktopHint')}</p>
-      </div>
-      <Monitor size={18} className="text-[#A39B91] shrink-0" />
-    </div>
-  )
+  return null
 }
