@@ -31,7 +31,8 @@
     "sending": "Sending…",
     "suggestionSent": "Suggestion sent!",
     "suggestionSentSub": "We'll review and add it soon.",
-    "logged": "Logged: {name}"
+    "logged": "Logged: {name}",
+    "adviceGenerating": "30 plants reached! Your grocery advice is being prepared…"
   },
   "stats": {
     "streak": "Streak",
@@ -74,6 +75,10 @@
     "save": "Save",
     "saving": "…",
     "saved": "Saved"
+  },
+  "advice": {
+    "title": "Your grocery advice",
+    "subtitle": "Based on this week's 30 plants"
   },
   "login": {
     "tagline": "Track 30 plants a week. Good gut, good life.",

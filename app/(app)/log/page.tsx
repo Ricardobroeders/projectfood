@@ -7,8 +7,17 @@ import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { Search, Check, Send } from 'lucide-react'
 
-type Plant = { id: string; name: string; category: Category }
+type Plant = { id: string; name: string; category: Category; image_url: string | null }
 type Toast = { id: string; name: string }
+
+function currentWeekStart(): string {
+  const today = new Date()
+  const day = today.getDay()
+  const diff = day === 0 ? -6 : 1 - day
+  const monday = new Date(today)
+  monday.setDate(today.getDate() + diff)
+  return monday.toLocaleDateString('en-CA')
+}
 
 function getLocaleFromCookie(): string {
   if (typeof document === 'undefined') return 'en'
@@ -25,6 +34,8 @@ export default function LogPage() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
   const [toast, setToast] = useState<Toast | null>(null)
+  const [adviceToast, setAdviceToast] = useState(false)
+  const adviceToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
@@ -42,7 +53,7 @@ export default function LogPage() {
     Promise.all([
       supabase
         .from('plant_translations')
-        .select('plant_id, name, plants!inner(id, category, is_active)')
+        .select('plant_id, name, plants!inner(id, category, is_active, image_url)')
         .eq('locale', locale)
         .eq('plants.is_active', true)
         .order('name'),
@@ -55,6 +66,7 @@ export default function LogPage() {
         id: row.plants.id,
         name: row.name,
         category: row.plants.category as Category,
+        image_url: row.plants.image_url ?? null,
       }))
       plantList.sort((a, b) => a.name.localeCompare(b.name))
       setPlants(plantList)
@@ -92,6 +104,23 @@ export default function LogPage() {
       if (toastTimer.current) clearTimeout(toastTimer.current)
       setToast({ id: plant.id, name: plant.name })
       toastTimer.current = setTimeout(() => setToast(null), 2500)
+
+      // Check if user just hit 30 unique plants — trigger advice generation
+      const { data: variety } = await supabase.rpc('weekly_variety')
+      if ((variety as number) >= 30) {
+        const ws = currentWeekStart()
+        const { data: existingAdvice } = await supabase
+          .from('weekly_advice')
+          .select('id')
+          .eq('week_start', ws)
+          .maybeSingle()
+        if (!existingAdvice) {
+          fetch('/api/advice', { method: 'POST' })
+          if (adviceToastTimer.current) clearTimeout(adviceToastTimer.current)
+          setAdviceToast(true)
+          adviceToastTimer.current = setTimeout(() => setAdviceToast(false), 5000)
+        }
+      }
     })
   }
 
@@ -253,7 +282,11 @@ export default function LogPage() {
                 className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
                 style={{ background: c.bg }}
               >
-                {c.emoji}
+                {plant.image_url ? (
+                  <img src={plant.image_url} alt={plant.name} className="w-8 h-8 object-contain" />
+                ) : (
+                  c.emoji
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
@@ -273,6 +306,19 @@ export default function LogPage() {
           )
         })}
       </div>
+
+      {/* Advice generating toast */}
+      {adviceToast && (
+        <div className="fixed bottom-36 left-4 right-4 z-50 pointer-events-none">
+          <div
+            className="flex items-center gap-3 px-5 py-3.5 rounded-[18px] text-[#2D4A22] text-[14px] font-medium"
+            style={{ background: '#DDEACB', boxShadow: '0 8px 24px rgba(31,27,22,0.12)' }}
+          >
+            <span className="text-xl">🛒</span>
+            {t('adviceGenerating')}
+          </div>
+        </div>
+      )}
 
       {/* Toast */}
       {toast && (

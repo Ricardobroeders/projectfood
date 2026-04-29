@@ -4,6 +4,7 @@ import useSWR from 'swr'
 import { createClient } from '@/lib/supabase/client'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
+import { AdviceCard, type Advice } from './AdviceCard'
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
   const size = 128
@@ -46,6 +47,12 @@ export default function HomePage() {
     const supabase = createClient()
     const today = new Date().toLocaleDateString('en-CA')
 
+    const dayOfWeekNow = new Date().getDay()
+    const mondayOffset = dayOfWeekNow === 0 ? -6 : 1 - dayOfWeekNow
+    const mondayDate = new Date()
+    mondayDate.setDate(mondayDate.getDate() + mondayOffset)
+    const weekStart = mondayDate.toLocaleDateString('en-CA')
+
     const [
       { data: weekPlants },
       { data: variety },
@@ -53,6 +60,7 @@ export default function HomePage() {
       { data: fillRate },
       { data: todayLogs },
       { data: translations },
+      { data: adviceRow },
     ] = await Promise.all([
       supabase.rpc('current_week_plants'),
       supabase.rpc('weekly_variety'),
@@ -60,6 +68,7 @@ export default function HomePage() {
       supabase.rpc('fill_rate'),
       supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
       supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
+      supabase.from('weekly_advice').select('advice').eq('week_start', weekStart).maybeSingle(),
     ])
 
     const nameByPlantId = Object.fromEntries(
@@ -88,7 +97,9 @@ export default function HomePage() {
         .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
     ).values()]
 
-    return { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants }
+    const weekAdvice = (adviceRow?.advice as Advice) ?? null
+
+    return { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants, weekAdvice }
   })
 
   if (isLoading || !data) {
@@ -105,7 +116,7 @@ export default function HomePage() {
     )
   }
 
-  const { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants } = data
+  const { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants, weekAdvice } = data
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">
@@ -208,6 +219,8 @@ export default function HomePage() {
           <p className="text-sm text-[#6B645C] mt-1">{t('logFirstPlantSub')}</p>
         </div>
       )}
+
+      {weekAdvice && <AdviceCard advice={weekAdvice} />}
     </div>
   )
 }

@@ -31,7 +31,8 @@
     "sending": "Invio…",
     "suggestionSent": "Suggerimento inviato!",
     "suggestionSentSub": "Lo esamineremo e lo aggiungeremo presto.",
-    "logged": "Registrato: {name}"
+    "logged": "Registrato: {name}",
+    "adviceGenerating": "30 piante raggiunte! Il tuo consiglio della spesa è in preparazione…"
   },
   "stats": {
     "streak": "Serie",
@@ -74,6 +75,10 @@
     "save": "Salva",
     "saving": "…",
     "saved": "Salvato"
+  },
+  "advice": {
+    "title": "Il tuo consiglio della spesa",
+    "subtitle": "Basato sulle 30 piante di questa settimana"
   },
   "login": {
     "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",

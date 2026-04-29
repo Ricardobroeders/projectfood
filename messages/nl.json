@@ -31,7 +31,8 @@
     "sending": "Versturen…",
     "suggestionSent": "Suggestie verzonden!",
     "suggestionSentSub": "We beoordelen het en voegen het snel toe.",
-    "logged": "Gelogd: {name}"
+    "logged": "Gelogd: {name}",
+    "adviceGenerating": "30 planten bereikt! Je boodschappenadvies wordt voorbereid…"
   },
   "stats": {
     "streak": "Reeks",
@@ -74,6 +75,10 @@
     "save": "Opslaan",
     "saving": "…",
     "saved": "Opgeslagen"
+  },
+  "advice": {
+    "title": "Jouw boodschappenadvies",
+    "subtitle": "Gebaseerd op 30 planten deze week"
   },
   "login": {
     "tagline": "30 planten per week bijhouden. Goede darmen, goed leven.",
