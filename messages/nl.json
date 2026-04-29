@@ -77,8 +77,14 @@
     "saved": "Opgeslagen"
   },
   "advice": {
-    "title": "Jouw boodschappenadvies",
-    "subtitle": "Gebaseerd op 30 planten deze week"
+    "title": "Boodschappenadvies",
+    "subtitle": "Gebaseerd op 30 planten deze week",
+    "bannerLocked": "{count}/30 planten — advies beschikbaar bij 30",
+    "backToHome": "Thuis",
+    "thisWeek": "Deze week",
+    "previousWeeks": "Vorige weken",
+    "noAdviceYet": "Nog geen advies deze week",
+    "noAdviceYetSub": "Log 30 unieke planten om je boodschappenadvies te ontgrendelen."
   },
   "login": {
     "tagline": "30 planten per week bijhouden. Goede darmen, goed leven.",

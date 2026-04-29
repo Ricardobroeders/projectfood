@@ -77,8 +77,14 @@
     "saved": "Saved"
   },
   "advice": {
-    "title": "Your grocery advice",
-    "subtitle": "Based on this week's 30 plants"
+    "title": "Grocery advice",
+    "subtitle": "Based on this week's 30 plants",
+    "bannerLocked": "{count}/30 plants — advice unlocks at 30",
+    "backToHome": "Home",
+    "thisWeek": "This week",
+    "previousWeeks": "Previous weeks",
+    "noAdviceYet": "No advice yet this week",
+    "noAdviceYetSub": "Log 30 unique plants to unlock your grocery advice."
   },
   "login": {
     "tagline": "Track 30 plants a week. Good gut, good life.",

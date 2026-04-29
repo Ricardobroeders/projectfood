@@ -77,8 +77,14 @@
     "saved": "Salvato"
   },
   "advice": {
-    "title": "Il tuo consiglio della spesa",
-    "subtitle": "Basato sulle 30 piante di questa settimana"
+    "title": "Consigli della spesa",
+    "subtitle": "Basato sulle 30 piante di questa settimana",
+    "bannerLocked": "{count}/30 piante — consigli disponibili a 30",
+    "backToHome": "Home",
+    "thisWeek": "Questa settimana",
+    "previousWeeks": "Settimane precedenti",
+    "noAdviceYet": "Nessun consiglio questa settimana",
+    "noAdviceYetSub": "Registra 30 piante uniche per sbloccare i tuoi consigli."
   },
   "login": {
     "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",

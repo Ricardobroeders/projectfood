@@ -4,7 +4,8 @@ import useSWR from 'swr'
 import { createClient } from '@/lib/supabase/client'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-import { AdviceCard, type Advice } from './AdviceCard'
+import { type Advice } from './AdviceCard'
+import { AdviceBanner } from './AdviceBanner'
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
   const size = 128
@@ -110,6 +111,7 @@ export default function HomePage() {
           <Skeleton className="h-24" />
           <Skeleton className="h-24" />
         </div>
+        <Skeleton className="h-14" />
         <Skeleton className="h-32" />
         <Skeleton className="h-48" />
       </div>
@@ -157,6 +159,9 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* Grocery advice banner */}
+      <AdviceBanner advice={weekAdvice} weekCount={weekCount} />
 
       {/* Today's plants */}
       {todayPlants.length > 0 && (
@@ -220,7 +225,6 @@ export default function HomePage() {
         </div>
       )}
 
-      {weekAdvice && <AdviceCard advice={weekAdvice} />}
     </div>
   )
 }
