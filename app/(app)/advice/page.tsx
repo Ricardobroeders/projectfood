@@ -2,9 +2,10 @@
 
 import useSWR from 'swr'
 import Link from 'next/link'
+import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useTranslations } from 'next-intl'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, ChevronDown } from 'lucide-react'
 import { AdviceCard, type Advice } from '../home/AdviceCard'
 
 type WeekRow = { week_start: string; advice: Advice }
@@ -32,6 +33,8 @@ function Skeleton({ className }: { className?: string }) {
 
 export default function AdvicePage() {
   const t = useTranslations('advice')
+  const thisWeek = currentWeekStart()
+  const [openWeek, setOpenWeek] = useState<string>(thisWeek)
 
   const { data: rows, isLoading } = useSWR('advice-all', async () => {
     const supabase = createClient()
@@ -42,12 +45,8 @@ export default function AdvicePage() {
     return (data ?? []) as WeekRow[]
   })
 
-  const thisWeek = currentWeekStart()
-  const current = rows?.find((r) => r.week_start === thisWeek) ?? null
-  const past = rows?.filter((r) => r.week_start !== thisWeek) ?? []
-
   return (
-    <div className="px-5 pt-4 pb-6 space-y-5">
+    <div className="px-5 pt-4 pb-6 space-y-4">
       {/* Back nav */}
       <Link
         href="/home"
@@ -58,43 +57,63 @@ export default function AdvicePage() {
       </Link>
 
       {/* Page title */}
-      <h1 className="text-[22px] font-extrabold text-[#1F1B16] -mt-1">{t('title')}</h1>
+      <h1 className="text-[22px] font-extrabold text-[#1F1B16]">{t('title')}</h1>
 
-      {/* Current week */}
-      <section>
-        <p className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C] mb-3">
-          {t('thisWeek')}
-        </p>
-        {isLoading ? (
-          <Skeleton className="h-64" />
-        ) : current ? (
-          <AdviceCard advice={current.advice} />
-        ) : (
-          <div
-            className="rounded-[24px] p-5 text-center"
-            style={{ background: '#F4EFE8' }}
-          >
-            <p className="text-[15px] font-semibold text-[#6B645C]">{t('noAdviceYet')}</p>
-            <p className="text-[13px] text-[#A39B91] mt-1">{t('noAdviceYetSub')}</p>
-          </div>
-        )}
-      </section>
+      {/* Loading */}
+      {isLoading && (
+        <div className="space-y-3">
+          <Skeleton className="h-16" />
+          <Skeleton className="h-16" />
+        </div>
+      )}
 
-      {/* Past weeks */}
-      {!isLoading && past.length > 0 && (
-        <section className="space-y-4">
-          <p className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">
-            {t('previousWeeks')}
-          </p>
-          {past.map((row) => (
-            <div key={row.week_start}>
-              <p className="text-[12px] font-medium text-[#A39B91] mb-2">
-                {formatWeekRange(row.week_start)}
-              </p>
-              <AdviceCard advice={row.advice} />
-            </div>
-          ))}
-        </section>
+      {/* No advice at all */}
+      {!isLoading && rows?.length === 0 && (
+        <div className="rounded-[24px] p-5 text-center" style={{ background: '#F4EFE8' }}>
+          <p className="text-[15px] font-semibold text-[#6B645C]">{t('noAdviceYet')}</p>
+          <p className="text-[13px] text-[#A39B91] mt-1">{t('noAdviceYetSub')}</p>
+        </div>
+      )}
+
+      {/* Accordion */}
+      {!isLoading && rows && rows.length > 0 && (
+        <div className="space-y-3">
+          {rows.map((row) => {
+            const isCurrent = row.week_start === thisWeek
+            const isOpen = openWeek === row.week_start
+            const label = isCurrent ? t('thisWeek') : formatWeekRange(row.week_start)
+            const preview = row.advice.suggestions[0]?.plant ?? ''
+
+            return (
+              <div key={row.week_start} className="rounded-[24px] overflow-hidden" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
+                {/* Accordion header */}
+                <button
+                  onClick={() => setOpenWeek(isOpen ? '' : row.week_start)}
+                  className="w-full flex items-center justify-between px-5 py-4 text-left"
+                >
+                  <div>
+                    <p className="text-[15px] font-semibold text-[#1F1B16]">{label}</p>
+                    {!isOpen && (
+                      <p className="text-[12px] text-[#A39B91] mt-0.5">+ {preview}…</p>
+                    )}
+                  </div>
+                  <ChevronDown
+                    size={18}
+                    className="text-[#A39B91] shrink-0 transition-transform duration-200"
+                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  />
+                </button>
+
+                {/* Accordion body */}
+                {isOpen && (
+                  <div className="px-4 pb-4">
+                    <AdviceCard advice={row.advice} />
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
       )}
     </div>
   )
