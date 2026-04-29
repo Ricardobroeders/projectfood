@@ -35,7 +35,7 @@ export function AdviceBanner({ advice, weekCount }: Props) {
   }
 
   const preview = advice.suggestions
-    .slice(0, 2)
+    .slice(0, 5)
     .map((s) => s.plant)
     .join(', ')
 
@@ -50,7 +50,7 @@ export function AdviceBanner({ advice, weekCount }: Props) {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-[14px] font-semibold text-[#2D4A22]">{t('title')}</p>
-        <p className="text-[12px] text-[#4F7A3D] truncate">+ {preview}</p>
+        <p className="text-[12px] text-[#4F7A3D] truncate">{preview}</p>
       </div>
       <ChevronRight size={16} className="text-[#4F7A3D] shrink-0" />
     </Link>
