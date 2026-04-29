@@ -82,7 +82,7 @@ export default function AdvicePage() {
             const isCurrent = row.week_start === thisWeek
             const isOpen = openWeek === row.week_start
             const label = isCurrent ? t('thisWeek') : formatWeekRange(row.week_start)
-            const preview = row.advice.suggestions[0]?.plant ?? ''
+            const preview = row.advice.suggestions.slice(0, 5).map((s) => s.plant).join(', ')
 
             return (
               <div key={row.week_start} className="rounded-[24px] overflow-hidden" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
@@ -94,7 +94,7 @@ export default function AdvicePage() {
                   <div>
                     <p className="text-[15px] font-semibold text-[#1F1B16]">{label}</p>
                     {!isOpen && (
-                      <p className="text-[12px] text-[#A39B91] mt-0.5">+ {preview}…</p>
+                      <p className="text-[12px] text-[#A39B91] mt-0.5">{preview}</p>
                     )}
                   </div>
                   <ChevronDown

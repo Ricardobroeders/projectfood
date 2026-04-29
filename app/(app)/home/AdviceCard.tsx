@@ -10,7 +10,7 @@ export function AdviceCard({ advice }: { advice: Advice }) {
   const t = useTranslations('advice')
 
   return (
-    <div className="rounded-[24px] p-5" style={{ background: '#DDEACB' }}>
+    <div className="rounded-[18px] p-5" style={{ background: '#DDEACB' }}>
       <div className="flex items-center gap-2.5 mb-3">
         <div className="w-8 h-8 rounded-full grid place-items-center bg-white/60">
           <ShoppingCart size={15} className="text-[#4F7A3D]" />
@@ -25,8 +25,8 @@ export function AdviceCard({ advice }: { advice: Advice }) {
 
       <div className="space-y-2">
         {advice.suggestions.map((s, i) => (
-          <div key={i} className="rounded-[14px] p-3 bg-white/50">
-            <p className="text-[14px] font-semibold text-[#1F1B16] mb-0.5">+ {s.plant}</p>
+          <div key={i} className="rounded-[10px] p-3 bg-white/50">
+            <p className="text-[14px] font-semibold text-[#1F1B16] mb-0.5">{s.plant}</p>
             <p className="text-[13px] text-[#4F7A3D] leading-snug">{s.reason}</p>
           </div>
         ))}
