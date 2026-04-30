@@ -71,7 +71,6 @@ export function OnboardingModal() {
       <div className="w-full max-w-sm rounded-[28px] bg-white p-6 space-y-5" style={{ boxShadow: '0 24px 48px rgba(31,27,22,0.18)' }}>
         {/* Header */}
         <div>
-          <div className="text-2xl mb-1">🌱</div>
           <h2 className="text-[20px] font-extrabold text-[#1F1B16]">{t('title')}</h2>
           <p className="text-[13px] text-[#6B645C] mt-1">{t('subtitle')}</p>
         </div>
