@@ -113,7 +113,7 @@ export default function HomePage() {
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">
       {/* Hero progress card */}
-      <div className="rounded-[24px] p-6 bg-[#EDE8E1]">
+      <div className="rounded-[24px] p-6" style={{ background: 'rgb(224 215 203)' }}>
         <div className="flex items-center justify-between mb-5">
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">{t('thisWeek')}</span>
           <span className="text-[11px] font-mono text-[#6B645C]">{t('daysLeft', { days: daysLeft })}</span>
