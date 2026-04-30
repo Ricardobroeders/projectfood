@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { BottomNav } from '@/components/bottom-nav'
+import { OnboardingModal } from './OnboardingModal'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <main className="flex-1 pb-16">{children}</main>
 
       <BottomNav />
+      <OnboardingModal />
     </div>
   )
 }

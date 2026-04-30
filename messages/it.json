@@ -88,6 +88,18 @@
     "noAdviceYet": "Nessun consiglio questa settimana",
     "noAdviceYetSub": "Registra 30 piante uniche per sbloccare i tuoi consigli."
   },
+  "onboarding": {
+    "title": "Benvenuto in Project Food!",
+    "subtitle": "Scegli un nome utente e la tua lingua preferita per iniziare.",
+    "usernameLabel": "Nome utente",
+    "usernamePlaceholder": "Scegli un nome",
+    "languageLabel": "Lingua",
+    "save": "Iniziamo",
+    "saving": "…",
+    "usernameTaken": "Nome utente già in uso.",
+    "saveError": "Impossibile salvare. Riprova.",
+    "skip": "Salta per ora"
+  },
   "login": {
     "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",
     "continueWithGoogle": "Continua con Google"

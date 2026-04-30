@@ -88,6 +88,18 @@
     "noAdviceYet": "No advice yet this week",
     "noAdviceYetSub": "Log 30 unique plants to unlock your grocery advice."
   },
+  "onboarding": {
+    "title": "Welcome to Project Food!",
+    "subtitle": "Choose a username and your preferred language to get started.",
+    "usernameLabel": "Username",
+    "usernamePlaceholder": "Choose a name",
+    "languageLabel": "Language",
+    "save": "Let's go",
+    "saving": "…",
+    "usernameTaken": "Username already taken.",
+    "saveError": "Could not save. Try again.",
+    "skip": "Skip for now"
+  },
   "login": {
     "tagline": "Track 30 plants a week. Good gut, good life.",
     "continueWithGoogle": "Continue with Google"

@@ -88,6 +88,18 @@
     "noAdviceYet": "Nog geen advies deze week",
     "noAdviceYetSub": "Log 30 unieke planten om je boodschappenadvies te ontgrendelen."
   },
+  "onboarding": {
+    "title": "Welkom bij Project Food!",
+    "subtitle": "Kies een gebruikersnaam en je voorkeurstaal om te beginnen.",
+    "usernameLabel": "Gebruikersnaam",
+    "usernamePlaceholder": "Kies een naam",
+    "languageLabel": "Taal",
+    "save": "Aan de slag",
+    "saving": "…",
+    "usernameTaken": "Gebruikersnaam al in gebruik.",
+    "saveError": "Kon niet opslaan. Probeer opnieuw.",
+    "skip": "Sla over voor nu"
+  },
   "login": {
     "tagline": "30 planten per week bijhouden. Goede darmen, goed leven.",
     "continueWithGoogle": "Doorgaan met Google"
