@@ -57,16 +57,12 @@ export default function HomePage() {
     const [
       { data: weekPlants },
       { data: variety },
-      { data: streak },
-      { data: fillRate },
       { data: todayLogs },
       { data: translations },
       { data: adviceRow },
     ] = await Promise.all([
       supabase.rpc('current_week_plants'),
       supabase.rpc('weekly_variety'),
-      supabase.rpc('current_streak'),
-      supabase.rpc('fill_rate'),
       supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
       supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
       supabase.from('weekly_advice').select('advice').eq('week_start', weekStart).maybeSingle(),
@@ -77,8 +73,6 @@ export default function HomePage() {
     )
 
     const weekCount = (variety as number) ?? 0
-    const streakCount = (streak as number) ?? 0
-    const fillRateVal = Math.round((fillRate as number) ?? 0)
 
     const dayOfWeek = new Date().getDay()
     const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
@@ -100,17 +94,13 @@ export default function HomePage() {
 
     const weekAdvice = (adviceRow?.advice as Advice) ?? null
 
-    return { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants, weekAdvice }
+    return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice }
   })
 
   if (isLoading || !data) {
     return (
       <div className="px-5 pt-4 pb-6 space-y-4">
         <Skeleton className="h-[220px]" />
-        <div className="grid grid-cols-2 gap-3">
-          <Skeleton className="h-24" />
-          <Skeleton className="h-24" />
-        </div>
         <Skeleton className="h-14" />
         <Skeleton className="h-32" />
         <Skeleton className="h-48" />
@@ -118,12 +108,12 @@ export default function HomePage() {
     )
   }
 
-  const { weekCount, streakCount, fillRateVal, daysLeft, byCategory, todayPlants, weekAdvice } = data
+  const { weekCount, daysLeft, byCategory, todayPlants, weekAdvice } = data
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">
       {/* Hero progress card */}
-      <div className="rounded-[24px] p-6 bg-[#FBEDB5]">
+      <div className="rounded-[24px] p-6 bg-[#EDE8E1]">
         <div className="flex items-center justify-between mb-5">
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B645C]">{t('thisWeek')}</span>
           <span className="text-[11px] font-mono text-[#6B645C]">{t('daysLeft', { days: daysLeft })}</span>
@@ -138,24 +128,6 @@ export default function HomePage() {
             {weekCount >= 30 && (
               <p className="text-sm text-[#4F7A3D] font-semibold mt-0.5">{t('goalReached')}</p>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/* Streak + fill rate */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-[24px] p-4 bg-[#DDEACB]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-1">{t('streak')}</div>
-          <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
-            {streakCount}
-            <span className="text-sm font-normal text-[#6B645C] ml-1">{t('weeks')}</span>
-          </div>
-        </div>
-        <div className="rounded-[24px] p-4 bg-[#E5D6EE]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-1">{t('fillRate')}</div>
-          <div className="text-[32px] font-extrabold leading-none text-[#1F1B16]">
-            {fillRateVal}
-            <span className="text-sm font-normal text-[#6B645C] ml-1">%</span>
           </div>
         </div>
       </div>

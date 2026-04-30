@@ -36,12 +36,14 @@
   },
   "stats": {
     "streak": "Serie",
+    "days": "giorni",
     "weeks": "settimane",
     "fillRate": "Attività",
     "last30Days": "ultimi 30 giorni",
     "weeklyHistory": "Storico settimanale",
     "noData": "Nessun dato ancora",
     "plantsTried": "Piante provate",
+    "ofTotal": "di {total} totali",
     "tried": "Provate",
     "notYetTried": "Non ancora provate"
   },

@@ -36,12 +36,14 @@
   },
   "stats": {
     "streak": "Reeks",
+    "days": "dagen",
     "weeks": "weken",
     "fillRate": "Activiteit",
     "last30Days": "afgelopen 30 dagen",
     "weeklyHistory": "Wekelijkse geschiedenis",
     "noData": "Nog geen gegevens",
     "plantsTried": "Geprobeerde planten",
+    "ofTotal": "van {total} totaal",
     "tried": "Geprobeerd",
     "notYetTried": "Nog niet geprobeerd"
   },

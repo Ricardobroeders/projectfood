@@ -21,21 +21,24 @@ export default function StatsPage() {
     const supabase = createClient()
     const [
       { data: streak },
-      { data: fillRate },
       { data: history },
       { data: breakdown },
     ] = await Promise.all([
       supabase.rpc('current_streak'),
-      supabase.rpc('fill_rate'),
       supabase.rpc('weekly_history', { p_weeks: 5 }),
       supabase.rpc('category_breakdown'),
     ])
 
+    const cats = (breakdown as CatRow[]) ?? []
+    const totalTried = cats.reduce((s, c) => s + c.unique_count, 0)
+    const totalPlants = cats.reduce((s, c) => s + c.total_in_category, 0)
+
     return {
       streakCount: (streak as number) ?? 0,
-      fillRateVal: Math.round((fillRate as number) ?? 0),
+      totalTried,
+      totalPlants,
       weeks: (history as WeekRow[]) ?? [],
-      cats: (breakdown as CatRow[]) ?? [],
+      cats,
     }
   })
 
@@ -56,7 +59,7 @@ export default function StatsPage() {
     )
   }
 
-  const { streakCount, fillRateVal, weeks, cats } = data
+  const { streakCount, totalTried, totalPlants, weeks, cats } = data
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-6">
@@ -65,12 +68,12 @@ export default function StatsPage() {
         <div className="rounded-[24px] p-5 bg-[#DDEACB]">
           <div className="text-[11px] font-mono uppercase tracking-widest text-[#4F7A3D] mb-2">{t('streak')}</div>
           <div className="text-[40px] font-extrabold leading-none text-[#1F1B16]">{streakCount}</div>
-          <div className="text-sm text-[#6B645C] mt-1">{t('weeks')}</div>
+          <div className="text-sm text-[#6B645C] mt-1">{t('days')}</div>
         </div>
         <div className="rounded-[24px] p-5 bg-[#E5D6EE]">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-2">{t('fillRate')}</div>
-          <div className="text-[40px] font-extrabold leading-none text-[#1F1B16]">{fillRateVal}%</div>
-          <div className="text-sm text-[#6B645C] mt-1">{t('last30Days')}</div>
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6A4880] mb-2">{t('plantsTried')}</div>
+          <div className="text-[40px] font-extrabold leading-none text-[#1F1B16]">{totalTried}</div>
+          <div className="text-sm text-[#6B645C] mt-1">{t('ofTotal', { total: totalPlants })}</div>
         </div>
       </div>
 

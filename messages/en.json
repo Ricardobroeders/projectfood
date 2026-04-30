@@ -36,12 +36,14 @@
   },
   "stats": {
     "streak": "Streak",
+    "days": "days",
     "weeks": "weeks",
     "fillRate": "Fill rate",
     "last30Days": "last 30 days",
     "weeklyHistory": "Weekly history",
     "noData": "No data yet",
     "plantsTried": "Plants tried",
+    "ofTotal": "of {total} total",
     "tried": "Tried",
     "notYetTried": "Not yet tried"
   },

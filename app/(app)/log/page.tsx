@@ -173,7 +173,7 @@ export default function LogPage() {
             className="flex-1 text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] bg-transparent outline-none"
           />
           {query && (
-            <button onClick={() => setQuery('')} className="text-[#A39B91] text-sm">
+            <button onClick={() => { setQuery(''); inputRef.current?.focus() }} className="text-[#A39B91] text-sm">
               ✕
             </button>
           )}
