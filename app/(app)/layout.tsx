@@ -1,17 +1,20 @@
 import { BottomNav } from '@/components/bottom-nav'
+import { SWRProvider } from '@/components/swr-provider'
 import { OnboardingModal } from './OnboardingModal'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen bg-[#F4EFE8]">
-      <header className="sticky top-0 z-10 bg-white px-5 h-14 flex items-center" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
-        <span className="font-bold text-[#1F1B16]">Project Food</span>
-      </header>
+    <SWRProvider>
+      <div className="flex flex-col min-h-screen bg-[#F4EFE8]">
+        <header className="sticky top-0 z-10 bg-white px-5 h-14 flex items-center" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
+          <span className="font-bold text-[#1F1B16]">Project Food</span>
+        </header>
 
-      <main className="flex-1 pb-16">{children}</main>
+        <main className="flex-1 pb-16">{children}</main>
 
-      <BottomNav />
-      <OnboardingModal />
-    </div>
+        <BottomNav />
+        <OnboardingModal />
+      </div>
+    </SWRProvider>
   )
 }

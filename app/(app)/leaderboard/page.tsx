@@ -24,7 +24,7 @@ export default function LeaderboardPage() {
     const supabase = createClient()
     const { data } = await supabase.rpc('leaderboard', { p_limit: 15 })
     return (data as LeaderboardRow[]) ?? []
-  })
+  }, { keepPreviousData: true })
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-4">

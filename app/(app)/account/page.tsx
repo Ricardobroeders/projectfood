@@ -34,7 +34,7 @@ export default function AccountPage() {
       username: settings?.username ?? null,
       currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
     }
-  })
+  }, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (

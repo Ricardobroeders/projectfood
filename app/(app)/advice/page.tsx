@@ -43,7 +43,7 @@ export default function AdvicePage() {
       .select('week_start, advice')
       .order('week_start', { ascending: false })
     return (data ?? []) as WeekRow[]
-  })
+  }, { keepPreviousData: true })
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">

@@ -69,7 +69,7 @@ export default function CategoryDetailPage() {
       untried: allPlants.filter((p) => !triedSet.has(p.id)),
       total: allPlants.length,
     }
-  })
+  }, { keepPreviousData: true })
 
   return (
     <div className="px-5 pt-4 pb-8">

@@ -95,7 +95,7 @@ export default function HomePage() {
     const weekAdvice = (adviceRow?.advice as Advice) ?? null
 
     return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice }
-  })
+  }, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (

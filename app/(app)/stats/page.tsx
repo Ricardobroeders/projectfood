@@ -40,7 +40,7 @@ export default function StatsPage() {
       weeks: (history as WeekRow[]) ?? [],
       cats,
     }
-  })
+  }, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (
