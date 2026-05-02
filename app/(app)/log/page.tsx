@@ -10,6 +10,11 @@ import { Search, Check, Send } from 'lucide-react'
 type Plant = { id: string; name: string; category: Category; image_url: string | null }
 type Toast = { id: string; name: string }
 
+function plantImageUrl(url: string, width: number): string {
+  // Supabase image transform: /object/bucket/path → /render/image/public/bucket/path
+  return url.replace('/storage/v1/object/', '/storage/v1/render/image/public/') + `?width=${width}&quality=80`
+}
+
 function currentWeekStart(): string {
   const today = new Date()
   const day = today.getDay()
@@ -283,7 +288,7 @@ export default function LogPage() {
                 style={{ background: c.bg }}
               >
                 {plant.image_url ? (
-                  <img src={plant.image_url} alt={plant.name} className="w-8 h-8 object-contain" />
+                  <img src={plantImageUrl(plant.image_url, 64)} alt={plant.name} className="w-8 h-8 object-contain" />
                 ) : (
                   c.emoji
                 )}
