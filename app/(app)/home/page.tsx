@@ -1,11 +1,11 @@
 'use client'
 
 import useSWR from 'swr'
-import { createClient } from '@/lib/supabase/client'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { type Advice } from './AdviceCard'
 import { AdviceBanner } from './AdviceBanner'
+import { fetchHome } from '@/lib/fetchers'
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
   const size = 128
@@ -44,58 +44,7 @@ export default function HomePage() {
   const tCat = useTranslations('categories')
   const locale = useLocale()
 
-  const { data, isLoading } = useSWR(['home', locale], async () => {
-    const supabase = createClient()
-    const today = new Date().toLocaleDateString('en-CA')
-
-    const dayOfWeekNow = new Date().getDay()
-    const mondayOffset = dayOfWeekNow === 0 ? -6 : 1 - dayOfWeekNow
-    const mondayDate = new Date()
-    mondayDate.setDate(mondayDate.getDate() + mondayOffset)
-    const weekStart = mondayDate.toLocaleDateString('en-CA')
-
-    const [
-      { data: weekPlants },
-      { data: variety },
-      { data: todayLogs },
-      { data: translations },
-      { data: adviceRow },
-    ] = await Promise.all([
-      supabase.rpc('current_week_plants'),
-      supabase.rpc('weekly_variety'),
-      supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today),
-      supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
-      supabase.from('weekly_advice').select('advice').eq('week_start', weekStart).maybeSingle(),
-    ])
-
-    const nameByPlantId = Object.fromEntries(
-      ((translations ?? []) as { plant_id: string; name: string }[]).map((tr) => [tr.plant_id, tr.name])
-    )
-
-    const weekCount = (variety as number) ?? 0
-
-    const dayOfWeek = new Date().getDay()
-    const dayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1
-    const daysLeft = 6 - dayIdx
-
-    const byCategory: Partial<Record<Category, string[]>> = {}
-    for (const plant of (weekPlants as any[]) ?? []) {
-      const cat = plant.category as Category
-      if (!byCategory[cat]) byCategory[cat] = []
-      byCategory[cat]!.push(nameByPlantId[plant.id] ?? plant.name)
-    }
-
-    const todayPlants = [...new Map(
-      ((todayLogs ?? []) as any[])
-        .map((l) => l.plants)
-        .filter(Boolean)
-        .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
-    ).values()]
-
-    const weekAdvice = (adviceRow?.advice as Advice) ?? null
-
-    return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice }
-  }, { keepPreviousData: true })
+  const { data, isLoading } = useSWR(['home', locale], fetchHome, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (

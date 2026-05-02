@@ -1,5 +1,6 @@
 import { BottomNav } from '@/components/bottom-nav'
 import { SWRProvider } from '@/components/swr-provider'
+import { Prefetcher } from '@/components/prefetcher'
 import { OnboardingModal } from './OnboardingModal'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -14,6 +15,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
         <BottomNav />
         <OnboardingModal />
+        <Prefetcher />
       </div>
     </SWRProvider>
   )

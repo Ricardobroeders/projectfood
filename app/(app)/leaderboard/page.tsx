@@ -1,8 +1,8 @@
 'use client'
 
 import useSWR from 'swr'
-import { createClient } from '@/lib/supabase/client'
 import { useTranslations } from 'next-intl'
+import { fetchLeaderboard } from '@/lib/fetchers'
 
 type LeaderboardRow = {
   rank: number
@@ -20,11 +20,7 @@ function Skeleton({ className }: { className?: string }) {
 export default function LeaderboardPage() {
   const t = useTranslations('leaderboard')
 
-  const { data: rows, isLoading } = useSWR('leaderboard', async () => {
-    const supabase = createClient()
-    const { data } = await supabase.rpc('leaderboard', { p_limit: 15 })
-    return (data as LeaderboardRow[]) ?? []
-  }, { keepPreviousData: true })
+  const { data: rows, isLoading } = useSWR('leaderboard', fetchLeaderboard, { keepPreviousData: true })
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-4">

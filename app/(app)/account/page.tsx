@@ -1,8 +1,8 @@
 'use client'
 
 import useSWR from 'swr'
-import { createClient } from '@/lib/supabase/client'
 import { useTranslations, useLocale } from 'next-intl'
+import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
 import { LanguageSwitcher } from '@/components/language-switcher'
@@ -15,26 +15,7 @@ export default function AccountPage() {
   const t = useTranslations('account')
   const locale = useLocale()
 
-  const { data, isLoading } = useSWR(['account', locale], async () => {
-    const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return null
-
-    const { data: settings } = await supabase
-      .from('user_settings')
-      .select('username, locale')
-      .eq('user_id', user.id)
-      .single()
-
-    return {
-      userId: user.id,
-      name: user.user_metadata?.full_name ?? user.user_metadata?.name ?? null,
-      email: user.email ?? null,
-      avatar: user.user_metadata?.avatar_url ?? null,
-      username: settings?.username ?? null,
-      currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
-    }
-  }, { keepPreviousData: true })
+  const { data, isLoading } = useSWR(['account', locale], fetchAccount, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (

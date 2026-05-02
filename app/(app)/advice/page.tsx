@@ -3,12 +3,10 @@
 import useSWR from 'swr'
 import Link from 'next/link'
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { useTranslations } from 'next-intl'
 import { ChevronLeft, ChevronDown } from 'lucide-react'
 import { AdviceCard, type Advice } from '../home/AdviceCard'
-
-type WeekRow = { week_start: string; advice: Advice }
+import { fetchAdvice, type AdviceRow as WeekRow } from '@/lib/fetchers'
 
 function currentWeekStart(): string {
   const today = new Date()
@@ -36,14 +34,7 @@ export default function AdvicePage() {
   const thisWeek = currentWeekStart()
   const [openWeek, setOpenWeek] = useState<string>(thisWeek)
 
-  const { data: rows, isLoading } = useSWR('advice-all', async () => {
-    const supabase = createClient()
-    const { data } = await supabase
-      .from('weekly_advice')
-      .select('week_start, advice')
-      .order('week_start', { ascending: false })
-    return (data ?? []) as WeekRow[]
-  }, { keepPreviousData: true })
+  const { data: rows, isLoading } = useSWR('advice-all', fetchAdvice, { keepPreviousData: true })
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">

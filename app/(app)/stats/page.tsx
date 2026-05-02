@@ -2,12 +2,9 @@
 
 import useSWR from 'swr'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/client'
 import { useTranslations } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-
-type WeekRow = { week_start: string; variety: number; hit_goal: boolean }
-type CatRow = { category: Category; unique_count: number; total_in_category: number }
+import { fetchStats, type WeekRow, type CatRow } from '@/lib/fetchers'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
@@ -17,30 +14,7 @@ export default function StatsPage() {
   const t = useTranslations('stats')
   const tCat = useTranslations('categories')
 
-  const { data, isLoading } = useSWR('stats', async () => {
-    const supabase = createClient()
-    const [
-      { data: streak },
-      { data: history },
-      { data: breakdown },
-    ] = await Promise.all([
-      supabase.rpc('current_streak'),
-      supabase.rpc('weekly_history', { p_weeks: 5 }),
-      supabase.rpc('category_breakdown'),
-    ])
-
-    const cats = (breakdown as CatRow[]) ?? []
-    const totalTried = cats.reduce((s, c) => s + c.unique_count, 0)
-    const totalPlants = cats.reduce((s, c) => s + c.total_in_category, 0)
-
-    return {
-      streakCount: (streak as number) ?? 0,
-      totalTried,
-      totalPlants,
-      weeks: (history as WeekRow[]) ?? [],
-      cats,
-    }
-  }, { keepPreviousData: true })
+  const { data, isLoading } = useSWR('stats', fetchStats, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (
