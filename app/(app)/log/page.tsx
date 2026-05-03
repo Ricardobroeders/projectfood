@@ -294,7 +294,7 @@ export default function LogPage() {
                       letterSpacing: '0.04em',
                       width: 80,
                       top: 14,
-                      left: -22,
+                      left: -19,
                       transform: 'rotate(-45deg)',
                       paddingTop: 2,
                       paddingBottom: 2,
