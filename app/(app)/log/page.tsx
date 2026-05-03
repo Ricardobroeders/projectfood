@@ -9,7 +9,7 @@ import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { Search, Check, Send } from 'lucide-react'
 import Image from 'next/image'
 
-type Plant = { id: string; name: string; category: Category; image_url: string | null }
+type Plant = { id: string; name: string; category: Category; image_url: string | null; is_superfood: boolean }
 type Toast = { id: string; name: string }
 
 function currentWeekStart(): string {
@@ -56,7 +56,7 @@ export default function LogPage() {
     Promise.all([
       supabase
         .from('plant_translations')
-        .select('plant_id, name, plants!inner(id, category, is_active, image_url)')
+        .select('plant_id, name, plants!inner(id, category, is_active, image_url, is_superfood)')
         .eq('locale', locale)
         .eq('plants.is_active', true)
         .order('name'),
@@ -70,6 +70,7 @@ export default function LogPage() {
         name: row.name,
         category: row.plants.category as Category,
         image_url: row.plants.image_url ?? null,
+        is_superfood: row.plants.is_superfood ?? false,
       }))
       plantList.sort((a, b) => a.name.localeCompare(b.name))
       setPlants(plantList)
@@ -276,13 +277,33 @@ export default function LogPage() {
             <button
               key={plant.id}
               onClick={() => logged ? unlogPlant(plant) : logPlant(plant)}
-              className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all"
+              className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all relative overflow-hidden"
               style={{
                 background: logged ? 'rgb(224 215 203)' : '#FFFFFF',
                 boxShadow: logged ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
                 opacity: isPending ? 0.7 : 1,
               }}
             >
+              {plant.is_superfood && (
+                <div className="absolute top-0 left-0 w-[60px] h-[60px] overflow-hidden pointer-events-none">
+                  <div
+                    className="absolute flex items-center justify-center text-white font-bold"
+                    style={{
+                      background: '#3A6B35',
+                      fontSize: 8,
+                      letterSpacing: '0.04em',
+                      width: 80,
+                      top: 14,
+                      left: -22,
+                      transform: 'rotate(-45deg)',
+                      paddingTop: 2,
+                      paddingBottom: 2,
+                    }}
+                  >
+                    SuperFood
+                  </div>
+                </div>
+              )}
               <div
                 className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
                 style={{ background: c.bg }}
