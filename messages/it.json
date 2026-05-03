@@ -82,11 +82,16 @@
     "title": "Consigli della spesa",
     "subtitle": "Basato sulle 30 piante di questa settimana",
     "bannerLocked": "{count}/30 piante — consigli disponibili a 30",
+    "bannerLockedSub": "Mangia 30 piante diverse e ricevi i tuoi consigli della spesa settimanali.",
     "backToHome": "Home",
     "thisWeek": "Questa settimana",
     "previousWeeks": "Settimane precedenti",
     "noAdviceYet": "Nessun consiglio questa settimana",
-    "noAdviceYetSub": "Registra 30 piante uniche per sbloccare i tuoi consigli."
+    "noAdviceYetSub": "Registra 30 piante uniche per sbloccare i tuoi consigli.",
+    "goalModalTitle": "30 piante raggiunte! 🎉",
+    "goalModalSub": "Congratulazioni! Hai mangiato 30 piante diverse questa settimana. I tuoi consigli della spesa sono in preparazione.",
+    "goToList": "Vedi consigli della spesa",
+    "close": "Chiudi"
   },
   "onboarding": {
     "title": "Benvenuto in Project Food!",

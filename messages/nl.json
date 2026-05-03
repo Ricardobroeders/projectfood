@@ -82,11 +82,16 @@
     "title": "Boodschappenadvies",
     "subtitle": "Gebaseerd op 30 planten deze week",
     "bannerLocked": "{count}/30 planten — advies beschikbaar bij 30",
+    "bannerLockedSub": "Eet 30 verschillende planten en ontvang je wekelijkse boodschappenadvies.",
     "backToHome": "Thuis",
     "thisWeek": "Deze week",
     "previousWeeks": "Vorige weken",
     "noAdviceYet": "Nog geen advies deze week",
-    "noAdviceYetSub": "Log 30 unieke planten om je boodschappenadvies te ontgrendelen."
+    "noAdviceYetSub": "Log 30 unieke planten om je boodschappenadvies te ontgrendelen.",
+    "goalModalTitle": "30 planten bereikt! 🎉",
+    "goalModalSub": "Gefeliciteerd! Je hebt deze week 30 verschillende planten gegeten. Je boodschappenadvies wordt aangemaakt.",
+    "goToList": "Bekijk boodschappenadvies",
+    "close": "Sluiten"
   },
   "onboarding": {
     "title": "Welkom bij Project Food!",

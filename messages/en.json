@@ -82,11 +82,16 @@
     "title": "Grocery advice",
     "subtitle": "Based on this week's 30 plants",
     "bannerLocked": "{count}/30 plants — advice unlocks at 30",
+    "bannerLockedSub": "Eat 30 different plants and get your weekly grocery advice.",
     "backToHome": "Home",
     "thisWeek": "This week",
     "previousWeeks": "Previous weeks",
     "noAdviceYet": "No advice yet this week",
-    "noAdviceYetSub": "Log 30 unique plants to unlock your grocery advice."
+    "noAdviceYetSub": "Log 30 unique plants to unlock your grocery advice.",
+    "goalModalTitle": "30 plants reached! 🎉",
+    "goalModalSub": "Congratulations! You've eaten 30 different plants this week. Your grocery advice is being generated.",
+    "goToList": "View grocery advice",
+    "close": "Close"
   },
   "onboarding": {
     "title": "Welcome to Project Food!",

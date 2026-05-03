@@ -8,6 +8,7 @@ import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { Search, Check, Send } from 'lucide-react'
 import Image from 'next/image'
+import { GoalModal } from './GoalModal'
 
 type Plant = { id: string; name: string; category: Category; image_url: string | null; is_superfood: boolean }
 type Toast = { id: string; name: string }
@@ -37,8 +38,7 @@ export default function LogPage() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
   const [toast, setToast] = useState<Toast | null>(null)
-  const [adviceToast, setAdviceToast] = useState(false)
-  const adviceToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [goalModal, setGoalModal] = useState(false)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
@@ -121,9 +121,7 @@ export default function LogPage() {
           .maybeSingle()
         if (!existingAdvice) {
           fetch('/api/advice', { method: 'POST' })
-          if (adviceToastTimer.current) clearTimeout(adviceToastTimer.current)
-          setAdviceToast(true)
-          adviceToastTimer.current = setTimeout(() => setAdviceToast(false), 5000)
+          setGoalModal(true)
         }
       }
     })
@@ -333,18 +331,7 @@ export default function LogPage() {
         })}
       </div>
 
-      {/* Advice generating toast */}
-      {adviceToast && (
-        <div className="fixed bottom-36 left-4 right-4 z-50 pointer-events-none">
-          <div
-            className="flex items-center gap-3 px-5 py-3.5 rounded-[18px] text-[#2D4A22] text-[14px] font-medium"
-            style={{ background: '#DDEACB', boxShadow: '0 8px 24px rgba(31,27,22,0.12)' }}
-          >
-            <span className="text-xl">🛒</span>
-            {t('adviceGenerating')}
-          </div>
-        </div>
-      )}
+      <GoalModal open={goalModal} onClose={() => setGoalModal(false)} />
 
       {/* Toast */}
       {toast && (
