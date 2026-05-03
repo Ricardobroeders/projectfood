@@ -13,45 +13,23 @@ interface Props {
 
 const CART_IMAGE = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart.png'
 
-export function AdviceBanner({ advice }: Props) {
+export function AdviceBanner({ }: Props) {
   const t = useTranslations('advice')
-
-  if (!advice) {
-    return (
-      <div
-        className="rounded-[24px] px-5 py-4 flex items-center gap-3"
-        style={{ background: '#EDE8E1' }}
-      >
-        <div className="w-11 h-11 shrink-0 grid place-items-center">
-          <Image src={CART_IMAGE} alt="Grocery advice" width={44} height={44} className="object-contain opacity-50" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[14px] font-semibold text-[#6B645C]">{t('title')}</p>
-          <p className="text-[12px] text-[#A39B91] leading-snug mt-0.5">{t('bannerLockedSub')}</p>
-        </div>
-      </div>
-    )
-  }
-
-  const preview = advice.suggestions
-    .slice(0, 5)
-    .map((s) => s.plant)
-    .join(', ')
 
   return (
     <Link
       href="/advice"
-      className="rounded-[24px] px-5 py-4 flex items-center gap-3 active:opacity-80 transition-opacity"
-      style={{ background: '#DDEACB' }}
+      className="rounded-[24px] px-5 py-4 flex items-center gap-3 overflow-hidden active:opacity-80 transition-opacity"
+      style={{ background: 'rgb(224 215 203)' }}
     >
-      <div className="w-11 h-11 shrink-0 grid place-items-center">
-        <Image src={CART_IMAGE} alt="Grocery advice" width={44} height={44} className="object-contain" />
+      <div className="shrink-0 self-stretch flex items-end" style={{ margin: '-16px 0 -16px -4px' }}>
+        <Image src={CART_IMAGE} alt="Grocery advice" width={84} height={84} style={{ width: 84, height: 84 }} className="object-contain" />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-[14px] font-semibold text-[#2D4A22]">{t('title')}</p>
-        <p className="text-[12px] text-[#4F7A3D] truncate">{preview}</p>
+        <p className="text-[14px] font-semibold text-[#1F1B16]">{t('title')}</p>
+        <p className="text-[12px] text-[#6B645C] leading-snug mt-0.5">{t('bannerLockedSub')}</p>
       </div>
-      <ChevronRight size={16} className="text-[#4F7A3D] shrink-0" />
+      <ChevronRight size={16} className="text-[#A39B91] shrink-0" />
     </Link>
   )
 }
