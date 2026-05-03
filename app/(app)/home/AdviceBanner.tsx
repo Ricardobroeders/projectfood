@@ -11,7 +11,7 @@ interface Props {
   weekCount: number
 }
 
-const CART_IMAGE = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart.png'
+const CART_IMAGE = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart.png?v=2'
 
 export function AdviceBanner({ }: Props) {
   const t = useTranslations('advice')

@@ -58,35 +58,62 @@ export default function AdvicePage() {
         </div>
       )}
 
-      {/* No advice at all */}
-      {!isLoading && rows?.length === 0 && (
-        <div className="rounded-[24px] p-5 text-center" style={{ background: '#F4EFE8' }}>
-          <p className="text-[15px] font-semibold text-[#6B645C]">{t('noAdviceYet')}</p>
-          <p className="text-[13px] text-[#A39B91] mt-1">{t('noAdviceYetSub')}</p>
-        </div>
-      )}
-
       {/* Accordion */}
-      {!isLoading && rows && rows.length > 0 && (
+      {!isLoading && rows && (
         <div className="space-y-3">
-          {rows.map((row) => {
-            const isCurrent = row.week_start === thisWeek
-            const isOpen = openWeek === row.week_start
-            const label = isCurrent ? t('thisWeek') : formatWeekRange(row.week_start)
-            const preview = row.advice.suggestions.slice(0, 5).map((s) => s.plant).join(', ')
+          {/* This week — always shown */}
+          {(() => {
+            const thisWeekRow = rows.find((r) => r.week_start === thisWeek)
+            if (thisWeekRow) {
+              const isOpen = openWeek === thisWeek
+              const preview = thisWeekRow.advice.suggestions.slice(0, 5).map((s) => s.plant).join(', ')
+              return (
+                <div className="rounded-[24px] overflow-hidden" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
+                  <button
+                    onClick={() => setOpenWeek(isOpen ? '' : thisWeek)}
+                    className="w-full flex items-center justify-between px-5 py-4 text-left"
+                  >
+                    <div>
+                      <p className="text-[15px] font-semibold text-[#1F1B16]">{t('thisWeek')}</p>
+                      {!isOpen && <p className="text-[12px] text-[#A39B91] mt-0.5">{preview}</p>}
+                    </div>
+                    <ChevronDown
+                      size={18}
+                      className="text-[#A39B91] shrink-0 transition-transform duration-200"
+                      style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-4 pb-4">
+                      <AdviceCard advice={thisWeekRow.advice} />
+                    </div>
+                  )}
+                </div>
+              )
+            }
+            return (
+              <div className="rounded-[24px] px-5 py-4 flex items-center justify-between" style={{ background: '#EDE8E1' }}>
+                <div>
+                  <p className="text-[15px] font-semibold text-[#6B645C]">{t('thisWeek')}</p>
+                  <p className="text-[12px] text-[#A39B91] mt-0.5">{t('thisWeekLocked')}</p>
+                </div>
+              </div>
+            )
+          })()}
 
+          {/* Previous weeks */}
+          {rows.filter((r) => r.week_start !== thisWeek).map((row) => {
+            const isOpen = openWeek === row.week_start
+            const preview = row.advice.suggestions.slice(0, 5).map((s) => s.plant).join(', ')
             return (
               <div key={row.week_start} className="rounded-[24px] overflow-hidden" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
-                {/* Accordion header */}
                 <button
                   onClick={() => setOpenWeek(isOpen ? '' : row.week_start)}
                   className="w-full flex items-center justify-between px-5 py-4 text-left"
                 >
                   <div>
-                    <p className="text-[15px] font-semibold text-[#1F1B16]">{label}</p>
-                    {!isOpen && (
-                      <p className="text-[12px] text-[#A39B91] mt-0.5">{preview}</p>
-                    )}
+                    <p className="text-[15px] font-semibold text-[#1F1B16]">{formatWeekRange(row.week_start)}</p>
+                    {!isOpen && <p className="text-[12px] text-[#A39B91] mt-0.5">{preview}</p>}
                   </div>
                   <ChevronDown
                     size={18}
@@ -94,8 +121,6 @@ export default function AdvicePage() {
                     style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                   />
                 </button>
-
-                {/* Accordion body */}
                 {isOpen && (
                   <div className="px-4 pb-4">
                     <AdviceCard advice={row.advice} />
