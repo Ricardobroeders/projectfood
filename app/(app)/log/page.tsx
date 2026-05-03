@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import { mutate } from 'swr'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { Search, Check, Send } from 'lucide-react'
@@ -30,6 +31,7 @@ export default function LogPage() {
   const router = useRouter()
   const t = useTranslations('log')
   const tCat = useTranslations('categories')
+  const locale = useLocale()
   const [plants, setPlants] = useState<Plant[]>([])
   const [userId, setUserId] = useState<string | null>(null)
   const [query, setQuery] = useState('')
@@ -100,6 +102,7 @@ export default function LogPage() {
       if (error) return
 
       setLoggedToday((prev) => new Set(prev).add(plant.id))
+      mutate(['home', locale])
       router.refresh()
 
       if (toastTimer.current) clearTimeout(toastTimer.current)
@@ -142,6 +145,7 @@ export default function LogPage() {
         next.delete(plant.id)
         return next
       })
+      mutate(['home', locale])
       router.refresh()
     })
   }
@@ -169,7 +173,7 @@ export default function LogPage() {
           <input
             ref={inputRef}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => { setQuery(e.target.value); if (e.target.value) setActiveCategory(null) }}
             placeholder={t('searchPlaceholder')}
             className="flex-1 text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] bg-transparent outline-none"
           />
