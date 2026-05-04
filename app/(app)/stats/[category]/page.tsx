@@ -133,11 +133,8 @@ export default function CategoryDetailPage() {
                         ? <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
                         : c.emoji}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[15px] font-medium text-[#1F1B16] truncate">
-                        {plant.name} <span className="text-[#A39B91] font-normal">({plant.count})</span>
-                      </p>
-                    </div>
+                    <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
+                    <span className="text-[13px] font-medium text-[#6B645C] shrink-0">{plant.count}×</span>
                     <div className="w-10 h-10 rounded-full grid place-items-center shrink-0 bg-[#F5C518]">
                       <Check size={16} strokeWidth={2.5} className="text-[#1F1B16]" />
                     </div>
