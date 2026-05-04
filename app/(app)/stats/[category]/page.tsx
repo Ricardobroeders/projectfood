@@ -4,12 +4,14 @@ import useSWR from 'swr'
 import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import Image from 'next/image'
 import { ArrowLeft, Check } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
+import { supabaseImageUrl } from '@/lib/supabase-image'
 
-type Plant = { id: string; name: string }
+type Plant = { id: string; name: string; image_url: string | null; count: number }
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[18px] ${className ?? ''}`} />
@@ -39,7 +41,7 @@ export default function CategoryDetailPage() {
     const [{ data: plants }, { data: logs }, { data: translations }] = await Promise.all([
       supabase
         .from('plants')
-        .select('id, name')
+        .select('id, name, image_url')
         .eq('category', category)
         .eq('is_active', true)
         .order('name'),
@@ -57,18 +59,27 @@ export default function CategoryDetailPage() {
       ((translations ?? []) as { plant_id: string; name: string }[]).map((tr) => [tr.plant_id, tr.name])
     )
 
-    const triedSet = new Set((logs ?? []).map((r) => r.plant_id))
-    const allPlants: Plant[] = ((plants ?? []) as Plant[]).map((p) => ({
-      ...p,
-      name: nameByPlantId[p.id] ?? p.name,
-    }))
-    allPlants.sort((a, b) => a.name.localeCompare(b.name))
-
-    return {
-      tried: allPlants.filter((p) => triedSet.has(p.id)),
-      untried: allPlants.filter((p) => !triedSet.has(p.id)),
-      total: allPlants.length,
+    const countByPlantId: Record<string, number> = {}
+    for (const row of (logs ?? []) as { plant_id: string }[]) {
+      countByPlantId[row.plant_id] = (countByPlantId[row.plant_id] ?? 0) + 1
     }
+
+    const allPlants: Plant[] = ((plants ?? []) as { id: string; name: string; image_url: string | null }[]).map((p) => ({
+      id: p.id,
+      name: nameByPlantId[p.id] ?? p.name,
+      image_url: p.image_url ?? null,
+      count: countByPlantId[p.id] ?? 0,
+    }))
+
+    const tried = allPlants
+      .filter((p) => p.count > 0)
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+
+    const untried = allPlants
+      .filter((p) => p.count === 0)
+      .sort((a, b) => a.name.localeCompare(b.name))
+
+    return { tried, untried, total: allPlants.length }
   }, { keepPreviousData: true })
 
   return (
@@ -118,9 +129,15 @@ export default function CategoryDetailPage() {
                       className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
                       style={{ background: c.bg }}
                     >
-                      {c.emoji}
+                      {plant.image_url
+                        ? <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                        : c.emoji}
                     </div>
-                    <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[15px] font-medium text-[#1F1B16] truncate">
+                        {plant.name} <span className="text-[#A39B91] font-normal">({plant.count})</span>
+                      </p>
+                    </div>
                     <div className="w-10 h-10 rounded-full grid place-items-center shrink-0 bg-[#F5C518]">
                       <Check size={16} strokeWidth={2.5} className="text-[#1F1B16]" />
                     </div>
@@ -147,7 +164,9 @@ export default function CategoryDetailPage() {
                       className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
                       style={{ background: c.bg }}
                     >
-                      {c.emoji}
+                      {plant.image_url
+                        ? <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                        : c.emoji}
                     </div>
                     <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
                     <div className="w-10 h-10 rounded-full grid place-items-center shrink-0 bg-[#F4EFE8]">
