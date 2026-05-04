@@ -102,7 +102,7 @@ export default function CategoryDetailPage() {
             {isLoading ? '…' : data?.tried.length} <span className="font-normal text-[#A39B91]">{t('tried').toLowerCase()}</span>
           </p>
           <p className="text-[11px] text-[#A39B91] leading-tight">
-            {t('ofTotal', { total: isLoading ? '…' : data?.total })}
+            {t('ofTotal', { total: data?.total ?? '…' })}
           </p>
         </div>
       </div>
