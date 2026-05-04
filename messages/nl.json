@@ -25,6 +25,7 @@
     "all": "Alles",
     "noResults": "Geen planten gevonden voor \"{query}\"",
     "noResultsEmpty": "Geen planten gevonden",
+    "searchPrompt": "Zoek een plant of kies een categorie",
     "missingTitle": "Staat hij er niet tussen?",
     "missingBody": "Stel \"{query}\" voor en we voegen hem toe als hij in aanmerking komt.",
     "submitSuggestion": "Suggestie versturen",

@@ -25,6 +25,7 @@
     "all": "All",
     "noResults": "No plants found for \"{query}\"",
     "noResultsEmpty": "No plants found",
+    "searchPrompt": "Search for a plant or pick a category",
     "missingTitle": "Missing from our list?",
     "missingBody": "Suggest \"{query}\" and we'll add it if it qualifies.",
     "submitSuggestion": "Submit suggestion",

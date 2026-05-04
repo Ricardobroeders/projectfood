@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { mutate } from 'swr'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
+import { supabaseImageUrl } from '@/lib/supabase-image'
 import { Search, Check, Send } from 'lucide-react'
 import Image from 'next/image'
 import { GoalModal } from './GoalModal'
@@ -41,9 +42,19 @@ export default function LogPage() {
   const [goalModal, setGoalModal] = useState(false)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
+  const [debouncedQuery, setDebouncedQuery] = useState('')
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
   const inputRef = useRef<HTMLInputElement>(null)
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(query), 300)
+    return () => clearTimeout(timer)
+  }, [query])
 
   useEffect(() => {
     const supabase = createClient()
@@ -83,13 +94,17 @@ export default function LogPage() {
     setSubmitStatus('idle')
   }, [query])
 
-  const filtered = plants.filter((p) => {
-    const matchesCat = activeCategory ? p.category === activeCategory : true
-    const matchesQuery = query.trim()
-      ? p.name.toLowerCase().includes(query.toLowerCase())
-      : true
-    return matchesCat && matchesQuery
-  })
+  const hasFilter = debouncedQuery.trim() !== '' || activeCategory !== null
+
+  const filtered = hasFilter
+    ? plants.filter((p) => {
+        const matchesCat = activeCategory ? p.category === activeCategory : true
+        const matchesQuery = debouncedQuery.trim()
+          ? p.name.toLowerCase().includes(debouncedQuery.toLowerCase())
+          : true
+        return matchesCat && matchesQuery
+      })
+    : []
 
   async function logPlant(plant: Plant) {
     if (!userId) return
@@ -219,7 +234,14 @@ export default function LogPage() {
 
       {/* Plant list */}
       <div className="flex-1 overflow-y-auto px-5 pb-6 space-y-2">
-        {filtered.length === 0 && query.trim() && (
+        {!hasFilter && (
+          <div className="text-center py-16 text-[#A39B91]">
+            <div className="text-3xl mb-2">🌿</div>
+            <p className="text-sm">{t('searchPrompt')}</p>
+          </div>
+        )}
+
+        {hasFilter && filtered.length === 0 && debouncedQuery.trim() && (
           <div className="pt-6">
             <div className="text-center mb-6 text-[#A39B91]">
               <div className="text-3xl mb-2">🔍</div>
@@ -261,7 +283,7 @@ export default function LogPage() {
           </div>
         )}
 
-        {filtered.length === 0 && !query.trim() && (
+        {hasFilter && filtered.length === 0 && !debouncedQuery.trim() && (
           <div className="text-center py-16 text-[#A39B91]">
             <div className="text-3xl mb-2">🔍</div>
             <p className="text-sm">{t('noResultsEmpty')}</p>
@@ -307,7 +329,7 @@ export default function LogPage() {
                 style={{ background: c.bg }}
               >
                 {plant.image_url ? (
-                  <Image src={plant.image_url} alt={plant.name} width={32} height={32} className="object-contain" />
+                  <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
                 ) : (
                   c.emoji
                 )}

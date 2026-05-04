@@ -25,6 +25,7 @@
     "all": "Tutte",
     "noResults": "Nessuna pianta trovata per \"{query}\"",
     "noResultsEmpty": "Nessuna pianta trovata",
+    "searchPrompt": "Cerca una pianta o scegli una categoria",
     "missingTitle": "Non è nella lista?",
     "missingBody": "Suggerisci \"{query}\" e la aggiungeremo se qualificata.",
     "submitSuggestion": "Invia suggerimento",
