@@ -97,11 +97,14 @@ export default function CategoryDetailPage() {
           <span className="text-2xl">{c.emoji}</span>
           <h1 className="text-xl font-extrabold text-[#1F1B16]">{tCat(category)}</h1>
         </div>
-        <span className="ml-auto text-sm font-mono text-[#A39B91]">
-          {isLoading ? '…' : data?.tried.length}
-          <span className="text-[#F4EFE8]">/</span>
-          {isLoading ? '…' : data?.total}
-        </span>
+        <div className="ml-auto text-right shrink-0">
+          <p className="text-[13px] font-semibold text-[#1F1B16] leading-tight">
+            {isLoading ? '…' : data?.tried.length} <span className="font-normal text-[#A39B91]">{t('tried').toLowerCase()}</span>
+          </p>
+          <p className="text-[11px] text-[#A39B91] leading-tight">
+            {t('ofTotal', { total: isLoading ? '…' : data?.total })}
+          </p>
+        </div>
       </div>
 
       {isLoading || !data ? (
