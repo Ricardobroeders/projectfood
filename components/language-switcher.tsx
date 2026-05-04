@@ -58,6 +58,7 @@ export function LanguageSwitcher({
               src={flag}
               alt={label}
               fill
+              unoptimized
               className="object-cover"
             />
           </button>

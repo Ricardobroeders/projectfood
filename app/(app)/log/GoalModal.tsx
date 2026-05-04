@@ -37,6 +37,7 @@ export function GoalModal({ open, onClose }: Props) {
             alt="Shopping cart"
             width={120}
             height={120}
+            unoptimized
             className="object-contain"
           />
         </div>

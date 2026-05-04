@@ -113,7 +113,7 @@ export function OnboardingModal() {
                   opacity: locale === code ? 1 : 0.4,
                 }}
               >
-                <Image src={flag} alt={label} fill className="object-cover" />
+                <Image src={flag} alt={label} fill unoptimized className="object-cover" />
               </button>
             ))}
           </div>

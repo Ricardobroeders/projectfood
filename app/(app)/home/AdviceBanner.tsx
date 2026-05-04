@@ -23,7 +23,7 @@ export function AdviceBanner({ }: Props) {
       style={{ background: 'rgb(224 215 203)' }}
     >
       <div className="shrink-0 self-stretch flex items-end" style={{ margin: '-16px 0 -16px -4px' }}>
-        <Image src={CART_IMAGE} alt="Grocery advice" width={84} height={84} style={{ width: 84, height: 84 }} className="object-contain" />
+        <Image src={CART_IMAGE} alt="Grocery advice" width={84} height={84} style={{ width: 84, height: 84 }} unoptimized className="object-contain" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-[14px] font-semibold text-[#1F1B16]">{t('title')}</p>
