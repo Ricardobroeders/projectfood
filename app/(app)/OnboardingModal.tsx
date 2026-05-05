@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { mutate } from 'swr'
 import { createClient } from '@/lib/supabase/client'
 
 type Locale = 'en' | 'nl' | 'it'
@@ -61,6 +62,7 @@ export function OnboardingModal() {
 
     document.cookie = `pf_locale=${locale}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`
     setVisible(false)
+    mutate((key) => Array.isArray(key) && key[0] === 'account')
     router.refresh()
   }
 
