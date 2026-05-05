@@ -62,7 +62,6 @@
   "notifications": {
     "settingsTitle": "Notifications",
     "masterToggle": "Enable notifications",
-    "reminderTime": "Daily reminder time",
     "types": {
       "dailyReminder": { "label": "Daily reminder", "description": "Nudge if you haven't logged today" },
       "streakRescue": { "label": "Streak rescue", "description": "Save your streak before midnight" },

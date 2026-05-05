@@ -57,7 +57,6 @@ export default function NotificationsPage() {
   const [streakRescue, setStreakRescue] = useState(true)
   const [weeklyNudge, setWeeklyNudge] = useState(true)
   const [reengagement, setReengagement] = useState(true)
-  const [reminderTime, setReminderTime] = useState('19:00')
   const [timezone, setTimezone] = useState('Europe/Amsterdam')
 
   const [isStandalone, setIsStandalone] = useState(false)
@@ -75,7 +74,6 @@ export default function NotificationsPage() {
     setStreakRescue(s.notifStreakRescue)
     setWeeklyNudge(s.notifWeeklyNudge)
     setReengagement(s.notifReengagement)
-    setReminderTime(s.reminderTime)
     setTimezone(s.timezone)
   }, [data])
 
@@ -221,20 +219,6 @@ export default function NotificationsPage() {
             className="rounded-[24px] bg-white divide-y divide-[#F4EFE8]"
             style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
           >
-            {/* Reminder time */}
-            <div className="flex items-center justify-between px-5 py-4 gap-3">
-              <p className="text-[15px] font-medium text-[#1F1B16]">{t('reminderTime')}</p>
-              <input
-                type="time"
-                value={reminderTime}
-                onChange={(e) => {
-                  setReminderTime(e.target.value)
-                  save({ reminder_time: e.target.value })
-                }}
-                className="text-[14px] text-[#1F1B16] font-medium bg-[#F4EFE8] rounded-xl px-3 py-1.5 border-0 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-
             <Row
               label={t('types.dailyReminder.label')}
               description={t('types.dailyReminder.description')}

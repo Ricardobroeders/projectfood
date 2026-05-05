@@ -148,7 +148,7 @@ export async function POST(req: Request) {
   const { data: users, error } = await supabase
     .from('user_settings')
     .select(`
-      user_id, locale, timezone, reminder_time,
+      user_id, locale, timezone,
       notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement,
       push_subscriptions (endpoint, p256dh, auth, failure_count)
     `)

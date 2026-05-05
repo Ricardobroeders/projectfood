@@ -62,7 +62,6 @@
   "notifications": {
     "settingsTitle": "Notifiche",
     "masterToggle": "Attiva notifiche",
-    "reminderTime": "Orario promemoria giornaliero",
     "types": {
       "dailyReminder": { "label": "Promemoria giornaliero", "description": "Avviso se non hai ancora registrato oggi" },
       "streakRescue": { "label": "Salva la serie", "description": "Salva la tua serie prima di mezzanotte" },
