@@ -3,7 +3,7 @@
     "home": "Home",
     "log": "Log",
     "stats": "Stats",
-    "leaderboard": "Top 15",
+    "leaderboard": "Top 10",
     "account": "Account"
   },
   "home": {
@@ -50,9 +50,13 @@
   },
   "leaderboard": {
     "title": "Ranglijst",
+    "tabPlants": "Meeste planten",
+    "tabStreaks": "Streaks",
     "subtitle": "Meeste unieke planten gegeten, ooit",
+    "subtitleStreaks": "Langste huidige dagreeks",
     "you": "jij",
     "plants": "planten",
+    "days": "dagen",
     "noEntries": "Nog geen vermeldingen"
   },
   "account": {

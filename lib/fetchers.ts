@@ -106,7 +106,13 @@ export async function fetchAccount([, locale]: [string, string]) {
 
 export async function fetchLeaderboard() {
   const supabase = createClient()
-  const { data } = await supabase.rpc('leaderboard', { p_limit: 15 })
+  const { data } = await supabase.rpc('leaderboard', { p_limit: 10 })
+  return (data as any[]) ?? []
+}
+
+export async function fetchStreakLeaderboard() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('leaderboard_streaks', { p_limit: 10 })
   return (data as any[]) ?? []
 }
 

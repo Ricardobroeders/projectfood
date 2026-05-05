@@ -3,7 +3,7 @@
     "home": "Home",
     "log": "Log",
     "stats": "Stats",
-    "leaderboard": "Top 15",
+    "leaderboard": "Top 10",
     "account": "Account"
   },
   "home": {
@@ -50,9 +50,13 @@
   },
   "leaderboard": {
     "title": "Leaderboard",
+    "tabPlants": "Most plants",
+    "tabStreaks": "Streaks",
     "subtitle": "Most unique plants eaten, all time",
+    "subtitleStreaks": "Longest current daily streak",
     "you": "you",
     "plants": "plants",
+    "days": "days",
     "noEntries": "No entries yet"
   },
   "account": {

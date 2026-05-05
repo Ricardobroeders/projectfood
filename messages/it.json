@@ -3,7 +3,7 @@
     "home": "Home",
     "log": "Log",
     "stats": "Stats",
-    "leaderboard": "Top 15",
+    "leaderboard": "Top 10",
     "account": "Account"
   },
   "home": {
@@ -50,9 +50,13 @@
   },
   "leaderboard": {
     "title": "Classifica",
+    "tabPlants": "Più piante",
+    "tabStreaks": "Streak",
     "subtitle": "Più piante uniche mangiate, di sempre",
+    "subtitleStreaks": "Streak giornaliero più lungo",
     "you": "tu",
     "plants": "piante",
+    "days": "giorni",
     "noEntries": "Nessuna voce ancora"
   },
   "account": {
