@@ -40,13 +40,6 @@ function localDate(tz: string): string {
   try { return new Date().toLocaleDateString('en-CA', { timeZone: tz }) } catch { return new Date().toLocaleDateString('en-CA') }
 }
 
-function localMinutes(tz: string): number {
-  try {
-    const parts = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: tz }).split(':')
-    return parseInt(parts[0]) * 60 + parseInt(parts[1])
-  } catch { return new Date().getHours() * 60 + new Date().getMinutes() }
-}
-
 function localDayOfWeek(tz: string): number {
   try {
     const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
@@ -173,15 +166,10 @@ export async function POST(req: Request) {
     const tz = user.timezone ?? 'Europe/Amsterdam'
     const locale = (user.locale ?? 'en') as 'en' | 'nl' | 'it'
     const today = localDate(tz)
-    const nowMin = localMinutes(tz)
     const dayOfWeek = localDayOfWeek(tz)
 
-    const [reminderH, reminderM] = (user.reminder_time ?? '19:00').split(':').map(Number)
-    const reminderMin = reminderH * 60 + reminderM
-    const WINDOW = 15
-
-    // --- Daily reminder ---
-    if (user.notif_daily_reminder && Math.abs(nowMin - reminderMin) <= WINDOW) {
+    // --- Daily reminder (sent once per day to everyone who hasn't logged today) ---
+    if (user.notif_daily_reminder) {
       if (!(await alreadySentToday(supabase, user.user_id, 'daily_reminder', today))) {
         const { data: todayLogs } = await supabase
           .from('plant_logs').select('id').eq('user_id', user.user_id).eq('logged_on', today).limit(1)
@@ -197,8 +185,8 @@ export async function POST(req: Request) {
       }
     }
 
-    // --- Streak rescue at 21:30 ---
-    if (user.notif_streak_rescue && Math.abs(nowMin - (21 * 60 + 30)) <= WINDOW) {
+    // --- Streak rescue (same run; only fires if streak >= 3 and user hasn't logged) ---
+    if (user.notif_streak_rescue) {
       if (!(await alreadySentToday(supabase, user.user_id, 'streak_rescue', today))) {
         const { data: todayLogs } = await supabase
           .from('plant_logs').select('id').eq('user_id', user.user_id).eq('logged_on', today).limit(1)
@@ -215,8 +203,8 @@ export async function POST(req: Request) {
       }
     }
 
-    // --- Sunday nudge at 09:00 ---
-    if (user.notif_weekly_nudge && dayOfWeek === 0 && Math.abs(nowMin - (9 * 60)) <= WINDOW) {
+    // --- Sunday nudge (only on Sundays, 25–29 plants) ---
+    if (user.notif_weekly_nudge && dayOfWeek === 0) {
       if (!(await alreadySentToday(supabase, user.user_id, 'weekly_nudge', today))) {
         const weekStart = weekStartDate(tz)
         const { data: weekLogs } = await supabase
@@ -232,8 +220,8 @@ export async function POST(req: Request) {
       }
     }
 
-    // --- Re-engagement (3–13 days inactive, at reminder_time) ---
-    if (user.notif_reengagement && Math.abs(nowMin - reminderMin) <= WINDOW) {
+    // --- Re-engagement (3–13 days inactive) ---
+    if (user.notif_reengagement) {
       if (!(await alreadySentToday(supabase, user.user_id, 'reengagement', today))) {
         const { data: lastLog } = await supabase
           .from('plant_logs').select('logged_on').eq('user_id', user.user_id)
