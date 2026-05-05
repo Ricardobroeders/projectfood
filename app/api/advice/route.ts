@@ -1,9 +1,17 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { sendPush, type Subscription } from '@/lib/push'
 import OpenAI from 'openai'
 
 const ALL_CATEGORIES = ['fruit', 'vegetable', 'herb', 'nut_seed', 'legume', 'whole_grain']
 const LANG: Record<string, string> = { en: 'English', nl: 'Dutch', it: 'Italian' }
+
+const GOAL_REACHED_COPY: Record<string, { title: string; body: string }> = {
+  en: { title: 'Project Food 🎉', body: '30 plants reached! Your grocery advice is ready.' },
+  nl: { title: 'Project Food 🎉', body: '30 planten bereikt! Je boodschappenadvies staat klaar.' },
+  it: { title: 'Project Food 🎉', body: '30 piante raggiunte! I tuoi consigli della spesa sono pronti.' },
+}
 
 function currentWeekStart(): string {
   const today = new Date()
@@ -12,6 +20,67 @@ function currentWeekStart(): string {
   const monday = new Date(today)
   monday.setDate(today.getDate() + diff)
   return monday.toLocaleDateString('en-CA')
+}
+
+async function sendGoalReachedNotification(userId: string, locale: string) {
+  try {
+    const admin = createAdminClient()
+
+    // Check user has goal_reached notifications enabled
+    const { data: settings } = await admin
+      .from('user_settings')
+      .select('notifications_enabled, notif_goal_reached')
+      .eq('user_id', userId)
+      .single()
+
+    if (!settings?.notifications_enabled || !settings?.notif_goal_reached) return
+
+    // Check not already sent today
+    const today = new Date().toLocaleDateString('en-CA')
+    const { data: existing } = await admin
+      .from('notification_log')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('type', 'goal_reached')
+      .gte('sent_at', today + 'T00:00:00+00:00')
+      .limit(1)
+    if (existing?.length) return
+
+    // Fetch subscriptions
+    const { data: subs } = await admin
+      .from('push_subscriptions')
+      .select('endpoint, p256dh, auth, failure_count')
+      .eq('user_id', userId)
+    if (!subs?.length) return
+
+    const copy = GOAL_REACHED_COPY[locale] ?? GOAL_REACHED_COPY['en']
+
+    for (const sub of subs as any[]) {
+      const result = await sendPush(sub as Subscription, {
+        title: copy.title,
+        body: copy.body,
+        data: { url: '/advice' },
+      })
+      if (result === 'gone') {
+        const newCount = sub.failure_count + 1
+        if (newCount >= 3) {
+          await admin.from('push_subscriptions').delete().eq('endpoint', sub.endpoint)
+        } else {
+          await admin.from('push_subscriptions')
+            .update({ failure_count: newCount, last_failure_at: new Date().toISOString() })
+            .eq('endpoint', sub.endpoint)
+        }
+      } else {
+        await admin.from('push_subscriptions')
+          .update({ last_success_at: new Date().toISOString(), failure_count: 0 })
+          .eq('endpoint', sub.endpoint)
+      }
+    }
+
+    await admin.from('notification_log').insert({ user_id: userId, type: 'goal_reached' })
+  } catch {
+    // Non-fatal — advice was already saved, don't block the response
+  }
 }
 
 export async function POST() {
@@ -41,7 +110,8 @@ export async function POST() {
     .select('locale')
     .eq('user_id', user.id)
     .maybeSingle()
-  const language = LANG[settings?.locale ?? 'en'] ?? 'English'
+  const locale = settings?.locale ?? 'en'
+  const language = LANG[locale] ?? 'English'
 
   // Plant frequency this week (all logs, not deduplicated)
   const { data: logs } = await supabase
@@ -116,6 +186,9 @@ Current month: ${month}`
   if (error && error.code !== '23505') {
     return NextResponse.json({ error: 'Failed to store advice' }, { status: 500 })
   }
+
+  // Fire goal-reached push notification (non-blocking)
+  sendGoalReachedNotification(user.id, locale)
 
   return NextResponse.json({ advice })
 }

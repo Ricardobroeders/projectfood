@@ -59,6 +59,26 @@
     "days": "days",
     "noEntries": "No entries yet"
   },
+  "notifications": {
+    "settingsTitle": "Notifications",
+    "masterToggle": "Enable notifications",
+    "reminderTime": "Daily reminder time",
+    "types": {
+      "dailyReminder": { "label": "Daily reminder", "description": "Nudge if you haven't logged today" },
+      "streakRescue": { "label": "Streak rescue", "description": "Save your streak before midnight" },
+      "goalReached": { "label": "Goal reached", "description": "When your weekly advice is ready" },
+      "weeklyNudge": { "label": "Sunday nudge", "description": "Last chance to hit 30 plants" },
+      "reengagement": { "label": "Comeback nudges", "description": "Gentle reminders if you've been away" }
+    },
+    "iosFirst": "Add Project Food to your home screen first to enable notifications.",
+    "permissionDenied": "Notifications blocked. Enable them in your browser settings.",
+    "permissionPrompt": {
+      "title": "Stay on track with gentle reminders",
+      "body": "Get a daily nudge to log your plants and never lose a streak.",
+      "allow": "Turn on notifications",
+      "notNow": "Not now"
+    }
+  },
   "account": {
     "settingsSection": "Settings",
     "accountSection": "Account",
