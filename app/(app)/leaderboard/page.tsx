@@ -125,7 +125,7 @@ export default function LeaderboardPage() {
           <>
             {plantRows?.map((row: PlantsRow) => (
               <LeaderRow
-                key={row.rank}
+                key={row.username}
                 rank={row.rank}
                 username={row.username}
                 value={row.unique_plants}
@@ -142,7 +142,7 @@ export default function LeaderboardPage() {
           <>
             {streakRows?.map((row: StreakRow) => (
               <LeaderRow
-                key={row.rank}
+                key={row.username}
                 rank={row.rank}
                 username={row.username}
                 value={row.streak}
