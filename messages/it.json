@@ -66,7 +66,6 @@
     "types": {
       "dailyReminder": { "label": "Promemoria giornaliero", "description": "Avviso se non hai ancora registrato oggi" },
       "streakRescue": { "label": "Salva la serie", "description": "Salva la tua serie prima di mezzanotte" },
-      "goalReached": { "label": "Obiettivo raggiunto", "description": "Quando i tuoi consigli settimanali sono pronti" },
       "weeklyNudge": { "label": "Promemoria domenicale", "description": "Ultima possibilità per raggiungere 30 piante" },
       "reengagement": { "label": "Promemoria di ritorno", "description": "Promemoria gentili se sei stato assente" }
     },
@@ -87,6 +86,8 @@
     "weeklyGoal": "Obiettivo settimanale",
     "weeklyGoalValue": "30 piante",
     "notifications": "Notifiche",
+    "on": "Attivo",
+    "off": "Disattivo",
     "comingSoon": "Presto disponibile",
     "installApp": "Installa l'app",
     "addToHomeScreen": "Aggiungi alla schermata Home",

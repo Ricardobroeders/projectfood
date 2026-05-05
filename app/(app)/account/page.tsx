@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
+import { ChevronRight, Bell } from 'lucide-react'
 import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
 import { LanguageSwitcher } from '@/components/language-switcher'
-import { NotificationSettings } from '@/components/NotificationSettings'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
@@ -18,17 +18,6 @@ export default function AccountPage() {
   const locale = useLocale()
 
   const { data, isLoading } = useSWR(['account', locale], fetchAccount, { keepPreviousData: true })
-
-  const [isStandalone, setIsStandalone] = useState(false)
-  const [isIOS, setIsIOS] = useState(false)
-
-  useEffect(() => {
-    const standalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      ('standalone' in navigator && (navigator as { standalone?: boolean }).standalone === true)
-    setIsStandalone(standalone)
-    setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent))
-  }, [])
 
   if (isLoading || !data) {
     return (
@@ -43,6 +32,7 @@ export default function AccountPage() {
   }
 
   const { userId, name, email, avatar, username, currentLocale, notifSettings } = data
+  const notifOn = notifSettings.notificationsEnabled
 
   return (
     <div className="px-5 pt-6 pb-8 space-y-6">
@@ -83,19 +73,6 @@ export default function AccountPage() {
         </div>
       </div>
 
-      {/* Notifications */}
-      <div
-        className="rounded-[24px] bg-white"
-        style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
-      >
-        <NotificationSettings
-          userId={userId}
-          initial={notifSettings}
-          isStandalone={isStandalone}
-          isIOS={isIOS}
-        />
-      </div>
-
       {/* Install app */}
       <div
         className="rounded-[24px] bg-white"
@@ -103,6 +80,22 @@ export default function AccountPage() {
       >
         <InstallButton />
       </div>
+
+      {/* Notifications nav row */}
+      <Link
+        href="/account/notifications"
+        className="rounded-[24px] bg-white flex items-center justify-between px-5 py-4 gap-3 active:opacity-70 transition-opacity"
+        style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <Bell size={18} className="text-[#1F1B16] shrink-0" />
+          <span className="text-[15px] font-medium text-[#1F1B16]">{t('notifications')}</span>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-[13px] text-[#A39B91]">{notifOn ? t('on') : t('off')}</span>
+          <ChevronRight size={16} className="text-[#A39B91]" />
+        </div>
+      </Link>
 
       {/* Sign out */}
       <div>

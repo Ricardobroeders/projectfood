@@ -66,7 +66,6 @@
     "types": {
       "dailyReminder": { "label": "Dagelijkse herinnering", "description": "Herinnering als je vandaag nog niets gelogd hebt" },
       "streakRescue": { "label": "Reeks redden", "description": "Red je reeks voor middernacht" },
-      "goalReached": { "label": "Doel bereikt", "description": "Wanneer je wekelijkse advies klaar is" },
       "weeklyNudge": { "label": "Zondagse herinnering", "description": "Laatste kans om 30 planten te halen" },
       "reengagement": { "label": "Terugkeerherinneringen", "description": "Zachte herinneringen als je er een tijdje niet was" }
     },
@@ -87,6 +86,8 @@
     "weeklyGoal": "Weekdoel",
     "weeklyGoalValue": "30 planten",
     "notifications": "Meldingen",
+    "on": "Aan",
+    "off": "Uit",
     "comingSoon": "Binnenkort",
     "installApp": "App installeren",
     "addToHomeScreen": "Voeg toe aan beginscherm",

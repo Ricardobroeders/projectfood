@@ -66,7 +66,6 @@
     "types": {
       "dailyReminder": { "label": "Daily reminder", "description": "Nudge if you haven't logged today" },
       "streakRescue": { "label": "Streak rescue", "description": "Save your streak before midnight" },
-      "goalReached": { "label": "Goal reached", "description": "When your weekly advice is ready" },
       "weeklyNudge": { "label": "Sunday nudge", "description": "Last chance to hit 30 plants" },
       "reengagement": { "label": "Comeback nudges", "description": "Gentle reminders if you've been away" }
     },
@@ -87,6 +86,8 @@
     "weeklyGoal": "Weekly goal",
     "weeklyGoalValue": "30 plants",
     "notifications": "Notifications",
+    "on": "On",
+    "off": "Off",
     "comingSoon": "Coming soon",
     "installApp": "Install app",
     "addToHomeScreen": "Add to your home screen",
