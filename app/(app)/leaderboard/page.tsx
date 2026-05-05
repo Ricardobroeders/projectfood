@@ -95,19 +95,16 @@ export default function LeaderboardPage() {
       <h2 className="text-xl font-extrabold text-[#1F1B16]">{t('title')}</h2>
 
       {/* Tab switcher */}
-      <div
-        className="flex rounded-2xl p-1 gap-1"
-        style={{ background: '#F4EFE8' }}
-      >
+      <div className="flex gap-2">
         {(['plants', 'streaks'] as const).map((key) => (
           <button
             key={key}
             onClick={() => setTab(key)}
-            className="flex-1 h-9 rounded-xl text-[13px] font-semibold transition-colors"
+            className="flex-1 h-10 rounded-2xl text-[13px] font-semibold transition-colors"
             style={
               tab === key
-                ? { background: '#FFFFFF', color: '#1F1B16', boxShadow: '0 1px 4px rgba(31,27,22,0.08)' }
-                : { background: 'transparent', color: '#A39B91' }
+                ? { background: '#F5C518', color: '#1F1B16' }
+                : { background: '#F4EFE8', color: '#6B645C' }
             }
           >
             {t(key === 'plants' ? 'tabPlants' : 'tabStreaks')}
