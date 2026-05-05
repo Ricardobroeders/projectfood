@@ -90,7 +90,7 @@ export async function fetchAccount([, locale]: [string, string]) {
 
   const { data: settings } = await supabase
     .from('user_settings')
-    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_goal_reached, notif_weekly_nudge, notif_reengagement, reminder_time, timezone')
+    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, reminder_time, timezone')
     .eq('user_id', user.id)
     .single()
 
@@ -105,7 +105,6 @@ export async function fetchAccount([, locale]: [string, string]) {
       notificationsEnabled: settings?.notifications_enabled ?? false,
       notifDailyReminder: settings?.notif_daily_reminder ?? true,
       notifStreakRescue: settings?.notif_streak_rescue ?? true,
-      notifGoalReached: settings?.notif_goal_reached ?? true,
       notifWeeklyNudge: settings?.notif_weekly_nudge ?? true,
       notifReengagement: settings?.notif_reengagement ?? true,
       reminderTime: (settings?.reminder_time as string | null)?.slice(0, 5) ?? '19:00',
