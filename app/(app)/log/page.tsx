@@ -10,6 +10,7 @@ import { supabaseImageUrl } from '@/lib/supabase-image'
 import { Search, Check, Send } from 'lucide-react'
 import Image from 'next/image'
 import { GoalModal } from './GoalModal'
+import { NotificationPermissionModal } from '@/components/NotificationPermissionModal'
 
 type Plant = { id: string; name: string; category: Category; image_url: string | null; is_superfood: boolean }
 type Toast = { id: string; name: string }
@@ -40,6 +41,7 @@ export default function LogPage() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
   const [toast, setToast] = useState<Toast | null>(null)
   const [goalModal, setGoalModal] = useState(false)
+  const [showNotifNudge, setShowNotifNudge] = useState(false)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
   const [debouncedQuery, setDebouncedQuery] = useState('')
@@ -125,9 +127,11 @@ export default function LogPage() {
       setToast({ id: plant.id, name: plant.name })
       toastTimer.current = setTimeout(() => setToast(null), 2500)
 
-      // Check if user just hit 30 unique plants — trigger advice generation
+      // Check variety milestones
       const { data: variety } = await supabase.rpc('weekly_variety')
-      if ((variety as number) >= 30) {
+      const count = variety as number
+
+      if (count >= 30) {
         const ws = currentWeekStart()
         const { data: existingAdvice } = await supabase
           .from('weekly_advice')
@@ -139,6 +143,33 @@ export default function LogPage() {
           setGoalModal(true)
         }
       }
+
+      if (
+        count >= 35 &&
+        'Notification' in window &&
+        Notification.permission !== 'granted' &&
+        !localStorage.getItem('pf_notif_nudged')
+      ) {
+        localStorage.setItem('pf_notif_nudged', '1')
+        setShowNotifNudge(true)
+      }
+    })
+  }
+
+  async function handleNotifNudgeAllow() {
+    setShowNotifNudge(false)
+    const result = await Notification.requestPermission()
+    if (result !== 'granted') return
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return
+    const reg = await navigator.serviceWorker.ready
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
+    })
+    await fetch('/api/push/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sub.toJSON()),
     })
   }
 
@@ -354,6 +385,12 @@ export default function LogPage() {
       </div>
 
       <GoalModal open={goalModal} onClose={() => setGoalModal(false)} />
+      {showNotifNudge && (
+        <NotificationPermissionModal
+          onAllow={handleNotifNudgeAllow}
+          onDismiss={() => setShowNotifNudge(false)}
+        />
+      )}
 
       {/* Toast */}
       {toast && (
