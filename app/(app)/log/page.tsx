@@ -145,7 +145,7 @@ export default function LogPage() {
       }
 
       if (
-        count >= 35 &&
+        count >= 20 &&
         'Notification' in window &&
         Notification.permission !== 'granted' &&
         !localStorage.getItem('pf_notif_nudged')
