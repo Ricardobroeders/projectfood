@@ -1,9 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations } from 'next-intl'
-import { fetchLeaderboard, fetchStreakLeaderboard } from '@/lib/fetchers'
+import {
+  fetchLeaderboard,
+  fetchStreakLeaderboard,
+  fetchFriendsLeaderboard,
+  fetchFriendsStreakLeaderboard,
+} from '@/lib/fetchers'
 
 type PlantsRow = {
   rank: number
@@ -30,6 +36,21 @@ function EmptyState({ label }: { label: string }) {
     <div className="text-center py-16 text-[#A39B91]">
       <div className="text-3xl mb-2">🏆</div>
       <p className="text-sm">{label}</p>
+    </div>
+  )
+}
+
+function FriendsEmptyState({ label }: { label: string }) {
+  return (
+    <div className="text-center py-12 text-[#A39B91]">
+      <div className="text-3xl mb-2">👥</div>
+      <p className="text-sm mb-3">{label}</p>
+      <Link
+        href="/social"
+        className="inline-block h-9 px-5 rounded-2xl text-[13px] font-semibold bg-[#F5C518] text-[#1F1B16]"
+      >
+        Go to Social
+      </Link>
     </div>
   )
 }
@@ -83,18 +104,48 @@ function LeaderRow({
 
 export default function LeaderboardPage() {
   const t = useTranslations('leaderboard')
+  const [scope, setScope] = useState<'friends' | 'global'>('friends')
   const [tab, setTab] = useState<'plants' | 'streaks'>('plants')
 
   const { data: plantRows, isLoading: loadingPlants } = useSWR('leaderboard', fetchLeaderboard, { keepPreviousData: true })
   const { data: streakRows, isLoading: loadingStreaks } = useSWR('leaderboard_streaks', fetchStreakLeaderboard, { keepPreviousData: true })
+  const { data: friendPlantRows, isLoading: loadingFriendPlants } = useSWR('leaderboard_friends', fetchFriendsLeaderboard, { keepPreviousData: true })
+  const { data: friendStreakRows, isLoading: loadingFriendStreaks } = useSWR('leaderboard_friends_streaks', fetchFriendsStreakLeaderboard, { keepPreviousData: true })
 
-  const isLoading = tab === 'plants' ? loadingPlants : loadingStreaks
+  const isLoading = scope === 'friends'
+    ? (tab === 'plants' ? loadingFriendPlants : loadingFriendStreaks)
+    : (tab === 'plants' ? loadingPlants : loadingStreaks)
+
+  const activeRows = scope === 'friends'
+    ? (tab === 'plants' ? friendPlantRows : friendStreakRows)
+    : (tab === 'plants' ? plantRows : streakRows)
+
+  // Only 1 row means just self — no friends added yet
+  const friendsAreEmpty = scope === 'friends' && !isLoading && (activeRows ?? []).length <= 1
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-4">
       <h2 className="text-xl font-extrabold text-[#1F1B16]">{t('title')}</h2>
 
-      {/* Tab switcher */}
+      {/* Scope switcher: Friends | Global */}
+      <div className="flex gap-2">
+        {(['friends', 'global'] as const).map((key) => (
+          <button
+            key={key}
+            onClick={() => setScope(key)}
+            className="flex-1 h-10 rounded-2xl text-[13px] font-semibold transition-colors"
+            style={
+              scope === key
+                ? { background: '#1F1B16', color: '#FFFFFF' }
+                : { background: '#F4EFE8', color: '#6B645C' }
+            }
+          >
+            {t(key === 'friends' ? 'tabFriends' : 'tabGlobal')}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab switcher: Plants | Streaks */}
       <div className="flex gap-2">
         {(['plants', 'streaks'] as const).map((key) => (
           <button
@@ -121,9 +172,13 @@ export default function LeaderboardPage() {
           <Skeleton key={i} className="h-[60px]" />
         ))}
 
-        {!isLoading && tab === 'plants' && (
+        {friendsAreEmpty && (
+          <FriendsEmptyState label={t('emptyFriends')} />
+        )}
+
+        {!isLoading && !friendsAreEmpty && tab === 'plants' && (
           <>
-            {plantRows?.map((row: PlantsRow) => (
+            {(activeRows ?? []).map((row: PlantsRow) => (
               <LeaderRow
                 key={row.username}
                 rank={row.rank}
@@ -134,13 +189,13 @@ export default function LeaderboardPage() {
                 isMe={row.is_me}
               />
             ))}
-            {plantRows?.length === 0 && <EmptyState label={t('noEntries')} />}
+            {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
           </>
         )}
 
-        {!isLoading && tab === 'streaks' && (
+        {!isLoading && !friendsAreEmpty && tab === 'streaks' && (
           <>
-            {streakRows?.map((row: StreakRow) => (
+            {(activeRows ?? []).map((row: StreakRow) => (
               <LeaderRow
                 key={row.username}
                 rank={row.rank}
@@ -151,7 +206,7 @@ export default function LeaderboardPage() {
                 isMe={row.is_me}
               />
             ))}
-            {streakRows?.length === 0 && <EmptyState label={t('noEntries')} />}
+            {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
           </>
         )}
       </div>
