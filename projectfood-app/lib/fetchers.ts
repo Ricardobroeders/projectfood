@@ -124,6 +124,36 @@ export async function fetchStreakLeaderboard() {
   return (data as any[]) ?? []
 }
 
+export async function searchUsers(query: string) {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('search_users', { p_query: query })
+  return (data as any[]) ?? []
+}
+
+export async function fetchPendingRequests() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('pending_requests')
+  return (data ?? []) as { id: string; type: 'incoming' | 'outgoing'; other_user_id: string; username: string }[]
+}
+
+export async function fetchSocialFriends() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('social_friends')
+  return (data as any[]) ?? []
+}
+
+export async function fetchFriendsLeaderboard() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('leaderboard_friends', { p_limit: 15 })
+  return (data as any[]) ?? []
+}
+
+export async function fetchFriendsStreakLeaderboard() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('leaderboard_friends_streaks', { p_limit: 15 })
+  return (data as any[]) ?? []
+}
+
 export async function fetchAdvice() {
   const supabase = createClient()
   const { data } = await supabase
