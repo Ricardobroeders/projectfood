@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations } from 'next-intl'
+import { Users, Globe } from 'lucide-react'
 import {
   fetchLeaderboard,
   fetchStreakLeaderboard,
@@ -125,24 +126,27 @@ export default function LeaderboardPage() {
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-4">
-      <h2 className="text-xl font-extrabold text-[#1F1B16]">{t('title')}</h2>
-
-      {/* Scope switcher: Friends | Global */}
-      <div className="flex gap-2">
-        {(['friends', 'global'] as const).map((key) => (
-          <button
-            key={key}
-            onClick={() => setScope(key)}
-            className="flex-1 h-10 rounded-2xl text-[13px] font-semibold transition-colors"
-            style={
-              scope === key
-                ? { background: '#1F1B16', color: '#FFFFFF' }
-                : { background: '#F4EFE8', color: '#6B645C' }
-            }
-          >
-            {t(key === 'friends' ? 'tabFriends' : 'tabGlobal')}
-          </button>
-        ))}
+      {/* Title + scope icon toggle */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-extrabold text-[#1F1B16]">{t('title')}</h2>
+        <div className="flex items-center gap-1 bg-[#F4EFE8] rounded-2xl p-1">
+          {([
+            { key: 'friends', Icon: Users, label: t('tabFriends') },
+            { key: 'global',  Icon: Globe, label: t('tabGlobal')  },
+          ] as const).map(({ key, Icon, label }) => (
+            <button
+              key={key}
+              onClick={() => setScope(key)}
+              title={label}
+              className="size-8 flex items-center justify-center rounded-xl transition-colors"
+              style={scope === key
+                ? { background: '#F5C518', color: '#1F1B16' }
+                : { background: 'transparent', color: '#A39B91' }}
+            >
+              <Icon className="size-4" />
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Tab switcher: Plants | Streaks */}
