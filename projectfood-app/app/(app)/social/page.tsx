@@ -26,6 +26,7 @@ export default function SocialPage() {
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [busy, setBusy] = useState<Set<string>>(new Set())
+  const [requested, setRequested] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(query.trim()), 350)
@@ -34,7 +35,7 @@ export default function SocialPage() {
 
   const { data: pending, mutate: mutatePending } = useSWR('pending_requests', fetchPendingRequests)
   const { data: friends, mutate: mutateFriends } = useSWR('social_friends', fetchSocialFriends)
-  const { data: results, isLoading: searching } = useSWR(
+  const { data: results, isLoading: searching, mutate: mutateSearch } = useSWR(
     debouncedQuery.length >= 2 ? ['search_users', debouncedQuery] : null,
     ([, q]: [string, string]) => searchUsers(q)
   )
@@ -55,6 +56,8 @@ export default function SocialPage() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) return
       await supabase.from('friendships').insert({ requester: user.id, addressee: addresseeId, status: 'pending' })
+      setRequested(s => new Set(s).add(addresseeId))
+      mutateSearch()
     })
 
   const acceptRequest = (id: string) =>
@@ -111,10 +114,13 @@ export default function SocialPage() {
               </div>
               <button
                 onClick={() => sendRequest(r.user_id)}
-                disabled={busy.has(r.user_id)}
-                className="h-8 px-4 rounded-xl text-[13px] font-semibold bg-[#F5C518] text-[#1F1B16] disabled:opacity-40 shrink-0"
+                disabled={busy.has(r.user_id) || requested.has(r.user_id)}
+                className="h-8 px-4 rounded-xl text-[13px] font-semibold shrink-0 transition-colors"
+                style={requested.has(r.user_id)
+                  ? { background: '#F4EFE8', color: '#A39B91' }
+                  : { background: '#F5C518', color: '#1F1B16' }}
               >
-                {t('add')}
+                {requested.has(r.user_id) ? t('sent') : t('add')}
               </button>
             </div>
           ))}

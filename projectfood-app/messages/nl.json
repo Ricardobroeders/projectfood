@@ -129,7 +129,7 @@
   },
   "onboarding": {
     "title": "Welkom bij Project Food!",
-    "subtitle": "Kies een gebruikersnaam en je voorkeurstaal om te beginnen.",
+    "subtitle": "Kies een gebruikersnaam zodat vrienden je kunnen vinden, en kies je voorkeurstaal.",
     "usernameLabel": "Gebruikersnaam",
     "usernamePlaceholder": "Kies een naam",
     "languageLabel": "Taal",
@@ -181,6 +181,7 @@
     "searching": "Zoeken…",
     "noResults": "Geen gebruikers gevonden",
     "add": "Toevoegen",
+    "sent": "Verstuurd",
     "totalPlants": "planten totaal",
     "requests": "Vriendschapsverzoeken",
     "cancel": "Annuleren",

@@ -129,7 +129,7 @@
   },
   "onboarding": {
     "title": "Welcome to Project Food!",
-    "subtitle": "Choose a username and your preferred language to get started.",
+    "subtitle": "Choose a username so friends can find you, and pick your preferred language.",
     "usernameLabel": "Username",
     "usernamePlaceholder": "Choose a name",
     "languageLabel": "Language",
@@ -181,6 +181,7 @@
     "searching": "Searching…",
     "noResults": "No users found",
     "add": "Add",
+    "sent": "Sent",
     "totalPlants": "plants total",
     "requests": "Friend requests",
     "cancel": "Cancel",

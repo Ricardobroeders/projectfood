@@ -135,13 +135,6 @@ export function OnboardingModal() {
           {status === 'saving' ? t('saving') : t('save')}
         </button>
 
-        {/* Skip */}
-        <button
-          onClick={() => setVisible(false)}
-          className="w-full text-center text-[13px] text-[#A39B91]"
-        >
-          {t('skip')}
-        </button>
       </div>
     </div>
   )
