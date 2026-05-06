@@ -11,9 +11,17 @@ Tasks are tracked in Linear under the **Project Food** team (key: `PF`).
 
 ## Workflow
 
-- After completing a task, commit the changes with a clear commit message.
-- **Do not push.** Ricardo pushes manually and decides when to deploy (later via Vercel).
-- When there is a dev server running and the change is testable in the browser, verify it before committing.
+Each task is implemented on a dedicated feature branch (named after the Linear issue, e.g. `rico/pf-7-...`).
+
+1. **Implement** — work on the feature branch, commit when done.
+2. **Test locally** — Ricardo tests the branch locally before anything is pushed.
+3. **Merge** — once Ricardo confirms it looks good ("looks good", "ship it", etc.), Claude:
+   - Pushes the branch to origin
+   - Merges it into `main` (fast-forward)
+   - Deletes the remote and local feature branch
+   - Marks the Linear issue as Done
+
+Do not push or merge without explicit confirmation from Ricardo.
 
 ## Stack
 
