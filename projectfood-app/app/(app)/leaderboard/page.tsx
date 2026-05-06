@@ -105,7 +105,7 @@ function LeaderRow({
 
 export default function LeaderboardPage() {
   const t = useTranslations('leaderboard')
-  const [scope, setScope] = useState<'friends' | 'global'>('friends')
+  const [scope, setScope] = useState<'friends' | 'global'>('global')
   const [tab, setTab] = useState<'plants' | 'streaks'>('plants')
 
   const { data: plantRows, isLoading: loadingPlants } = useSWR('leaderboard', fetchLeaderboard, { keepPreviousData: true })
