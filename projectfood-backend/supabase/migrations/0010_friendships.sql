@@ -21,7 +21,8 @@ CREATE POLICY "users can request friends"
 
 CREATE POLICY "addressee can update status"
   ON friendships FOR UPDATE
-  USING (auth.uid() = addressee AND status = 'pending');
+  USING (auth.uid() = addressee AND status = 'pending')
+  WITH CHECK (auth.uid() = addressee AND status = 'accepted');
 
 CREATE POLICY "users can delete own requests"
   ON friendships FOR DELETE
