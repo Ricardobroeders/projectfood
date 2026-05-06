@@ -4,7 +4,7 @@
     "log": "Log",
     "stats": "Stats",
     "leaderboard": "Top 15",
-    "account": "Account"
+    "social": "Sociaal"
   },
   "home": {
     "thisWeek": "Deze week",
@@ -57,7 +57,10 @@
     "you": "jij",
     "plants": "planten",
     "days": "dagen",
-    "noEntries": "Nog geen vermeldingen"
+    "noEntries": "Nog geen vermeldingen",
+    "tabFriends": "Vrienden",
+    "tabGlobal": "Globaal",
+    "emptyFriends": "Voeg vrienden toe via het tabblad Sociaal om jezelf te vergelijken"
   },
   "notifications": {
     "settingsTitle": "Meldingen",
@@ -171,6 +174,19 @@
       "comingSoon": "Binnenkort beschikbaar",
       "workInProgress": "Deze pagina wordt gebouwd. Kom binnenkort terug."
     }
+  },
+  "social": {
+    "title": "Sociaal",
+    "searchPlaceholder": "Zoek op gebruikersnaam…",
+    "searching": "Zoeken…",
+    "noResults": "Geen gebruikers gevonden",
+    "add": "Toevoegen",
+    "totalPlants": "planten totaal",
+    "requests": "Vriendschapsverzoeken",
+    "cancel": "Annuleren",
+    "friends": "Vrienden",
+    "emptyFriends": "Zoek vrienden op gebruikersnaam om te beginnen",
+    "plantsThisWeek": "planten deze week"
   },
   "categories": {
     "fruit": "Fruit",

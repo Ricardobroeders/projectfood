@@ -4,7 +4,7 @@
     "log": "Log",
     "stats": "Stats",
     "leaderboard": "Top 15",
-    "account": "Account"
+    "social": "Social"
   },
   "home": {
     "thisWeek": "This week",
@@ -57,7 +57,10 @@
     "you": "you",
     "plants": "plants",
     "days": "days",
-    "noEntries": "No entries yet"
+    "noEntries": "No entries yet",
+    "tabFriends": "Friends",
+    "tabGlobal": "Global",
+    "emptyFriends": "Add friends on the Social tab to see how you compare"
   },
   "notifications": {
     "settingsTitle": "Notifications",
@@ -171,6 +174,19 @@
       "comingSoon": "Coming soon",
       "workInProgress": "This page is being built. Check back soon."
     }
+  },
+  "social": {
+    "title": "Social",
+    "searchPlaceholder": "Search by username…",
+    "searching": "Searching…",
+    "noResults": "No users found",
+    "add": "Add",
+    "totalPlants": "plants total",
+    "requests": "Friend requests",
+    "cancel": "Cancel",
+    "friends": "Friends",
+    "emptyFriends": "Search for friends by username to get started",
+    "plantsThisWeek": "plants this week"
   },
   "categories": {
     "fruit": "Fruit",

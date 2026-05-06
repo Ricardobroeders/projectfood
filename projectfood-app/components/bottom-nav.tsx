@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { Home, Plus, BarChart2, Trophy, User } from 'lucide-react'
+import { Home, Plus, BarChart2, Trophy, Users } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const tabs = [
@@ -11,7 +11,7 @@ const tabs = [
   { href: '/log',         key: 'log',         Icon: Plus      },
   { href: '/stats',       key: 'stats',       Icon: BarChart2 },
   { href: '/leaderboard', key: 'leaderboard', Icon: Trophy    },
-  { href: '/account',     key: 'account',     Icon: User      },
+  { href: '/social',      key: 'social',      Icon: Users     },
 ] as const
 
 export function BottomNav() {

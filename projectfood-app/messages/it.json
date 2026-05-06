@@ -4,7 +4,7 @@
     "log": "Log",
     "stats": "Stats",
     "leaderboard": "Top 15",
-    "account": "Account"
+    "social": "Social"
   },
   "home": {
     "thisWeek": "Questa settimana",
@@ -57,7 +57,10 @@
     "you": "tu",
     "plants": "piante",
     "days": "giorni",
-    "noEntries": "Nessuna voce ancora"
+    "noEntries": "Nessuna voce ancora",
+    "tabFriends": "Amici",
+    "tabGlobal": "Globale",
+    "emptyFriends": "Aggiungi amici dalla scheda Social per vedere come ti confronti"
   },
   "notifications": {
     "settingsTitle": "Notifiche",
@@ -171,6 +174,19 @@
       "comingSoon": "Prossimamente",
       "workInProgress": "Questa pagina è in costruzione. Torna presto."
     }
+  },
+  "social": {
+    "title": "Social",
+    "searchPlaceholder": "Cerca per nome utente…",
+    "searching": "Ricerca in corso…",
+    "noResults": "Nessun utente trovato",
+    "add": "Aggiungi",
+    "totalPlants": "piante totali",
+    "requests": "Richieste di amicizia",
+    "cancel": "Annulla",
+    "friends": "Amici",
+    "emptyFriends": "Cerca amici per nome utente per iniziare",
+    "plantsThisWeek": "piante questa settimana"
   },
   "categories": {
     "fruit": "Frutta",
