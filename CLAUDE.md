@@ -1,5 +1,14 @@
 # Project Food — Claude working instructions
 
+## Task management
+
+Tasks are tracked in Linear under the **Project Food** team (key: `PF`).
+
+- When starting a session or picking up new work, check Linear for current issues
+- Check **In Progress** first (resume existing work), then **Todo** (pick up next item)
+- You can reference an issue by number (e.g. `PF-5`) or say "pick up the next todo"
+- Do not maintain a local to-do file — Linear is the single source of truth
+
 ## Workflow
 
 - After completing a task, commit the changes with a clear commit message.
