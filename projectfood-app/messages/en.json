@@ -140,6 +140,38 @@
     "tagline": "Track 30 plants a week. Good gut, good life.",
     "continueWithGoogle": "Continue with Google"
   },
+  "marketing": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "recipes": "Recipes",
+      "contact": "Contact",
+      "openApp": "Open the app"
+    },
+    "home": {
+      "heroTitle": "Track 30 plants a week.",
+      "heroSubtitle": "Good gut, good life.",
+      "heroBody": "Science shows eating 30 different plants a week boosts gut diversity. Project Food makes it simple to track yours.",
+      "openApp": "Open the app",
+      "feature1Title": "Log anything",
+      "feature1Body": "Fruits, vegetables, herbs, nuts, seeds, legumes, whole grains — every plant counts.",
+      "feature2Title": "Weekly streak",
+      "feature2Body": "See your progress day by day and build a habit that sticks.",
+      "feature3Title": "Grocery advice",
+      "feature3Body": "Hit 30 plants and unlock AI-powered suggestions for next week's shopping list."
+    },
+    "footer": {
+      "about": "About",
+      "contact": "Contact",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "tagline": "Good gut, good life."
+    },
+    "placeholder": {
+      "comingSoon": "Coming soon",
+      "workInProgress": "This page is being built. Check back soon."
+    }
+  },
   "categories": {
     "fruit": "Fruit",
     "vegetable": "Vegetable",

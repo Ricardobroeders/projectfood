@@ -140,6 +140,38 @@
     "tagline": "30 planten per week bijhouden. Goede darmen, goed leven.",
     "continueWithGoogle": "Doorgaan met Google"
   },
+  "marketing": {
+    "nav": {
+      "home": "Home",
+      "about": "Over",
+      "recipes": "Recepten",
+      "contact": "Contact",
+      "openApp": "Open de app"
+    },
+    "home": {
+      "heroTitle": "30 planten per week bijhouden.",
+      "heroSubtitle": "Goede darmen, goed leven.",
+      "heroBody": "Wetenschap toont aan dat 30 verschillende planten per week de darmflora verbetert. Project Food maakt het bijhouden eenvoudig.",
+      "openApp": "Open de app",
+      "feature1Title": "Log alles",
+      "feature1Body": "Fruit, groenten, kruiden, noten, zaden, peulvruchten, volkoren granen — elke plant telt.",
+      "feature2Title": "Wekelijkse reeks",
+      "feature2Body": "Bekijk je voortgang dag voor dag en bouw een gewoonte die blijft.",
+      "feature3Title": "Boodschappenadvies",
+      "feature3Body": "Bereik 30 planten en ontgrendel AI-gestuurde suggesties voor de boodschappenlijst van volgende week."
+    },
+    "footer": {
+      "about": "Over",
+      "contact": "Contact",
+      "terms": "Voorwaarden",
+      "privacy": "Privacy",
+      "tagline": "Goede darmen, goed leven."
+    },
+    "placeholder": {
+      "comingSoon": "Binnenkort beschikbaar",
+      "workInProgress": "Deze pagina wordt gebouwd. Kom binnenkort terug."
+    }
+  },
   "categories": {
     "fruit": "Fruit",
     "vegetable": "Groente",

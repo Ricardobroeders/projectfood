@@ -1,10 +1,68 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-const SUPPORTED_LOCALES = ['en', 'nl']
+const SUPPORTED_LOCALES = ['en', 'nl', 'it'] as const
+type Locale = (typeof SUPPORTED_LOCALES)[number]
 const LOCALE_COOKIE = 'pf_locale'
 
+// External localized slug → internal page segment, keyed by locale
+const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes' },
+  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes' },
+  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes' },
+}
+
+function detectLocale(request: NextRequest): Locale {
+  const accept = request.headers.get('accept-language') ?? ''
+  const preferred = accept.split(',')[0]?.split('-')[0]?.toLowerCase() ?? ''
+  return (SUPPORTED_LOCALES.includes(preferred as Locale) ? preferred : 'en') as Locale
+}
+
+function setLocaleCookie(response: NextResponse, locale: string) {
+  response.cookies.set(LOCALE_COOKIE, locale, {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 365,
+    sameSite: 'lax',
+    httpOnly: false,
+  })
+}
+
 export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+  const parts = pathname.split('/').filter(Boolean)
+  const firstSegment = parts[0] ?? ''
+
+  // ── Marketing: root redirect ──────────────────────────────────────────────
+  if (pathname === '/') {
+    const locale = detectLocale(request)
+    const url = request.nextUrl.clone()
+    url.pathname = `/${locale}/`
+    return NextResponse.redirect(url)
+  }
+
+  // ── Marketing: locale-prefixed paths ─────────────────────────────────────
+  if (SUPPORTED_LOCALES.includes(firstSegment as Locale)) {
+    const locale = firstSegment as Locale
+    const slug = parts[1]
+
+    if (slug) {
+      const internalSlug = SLUG_TO_INTERNAL[locale]?.[slug]
+      if (internalSlug && internalSlug !== slug) {
+        // Rewrite /nl/over → /nl/about, /it/chi-siamo → /it/about, etc.
+        const url = request.nextUrl.clone()
+        url.pathname = `/${locale}/${internalSlug}`
+        const response = NextResponse.rewrite(url)
+        setLocaleCookie(response, locale)
+        return response
+      }
+    }
+
+    const response = NextResponse.next()
+    setLocaleCookie(response, locale)
+    return response
+  }
+
+  // ── PWA & auth paths: Supabase auth check ────────────────────────────────
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
@@ -25,8 +83,6 @@ export async function middleware(request: NextRequest) {
   )
 
   const { data: { user } } = await supabase.auth.getUser()
-
-  const { pathname } = request.nextUrl
 
   if (!user && pathname !== '/login' && !pathname.startsWith('/auth')) {
     const url = request.nextUrl.clone()
@@ -50,7 +106,7 @@ export async function middleware(request: NextRequest) {
       .single()
 
     const locale =
-      settings?.locale && SUPPORTED_LOCALES.includes(settings.locale)
+      settings?.locale && SUPPORTED_LOCALES.includes(settings.locale as Locale)
         ? settings.locale
         : 'en'
 
@@ -66,5 +122,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icons|manifest.json|flags).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|icons|manifest.json|flags|sw\\.js).*)'],
 }
