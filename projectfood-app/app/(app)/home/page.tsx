@@ -105,18 +105,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Friend row */}
-      {(friends ?? []).length > 0 && (
-        <div>
-          <h3 className="text-base font-bold text-[#1F1B16] mb-2">{t('friendsSection')}</h3>
-          <div className="flex gap-3 overflow-x-auto pb-1 -mx-5 px-5" style={{ scrollbarWidth: 'none' }}>
-            {(friends as FriendStats[]).map((f) => (
-              <FriendCard key={f.user_id} friend={f} />
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Grocery advice banner */}
       <AdviceBanner advice={weekAdvice} weekCount={weekCount} />
 
@@ -137,6 +125,18 @@ export default function HomePage() {
                 </span>
               )
             })}
+          </div>
+        </div>
+      )}
+
+      {/* Friend row */}
+      {(friends ?? []).length > 0 && (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-2">{t('friendsSection')}</h3>
+          <div className="flex gap-3 overflow-x-auto pb-1 -mx-5 px-5" style={{ scrollbarWidth: 'none' }}>
+            {(friends as FriendStats[]).map((f) => (
+              <FriendCard key={f.user_id} friend={f} />
+            ))}
           </div>
         </div>
       )}
