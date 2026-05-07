@@ -102,9 +102,8 @@ export default function AccountPage() {
                   imageUrl={data.avatar}
                   size="md"
                   border={b}
-                  className={activeBorder === b ? 'ring-2 ring-offset-2 ring-[#1F1B16]' : ''}
                 />
-                <span className="text-[10px] text-[#A39B91] capitalize">
+                <span className={`text-[10px] capitalize ${activeBorder === b ? 'text-[#1F1B16] font-bold' : 'text-[#A39B91]'}`}>
                   {b === 'default' ? tA('borderDefault') : b}
                 </span>
               </button>

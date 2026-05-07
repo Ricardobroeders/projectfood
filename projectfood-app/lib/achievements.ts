@@ -28,8 +28,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     label: '30 plants',
     description: 'Ate 30 unique plants all time',
     icon: '🥗',
-    borderColor: '#4CAF50',
-    border: 'green',
+    borderColor: '#94A3B8',
+    border: 'silver',
     check: s => s.totalUniquePlants >= 30,
   },
   {
@@ -37,8 +37,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     label: '100 plants',
     description: 'Ate 100 unique plants all time',
     icon: '🌿',
-    borderColor: '#F5C518',
-    border: 'gold',
     check: s => s.totalUniquePlants >= 100,
   },
   {
@@ -46,8 +44,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     label: '500 plants',
     description: 'Ate 500 unique plants all time',
     icon: '🌳',
-    borderColor: '#94A3B8',
-    border: 'diamond',
     check: s => s.totalUniquePlants >= 500,
   },
   {
@@ -55,6 +51,8 @@ export const ACHIEVEMENTS: Achievement[] = [
     label: '4-week streak',
     description: 'Logged plants for 28 consecutive days',
     icon: '🔥',
+    borderColor: '#F5C518',
+    border: 'gold',
     check: s => s.longestStreakDays >= 28,
   },
   {
@@ -62,18 +60,19 @@ export const ACHIEVEMENTS: Achievement[] = [
     label: '10-week streak',
     description: 'Logged plants for 70 consecutive days',
     icon: '⚡',
-    borderColor: '#FF6B35',
-    border: 'flame',
     check: s => s.longestStreakDays >= 70,
   },
 ]
 
-// CSS color per border ID — used for avatar ring and badge background tint
+export const BORDER_IMAGES: Record<string, string> = {
+  silver: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/borders/silver-border.png',
+  gold:   'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/borders/gold-border.png',
+}
+
+// Fallback tint color per border ID (used for achievement badge backgrounds)
 export const BORDER_COLORS: Record<string, string> = {
-  green:   '#4CAF50',
+  silver:  '#94A3B8',
   gold:    '#F5C518',
-  flame:   '#FF6B35',
-  diamond: '#94A3B8',
 }
 
 export function getUnlockedBorders(stats: UserStats): string[] {
