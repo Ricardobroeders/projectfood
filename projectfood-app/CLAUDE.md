@@ -28,7 +28,7 @@ Do not push or merge without explicit confirmation from Ricardo.
 - Next.js 15 (not 16 — 16 had redirect loop bugs with Turbopack)
 - Tailwind CSS v4 + shadcn/ui
 - Supabase (Postgres + Auth + RLS) — project ref `lkmfmdehysmbstnfdbyg`
-- Deploy target: Vercel (not yet connected)
+- Deploy: Vercel — monorepo root is the git repo, **Vercel Root Directory must be set to `projectfood-app`**
 
 ## Key decisions
 

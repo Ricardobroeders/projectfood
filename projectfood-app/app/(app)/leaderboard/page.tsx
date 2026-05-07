@@ -76,7 +76,7 @@ function LeaderRow({
     <div
       className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
       style={{
-        background: isMe ? 'rgb(224 215 203)' : '#FFFFFF',
+        background: isMe ? 'var(--color-selected)' : '#FFFFFF',
         boxShadow: isMe ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
       }}
     >
@@ -129,7 +129,7 @@ export default function LeaderboardPage() {
       {/* Title + scope icon toggle */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-extrabold text-[#1F1B16]">{t('title')}</h2>
-        <div className="flex items-center gap-1 bg-[#F4EFE8] rounded-2xl p-1">
+        <div className="flex items-center gap-1 bg-[var(--color-selected)] rounded-full p-1">
           {([
             { key: 'friends', Icon: Users, label: t('tabFriends') },
             { key: 'global',  Icon: Globe, label: t('tabGlobal')  },
@@ -138,7 +138,7 @@ export default function LeaderboardPage() {
               key={key}
               onClick={() => setScope(key)}
               title={label}
-              className="size-8 flex items-center justify-center rounded-xl transition-colors"
+              className="size-8 flex items-center justify-center rounded-full transition-colors"
               style={scope === key
                 ? { background: '#F5C518', color: '#1F1B16' }
                 : { background: 'transparent', color: '#A39B91' }}
@@ -150,16 +150,16 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Tab switcher: Plants | Streaks */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 bg-[var(--color-selected)] rounded-full p-1">
         {(['plants', 'streaks'] as const).map((key) => (
           <button
             key={key}
             onClick={() => setTab(key)}
-            className="flex-1 h-10 rounded-2xl text-[13px] font-semibold transition-colors"
+            className="flex-1 h-9 rounded-full text-[13px] font-semibold transition-colors"
             style={
               tab === key
                 ? { background: '#F5C518', color: '#1F1B16' }
-                : { background: '#F4EFE8', color: '#6B645C' }
+                : { background: 'transparent', color: '#6B645C' }
             }
           >
             {t(key === 'plants' ? 'tabPlants' : 'tabStreaks')}

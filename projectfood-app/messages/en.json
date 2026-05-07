@@ -177,7 +177,10 @@
   },
   "social": {
     "title": "Social",
+    "tabFriends": "Friends",
+    "tabFind": "Find",
     "searchPlaceholder": "Search by username…",
+    "searchPrompt": "Type a username to search",
     "searching": "Searching…",
     "noResults": "No users found",
     "add": "Add",

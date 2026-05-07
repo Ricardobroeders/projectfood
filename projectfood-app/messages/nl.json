@@ -177,7 +177,10 @@
   },
   "social": {
     "title": "Sociaal",
+    "tabFriends": "Vrienden",
+    "tabFind": "Zoeken",
     "searchPlaceholder": "Zoek op gebruikersnaam…",
+    "searchPrompt": "Typ een gebruikersnaam om te zoeken",
     "searching": "Zoeken…",
     "noResults": "Geen gebruikers gevonden",
     "add": "Toevoegen",

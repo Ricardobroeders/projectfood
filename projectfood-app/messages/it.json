@@ -177,7 +177,10 @@
   },
   "social": {
     "title": "Social",
+    "tabFriends": "Amici",
+    "tabFind": "Cerca",
     "searchPlaceholder": "Cerca per nome utente…",
+    "searchPrompt": "Digita un nome utente per cercare",
     "searching": "Ricerca in corso…",
     "noResults": "Nessun utente trovato",
     "add": "Aggiungi",
