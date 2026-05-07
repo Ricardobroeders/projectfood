@@ -193,6 +193,11 @@
     "emptyFriends": "Cerca amici per nome utente per iniziare",
     "plantsThisWeek": "piante questa settimana"
   },
+  "achievements": {
+    "sectionTitle": "Traguardi",
+    "borderPickerTitle": "Bordo avatar",
+    "borderDefault": "Nessuno"
+  },
   "profile": {
     "back": "Home",
     "notFound": "Utente non trovato",
@@ -200,7 +205,8 @@
     "thisWeek": "Questa settimana",
     "streak": "Serie",
     "days": "giorni",
-    "weekProgress": "Progressi della settimana"
+    "weekProgress": "Progressi della settimana",
+    "achievements": "Traguardi"
   },
   "categories": {
     "fruit": "Frutta",

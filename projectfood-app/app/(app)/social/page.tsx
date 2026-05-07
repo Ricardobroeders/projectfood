@@ -6,22 +6,13 @@ import { useTranslations } from 'next-intl'
 import { Search, Check, X } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { searchUsers, fetchPendingRequests, fetchSocialFriends } from '@/lib/fetchers'
+import { Avatar } from '@/components/avatar'
 
 type SearchResult = { user_id: string; username: string; total_plants: number }
 type PendingRequest = { id: string; type: 'incoming' | 'outgoing'; other_user_id: string; username: string }
 type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number }
 
 type Tab = 'friends' | 'find'
-
-function Avatar({ username }: { username: string }) {
-  return (
-    <div className="size-10 rounded-full bg-[#F5C518] flex items-center justify-center shrink-0">
-      <span className="text-[15px] font-bold text-[#1F1B16]">
-        {username[0]?.toUpperCase() ?? '?'}
-      </span>
-    </div>
-  )
-}
 
 export default function SocialPage() {
   const t = useTranslations('social')

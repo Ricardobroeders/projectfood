@@ -193,6 +193,11 @@
     "emptyFriends": "Zoek vrienden op gebruikersnaam om te beginnen",
     "plantsThisWeek": "planten deze week"
   },
+  "achievements": {
+    "sectionTitle": "Prestaties",
+    "borderPickerTitle": "Avatar rand",
+    "borderDefault": "Geen"
+  },
   "profile": {
     "back": "Home",
     "notFound": "Gebruiker niet gevonden",
@@ -200,7 +205,8 @@
     "thisWeek": "Deze week",
     "streak": "Reeks",
     "days": "dagen",
-    "weekProgress": "Voortgang deze week"
+    "weekProgress": "Voortgang deze week",
+    "achievements": "Prestaties"
   },
   "categories": {
     "fruit": "Fruit",

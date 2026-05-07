@@ -6,6 +6,8 @@ import useSWR from 'swr'
 import { useTranslations } from 'next-intl'
 import { ArrowLeft } from 'lucide-react'
 import { fetchUserProfile } from '@/lib/fetchers'
+import { Avatar } from '@/components/avatar'
+import { ACHIEVEMENTS, type UserStats, type Achievement } from '@/lib/achievements'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[18px] ${className ?? ''}`} />
@@ -21,15 +23,38 @@ function StatCard({ label, value, unit }: { label: string; value: number | strin
   )
 }
 
+function AchievementBadge({ achievement, unlocked }: { achievement: Achievement; unlocked: boolean }) {
+  const bg = achievement.borderColor ? `${achievement.borderColor}25` : '#F4EFE8'
+  return (
+    <div className={`flex flex-col items-center gap-1.5 ${unlocked ? '' : 'opacity-35'}`}>
+      <div
+        className="size-14 rounded-[16px] flex items-center justify-center"
+        style={{ background: unlocked ? bg : '#F4EFE8' }}
+      >
+        {achievement.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={achievement.image} alt={achievement.label} className="size-10 object-contain" />
+        ) : (
+          <span className="text-2xl">{achievement.icon}</span>
+        )}
+      </div>
+      <p className="text-[11px] text-center text-[#6B645C] font-medium leading-tight w-16">{achievement.label}</p>
+    </div>
+  )
+}
+
 export default function UserProfilePage({ params }: { params: Promise<{ username: string }> }) {
   const { username } = use(params)
   const t = useTranslations('profile')
 
   const { data, isLoading } = useSWR(['profile', username], () => fetchUserProfile(username))
 
+  const stats: UserStats | null = data
+    ? { totalUniquePlants: data.total_plants, longestStreakDays: data.longest_streak_days, challengesCompleted: 0 }
+    : null
+
   return (
     <div className="px-5 pt-4 pb-8 space-y-5">
-      {/* Back */}
       <Link href="/home" className="inline-flex items-center gap-1.5 text-[13px] text-[#A39B91]">
         <ArrowLeft className="size-4" />
         {t('back')}
@@ -37,12 +62,13 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
 
       {isLoading && (
         <div className="space-y-4">
-          <Skeleton className="h-32" />
+          <Skeleton className="h-36" />
           <div className="flex gap-3">
             <Skeleton className="flex-1 h-24" />
             <Skeleton className="flex-1 h-24" />
             <Skeleton className="flex-1 h-24" />
           </div>
+          <Skeleton className="h-28" />
         </div>
       )}
 
@@ -53,19 +79,15 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
         </div>
       )}
 
-      {!isLoading && data && (
+      {!isLoading && data && stats && (
         <>
           {/* Avatar + username */}
-          <div className="flex flex-col items-center py-4">
-            <div className="size-20 rounded-full bg-[#F5C518] flex items-center justify-center mb-3">
-              <span className="text-3xl font-extrabold text-[#1F1B16]">
-                {data.username[0]?.toUpperCase() ?? '?'}
-              </span>
-            </div>
+          <div className="flex flex-col items-center py-4 gap-3">
+            <Avatar username={data.username} size="lg" border={data.active_border ?? 'default'} />
             <h2 className="text-xl font-extrabold text-[#1F1B16]">{data.username}</h2>
           </div>
 
-          {/* Stats */}
+          {/* Stat cards */}
           <div className="flex gap-3">
             <StatCard label={t('totalPlants')} value={data.total_plants} />
             <StatCard label={t('thisWeek')} value={data.week_count} unit="/30" />
@@ -83,6 +105,18 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
                 className="h-2.5 rounded-full bg-[#F5C518] transition-all"
                 style={{ width: `${Math.min(100, (data.week_count / 30) * 100)}%` }}
               />
+            </div>
+          </div>
+
+          {/* Achievement badges */}
+          <div>
+            <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
+              {t('achievements')}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {ACHIEVEMENTS.map(a => (
+                <AchievementBadge key={a.id} achievement={a} unlocked={a.check(stats)} />
+              ))}
             </div>
           </div>
         </>

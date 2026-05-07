@@ -193,6 +193,11 @@
     "emptyFriends": "Search for friends by username to get started",
     "plantsThisWeek": "plants this week"
   },
+  "achievements": {
+    "sectionTitle": "Achievements",
+    "borderPickerTitle": "Avatar border",
+    "borderDefault": "None"
+  },
   "profile": {
     "back": "Home",
     "notFound": "User not found",
@@ -200,7 +205,8 @@
     "thisWeek": "This week",
     "streak": "Streak",
     "days": "days",
-    "weekProgress": "Week progress"
+    "weekProgress": "Week progress",
+    "achievements": "Achievements"
   },
   "categories": {
     "fruit": "Fruit",

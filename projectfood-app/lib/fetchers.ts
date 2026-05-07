@@ -90,7 +90,7 @@ export async function fetchAccount([, locale]: [string, string]) {
 
   const { data: settings } = await supabase
     .from('user_settings')
-    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone')
+    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border')
     .eq('user_id', user.id)
     .single()
 
@@ -101,6 +101,8 @@ export async function fetchAccount([, locale]: [string, string]) {
     avatar: user.user_metadata?.avatar_url ?? null,
     username: settings?.username ?? null,
     currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
+    unlockedBorders: (settings?.unlocked_borders ?? []) as string[],
+    activeBorder: (settings?.active_border ?? 'default') as string,
     notifSettings: {
       notificationsEnabled: settings?.notifications_enabled ?? false,
       notifDailyReminder: settings?.notif_daily_reminder ?? true,
@@ -152,6 +154,12 @@ export async function fetchFriendsStreakLeaderboard() {
   const supabase = createClient()
   const { data } = await supabase.rpc('leaderboard_friends_streaks', { p_limit: 15 })
   return (data as any[]) ?? []
+}
+
+export async function fetchAchievementsStats() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('user_achievements_stats')
+  return (data as any[])?.[0] ?? null
 }
 
 export async function fetchUserProfile(username: string) {
