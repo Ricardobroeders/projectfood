@@ -154,6 +154,12 @@ export async function fetchFriendsStreakLeaderboard() {
   return (data as any[]) ?? []
 }
 
+export async function fetchUserProfile(username: string) {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('user_profile', { p_username: username })
+  return (data as any[])?.[0] ?? null
+}
+
 export async function fetchAdvice() {
   const supabase = createClient()
   const { data } = await supabase

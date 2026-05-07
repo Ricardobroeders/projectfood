@@ -18,7 +18,8 @@
     "today": "Vandaag",
     "thisWeeksCollection": "Collectie deze week",
     "logFirstPlant": "Log je eerste plant",
-    "logFirstPlantSub": "Ga naar het Log-tabblad om te beginnen."
+    "logFirstPlantSub": "Ga naar het Log-tabblad om te beginnen.",
+    "friendsSection": "Vrienden deze week"
   },
   "log": {
     "searchPlaceholder": "Zoek 150+ planten…",
@@ -191,6 +192,15 @@
     "friends": "Vrienden",
     "emptyFriends": "Zoek vrienden op gebruikersnaam om te beginnen",
     "plantsThisWeek": "planten deze week"
+  },
+  "profile": {
+    "back": "Home",
+    "notFound": "Gebruiker niet gevonden",
+    "totalPlants": "Totaal ooit",
+    "thisWeek": "Deze week",
+    "streak": "Reeks",
+    "days": "dagen",
+    "weekProgress": "Voortgang deze week"
   },
   "categories": {
     "fruit": "Fruit",

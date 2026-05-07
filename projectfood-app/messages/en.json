@@ -18,7 +18,8 @@
     "today": "Today",
     "thisWeeksCollection": "This week's collection",
     "logFirstPlant": "Log your first plant",
-    "logFirstPlantSub": "Head to the Log tab to get started."
+    "logFirstPlantSub": "Head to the Log tab to get started.",
+    "friendsSection": "Friends this week"
   },
   "log": {
     "searchPlaceholder": "Search 150+ plants…",
@@ -191,6 +192,15 @@
     "friends": "Friends",
     "emptyFriends": "Search for friends by username to get started",
     "plantsThisWeek": "plants this week"
+  },
+  "profile": {
+    "back": "Home",
+    "notFound": "User not found",
+    "totalPlants": "All-time",
+    "thisWeek": "This week",
+    "streak": "Streak",
+    "days": "days",
+    "weekProgress": "Week progress"
   },
   "categories": {
     "fruit": "Fruit",

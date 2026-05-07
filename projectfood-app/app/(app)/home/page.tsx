@@ -1,11 +1,34 @@
 'use client'
 
+import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { type Advice } from './AdviceCard'
 import { AdviceBanner } from './AdviceBanner'
-import { fetchHome } from '@/lib/fetchers'
+import { fetchHome, fetchSocialFriends } from '@/lib/fetchers'
+
+type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number }
+
+function FriendCard({ friend }: { friend: FriendStats }) {
+  const pct = Math.min(100, (friend.week_count / 30) * 100)
+  return (
+    <Link
+      href={`/u/${friend.username}`}
+      className="flex-shrink-0 w-[108px] rounded-[18px] p-3 bg-white block"
+      style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.06)' }}
+    >
+      <div className="size-9 rounded-full bg-[#F5C518] flex items-center justify-center mb-2">
+        <span className="text-[14px] font-bold text-[#1F1B16]">{friend.username[0]?.toUpperCase() ?? '?'}</span>
+      </div>
+      <p className="text-[13px] font-semibold text-[#1F1B16] truncate leading-tight mb-0.5">{friend.username}</p>
+      <p className="text-[11px] text-[#A39B91] mb-2">{friend.week_count}/30</p>
+      <div className="h-1.5 rounded-full bg-[#F4EFE8] overflow-hidden">
+        <div className="h-1.5 rounded-full bg-[#F5C518]" style={{ width: `${pct}%` }} />
+      </div>
+    </Link>
+  )
+}
 
 function ProgressRing({ value, max }: { value: number; max: number }) {
   const size = 128
@@ -45,6 +68,7 @@ export default function HomePage() {
   const locale = useLocale()
 
   const { data, isLoading } = useSWR(['home', locale], fetchHome, { keepPreviousData: true })
+  const { data: friends } = useSWR('social_friends', fetchSocialFriends, { keepPreviousData: true })
 
   if (isLoading || !data) {
     return (
@@ -80,6 +104,18 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* Friend row */}
+      {(friends ?? []).length > 0 && (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-2">{t('friendsSection')}</h3>
+          <div className="flex gap-3 overflow-x-auto pb-1 -mx-5 px-5" style={{ scrollbarWidth: 'none' }}>
+            {(friends as FriendStats[]).map((f) => (
+              <FriendCard key={f.user_id} friend={f} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Grocery advice banner */}
       <AdviceBanner advice={weekAdvice} weekCount={weekCount} />
