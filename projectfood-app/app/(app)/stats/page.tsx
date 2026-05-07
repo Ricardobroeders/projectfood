@@ -2,19 +2,76 @@
 
 import useSWR from 'swr'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-import { fetchStats, type WeekRow, type CatRow } from '@/lib/fetchers'
+import { fetchStats, fetchAchievementsStats, type WeekRow, type CatRow } from '@/lib/fetchers'
+import { ACHIEVEMENTS, getUnlockedBorders, type UserStats, type Achievement } from '@/lib/achievements'
+import { createClient } from '@/lib/supabase/client'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
 }
 
+function AchievementBadge({ achievement, unlocked }: { achievement: Achievement; unlocked: boolean }) {
+  const bg = achievement.borderColor ? `${achievement.borderColor}25` : '#F4EFE8'
+  return (
+    <div className={`flex flex-col items-center gap-1.5 ${unlocked ? '' : 'opacity-35'}`}>
+      <div
+        className="size-14 rounded-[16px] flex items-center justify-center"
+        style={{ background: unlocked ? bg : '#F4EFE8' }}
+      >
+        {achievement.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={achievement.image} alt={achievement.label} className="size-10 object-contain" />
+        ) : (
+          <span className="text-2xl">{achievement.icon}</span>
+        )}
+      </div>
+      <p className="text-[11px] text-center text-[#6B645C] font-medium leading-tight w-16">{achievement.label}</p>
+    </div>
+  )
+}
+
 export default function StatsPage() {
   const t = useTranslations('stats')
+  const tA = useTranslations('achievements')
   const tCat = useTranslations('categories')
 
   const { data, isLoading } = useSWR('stats', fetchStats, { keepPreviousData: true })
+  const { data: achievementData, mutate: mutateAccount } = useSWR('achievements_stats', fetchAchievementsStats)
+
+  const stats: UserStats | null = achievementData
+    ? { totalUniquePlants: achievementData.total_plants, longestStreakDays: achievementData.longest_streak_days, challengesCompleted: 0 }
+    : null
+
+  // Auto-unlock borders when achievements are earned
+  useEffect(() => {
+    if (!stats) return
+    const newlyUnlocked = getUnlockedBorders(stats)
+    if (newlyUnlocked.length === 0) return
+
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) return
+      supabase
+        .from('user_settings')
+        .select('unlocked_borders')
+        .eq('user_id', user.id)
+        .single()
+        .then(({ data: settings }) => {
+          const current: string[] = settings?.unlocked_borders ?? []
+          const toAdd = newlyUnlocked.filter(b => !current.includes(b))
+          if (toAdd.length === 0) return
+          supabase
+            .from('user_settings')
+            .update({ unlocked_borders: [...new Set([...current, ...toAdd])] })
+            .eq('user_id', user.id)
+            .then(() => mutateAccount())
+        })
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [achievementData])
 
   if (isLoading || !data) {
     return (
@@ -50,6 +107,20 @@ export default function StatsPage() {
           <div className="text-sm text-[#6B645C] mt-1">{t('ofTotal', { total: totalPlants })}</div>
         </div>
       </div>
+
+      {/* Achievements */}
+      {stats && (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-3">{tA('sectionTitle')}</h3>
+          <div className="rounded-[18px] bg-white p-5" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
+            <div className="flex flex-wrap gap-4">
+              {ACHIEVEMENTS.map(a => (
+                <AchievementBadge key={a.id} achievement={a} unlocked={a.check(stats)} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Weekly history */}
       <div>

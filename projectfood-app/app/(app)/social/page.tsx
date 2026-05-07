@@ -8,9 +8,9 @@ import { createClient } from '@/lib/supabase/client'
 import { searchUsers, fetchPendingRequests, fetchSocialFriends } from '@/lib/fetchers'
 import { Avatar } from '@/components/avatar'
 
-type SearchResult = { user_id: string; username: string; total_plants: number }
-type PendingRequest = { id: string; type: 'incoming' | 'outgoing'; other_user_id: string; username: string }
-type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number }
+type SearchResult = { user_id: string; username: string; total_plants: number; avatar_url?: string | null }
+type PendingRequest = { id: string; type: 'incoming' | 'outgoing'; other_user_id: string; username: string; avatar_url?: string | null }
+type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number; avatar_url?: string | null }
 
 type Tab = 'friends' | 'find'
 
@@ -113,7 +113,7 @@ export default function SocialPage() {
                   className="flex items-center gap-3 bg-white rounded-[18px] px-4 py-3"
                   style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
                 >
-                  <Avatar username={r.username} />
+                  <Avatar username={r.username} imageUrl={r.avatar_url} />
                   <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{r.username}</p>
                   <div className="flex gap-2 shrink-0">
                     <button
@@ -140,7 +140,7 @@ export default function SocialPage() {
                   className="flex items-center gap-3 bg-white rounded-[18px] px-4 py-3 opacity-70"
                   style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
                 >
-                  <Avatar username={r.username} />
+                  <Avatar username={r.username} imageUrl={r.avatar_url} />
                   <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{r.username}</p>
                   <button
                     onClick={() => removeRequest(r.id)}
@@ -176,7 +176,7 @@ export default function SocialPage() {
                   className="flex items-center gap-3 bg-white rounded-[18px] px-4 py-3"
                   style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
                 >
-                  <Avatar username={f.username} />
+                  <Avatar username={f.username} imageUrl={f.avatar_url} />
                   <div className="flex-1 min-w-0">
                     <p className="text-[15px] font-medium text-[#1F1B16] truncate">{f.username}</p>
                     <p className="text-[12px] text-[#A39B91]">{f.week_count} {t('plantsThisWeek')}</p>
@@ -222,7 +222,7 @@ export default function SocialPage() {
               className="flex items-center gap-3 bg-white rounded-[18px] px-4 py-3"
               style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
             >
-              <Avatar username={r.username} />
+              <Avatar username={r.username} imageUrl={r.avatar_url} />
               <div className="flex-1 min-w-0">
                 <p className="text-[15px] font-medium text-[#1F1B16] truncate">{r.username}</p>
                 <p className="text-[12px] text-[#A39B91]">{r.total_plants} {t('totalPlants')}</p>

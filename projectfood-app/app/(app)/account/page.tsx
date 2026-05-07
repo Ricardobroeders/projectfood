@@ -2,39 +2,18 @@
 
 import Link from 'next/link'
 import useSWR from 'swr'
-import { useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { ChevronRight, Bell } from 'lucide-react'
-import { fetchAccount, fetchAchievementsStats } from '@/lib/fetchers'
+import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { Avatar } from '@/components/avatar'
-import { ACHIEVEMENTS, getUnlockedBorders, type UserStats } from '@/lib/achievements'
+
 import { createClient } from '@/lib/supabase/client'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
-}
-
-function AchievementBadge({ achievement, unlocked }: { achievement: (typeof ACHIEVEMENTS)[0]; unlocked: boolean }) {
-  const bg = achievement.borderColor ? `${achievement.borderColor}25` : '#F4EFE8'
-  return (
-    <div className={`flex flex-col items-center gap-1.5 ${unlocked ? '' : 'opacity-35'}`}>
-      <div
-        className="size-14 rounded-[16px] flex items-center justify-center"
-        style={{ background: unlocked ? bg : '#F4EFE8' }}
-      >
-        {achievement.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={achievement.image} alt={achievement.label} className="size-10 object-contain" />
-        ) : (
-          <span className="text-2xl">{achievement.icon}</span>
-        )}
-      </div>
-      <p className="text-[11px] text-center text-[#6B645C] font-medium leading-tight w-16">{achievement.label}</p>
-    </div>
-  )
 }
 
 export default function AccountPage() {
@@ -43,29 +22,6 @@ export default function AccountPage() {
   const locale = useLocale()
 
   const { data, isLoading, mutate } = useSWR(['account', locale], fetchAccount, { keepPreviousData: true })
-  const { data: achievementData } = useSWR('achievements_stats', fetchAchievementsStats)
-
-  const stats: UserStats | null = achievementData
-    ? { totalUniquePlants: achievementData.total_plants, longestStreakDays: achievementData.longest_streak_days, challengesCompleted: 0 }
-    : null
-
-  const newlyUnlocked = stats ? getUnlockedBorders(stats) : []
-
-  // Auto-unlock borders when a new one is earned
-  useEffect(() => {
-    if (!data || !stats || newlyUnlocked.length === 0) return
-    const current = data.unlockedBorders ?? []
-    const toAdd = newlyUnlocked.filter(b => !current.includes(b))
-    if (toAdd.length === 0) return
-
-    const next = [...new Set([...current, ...toAdd])]
-    createClient()
-      .from('user_settings')
-      .update({ unlocked_borders: next })
-      .eq('user_id', data.userId)
-      .then(() => mutate())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [achievementData])
 
   const setActiveBorder = async (border: string) => {
     if (!data) return
@@ -88,7 +44,7 @@ export default function AccountPage() {
     )
   }
 
-  const { userId, name, email, avatar, username, currentLocale, notifSettings, unlockedBorders, activeBorder } = data
+  const { userId, name, email, username, currentLocale, notifSettings, unlockedBorders, activeBorder } = data
   const notifOn = notifSettings.notificationsEnabled
   const availableBorders = ['default', ...(unlockedBorders ?? [])]
 
@@ -99,14 +55,12 @@ export default function AccountPage() {
         className="rounded-[24px] bg-white p-6 flex items-center gap-4"
         style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
       >
-        {avatar ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={avatar} alt="" className="w-14 h-14 rounded-full object-cover" />
-        ) : (
-          <div className="w-14 h-14 rounded-full bg-[#FBEDB5] flex items-center justify-center text-2xl">
-            🥦
-          </div>
-        )}
+        <Avatar
+          username={username ?? name ?? '?'}
+          imageUrl={data.avatar}
+          size="lg"
+          border={activeBorder}
+        />
         <div className="min-w-0">
           {name && <p className="text-base font-bold text-[#1F1B16] truncate">{name}</p>}
           {email && <p className="text-sm text-[#6B645C] truncate">{email}</p>}
@@ -131,47 +85,30 @@ export default function AccountPage() {
         </div>
       </div>
 
-      {/* Achievements */}
-      {stats && (
+      {/* Avatar border picker — only shown once borders are unlocked */}
+      {availableBorders.length > 1 && username && (
         <div>
           <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
-            {tA('sectionTitle')}
+            {tA('borderPickerTitle')}
           </p>
           <div
-            className="rounded-[24px] bg-white p-5"
+            className="rounded-[24px] bg-white p-5 flex items-center gap-4"
             style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
           >
-            <div className="flex flex-wrap gap-4">
-              {ACHIEVEMENTS.map(a => (
-                <AchievementBadge key={a.id} achievement={a} unlocked={a.check(stats)} />
-              ))}
-            </div>
-
-            {/* Border picker — only shown when at least one border is unlocked */}
-            {availableBorders.length > 1 && username && (
-              <div className="mt-5 pt-5 border-t border-[#F4EFE8]">
-                <p className="text-[13px] font-semibold text-[#1F1B16] mb-3">{tA('borderPickerTitle')}</p>
-                <div className="flex items-center gap-3">
-                  {availableBorders.map(b => (
-                    <button
-                      key={b}
-                      onClick={() => setActiveBorder(b)}
-                      className="flex flex-col items-center gap-1.5"
-                    >
-                      <Avatar
-                        username={username}
-                        size="md"
-                        border={b}
-                        className={activeBorder === b ? 'ring-2 ring-offset-2 ring-[#1F1B16]' : ''}
-                      />
-                      <span className="text-[10px] text-[#A39B91]">
-                        {b === 'default' ? tA('borderDefault') : b}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+            {availableBorders.map(b => (
+              <button key={b} onClick={() => setActiveBorder(b)} className="flex flex-col items-center gap-1.5">
+                <Avatar
+                  username={username}
+                  imageUrl={data.avatar}
+                  size="md"
+                  border={b}
+                  className={activeBorder === b ? 'ring-2 ring-offset-2 ring-[#1F1B16]' : ''}
+                />
+                <span className="text-[10px] text-[#A39B91] capitalize">
+                  {b === 'default' ? tA('borderDefault') : b}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
       )}

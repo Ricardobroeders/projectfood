@@ -11,12 +11,14 @@ import {
   fetchFriendsLeaderboard,
   fetchFriendsStreakLeaderboard,
 } from '@/lib/fetchers'
+import { Avatar } from '@/components/avatar'
 
 type PlantsRow = {
   rank: number
   username: string
   unique_plants: number
   is_me: boolean
+  avatar_url?: string | null
 }
 
 type StreakRow = {
@@ -24,6 +26,7 @@ type StreakRow = {
   username: string
   streak: number
   is_me: boolean
+  avatar_url?: string | null
 }
 
 const MEDALS = ['🥇', '🥈', '🥉']
@@ -63,6 +66,7 @@ function LeaderRow({
   unit,
   youLabel,
   isMe,
+  avatarUrl,
 }: {
   rank: number
   username: string
@@ -70,23 +74,25 @@ function LeaderRow({
   unit: string
   youLabel: string
   isMe: boolean
+  avatarUrl?: string | null
 }) {
   const medal = MEDALS[rank - 1]
   return (
     <div
-      className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
+      className="flex items-center gap-3 px-4 py-3 rounded-[18px]"
       style={{
         background: isMe ? 'var(--color-selected)' : '#FFFFFF',
         boxShadow: isMe ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
       }}
     >
-      <div className="w-9 text-center shrink-0">
+      <div className="w-7 text-center shrink-0">
         {medal ? (
           <span className="text-xl">{medal}</span>
         ) : (
           <span className="text-[14px] font-mono text-[#A39B91]">{rank}</span>
         )}
       </div>
+      <Avatar username={username} imageUrl={avatarUrl} size="sm" />
       <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">
         {username}
         {isMe && (
@@ -191,6 +197,7 @@ export default function LeaderboardPage() {
                 unit={t('plants')}
                 youLabel={t('you')}
                 isMe={row.is_me}
+                avatarUrl={row.avatar_url}
               />
             ))}
             {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
@@ -208,6 +215,7 @@ export default function LeaderboardPage() {
                 unit={t('days')}
                 youLabel={t('you')}
                 isMe={row.is_me}
+                avatarUrl={row.avatar_url}
               />
             ))}
             {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
