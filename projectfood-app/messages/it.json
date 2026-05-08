@@ -175,6 +175,30 @@
     "placeholder": {
       "comingSoon": "Prossimamente",
       "workInProgress": "Questa pagina è in costruzione. Torna presto."
+    },
+    "about": {
+      "heroLabel": "La nostra storia",
+      "heroTitle": "Nato tra le verdure.",
+      "heroSubtitle": "Una storia di cibo, famiglia e trenta piante a settimana.",
+      "storyTitle": "Come è cominciato",
+      "story1": "Mio nonno aveva un negozio di alimentari a Tongelre, Eindhoven. Prima del negozio aveva un carretto con un cavallo, girava per il quartiere vendendo frutta e verdura porta a porta. Col tempo il carretto divenne un negozio. Mia madre ci crebbe. Anche i miei zii. Quando mio zio rilevò l'attività e si trasferì in una via più trafficata, ero appena nato. Esiste una foto di me, pochi giorni di vita, sdraiato tra la frutta sul bancone.",
+      "story2": "Da bambino ero sempre lì. Impilavo cassette vuote, andavo al mercato all'ingrosso, imparavo a riconoscere quali pomodori erano maturi. Da grande ho iniziato a cucinare, preparando piatti da vendere nel negozio, e da allora è nata una vera passione. Cucino ancora ogni giorno, sperimento, assaggio tutto.",
+      "discoveryTitle": "Poi abbiamo visto un documentario.",
+      "discovery1": "Circa due anni fa, io e la mia ragazza abbiamo visto un documentario sulla salute dell'intestino su Netflix. Il messaggio era sorprendente: non si tratta di mangiare gli alimenti giusti più spesso, si tratta di mangiare una grande varietà di piante. Più è, meglio è.",
+      "discovery2": "La scienza aveva senso. Migliaia di anni fa mangiavamo tutto ciò che trovavamo, radici, bacche, semi, foglie, tutto ciò che la natura offriva. Quella varietà nutriva un intero ecosistema di batteri nell'intestino. Batteri diversi per piante diverse. Insieme creano equilibrio. Le diete moderne, ricche di cibi processati, pane, carne e zucchero, hanno ridotto drasticamente questa varietà. I ricercatori suggeriscono ora un obiettivo semplice: 30 piante diverse a settimana. Frutta, verdura, cereali, legumi, noci, semi, erbe e spezie contano tutte.",
+      "callout": "30 piante a settimana. Supportato dalla scienza, reso un gioco.",
+      "appTitle": "Dovrebbe essere più facile. E più divertente.",
+      "app1": "Abbiamo preso la sfida sul serio. Due anni dopo stavo ancora tracciando le piante su un'app per note, e ho pensato: ci deve essere un modo migliore. E se ci fosse un'app che tracciasse la tua varietà, ti dicesse quali piante mancano, e ti desse ispirazione per la spesa della settimana? E se potessi sfidare amici e familiari a mangiare in modo più vario, trasformandolo in un vero gioco?",
+      "visionTitle": "Piante al primo posto. Non solo piante.",
+      "vision1": "Project Food non riguarda il mangiare perfettamente. Riguarda il mangiare con curiosità, scoprire verdure mai provate, aggiungere una nuova erba alla lista, costruire un'abitudine che ti faccia sentire davvero bene. Che tu sia cresciuto tra le verdure o le stia scoprendo solo ora, c'è sempre altro da esplorare.",
+      "openApp": "Apri l'app"
+    },
+    "contact": {
+      "title": "Vieni a salutarci.",
+      "subtitle": "Siamo su Discord, unisciti alla community.",
+      "body": "Fai domande, condividi cosa stai mangiando, suggerisci nuove piante o segui semplicemente. È il posto migliore per connettersi con altri utenti di Project Food e dare feedback direttamente al team.",
+      "cta": "Unisciti al nostro Discord",
+      "emailLabel": "Per richieste legali o formali:"
     }
   },
   "social": {

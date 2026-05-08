@@ -175,6 +175,30 @@
     "placeholder": {
       "comingSoon": "Coming soon",
       "workInProgress": "This page is being built. Check back soon."
+    },
+    "about": {
+      "heroLabel": "Our story",
+      "heroTitle": "Born between the vegetables.",
+      "heroSubtitle": "A story about food, family, and thirty plants a week.",
+      "storyTitle": "Where it started",
+      "story1": "My grandfather had a grocery store in Tongelre, Eindhoven. Before the store, he had a horse and cart, riding through the neighbourhood, selling fruits and vegetables door to door. Eventually the cart became a shop. My mother grew up working there. My uncles did too. By the time my uncle took over and moved to a busier street, I had just been born. There is a photo of me, days old, lying between the fruit on the counter.",
+      "story2": "Growing up, I was always around. Piling empty crates, loading the van for wholesale runs, learning which tomatoes were ripe. As I got older I started cooking, preparing dishes to sell in the store, and somewhere along the way that turned into a genuine love. I still cook every day, still experiment, still taste everything.",
+      "discoveryTitle": "Then we watched a documentary.",
+      "discovery1": "About two years ago, my girlfriend and I watched a gut health documentary on Netflix. The message was surprising: it's not about eating the right foods more often, it's about eating a wide variety of plants. As many different ones as possible.",
+      "discovery2": "The science made sense. Thousands of years ago we ate whatever we could find, roots, berries, seeds, leaves, everything the land offered. That variety fed an entire ecosystem of bacteria in the gut. Different bacteria for different plants. Together, they create balance. Modern diets, heavy on processed food, bread, meat, and sugar, have narrowed that variety dramatically. Researchers now suggest a simple target: 30 different plants per week. Fruits, vegetables, grains, legumes, nuts, seeds, herbs, and spices all count.",
+      "callout": "30 plants a week. Backed by science, made into a game.",
+      "appTitle": "It should be easier. And more fun.",
+      "app1": "We took the challenge seriously. Two years later, I was still tracking plants in a notes app and on scraps of paper, and I thought: there should be a better way. What if there was an app that tracked your variety for you, told you which plants you were missing, and gave you inspiration for next week's shopping? What if you could challenge friends and family to eat more diverse, and actually make a game of it?",
+      "visionTitle": "Plant-first. Not plant-only.",
+      "vision1": "Project Food isn't about eating perfectly. It's about eating curiously, exploring vegetables you've never tried, adding a new herb to your list, building a habit that makes you feel genuinely good. Whether you grew up between the vegetables or you're just discovering them, there's always more to explore.",
+      "openApp": "Open the app"
+    },
+    "contact": {
+      "title": "Come say hello.",
+      "subtitle": "We hang out on Discord, join the community.",
+      "body": "Ask questions, share what you're eating, suggest new plants, or just follow along. It's the best place to connect with other Project Food users and give feedback directly to the team.",
+      "cta": "Join our Discord",
+      "emailLabel": "For legal or formal enquiries:"
     }
   },
   "social": {

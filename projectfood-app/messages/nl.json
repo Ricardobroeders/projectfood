@@ -175,6 +175,30 @@
     "placeholder": {
       "comingSoon": "Binnenkort beschikbaar",
       "workInProgress": "Deze pagina wordt gebouwd. Kom binnenkort terug."
+    },
+    "about": {
+      "heroLabel": "Ons verhaal",
+      "heroTitle": "Geboren tussen de groenten.",
+      "heroSubtitle": "Een verhaal over eten, familie, en dertig planten per week.",
+      "storyTitle": "Hoe het begon",
+      "story1": "Mijn opa had een groentewinkel in Tongelre, Eindhoven. Voor de winkel had hij een paard en kar, daarmee reed hij door de buurt om fruit en groenten aan de deur te verkopen. Uiteindelijk werd de kar een winkel. Mijn moeder groeide er op. Mijn ooms ook. Tegen de tijd dat mijn oom de zaak overnam en verhuisde naar een drukkere straat, was ik net geboren. Er bestaat een foto van mij, een paar dagen oud, liggend tussen het fruit op de toonbank.",
+      "story2": "Als kind was ik altijd in de buurt. Lege kratten stapelen, meegaan naar de groothandel, leren welke tomaten rijp waren. Naarmate ik ouder werd begon ik te koken, gerechten voor de winkel, en ergens daarin groeide een echte liefde. Ik kook nog elke dag, experimenteer nog steeds, proef alles.",
+      "discoveryTitle": "Toen keken we een documentaire.",
+      "discovery1": "Zo'n twee jaar geleden keken mijn vriendin en ik een documentaire over darmgezondheid op Netflix. De boodschap was verrassend: het gaat niet om de juiste voeding vaker eten, het gaat om een grote verscheidenheid aan planten. Zo veel mogelijk.",
+      "discovery2": "De wetenschap klopte. Duizenden jaren geleden aten we wat we konden vinden, wortels, bessen, zaden, bladeren, alles wat de natuur bood. Die verscheidenheid voedde een heel ecosysteem aan bacteriën in de darm. Verschillende bacteriën voor verschillende planten. Samen creëren ze balans. Moderne voeding, veel bewerkt eten, brood, vlees en suiker, heeft die verscheidenheid drastisch verminderd. Onderzoekers stellen nu een eenvoudig doel: 30 verschillende planten per week. Fruit, groenten, granen, peulvruchten, noten, zaden, kruiden en specerijen tellen allemaal mee.",
+      "callout": "30 planten per week. Onderbouwd door wetenschap, gemaakt als een spel.",
+      "appTitle": "Het moet makkelijker. En leuker.",
+      "app1": "We namen de uitdaging serieus. Twee jaar later trackte ik nog steeds planten in een notitie-app, en ik dacht: dit kan beter. Wat als er een app was die je variatie bijhield, aangaf welke planten je miste, en inspiratie gaf voor de volgende boodschappen? Wat als je vrienden en familie kon uitdagen om meer divers te eten, en er echt een spel van kon maken?",
+      "visionTitle": "Plant-first. Niet plant-only.",
+      "vision1": "Project Food gaat niet over perfect eten. Het gaat over nieuwsgierig eten, groenten ontdekken die je nooit hebt geprobeerd, een nieuw kruid aan je lijst toevoegen, een gewoonte opbouwen die je echt goed laat voelen. Of je nu opgroeide tussen de groenten of ze nu pas ontdekt, er valt altijd meer te ontdekken.",
+      "openApp": "Open de app"
+    },
+    "contact": {
+      "title": "Kom gedag zeggen.",
+      "subtitle": "We zijn actief op Discord, doe mee met de community.",
+      "body": "Stel vragen, deel wat je eet, stel nieuwe planten voor of volg gewoon mee. Dit is de beste plek om andere Project Food-gebruikers te ontmoeten en direct feedback te geven aan het team.",
+      "cta": "Word lid van onze Discord",
+      "emailLabel": "Voor juridische of formele vragen:"
     }
   },
   "social": {
