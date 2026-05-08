@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { mutate } from 'swr'
+import Fuse from 'fuse.js'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { supabaseImageUrl } from '@/lib/supabase-image'
@@ -12,7 +13,7 @@ import Image from 'next/image'
 import { GoalModal } from './GoalModal'
 import { NotificationPermissionModal } from '@/components/NotificationPermissionModal'
 
-type Plant = { id: string; name: string; category: Category; image_url: string | null; is_superfood: boolean }
+type Plant = { id: string; name: string; aliases: string[]; category: Category; image_url: string | null; is_superfood: boolean }
 type Toast = { id: string; name: string }
 
 function currentWeekStart(): string {
@@ -69,7 +70,7 @@ export default function LogPage() {
     Promise.all([
       supabase
         .from('plant_translations')
-        .select('plant_id, name, plants!inner(id, category, is_active, image_url, is_superfood)')
+        .select('plant_id, name, plants!inner(id, category, is_active, image_url, is_superfood, search_aliases)')
         .eq('locale', locale)
         .eq('plants.is_active', true)
         .order('name'),
@@ -81,6 +82,7 @@ export default function LogPage() {
       const plantList: Plant[] = ((translationRows ?? []) as any[]).map((row) => ({
         id: row.plants.id,
         name: row.name,
+        aliases: (row.plants.search_aliases as string[]) ?? [],
         category: row.plants.category as Category,
         image_url: row.plants.image_url ?? null,
         is_superfood: row.plants.is_superfood ?? false,
@@ -99,13 +101,18 @@ export default function LogPage() {
   const hasFilter = debouncedQuery.trim() !== '' || activeCategory !== null
 
   const filtered = hasFilter
-    ? plants.filter((p) => {
-        const matchesCat = activeCategory ? p.category === activeCategory : true
-        const matchesQuery = debouncedQuery.trim()
-          ? p.name.toLowerCase().includes(debouncedQuery.toLowerCase())
-          : true
-        return matchesCat && matchesQuery
-      })
+    ? (() => {
+        let list = activeCategory ? plants.filter((p) => p.category === activeCategory) : plants
+        if (debouncedQuery.trim()) {
+          const fuse = new Fuse(list, {
+            keys: ['name', 'aliases'],
+            threshold: 0.35,
+            ignoreLocation: true,
+          })
+          list = fuse.search(debouncedQuery).map((r) => r.item)
+        }
+        return list
+      })()
     : []
 
   async function logPlant(plant: Plant) {
@@ -274,11 +281,6 @@ export default function LogPage() {
 
         {hasFilter && filtered.length === 0 && debouncedQuery.trim() && (
           <div className="pt-6">
-            <div className="text-center mb-6 text-[#A39B91]">
-              <div className="text-3xl mb-2">🔍</div>
-              <p className="text-sm">{t('noResults', { query })}</p>
-            </div>
-
             {submitStatus === 'done' ? (
               <div
                 className="rounded-[18px] p-5 text-center"
