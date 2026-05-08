@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
-import Image from 'next/image'
 import { MarketingLanguageSwitcher } from '@/components/marketing-language-switcher'
 import { getLocalizedHref } from '@/lib/marketing'
 
@@ -46,8 +45,7 @@ export default async function MarketingLayout({
         <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href={`/${locale}/`} className="flex items-center gap-2 shrink-0">
-            <Image src="/icons/logo.svg" alt="Project Food" width={26} height={26} />
-            <span className="font-bold text-[#1F1B16] text-[15px]">Project Food</span>
+            <span className="font-bold text-[#1F1B16] text-[18px]">Project Food</span>
           </Link>
 
           {/* Nav links (desktop) */}
@@ -88,7 +86,6 @@ export default async function MarketingLayout({
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <Image src="/icons/logo.svg" alt="Project Food" width={22} height={22} />
                 <span className="font-bold text-[#1F1B16]">Project Food</span>
               </div>
               <p className="text-sm text-[#6B645C]">{t('footer.tagline')}</p>
