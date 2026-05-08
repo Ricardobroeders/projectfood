@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import useSWR from 'swr'
 import { useTranslations } from 'next-intl'
 import { Search, Check, X } from 'lucide-react'
+import { useDebounce } from '@/lib/hooks'
 import { createClient } from '@/lib/supabase/client'
 import { searchUsers, fetchPendingRequests, fetchSocialFriends } from '@/lib/fetchers'
 import { Avatar } from '@/components/avatar'
@@ -18,14 +19,9 @@ export default function SocialPage() {
   const t = useTranslations('social')
   const [tab, setTab] = useState<Tab>('friends')
   const [query, setQuery] = useState('')
-  const [debouncedQuery, setDebouncedQuery] = useState('')
+  const debouncedQuery = useDebounce(query.trim(), 350)
   const [busy, setBusy] = useState<Set<string>>(new Set())
   const [requested, setRequested] = useState<Set<string>>(new Set())
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedQuery(query.trim()), 350)
-    return () => clearTimeout(timer)
-  }, [query])
 
   const { data: pending, mutate: mutatePending } = useSWR('pending_requests', fetchPendingRequests)
   const { data: friends, mutate: mutateFriends } = useSWR('social_friends', fetchSocialFriends)

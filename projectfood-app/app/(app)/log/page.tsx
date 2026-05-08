@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { mutate } from 'swr'
 import Fuse from 'fuse.js'
+import { useDebounce } from '@/lib/hooks'
 import { createClient } from '@/lib/supabase/client'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
 import { supabaseImageUrl } from '@/lib/supabase-image'
@@ -45,7 +46,7 @@ export default function LogPage() {
   const [showNotifNudge, setShowNotifNudge] = useState(false)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
-  const [debouncedQuery, setDebouncedQuery] = useState('')
+  const debouncedQuery = useDebounce(query, 300)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'sending' | 'done'>('idle')
   const inputRef = useRef<HTMLInputElement>(null)
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -53,11 +54,6 @@ export default function LogPage() {
   useEffect(() => {
     inputRef.current?.focus()
   }, [])
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedQuery(query), 300)
-    return () => clearTimeout(timer)
-  }, [query])
 
   useEffect(() => {
     const supabase = createClient()
@@ -100,20 +96,17 @@ export default function LogPage() {
 
   const hasFilter = debouncedQuery.trim() !== '' || activeCategory !== null
 
-  const filtered = hasFilter
-    ? (() => {
-        let list = activeCategory ? plants.filter((p) => p.category === activeCategory) : plants
-        if (debouncedQuery.trim()) {
-          const fuse = new Fuse(list, {
-            keys: ['name', 'aliases'],
-            threshold: 0.35,
-            ignoreLocation: true,
-          })
-          list = fuse.search(debouncedQuery).map((r) => r.item)
-        }
-        return list
-      })()
-    : []
+  const fuse = useMemo(
+    () => new Fuse(plants, { keys: ['name', 'aliases'], threshold: 0.35, ignoreLocation: true }),
+    [plants]
+  )
+
+  const filtered = useMemo(() => {
+    if (!hasFilter) return []
+    let list = debouncedQuery.trim() ? fuse.search(debouncedQuery).map((r) => r.item) : plants
+    if (activeCategory) list = list.filter((p) => p.category === activeCategory)
+    return list
+  }, [fuse, plants, debouncedQuery, activeCategory, hasFilter])
 
   async function logPlant(plant: Plant) {
     if (!userId) return
