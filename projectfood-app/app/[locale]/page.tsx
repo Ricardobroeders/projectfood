@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getAlternates } from '@/lib/marketing'
 
 export function generateStaticParams() {
@@ -63,9 +64,21 @@ export default async function MarketingHomePage({
   }
 
   const features = [
-    { icon: '🌿', title: t('feature1Title'), body: t('feature1Body') },
-    { icon: '📈', title: t('feature2Title'), body: t('feature2Body') },
-    { icon: '🛒', title: t('feature3Title'), body: t('feature3Body') },
+    {
+      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruits.png',
+      title: t('feature1Title'),
+      body: t('feature1Body'),
+    },
+    {
+      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/calendar.png',
+      title: t('feature2Title'),
+      body: t('feature2Body'),
+    },
+    {
+      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart-web.png',
+      title: t('feature3Title'),
+      body: t('feature3Body'),
+    },
   ]
 
   return (
@@ -102,15 +115,38 @@ export default async function MarketingHomePage({
         </div>
       </section>
 
+      {/* Fruit strip */}
+      <section className="w-full overflow-hidden">
+        <Image
+          src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruit-line-mobile.png"
+          alt=""
+          width={800}
+          height={200}
+          className="w-full h-auto md:hidden"
+          priority
+        />
+        <Image
+          src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruit-line-web.png"
+          alt=""
+          width={1440}
+          height={200}
+          className="w-full h-auto hidden md:block"
+          priority
+          unoptimized
+        />
+      </section>
+
       {/* Feature cards */}
       <section className="py-20 px-5">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {features.map(({ icon, title, body }) => (
+          {features.map(({ image, title, body }) => (
             <div
               key={title}
               className="bg-[#F4EFE8] rounded-[24px] p-8"
             >
-              <div className="text-3xl mb-4">{icon}</div>
+              <div className="mb-4">
+                <Image src={image} alt={title} width={64} height={64} />
+              </div>
               <h2 className="text-[17px] font-bold text-[#1F1B16] mb-2">{title}</h2>
               <p className="text-[15px] text-[#6B645C] leading-relaxed">{body}</p>
             </div>
