@@ -143,7 +143,30 @@
   },
   "login": {
     "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",
-    "continueWithGoogle": "Continua con Google"
+    "continueWithGoogle": "Continua con Google",
+    "orDivider": "oppure",
+    "emailPlaceholder": "Indirizzo email",
+    "passwordPlaceholder": "Password",
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "forgotPassword": "Password dimenticata?",
+    "forgotPasswordTitle": "Reimposta la password",
+    "sendResetLink": "Invia link di reset",
+    "checkYourInbox": "Controlla la tua casella",
+    "checkYourInboxBody": "Abbiamo inviato un link di conferma a {email}. Clicca per attivare il tuo account.",
+    "resetLinkSent": "Link di reset inviato",
+    "resetLinkSentBody": "Controlla {email} per trovare il link per reimpostare la password.",
+    "backToSignIn": "Torna all'accesso",
+    "resetPasswordTitle": "Scegli una nuova password",
+    "newPasswordPlaceholder": "Nuova password",
+    "confirmPasswordPlaceholder": "Conferma password",
+    "setNewPassword": "Imposta nuova password",
+    "saving": "Salvataggio…",
+    "errorInvalidCredentials": "Email o password non corretti.",
+    "errorEmailInUse": "Esiste già un account con questa email.",
+    "errorPasswordMismatch": "Le password non coincidono.",
+    "errorPasswordTooShort": "La password deve contenere almeno 6 caratteri.",
+    "errorGeneric": "Qualcosa è andato storto. Riprova."
   },
   "marketing": {
     "nav": {
