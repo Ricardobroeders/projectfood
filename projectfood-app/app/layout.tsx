@@ -13,7 +13,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: 'Project Food',
-  description: 'Track 30 plants a week. Good gut, good life.',
+  description: 'Track 30 plants a week. Healthy gut, happy life.',
   manifest: '/manifest.json',
   appleWebApp: { capable: true, statusBarStyle: 'default', title: 'Project Food' },
 }

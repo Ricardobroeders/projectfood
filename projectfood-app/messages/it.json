@@ -142,7 +142,7 @@
     "skip": "Salta per ora"
   },
   "login": {
-    "tagline": "Traccia 30 piante a settimana. Intestino sano, vita sana.",
+    "tagline": "Traccia 30 piante a settimana. Intestino sano, vita felice.",
     "continueWithGoogle": "Continua con Google",
     "orDivider": "oppure",
     "emailPlaceholder": "Indirizzo email",
@@ -178,7 +178,7 @@
     },
     "home": {
       "heroTitle": "Traccia 30 piante a settimana.",
-      "heroSubtitle": "Intestino sano, vita sana.",
+      "heroSubtitle": "Intestino sano, vita felice.",
       "heroBody": "La scienza mostra che mangiare 30 piante diverse a settimana migliora la flora intestinale. Project Food rende il monitoraggio semplice.",
       "openApp": "Apri l'app",
       "feature1Title": "Registra tutto",
@@ -193,7 +193,7 @@
       "contact": "Contatto",
       "terms": "Termini",
       "privacy": "Privacy",
-      "tagline": "Intestino sano, vita sana."
+      "tagline": "Intestino sano, vita felice."
     },
     "placeholder": {
       "comingSoon": "Prossimamente",
