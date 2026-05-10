@@ -272,43 +272,6 @@ export default function LogPage() {
           </div>
         )}
 
-        {hasFilter && filtered.length === 0 && debouncedQuery.trim() && (
-          <div className="pt-6">
-            {submitStatus === 'done' ? (
-              <div
-                className="rounded-[18px] p-5 text-center"
-                style={{ background: '#DDEACB' }}
-              >
-                <div className="text-2xl mb-2">🌱</div>
-                <p className="text-[15px] font-semibold text-[#2D4A22]">{t('suggestionSent')}</p>
-                <p className="text-[13px] text-[#4F7A3D] mt-1">{t('suggestionSentSub')}</p>
-              </div>
-            ) : (
-              <div
-                className="rounded-[18px] p-5"
-                style={{ background: '#FFFFFF', boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
-              >
-                <p className="text-[16px] font-semibold text-[#1F1B16] mb-1">
-                  {t('missingTitle')}
-                </p>
-                <p className="text-[15px] text-[#6B645C] mb-4">
-                  {t('missingBody', { query })}
-                </p>
-
-                <button
-                  onClick={submitSuggestion}
-                  disabled={submitStatus === 'sending'}
-                  className="w-full h-11 rounded-full flex items-center justify-center gap-2 text-[14px] font-semibold transition-opacity"
-                  style={{ background: '#F5C518', color: '#1F1B16', opacity: submitStatus === 'sending' ? 0.6 : 1 }}
-                >
-                  <Send size={15} />
-                  {submitStatus === 'sending' ? t('sending') : t('submitSuggestion')}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-
         {hasFilter && filtered.length === 0 && !debouncedQuery.trim() && (
           <div className="text-center py-16 text-[#A39B91]">
             <div className="text-3xl mb-2">🔍</div>
@@ -377,6 +340,42 @@ export default function LogPage() {
             </button>
           )
         })}
+
+        {debouncedQuery.trim() && (
+          <div className="pt-2">
+            {submitStatus === 'done' ? (
+              <div
+                className="rounded-[18px] p-5 text-center"
+                style={{ background: '#DDEACB' }}
+              >
+                <div className="text-2xl mb-2">🌱</div>
+                <p className="text-[15px] font-semibold text-[#2D4A22]">{t('suggestionSent')}</p>
+                <p className="text-[13px] text-[#4F7A3D] mt-1">{t('suggestionSentSub')}</p>
+              </div>
+            ) : (
+              <div
+                className="rounded-[18px] p-5"
+                style={{ background: '#FFFFFF', boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+              >
+                <p className="text-[16px] font-semibold text-[#1F1B16] mb-1">
+                  {t('missingTitle')}
+                </p>
+                <p className="text-[15px] text-[#6B645C] mb-4">
+                  {t('missingBody', { query })}
+                </p>
+                <button
+                  onClick={submitSuggestion}
+                  disabled={submitStatus === 'sending'}
+                  className="w-full h-11 rounded-full flex items-center justify-center gap-2 text-[14px] font-semibold transition-opacity"
+                  style={{ background: '#F5C518', color: '#1F1B16', opacity: submitStatus === 'sending' ? 0.6 : 1 }}
+                >
+                  <Send size={15} />
+                  {submitStatus === 'sending' ? t('sending') : t('submitSuggestion')}
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <GoalModal open={goalModal} onClose={() => setGoalModal(false)} />
