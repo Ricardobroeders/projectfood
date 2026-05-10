@@ -19,7 +19,7 @@ export function BottomNav() {
   const t = useTranslations('nav')
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 h-16 bg-white flex items-center" style={{ boxShadow: '0 -2px 6px rgba(31,27,22,0.04)' }}>
+    <nav className="fixed bottom-0 inset-x-0 h-16 bg-white flex items-center z-10" style={{ boxShadow: '0 -2px 6px rgba(31,27,22,0.04)' }}>
       {tabs.map(({ href, key, Icon }) => {
         const active = pathname.startsWith(href)
         return (
