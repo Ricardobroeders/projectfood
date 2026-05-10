@@ -106,12 +106,20 @@ export default async function MarketingHomePage({
           <p className="text-[17px] text-[#6B645C] leading-relaxed mb-10 max-w-lg mx-auto">
             {t('heroBody')}
           </p>
-          <Link
-            href="/login"
-            className="inline-block bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors"
-          >
-            {t('openApp')}
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/login"
+              className="inline-block bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors"
+            >
+              {t('openApp')}
+            </Link>
+            <Link
+              href={`/${locale}/about`}
+              className="inline-block bg-white text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors shadow-sm hover:shadow-md"
+            >
+              {t('whyWeDoThis')}
+            </Link>
+          </div>
         </div>
       </section>
 

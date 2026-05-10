@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import Image from 'next/image'
+import { MarketingHeader } from '@/components/marketing-header'
 import { MarketingLanguageSwitcher } from '@/components/marketing-language-switcher'
 import { getLocalizedHref } from '@/lib/marketing'
 
@@ -39,51 +40,16 @@ export default async function MarketingLayout({
   return (
     <div className="flex flex-col min-h-screen bg-white font-sans antialiased">
       {/* Header */}
-      <header
-        className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm"
-        style={{ boxShadow: '0 1px 0 rgba(31,27,22,0.06)' }}
-      >
-        <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
-          {/* Logo */}
-          <Link href={`/${locale}/`} className="flex items-center gap-2 shrink-0">
-            <Image
-              src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/logo.png"
-              alt="Project Food"
-              width={28}
-              height={28}
-              className="shrink-0 rounded-xs"
-            />
-            <span className="font-bold text-[#1F1B16] text-[18px]">Project Food</span>
-          </Link>
-
-          {/* Nav links (desktop) */}
-          <nav className="hidden md:flex items-center gap-6 text-sm text-[#6B645C]">
-            <Link
-              href={getLocalizedHref('/about', locale)}
-              className="hover:text-[#1F1B16] transition-colors"
-            >
-              {t('nav.about')}
-            </Link>
-            <Link
-              href={getLocalizedHref('/recipes', locale)}
-              className="hover:text-[#1F1B16] transition-colors"
-            >
-              {t('nav.recipes')}
-            </Link>
-          </nav>
-
-          {/* Right: lang switcher + CTA */}
-          <div className="flex items-center gap-3">
-            <MarketingLanguageSwitcher currentLocale={locale} />
-            <Link
-              href="/login"
-              className="bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-semibold text-sm px-4 py-2 rounded-full transition-colors whitespace-nowrap"
-            >
-              {t('nav.openApp')}
-            </Link>
-          </div>
-        </div>
-      </header>
+      <MarketingHeader
+        locale={locale}
+        labels={{
+          home: t('nav.home'),
+          about: t('nav.about'),
+          recipes: t('nav.recipes'),
+          contact: t('nav.contact'),
+          openApp: t('nav.openApp'),
+        }}
+      />
 
       {/* Page content */}
       <main className="flex-1">{children}</main>
@@ -112,8 +78,9 @@ export default async function MarketingLayout({
               <Link href={getLocalizedHref('/privacy', locale)} className="hover:text-[#1F1B16] transition-colors">{t('footer.privacy')}</Link>
             </nav>
           </div>
-          <div className="mt-8 pt-6 border-t border-[#E8E0D5] text-xs text-[#A39B91]">
-            © {new Date().getFullYear()} Project Food
+          <div className="mt-8 pt-6 border-t border-[#E8E0D5] flex items-center justify-between gap-4">
+            <span className="text-xs text-[#A39B91]">© {new Date().getFullYear()} Project Food</span>
+            <MarketingLanguageSwitcher currentLocale={locale} />
           </div>
         </div>
       </footer>
