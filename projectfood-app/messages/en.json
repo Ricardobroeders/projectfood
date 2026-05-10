@@ -221,7 +221,17 @@
       "subtitle": "We hang out on Discord, join the community.",
       "body": "Ask questions, share what you're eating, suggest new plants, or just follow along. It's the best place to connect with other Project Food users and give feedback directly to the team.",
       "cta": "Join our Discord",
-      "emailLabel": "For legal or formal enquiries:"
+      "emailLabel": "For legal or formal enquiries:",
+      "form": {
+        "heading": "Send us a message",
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "Your email",
+        "messagePlaceholder": "Your message",
+        "submit": "Send message",
+        "sending": "Sending…",
+        "success": "Message sent! We'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+      }
     },
     "terms": {
       "title": "Terms of Service",

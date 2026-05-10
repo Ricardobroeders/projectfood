@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { getAlternates } from '@/lib/marketing'
+import { ContactForm } from './ContactForm'
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
@@ -71,6 +72,16 @@ export default async function ContactPage({
               info@projectfood.dev
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* Contact form */}
+      <section className="bg-[#F4EFE8] py-20 px-5">
+        <div className="max-w-lg mx-auto">
+          <h2 className="text-2xl font-extrabold text-[#1F1B16] mb-8 text-center">
+            {t('form.heading')}
+          </h2>
+          <ContactForm />
         </div>
       </section>
     </>

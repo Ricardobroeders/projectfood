@@ -221,7 +221,17 @@
       "subtitle": "We zijn actief op Discord, doe mee met de community.",
       "body": "Stel vragen, deel wat je eet, stel nieuwe planten voor of volg gewoon mee. Dit is de beste plek om andere Project Food-gebruikers te ontmoeten en direct feedback te geven aan het team.",
       "cta": "Word lid van onze Discord",
-      "emailLabel": "Voor juridische of formele vragen:"
+      "emailLabel": "Voor juridische of formele vragen:",
+      "form": {
+        "heading": "Stuur ons een bericht",
+        "namePlaceholder": "Jouw naam",
+        "emailPlaceholder": "Jouw e-mailadres",
+        "messagePlaceholder": "Jouw bericht",
+        "submit": "Bericht sturen",
+        "sending": "Bezig met verzenden…",
+        "success": "Bericht verzonden! We nemen snel contact op.",
+        "error": "Er is iets misgegaan. Probeer het opnieuw."
+      }
     },
     "terms": {
       "title": "Gebruiksvoorwaarden",
