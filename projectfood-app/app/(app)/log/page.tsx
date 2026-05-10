@@ -59,22 +59,24 @@ export default function LogPage() {
     const supabase = createClient()
     const locale = getLocaleFromCookie()
 
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    ;(async () => {
+      const { data: { user } } = await supabase.auth.getUser()
       if (user) setUserId(user.id)
-    })
 
-    Promise.all([
-      supabase
-        .from('plant_translations')
-        .select('plant_id, name, plants!inner(id, category, is_active, image_url, is_superfood, search_aliases)')
-        .eq('locale', locale)
-        .eq('plants.is_active', true)
-        .order('name'),
-      supabase
-        .from('plant_logs')
-        .select('plant_id')
-        .eq('logged_on', new Date().toLocaleDateString('en-CA')),
-    ]).then(([{ data: translationRows }, { data: logs }]) => {
+      const [{ data: translationRows }, { data: logs }] = await Promise.all([
+        supabase
+          .from('plant_translations')
+          .select('plant_id, name, plants!inner(id, category, is_active, image_url, is_superfood, search_aliases)')
+          .eq('locale', locale)
+          .eq('plants.is_active', true)
+          .order('name'),
+        supabase
+          .from('plant_logs')
+          .select('plant_id')
+          .eq('logged_on', new Date().toLocaleDateString('en-CA'))
+          .eq('user_id', user?.id ?? ''),
+      ])
+
       const plantList: Plant[] = ((translationRows ?? []) as any[]).map((row) => ({
         id: row.plants.id,
         name: row.name,
@@ -86,7 +88,7 @@ export default function LogPage() {
       plantList.sort((a, b) => a.name.localeCompare(b.name))
       setPlants(plantList)
       if (logs) setLoggedToday(new Set(logs.map((r) => r.plant_id)))
-    })
+    })()
   }, [])
 
   // Reset submission state when query changes
@@ -183,6 +185,7 @@ export default function LogPage() {
         .delete()
         .eq('plant_id', plant.id)
         .eq('logged_on', today)
+        .eq('user_id', userId ?? '')
       if (error) return
 
       setLoggedToday((prev) => {
