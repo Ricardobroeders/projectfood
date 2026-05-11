@@ -12,6 +12,7 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://projectfood.dev'),
   title: 'Project Food',
   description: 'Track 30 plants a week. Healthy gut, happy life.',
   manifest: '/manifest.json',
