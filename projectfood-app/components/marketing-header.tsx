@@ -34,10 +34,11 @@ export function MarketingHeader({ locale, labels }: Props) {
             onClick={() => setOpen(false)}
           >
             <Image
-              src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/logo.png"
+              src="/images/logo.png"
               alt="Project Food"
               width={28}
               height={28}
+              unoptimized
               className="shrink-0 rounded-xs"
             />
             <span className="font-bold text-[#1F1B16] text-[18px]">Project Food</span>

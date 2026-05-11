@@ -65,8 +65,8 @@ export const ACHIEVEMENTS: Achievement[] = [
 ]
 
 export const BORDER_IMAGES: Record<string, string> = {
-  silver: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/borders/silver-border.png',
-  gold:   'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/borders/gold-border.png',
+  silver: '/images/silver-border.png',
+  gold:   '/images/gold-border.png',
 }
 
 // Fallback tint color per border ID (used for achievement badge backgrounds)

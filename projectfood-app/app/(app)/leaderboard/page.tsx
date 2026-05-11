@@ -118,10 +118,14 @@ export default function LeaderboardPage() {
   const [scope, setScope] = useState<'friends' | 'global'>('global')
   const [tab, setTab] = useState<'plants' | 'streaks'>('plants')
 
-  const { data: plantRows, isLoading: loadingPlants } = useSWR('leaderboard', fetchLeaderboard, { keepPreviousData: true })
-  const { data: streakRows, isLoading: loadingStreaks } = useSWR('leaderboard_streaks', fetchStreakLeaderboard, { keepPreviousData: true })
-  const { data: friendPlantRows, isLoading: loadingFriendPlants } = useSWR('leaderboard_friends', fetchFriendsLeaderboard, { keepPreviousData: true })
-  const { data: friendStreakRows, isLoading: loadingFriendStreaks } = useSWR('leaderboard_friends_streaks', fetchFriendsStreakLeaderboard, { keepPreviousData: true })
+  const { data: plantRows, isLoading: loadingPlants } = useSWR(
+    scope === 'global'  && tab === 'plants'  ? 'leaderboard'                 : null, fetchLeaderboard,        { keepPreviousData: true })
+  const { data: streakRows, isLoading: loadingStreaks } = useSWR(
+    scope === 'global'  && tab === 'streaks' ? 'leaderboard_streaks'         : null, fetchStreakLeaderboard,  { keepPreviousData: true })
+  const { data: friendPlantRows, isLoading: loadingFriendPlants } = useSWR(
+    scope === 'friends' && tab === 'plants'  ? 'leaderboard_friends'         : null, fetchFriendsLeaderboard, { keepPreviousData: true })
+  const { data: friendStreakRows, isLoading: loadingFriendStreaks } = useSWR(
+    scope === 'friends' && tab === 'streaks' ? 'leaderboard_friends_streaks' : null, fetchFriendsStreakLeaderboard, { keepPreviousData: true })
 
   const isLoading = scope === 'friends'
     ? (tab === 'plants' ? loadingFriendPlants : loadingFriendStreaks)

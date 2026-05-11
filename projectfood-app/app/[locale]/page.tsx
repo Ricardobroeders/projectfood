@@ -65,17 +65,17 @@ export default async function MarketingHomePage({
 
   const features = [
     {
-      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruits.png',
+      image: '/images/fruits.png',
       title: t('feature1Title'),
       body: t('feature1Body'),
     },
     {
-      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/calendar.png',
+      image: '/images/calendar.png',
       title: t('feature2Title'),
       body: t('feature2Body'),
     },
     {
-      image: 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart-web.png',
+      image: '/images/shopping-cart-web.png',
       title: t('feature3Title'),
       body: t('feature3Body'),
     },
@@ -126,15 +126,16 @@ export default async function MarketingHomePage({
       {/* Fruit strip */}
       <section className="w-full overflow-hidden">
         <Image
-          src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruit-line-mobile.png"
+          src="/images/fruit-line-mobile.png"
           alt=""
           width={800}
           height={200}
           className="w-full h-auto md:hidden"
           priority
+          unoptimized
         />
         <Image
-          src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/fruit-line-web.png"
+          src="/images/fruit-line-web.png"
           alt=""
           width={1440}
           height={200}
@@ -153,7 +154,7 @@ export default async function MarketingHomePage({
               className="bg-[#F4EFE8] rounded-[24px] p-8"
             >
               <div className="mb-4">
-                <Image src={image} alt={title} width={64} height={64} />
+                <Image src={image} alt={title} width={64} height={64} unoptimized />
               </div>
               <h2 className="text-[17px] font-bold text-[#1F1B16] mb-2">{title}</h2>
               <p className="text-[15px] text-[#6B645C] leading-relaxed">{body}</p>

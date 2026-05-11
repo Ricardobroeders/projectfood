@@ -61,10 +61,11 @@ export default async function MarketingLayout({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <Image
-                  src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/logo.png"
+                  src="/images/logo.png"
                   alt="Project Food"
                   width={36}
                   height={36}
+                  unoptimized
                   className="shrink-0 rounded-xs"
                 />
                 <span className="font-bold text-[#1F1B16]">Project Food</span>

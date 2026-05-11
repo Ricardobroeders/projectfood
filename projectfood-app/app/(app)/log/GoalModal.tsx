@@ -33,7 +33,7 @@ export function GoalModal({ open, onClose }: Props) {
       >
         <div className="flex justify-center">
           <Image
-            src="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images/shopping-cart.png?v=2"
+            src="/images/shopping-cart.png"
             alt="Shopping cart"
             width={120}
             height={120}
