@@ -36,7 +36,7 @@ export async function middleware(request: NextRequest) {
   if (pathname === '/') {
     const locale = detectLocale(request)
     const url = request.nextUrl.clone()
-    url.pathname = `/${locale}/`
+    url.pathname = `/${locale}`
     return NextResponse.redirect(url)
   }
 

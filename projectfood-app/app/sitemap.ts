@@ -4,7 +4,7 @@ const BASE = 'https://projectfood.dev'
 const LOCALES = ['en', 'nl', 'it']
 
 const PAGES: Record<string, Record<string, string>> = {
-  '/':        { en: '/en/',         nl: '/nl/',             it: '/it/'          },
+  '/':        { en: '/en',          nl: '/nl',              it: '/it'           },
   '/about':   { en: '/en/about',    nl: '/nl/over',         it: '/it/chi-siamo' },
   '/contact': { en: '/en/contact',  nl: '/nl/contact',      it: '/it/contatto'  },
   '/terms':   { en: '/en/terms',    nl: '/nl/voorwaarden',  it: '/it/termini'   },
