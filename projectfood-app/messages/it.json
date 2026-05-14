@@ -327,13 +327,14 @@
     "borderDefault": "Nessuno"
   },
   "profile": {
-    "back": "Home",
+    "back": "Indietro",
     "notFound": "Utente non trovato",
     "totalPlants": "Totale",
     "thisWeek": "Questa settimana",
     "streak": "Serie",
     "days": "giorni",
     "weekProgress": "Progressi della settimana",
+    "dailyHistory": "Ultimi 30 giorni",
     "achievements": "Traguardi"
   },
   "categories": {

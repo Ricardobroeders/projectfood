@@ -1,13 +1,14 @@
 'use client'
 
 import { use } from 'react'
-import Link from 'next/link'
 import useSWR from 'swr'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { ArrowLeft } from 'lucide-react'
-import { fetchUserProfile } from '@/lib/fetchers'
+import { fetchUserProfile, fetchUserDailyHistory } from '@/lib/fetchers'
 import { Avatar } from '@/components/avatar'
 import { ACHIEVEMENTS, type UserStats, type Achievement } from '@/lib/achievements'
+import { WeeklyHistoryChart } from '@/components/weekly-history-chart'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[18px] ${className ?? ''}`} />
@@ -45,9 +46,14 @@ function AchievementBadge({ achievement, unlocked }: { achievement: Achievement;
 
 export default function UserProfilePage({ params }: { params: Promise<{ username: string }> }) {
   const { username } = use(params)
+  const router = useRouter()
   const t = useTranslations('profile')
 
   const { data, isLoading } = useSWR(['profile', username], () => fetchUserProfile(username))
+  const { data: dailyHistory, isLoading: loadingHistory } = useSWR(
+    ['daily-history', username],
+    () => fetchUserDailyHistory(username)
+  )
 
   const stats: UserStats | null = data
     ? { totalUniquePlants: data.total_plants, longestStreakDays: data.longest_streak_days, challengesCompleted: 0 }
@@ -55,10 +61,10 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
 
   return (
     <div className="px-5 pt-4 pb-8 space-y-5">
-      <Link href="/home" className="inline-flex items-center gap-1.5 text-[13px] text-[#A39B91]">
+      <button onClick={() => router.back()} className="inline-flex items-center gap-1.5 text-[13px] text-[#A39B91]">
         <ArrowLeft className="size-4" />
         {t('back')}
-      </Link>
+      </button>
 
       {isLoading && (
         <div className="space-y-4">
@@ -107,6 +113,17 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
               />
             </div>
           </div>
+
+          {/* Daily history chart */}
+          {loadingHistory && <Skeleton className="h-[120px]" />}
+          {!loadingHistory && dailyHistory && dailyHistory.some(d => d.variety > 0) && (
+            <div className="rounded-[18px] bg-white p-4" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
+              <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3">
+                {t('dailyHistory')}
+              </p>
+              <WeeklyHistoryChart data={dailyHistory} />
+            </div>
+          )}
 
           {/* Achievement badges */}
           <div>

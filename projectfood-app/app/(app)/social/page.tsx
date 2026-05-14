@@ -7,6 +7,7 @@ import { Search, Check, X } from 'lucide-react'
 import { useDebounce } from '@/lib/hooks'
 import { createClient } from '@/lib/supabase/client'
 import { searchUsers, fetchPendingRequests, fetchSocialFriends } from '@/lib/fetchers'
+import Link from 'next/link'
 import { Avatar } from '@/components/avatar'
 
 type SearchResult = { user_id: string; username: string; total_plants: number; avatar_url?: string | null }
@@ -167,8 +168,9 @@ export default function SocialPage() {
               </div>
             ) : (
               (friends ?? []).map((f: FriendStats) => (
-                <div
+                <Link
                   key={f.user_id}
+                  href={`/u/${f.username}`}
                   className="flex items-center gap-3 bg-white rounded-[18px] px-4 py-3"
                   style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
                 >
@@ -180,7 +182,7 @@ export default function SocialPage() {
                   <span className="text-[13px] font-mono text-[#A39B91] shrink-0">
                     {f.day_streak}d
                   </span>
-                </div>
+                </Link>
               ))
             )}
           </div>

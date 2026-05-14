@@ -81,8 +81,11 @@ function LeaderRow({
   border?: string | null
 }) {
   const medal = MEDALS[rank - 1]
+  const Row = isMe ? 'div' : Link
+  const rowProps = isMe ? {} : { href: `/u/${username}` }
   return (
-    <div
+    <Row
+      {...(rowProps as object)}
       className="flex items-center gap-3 px-4 py-3 rounded-[18px]"
       style={{
         background: isMe ? 'var(--color-selected)' : '#FFFFFF',
@@ -109,7 +112,7 @@ function LeaderRow({
         {value}
         <span className="text-[#A39B91] text-[12px]"> {unit}</span>
       </span>
-    </div>
+    </Row>
   )
 }
 

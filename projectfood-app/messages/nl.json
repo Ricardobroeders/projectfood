@@ -327,13 +327,14 @@
     "borderDefault": "Geen"
   },
   "profile": {
-    "back": "Home",
+    "back": "Terug",
     "notFound": "Gebruiker niet gevonden",
     "totalPlants": "Totaal ooit",
     "thisWeek": "Deze week",
     "streak": "Reeks",
     "days": "dagen",
     "weekProgress": "Voortgang deze week",
+    "dailyHistory": "Laatste 30 dagen",
     "achievements": "Prestaties"
   },
   "categories": {

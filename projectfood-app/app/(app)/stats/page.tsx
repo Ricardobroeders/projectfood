@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-import { fetchStats, fetchAchievementsStats, type WeekRow, type CatRow } from '@/lib/fetchers'
+import { fetchStats, fetchAchievementsStats, fetchOwnDailyHistory, type WeekRow, type CatRow } from '@/lib/fetchers'
 import { ACHIEVEMENTS, getUnlockedBorders, type UserStats, type Achievement } from '@/lib/achievements'
 import { createClient } from '@/lib/supabase/client'
+import { WeeklyHistoryChart } from '@/components/weekly-history-chart'
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
@@ -40,6 +41,7 @@ export default function StatsPage() {
 
   const { data, isLoading } = useSWR('stats', fetchStats, { keepPreviousData: true })
   const { data: achievementData, mutate: mutateAccount } = useSWR('achievements_stats', fetchAchievementsStats)
+  const { data: ownHistory } = useSWR('own_daily_history', fetchOwnDailyHistory)
 
   const stats: UserStats | null = achievementData
     ? { totalUniquePlants: achievementData.total_plants, longestStreakDays: achievementData.longest_streak_days, challengesCompleted: 0 }
@@ -108,23 +110,14 @@ export default function StatsPage() {
         </div>
       </div>
 
-      {/* Achievements */}
-      {stats && (
-        <div>
-          <h3 className="text-base font-bold text-[#1F1B16] mb-3">{tA('sectionTitle')}</h3>
-          <div className="rounded-[18px] bg-white p-5" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
-            <div className="flex flex-wrap gap-4">
-              {ACHIEVEMENTS.map(a => (
-                <AchievementBadge key={a.id} achievement={a} unlocked={a.check(stats)} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Weekly history */}
       <div>
         <h3 className="text-base font-bold text-[#1F1B16] mb-3">{t('weeklyHistory')}</h3>
+        {ownHistory && ownHistory.some(w => w.variety > 0) && (
+          <div className="rounded-[18px] bg-white p-4 mb-3" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
+            <WeeklyHistoryChart data={ownHistory} />
+          </div>
+        )}
         <div className="rounded-[18px] bg-white p-4 space-y-3" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
           {weeks.map((w) => {
             const start = new Date(w.week_start + 'T12:00:00')
@@ -190,6 +183,20 @@ export default function StatsPage() {
           })}
         </div>
       </div>
+
+      {/* Achievements */}
+      {stats && (
+        <div>
+          <h3 className="text-base font-bold text-[#1F1B16] mb-3">{tA('sectionTitle')}</h3>
+          <div className="rounded-[18px] bg-white p-5" style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}>
+            <div className="flex flex-wrap gap-4">
+              {ACHIEVEMENTS.map(a => (
+                <AchievementBadge key={a.id} achievement={a} unlocked={a.check(stats)} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

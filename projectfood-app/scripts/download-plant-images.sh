@@ -84,6 +84,7 @@ FILES=(
   garlic.png
   gherkin.png
   ginger.png
+  golden-kiwi.png
   gooseberry.png
   grape.png
   grapefruit.png
@@ -115,10 +116,12 @@ FILES=(
   mung-bean-sprouts.png
   mung-beans.png
   mushroom.png
+  mustard-seed.png
   napa-cabbage.png
   nigella-seeds.png
   oats.png
   okra.png
+  olive.png
   onion.png
   orange.png
   oregano.png

@@ -171,6 +171,18 @@ export async function fetchUserProfile(username: string) {
   return (data as any[])?.[0] ?? null
 }
 
+export async function fetchUserDailyHistory(username: string) {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('user_daily_history', { p_username: username, p_days: 30 })
+  return (data ?? []) as { date: string; variety: number }[]
+}
+
+export async function fetchOwnDailyHistory() {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('daily_history', { p_days: 30 })
+  return (data ?? []) as { date: string; variety: number }[]
+}
+
 export async function fetchAdvice() {
   const supabase = createClient()
   const { data } = await supabase
