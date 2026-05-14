@@ -28,7 +28,7 @@ export async function fetchHome([, locale]: [string, string]) {
   ] = await Promise.all([
     supabase.rpc('current_week_plants'),
     supabase.rpc('weekly_variety'),
-    supabase.from('plant_logs').select('plants(id, name, category)').eq('logged_on', today).eq('user_id', userId),
+    supabase.from('plant_logs').select('plants(id, name, category, image_url)').eq('logged_on', today).eq('user_id', userId),
     supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
     supabase.from('weekly_advice').select('advice').eq('week_start', weekStart).maybeSingle(),
   ])

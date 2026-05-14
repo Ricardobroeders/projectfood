@@ -260,7 +260,7 @@ export default function LogPage() {
                   : { background: c.bg, color: c.fg }
               }
             >
-              {c.emoji} {tCat(cat)}
+              {tCat(cat)}
             </button>
           )
         })}
@@ -289,7 +289,7 @@ export default function LogPage() {
             <button
               key={plant.id}
               onClick={() => logged ? unlogPlant(plant) : logPlant(plant)}
-              className="w-full flex items-center gap-4 px-4 py-3 rounded-[18px] text-left transition-all relative overflow-hidden"
+              className="w-full flex items-center gap-4 pr-4 rounded-[18px] text-left transition-all relative overflow-hidden"
               style={{
                 background: logged ? 'rgb(224 215 203)' : '#FFFFFF',
                 boxShadow: logged ? 'none' : '0 2px 6px rgba(31,27,22,0.04)',
@@ -317,11 +317,11 @@ export default function LogPage() {
                 </div>
               )}
               <div
-                className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
+                className="w-[72px] h-[72px] grid place-items-center text-2xl shrink-0"
                 style={{ background: c.bg }}
               >
                 {plant.image_url ? (
-                  <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                  <Image src={supabaseImageUrl(plant.image_url, 56, 56)} alt={plant.name} width={56} height={56} sizes="56px" unoptimized className="object-contain" />
                 ) : (
                   c.emoji
                 )}

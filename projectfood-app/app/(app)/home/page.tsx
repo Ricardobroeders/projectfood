@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
+import { supabaseImageUrl } from '@/lib/supabase-image'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
@@ -117,10 +119,22 @@ export default function HomePage() {
               return (
                 <span
                   key={p.id}
-                  className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-[13px] font-medium"
-                  style={{ background: c.bg, color: c.fg }}
+                  className="inline-flex items-stretch rounded-full overflow-hidden text-[13px] font-medium"
                 >
-                  {c.emoji} {p.name}
+                  <span
+                    className="w-8 h-8 grid place-items-center shrink-0 pl-1.5"
+                    style={{ background: c.bg }}
+                  >
+                    {p.image_url
+                      ? <Image src={supabaseImageUrl(p.image_url, 32, 32)} alt={p.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                      : c.emoji}
+                  </span>
+                  <span
+                    className="flex items-center pr-3"
+                    style={{ background: c.bg, color: c.fg }}
+                  >
+                    {p.name}
+                  </span>
                 </span>
               )
             })}

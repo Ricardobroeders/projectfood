@@ -125,15 +125,15 @@ export default function CategoryDetailPage() {
                 {data.tried.map((plant) => (
                   <div
                     key={plant.id}
-                    className="flex items-center gap-4 px-4 py-3 rounded-[18px]"
+                    className="flex items-center gap-4 pr-4 rounded-[18px] overflow-hidden"
                     style={{ background: 'rgb(224 215 203)' }}
                   >
                     <div
-                      className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
+                      className="w-[72px] h-[72px] grid place-items-center text-2xl shrink-0"
                       style={{ background: c.bg }}
                     >
                       {plant.image_url
-                        ? <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                        ? <Image src={supabaseImageUrl(plant.image_url, 56, 56)} alt={plant.name} width={56} height={56} sizes="56px" unoptimized className="object-contain" />
                         : c.emoji}
                     </div>
                     <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
@@ -157,15 +157,15 @@ export default function CategoryDetailPage() {
                 {data.untried.map((plant) => (
                   <div
                     key={plant.id}
-                    className="flex items-center gap-4 px-4 py-3 rounded-[18px] bg-white"
+                    className="flex items-center gap-4 pr-4 rounded-[18px] bg-white overflow-hidden"
                     style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
                   >
                     <div
-                      className="w-11 h-11 rounded-2xl grid place-items-center text-lg shrink-0"
+                      className="w-[72px] h-[72px] grid place-items-center text-2xl shrink-0"
                       style={{ background: c.bg }}
                     >
                       {plant.image_url
-                        ? <Image src={supabaseImageUrl(plant.image_url, 32, 32)} alt={plant.name} width={32} height={32} sizes="32px" unoptimized className="object-contain" />
+                        ? <Image src={supabaseImageUrl(plant.image_url, 56, 56)} alt={plant.name} width={56} height={56} sizes="56px" unoptimized className="object-contain" />
                         : c.emoji}
                     </div>
                     <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">{plant.name}</p>
