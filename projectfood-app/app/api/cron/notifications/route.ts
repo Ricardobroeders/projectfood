@@ -136,7 +136,7 @@ async function computeStreak(supabase: ReturnType<typeof createAdminClient>, use
   return streak
 }
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
   const secret = req.headers.get('x-cron-secret') ?? req.headers.get('authorization')?.replace('Bearer ', '')
   if (secret !== process.env.CRON_SECRET) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
