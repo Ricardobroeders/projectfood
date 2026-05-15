@@ -127,7 +127,11 @@
     "goalModalTitle": "30 piante raggiunte! 🎉",
     "goalModalSub": "Congratulazioni! Hai mangiato 30 piante diverse questa settimana. I tuoi consigli della spesa sono in preparazione.",
     "goToList": "Vedi consigli della spesa",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "generating": "I tuoi consigli della spesa sono in preparazione…",
+    "generatingSub": "Di solito ci vuole circa un minuto.",
+    "generateBtn": "Genera consigli della spesa",
+    "generateSub": "Basato su {count} piante registrate questa settimana"
   },
   "onboarding": {
     "title": "Benvenuto in Project Food!",

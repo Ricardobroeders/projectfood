@@ -3,10 +3,11 @@
 import useSWR from 'swr'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { ChevronLeft, ChevronDown } from 'lucide-react'
+import { ChevronLeft, ChevronDown, Loader2 } from 'lucide-react'
 import { AdviceCard, type Advice } from '../home/AdviceCard'
-import { fetchAdvice, type AdviceRow as WeekRow } from '@/lib/fetchers'
+import { fetchAdvice, fetchWeeklyVariety, type AdviceRow as WeekRow } from '@/lib/fetchers'
 
 function currentWeekStart(): string {
   const today = new Date()
@@ -33,8 +34,23 @@ export default function AdvicePage() {
   const t = useTranslations('advice')
   const thisWeek = currentWeekStart()
   const [openWeek, setOpenWeek] = useState<string>(thisWeek)
+  const [isManuallyGenerating, setIsManuallyGenerating] = useState(false)
+  const searchParams = useSearchParams()
+  const newParam = searchParams.get('new') === '1'
 
-  const { data: rows, isLoading } = useSWR('advice-all', fetchAdvice, { keepPreviousData: true })
+  const { data: rows, isLoading } = useSWR('advice-all', fetchAdvice, {
+    keepPreviousData: true,
+    refreshInterval: (isManuallyGenerating || newParam) ? 5000 : 0,
+  })
+  const { data: weekCount = 0 } = useSWR('weekly-variety', fetchWeeklyVariety, { keepPreviousData: true })
+
+  const thisWeekRow = rows?.find((r) => r.week_start === thisWeek)
+  const isGenerating = (newParam || isManuallyGenerating) && !thisWeekRow
+
+  async function generateAdvice() {
+    setIsManuallyGenerating(true)
+    await fetch('/api/advice', { method: 'POST' })
+  }
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">
@@ -61,9 +77,8 @@ export default function AdvicePage() {
       {/* Accordion */}
       {!isLoading && rows && (
         <div className="space-y-3">
-          {/* This week — always shown */}
+          {/* This week */}
           {(() => {
-            const thisWeekRow = rows.find((r) => r.week_start === thisWeek)
             if (thisWeekRow) {
               const isOpen = openWeek === thisWeek
               const preview = thisWeekRow.advice.suggestions.slice(0, 5).map((s) => s.plant).join(', ')
@@ -91,6 +106,37 @@ export default function AdvicePage() {
                 </div>
               )
             }
+
+            if (isGenerating) {
+              return (
+                <div className="rounded-[24px] px-5 py-5 flex items-center gap-4" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
+                  <Loader2 size={20} className="text-[#F5C518] shrink-0 animate-spin" />
+                  <div>
+                    <p className="text-[15px] font-semibold text-[#1F1B16]">{t('generating')}</p>
+                    <p className="text-[12px] text-[#A39B91] mt-0.5">{t('generatingSub')}</p>
+                  </div>
+                </div>
+              )
+            }
+
+            if (weekCount >= 1) {
+              return (
+                <div className="rounded-[24px] px-5 py-5 space-y-3" style={{ background: '#FFFFFF', boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}>
+                  <div>
+                    <p className="text-[15px] font-semibold text-[#1F1B16]">{t('thisWeek')}</p>
+                    <p className="text-[12px] text-[#A39B91] mt-0.5">{t('generateSub', { count: weekCount })}</p>
+                  </div>
+                  <button
+                    onClick={generateAdvice}
+                    className="w-full h-10 rounded-full text-[14px] font-semibold"
+                    style={{ background: '#F5C518', color: '#1F1B16' }}
+                  >
+                    {t('generateBtn')}
+                  </button>
+                </div>
+              )
+            }
+
             return (
               <div className="rounded-[24px] px-5 py-4 flex items-center justify-between" style={{ background: '#EDE8E1' }}>
                 <div>

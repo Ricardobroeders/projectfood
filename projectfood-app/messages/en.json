@@ -127,7 +127,11 @@
     "goalModalTitle": "30 plants reached!",
     "goalModalSub": "Congratulations! You've eaten 30 different plants this week. Your grocery advice is being generated.",
     "goToList": "View grocery advice",
-    "close": "Close"
+    "close": "Close",
+    "generating": "Generating your grocery advice…",
+    "generatingSub": "This usually takes about a minute.",
+    "generateBtn": "Generate grocery advice",
+    "generateSub": "Based on {count} plants logged this week"
   },
   "onboarding": {
     "title": "Welcome to Project Food!",

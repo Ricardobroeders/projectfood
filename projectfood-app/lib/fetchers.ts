@@ -183,6 +183,12 @@ export async function fetchOwnDailyHistory() {
   return (data ?? []) as { date: string; variety: number }[]
 }
 
+export async function fetchWeeklyVariety(): Promise<number> {
+  const supabase = createClient()
+  const { data } = await supabase.rpc('weekly_variety')
+  return (data as number) ?? 0
+}
+
 export async function fetchAdvice() {
   const supabase = createClient()
   const { data } = await supabase

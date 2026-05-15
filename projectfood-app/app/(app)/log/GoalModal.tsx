@@ -17,7 +17,7 @@ export function GoalModal({ open, onClose }: Props) {
 
   function goToList() {
     onClose()
-    router.push('/advice')
+    router.push('/advice?new=1')
   }
 
   return (

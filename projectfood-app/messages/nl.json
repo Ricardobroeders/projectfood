@@ -127,7 +127,11 @@
     "goalModalTitle": "30 planten bereikt! 🎉",
     "goalModalSub": "Gefeliciteerd! Je hebt deze week 30 verschillende planten gegeten. Je boodschappenadvies wordt aangemaakt.",
     "goToList": "Bekijk boodschappenadvies",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "generating": "Je boodschappenadvies wordt aangemaakt…",
+    "generatingSub": "Dit duurt meestal ongeveer een minuut.",
+    "generateBtn": "Genereer boodschappenadvies",
+    "generateSub": "Gebaseerd op {count} planten deze week"
   },
   "onboarding": {
     "title": "Welkom bij Project Food!",
