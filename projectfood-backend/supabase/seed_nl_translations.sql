@@ -173,6 +173,13 @@ join (values
   ('wild-rice',        'Wilde Rijst'),
   ('teff',             'Tef'),
   ('sorghum',          'Sorghum'),
-  ('bulgur-wheat',     'Bulgur')
+  ('bulgur-wheat',     'Bulgur'),
+  ('kimchi',           'Kimchi'),
+  ('kombucha',         'Kombucha'),
+  ('sauerkraut',       'Zuurkool'),
+  ('yogurt',           'Yoghurt'),
+  ('kefir',            'Kefir'),
+  ('miso',             'Miso'),
+  ('sourdough-bread',  'Zuurdesembrood')
 ) as t(slug, nl_name) on p.slug = t.slug
 on conflict (plant_id, locale) do update set name = excluded.name;

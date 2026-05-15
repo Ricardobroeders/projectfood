@@ -1,5 +1,5 @@
 -- seed.sql
--- Plant catalog — 155 entries across 6 categories
+-- Plant catalog — 162 entries across 7 categories
 -- Omitting image_url and seasonality (v2 enrichment)
 
 insert into plants (slug, name, emoji, category, subcategory, color, botanical_family, search_aliases) values
@@ -190,7 +190,7 @@ insert into plants (slug, name, emoji, category, subcategory, color, botanical_f
 ('butter-bean',      'Butter Beans',     '🫘', 'legume', 'bean',    'white',  'Fabaceae', '{"lima beans","large white beans"}'),
 ('edamame',          'Edamame',          '🫘', 'legume', 'soybean', 'green',  'Fabaceae', '{"edamame beans","young soybean"}'),
 ('tofu',             'Tofu',             '⬜', 'legume', 'soybean', 'white',  'Fabaceae', '{"bean curd","firm tofu","silken tofu"}'),
-('tempeh',           'Tempeh',           '🟤', 'legume', 'soybean', 'brown',  'Fabaceae', '{"fermented soy"}'),
+('tempeh',           'Tempeh',           '🟤', 'ferment', 'fermented_soybean', 'brown',  'Fabaceae', '{"fermented soy","fermented soybeans"}'),
 ('split-peas',       'Split Peas',       '🫘', 'legume', 'pea',     'yellow', 'Fabaceae', '{"yellow split peas","green split peas","dal"}'),
 ('mung-bean',        'Mung Beans',       '🟢', 'legume', 'bean',    'green',  'Fabaceae', '{"moong","green gram","mung bean sprouts"}'),
 ('adzuki-bean',      'Adzuki Beans',     '🟤', 'legume', 'bean',    'red',    'Fabaceae', '{"azuki","red bean","aduki"}'),
@@ -215,4 +215,16 @@ insert into plants (slug, name, emoji, category, subcategory, color, botanical_f
 ('wild-rice',        'Wild Rice',        '🍚', 'whole_grain', 'grain', 'brown',  'Poaceae',           '{"wild rice blend"}'),
 ('teff',             'Teff',             '🌾', 'whole_grain', 'grain', 'brown',  'Poaceae',           '{"teff grain","injera grain"}'),
 ('sorghum',          'Sorghum',          '🌾', 'whole_grain', 'grain', 'brown',  'Poaceae',           '{"jowar","milo","great millet"}'),
-('bulgur-wheat',     'Bulgur Wheat',     '🌾', 'whole_grain', 'grain', 'brown',  'Poaceae',           '{"bulgur","cracked wheat","tabbouleh grain"}');
+('bulgur-wheat',     'Bulgur Wheat',     '🌾', 'whole_grain', 'grain', 'brown',  'Poaceae',           '{"bulgur","cracked wheat","tabbouleh grain"}'),
+
+-- ══════════════════════════════════════════════════
+-- FERMENT (7)
+-- ══════════════════════════════════════════════════
+
+('kimchi',          'Kimchi',          '🥬', 'ferment', 'fermented_vegetable', 'red',   NULL,       '{"kimchi","gefermenteerde kool","cavolo fermentato","Korean fermented cabbage"}'),
+('kombucha',        'Kombucha',        '🍵', 'ferment', 'fermented_beverage',  'brown', NULL,       '{"kombucha","gefermenteerde thee","tè fermentato","fermented tea"}'),
+('sauerkraut',      'Sauerkraut',      '🥬', 'ferment', 'fermented_vegetable', 'white', NULL,       '{"sauerkraut","zuurkool","crauti","fermented cabbage","choucroute"}'),
+('yogurt',          'Yogurt',          '🥛', 'ferment', 'fermented_dairy',     'white', NULL,       '{"yogurt","yoghurt","yogurt greco","greek yogurt","plain yogurt"}'),
+('kefir',           'Kefir',           '🥛', 'ferment', 'fermented_dairy',     'white', NULL,       '{"kefir","kefir melk","kefir latte","fermented milk","milk kefir"}'),
+('miso',            'Miso',            '🍜', 'ferment', 'fermented_soybean',   'brown', 'Fabaceae', '{"miso","miso pasta","pasta di miso","miso soup","shiro miso","hatcho miso"}'),
+('sourdough-bread', 'Sourdough Bread', '🍞', 'ferment', 'fermented_grain',     'brown', 'Poaceae',  '{"sourdough bread","zuurdesembrood","pane a lievitazione naturale","sourdough","desem"}');
