@@ -180,7 +180,14 @@ FILES=(
   tahini.png
   tarragon.png
   teff.png
+  kefir.png
+  kimchi.png
+  kombucha.png
+  miso.png
+  sauerkraut.png
+  sourdough-bread.png
   tempeh.png
+  yogurt.png
   thyme.png
   tofu.png
   tomato.png
