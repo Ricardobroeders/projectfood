@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { createClient, createImplicitClient } from '@/lib/supabase/client'
+import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -18,15 +18,15 @@ function GoogleIcon() {
   )
 }
 
-type View = 'signin' | 'signup' | 'forgot' | 'check-inbox' | 'reset-sent'
+type View = 'email' | 'verify'
 
 export default function LoginPage() {
   const t = useTranslations('login')
   const router = useRouter()
 
-  const [view, setView] = useState<View>('signin')
+  const [view, setView] = useState<View>('email')
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [otp, setOtp] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -38,126 +38,96 @@ export default function LoginPage() {
     })
   }
 
-  async function handleEmailAuth(e: React.FormEvent<HTMLFormElement>) {
+  async function sendCode() {
+    setError(null)
+    setLoading(true)
+    const supabase = createClient()
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: true },
+    })
+    setLoading(false)
+    if (error) {
+      setError(t('errorGeneric'))
+      return false
+    }
+    return true
+  }
+
+  async function handleSendCode(e: React.FormEvent) {
+    e.preventDefault()
+    const ok = await sendCode()
+    if (ok) {
+      setOtp('')
+      setView('verify')
+    }
+  }
+
+  async function handleResend() {
+    setOtp('')
+    setError(null)
+    await sendCode()
+  }
+
+  async function handleVerify(e: React.FormEvent) {
     e.preventDefault()
     setError(null)
     setLoading(true)
     const supabase = createClient()
-
-    if (view === 'signin') {
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password })
-      setLoading(false)
-      if (signInError) {
-        setError(t('errorInvalidCredentials'))
-        return
-      }
-      router.push('/home')
-      return
-    }
-
-    if (view === 'signup') {
-      const { error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: `${location.origin}/auth/confirm?type=signup&next=/home`,
-        },
-      })
-      setLoading(false)
-      if (signUpError) {
-        setError(
-          signUpError.message.toLowerCase().includes('already')
-            ? t('errorEmailInUse')
-            : t('errorGeneric')
-        )
-        return
-      }
-      setView('check-inbox')
-      return
-    }
-  }
-
-  async function handleForgotPassword(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setError(null)
-    setLoading(true)
-    const supabase = createImplicitClient()
-    await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${location.origin}/auth/confirm?type=recovery&next=/reset-password`,
-    })
+    const { error } = await supabase.auth.verifyOtp({ email, token: otp, type: 'email' })
     setLoading(false)
-    setView('reset-sent')
+    if (error) {
+      setError(t('errorInvalidCode'))
+      return
+    }
+    router.push('/home')
   }
 
-  if (view === 'check-inbox') {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F4EFE8] px-6">
-        <div className="w-full max-w-sm text-center space-y-4">
-          <div className="text-6xl">📬</div>
-          <h2 className="text-2xl font-extrabold text-[#1F1B16]">{t('checkYourInbox')}</h2>
-          <p className="text-sm text-[#6B645C]">{t('checkYourInboxBody', { email })}</p>
-          <button
-            onClick={() => { setView('signin'); setPassword('') }}
-            className="text-sm text-[#6B645C] underline underline-offset-2"
-          >
-            {t('backToSignIn')}
-          </button>
-        </div>
-      </div>
-    )
-  }
-
-  if (view === 'reset-sent') {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#F4EFE8] px-6">
-        <div className="w-full max-w-sm text-center space-y-4">
-          <div className="text-6xl">📩</div>
-          <h2 className="text-2xl font-extrabold text-[#1F1B16]">{t('resetLinkSent')}</h2>
-          <p className="text-sm text-[#6B645C]">{t('resetLinkSentBody', { email })}</p>
-          <button
-            onClick={() => { setView('signin'); setPassword('') }}
-            className="text-sm text-[#6B645C] underline underline-offset-2"
-          >
-            {t('backToSignIn')}
-          </button>
-        </div>
-      </div>
-    )
-  }
-
-  if (view === 'forgot') {
+  if (view === 'verify') {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#F4EFE8] px-6">
         <div className="w-full max-w-sm space-y-8">
           <div className="text-center space-y-3">
-            <div className="text-6xl">🥦</div>
+            <div className="text-6xl">📩</div>
             <h1 className="text-3xl font-extrabold tracking-tight text-[#1F1B16]">Project Food</h1>
-            <p className="text-sm font-medium text-[#6B645C]">{t('forgotPasswordTitle')}</p>
+            <p className="text-sm font-medium text-[#6B645C]">{t('codeSentBody', { email })}</p>
           </div>
-          <form onSubmit={handleForgotPassword} className="space-y-3">
-            <Input
-              type="email"
-              placeholder={t('emailPlaceholder')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="h-12 rounded-2xl bg-white border-0 shadow-sm text-[#1F1B16] placeholder:text-[#A39B91]"
+
+          <form onSubmit={handleVerify} className="space-y-3">
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={6}
+              autoComplete="one-time-code"
+              placeholder="000000"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+              className="w-full h-16 text-center text-3xl font-bold tracking-[0.4em] rounded-2xl bg-white shadow-sm text-[#1F1B16] placeholder:text-[#D4CEC7] outline-none focus:ring-2 focus:ring-[#F5C518]"
             />
             {error && <p className="text-sm text-red-600 text-center">{error}</p>}
             <Button
               type="submit"
-              disabled={loading}
+              disabled={loading || otp.length < 6}
               className="w-full h-12 text-base font-semibold bg-[#F5C518] text-[#1F1B16] hover:bg-[#F59A0E] border-0 rounded-full shadow-none"
             >
-              {t('sendResetLink')}
+              {loading ? '…' : t('verifyCode')}
             </Button>
           </form>
-          <div className="text-center">
+
+          <div className="flex flex-col items-center gap-2">
             <button
-              onClick={() => { setView('signin'); setError(null) }}
+              onClick={handleResend}
+              disabled={loading}
               className="text-sm text-[#6B645C] underline underline-offset-2"
             >
-              {t('backToSignIn')}
+              {t('resendCode')}
+            </button>
+            <button
+              onClick={() => { setView('email'); setOtp(''); setError(null) }}
+              className="text-sm text-[#A39B91]"
+            >
+              {t('useDifferentEmail')}
             </button>
           </div>
         </div>
@@ -188,35 +158,12 @@ export default function LoginPage() {
             <div className="flex-1 h-px bg-[#E0D9D1]" />
           </div>
 
-          <div className="flex rounded-full bg-[#E8E2DA] p-1">
-            <button
-              onClick={() => { setView('signin'); setError(null) }}
-              className={`flex-1 h-9 text-sm font-semibold rounded-full transition-colors ${view === 'signin' ? 'bg-white text-[#1F1B16] shadow-sm' : 'text-[#6B645C]'}`}
-            >
-              {t('signIn')}
-            </button>
-            <button
-              onClick={() => { setView('signup'); setError(null) }}
-              className={`flex-1 h-9 text-sm font-semibold rounded-full transition-colors ${view === 'signup' ? 'bg-white text-[#1F1B16] shadow-sm' : 'text-[#6B645C]'}`}
-            >
-              {t('signUp')}
-            </button>
-          </div>
-
-          <form onSubmit={handleEmailAuth} className="space-y-3">
+          <form onSubmit={handleSendCode} className="space-y-3">
             <Input
               type="email"
               placeholder={t('emailPlaceholder')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
-              className="h-12 rounded-2xl bg-white border-0 shadow-sm text-[#1F1B16] placeholder:text-[#A39B91]"
-            />
-            <Input
-              type="password"
-              placeholder={t('passwordPlaceholder')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
               className="h-12 rounded-2xl bg-white border-0 shadow-sm text-[#1F1B16] placeholder:text-[#A39B91]"
             />
@@ -226,18 +173,9 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full h-12 text-base font-semibold bg-[#1F1B16] text-white hover:bg-[#3a3530] border-0 rounded-full shadow-none"
             >
-              {loading ? '…' : view === 'signin' ? t('signIn') : t('signUp')}
+              {loading ? '…' : t('sendCode')}
             </Button>
           </form>
-
-          <div className="text-center">
-              <button
-                onClick={() => { setView('forgot'); setError(null) }}
-                className={`text-sm text-[#6B645C] underline underline-offset-2 ${view !== 'signin' ? 'invisible' : ''}`}
-              >
-                {t('forgotPassword')}
-              </button>
-            </div>
         </div>
       </div>
     </div>
