@@ -11,7 +11,7 @@ import { AdviceBanner } from './AdviceBanner'
 import { fetchHome, fetchSocialFriends } from '@/lib/fetchers'
 import { Avatar } from '@/components/avatar'
 
-type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number; avatar_url?: string | null; active_border?: string | null }
+type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number; avatar_url?: string | null; active_border?: string | null; avatar_bg?: string | null }
 
 function FriendCard({ friend }: { friend: FriendStats }) {
   const pct = Math.min(100, (friend.week_count / 30) * 100)
@@ -21,7 +21,7 @@ function FriendCard({ friend }: { friend: FriendStats }) {
       className="flex-shrink-0 w-[108px] rounded-[18px] p-3 bg-white block"
       style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.06)' }}
     >
-      <Avatar username={friend.username} imageUrl={friend.avatar_url} size="sm" border={friend.active_border ?? 'default'} className="mb-2" />
+      <Avatar username={friend.username} imageUrl={friend.avatar_url} size="sm" border={friend.active_border ?? 'default'} bgColor={friend.avatar_bg ?? undefined} className="mb-2" />
       <p className="text-[13px] font-semibold text-[#1F1B16] truncate leading-tight mb-0.5">{friend.username}</p>
       <p className="text-[11px] text-[#A39B91] mb-2">{friend.week_count}/30</p>
       <div className="h-1.5 rounded-full bg-[#F4EFE8] overflow-hidden">

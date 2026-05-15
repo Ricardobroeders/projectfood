@@ -89,7 +89,7 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
         <>
           {/* Avatar + username */}
           <div className="flex flex-col items-center py-4 gap-3">
-            <Avatar username={data.username} imageUrl={data.avatar_url} size="lg" border={data.active_border ?? 'default'} />
+            <Avatar username={data.username} imageUrl={data.avatar_url} size="lg" border={data.active_border ?? 'default'} bgColor={data.avatar_bg ?? undefined} />
             <h2 className="text-xl font-extrabold text-[#1F1B16]">{data.username}</h2>
           </div>
 

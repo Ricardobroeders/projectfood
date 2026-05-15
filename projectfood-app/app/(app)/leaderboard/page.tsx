@@ -20,6 +20,7 @@ type PlantsRow = {
   is_me: boolean
   avatar_url?: string | null
   active_border?: string | null
+  avatar_bg?: string | null
 }
 
 type StreakRow = {
@@ -29,6 +30,7 @@ type StreakRow = {
   is_me: boolean
   avatar_url?: string | null
   active_border?: string | null
+  avatar_bg?: string | null
 }
 
 const MEDALS = ['🥇', '🥈', '🥉']
@@ -70,6 +72,7 @@ function LeaderRow({
   isMe,
   avatarUrl,
   border,
+  avatarBg,
 }: {
   rank: number
   username: string
@@ -79,6 +82,7 @@ function LeaderRow({
   isMe: boolean
   avatarUrl?: string | null
   border?: string | null
+  avatarBg?: string | null
 }) {
   const medal = MEDALS[rank - 1]
   const sharedClass = 'flex items-center gap-3 px-4 py-3 rounded-[18px]'
@@ -95,7 +99,7 @@ function LeaderRow({
           <span className="text-[14px] font-mono text-[#A39B91]">{rank}</span>
         )}
       </div>
-      <Avatar username={username} imageUrl={avatarUrl} size="sm" border={border ?? 'default'} />
+      <Avatar username={username} imageUrl={avatarUrl} size="sm" border={border ?? 'default'} bgColor={avatarBg ?? undefined} />
       <p className="flex-1 text-[15px] font-medium text-[#1F1B16] truncate">
         {username}
         {isMe && (
@@ -209,6 +213,7 @@ export default function LeaderboardPage() {
                 isMe={row.is_me}
                 avatarUrl={row.avatar_url}
                 border={row.active_border}
+                avatarBg={row.avatar_bg}
               />
             ))}
             {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
@@ -228,6 +233,7 @@ export default function LeaderboardPage() {
                 isMe={row.is_me}
                 avatarUrl={row.avatar_url}
                 border={row.active_border}
+                avatarBg={row.avatar_bg}
               />
             ))}
             {(activeRows ?? []).length === 0 && <EmptyState label={t('noEntries')} />}
