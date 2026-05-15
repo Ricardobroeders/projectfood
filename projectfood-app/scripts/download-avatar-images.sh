@@ -1,61 +1,46 @@
 #!/bin/bash
-# One-off script: downloads all avatar images from Supabase at 256x256 using sips for resizing.
+# Downloads all avatar images from Supabase at 256x256 using sips for resizing.
 # Run from project root: bash scripts/download-avatar-images.sh
 
 BASE_URL="https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/avatars"
 OUT_DIR="public/images/avatars"
-mkdir -p "$OUT_DIR"
+mkdir -p "$OUT_DIR/female" "$OUT_DIR/male" "$OUT_DIR/unknown"
 
-FILES=(
-  Amara.png
-  Anton.png
-  Camila.png
-  Diego.png
-  Elena.png
-  Erik.png
-  Freya.png
-  Hiroshi.png
-  Isabella.png
-  Jamal.png
-  Kai.png
-  Liam.png
-  Marcus.png
-  Ngozi.png
-  Priya.png
-  Rashid.png
-  Sophia.png
-  Tobias.png
-  Yuki.png
-  Zara.png
-)
+declare -A GROUPS
+GROUPS[female]="Amara Camila Elena Freya Isabella Ngozi Priya Sophia Yuki Zara"
+GROUPS[male]="Anton Diego Erik Hiroshi Jamal Kai Liam Marcus Rashid Tobias"
+GROUPS[unknown]="Bunny Crocodile Jester Robot Shark"
 
-TOTAL=${#FILES[@]}
 SUCCESS=0
 FAIL=0
+TOTAL=0
 
-for FILE in "${FILES[@]}"; do
-  DEST="$OUT_DIR/$FILE"
-  if [ -f "$DEST" ]; then
-    echo "  skip (exists): $FILE"
-    ((SUCCESS++))
-    continue
-  fi
-
-  TMP=$(mktemp /tmp/avatar-XXXXXX.png)
-  if curl -sf -o "$TMP" "$BASE_URL/$FILE"; then
-    if sips -Z 256 "$TMP" --out "$DEST" > /dev/null 2>&1; then
-      SIZE=$(du -sh "$DEST" | cut -f1)
-      echo "  ok $SIZE  $FILE"
+for GROUP in female male unknown; do
+  for NAME in ${GROUPS[$GROUP]}; do
+    ((TOTAL++))
+    DEST="$OUT_DIR/$GROUP/$NAME.png"
+    if [ -f "$DEST" ]; then
+      echo "  skip (exists): $GROUP/$NAME.png"
       ((SUCCESS++))
+      continue
+    fi
+
+    TMP=$(mktemp /tmp/avatar-XXXXXX.png)
+    if curl -sf -o "$TMP" "$BASE_URL/$GROUP/$NAME.png"; then
+      if sips -Z 256 "$TMP" --out "$DEST" > /dev/null 2>&1; then
+        SIZE=$(du -sh "$DEST" | cut -f1)
+        echo "  ok $SIZE  $GROUP/$NAME.png"
+        ((SUCCESS++))
+      else
+        echo "  RESIZE FAILED: $GROUP/$NAME.png"
+        ((FAIL++))
+      fi
     else
-      echo "  RESIZE FAILED: $FILE"
+      echo "  DOWNLOAD FAILED: $GROUP/$NAME.png"
       ((FAIL++))
     fi
-  else
-    echo "  DOWNLOAD FAILED: $FILE"
-    ((FAIL++))
-  fi
-  rm -f "$TMP"
+    rm -f "$TMP"
+  done
 done
 
 echo ""

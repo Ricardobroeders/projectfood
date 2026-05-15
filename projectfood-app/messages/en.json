@@ -116,6 +116,10 @@
   "avatar": {
     "title": "Avatar",
     "bgSection": "Background",
+    "sexSection": "Who do you identify with?",
+    "sex_female": "Female",
+    "sex_male": "Male",
+    "sex_unknown": "Rather not say",
     "imageSection": "Choose avatar",
     "save": "Save",
     "saved": "Saved",

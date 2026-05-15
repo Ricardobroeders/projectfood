@@ -116,6 +116,10 @@
   "avatar": {
     "title": "Avatar",
     "bgSection": "Achtergrond",
+    "sexSection": "Met wie identificeer jij je?",
+    "sex_female": "Vrouw",
+    "sex_male": "Man",
+    "sex_unknown": "Liever niet zeggen",
     "imageSection": "Kies avatar",
     "save": "Opslaan",
     "saved": "Opgeslagen",

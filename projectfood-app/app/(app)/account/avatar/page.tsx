@@ -20,11 +20,11 @@ const BG_OPTIONS = [
   CATS.ferment.bg,
 ]
 
-const AVATAR_IMAGES = [
-  'Amara', 'Anton', 'Camila', 'Diego', 'Elena', 'Erik', 'Freya',
-  'Hiroshi', 'Isabella', 'Jamal', 'Kai', 'Liam', 'Marcus',
-  'Ngozi', 'Priya', 'Rashid', 'Sophia', 'Tobias', 'Yuki', 'Zara',
-]
+const AVATAR_IMAGES: Record<'female' | 'male' | 'unknown', string[]> = {
+  female: ['Amara', 'Camila', 'Elena', 'Freya', 'Isabella', 'Ngozi', 'Priya', 'Sophia', 'Yuki', 'Zara'],
+  male: ['Anton', 'Diego', 'Erik', 'Hiroshi', 'Jamal', 'Kai', 'Liam', 'Marcus', 'Rashid', 'Tobias'],
+  unknown: ['Bunny', 'Crocodile', 'Jester', 'Robot', 'Shark'],
+}
 
 function Skeleton({ className }: { className?: string }) {
   return <div className={`animate-pulse bg-[#F4EFE8] rounded-[24px] ${className ?? ''}`} />
@@ -40,12 +40,16 @@ export default function AvatarPage() {
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedBg, setSelectedBg] = useState<string | null>(null)
+  const [selectedSex, setSelectedSex] = useState<'female' | 'male' | 'unknown'>('female')
   const [status, setStatus] = useState<'idle' | 'saving' | 'saved'>('idle')
 
   useEffect(() => {
     if (!data) return
     setSelectedImage(data.customAvatarImage ?? null)
     setSelectedBg(data.avatarBg ?? null)
+    if (data.customAvatarImage?.startsWith('male/')) setSelectedSex('male')
+    else if (data.customAvatarImage?.startsWith('unknown/')) setSelectedSex('unknown')
+    else setSelectedSex('female')
   }, [data])
 
   if (isLoading || !data) {
@@ -53,6 +57,7 @@ export default function AvatarPage() {
       <div className="px-5 pt-6 pb-8 space-y-6">
         <Skeleton className="h-10 w-24" />
         <Skeleton className="h-32" />
+        <Skeleton className="h-16" />
         <Skeleton className="h-16" />
         <Skeleton className="h-64" />
       </div>
@@ -65,6 +70,13 @@ export default function AvatarPage() {
   const previewImageUrl = selectedImage
     ? `/images/avatars/${selectedImage}.png`
     : data.avatar
+
+  function handleSexChange(sex: 'female' | 'male' | 'unknown') {
+    setSelectedSex(sex)
+    if (selectedImage && !selectedImage.startsWith(sex + '/')) {
+      setSelectedImage(null)
+    }
+  }
 
   async function save() {
     if (!selectedImage) return
@@ -163,6 +175,31 @@ export default function AvatarPage() {
         </div>
       </div>
 
+      {/* Sex selector */}
+      <div>
+        <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
+          {t('sexSection')}
+        </p>
+        <div
+          className="rounded-[24px] bg-white p-2 flex items-center gap-2"
+          style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+        >
+          {(['female', 'male', 'unknown'] as const).map((sex) => (
+            <button
+              key={sex}
+              onClick={() => handleSexChange(sex)}
+              className={`flex-1 py-2.5 rounded-[16px] text-[14px] font-semibold transition-all ${
+                selectedSex === sex
+                  ? 'bg-[#1F1B16] text-white'
+                  : 'text-[#A39B91]'
+              }`}
+            >
+              {t(`sex_${sex}`)}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Avatar images */}
       <div>
         <p className="text-[11px] font-mono uppercase tracking-widest text-[#A39B91] mb-3 px-1">
@@ -173,12 +210,13 @@ export default function AvatarPage() {
           style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
         >
           <div className="grid grid-cols-4 gap-3">
-            {AVATAR_IMAGES.map((name) => {
-              const isSelected = selectedImage === name
+            {AVATAR_IMAGES[selectedSex].map((avatarName) => {
+              const imageKey = `${selectedSex}/${avatarName}`
+              const isSelected = selectedImage === imageKey
               return (
                 <button
-                  key={name}
-                  onClick={() => setSelectedImage(name)}
+                  key={avatarName}
+                  onClick={() => setSelectedImage(imageKey)}
                   className={`relative rounded-[16px] aspect-square overflow-hidden flex items-center justify-center transition-all ${
                     isSelected ? 'ring-2 ring-[#1F1B16]' : ''
                   }`}
@@ -186,8 +224,8 @@ export default function AvatarPage() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/images/avatars/${name}.png`}
-                    alt={name}
+                    src={`/images/avatars/${selectedSex}/${avatarName}.png`}
+                    alt={avatarName}
                     className="w-full h-full object-contain"
                   />
                   {isSelected && (

@@ -116,6 +116,10 @@
   "avatar": {
     "title": "Avatar",
     "bgSection": "Sfondo",
+    "sexSection": "Con chi ti identifichi?",
+    "sex_female": "Donna",
+    "sex_male": "Uomo",
+    "sex_unknown": "Preferisco non dirlo",
     "imageSection": "Scegli avatar",
     "save": "Salva",
     "saved": "Salvato",
