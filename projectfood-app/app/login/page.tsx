@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, createImplicitClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -41,7 +41,7 @@ export default function LoginPage() {
   async function sendCode() {
     setError(null)
     setLoading(true)
-    const supabase = createClient()
+    const supabase = createImplicitClient()
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: { shouldCreateUser: true },
