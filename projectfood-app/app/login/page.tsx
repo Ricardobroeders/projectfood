@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { createClient } from '@/lib/supabase/client'
+import { createClient, createImplicitClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -81,7 +81,7 @@ export default function LoginPage() {
     e.preventDefault()
     setError(null)
     setLoading(true)
-    const supabase = createClient()
+    const supabase = createImplicitClient()
     await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${location.origin}/auth/confirm?type=recovery&next=/reset-password`,
     })
