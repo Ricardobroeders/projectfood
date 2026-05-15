@@ -24,10 +24,11 @@ type Props = {
   imageUrl?: string | null
   size?: Size
   border?: string
+  bgColor?: string
   className?: string
 }
 
-export function Avatar({ username, imageUrl, size = 'md', border = 'default', className = '' }: Props) {
+export function Avatar({ username, imageUrl, size = 'md', border = 'default', bgColor, className = '' }: Props) {
   const [imgError, setImgError] = useState(false)
   const { cls, text } = INNER[size]
   const borderImageUrl = border !== 'default' ? BORDER_IMAGES[border] : undefined
@@ -45,7 +46,10 @@ export function Avatar({ username, imageUrl, size = 'md', border = 'default', cl
           style={{ zIndex: 1 }}
         />
       )}
-      <div className={`${cls} rounded-full overflow-hidden flex items-center justify-center ${showImage ? '' : 'bg-[#F5C518]'}`}>
+      <div
+        className={`${cls} rounded-full overflow-hidden flex items-center justify-center ${!showImage && !bgColor ? 'bg-[#F5C518]' : ''}`}
+        style={bgColor ? { background: bgColor } : undefined}
+      >
         {showImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

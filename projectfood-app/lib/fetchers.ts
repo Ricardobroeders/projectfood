@@ -93,7 +93,7 @@ export async function fetchAccount([, locale]: [string, string]) {
 
   const { data: settings } = await supabase
     .from('user_settings')
-    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border')
+    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border, custom_avatar_image, custom_avatar_bg')
     .eq('user_id', user.id)
     .single()
 
@@ -101,7 +101,11 @@ export async function fetchAccount([, locale]: [string, string]) {
     userId: user.id,
     name: user.user_metadata?.full_name ?? user.user_metadata?.name ?? null,
     email: user.email ?? null,
-    avatar: user.user_metadata?.avatar_url ?? null,
+    avatar: settings?.custom_avatar_image
+      ? `/images/avatars/${settings.custom_avatar_image}.png`
+      : (user.user_metadata?.avatar_url ?? null),
+    avatarBg: settings?.custom_avatar_bg ?? null,
+    customAvatarImage: settings?.custom_avatar_image ?? null,
     username: settings?.username ?? null,
     currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
     unlockedBorders: (settings?.unlocked_borders ?? []) as string[],

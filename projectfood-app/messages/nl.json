@@ -110,7 +110,16 @@
     "saveError": "Kon niet opslaan. Probeer opnieuw.",
     "save": "Opslaan",
     "saving": "…",
-    "saved": "Opgeslagen"
+    "saved": "Opgeslagen",
+    "editAvatar": "Avatar bewerken"
+  },
+  "avatar": {
+    "title": "Avatar",
+    "bgSection": "Achtergrond",
+    "imageSection": "Kies avatar",
+    "save": "Opslaan",
+    "saved": "Opgeslagen",
+    "reset": "Verwijder aangepast avatar"
   },
   "advice": {
     "title": "Boodschappenadvies",

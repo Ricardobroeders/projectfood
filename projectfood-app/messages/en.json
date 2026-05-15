@@ -110,7 +110,16 @@
     "saveError": "Could not save. Try again.",
     "save": "Save",
     "saving": "…",
-    "saved": "Saved"
+    "saved": "Saved",
+    "editAvatar": "Edit avatar"
+  },
+  "avatar": {
+    "title": "Avatar",
+    "bgSection": "Background",
+    "imageSection": "Choose avatar",
+    "save": "Save",
+    "saved": "Saved",
+    "reset": "Remove custom avatar"
   },
   "advice": {
     "title": "Grocery advice",

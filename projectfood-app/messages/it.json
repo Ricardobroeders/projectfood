@@ -110,7 +110,16 @@
     "saveError": "Impossibile salvare. Riprova.",
     "save": "Salva",
     "saving": "…",
-    "saved": "Salvato"
+    "saved": "Salvato",
+    "editAvatar": "Modifica avatar"
+  },
+  "avatar": {
+    "title": "Avatar",
+    "bgSection": "Sfondo",
+    "imageSection": "Scegli avatar",
+    "save": "Salva",
+    "saved": "Salvato",
+    "reset": "Rimuovi avatar personalizzato"
   },
   "advice": {
     "title": "Consigli della spesa",

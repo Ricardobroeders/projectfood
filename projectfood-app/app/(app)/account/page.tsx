@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
-import { ChevronRight, Bell } from 'lucide-react'
+import { ChevronRight, Bell, Pencil } from 'lucide-react'
 import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
@@ -55,12 +55,21 @@ export default function AccountPage() {
         className="rounded-[24px] bg-white p-6 flex items-center gap-4"
         style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
       >
-        <Avatar
-          username={username ?? name ?? '?'}
-          imageUrl={data.avatar}
-          size="lg"
-          border={activeBorder}
-        />
+        <Link href="/account/avatar" className="relative shrink-0" aria-label={t('editAvatar')}>
+          <Avatar
+            username={username ?? name ?? '?'}
+            imageUrl={data.avatar}
+            size="lg"
+            border={activeBorder}
+            bgColor={data.avatarBg ?? undefined}
+          />
+          <div
+            className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#F5C518] flex items-center justify-center"
+            style={{ zIndex: 2 }}
+          >
+            <Pencil size={11} className="text-[#1F1B16]" />
+          </div>
+        </Link>
         <div className="min-w-0">
           {name && <p className="text-base font-bold text-[#1F1B16] truncate">{name}</p>}
           {email && <p className="text-sm text-[#6B645C] truncate">{email}</p>}
@@ -102,6 +111,7 @@ export default function AccountPage() {
                   imageUrl={data.avatar}
                   size="md"
                   border={b}
+                  bgColor={data.avatarBg ?? undefined}
                 />
                 <span className={`text-[10px] capitalize ${activeBorder === b ? 'text-[#1F1B16] font-bold' : 'text-[#A39B91]'}`}>
                   {b === 'default' ? tA('borderDefault') : b}
