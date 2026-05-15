@@ -98,17 +98,17 @@ export default function LoginPage() {
               type="text"
               inputMode="numeric"
               pattern="[0-9]*"
-              maxLength={6}
+              maxLength={8}
               autoComplete="one-time-code"
-              placeholder="000000"
+              placeholder="00000000"
               value={otp}
-              onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+              onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 8))}
               className="w-full h-16 text-center text-3xl font-bold tracking-[0.4em] rounded-2xl bg-white shadow-sm text-[#1F1B16] placeholder:text-[#D4CEC7] outline-none focus:ring-2 focus:ring-[#F5C518]"
             />
             {error && <p className="text-sm text-red-600 text-center">{error}</p>}
             <Button
               type="submit"
-              disabled={loading || otp.length < 6}
+              disabled={loading || otp.length < 8}
               className="w-full h-12 text-base font-semibold bg-[#F5C518] text-[#1F1B16] hover:bg-[#F59A0E] border-0 rounded-full shadow-none"
             >
               {loading ? '…' : t('verifyCode')}
