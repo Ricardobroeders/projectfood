@@ -44,7 +44,7 @@ export default function AccountPage() {
     )
   }
 
-  const { userId, name, email, username, currentLocale, notifSettings, unlockedBorders, activeBorder } = data
+  const { userId, name, email, username, notifSettings, unlockedBorders, activeBorder } = data
   const notifOn = notifSettings.notificationsEnabled
   const availableBorders = ['default', ...(unlockedBorders ?? [])]
 
@@ -77,7 +77,7 @@ export default function AccountPage() {
           style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
         >
           <UsernameForm userId={userId} initial={username} />
-          <LanguageSwitcher userId={userId} currentLocale={currentLocale} />
+          <LanguageSwitcher userId={userId} currentLocale={locale as 'en' | 'nl' | 'it'} />
           <div className="flex items-center justify-between px-5 py-4">
             <span className="text-[15px] font-medium text-[#1F1B16]">{t('weeklyGoal')}</span>
             <span className="text-[14px] text-[#A39B91]">{t('weeklyGoalValue')}</span>

@@ -116,6 +116,11 @@ export async function middleware(request: NextRequest) {
       sameSite: 'lax',
       httpOnly: false,
     })
+    // Also forward as header so i18n/request.ts sees it in this same render
+    // (response cookies are not visible in request.cookies() on the same request)
+    supabaseResponse.headers.set('x-pf-locale', locale)
+  } else if (existingLocale) {
+    supabaseResponse.headers.set('x-pf-locale', existingLocale)
   }
 
   return supabaseResponse

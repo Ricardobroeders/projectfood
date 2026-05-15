@@ -1,5 +1,5 @@
 import { getRequestConfig } from 'next-intl/server'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 
 const SUPPORTED_LOCALES = ['en', 'nl', 'it']
 
@@ -12,9 +12,17 @@ export default getRequestConfig(async ({ requestLocale }) => {
   if (urlLocale && SUPPORTED_LOCALES.includes(urlLocale)) {
     locale = urlLocale
   } else {
-    const cookieStore = await cookies()
-    const raw = cookieStore.get('pf_locale')?.value ?? 'en'
-    locale = SUPPORTED_LOCALES.includes(raw) ? raw : 'en'
+    // Middleware forwards the effective locale as x-pf-locale header so we see it
+    // even when the cookie was just set in the same request's response (not yet readable here).
+    const headerStore = await headers()
+    const fromHeader = headerStore.get('x-pf-locale')
+    if (fromHeader && SUPPORTED_LOCALES.includes(fromHeader)) {
+      locale = fromHeader
+    } else {
+      const cookieStore = await cookies()
+      const raw = cookieStore.get('pf_locale')?.value ?? 'en'
+      locale = SUPPORTED_LOCALES.includes(raw) ? raw : 'en'
+    }
   }
 
   return {
