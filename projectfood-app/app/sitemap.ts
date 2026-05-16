@@ -9,7 +9,6 @@ const PAGES: Record<string, Record<string, string>> = {
   '/contact': { en: '/en/contact',  nl: '/nl/contact',      it: '/it/contatto'  },
   '/terms':   { en: '/en/terms',    nl: '/nl/voorwaarden',  it: '/it/termini'   },
   '/privacy': { en: '/en/privacy',  nl: '/nl/privacy',      it: '/it/privacy'   },
-  '/recipes': { en: '/en/recipes',  nl: '/nl/recepten',     it: '/it/ricette'   },
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

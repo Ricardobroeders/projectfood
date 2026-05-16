@@ -1,7 +1,7 @@
 {
   "name": "Project Food",
   "short_name": "ProjectFood",
-  "description": "Track 30 plants a week. Healthy gut, happy life.",
+  "description": "Track 30 plants a week. Good gut, good life.",
   "start_url": "/home",
   "display": "standalone",
   "background_color": "#ffffff",
