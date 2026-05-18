@@ -114,7 +114,6 @@ async function computeStreak(supabase: ReturnType<typeof createAdminClient>, use
   expected.setDate(expected.getDate() - 1) // start from yesterday
 
   for (const date of dates) {
-    const d = new Date(date)
     const exp = expected.toLocaleDateString('en-CA')
     if (date === exp) {
       streak++
@@ -134,18 +133,27 @@ export async function GET(req: Request) {
 
   const supabase = createAdminClient()
 
-  // Fetch all opted-in users with their subscriptions
-  const { data: users, error } = await supabase
+  // Fetch all opted-in users
+  const { data: userSettings, error } = await supabase
     .from('user_settings')
-    .select(`
-      user_id, locale, timezone,
-      notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge,
-      push_subscriptions (endpoint, p256dh, auth, failure_count)
-    `)
+    .select('user_id, locale, timezone, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge')
     .eq('notifications_enabled', true)
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  if (!users?.length) return NextResponse.json({ ok: true, sent: 0 })
+  if (!userSettings?.length) return NextResponse.json({ ok: true, sent: 0 })
+
+  const userIds = userSettings.map((u) => u.user_id)
+  const { data: allSubs } = await supabase
+    .from('push_subscriptions')
+    .select('user_id, endpoint, p256dh, auth, failure_count')
+    .in('user_id', userIds)
+
+  const subsByUser = (allSubs ?? []).reduce<Record<string, Sub[]>>((acc, s) => {
+    ;(acc[s.user_id] ??= []).push(s)
+    return acc
+  }, {})
+
+  const users = userSettings.map((u) => ({ ...u, push_subscriptions: subsByUser[u.user_id] ?? [] }))
 
   let sent = 0
   const errors: string[] = []
