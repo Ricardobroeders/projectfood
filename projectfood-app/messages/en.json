@@ -69,8 +69,7 @@
     "types": {
       "dailyReminder": { "label": "Daily reminder", "description": "Nudge if you haven't logged today" },
       "streakRescue": { "label": "Streak rescue", "description": "Save your streak before midnight" },
-      "weeklyNudge": { "label": "Sunday nudge", "description": "Last chance to hit 30 plants" },
-      "reengagement": { "label": "Comeback nudges", "description": "Gentle reminders if you've been away" }
+      "weeklyNudge": { "label": "Sunday nudge", "description": "Last chance to hit 30 plants" }
     },
     "iosFirst": "Add Project Food to your home screen first to enable notifications.",
     "permissionDenied": "Notifications blocked. Enable them in your browser settings.",

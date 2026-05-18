@@ -56,7 +56,6 @@ export default function NotificationsPage() {
   const [dailyReminder, setDailyReminder] = useState(true)
   const [streakRescue, setStreakRescue] = useState(true)
   const [weeklyNudge, setWeeklyNudge] = useState(true)
-  const [reengagement, setReengagement] = useState(true)
   const [timezone, setTimezone] = useState('Europe/Amsterdam')
 
   const [isStandalone, setIsStandalone] = useState(false)
@@ -73,7 +72,6 @@ export default function NotificationsPage() {
     setDailyReminder(s.notifDailyReminder)
     setStreakRescue(s.notifStreakRescue)
     setWeeklyNudge(s.notifWeeklyNudge)
-    setReengagement(s.notifReengagement)
     setTimezone(s.timezone)
   }, [data])
 
@@ -236,12 +234,6 @@ export default function NotificationsPage() {
               description={t('types.weeklyNudge.description')}
               checked={weeklyNudge}
               onChange={(v) => { setWeeklyNudge(v); save({ notif_weekly_nudge: v }) }}
-            />
-            <Row
-              label={t('types.reengagement.label')}
-              description={t('types.reengagement.description')}
-              checked={reengagement}
-              onChange={(v) => { setReengagement(v); save({ notif_reengagement: v }) }}
             />
           </div>
         )}

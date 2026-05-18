@@ -5,7 +5,7 @@ import { sendPush, type Subscription } from '@/lib/push'
 type NotifCopy = { title: string; body: string; url: string }
 
 const COPY: Record<string, Record<string, NotifCopy>> = {
-  inactivity_reminder: {
+  daily_reminder: {
     en: { title: 'Project Food 🌿', body: "Your plants are waiting! Log what you've eaten and unlock your weekly grocery advice.", url: '/log' },
     nl: { title: 'Project Food 🌿', body: 'Je planten wachten! Log wat je gegeten hebt en ontgrendel je weekadvies.', url: '/log' },
     it: { title: 'Project Food 🌿', body: 'Le tue piante ti aspettano! Registra quello che hai mangiato e sblocca i tuoi consigli settimanali.', url: '/log' },
@@ -168,27 +168,7 @@ export async function GET(req: Request) {
       const today = localDate(tz)
       const dayOfWeek = localDayOfWeek(tz)
 
-      // --- Inactivity reminder (2+ days no log, max once every 3 days) ---
-      if (user.notif_daily_reminder) {
-        const threeDaysAgo = new Date(today)
-        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
-        const since = threeDaysAgo.toLocaleDateString('en-CA')
-
-        if (!(await alreadySentSince(supabase, user.user_id, 'inactivity_reminder', since))) {
-          const yesterday = new Date(today)
-          yesterday.setDate(yesterday.getDate() - 1)
-          const { data: recentLogs } = await supabase
-            .from('plant_logs').select('id').eq('user_id', user.user_id)
-            .gte('logged_on', yesterday.toLocaleDateString('en-CA')).limit(1)
-
-          if (!recentLogs?.length) {
-            const tmpl = COPY['inactivity_reminder'][locale] ?? COPY['inactivity_reminder']['en']
-            await deliverToUser(supabase, subs, tmpl)
-            await logSent(supabase, user.user_id, 'inactivity_reminder')
-            sent++
-          }
-        }
-      }
+      let sentToUser = false
 
       // --- Streak rescue (fires if streak >= 3 and user hasn't logged today) ---
       if (user.notif_streak_rescue) {
@@ -203,6 +183,7 @@ export async function GET(req: Request) {
               await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { streak: streakCount }) })
               await logSent(supabase, user.user_id, 'streak_rescue')
               sent++
+              sentToUser = true
             }
           }
         }
@@ -220,6 +201,22 @@ export async function GET(req: Request) {
             const tmpl = COPY['weekly_nudge'][locale] ?? COPY['weekly_nudge']['en']
             await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { remaining: 30 - weekCount }) })
             await logSent(supabase, user.user_id, 'weekly_nudge')
+            sent++
+            sentToUser = true
+          }
+        }
+      }
+
+      // --- Daily reminder (no log today, only if no other notification fired today) ---
+      if (user.notif_daily_reminder && !sentToUser) {
+        if (!(await alreadySentSince(supabase, user.user_id, 'daily_reminder', today))) {
+          const { data: todayLogs } = await supabase
+            .from('plant_logs').select('id').eq('user_id', user.user_id).eq('logged_on', today).limit(1)
+
+          if (!todayLogs?.length) {
+            const tmpl = COPY['daily_reminder'][locale] ?? COPY['daily_reminder']['en']
+            await deliverToUser(supabase, subs, tmpl)
+            await logSent(supabase, user.user_id, 'daily_reminder')
             sent++
           }
         }
