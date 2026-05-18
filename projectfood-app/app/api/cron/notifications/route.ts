@@ -148,73 +148,79 @@ export async function GET(req: Request) {
   if (!users?.length) return NextResponse.json({ ok: true, sent: 0 })
 
   let sent = 0
+  const errors: string[] = []
 
   for (const user of users as any[]) {
-    const subs: Sub[] = user.push_subscriptions ?? []
-    if (!subs.length) continue
+    try {
+      const subs: Sub[] = user.push_subscriptions ?? []
+      if (!subs.length) continue
 
-    const tz = user.timezone ?? 'Europe/Amsterdam'
-    const locale = (user.locale ?? 'en') as 'en' | 'nl' | 'it'
-    const today = localDate(tz)
-    const dayOfWeek = localDayOfWeek(tz)
+      const tz = user.timezone ?? 'Europe/Amsterdam'
+      const locale = (user.locale ?? 'en') as 'en' | 'nl' | 'it'
+      const today = localDate(tz)
+      const dayOfWeek = localDayOfWeek(tz)
 
-    // --- Inactivity reminder (2+ days no log, max once every 3 days) ---
-    if (user.notif_daily_reminder) {
-      const threeDaysAgo = new Date(today)
-      threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
-      const since = threeDaysAgo.toLocaleDateString('en-CA')
+      // --- Inactivity reminder (2+ days no log, max once every 3 days) ---
+      if (user.notif_daily_reminder) {
+        const threeDaysAgo = new Date(today)
+        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3)
+        const since = threeDaysAgo.toLocaleDateString('en-CA')
 
-      if (!(await alreadySentSince(supabase, user.user_id, 'inactivity_reminder', since))) {
-        const yesterday = new Date(today)
-        yesterday.setDate(yesterday.getDate() - 1)
-        const { data: recentLogs } = await supabase
-          .from('plant_logs').select('id').eq('user_id', user.user_id)
-          .gte('logged_on', yesterday.toLocaleDateString('en-CA')).limit(1)
+        if (!(await alreadySentSince(supabase, user.user_id, 'inactivity_reminder', since))) {
+          const yesterday = new Date(today)
+          yesterday.setDate(yesterday.getDate() - 1)
+          const { data: recentLogs } = await supabase
+            .from('plant_logs').select('id').eq('user_id', user.user_id)
+            .gte('logged_on', yesterday.toLocaleDateString('en-CA')).limit(1)
 
-        if (!recentLogs?.length) {
-          const tmpl = COPY['inactivity_reminder'][locale] ?? COPY['inactivity_reminder']['en']
-          await deliverToUser(supabase, subs, tmpl)
-          await logSent(supabase, user.user_id, 'inactivity_reminder')
-          sent++
-        }
-      }
-    }
-
-    // --- Streak rescue (fires if streak >= 3 and user hasn't logged today) ---
-    if (user.notif_streak_rescue) {
-      if (!(await alreadySentSince(supabase, user.user_id, 'streak_rescue', today))) {
-        const { data: todayLogs } = await supabase
-          .from('plant_logs').select('id').eq('user_id', user.user_id).eq('logged_on', today).limit(1)
-
-        if (!todayLogs?.length) {
-          const streakCount = await computeStreak(supabase, user.user_id)
-          if (streakCount >= 3) {
-            const tmpl = COPY['streak_rescue'][locale] ?? COPY['streak_rescue']['en']
-            await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { streak: streakCount }) })
-            await logSent(supabase, user.user_id, 'streak_rescue')
+          if (!recentLogs?.length) {
+            const tmpl = COPY['inactivity_reminder'][locale] ?? COPY['inactivity_reminder']['en']
+            await deliverToUser(supabase, subs, tmpl)
+            await logSent(supabase, user.user_id, 'inactivity_reminder')
             sent++
           }
         }
       }
-    }
 
-    // --- Sunday nudge (only on Sundays, 25–29 plants) ---
-    if (user.notif_weekly_nudge && dayOfWeek === 0) {
-      if (!(await alreadySentSince(supabase, user.user_id, 'weekly_nudge', today))) {
-        const weekStart = weekStartDate(tz)
-        const { data: weekLogs } = await supabase
-          .from('plant_logs').select('plant_id').eq('user_id', user.user_id).gte('logged_on', weekStart)
-        const weekCount = new Set((weekLogs ?? []).map((l: any) => l.plant_id)).size
+      // --- Streak rescue (fires if streak >= 3 and user hasn't logged today) ---
+      if (user.notif_streak_rescue) {
+        if (!(await alreadySentSince(supabase, user.user_id, 'streak_rescue', today))) {
+          const { data: todayLogs } = await supabase
+            .from('plant_logs').select('id').eq('user_id', user.user_id).eq('logged_on', today).limit(1)
 
-        if (weekCount >= 25 && weekCount < 30) {
-          const tmpl = COPY['weekly_nudge'][locale] ?? COPY['weekly_nudge']['en']
-          await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { remaining: 30 - weekCount }) })
-          await logSent(supabase, user.user_id, 'weekly_nudge')
-          sent++
+          if (!todayLogs?.length) {
+            const streakCount = await computeStreak(supabase, user.user_id)
+            if (streakCount >= 3) {
+              const tmpl = COPY['streak_rescue'][locale] ?? COPY['streak_rescue']['en']
+              await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { streak: streakCount }) })
+              await logSent(supabase, user.user_id, 'streak_rescue')
+              sent++
+            }
+          }
         }
       }
+
+      // --- Sunday nudge (only on Sundays, 25–29 plants) ---
+      if (user.notif_weekly_nudge && dayOfWeek === 0) {
+        if (!(await alreadySentSince(supabase, user.user_id, 'weekly_nudge', today))) {
+          const weekStart = weekStartDate(tz)
+          const { data: weekLogs } = await supabase
+            .from('plant_logs').select('plant_id').eq('user_id', user.user_id).gte('logged_on', weekStart)
+          const weekCount = new Set((weekLogs ?? []).map((l: any) => l.plant_id)).size
+
+          if (weekCount >= 25 && weekCount < 30) {
+            const tmpl = COPY['weekly_nudge'][locale] ?? COPY['weekly_nudge']['en']
+            await deliverToUser(supabase, subs, { ...tmpl, body: fill(tmpl.body, { remaining: 30 - weekCount }) })
+            await logSent(supabase, user.user_id, 'weekly_nudge')
+            sent++
+          }
+        }
+      }
+    } catch (err: any) {
+      console.error(`[cron/notifications] failed for user ${user.user_id}:`, err?.message ?? err)
+      errors.push(user.user_id)
     }
   }
 
-  return NextResponse.json({ ok: true, sent })
+  return NextResponse.json({ ok: true, sent, errors })
 }
