@@ -4,5 +4,13 @@
       "path": "/api/cron/notifications",
       "schedule": "0 17 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.projectfood.dev" }],
+      "destination": "https://projectfood.dev/:path*",
+      "permanent": true
+    }
   ]
 }
