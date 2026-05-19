@@ -176,6 +176,7 @@
       "about": "Chi siamo",
       "recipes": "Ricette",
       "contact": "Contatto",
+      "learn": "Scopri",
       "openApp": "Apri l'app"
     },
     "home": {
@@ -304,6 +305,20 @@
       "s10Body": "Potremmo aggiornare questa informativa sulla privacy di tanto in tanto. In caso di modifiche significative, ti avviseremo via email prima che entrino in vigore.",
       "s11Title": "11. Contatti",
       "s11Body": "Per domande sulla privacy, unisciti alla nostra community Discord."
+    },
+    "learn": {
+      "nav": "Scopri",
+      "hubTitle": "La scienza del mangiare bene",
+      "hubSubtitle": "Guide basate sulla ricerca sulla diversità vegetale, la salute intestinale e le abitudini migliori.",
+      "hubLabel": "Centro di conoscenza",
+      "readingTime": "{min} min di lettura",
+      "backToLearn": "Tutti gli argomenti",
+      "backToPillar": "Torna a {title}",
+      "relatedArticles": "Articoli correlati",
+      "citations": "Fonti e riferimenti",
+      "publishedOn": "Pubblicato il {date}",
+      "articleCount": "{count} articoli in questo cluster",
+      "openApp": "Inizia a tracciare"
     }
   },
   "social": {

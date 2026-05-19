@@ -10,5 +10,6 @@ export const routing = defineRouting({
     '/terms':   { en: '/terms',   nl: '/voorwaarden', it: '/termini'   },
     '/privacy': { en: '/privacy', nl: '/privacy',     it: '/privacy'   },
     '/recipes': { en: '/recipes', nl: '/recepten',    it: '/ricette'   },
+    '/learn':   { en: '/learn',   nl: '/leer',        it: '/impara'    },
   },
 })

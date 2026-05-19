@@ -176,6 +176,7 @@
       "about": "Over",
       "recipes": "Recepten",
       "contact": "Contact",
+      "learn": "Ontdekken",
       "openApp": "Open de app"
     },
     "home": {
@@ -304,6 +305,20 @@
       "s10Body": "We kunnen dit privacybeleid van tijd tot tijd bijwerken. Als we significante wijzigingen aanbrengen, informeren we je per e-mail voordat ze van kracht worden.",
       "s11Title": "11. Contact",
       "s11Body": "Voor privacygerelateerde vragen kun je lid worden van onze Discord-community."
+    },
+    "learn": {
+      "nav": "Ontdekken",
+      "hubTitle": "De wetenschap van goed eten",
+      "hubSubtitle": "Onderzoeksgefundeerde gidsen over plantvariëteit, darmgezondheid en betere gewoonten.",
+      "hubLabel": "Kenniscentrum",
+      "readingTime": "{min} min lezen",
+      "backToLearn": "Alle onderwerpen",
+      "backToPillar": "Terug naar {title}",
+      "relatedArticles": "Gerelateerde artikelen",
+      "citations": "Bronnen & referenties",
+      "publishedOn": "Gepubliceerd op {date}",
+      "articleCount": "{count} artikelen in dit cluster",
+      "openApp": "Begin met bijhouden"
     }
   },
   "social": {

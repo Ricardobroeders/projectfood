@@ -7,9 +7,9 @@ const LOCALE_COOKIE = 'pf_locale'
 
 // External localized slug → internal page segment, keyed by locale
 const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
-  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes' },
-  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes' },
-  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes' },
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn' },
+  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn' },
+  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn' },
 }
 
 function detectLocale(request: NextRequest): Locale {
@@ -48,9 +48,13 @@ export async function middleware(request: NextRequest) {
     if (slug) {
       const internalSlug = SLUG_TO_INTERNAL[locale]?.[slug]
       if (internalSlug && internalSlug !== slug) {
-        // Rewrite /nl/over → /nl/about, /it/chi-siamo → /it/about, etc.
+        // Rewrite /nl/over → /nl/about, /nl/leer/plant-diversity → /nl/learn/plant-diversity, etc.
+        // Carry through any sub-segments after the localized base slug.
+        const subSegments = parts.slice(2)
         const url = request.nextUrl.clone()
-        url.pathname = `/${locale}/${internalSlug}`
+        url.pathname = subSegments.length
+          ? `/${locale}/${internalSlug}/${subSegments.join('/')}`
+          : `/${locale}/${internalSlug}`
         const response = NextResponse.rewrite(url)
         setLocaleCookie(response, locale)
         return response

@@ -47,6 +47,7 @@ export default async function MarketingLayout({
           about: t('nav.about'),
           recipes: t('nav.recipes'),
           contact: t('nav.contact'),
+          learn: t('nav.learn'),
           openApp: t('nav.openApp'),
         }}
       />

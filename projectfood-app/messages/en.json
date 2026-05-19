@@ -176,6 +176,7 @@
       "about": "About",
       "recipes": "Recipes",
       "contact": "Contact",
+      "learn": "Learn",
       "openApp": "Open the app"
     },
     "home": {
@@ -304,6 +305,20 @@
       "s10Body": "We may update this Privacy Policy from time to time. If we make significant changes, we will notify you by email before they take effect.",
       "s11Title": "11. Contact",
       "s11Body": "For privacy-related questions, join our Discord community."
+    },
+    "learn": {
+      "nav": "Learn",
+      "hubTitle": "The Science of Eating Well",
+      "hubSubtitle": "Research-backed guides on plant diversity, gut health, and building better habits.",
+      "hubLabel": "Knowledge hub",
+      "readingTime": "{min} min read",
+      "backToLearn": "All topics",
+      "backToPillar": "Back to {title}",
+      "relatedArticles": "Related articles",
+      "citations": "Sources & citations",
+      "publishedOn": "Published {date}",
+      "articleCount": "{count} articles in this cluster",
+      "openApp": "Start tracking your plants"
     }
   },
   "social": {

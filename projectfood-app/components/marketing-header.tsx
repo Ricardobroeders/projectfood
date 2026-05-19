@@ -13,6 +13,7 @@ type Props = {
     about: string
     recipes: string
     contact: string
+    learn: string
     openApp: string
   }
 }
@@ -46,6 +47,12 @@ export function MarketingHeader({ locale, labels }: Props) {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6 text-sm text-[#6B645C]">
+            <Link
+              href={getLocalizedHref('/learn', locale)}
+              className="hover:text-[#1F1B16] transition-colors"
+            >
+              {labels.learn}
+            </Link>
             <Link
               href={getLocalizedHref('/about', locale)}
               className="hover:text-[#1F1B16] transition-colors"
@@ -109,6 +116,13 @@ export function MarketingHeader({ locale, labels }: Props) {
               onClick={() => setOpen(false)}
             >
               {labels.home}
+            </Link>
+            <Link
+              href={getLocalizedHref('/learn', locale)}
+              className="text-xl font-semibold text-[#1F1B16] py-4 border-b border-[#F4EFE8]"
+              onClick={() => setOpen(false)}
+            >
+              {labels.learn}
             </Link>
             <Link
               href={getLocalizedHref('/about', locale)}
