@@ -366,9 +366,9 @@
   "groceryFlow": {
     "nudgeTitle": "Shopping picks",
     "nudgeLocked": "{n, plural, one {Log # more plant to unlock} other {Log # more plants to unlock}}",
-    "nudgeCount": "You've tried {count} plants this week",
-    "nudgeGoal": "You hit 30 plants!",
-    "nudgeSub": "Want shopping ideas?",
+    "nudgeCount": "Find recipes for your picks",
+    "nudgeGoal": "Find recipes for your picks",
+    "nudgeSub": "Tap to match new plants to your week",
     "nudgeCta": "See picks",
     "picksHeader": "Shopping picks",
     "findingHeader": "Finding recipes",
@@ -387,6 +387,9 @@
     "ingredients": "Ingredients",
     "steps": "How to make it",
     "legend": "Colored = already in your week · Yellow + = add to your list",
-    "newPlant": "+{n, plural, one {# new plant} other {# new plants}}"
+    "newPlant": "+{n, plural, one {# new plant} other {# new plants}}",
+    "shareRecipe": "Share recipe",
+    "recipeCopied": "Copied!",
+    "shareFooter": "Recipe found at projectfood.dev — track 30 plants a week for a healthier gut microbiome."
   }
 }

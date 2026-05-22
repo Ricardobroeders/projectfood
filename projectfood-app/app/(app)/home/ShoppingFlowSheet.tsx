@@ -161,27 +161,30 @@ function PicksScreen({
                 outline: isSelected ? `2px solid ${c.dot}` : '2px solid transparent',
               }}
             >
-              {/* Plant image / emoji */}
+              {/* Plant image — no overflow-hidden so the star badge can bleed outside */}
               <div
-                className="relative shrink-0 w-11 h-11 rounded-[12px] grid place-items-center text-[22px] overflow-hidden"
+                className="relative shrink-0 w-11 h-11 rounded-[12px]"
                 style={{ background: c.bg }}
               >
-                {s.image_url ? (
-                  <Image
-                    src={supabaseImageUrl(s.image_url, 44, 44)}
-                    alt={s.plant}
-                    width={44}
-                    height={44}
-                    sizes="44px"
-                    unoptimized
-                    className="object-contain"
-                  />
-                ) : (
-                  c.emoji
-                )}
+                {/* Image clip kept inside via inner wrapper */}
+                <div className="absolute inset-0 rounded-[12px] overflow-hidden grid place-items-center">
+                  {s.image_url && (
+                    <Image
+                      src={supabaseImageUrl(s.image_url, 44, 44)}
+                      alt={s.plant}
+                      width={44}
+                      height={44}
+                      sizes="44px"
+                      unoptimized
+                      className="object-contain"
+                    />
+                  )}
+                </div>
                 {s.featured && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full grid place-items-center"
-                    style={{ background: c.fg }}>
+                  <span
+                    className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full grid place-items-center z-10"
+                    style={{ background: c.fg }}
+                  >
                     <Star size={8} fill="#fff" color="#fff" />
                   </span>
                 )}

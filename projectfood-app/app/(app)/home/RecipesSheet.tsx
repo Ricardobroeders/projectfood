@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
-import { X, ChevronDown, ChevronUp, Clock, Users, Loader2 } from 'lucide-react'
+import { X, ChevronDown, ChevronUp, Clock, Users, Loader2, Share2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { CATS, type Category } from '@/lib/cats'
 import type { Recipe, RecipeBatch } from '@/lib/fetchers'
@@ -137,11 +137,24 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
   const [expanded, setExpanded] = useState<number | null>(0)
   const [expandedOld, setExpandedOld] = useState<number | null>(null)
   const [show, setShow] = useState(false)
+  const [animateIn, setAnimateIn] = useState(false)
+  const prevGeneratingRef = useRef(generating)
 
   useEffect(() => {
     const id = setTimeout(() => setShow(true), 10)
     return () => clearTimeout(id)
   }, [])
+
+  // When generating ends and we have batches, trigger slide-in animation
+  useEffect(() => {
+    if (prevGeneratingRef.current && !generating && batches.length > 0) {
+      setAnimateIn(true)
+      const timer = setTimeout(() => setAnimateIn(false), 600)
+      prevGeneratingRef.current = generating
+      return () => clearTimeout(timer)
+    }
+    prevGeneratingRef.current = generating
+  }, [generating, batches.length])
 
   const animStyle: CSSProperties = {
     opacity: show ? 1 : 0,
@@ -191,8 +204,16 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
 
       {/* Recipes list */}
       <div className="flex-1 overflow-y-auto px-5 pb-8 space-y-3">
-        {/* Generating new batch banner */}
-        {generating && (
+        {/* Generating new batch banner — fades out smoothly when done */}
+        <div
+          style={{
+            overflow: 'hidden',
+            maxHeight: generating ? '64px' : '0px',
+            opacity: generating ? 1 : 0,
+            marginBottom: generating ? '0px' : '-12px',
+            transition: 'max-height 0.4s ease-out, opacity 0.3s ease-out, margin-bottom 0.4s ease-out',
+          }}
+        >
           <div
             className="rounded-[16px] px-4 py-3 flex items-center gap-3"
             style={{ background: '#DDEACB' }}
@@ -202,18 +223,28 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
               {t('recipesGenerating')}
             </p>
           </div>
-        )}
+        </div>
 
-        {currentRecipes.map((recipe, i) => (
-          <RecipeCard
-            key={i}
-            recipe={recipe}
-            index={i}
-            isOpen={expanded === i}
-            onToggle={() => setExpanded(expanded === i ? null : i)}
-            t={t}
-          />
-        ))}
+        {/* Current recipes — semi-transparent while generating, slide in when done */}
+        <div
+          style={{
+            opacity: generating ? 0.45 : 1,
+            transition: 'opacity 0.4s ease-out',
+            animation: animateIn ? 'pfRecipesIn 0.5s ease-out' : undefined,
+          }}
+        >
+          {currentRecipes.map((recipe, i) => (
+            <div key={i} className={i > 0 ? 'mt-3' : ''}>
+              <RecipeCard
+                recipe={recipe}
+                index={i}
+                isOpen={expanded === i}
+                onToggle={() => setExpanded(expanded === i ? null : i)}
+                t={t}
+              />
+            </div>
+          ))}
+        </div>
 
         {/* Earlier recipes */}
         {olderRecipes.length > 0 && (
@@ -225,7 +256,10 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
               </p>
               <div className="flex-1 h-px bg-[#D8D0C8]" />
             </div>
-            <div className="space-y-2 opacity-50">
+            <div
+              className="space-y-2"
+              style={{ opacity: generating ? 0.25 : 0.5, transition: 'opacity 0.4s ease-out' }}
+            >
               {olderRecipes.map((recipe, i) => (
                 <RecipeCard
                   key={i}
@@ -239,6 +273,13 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
             </div>
           </div>
         )}
+
+        <style>{`
+          @keyframes pfRecipesIn {
+            from { transform: translateY(10px); }
+            to   { transform: translateY(0); }
+          }
+        `}</style>
       </div>
     </div>
   )
@@ -259,7 +300,36 @@ function RecipeCard({
   onToggle: () => void
   t: ReturnType<typeof useTranslations<'groceryFlow'>>
 }) {
+  const [copied, setCopied] = useState(false)
   const newPlants = recipe.ingredients.filter(i => i.need_to_buy && i.category !== null).length
+
+  function handleShare() {
+    const ingredientLines = recipe.ingredients.map(i => `• ${i.name}`).join('\n')
+    const stepLines = recipe.steps.map((s, i) => `${i + 1}. ${s}`).join('\n')
+    const text = [
+      recipe.title,
+      `⏱ ${recipe.time_minutes} min · ${recipe.serves} servings`,
+      '',
+      'Ingredients:',
+      ingredientLines,
+      '',
+      'How to make it:',
+      stepLines,
+      '',
+      `🌿 ${recipe.gut_note}`,
+      '',
+      t('shareFooter'),
+    ].join('\n')
+
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      navigator.share({ title: recipe.title, text }).catch(() => {})
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+      })
+    }
+  }
 
   return (
     <div className="rounded-[20px] overflow-hidden bg-white">
@@ -375,6 +445,20 @@ function RecipeCard({
               {recipe.gut_note}
             </p>
           </div>
+
+          {/* Share button */}
+          <button
+            onClick={handleShare}
+            className="w-full h-10 rounded-full flex items-center justify-center gap-2 text-[13px] font-medium border transition-colors"
+            style={{
+              borderColor: '#D8D0C8',
+              color: copied ? '#4F7A3D' : '#6B645C',
+              background: copied ? '#DDEACB' : 'transparent',
+            }}
+          >
+            <Share2 size={14} />
+            {copied ? t('recipeCopied') : t('shareRecipe')}
+          </button>
         </div>
       )}
     </div>

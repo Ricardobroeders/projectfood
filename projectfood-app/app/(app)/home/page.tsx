@@ -78,8 +78,10 @@ export default function HomePage() {
   useEffect(() => {
     if (!data) return
     const { weekCount, weekAdvice } = data
-    if (weekCount >= 9 && !weekAdvice) {
-      fetch('/api/advice', { method: 'POST' }).then(() => mutate(['home', locale]))
+    // Re-trigger if advice is missing OR if it's from the old format (no category on suggestions)
+    const hasEnrichedAdvice = weekAdvice?.suggestions?.[0]?.category != null
+    if (weekCount >= 9 && (!weekAdvice || !hasEnrichedAdvice)) {
+      fetch('/api/advice', { method: 'POST' }).then(() => mutate(['home', locale])).catch(() => {})
     }
   }, [data?.weekCount, data?.weekAdvice])
 

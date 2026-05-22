@@ -366,9 +366,9 @@
   "groceryFlow": {
     "nudgeTitle": "Winkelkeuzes",
     "nudgeLocked": "{n, plural, one {Log nog # plant om te ontgrendelen} other {Log nog # planten om te ontgrendelen}}",
-    "nudgeCount": "Je hebt {count} planten geprobeerd deze week",
-    "nudgeGoal": "Je hebt 30 planten gehaald!",
-    "nudgeSub": "Wil je winkelkeuzes?",
+    "nudgeCount": "Vind recepten voor jouw keuzes",
+    "nudgeGoal": "Vind recepten voor jouw keuzes",
+    "nudgeSub": "Tik om nieuwe planten te koppelen aan je week",
     "nudgeCta": "Bekijk keuzes",
     "picksHeader": "Winkelkeuzes",
     "findingHeader": "Recepten zoeken",
@@ -387,6 +387,9 @@
     "ingredients": "Ingrediënten",
     "steps": "Hoe te maken",
     "legend": "Gekleurd = al in jouw week · Geel + = voeg toe aan je lijst",
-    "newPlant": "+{n, plural, one {# nieuwe plant} other {# nieuwe planten}}"
+    "newPlant": "+{n, plural, one {# nieuwe plant} other {# nieuwe planten}}",
+    "shareRecipe": "Recept delen",
+    "recipeCopied": "Gekopieerd!",
+    "shareFooter": "Recept gevonden op projectfood.dev — volg 30 planten per week voor een gezondere darmflora."
   }
 }

@@ -25,7 +25,7 @@ export async function POST() {
   weekEnd.setDate(weekEnd.getDate() + 6)
   const we = weekEnd.toLocaleDateString('en-CA')
 
-  // Return cached advice if it already exists for this week
+  // Return cached advice if it already exists for this week AND has enriched fields
   const { data: existing } = await supabase
     .from('weekly_advice')
     .select('advice')
@@ -33,7 +33,9 @@ export async function POST() {
     .eq('week_start', ws)
     .maybeSingle()
 
-  if (existing) return NextResponse.json({ advice: existing.advice })
+  // Old rows lack `category` on suggestions — fall through to regenerate them
+  const hasEnrichedAdvice = existing?.advice?.suggestions?.[0]?.category != null
+  if (existing && hasEnrichedAdvice) return NextResponse.json({ advice: existing.advice })
 
   // User locale for response language
   const { data: settings } = await supabase
@@ -121,26 +123,27 @@ Current month: ${month}`
     .select('name, image_url')
     .in('name', suggestedNames)
 
+  // Normalize to lowercase for case-insensitive matching
   const imageByName: Record<string, string | null> = {}
   for (const row of (plantRows ?? []) as { name: string; image_url: string | null }[]) {
-    imageByName[row.name] = row.image_url
+    imageByName[row.name.toLowerCase()] = row.image_url
   }
 
-  // Attach image_url to each suggestion
+  // Attach image_url to each suggestion (case-insensitive lookup)
   const advice = {
     ...adviceRaw,
     suggestions: (adviceRaw.suggestions ?? []).map((s: any) => ({
       ...s,
-      image_url: imageByName[s.plant] ?? null,
+      image_url: imageByName[s.plant.toLowerCase()] ?? null,
     })),
   }
 
+  // Upsert so old rows without enriched fields get overwritten
   const { error } = await supabase
     .from('weekly_advice')
-    .insert({ user_id: user.id, week_start: ws, advice })
+    .upsert({ user_id: user.id, week_start: ws, advice }, { onConflict: 'user_id,week_start' })
 
-  // 23505 = unique_violation (race condition — another request beat us)
-  if (error && error.code !== '23505') {
+  if (error) {
     return NextResponse.json({ error: 'Failed to store advice' }, { status: 500 })
   }
 

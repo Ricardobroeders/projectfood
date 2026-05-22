@@ -366,9 +366,9 @@
   "groceryFlow": {
     "nudgeTitle": "Scelte della spesa",
     "nudgeLocked": "{n, plural, one {Registra ancora # pianta per sbloccare} other {Registra ancora # piante per sbloccare}}",
-    "nudgeCount": "Hai provato {count} piante questa settimana",
-    "nudgeGoal": "Hai raggiunto 30 piante!",
-    "nudgeSub": "Vuoi idee per la spesa?",
+    "nudgeCount": "Trova ricette per le tue scelte",
+    "nudgeGoal": "Trova ricette per le tue scelte",
+    "nudgeSub": "Tocca per abbinare nuove piante alla tua settimana",
     "nudgeCta": "Vedi le scelte",
     "picksHeader": "Scelte della spesa",
     "findingHeader": "Trovare ricette",
@@ -387,6 +387,9 @@
     "ingredients": "Ingredienti",
     "steps": "Come prepararlo",
     "legend": "Colorato = già nella tua settimana · Giallo + = aggiungi alla lista",
-    "newPlant": "+{n, plural, one {# nuova pianta} other {# nuove piante}}"
+    "newPlant": "+{n, plural, one {# nuova pianta} other {# nuove piante}}",
+    "shareRecipe": "Condividi ricetta",
+    "recipeCopied": "Copiato!",
+    "shareFooter": "Ricetta trovata su projectfood.dev — segui 30 piante a settimana per un microbioma intestinale più sano."
   }
 }
