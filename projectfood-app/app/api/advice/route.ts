@@ -14,7 +14,6 @@ function currentWeekStart(): string {
   return monday.toLocaleDateString('en-CA')
 }
 
-
 export async function POST() {
   const supabase = await createClient()
 
@@ -69,29 +68,27 @@ export async function POST() {
 
   const systemPrompt = `You are a plant-diversity and nutrition advisor for a gut health app called Project Food.
 Users track 30 different plants per week to support gut health and microbiome diversity.
-Your job: suggest 8–10 plants to add to next week's shopping list, and mark exactly 1–2 of them as a "top pick" (featured: true) — the ones that would make the biggest difference given this week's gaps.
+Your job: suggest 6–8 plants to add to next week's shopping list, and mark exactly 1–2 of them as a "top pick" (featured: true) — the ones that would make the biggest difference given this week's gaps.
 
 Reasoning priority (use ALL of these angles across all suggestions):
 1. Nutritional gaps — what nutrients, compounds, or health benefits are missing?
-   (e.g. probiotics, omega-3s, vitamin C, prebiotic fibre, polyphenols, folate, iron, zinc, magnesium…)
 2. Missing or underrepresented plant categories
 3. Repetition — if a plant was logged 4+ times, suggest a variety swap in the same category
 4. Seasonality for ${month} in the Northern Hemisphere
 5. Synergy — foods that boost absorption of other foods already eaten this week
 
-Top picks (featured: true) criteria — choose the 1–2 suggestions that:
-- Address the most impactful nutritional gap this week, OR
-- Cover a category completely absent from the week's logs
+For each suggestion provide:
+- plant: the plant name
+- category: EXACTLY one of: fruit, vegetable, herb, nut_seed, legume, whole_grain, ferment
+- meal_context: a very short (3–6 word) meal idea e.g. "For Thursday dinner", "Easy weekday breakfast", "Throw on tonight's pasta"
+- reason: 1 sentence on the specific benefit or gap it fills (used in detailed view)
+- why: ONLY for featured suggestions — a punchy 5–8 word gut health benefit e.g. "Prebiotic fiber your gut bacteria love"
+- featured: true for your 1–2 top picks, false for the rest
 
-For each suggestion, the "reason" should name the specific benefit or nutrient it brings
-that was absent or low this week (e.g. "Sauerkraut is rich in probiotics — you haven't
-had any fermented foods this week.").
-
-Keep reasons short (1–2 sentences), friendly and practical.
-Vary the suggestions: mix affordable staples with interesting or seasonal picks.
 Respond in ${language}.
-Return ONLY valid JSON: {"summary":"...","suggestions":[{"plant":"...","reason":"...","featured":false}]}
-(set featured to true for your 1–2 top picks, false for the rest)`
+Return ONLY valid JSON:
+{"summary":"...","suggestions":[{"plant":"...","category":"vegetable","meal_context":"...","reason":"...","why":"...","featured":false}]}
+(omit the "why" field entirely for non-featured suggestions)`
 
   const userMessage = `Week: ${ws} – ${we}
 Plants logged this week (${plants.length} unique):
@@ -101,7 +98,7 @@ Categories covered: ${covered.join(', ') || 'none'}
 Categories not logged this week: ${missing.join(', ') || 'none'}
 Current month: ${month}`
 
-  let advice: object
+  let adviceRaw: any
   try {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
     const completion = await openai.chat.completions.create({
@@ -112,9 +109,30 @@ Current month: ${month}`
       ],
       response_format: { type: 'json_object' },
     })
-    advice = JSON.parse(completion.choices[0].message.content ?? '{}')
+    adviceRaw = JSON.parse(completion.choices[0].message.content ?? '{}')
   } catch {
     return NextResponse.json({ error: 'Failed to generate advice' }, { status: 500 })
+  }
+
+  // Look up image_url for suggested plants from the DB (best-effort, case-insensitive)
+  const suggestedNames: string[] = (adviceRaw.suggestions ?? []).map((s: any) => s.plant)
+  const { data: plantRows } = await supabase
+    .from('plants')
+    .select('name, image_url')
+    .in('name', suggestedNames)
+
+  const imageByName: Record<string, string | null> = {}
+  for (const row of (plantRows ?? []) as { name: string; image_url: string | null }[]) {
+    imageByName[row.name] = row.image_url
+  }
+
+  // Attach image_url to each suggestion
+  const advice = {
+    ...adviceRaw,
+    suggestions: (adviceRaw.suggestions ?? []).map((s: any) => ({
+      ...s,
+      image_url: imageByName[s.plant] ?? null,
+    })),
   }
 
   const { error } = await supabase

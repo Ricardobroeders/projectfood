@@ -362,5 +362,31 @@
     "legume": "Legume",
     "whole_grain": "Whole grain",
     "ferment": "Ferment"
+  },
+  "groceryFlow": {
+    "nudgeTitle": "Shopping picks",
+    "nudgeLocked": "{n, plural, one {Log # more plant to unlock} other {Log # more plants to unlock}}",
+    "nudgeCount": "You've tried {count} plants this week",
+    "nudgeGoal": "You hit 30 plants!",
+    "nudgeSub": "Want shopping ideas?",
+    "nudgeCta": "See picks",
+    "picksHeader": "Shopping picks",
+    "findingHeader": "Finding recipes",
+    "picksSubtitle": "Tap the plants you like — we'll find recipes to match",
+    "picksCta": "Find me recipes ({count} selected)",
+    "picksCtaDisabled": "Select a plant to continue",
+    "findingTitle": "Cooking up your recipes",
+    "findingSub": "This takes about 10–20 seconds. Close this and come back whenever.",
+    "findingCardTitle": "What to do next",
+    "findingCardBody": "Tap the 🍴 fork icon in the top bar to open your recipes when they're ready.",
+    "findingCta": "Got it, I'll check back",
+    "recipesHeader": "Your recipes",
+    "recipesSub": "{count, plural, one {# recipe matched to your picks.} other {# recipes matched to your picks.}} Each one adds new plants to your week.",
+    "recipesGenerating": "Finding new recipes — hang tight…",
+    "recipesEarlier": "Earlier recipes",
+    "ingredients": "Ingredients",
+    "steps": "How to make it",
+    "legend": "Colored = already in your week · Yellow + = add to your list",
+    "newPlant": "+{n, plural, one {# new plant} other {# new plants}}"
   }
 }

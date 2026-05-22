@@ -362,5 +362,31 @@
     "legume": "Peulvrucht",
     "whole_grain": "Volkoren graan",
     "ferment": "Gefermenteerd"
+  },
+  "groceryFlow": {
+    "nudgeTitle": "Winkelkeuzes",
+    "nudgeLocked": "{n, plural, one {Log nog # plant om te ontgrendelen} other {Log nog # planten om te ontgrendelen}}",
+    "nudgeCount": "Je hebt {count} planten geprobeerd deze week",
+    "nudgeGoal": "Je hebt 30 planten gehaald!",
+    "nudgeSub": "Wil je winkelkeuzes?",
+    "nudgeCta": "Bekijk keuzes",
+    "picksHeader": "Winkelkeuzes",
+    "findingHeader": "Recepten zoeken",
+    "picksSubtitle": "Tik op de planten die je lekker vindt — we zoeken passende recepten",
+    "picksCta": "Vind recepten ({count} geselecteerd)",
+    "picksCtaDisabled": "Selecteer een plant om verder te gaan",
+    "findingTitle": "We koken je recepten klaar",
+    "findingSub": "Dit duurt ongeveer 10–20 seconden. Sluit dit af en kom wanneer je wilt terug.",
+    "findingCardTitle": "Wat nu te doen",
+    "findingCardBody": "Tik op het 🍴 vorkpictogram in de menubalk om je recepten te openen.",
+    "findingCta": "Begrepen, ik kom terug",
+    "recipesHeader": "Jouw recepten",
+    "recipesSub": "{count, plural, one {# recept gevonden voor jouw keuzes.} other {# recepten gevonden voor jouw keuzes.}} Elk voegt nieuwe planten toe aan je week.",
+    "recipesGenerating": "Nieuwe recepten zoeken — even geduld…",
+    "recipesEarlier": "Eerdere recepten",
+    "ingredients": "Ingrediënten",
+    "steps": "Hoe te maken",
+    "legend": "Gekleurd = al in jouw week · Geel + = voeg toe aan je lijst",
+    "newPlant": "+{n, plural, one {# nieuwe plant} other {# nieuwe planten}}"
   }
 }

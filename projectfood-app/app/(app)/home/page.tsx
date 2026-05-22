@@ -1,14 +1,15 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { supabaseImageUrl } from '@/lib/supabase-image'
-import useSWR from 'swr'
+import useSWR, { mutate } from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
 import { CATS, CAT_ORDER, type Category } from '@/lib/cats'
-import { type Advice } from './AdviceCard'
-import { AdviceBanner } from './AdviceBanner'
-import { fetchHome, fetchSocialFriends } from '@/lib/fetchers'
+import { fetchHome, fetchSocialFriends, type EnrichedSuggestion } from '@/lib/fetchers'
+import { GroceryNudge } from './GroceryNudge'
+import { ShoppingFlowSheet } from './ShoppingFlowSheet'
 import { Avatar } from '@/components/avatar'
 
 type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number; avatar_url?: string | null; active_border?: string | null; avatar_bg?: string | null }
@@ -68,8 +69,19 @@ export default function HomePage() {
   const tCat = useTranslations('categories')
   const locale = useLocale()
 
+  const [sheetOpen, setSheetOpen] = useState(false)
+
   const { data, isLoading } = useSWR(['home', locale], fetchHome, { keepPreviousData: true })
   const { data: friends } = useSWR('social_friends', fetchSocialFriends, { keepPreviousData: true })
+
+  // Auto-trigger advice generation when user has 9+ plants and no advice yet this week
+  useEffect(() => {
+    if (!data) return
+    const { weekCount, weekAdvice } = data
+    if (weekCount >= 9 && !weekAdvice) {
+      fetch('/api/advice', { method: 'POST' }).then(() => mutate(['home', locale]))
+    }
+  }, [data?.weekCount, data?.weekAdvice])
 
   if (isLoading || !data) {
     return (
@@ -106,8 +118,14 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Grocery advice banner */}
-      <AdviceBanner advice={weekAdvice} weekCount={weekCount} />
+      {/* Grocery advice nudge */}
+      <GroceryNudge weekCount={weekCount} onOpen={() => setSheetOpen(true)} />
+      {sheetOpen && (
+        <ShoppingFlowSheet
+          suggestions={(weekAdvice?.suggestions ?? []) as EnrichedSuggestion[]}
+          onClose={() => setSheetOpen(false)}
+        />
+      )}
 
       {/* Today's plants */}
       {todayPlants.length > 0 && (

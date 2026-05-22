@@ -362,5 +362,31 @@
     "legume": "Legume",
     "whole_grain": "Cereale integrale",
     "ferment": "Fermentato"
+  },
+  "groceryFlow": {
+    "nudgeTitle": "Scelte della spesa",
+    "nudgeLocked": "{n, plural, one {Registra ancora # pianta per sbloccare} other {Registra ancora # piante per sbloccare}}",
+    "nudgeCount": "Hai provato {count} piante questa settimana",
+    "nudgeGoal": "Hai raggiunto 30 piante!",
+    "nudgeSub": "Vuoi idee per la spesa?",
+    "nudgeCta": "Vedi le scelte",
+    "picksHeader": "Scelte della spesa",
+    "findingHeader": "Trovare ricette",
+    "picksSubtitle": "Tocca le piante che ti piacciono — troveremo ricette adatte",
+    "picksCta": "Trova ricette ({count} selezionate)",
+    "picksCtaDisabled": "Seleziona una pianta per continuare",
+    "findingTitle": "Stiamo preparando le tue ricette",
+    "findingSub": "Ci vogliono circa 10–20 secondi. Chiudi pure e torna quando vuoi.",
+    "findingCardTitle": "Cosa fare dopo",
+    "findingCardBody": "Tocca l'icona 🍴 forchetta nella barra superiore per aprire le tue ricette.",
+    "findingCta": "Capito, tornerò a controllare",
+    "recipesHeader": "Le tue ricette",
+    "recipesSub": "{count, plural, one {# ricetta trovata per le tue scelte.} other {# ricette trovate per le tue scelte.}} Ognuna aggiunge nuove piante alla tua settimana.",
+    "recipesGenerating": "Trovando nuove ricette — un momento…",
+    "recipesEarlier": "Ricette precedenti",
+    "ingredients": "Ingredienti",
+    "steps": "Come prepararlo",
+    "legend": "Colorato = già nella tua settimana · Giallo + = aggiungi alla lista",
+    "newPlant": "+{n, plural, one {# nuova pianta} other {# nuove piante}}"
   }
 }

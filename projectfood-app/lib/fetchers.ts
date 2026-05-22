@@ -6,6 +6,43 @@ export type WeekRow = { week_start: string; variety: number; hit_goal: boolean }
 export type AdviceRow = { week_start: string; advice: Advice }
 export type CatRow = { category: Category; unique_count: number; total_in_category: number }
 
+export type EnrichedSuggestion = {
+  plant: string
+  category: Category
+  meal_context: string
+  reason: string
+  why?: string
+  featured: boolean
+  image_url?: string | null
+}
+
+export type EnrichedAdvice = {
+  summary: string
+  suggestions: EnrichedSuggestion[]
+}
+
+export type RecipeIngredient = {
+  name: string
+  category: Category | null
+  need_to_buy: boolean
+}
+
+export type Recipe = {
+  title: string
+  time_minutes: number
+  serves: number
+  gut_note: string
+  ingredients: RecipeIngredient[]
+  steps: string[]
+}
+
+export type RecipeBatch = {
+  id: string
+  created_at: string
+  selected_plants: string[]
+  recipes: Recipe[]
+}
+
 export async function fetchHome([, locale]: [string, string]) {
   const supabase = createClient()
   const today = new Date().toLocaleDateString('en-CA')
@@ -56,7 +93,7 @@ export async function fetchHome([, locale]: [string, string]) {
       .map((p: any) => [p.id, { ...p, name: nameByPlantId[p.id] ?? p.name }])
   ).values()]
 
-  const weekAdvice = (adviceRow?.advice as Advice) ?? null
+  const weekAdvice = (adviceRow?.advice as EnrichedAdvice) ?? null
 
   return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice }
 }
@@ -191,6 +228,26 @@ export async function fetchWeeklyVariety(): Promise<number> {
   const supabase = createClient()
   const { data } = await supabase.rpc('weekly_variety')
   return (data as number) ?? 0
+}
+
+function weekStartDate(): string {
+  const dayOfWeek = new Date().getDay()
+  const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek
+  const mondayDate = new Date()
+  mondayDate.setDate(mondayDate.getDate() + mondayOffset)
+  return mondayDate.toLocaleDateString('en-CA')
+}
+
+export async function fetchRecipeState(): Promise<RecipeBatch[]> {
+  const supabase = createClient()
+  const weekStart = weekStartDate()
+  const { data } = await supabase
+    .from('recipe_batches')
+    .select('id, created_at, selected_plants, recipes')
+    .eq('week_start', weekStart)
+    .order('created_at', { ascending: false })
+    .limit(10)
+  return (data as RecipeBatch[]) ?? []
 }
 
 export async function fetchAdvice() {
