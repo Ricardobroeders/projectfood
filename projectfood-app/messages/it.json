@@ -386,7 +386,6 @@
     "recipesEarlier": "Ricette precedenti",
     "ingredients": "Ingredienti",
     "steps": "Come prepararlo",
-    "legend": "Colorato = già nella tua settimana · Giallo + = aggiungi alla lista",
     "newPlant": "+{n, plural, one {# nuova pianta} other {# nuove piante}}",
     "shareRecipe": "Condividi ricetta",
     "recipeCopied": "Copiato!",

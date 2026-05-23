@@ -16,12 +16,12 @@ const STUB_RECIPES: Recipe[] = [
     serves: 2,
     gut_note: 'Chickpeas are rich in prebiotic fiber that feeds beneficial gut bacteria and supports microbiome diversity.',
     ingredients: [
-      { name: 'Chickpeas', category: 'legume', need_to_buy: true },
-      { name: 'Kale', category: 'vegetable', need_to_buy: false },
-      { name: 'Cherry tomato', category: 'vegetable', need_to_buy: false },
-      { name: 'Garlic', category: 'vegetable', need_to_buy: true },
-      { name: 'Lemon', category: 'fruit', need_to_buy: true },
-      { name: 'Olive oil', category: null, need_to_buy: false },
+      { name: 'Chickpeas', amount: '1 can (400g)', category: 'legume', need_to_buy: true },
+      { name: 'Kale', amount: '2 large handfuls', category: 'vegetable', need_to_buy: false },
+      { name: 'Cherry tomato', amount: '150g', category: 'vegetable', need_to_buy: false },
+      { name: 'Garlic', amount: '2 cloves', category: 'vegetable', need_to_buy: true },
+      { name: 'Lemon', amount: '½', category: 'fruit', need_to_buy: true },
+      { name: 'Olive oil', amount: '2 tbsp', category: null, need_to_buy: false },
     ],
     steps: [
       'Drain and rinse a tin of chickpeas. Pat them dry with kitchen paper — this helps them crisp up.',
@@ -40,12 +40,12 @@ const STUB_RECIPES: Recipe[] = [
     serves: 1,
     gut_note: 'Oats contain beta-glucan, a soluble fiber shown to increase microbiome diversity. Blueberries add polyphenols that act as fuel for beneficial bacteria.',
     ingredients: [
-      { name: 'Oats', category: 'whole_grain', need_to_buy: true },
-      { name: 'Blueberries', category: 'fruit', need_to_buy: true },
-      { name: 'Banana', category: 'fruit', need_to_buy: false },
-      { name: 'Chia seeds', category: 'nut_seed', need_to_buy: true },
-      { name: 'Almond milk', category: null, need_to_buy: false },
-      { name: 'Honey', category: null, need_to_buy: false },
+      { name: 'Oats', amount: '80g', category: 'whole_grain', need_to_buy: true },
+      { name: 'Blueberries', amount: 'handful', category: 'fruit', need_to_buy: true },
+      { name: 'Banana', amount: '½', category: 'fruit', need_to_buy: false },
+      { name: 'Chia seeds', amount: '1 tbsp', category: 'nut_seed', need_to_buy: true },
+      { name: 'Almond milk', amount: '250ml', category: null, need_to_buy: false },
+      { name: 'Honey', amount: '1 tsp', category: null, need_to_buy: false },
     ],
     steps: [
       'Add 80g oats to a small saucepan with 250ml almond milk.',
@@ -62,12 +62,12 @@ const STUB_RECIPES: Recipe[] = [
     serves: 2,
     gut_note: 'Fresh basil contains polyphenols and essential oils that act as prebiotics, helping beneficial gut bacteria thrive alongside the fiber from whole-grain pasta.',
     ingredients: [
-      { name: 'Basil', category: 'herb', need_to_buy: true },
-      { name: 'Cherry tomato', category: 'vegetable', need_to_buy: false },
-      { name: 'Garlic', category: 'vegetable', need_to_buy: true },
-      { name: 'Pasta', category: null, need_to_buy: false },
-      { name: 'Olive oil', category: null, need_to_buy: false },
-      { name: 'Parmesan', category: null, need_to_buy: false },
+      { name: 'Basil', amount: 'large handful', category: 'herb', need_to_buy: true },
+      { name: 'Cherry tomato', amount: '200g', category: 'vegetable', need_to_buy: false },
+      { name: 'Garlic', amount: '2 cloves', category: 'vegetable', need_to_buy: true },
+      { name: 'Pasta', amount: '160g', category: null, need_to_buy: false },
+      { name: 'Olive oil', amount: '3 tbsp', category: null, need_to_buy: false },
+      { name: 'Parmesan', amount: '30g', category: null, need_to_buy: false },
     ],
     steps: [
       'Bring a large pot of well-salted water to a boil. Cook pasta according to package directions.',
@@ -89,10 +89,10 @@ const STUB_OLDER_RECIPES: Recipe[] = [
     serves: 2,
     gut_note: 'Spinach contains folate and magnesium that support beneficial gut bacteria growth.',
     ingredients: [
-      { name: 'Spinach', category: 'vegetable', need_to_buy: false },
-      { name: 'Garlic', category: 'vegetable', need_to_buy: false },
-      { name: 'Soy sauce', category: null, need_to_buy: false },
-      { name: 'Sesame oil', category: null, need_to_buy: false },
+      { name: 'Spinach', amount: '200g', category: 'vegetable', need_to_buy: false },
+      { name: 'Garlic', amount: '3 cloves', category: 'vegetable', need_to_buy: false },
+      { name: 'Soy sauce', amount: '1 tbsp', category: null, need_to_buy: false },
+      { name: 'Sesame oil', amount: '1 tbsp', category: null, need_to_buy: false },
     ],
     steps: [
       'Heat sesame oil in a wok or wide pan over high heat.',
@@ -108,10 +108,10 @@ const STUB_OLDER_RECIPES: Recipe[] = [
     serves: 8,
     gut_note: 'Walnuts are rich in polyphenols linked to increased gut bacteria diversity.',
     ingredients: [
-      { name: 'Oats', category: 'whole_grain', need_to_buy: false },
-      { name: 'Banana', category: 'fruit', need_to_buy: false },
-      { name: 'Walnuts', category: 'nut_seed', need_to_buy: false },
-      { name: 'Honey', category: null, need_to_buy: false },
+      { name: 'Oats', amount: '200g', category: 'whole_grain', need_to_buy: false },
+      { name: 'Banana', amount: '2 ripe', category: 'fruit', need_to_buy: false },
+      { name: 'Walnuts', amount: '60g', category: 'nut_seed', need_to_buy: false },
+      { name: 'Honey', amount: '2 tbsp', category: null, need_to_buy: false },
     ],
     steps: [
       'Preheat oven to 180°C. Line a small baking tin with paper.',
@@ -134,7 +134,7 @@ interface Props {
 
 export function RecipesSheet({ batches, generating, onClose }: Props) {
   const t = useTranslations('groceryFlow')
-  const [expanded, setExpanded] = useState<number | null>(0)
+  const [expanded, setExpanded] = useState<number | null>(null)
   const [expandedOld, setExpandedOld] = useState<number | null>(null)
   const [show, setShow] = useState(false)
   const [animateIn, setAnimateIn] = useState(false)
@@ -195,22 +195,20 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
         </button>
       </div>
 
-      {/* Subheader */}
-      <div className="shrink-0 px-5 pt-4 pb-2">
-        <p className="text-[13px] text-[#6B645C] leading-relaxed">
-          {t('recipesSub', { count: recipeCount })}
-        </p>
-      </div>
-
       {/* Recipes list */}
       <div className="flex-1 overflow-y-auto px-5 pb-8 space-y-3">
+        {/* Subheader — inside scroll so it never overlaps cards */}
+        <p className="text-[13px] text-[#6B645C] leading-relaxed pt-3 pb-2">
+          {t('recipesSub', { count: recipeCount })}
+        </p>
+
         {/* Generating new batch banner — fades out smoothly when done */}
         <div
           style={{
             overflow: 'hidden',
             maxHeight: generating ? '64px' : '0px',
             opacity: generating ? 1 : 0,
-            marginBottom: generating ? '0px' : '-12px',
+            marginBottom: generating ? '4px' : '-12px',
             transition: 'max-height 0.4s ease-out, opacity 0.3s ease-out, margin-bottom 0.4s ease-out',
           }}
         >
@@ -316,7 +314,7 @@ function RecipeCard({
       'How to make it:',
       stepLines,
       '',
-      `🌿 ${recipe.gut_note}`,
+      `${recipe.gut_note}`,
       '',
       t('shareFooter'),
     ].join('\n')
@@ -390,7 +388,7 @@ function RecipeCard({
                       className="inline-flex items-center gap-1 h-8 px-3 rounded-full text-[13px] font-medium"
                       style={{ background: c.bg, color: c.fg }}
                     >
-                      {c.emoji} {ing.name}
+                      {ing.amount && <span className="font-normal opacity-70">{ing.amount}</span>} {ing.name}
                     </span>
                   )
                 }
@@ -404,15 +402,11 @@ function RecipeCard({
                       color: isNewPlant ? '#7A5C00' : '#6B645C',
                     }}
                   >
-                    {isNewPlant && <span className="text-[10px] font-bold leading-none">+</span>}
-                    {ing.name}
+                    {ing.amount && <span className="font-normal opacity-70">{ing.amount}</span>} {ing.name}
                   </span>
                 )
               })}
             </div>
-            <p className="text-[11px] text-[#A39B91] mt-2">
-              {t('legend')}
-            </p>
           </div>
 
           {/* Steps */}
@@ -440,7 +434,6 @@ function RecipeCard({
             className="rounded-[14px] px-4 py-3 flex gap-3 items-start"
             style={{ background: '#DDEACB' }}
           >
-            <span className="text-[18px] shrink-0">🌿</span>
             <p className="text-[13px] leading-relaxed" style={{ color: '#2D4A22' }}>
               {recipe.gut_note}
             </p>

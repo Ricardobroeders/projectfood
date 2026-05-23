@@ -23,6 +23,7 @@ export type EnrichedAdvice = {
 
 export type RecipeIngredient = {
   name: string
+  amount?: string
   category: Category | null
   need_to_buy: boolean
 }

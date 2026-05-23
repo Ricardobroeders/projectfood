@@ -386,7 +386,6 @@
     "recipesEarlier": "Earlier recipes",
     "ingredients": "Ingredients",
     "steps": "How to make it",
-    "legend": "Colored = already in your week · Yellow + = add to your list",
     "newPlant": "+{n, plural, one {# new plant} other {# new plants}}",
     "shareRecipe": "Share recipe",
     "recipeCopied": "Copied!",

@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
 Generate exactly 3 complete, practical recipes. Each recipe must prominently feature one or more of the selected plants.
 
 Rules for ingredients:
+- always include an "amount" field with a specific quantity for 2 servings (e.g. "400g", "2 tbsp", "1 can (400g)", "handful")
 - need_to_buy: true — plant is in the selected shopping picks (user needs to buy it)
 - need_to_buy: false — plant is already in the user's weekly logs (they have it)
 - Non-plant pantry items (olive oil, salt, water, etc.) use category: null and need_to_buy: false
@@ -76,9 +77,9 @@ Return ONLY valid JSON:
       "serves": 2,
       "gut_note": "Short gut health explanation.",
       "ingredients": [
-        {"name": "Chickpeas", "category": "legume", "need_to_buy": true},
-        {"name": "Kale", "category": "vegetable", "need_to_buy": false},
-        {"name": "Olive oil", "category": null, "need_to_buy": false}
+        {"name": "Chickpeas", "amount": "1 can (400g)", "category": "legume", "need_to_buy": true},
+        {"name": "Kale", "amount": "2 large handfuls", "category": "vegetable", "need_to_buy": false},
+        {"name": "Olive oil", "amount": "2 tbsp", "category": null, "need_to_buy": false}
       ],
       "steps": ["Step 1.", "Step 2."]
     }
