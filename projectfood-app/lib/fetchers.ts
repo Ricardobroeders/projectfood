@@ -247,7 +247,7 @@ export async function fetchRecipeState(): Promise<RecipeBatch[]> {
     .select('id, created_at, selected_plants, recipes')
     .eq('week_start', weekStart)
     .order('created_at', { ascending: false })
-    .limit(10)
+    .limit(6)
   return (data as RecipeBatch[]) ?? []
 }
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
-import { X, ChevronDown, ChevronUp, Clock, Users, Loader2, Share2 } from 'lucide-react'
+import { X, ChevronDown, ChevronUp, Clock, Users, Loader2, Share2, Bookmark, Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { CATS, type Category } from '@/lib/cats'
 import type { Recipe, RecipeBatch } from '@/lib/fetchers'
@@ -124,6 +124,152 @@ const STUB_OLDER_RECIPES: Recipe[] = [
   },
 ]
 
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type OlderRecipe = Recipe & { _key: string }
+
+const SWIPE_THRESHOLD = 80
+const SWIPE_DEAD_ZONE = 5
+
+// ─── Swipeable card wrapper ───────────────────────────────────────────────────
+
+function SwipeableCard({
+  children,
+  onDelete,
+  onSave,
+}: {
+  children: React.ReactNode
+  onDelete: () => void
+  onSave: () => void
+}) {
+  const [dragX, setDragX] = useState(0)
+  const [settled, setSettled] = useState(true)
+  const startXRef = useRef(0)
+  const startYRef = useRef(0)
+  const lockRef = useRef<'h' | 'v' | null>(null)
+  const deletingRef = useRef(false)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  function handlePointerDown(e: React.PointerEvent) {
+    if (deletingRef.current) return
+    startXRef.current = e.clientX
+    startYRef.current = e.clientY
+    lockRef.current = null
+    setSettled(false)
+  }
+
+  function handlePointerMove(e: React.PointerEvent) {
+    if (deletingRef.current || lockRef.current === 'v') return
+    const dx = e.clientX - startXRef.current
+    const dy = e.clientY - startYRef.current
+
+    if (lockRef.current === null) {
+      if (Math.abs(dx) < SWIPE_DEAD_ZONE && Math.abs(dy) < SWIPE_DEAD_ZONE) return
+      if (Math.abs(dy) >= Math.abs(dx)) {
+        lockRef.current = 'v'
+        return
+      }
+      lockRef.current = 'h'
+      cardRef.current?.setPointerCapture(e.pointerId)
+    }
+
+    setDragX(dx)
+  }
+
+  function handlePointerUp() {
+    if (deletingRef.current) return
+    setSettled(true)
+    if (lockRef.current !== 'h') {
+      setDragX(0)
+      lockRef.current = null
+      return
+    }
+    lockRef.current = null
+
+    if (dragX > SWIPE_THRESHOLD) {
+      deletingRef.current = true
+      // Fly card AND collapse height simultaneously so the red bg shrinks with the row
+      setDragX(600)
+      const el = wrapperRef.current
+      if (el) {
+        const h = el.offsetHeight
+        el.style.height = `${h}px`
+        el.style.overflow = 'hidden'
+        requestAnimationFrame(() => {
+          el.style.transition = 'height 0.32s ease-in-out'
+          el.style.height = '0px'
+        })
+      }
+      setTimeout(() => {
+        onDelete()
+        deletingRef.current = false
+      }, 380)
+    } else if (dragX < -SWIPE_THRESHOLD) {
+      setDragX(0)
+      onSave()
+    } else {
+      setDragX(0)
+    }
+  }
+
+  const absX = Math.abs(dragX)
+  const iconOpacity = Math.min(1, absX / SWIPE_THRESHOLD)
+  const showDelete = dragX > SWIPE_DEAD_ZONE
+  const showSave = dragX < -SWIPE_DEAD_ZONE
+
+  return (
+    <div ref={wrapperRef}>
+      <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden' }}>
+        {/* Background reveal */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            background: showDelete ? '#FEECEC' : showSave ? '#DDEACB' : 'transparent',
+            justifyContent: showDelete ? 'flex-start' : 'flex-end',
+            paddingLeft: showDelete ? 20 : 0,
+            paddingRight: showSave ? 20 : 0,
+            opacity: iconOpacity,
+          }}
+        >
+          {showDelete && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Trash2 size={18} style={{ color: '#D9534F' }} />
+              <span style={{ color: '#D9534F', fontSize: 12, fontWeight: 600 }}>Remove</span>
+            </div>
+          )}
+          {showSave && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ color: '#4F7A3D', fontSize: 12, fontWeight: 600 }}>Save</span>
+              <Bookmark size={18} style={{ color: '#4F7A3D' }} />
+            </div>
+          )}
+        </div>
+
+        {/* Card */}
+        <div
+          ref={cardRef}
+          style={{
+            transform: `translateX(${dragX}px)`,
+            transition: settled ? 'transform 0.3s ease-out' : 'none',
+            touchAction: 'pan-y',
+            userSelect: 'none',
+          }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+        >
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── Full-page sheet ──────────────────────────────────────────────────────────
 
 interface Props {
@@ -135,17 +281,25 @@ interface Props {
 export function RecipesSheet({ batches, generating, onClose }: Props) {
   const t = useTranslations('groceryFlow')
   const [expanded, setExpanded] = useState<number | null>(null)
-  const [expandedOld, setExpandedOld] = useState<number | null>(null)
+  const [expandedOldKey, setExpandedOldKey] = useState<string | null>(null)
   const [show, setShow] = useState(false)
   const [animateIn, setAnimateIn] = useState(false)
   const prevGeneratingRef = useRef(generating)
+
+  const [hiddenKeys, setHiddenKeys] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set()
+    try { return new Set(JSON.parse(localStorage.getItem('pf_hidden_recipes') ?? '[]')) } catch { return new Set() }
+  })
+  const [savedKeys, setSavedKeys] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set()
+    try { return new Set(JSON.parse(localStorage.getItem('pf_saved_recipes') ?? '[]')) } catch { return new Set() }
+  })
 
   useEffect(() => {
     const id = setTimeout(() => setShow(true), 10)
     return () => clearTimeout(id)
   }, [])
 
-  // When generating ends and we have batches, trigger slide-in animation
   useEffect(() => {
     if (prevGeneratingRef.current && !generating && batches.length > 0) {
       setAnimateIn(true)
@@ -169,11 +323,26 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
     setTimeout(onClose, 220)
   }
 
-  // Derive current and older recipes from batches
+  function dismissRecipe(key: string) {
+    const next = new Set(hiddenKeys).add(key)
+    setHiddenKeys(next)
+    localStorage.setItem('pf_hidden_recipes', JSON.stringify([...next]))
+  }
+
+  function toggleSaved(key: string) {
+    const next = new Set(savedKeys)
+    next.has(key) ? next.delete(key) : next.add(key)
+    setSavedKeys(next)
+    localStorage.setItem('pf_saved_recipes', JSON.stringify([...next]))
+  }
+
   const currentRecipes: Recipe[] = batches.length > 0 ? batches[0].recipes : STUB_RECIPES
-  const olderRecipes: Recipe[] = batches.length > 1
-    ? batches.slice(1).flatMap(b => b.recipes)
-    : (batches.length === 0 ? STUB_OLDER_RECIPES : [])
+  const olderRecipes: OlderRecipe[] = batches.length > 1
+    ? batches.slice(1)
+        .flatMap((batch) => batch.recipes.map((recipe, ri) => ({ ...recipe, _key: `${batch.id}-${ri}` })))
+        .filter((r) => !hiddenKeys.has(r._key))
+        .slice(0, 15)
+    : (batches.length === 0 ? STUB_OLDER_RECIPES.map((r, i) => ({ ...r, _key: `stub-${i}` })) : [])
 
   const recipeCount = currentRecipes.length
 
@@ -196,7 +365,7 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
       </div>
 
       {/* Recipes list */}
-      <div className="flex-1 overflow-y-auto px-5 pb-8 space-y-3">
+      <div className="flex-1 overflow-y-auto px-5 pb-28 space-y-3">
         {/* Subheader — inside scroll so it never overlaps cards */}
         <p className="text-[13px] text-[#6B645C] leading-relaxed pt-3 pb-2">
           {t('recipesSub', { count: recipeCount })}
@@ -254,19 +423,22 @@ export function RecipesSheet({ batches, generating, onClose }: Props) {
               </p>
               <div className="flex-1 h-px bg-[#D8D0C8]" />
             </div>
-            <div
-              className="space-y-2"
-              style={{ opacity: generating ? 0.25 : 0.5, transition: 'opacity 0.4s ease-out' }}
-            >
-              {olderRecipes.map((recipe, i) => (
-                <RecipeCard
-                  key={i}
-                  recipe={recipe}
-                  index={i}
-                  isOpen={expandedOld === i}
-                  onToggle={() => setExpandedOld(expandedOld === i ? null : i)}
-                  t={t}
-                />
+            <div className="space-y-2">
+              {olderRecipes.map((recipe, oi) => (
+                <SwipeableCard
+                  key={recipe._key}
+                  onDelete={() => dismissRecipe(recipe._key)}
+                  onSave={() => toggleSaved(recipe._key)}
+                >
+                  <RecipeCard
+                    recipe={recipe}
+                    index={oi}
+                    isOpen={expandedOldKey === recipe._key}
+                    onToggle={() => setExpandedOldKey(expandedOldKey === recipe._key ? null : recipe._key)}
+                    isSaved={savedKeys.has(recipe._key)}
+                    t={t}
+                  />
+                </SwipeableCard>
               ))}
             </div>
           </div>
@@ -290,12 +462,14 @@ function RecipeCard({
   index,
   isOpen,
   onToggle,
+  isSaved,
   t,
 }: {
   recipe: Recipe
   index: number
   isOpen: boolean
   onToggle: () => void
+  isSaved?: boolean
   t: ReturnType<typeof useTranslations<'groceryFlow'>>
 }) {
   const [copied, setCopied] = useState(false)
@@ -340,11 +514,13 @@ function RecipeCard({
           className="shrink-0 w-7 h-7 rounded-full text-[13px] font-bold grid place-items-center mt-0.5"
           style={{ background: '#DDEACB', color: '#4F7A3D' }}
         >
-          {index + 1}
+          {isSaved ? <Bookmark size={13} fill="#4F7A3D" color="#4F7A3D" /> : index + 1}
         </span>
 
         <div className="flex-1 min-w-0">
-          <p className="text-[16px] font-extrabold text-[#1F1B16] leading-tight">{recipe.title}</p>
+          <div className="flex items-center gap-2">
+            <p className="text-[16px] font-extrabold text-[#1F1B16] leading-tight">{recipe.title}</p>
+          </div>
           <div className="flex items-center gap-3 mt-1.5 flex-wrap">
             <span className="flex items-center gap-1 text-[12px] text-[#6B645C]">
               <Clock size={11} />
@@ -402,6 +578,7 @@ function RecipeCard({
                       color: isNewPlant ? '#7A5C00' : '#6B645C',
                     }}
                   >
+                    {isNewPlant && <span className="text-[10px] font-bold leading-none">+</span>}
                     {ing.amount && <span className="font-normal opacity-70">{ing.amount}</span>} {ing.name}
                   </span>
                 )
