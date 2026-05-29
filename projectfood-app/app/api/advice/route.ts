@@ -35,7 +35,28 @@ export async function POST() {
 
   // Old rows lack `category` on suggestions — fall through to regenerate them
   const hasEnrichedAdvice = existing?.advice?.suggestions?.[0]?.category != null
-  if (existing && hasEnrichedAdvice) return NextResponse.json({ advice: existing.advice })
+  if (existing && hasEnrichedAdvice) {
+    // Backfill images if cached advice has none (case-sensitive .in() bug meant image_url was always null)
+    const needsImages = existing.advice.suggestions.some((s: any) => s.image_url == null)
+    if (!needsImages) return NextResponse.json({ advice: existing.advice })
+
+    const { data: allPlants } = await supabase.from('plants').select('name, image_url')
+    const imageMap: Record<string, string | null> = {}
+    for (const row of (allPlants ?? []) as { name: string; image_url: string | null }[]) {
+      imageMap[row.name.toLowerCase()] = row.image_url
+    }
+    const enriched = {
+      ...existing.advice,
+      suggestions: existing.advice.suggestions.map((s: any) => ({
+        ...s,
+        image_url: imageMap[s.plant.toLowerCase()] ?? s.image_url ?? null,
+      })),
+    }
+    await supabase
+      .from('weekly_advice')
+      .upsert({ user_id: user.id, week_start: ws, advice: enriched }, { onConflict: 'user_id,week_start' })
+    return NextResponse.json({ advice: enriched })
+  }
 
   // User locale for response language
   const { data: settings } = await supabase
@@ -116,14 +137,9 @@ Current month: ${month}`
     return NextResponse.json({ error: 'Failed to generate advice' }, { status: 500 })
   }
 
-  // Look up image_url for suggested plants from the DB (best-effort, case-insensitive)
-  const suggestedNames: string[] = (adviceRaw.suggestions ?? []).map((s: any) => s.plant)
-  const { data: plantRows } = await supabase
-    .from('plants')
-    .select('name, image_url')
-    .in('name', suggestedNames)
-
-  // Normalize to lowercase for case-insensitive matching
+  // Look up image_url for suggested plants — fetch all and match lowercase to avoid
+  // case-sensitivity issues with .in() (Postgres string comparison is case-sensitive)
+  const { data: plantRows } = await supabase.from('plants').select('name, image_url')
   const imageByName: Record<string, string | null> = {}
   for (const row of (plantRows ?? []) as { name: string; image_url: string | null }[]) {
     imageByName[row.name.toLowerCase()] = row.image_url

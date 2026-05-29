@@ -205,6 +205,9 @@ FILES=(
   nectarine.png
   wakame.png
   lovage.png
+  chervil.png
+  marsh-samphire.png
+  black-rice.png
 )
 
 TOTAL=${#FILES[@]}
