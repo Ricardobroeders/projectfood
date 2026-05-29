@@ -5,6 +5,33 @@ import OpenAI from 'openai'
 const ALL_CATEGORIES = ['fruit', 'vegetable', 'herb', 'nut_seed', 'legume', 'whole_grain', 'ferment']
 const LANG: Record<string, string> = { en: 'English', nl: 'Dutch', it: 'Italian' }
 
+// Build a lowercase name → image_url map covering EN canonical names, all
+// plant_translations (NL, IT, EN), and search_aliases so GPT suggestions in
+// any locale resolve to the right image.
+async function buildImageMap(supabase: Awaited<ReturnType<typeof import('@/lib/supabase/server').createClient>>) {
+  const [{ data: plants }, { data: translations }] = await Promise.all([
+    supabase.from('plants').select('id, name, image_url, search_aliases'),
+    supabase.from('plant_translations').select('plant_id, name'),
+  ])
+
+  const imageById: Record<string, string | null> = {}
+  for (const row of (plants ?? []) as { id: string; name: string; image_url: string | null; search_aliases: string[] | null }[]) {
+    imageById[row.id] = row.image_url
+  }
+
+  const map: Record<string, string | null> = {}
+  for (const row of (plants ?? []) as { id: string; name: string; image_url: string | null; search_aliases: string[] | null }[]) {
+    map[row.name.toLowerCase()] = row.image_url
+    for (const alias of row.search_aliases ?? []) {
+      if (alias) map[alias.toLowerCase()] = row.image_url
+    }
+  }
+  for (const row of (translations ?? []) as { plant_id: string; name: string }[]) {
+    if (row.name) map[row.name.toLowerCase()] = imageById[row.plant_id] ?? null
+  }
+  return map
+}
+
 function currentWeekStart(): string {
   const today = new Date()
   const day = today.getDay()
@@ -40,11 +67,7 @@ export async function POST() {
     const needsImages = existing.advice.suggestions.some((s: any) => s.image_url == null)
     if (!needsImages) return NextResponse.json({ advice: existing.advice })
 
-    const { data: allPlants } = await supabase.from('plants').select('name, image_url')
-    const imageMap: Record<string, string | null> = {}
-    for (const row of (allPlants ?? []) as { name: string; image_url: string | null }[]) {
-      imageMap[row.name.toLowerCase()] = row.image_url
-    }
+    const imageMap = await buildImageMap(supabase)
     const enriched = {
       ...existing.advice,
       suggestions: existing.advice.suggestions.map((s: any) => ({
@@ -137,13 +160,9 @@ Current month: ${month}`
     return NextResponse.json({ error: 'Failed to generate advice' }, { status: 500 })
   }
 
-  // Look up image_url for suggested plants — fetch all and match lowercase to avoid
-  // case-sensitivity issues with .in() (Postgres string comparison is case-sensitive)
-  const { data: plantRows } = await supabase.from('plants').select('name, image_url')
-  const imageByName: Record<string, string | null> = {}
-  for (const row of (plantRows ?? []) as { name: string; image_url: string | null }[]) {
-    imageByName[row.name.toLowerCase()] = row.image_url
-  }
+  // Look up image_url by all localized names (EN, NL, IT) so GPT suggestions in any
+  // locale resolve correctly — plant_translations covers names not in search_aliases
+  const imageByName = await buildImageMap(supabase)
 
   // Attach image_url to each suggestion (case-insensitive lookup)
   const advice = {
