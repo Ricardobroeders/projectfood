@@ -78,9 +78,10 @@ export default function HomePage() {
   useEffect(() => {
     if (!data) return
     const { weekCount, weekAdvice } = data
-    // Re-trigger if advice is missing OR if it's from the old format (no category on suggestions)
+    // Re-trigger if advice is missing, old format (no category), or images not yet backfilled
     const hasEnrichedAdvice = weekAdvice?.suggestions?.[0]?.category != null
-    if (weekCount >= 9 && (!weekAdvice || !hasEnrichedAdvice)) {
+    const hasImages = weekAdvice?.suggestions?.some((s: any) => s.image_url != null) ?? false
+    if (weekCount >= 9 && (!weekAdvice || !hasEnrichedAdvice || !hasImages)) {
       fetch('/api/advice', { method: 'POST' }).then(() => mutate(['home', locale])).catch(() => {})
     }
   }, [data?.weekCount, data?.weekAdvice])
