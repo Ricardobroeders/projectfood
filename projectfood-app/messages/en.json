@@ -390,5 +390,32 @@
     "shareRecipe": "Share recipe",
     "recipeCopied": "Copied!",
     "shareFooter": "Recipe found at projectfood.dev — track 30 plants a week for a healthier gut microbiome."
+  },
+  "survey": {
+    "title": "Feedback",
+    "progress": "{answered} of {total} answered",
+    "consent_heading": "Before you start",
+    "consent_body": "This survey links your answers to your in-app activity so we can understand how the app is used — anonymously and in aggregate.",
+    "consent_label": "I'm OK with Project Food matching my answers to my in-app activity.",
+    "consent_cta": "Start survey",
+    "section_identity": "About you",
+    "section_why": "Why you use Project Food",
+    "section_ux": "Using the app",
+    "section_strategy": "Features & direction",
+    "section_features": "Features & pricing",
+    "section_pricing": "Pricing",
+    "section_wrapup": "Wrap-up",
+    "sus_intro": "The next 10 questions help us measure overall usability. (1 = Strongly disagree · 5 = Strongly agree)",
+    "submit": "Submit answers",
+    "submitted_title": "Thank you!",
+    "submitted_body": "Your feedback helps us build a better app.",
+    "saving": "Saving…",
+    "prompt_banner": "We have a few questions for you.",
+    "prompt_cta": "Take survey",
+    "prompt_dismiss": "Maybe later",
+    "new_questions": "{count} new questions since your last visit",
+    "entry_answered": "{answered}/{total} answered",
+    "backToAccount": "Account",
+    "save_go_back": "Save & go back"
   }
 }

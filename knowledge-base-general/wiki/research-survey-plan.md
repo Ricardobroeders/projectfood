@@ -33,6 +33,37 @@ make at the bottom.
 - **Keep it short** — early cohort is tiny; aim ~5–8 min. Use mostly closed questions for
   segmentation, a few open-text for the "why."
 
+## Delivery: in-app survey (preferred approach)
+
+Build the survey **inside the app** — a new "Survey" page in the account/settings section — rather
+than an external tool. Decided 2026-05-30.
+
+**Why it's better here:**
+- **Auto-linking, no PII matching.** Responses attach to the logged-in `user_id` automatically, so
+  the name question (§A) becomes unnecessary and analysis can join straight to `plant_logs`.
+- **Resumable.** Save partial answers as the user goes; they can finish later. (Don't require
+  completing it in one sitting.)
+- **Evolvable / "alive".** Questions live in the DB. Add new ones over time and returning users
+  see the new ones they haven't answered yet — an ongoing feedback channel, not a one-shot.
+- **Native prompting.** Nudge via in-app notification on next login (re-use the existing
+  notification system) instead of email.
+- **Simple field types.** Mostly radio, checkbox, short text, number — cheap to build.
+
+**The catch — reach bias:** an in-app survey only reaches users who still log in, so it **misses
+lapsed/churned users** — exactly the people who answer "why I stopped." Mitigation: send those
+users a one-off external nudge (email/DM) with the same questions, or a lightweight "we miss you"
+prompt. Plan for both audiences.
+
+**Rough data model (to spec/confirm):**
+- `survey_questions` — id, key, section, type (radio/checkbox/text/number/scale), options (jsonb),
+  locale-aware text (EN/NL/IT), display_order, is_active, created_at.
+- `survey_responses` — id, user_id, question_id, answer (jsonb), status (draft/complete),
+  answered_at. One row per user×question so new questions can be appended without resetting prior
+  answers; "resume later" = read existing draft rows.
+- RLS: users read/write only their own responses; questions are readable by all.
+- Questions need NL/IT translations (mirror the `plant_translations` / `learn_article_content`
+  pattern already in the schema).
+
 ## Objectives → covered by section
 1. UX friendliness → §C
 2. Strategy open questions → §D (pulls from `STRATEGY.md` open questions)
@@ -46,9 +77,12 @@ make at the bottom.
 ## Question bank (draft)
 
 ### A. Identity & consent (for linking to logs)
-1. Your name: ______ *(so we can match your answers to your activity; results stay anonymous —
-   only Ricardo sees the link)*.
-2. Consent checkbox: "OK to match my responses to my in-app activity."
+*In the in-app version, identity is automatic — answers attach to the logged-in `user_id`, so no
+name/email field is needed. Just capture consent. (The name field is only for an external
+fallback form used to reach lapsed users.)*
+
+1. Consent checkbox: "OK to match my responses to my in-app activity." *(Reporting stays
+   anonymous/aggregated.)*
 
 ### B. Why use / why not
 *Skip "why did you start?" — this cohort was personally invited, so that answer is biased
@@ -124,11 +158,16 @@ make at the bottom.
   questions, and a new metrics/insights page.
 
 ## Decisions to make before sending (~end June 2026)
-- Tool (Tally / Typeform / Google Forms — needs to capture the linking email).
-- Anonymous vs identified (identified is needed for the log join; offer anonymity as fallback).
+- **Delivery: in-app** (build via Claude Code — see the build prompt). External email form only as
+  a fallback to reach lapsed users.
 - Length: short UX block vs full 10-item SUS.
 - Incentive? (early cohort may respond without one.)
-- Localise into NL/IT, or English-only for now.
+- Localise questions into NL/IT, or English-only for v1 (schema supports translations either way).
+- v1 scope: which sections ship first vs added later (the model supports appending questions).
+
+## Build
+Delivery decided as in-app. Implementation is speced for Claude Code via `/plan` — see the build
+prompt (`survey-feature-claude-code-prompt.md` in the project root). Seed the question bank above.
 
 ## Related pages
 - [[overview]] · [[compare-projectfood-vs-competitors]] · [[concept-engagement-drivers]] ·

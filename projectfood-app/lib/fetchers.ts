@@ -63,12 +63,20 @@ export async function fetchHome([, locale]: [string, string]) {
     { data: todayLogs },
     { data: translations },
     { data: adviceRow },
+    { data: settings },
+    { data: completedResponses },
+    { count: activeQuestionCount },
+    { data: newestQuestion },
   ] = await Promise.all([
     supabase.rpc('current_week_plants'),
     supabase.rpc('weekly_variety'),
     supabase.from('plant_logs').select('plants(id, name, category, image_url)').eq('logged_on', today).eq('user_id', userId),
     supabase.from('plant_translations').select('plant_id, name').eq('locale', locale),
     supabase.from('weekly_advice').select('advice').eq('week_start', weekStart).maybeSingle(),
+    supabase.from('user_settings').select('survey_dismissed_at').eq('user_id', userId).maybeSingle(),
+    supabase.from('survey_responses').select('question_id').eq('user_id', userId).eq('status', 'complete'),
+    supabase.from('survey_questions').select('id', { count: 'exact', head: true }).eq('is_active', true),
+    supabase.from('survey_questions').select('created_at').eq('is_active', true).order('created_at', { ascending: false }).limit(1).maybeSingle(),
   ])
 
   const nameByPlantId = Object.fromEntries(
@@ -96,7 +104,15 @@ export async function fetchHome([, locale]: [string, string]) {
 
   const weekAdvice = (adviceRow?.advice as EnrichedAdvice) ?? null
 
-  return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice }
+  const completedIds = new Set((completedResponses ?? []).map((r: any) => r.question_id))
+  const totalActive = activeQuestionCount ?? 0
+  const answeredCount = (completedResponses ?? []).filter((r: any) => completedIds.has(r.question_id)).length
+  const dismissedAt = settings?.survey_dismissed_at ? new Date(settings.survey_dismissed_at) : null
+  const newestCreatedAt = newestQuestion?.created_at ? new Date(newestQuestion.created_at) : null
+  const hasNewSinceDismisal = newestCreatedAt && dismissedAt ? newestCreatedAt > dismissedAt : true
+  const hasPendingSurvey = answeredCount < totalActive && (!dismissedAt || hasNewSinceDismisal)
+
+  return { weekCount, daysLeft, byCategory, todayPlants, weekAdvice, hasPendingSurvey, userId }
 }
 
 export async function fetchStats() {
@@ -129,11 +145,19 @@ export async function fetchAccount([, locale]: [string, string]) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
 
-  const { data: settings } = await supabase
-    .from('user_settings')
-    .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border, custom_avatar_image, custom_avatar_bg')
-    .eq('user_id', user.id)
-    .single()
+  const [
+    { data: settings },
+    { count: totalActive },
+    { data: completedResponses },
+  ] = await Promise.all([
+    supabase
+      .from('user_settings')
+      .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border, custom_avatar_image, custom_avatar_bg')
+      .eq('user_id', user.id)
+      .single(),
+    supabase.from('survey_questions').select('id', { count: 'exact', head: true }).eq('is_active', true),
+    supabase.from('survey_responses').select('question_id').eq('user_id', user.id).not('answer', 'is', null),
+  ])
 
   return {
     userId: user.id,
@@ -155,6 +179,10 @@ export async function fetchAccount([, locale]: [string, string]) {
       notifWeeklyNudge: settings?.notif_weekly_nudge ?? true,
       notifReengagement: settings?.notif_reengagement ?? true,
       timezone: settings?.timezone ?? 'Europe/Amsterdam',
+    },
+    surveyProgress: {
+      answered: (completedResponses ?? []).length,
+      total: totalActive ?? 0,
     },
   }
 }
@@ -258,4 +286,81 @@ export async function fetchAdvice() {
     .select('week_start, advice')
     .order('week_start', { ascending: false })
   return (data ?? []) as AdviceRow[]
+}
+
+export type SurveyOption = { value: string; label: string }
+
+export type SurveyQuestion = {
+  id: string
+  key: string
+  section: string
+  type: 'radio' | 'checkbox' | 'text' | 'number' | 'scale'
+  options: SurveyOption[] | null
+  display_order: number
+  label: string
+  help_text: string | null
+}
+
+export type SurveyResponse = {
+  question_id: string
+  answer: unknown
+  status: 'draft' | 'complete'
+  answered_at: string | null
+}
+
+export async function fetchSurvey([, locale]: [string, string]) {
+  const supabase = createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return null
+
+  const resolveLocale = async (loc: string) => {
+    const { data } = await supabase
+      .from('survey_questions')
+      .select('id, key, section, type, options, display_order, survey_question_translations!inner(label, help_text)')
+      .eq('is_active', true)
+      .eq('survey_question_translations.locale', loc)
+      .order('display_order')
+    return data
+  }
+
+  const [questionsRaw, questionsEn, { data: responsesRaw }] = await Promise.all([
+    resolveLocale(locale),
+    locale !== 'en' ? resolveLocale('en') : Promise.resolve(null),
+    supabase
+      .from('survey_responses')
+      .select('question_id, answer, status, answered_at')
+      .eq('user_id', user.id),
+  ])
+
+  // Fall back to EN for any question missing a translation in the requested locale
+  const enById = new Map((questionsEn ?? []).map((q: any) => [q.id, q]))
+  const questions: SurveyQuestion[] = ((questionsRaw ?? []) as any[]).map((q) => {
+    const translations = q.survey_question_translations?.[0] ?? enById.get(q.id)?.survey_question_translations?.[0]
+    return {
+      id: q.id,
+      key: q.key,
+      section: q.section,
+      type: q.type,
+      options: q.options as SurveyOption[] | null,
+      display_order: q.display_order,
+      label: translations?.label ?? q.key,
+      help_text: translations?.help_text ?? null,
+    }
+  })
+
+  // If locale has no translations at all, fall back entirely to EN
+  const resolved = questions.length > 0 ? questions : ((questionsEn ?? []) as any[]).map((q) => {
+    const tr = q.survey_question_translations?.[0]
+    return {
+      id: q.id, key: q.key, section: q.section, type: q.type,
+      options: q.options as SurveyOption[] | null,
+      display_order: q.display_order,
+      label: tr?.label ?? q.key,
+      help_text: tr?.help_text ?? null,
+    }
+  })
+
+  const responses: SurveyResponse[] = (responsesRaw ?? []) as SurveyResponse[]
+
+  return { questions: resolved, responses, userId: user.id }
 }

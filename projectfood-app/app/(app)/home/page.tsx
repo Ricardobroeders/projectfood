@@ -11,6 +11,7 @@ import { fetchHome, fetchSocialFriends, type EnrichedSuggestion } from '@/lib/fe
 import { GroceryNudge } from './GroceryNudge'
 import { ShoppingFlowSheet } from './ShoppingFlowSheet'
 import { Avatar } from '@/components/avatar'
+import { SurveyPromptBanner } from '@/components/SurveyPromptBanner'
 
 type FriendStats = { user_id: string; username: string; week_count: number; day_streak: number; avatar_url?: string | null; active_border?: string | null; avatar_bg?: string | null }
 
@@ -70,6 +71,7 @@ export default function HomePage() {
   const locale = useLocale()
 
   const [sheetOpen, setSheetOpen] = useState(false)
+  const [surveyDismissed, setSurveyDismissed] = useState(false)
 
   const { data, isLoading } = useSWR(['home', locale], fetchHome, { keepPreviousData: true })
   const { data: friends } = useSWR('social_friends', fetchSocialFriends, { keepPreviousData: true })
@@ -97,7 +99,7 @@ export default function HomePage() {
     )
   }
 
-  const { weekCount, daysLeft, byCategory, todayPlants, weekAdvice } = data
+  const { weekCount, daysLeft, byCategory, todayPlants, weekAdvice, hasPendingSurvey, userId } = data
 
   return (
     <div className="px-5 pt-4 pb-6 space-y-4">
@@ -120,6 +122,11 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* Survey prompt */}
+      {hasPendingSurvey && !surveyDismissed && userId && (
+        <SurveyPromptBanner userId={userId} onDismiss={() => setSurveyDismissed(true)} />
+      )}
 
       {/* Grocery advice nudge */}
       <GroceryNudge weekCount={weekCount} onOpen={() => setSheetOpen(true)} />

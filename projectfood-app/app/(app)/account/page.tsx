@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
-import { ChevronRight, Bell, Pencil } from 'lucide-react'
+import { ChevronRight, Bell, Pencil, ClipboardList } from 'lucide-react'
 import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
@@ -18,6 +18,7 @@ function Skeleton({ className }: { className?: string }) {
 
 export default function AccountPage() {
   const t = useTranslations('account')
+  const tS = useTranslations('survey')
   const tA = useTranslations('achievements')
   const locale = useLocale()
 
@@ -31,6 +32,8 @@ export default function AccountPage() {
       .eq('user_id', data.userId)
     mutate()
   }
+
+  const surveyProgress = data?.surveyProgress
 
   if (isLoading || !data) {
     return (
@@ -142,6 +145,26 @@ export default function AccountPage() {
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <span className="text-[13px] text-[#A39B91]">{notifOn ? t('on') : t('off')}</span>
+          <ChevronRight size={16} className="text-[#A39B91]" />
+        </div>
+      </Link>
+
+      {/* Survey nav row */}
+      <Link
+        href="/account/survey"
+        className="rounded-[24px] bg-white flex items-center justify-between px-5 py-4 gap-3 active:opacity-70 transition-opacity"
+        style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <ClipboardList size={18} className="text-[#1F1B16] shrink-0" />
+          <span className="text-[15px] font-medium text-[#1F1B16]">{tS('title')}</span>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          {surveyProgress && (
+            <span className="text-[13px] text-[#A39B91]">
+              {tS('entry_answered', { answered: surveyProgress.answered, total: surveyProgress.total })}
+            </span>
+          )}
           <ChevronRight size={16} className="text-[#A39B91]" />
         </div>
       </Link>

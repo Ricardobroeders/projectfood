@@ -390,5 +390,32 @@
     "shareRecipe": "Recept delen",
     "recipeCopied": "Gekopieerd!",
     "shareFooter": "Recept gevonden op projectfood.dev — volg 30 planten per week voor een gezondere darmflora."
+  },
+  "survey": {
+    "title": "Feedback",
+    "progress": "{answered} van {total} beantwoord",
+    "consent_heading": "Even eerst",
+    "consent_body": "Deze enquête koppelt je antwoorden aan je in-app activiteit zodat we beter begrijpen hoe de app wordt gebruikt — anoniem en geaggregeerd.",
+    "consent_label": "Ik ga akkoord dat Project Food mijn antwoorden koppelt aan mijn in-app activiteit.",
+    "consent_cta": "Enquête starten",
+    "section_identity": "Over jou",
+    "section_why": "Waarom je Project Food gebruikt",
+    "section_ux": "De app gebruiken",
+    "section_strategy": "Functies & richting",
+    "section_features": "Functies & prijzen",
+    "section_pricing": "Prijzen",
+    "section_wrapup": "Afsluiting",
+    "sus_intro": "De volgende 10 vragen meten de algehele bruikbaarheid. (1 = Volledig oneens · 5 = Volledig eens)",
+    "submit": "Antwoorden verzenden",
+    "submitted_title": "Bedankt!",
+    "submitted_body": "Jouw feedback helpt ons een betere app te bouwen.",
+    "saving": "Opslaan…",
+    "prompt_banner": "We hebben een paar vragen voor je.",
+    "prompt_cta": "Enquête invullen",
+    "prompt_dismiss": "Misschien later",
+    "new_questions": "{count} nieuwe vragen sinds je laatste bezoek",
+    "entry_answered": "{answered}/{total} beantwoord",
+    "backToAccount": "Account",
+    "save_go_back": "Opslaan & terug"
   }
 }

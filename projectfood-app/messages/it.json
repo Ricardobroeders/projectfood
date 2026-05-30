@@ -390,5 +390,32 @@
     "shareRecipe": "Condividi ricetta",
     "recipeCopied": "Copiato!",
     "shareFooter": "Ricetta trovata su projectfood.dev — segui 30 piante a settimana per un microbioma intestinale più sano."
+  },
+  "survey": {
+    "title": "Feedback",
+    "progress": "{answered} di {total} risposto",
+    "consent_heading": "Prima di iniziare",
+    "consent_body": "Questo sondaggio collega le tue risposte alla tua attività nell'app per capire come viene usata — in modo anonimo e aggregato.",
+    "consent_label": "Acconsento che Project Food colleghi le mie risposte alla mia attività nell'app.",
+    "consent_cta": "Inizia il sondaggio",
+    "section_identity": "Su di te",
+    "section_why": "Perché usi Project Food",
+    "section_ux": "Usare l'app",
+    "section_strategy": "Funzionalità e direzione",
+    "section_features": "Funzionalità e prezzi",
+    "section_pricing": "Prezzi",
+    "section_wrapup": "Conclusione",
+    "sus_intro": "Le prossime 10 domande misurano la facilità d'uso complessiva. (1 = Completamente in disaccordo · 5 = Completamente d'accordo)",
+    "submit": "Invia risposte",
+    "submitted_title": "Grazie!",
+    "submitted_body": "Il tuo feedback ci aiuta a costruire un'app migliore.",
+    "saving": "Salvataggio…",
+    "prompt_banner": "Abbiamo alcune domande per te.",
+    "prompt_cta": "Compila il sondaggio",
+    "prompt_dismiss": "Forse più tardi",
+    "new_questions": "{count} nuove domande dalla tua ultima visita",
+    "entry_answered": "{answered}/{total} risposto",
+    "backToAccount": "Account",
+    "save_go_back": "Salva e torna"
   }
 }
