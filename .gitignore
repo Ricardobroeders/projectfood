@@ -1,3 +1,7 @@
 .DS_Store
 design-library/
-.claude/
+.claude/*
+!.claude/commands/
+
+# preserved secret from removed projectfood-backend (do NOT commit)
+projectfood-backend.env.local

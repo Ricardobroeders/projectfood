@@ -46,6 +46,30 @@ This is harder to reach than a sharper niche, because there's more noise and les
 
 ---
 
+## Competitive landscape & how we differentiate
+
+Updated May 2026 after a proper scan (details and sources in the knowledge base: `compare-projectfood-vs-competitors`).
+
+**The uncomfortable truth: "30 plants a week" is not ours.** It comes from the American Gut Project (2018) and was popularised by Tim Spector / ZOE. It's public-health guidance now — Waitrose puts it on a webpage. The number is real and defensible to *say*, but it's table stakes, not a moat. A whole shelf of apps already use it.
+
+**The field, roughly in three tiers:**
+
+- **ZOE** — the premium end. Science, personalisation, gut/blood testing, ~£/$10–16/mo plus a test kit. Not our fight: different price tier, different user, and competing on science would break "count, don't preach."
+- **Direct free trackers** — Eating30, 30 PLANTS, 30Veg, Plant Points, Thirty Plants, and more. This is the real competitive set, and the brand deck doesn't mention them (it only names MyFitnessPal). Almost all of them are **single-player checklists**.
+- **The generalists** — MyFitnessPal etc. Wrong product (calories/macros), useful only as the anti-pattern.
+
+**Where we win — and it's the strategy we already have, now with evidence behind it:**
+
+The thing nearly every direct competitor lacks is **social**. They're lonely checklists. Our whole "multiplayer by default" pillar *is* the differentiation — and the early data backs it: users with at least one friend are roughly **2× as engaged** (weeks active and weeks hitting 30). So the moat isn't the count, the science, or even the AI advice (ChatGPT eats that). It's the **friend streak / leaderboard / shared challenge** that a free solo tracker structurally can't copy without becoming a social product. Plus: free PWA, and EN/NL/IT — genuinely useful in the NL/EU market where ZOE's price is a barrier.
+
+**Where we're exposed — be honest about it:**
+
+Our "effortless logging" claim is the soft spot. Eating30 offers **500+ plants with barcode scanning and Siri voice**; we have ~150, tap-only. On pure logging convenience we're currently behind. Two ways to answer it: widen the database and add a faster capture path (barcode or voice), or make tap-to-log so fast and pleasant it doesn't matter. What we should *not* do is treat logging as "good enough" — it's the one feature a competitor can out-execute us on tomorrow.
+
+**The one-line positioning:** *the only one of these you'd actually play with friends.*
+
+---
+
 ## Year-one goal: prove the concept
 
 The honest goal for the next 12 months is **lifestyle**: keep costs low, ride organic and word-of-mouth growth, validate that people use the app and bring friends. This is concept validation, not business validation.
@@ -125,4 +149,6 @@ Honest list of things this doc doesn't have a confident answer to. These should 
 - **Whether "broader wellness" is too broad.** It's harder to reach than the ZOE niche. If word of mouth doesn't compound, narrowing the audience may be the move.
 - **Whether €3.49 is the right price.** Possibly underpriced for the social tier. Test later.
 - **What replaces word of mouth if it doesn't work.** I don't have a backup channel I believe in. That's a risk worth naming.
+- **Whether the social moat actually holds.** The whole differentiation rests on social being something free solo trackers can't copy. The early "friends ≈ 2× engagement" signal supports it, but it's a tiny friends-and-family cohort — not proof. If a competitor like Eating30 bolts on a decent friend feature, what's left of the moat?
+- **Logging breadth vs the "effortless" pillar.** We're behind Eating30 on plant count + capture speed (barcode/voice). Decide whether to close the gap or out-design it — but don't ignore it.
 - **When to consider a co-founder.** Solo is fine for year 1. Year 2 with real growth probably isn't.
