@@ -2,6 +2,7 @@ export type UserStats = {
   totalUniquePlants: number
   longestStreakDays: number
   challengesCompleted: number
+  chiliVarietyCount: number
 }
 
 export type Achievement = {
@@ -61,6 +62,13 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: 'Logged plants for 70 consecutive days',
     icon: '⚡',
     check: s => s.longestStreakDays >= 70,
+  },
+  {
+    id: 'chili_collector',
+    label: 'Heat seeker',
+    description: 'Ate 5 different chili peppers',
+    icon: '🌶️',
+    check: s => s.chiliVarietyCount >= 5,
   },
 ]
 

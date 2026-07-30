@@ -44,7 +44,7 @@ export default function StatsPage() {
   const { data: ownHistory } = useSWR('own_daily_history', fetchOwnDailyHistory)
 
   const stats: UserStats | null = achievementData
-    ? { totalUniquePlants: achievementData.total_plants, longestStreakDays: achievementData.longest_streak_days, challengesCompleted: 0 }
+    ? { totalUniquePlants: achievementData.total_plants, longestStreakDays: achievementData.longest_streak_days, challengesCompleted: 0, chiliVarietyCount: achievementData.chili_variety_count ?? 0 }
     : null
 
   // Auto-unlock borders when achievements are earned
