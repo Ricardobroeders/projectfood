@@ -56,7 +56,7 @@ export default function UserProfilePage({ params }: { params: Promise<{ username
   )
 
   const stats: UserStats | null = data
-    ? { totalUniquePlants: data.total_plants, longestStreakDays: data.longest_streak_days, challengesCompleted: 0 }
+    ? { totalUniquePlants: data.total_plants, longestStreakDays: data.longest_streak_days, challengesCompleted: 0, chiliVarietyCount: 0 }
     : null
 
   return (
