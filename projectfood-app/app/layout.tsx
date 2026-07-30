@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
+import { Analytics } from '@vercel/analytics/next'
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 import './globals.css'
 
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <NextIntlClientProvider messages={messages}>
           <ServiceWorkerRegistration />
           {children}
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
