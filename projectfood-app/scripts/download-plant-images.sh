@@ -208,6 +208,17 @@ FILES=(
   chervil.png
   marsh-samphire.png
   black-rice.png
+  radicchio.png
+  purple-potato.png
+  lion-s-mane-mushroom.png
+  jalape-o.png
+  habanero.png
+  ghost-pepper.png
+  button-mushroom.png
+  carolina-reaper.png
+  thai-pepper.png
+  wood-ear-mushroom.png
+  seaweed.png
 )
 
 TOTAL=${#FILES[@]}
