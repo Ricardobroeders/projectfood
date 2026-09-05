@@ -219,6 +219,16 @@ FILES=(
   thai-pepper.png
   wood-ear-mushroom.png
   seaweed.png
+  lupin-bean.png
+  makrut-lime-leaf.png
+  white-bean.png
+  coffee.png
+  red-currant.png
+  sichuan-pepper.png
+  star-fruit.png
+  stinging-nettle.png
+  cape-gooseberry.png
+  prickly-pear.png
 )
 
 TOTAL=${#FILES[@]}
