@@ -229,6 +229,7 @@ FILES=(
   stinging-nettle.png
   cape-gooseberry.png
   prickly-pear.png
+  goji-berry.png
 )
 
 TOTAL=${#FILES[@]}
