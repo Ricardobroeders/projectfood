@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-05-30
+updated: 2026-09-06
 ---
 
 # Index
@@ -43,6 +43,14 @@ Start here: [[overview]] — the synthesized big-picture entry point.
 
 ## Plans
 - [[research-survey-plan]] — user survey (target ~2026-06): UX, strategy Qs, pricing, features, why-use.
+
+## SEO (folder `wiki/seo/`)
+- [[seo-overview]] — start here: why SEO fits "no paid acquisition", where we stand, principles, the bet.
+- [[seo-keyword-strategy]] — 8 intent clusters × EN/NL/IT with demand/difficulty tiers (unvalidated) and a 30-term tracking shortlist.
+- [[seo-serp-landscape]] — who ranks per language, what competitor apps publish, gaps, backlink/partner targets (MDL Fonds, nobigapps). Flags Clove as a social competitor.
+- [[seo-content-types]] — 10 content formats mapped to keywords, funnel and brand pillars; programmatic plant-page quality gates; what we won't build.
+- [[seo-technical-audit]] — what projectfood.dev already does right; 13 gaps ranked by impact; 4 decisions for Ricardo.
+- [[seo-roadmap]] — Phase 0–4 over 12 months with owners, effort and KPI targets.
 
 ## Interviews
 _(none yet)_

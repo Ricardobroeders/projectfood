@@ -3,7 +3,7 @@ title: Overview
 type: overview
 tags: [meta]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-06
 sources: [source-brand-promise-deck.md, source-app-mockups.md]
 ---
 
@@ -34,6 +34,10 @@ product surfaces are corroborated by the [[source-app-mockups]]. Localized in EN
   [[entity-eating30]] and [[entity-30plants-ai]] (direct), plus a long tail of solo checklists.
   Project Food's wedge is social + gamified + joy + free PWA, not the number. See
   [[compare-projectfood-vs-competitors]] and [[source-competitor-scan]].
+- **Growth channel (SEO):** [[seo-overview]] — organic + AI search as the one compounding
+  channel compatible with "no paid acquisition". Keyword research (EN/NL/IT), SERP landscape,
+  content formats, technical audit and a 12-month roadmap live in `wiki/seo/`
+  _(as of 2026-09-06)_.
 - **Competitive contrast (from the deck):** [[entity-myfitnesspal]] — the anti-pattern, though
   it's not the real competitive set.
 
@@ -62,6 +66,9 @@ only. Source: [[source-supabase-metrics]].*
 - [[persona-believer]] is unvalidated — real user research would sharpen or split it.
 - Strategy gap: the brand deck names only MyFitnessPal, but the real rivals are the "30 plants"
   trackers + ZOE — and Project Food's logging breadth (~150 plants, tap-only) trails some of them.
+- Clove (iOS, free) now ships a community feed, XP and shared milestones — the first direct
+  rival with social features. Verify hands-on; if confirmed, the "social moat" assumption needs
+  revisiting. See [[seo-serp-landscape]] _(as of 2026-09-06)_.
 - Metrics are a tiny friends-and-family cohort; churn now readable (view fixed 2026-05-30) and
   rising W-o-W, but noisy at this scale; does the friends→engagement signal hold up, and is
   logging really "tap as you eat" vs end-of-day?

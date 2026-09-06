@@ -41,7 +41,8 @@ knowledge-base-general/
 ├── raw/               # immutable source documents
 │   └── assets/        # images and attachments
 ├── wiki/              # LLM-maintained pages (you own this)
-│   └── overview.md    # top-level synthesis / entry point
+│   ├── overview.md    # top-level synthesis / entry point
+│   └── seo/           # SEO strategy pages (seo- prefix); wikilinks resolve across subfolders
 └── templates/         # page templates to copy when creating new pages
 ```
 
@@ -58,6 +59,7 @@ Use a filename prefix so pages group naturally and the graph stays legible:
 | `interview-`    | Interview       | A single user interview / research session                    | `templates/interview.md`       |
 | `decision-`     | Decision        | An internal decision and its rationale (lightweight ADR)      | `templates/decision.md`        |
 | `compare-`      | Comparison      | A side-by-side analysis (e.g. competitor vs competitor)       | `templates/comparison.md`      |
+| `seo-`          | SEO             | Search / AI-search strategy, keyword research, roadmap. Lives in the `wiki/seo/` subfolder | `templates/concept.md` (adapt) |
 
 Filenames: lowercase, kebab-case, after the prefix. E.g. `entity-myfitnesspal.md`,
 `concept-habit-loop.md`, `persona-busy-parent.md`, `decision-2026-05-30-freemium-tiers.md`.

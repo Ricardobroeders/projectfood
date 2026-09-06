@@ -61,3 +61,17 @@ to €3.49), business-model feature value/willingness-to-pay, and why users do/d
 Method: identify respondents by account email → join to plant_logs via user_id (with consent) →
 analyze by segment (hit-30, social vs solo, active vs lapsed, locale); no PII in the wiki. Added a
 "Plans" section to [[index]]. Findings will later validate [[persona-believer]].
+
+## [2026-09-06] research | SEO strategy folder created
+Created `wiki/seo/` with six pages: [[seo-overview]], [[seo-keyword-strategy]],
+[[seo-serp-landscape]], [[seo-content-types]], [[seo-technical-audit]], [[seo-roadmap]]. Based on
+~25 web searches (2026-09-05/06) across EN/NL/IT plus a code audit of `projectfood-app/`
+(sitemap, robots, hreflang, JSON-LD, learn hub) and DB facts (224 active plants, 39 seasonal,
+2 published learn articles). Key findings: EN head terms are owned by ZOE/UK publishers; NL and
+IT SERPs are thin and app-intent queries have no web competition; "what counts as a plant" is the
+highest-value question cluster in all three languages; every direct competitor is iOS-only (we
+are the only Android/web option); Italian search uses "30 vegetali" more than "30 piante"; MDL
+Fonds runs a yearly NL "30 Planten Challenge" (partner target). New competitor flagged: Clove has
+social features. Search volumes are unvalidated (DataForSEO connector not authorised). Updated
+[[index]] (new SEO section), [[overview]] (growth channel + Clove open question), and CLAUDE.md
+(new `seo-` page type in `wiki/seo/`).
