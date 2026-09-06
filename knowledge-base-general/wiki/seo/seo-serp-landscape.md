@@ -1,117 +1,132 @@
 ---
-title: SEO — SERP landscape & competitor content
+title: SEO — SERP landscape for parent search & the picky-eater app field
 type: seo
-tags: [seo, competitors, research, market]
+tags: [seo, competitors, research, market, family-mode]
 created: 2026-09-06
 updated: 2026-09-06
 origin: web research (multiple), 2026-09-05/06
 date_published: 2026-09-06
-sources: [source-competitor-scan.md, compare-projectfood-vs-competitors.md]
+sources: [source-family-mode-context.md, source-competitor-scan.md]
 ---
 
-# SEO — SERP landscape & competitor content
+# SEO — SERP landscape for parent search & the picky-eater app field
 
-**What it is:** Research notes on who ranks for the "30 plants" topic in EN, NL and IT, what
-the competing apps publish on the open web, and where the gaps are. Collected 2026-09-05/06.
-Complements the product-side view in [[source-competitor-scan]].
+**What it is:** Who ranks for the parent-intent queries in NL, IT and EN; which apps already
+sell "make my kid try vegetables"; which institutions and programmes shape the space; and where
+the gaps are. Collected 2026-09-05/06. The adult 30-plants landscape is kept at the end as a
+secondary asset. Product-side competitor notes: [[source-competitor-scan]].
 
 ## The headline
-- **EN is a publisher's market.** ZOE's `/learn` hub, UK retailers (Boots, Waitrose), supplement
-  brands (Symprove) and insurers (Vitality) own the head terms. The direct tracker apps barely
-  publish anything: Eating30, 30Veg, 30plants.co and Thirty Plants have one-page sites.
-- **NL is winnable.** Page 1 is mid-authority: Women's Health NL, Bedrock, MDL Fonds (charity),
-  Voeding & Visie, Gezond aan tafel, Fodmapfoodies, dietitian blogs, a Kosmos cookbook. No Dutch
-  site owns the "what counts" question, and app-intent queries surface only App Store listings.
-- **IT is empty.** A few explainer articles; no localised tool content beyond one App Store
-  listing. Media uses "30 vegetali a settimana" more than "30 piante".
-- **A directory already lists the category.** nobigapps.com runs a "30 plants a week checklist:
-  free app & complete guide" page and app listings. Cheap, relevant backlink target.
-- **New: a social competitor.** Clove (iOS) has a community feed, XP/levels, a rolling 7-day
-  count, streaks and shareable milestones, free with no paywall _(as of 2026-09,
-  App Store listing)_. This is the first direct rival with the social layer STRATEGY.md treats
-  as our moat. Needs a strategy-level look, not just an SEO note.
+- **NL parent SERPs are winnable and app-less.** "Kind lust geen groente" returns
+  Voedingscentrum, a school-lunch company blog (Tommy Tomato), Kiind, a nanny agency
+  (Compananny) and dietitian/coach blogs. No app, no tool, no printable on page 1.
+- **IT parent SERPs are media-owned but tool-less.** Donna Moderna, PianetaMamma, Nostrofiglio,
+  BimbiSanieBelli, Uppa, Fondazione Veronesi. "Neofobia alimentare" is mainstream vocabulary.
+  Nobody offers a game, a chart or an app.
+- **EN is institutional (CDC, Cleveland Clinic) and already has apps.** Yummi, EatPal, Food
+  Explorer Club, Food Hopper, Playful Eats, EasyEaters, Pitaya, and the free Teach Your Monster
+  Adventurous Eating game. Most are therapy-adjacent (ARFID, sensory steps) or reward-shop apps
+  (points → Robux, screen time). None is a *family* game around plant variety with a class
+  layer.
+- **The science we lean on is public and citable:** Tiny Tastes (Lucy Cooke, UCL: a tiny taste
+  daily for up to 15 days, sticker reward, liking increases) and Food Dudes (Bangor: peer
+  modelling + rewards + repeated tasting; large, lasting increases; run in Ireland, UK, US and
+  Italy). Both reward *tasting*, not clean plates. Exactly D8's card mechanic.
+- **School programmes give a calendar:** EU-Schoolfruit NL delivers 9 Nov 2026 – 16 Apr 2027
+  (20 weeks, three portions a week, primary schools; registration was 31 Aug – 11 Sep 2026).
+  Italy's *Frutta e verdura nelle scuole* covers primary pupils 6–11; 2026/27 registrations
+  ran 11 Jun – 6 Jul 2026. Every participating class already has a "what did you eat at school
+  today?" moment.
 
-## Who ranks, by language _(as of 2026-09-05/06)_
-
-### English
-| Query type | Page 1 today | Read |
-|---|---|---|
-| "30 plants a week" | zoe.com/learn (2 articles), Boots, Waitrose, Symprove, Vitality, theguthealthdoctor.com | Untouchable head term for a new domain |
-| "does coffee/chocolate/herbs count" | zoe.com "7 surprising things that count", Boots, Symprove, savoredjoy, natliciousfood | Mid-tier blogs rank: a precise, structured answer can too |
-| "30 plants checklist / printable" | Etsy listings, dawnjacksonblatner.com PDF, lbhealthandlifestyle.com PDF, diaryofadetour.com, Pinterest | Proven demand; free PDF from small sites ranks |
-| "best app to track 30 plants" | Google Play (Plant Points), App Store (Eating30, Plant Points), 30plants.co, nobigapps.com, eating30.app | Small sites rank: a comparison page can win |
-| "30 plants app android" | Google Play Plant Points only | Eating30, Clove, 30Veg, Thirty Plants are iOS-only; we are a PWA |
-| "fibermaxxing" | nutraingredients, Johns Hopkins CLF, supplement blogs | Trend reports say 2026 moves to "fibre diversity"; our topic |
+## Who ranks, by language _(as of 2026-09-06)_
 
 ### Dutch
-| Query type | Page 1 today | Read |
+| Query | Page 1 today | Read |
 |---|---|---|
-| "30 planten per week" | Women's Health NL, bedrock.nl, mdlfonds.nl, voedingvisie.nl, gezondaantafel.nl, zilverenzusters.nl, ion-nijmegen.nl, Kosmos book | Mid authority; a strong NL pillar + FAQ can enter page 1 |
-| "telt koffie mee / tellen kruiden mee" | Substack (fcvanja), veggiesfirst.com, voedingvisie, gezondaantafel, danielleheman.nl | Blogs and newsletters: low difficulty |
-| "30 planten per week app" | App Store NL (Plant Points), eating30.app/nl/terms | Only listings: highest-value NL gap |
-| "30 planten challenge" | mdlfonds.nl (challenge, pre-registration, why 30, vezels), voedingonline.nl, nieuwsvoordietisten.nl, vanderpigge.nl | Owned by MDL Fonds, June each year: partner, don't compete |
-| "seizoensgroenten september" | deduurzamekaart.nl, Milieu Centraal via vegetarisch-weekmenu.nl, ah.nl | Institutional; angle it as "30 planten die nu in seizoen zijn" |
+| kind lust geen groente / kind wil geen groente eten | voedingscentrum.nl (JGZ professionals page), tommytomato.nl, kiind.nl, mamascrapelle.nl, compananny.com, voedietist.nl, sterkenzoet.nl | Mixed authority; expert blogs rank; a well-structured, honest article with FAQ can enter |
+| moeilijke eter / kind wil niks eten | allesoverkinderen.nl, nutry.nl, kieskeurige-eters.nl, groeisprong.nl, loeswaanders.com | Coach/dietitian blogs; low–mid difficulty |
+| groente spel kinderen eetproblemen | voedingnu.nl on **Spoony** (social enterprise; vegetable games piloted with 14 dietitian practices and 2 hospitals, 100 kids 4–12; 85% of dietitians saw more willingness to taste) | Adjacent player and potential partner; clinical channel, not consumer |
+| groente proefkaart / groentebingo / beloningskaart | gratisbeloningskaart.nl (free tasting card + veg bingo), Pinterest, sterkenzoet.nl (stickers), kinderplanborden.nl | Proven printable demand; small sites rank; our 3D cards beat clip-art |
+| EU-Schoolfruit | euschoolfruit.nl, gezondeschool.nl, NME centres | Institutional; do not compete, complement ("schoolfruit weken thuis") |
 
 ### Italian
-| Query type | Page 1 today | Read |
+| Query | Page 1 today | Read |
 |---|---|---|
-| "30 vegetali/piante a settimana" | ok-salute.it, greenme.it, internazionale.it, fortuneita.com, osteriadelnani.it | Thin; explainer + FAQ page can rank quickly |
-| "cosa conta / caffè / spezie" | Same articles, in passing | No dedicated answer page exists |
-| "app 30 vegetali a settimana" | App Store IT (Plant Points) | Zero web competition |
+| bambini non mangiano verdura / far mangiare le verdure ai bambini | ricette.donnamoderna.com, nonsprecare.it, hurom.it, selenella.it, ohga.it, scuolanutrizioneinpediatria.it, pianetamamma.it, bimbisaniebelli.it | Media + brands; mid–high; long-form + FAQ needed |
+| neofobia alimentare bambini | buonalavita.it (Nutripiatto), fondazioneveronesi.it, uppa.it, nostrofiglio.it, melarossa.it, nutriviva.it | Term is mainstream; method article can rank on specificity ("quante volte assaggiare") |
+| frutta e verdura nelle scuole | fruttanellescuole.gov.it, masaf.gov.it | Government; complement only |
 
-## What the competitors publish (open web)
-| Player | Web content | SEO read |
+### English
+| Query | Page 1 today | Read |
 |---|---|---|
-| [[entity-zoe]] | Large `/learn` hub: "30 plants per week: how and why", "7 surprising things that count", Daily30 how-to; strong FAQ patterns | The model to learn from, not to fight. Their gaps: NL/IT, app comparisons, Android |
-| [[entity-eating30]] | One landing page + localized legal pages (`/nl/terms`); relies on App Store | Zero editorial content; not defending the question cluster |
-| Plant Points (Everett) | App Store / Google Play only, localized listings NL/IT | Ranks in NL/IT purely via store pages |
-| Clove | App Store only | Social features, no web presence: we can out-publish them while watching their product |
-| 30Veg, 30plants.co, thirtyplants.app, fibertracker.app, earthy30.com | Single landing pages; thirtyplants.app has an FAQ resources page | Nobody builds a content moat |
-| nobigapps.com | Directory + a long "checklist & complete guide" article | Backlink/listing target; also ranks for app-intent |
-| MDL Fonds (NL charity) | Challenge hub, "waarom 30 planten", "vezels zijn fantastisch", weekly newsletter, own counting tool, cookbook author partner (Vanja van der Leeden) | Highest-value NL partner: they run the challenge but the tool is basic; a free social app is a natural fit for 2027's edition |
-| UK publishers (Boots, Waitrose, Symprove, Vitality) | Evergreen explainers | Own EN head terms; ignore |
+| picky eater vegetables / get kids to eat veggies | cdc.gov, health.clevelandclinic.org, cookchildrens.org, pathways.org, firststepnutrition.com, valleychildrens.org | Institutional; not a year-one target |
+| picky eater app | App Store (Yummi, EatPal, Pitaya, Picky Eater Meter, EasyEaters), foodhopper.co, getgoally.com, Google Play (Playful Eats), teachyourmonster.org | Crowded but fragmented; a "game, not therapy" comparison page can rank |
+| food neophobia exposures | PubMed/ScienceDirect, Springer | Academic; cite, don't compete |
+| kids eat in color | kidseatincolor.com (RD-led, courses, app-based program ages 1–5, Facebook community) | The EN authority on picky eating content; learn from, do not fight |
 
-## Gaps we can fill
-1. **A definitive "what counts" reference** in three languages with one ruling per food.
-   Nobody has it as a structured, linkable page; everyone has it buried in a listicle.
-2. **Android / web-app angle.** Every direct competitor is iOS-only. "30 plants app android" and
-   "30 planten app android" have no real answer today.
-3. **NL and IT app-intent pages.** Queries exist; only store listings answer them.
-4. **Honest app comparison.** No independent-feeling comparison of the trackers exists outside
-   nobigapps. A comparison page on our domain, naming competitor strengths, would rank and
-   convert.
-5. **Plant reference pages with seasonality**, generated from our DB: no tracker exposes its
-   plant list publicly.
-6. **The social/challenge angle** ("with friends", "challenge") is unclaimed in all three
-   languages and is our positioning anyway ([[concept-word-of-mouth]]).
+## The picky-eater app field _(from store listings, 2026-09; not tested hands-on)_
+| App | Platform | Model | Mechanic | Where we differ |
+|---|---|---|---|---|
+| Yummi Picky Eater Food Tracker | iOS | freemium | Kid logs foods with emoji ratings; parent sets reward (Robux, screen time, toy) | Extrinsic reward shop; we use intrinsic card unlock (D8) |
+| EatPal | iOS | subscription | Meal planner per kid, barcode, "try-bite" tracker | Planner-first; we are dinner-first + household goal |
+| Food Explorer Club | iOS | freemium | Badges/points for trying foods, parent-defined rewards | Same extrinsic pattern |
+| Food Hopper | iOS/web | 7-day trial | Sensory algorithm recommends next foods | Therapy-adjacent |
+| Playful Eats | Android | ? | Observe→Engage→Touch→Taste→Eat steps | Feeding-therapy steps |
+| Teach Your Monster Adventurous Eating | iOS/Android | **free** | Kid's own game: explore 40 fruits/veg with five senses, stickers, certificates (Lucy Cooke advised) | Kid plays alone on a device; we are parent's phone, family goal, class layer |
+| Spoony (NL) | physical games | B2B (dietitians) | Board games where a move = a spoonful | Clinical channel; possible partner |
+| Yuka-style nutrition trackers (Sito) | iOS | subscription | Micronutrient tracking for kids | Precision nutrition: our non-goal |
 
-## Distribution & backlink targets (no paid, no bribes)
-- **Directories:** nobigapps.com (submit + request inclusion in the guide), AlternativeTo
-  (list as alternative to Eating30 / Plant Points / ZOE), Product Hunt (launch when Android +
-  social story is crisp), PWA directories.
-- **NL institutions & communities:** MDL Fonds (offer the app as the challenge companion for
-  the next edition), nieuwsvoordietisten.nl, dietitian bloggers already writing about the
-  challenge (Daniëlle Heman, Voeding & Visie), Substack authors (fcvanja).
-- **Forums where the question is asked:** r/guthealth, r/nutrition, r/PlantBasedDiet,
-  HealthUnlocked, Mumsnet ("Zoe: have you tried 30 different plants" thread), Cronometer
-  forum ("tracking 30 plants per week" thread). Answer, don't spam; link when asked.
-- **AI search (GEO):** get named in "best 30 plants apps" articles and directories; that is
-  what ChatGPT/Perplexity/AI Overviews cite when asked for an app. See [[seo-content-types]].
+**Gap:** nobody combines (a) parent's phone, kid taps, (b) cooperative household goal, (c)
+collectible plant cards, (d) asynchronous class/cousin milestones, (e) NL/IT localisation.
+
+## Institutions, programmes and partners
+| Who | What | Why it matters |
+|---|---|---|
+| Voedingscentrum (NL) | JGZ guidance on kids and vegetables; the authority | Cite; align language ("proeven", "voorbeeldgedrag"); never contradict |
+| EU-Schoolfruit / Gezonde School (NL) | 20-week fruit/veg deliveries in primary schools, Nov–Apr | The calendar for the class channel; "schoolfruit weken thuis" content |
+| Frutta e verdura nelle scuole (IT) | National programme, primary 6–11 | Same, Italy |
+| Tommy Tomato (NL) | School-lunch company that ranks for the parent query | Content partner / backlink; already talks to schools |
+| Spoony (NL) | Vegetable games via dietitians | Partner for the "hard cases" we should not serve ourselves |
+| MDL Fonds (NL) | Adult 30 Planten Challenge, June | Secondary now; still a free NL backlink if they list companion tools |
+| Kids Eat in Color (EN) | RD-led picky-eating authority | Benchmark for tone; not a partner target |
+| Tiny Tastes / Weight Concern (UK) | Lucy Cooke's programme packs | Cite the research; do not imply endorsement |
+
+## Distribution beyond search (supports the class channel)
+- **Parent communities:** NL Facebook groups per city/school, Ouders van Nu forum, Kiind; IT
+  PianetaMamma/Nostrofiglio forums; EN r/Parenting, r/toddlers, Mumsnet. Answer real threads,
+  link only when asked.
+- **Schools:** not a sales target (file §6) but teachers forward good kits. A class poster and a
+  milestone artefact ("our class ate 100 different plants") are the units that travel.
+- **App directories:** nobigapps, AlternativeTo (as alternative to Yummi / Food Explorer Club /
+  Eating30), Product Hunt at native launch.
+- **AI search (GEO):** ask ChatGPT/Perplexity monthly "app om mijn kind groente te laten
+  proeven" / "app per far assaggiare le verdure ai bambini" / "family app to get kids to try
+  vegetables"; log which sources they cite and get listed there.
+
+## Secondary asset: the adult "30 plants" landscape (kept from v1, 2026-09-05)
+EN head terms are owned by zoe.com/learn, Boots, Waitrose, Symprove, Vitality. NL page 1 is
+mid-authority media plus MDL Fonds. IT is thin and says "30 vegetali" more than "30 piante".
+Every direct tracker (Eating30, Plant Points, Clove, 30Veg, Thirty Plants) is iOS-only with a
+one-page site; **Clove** now has a community feed, XP and shared milestones. The "what counts as
+a plant" question cluster remains unowned in all three languages. Details and sources are in the
+git history of this page (commit b5cac9c) and summarised in [[compare-projectfood-vs-competitors]].
 
 ## Contradictions / open questions
-- Clove's social feature set is from its store listing, not hands-on testing. Verify before
-  updating [[compare-projectfood-vs-competitors]]; if confirmed, STRATEGY.md's "what's left of
-  the moat" question needs an answer.
-- Demand tiers are inferred; validate with DataForSEO ([[seo-roadmap]] Phase 0).
-- MDL Fonds' challenge tool: unknown whether it is an app or a printable. Check before outreach.
+- App feature claims are from store listings; test Yummi, Teach Your Monster and EatPal before
+  the comparison page.
+- Spoony and Tommy Tomato as partners: unverified appetite; Ricardo to make first contact.
+- Whether Voedingscentrum's "do not link tasting to rewards" stance conflicts with our card
+  unlock: their advice targets *food* rewards and pressure; Tiny Tastes' sticker evidence is the
+  counter-case. Content must handle this honestly (reward the *tasting*, small, non-food).
 
 ## Sources
-- EN: [ZOE: 30 plants per week](https://zoe.com/learn/30-plants-per-week) · [ZOE: 7 surprising things that count](https://zoe.com/learn/surprising-foods-for-30-plants-per-week) · [Boots: 30 plants a week](https://www.boots.com/wellness-advice/nutrition/30-plants-a-week) · [Waitrose: how to eat 30 plants](https://www.waitrose.com/ecom/content/inspiration/health/how-to-eat-30-plants) · [Symprove: how to eat 30 plants a week](https://www.symprove.com/blogs/gut-food/how-to-eat-30-plants-a-week) · [The Gut Health Doctor: plant points](https://theguthealthdoctor.com/30-plant-points) · [LB Health checklist PDF](https://lbhealthandlifestyle.com/eating-30-plants-a-week-checklist/) · [nobigapps: 30 plants checklist & app guide](https://nobigapps.com/articles/30-plants-per-week-challenge) · [Eating30](https://eating30.app/) · [30plants.co](https://www.30plants.co/) · [30Veg](https://30veg.co.uk/) · [Thirty Plants FAQs](https://www.thirtyplants.app/resources/frequently-asked-questions) · [Clove (App Store)](https://apps.apple.com/us/app/clove-gut-health-30-plants/id6737420957) · [Plant Points (Google Play)](https://play.google.com/store/apps/details?id=com.everettappdevelopment.plant_points) · [Fibermaxxing fades, fibre diversity dominates 2026 (NutraIngredients)](https://www.nutraingredients.com/Article/2025/10/21/fibermaxxing-fades-as-fiber-diversity-dominates-2026-trends/) · [Cronometer forum thread](https://forums.cronometer.com/discussion/6108/tracking-30-plants-per-week) · [Mumsnet thread](https://www.mumsnet.com/talk/_chat/4863715-zoe-have-you-tried-30-different-plants-a-week-for-your-gut)
-- NL: [MDL Fonds: 30 Planten Challenge](https://www.mdlfonds.nl/30-planten-challenge/) · [MDL Fonds: waarom 30 planten](https://www.mdlfonds.nl/30-planten-challenge/waarom-30-planten-per-week/) · [Women's Health NL](https://www.womenshealthmag.nl/nieuws/1272699/30-planten-per-week-challenge) · [Bedrock](https://www.bedrock.nl/30-planten-per-week-eten/) · [Voeding & Visie](https://voedingvisie.nl/de-30-planten-per-week-challenge/) · [Gezond aan tafel: tips](https://www.gezondaantafel.nl/artikelen/tips-en-tricks-voor-het-eten-van-30-planten-per-week/) · [Fodmapfoodies](https://fodmapfoodies.nl/challenge/30-verschillende-plantaardige-voedingsmiddelen-per-week-waarom-en-hoe/) · [VoedingOnline: waar komt de challenge vandaan](https://www.voedingonline.nl/page/Nieuws/Bericht/3570/Waar-komt-de-30-planten-challenge-vandaan) · [Nieuws voor diëtisten](https://www.nieuwsvoordietisten.nl/planten-challenge-voor-meer-vezelvariatie/) · [Kosmos: 30 planten per week eten (boek)](https://www.kosmosuitgevers.nl/boek/30-planten-per-week-eten/) · [Veggies First](https://www.veggiesfirst.com/nl/blog/30-planten-week-challenge) · [Plant Points NL (App Store)](https://apps.apple.com/nl/app/30-planten-per-week/id6736978153) · [De Duurzame Kaart: seizoensgroenten september](https://www.deduurzamekaart.nl/seizoensgroenten-in-september/)
-- IT: [ok-salute](https://www.ok-salute.it/alimentazione/serve-davvero-mangiare-30-vegetali-diversi-a-settimana/) · [greenMe](https://www.greenme.it/salute-e-alimentazione/nutrizione/30-alimenti-vegetali-settimana/) · [Internazionale: trenta vegetali in sette giorni](https://www.internazionale.it/magazine/2025/06/26/trenta-vegetali-in-sette-giorni) · [Fortune Italia](https://www.fortuneita.com/2023/03/27/mangiare-30-vegetali-a-settimana-per-un-intestino-sano/) · [Plant Points IT (App Store)](https://apps.apple.com/it/app/30-piante-a-settimana/id6736978153)
-- GEO: [Search Engine Land: GEO in 2026](https://searchengineland.com/mastering-generative-engine-optimization-in-2026-full-guide-469142) · [PWA SEO 2026 (deepclick)](https://deepclick.com/resources/blog/seo-for-progressive-web-apps/)
+- NL parent: [Voedingscentrum: kind beter groente eten](https://www.voedingscentrum.nl/professionals/zwangerschap-en-kindervoeding/jgz-professionals/thema-s/hoe-zorgen-ouders-ervoor-dat-hun-kind-beter-groente-eet-.aspx) · [Tommy Tomato: 11 tips](https://www.tommytomato.nl/blog/mijn-kind-lust-geen-groente-wedden-van-wel-met-deze-11-praktische-tips-lukt-het/) · [Kiind](https://kiind.nl/waarom-kinderen-geen-groente-lusten-en-prima-is/) · [Compananny](https://www.compananny.com/kenniscentrum/je-kind-wil-geen-groente-eten-lees-onze-tips-en-tricks/) · [De Voedietist](https://voedietist.nl/help-mijn-kind-wil-geen-groente-eten/) · [Nutry](https://nutry.nl/blog/2026/02/24/kind-wil-geen-groenten-eten-tips/) · [Kieskeurige Eters](https://kieskeurige-eters.nl/dagelijkse-situaties/mijn-kind-eet-geen-groente-fruit/) · [Voeding Nu on Spoony](https://voedingnu.nl/nieuws/groente-spel-helpt-kinderen-met-eetproblemen) · [gratisbeloningskaart: groente proefkaart](https://www.gratisbeloningskaart.nl/beloningskaarten/gezond-eten-kinderen-groente-proefkaart/) · [EU-Schoolfruit inschrijfperiode 2026-27](https://www.euschoolfruit.nl/eu-schoolfruit/over-eu-schoolfruit/nieuws-en-inspiratie/nieuwsitem/inschrijfperiode-eu-schoolfruit-2026-2027) · [Gezonde School](https://www.gezondeschool.nl/nieuws/inschrijving-eu-schoolfruit-gestart)
+- IT parent: [Donna Moderna](https://ricette.donnamoderna.com/ricette-verdure-bambini) · [PianetaMamma](https://www.pianetamamma.it/la-famiglia/ricette/bambini-che-non-mangiano-verdure-il-segreto-per-svuotare-i-piatti-a-cena-senza-piu-capricci.html) · [Nostrofiglio: neofobia](https://www.nostrofiglio.it/bambino/alimentazione/neofobia-alimentare-bambini-come-convincere-i-bambini-ad-assaggiare) · [Uppa: neofobia](https://www.uppa.it/neofobia-bambini/) · [Fondazione Veronesi](https://www.fondazioneveronesi.it/magazine/alimentazione/neofobia-alimentare-nei-bambini-cosa-fare) · [Scuola Nutrizione in Pediatria](https://www.scuolanutrizioneinpediatria.it/2024/09/25/bambini-che-non-mangiano-le-verdure-consigli-pratici/) · [Frutta e verdura nelle scuole](https://www.fruttanellescuole.gov.it/il-programma) · [MASAF 2026/27](https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24647)
+- EN parent & apps: [CDC picky eater](https://www.cdc.gov/nutrition/features/help-picky-eater.html) · [Cleveland Clinic](https://health.clevelandclinic.org/how-to-get-kids-to-eat-veggies) · [Kids Eat in Color](https://kidseatincolor.com/picky-eating/) · [Yummi (App Store)](https://apps.apple.com/us/app/yummi-picky-eater-food-tracker/id6756319783) · [EatPal](https://apps.apple.com/us/app/eatpal-picky-eater-meal-plans/id6762243166) · [Food Explorer Club](https://apps.apple.com/us/app/food-explorer-club/id1481324407) · [Teach Your Monster Adventurous Eating](https://www.teachyourmonster.org/adventurous-eating/) · [Food Hopper](https://www.foodhopper.co/) · [Playful Eats](https://play.google.com/store/apps/details?id=com.playfuleats.playfuleats)
+- Science: [UCL: Tiny Tastes research](https://www.ucl.ac.uk/news/2013/sep/new-research-offers-hope-parents-picky-eaters) · [Tiny Tastes](https://www.lucycooke.net/tiny-tastes) · [Food Dudes evidence (Bangor)](https://research.bangor.ac.uk/en/impacts/encouraging-healthy-eating-in-children-with-the-food-dudes-progra/) · [Food Dudes: peer modelling, reward, repeated exposure (Appetite)](https://sciencedirect.com/science/article/abs/pii/S0195666314003961) · [Looking vs tasting exposure (PubMed)](https://pubmed.ncbi.nlm.nih.gov/3435134/) · [Practice does make perfect: repeated taste exposure](https://www.sciencedirect.com/science/article/abs/pii/S019566630800490X)
+- ASO: [AppTweak: ASO 2026](https://www.apptweak.com/en/aso-blog/what-is-app-store-optimization-and-why-is-aso-important) · [AppFollow: localisation playbook](https://appfollow.io/blog/app-store-optimization-localization)
 
 ## Related pages
-- [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-content-types]] ·
-  [[source-competitor-scan]] · [[compare-projectfood-vs-competitors]] · [[entity-zoe]] ·
-  [[entity-eating30]] · [[entity-30plants-ai]]
+- [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-content-types]] · [[seo-app-store-aso]] ·
+  [[source-competitor-scan]] · [[compare-projectfood-vs-competitors]] ·
+  [[source-family-mode-context]]

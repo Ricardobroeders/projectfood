@@ -3,9 +3,9 @@ title: User survey plan (target ~2026-06)
 type: plan
 tags: [user-research, survey, pricing, ux]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-06
 sources: []
-status: draft
+status: deprioritised
 target_send: 2026-06-30
 ---
 
@@ -18,6 +18,11 @@ segmented analysis.
 
 **Status:** draft question bank. Finalise just before sending (~end June 2026). See decisions to
 make at the bottom.
+
+> **Update 2026-09-06 — deprioritised.** Only 2–3 responses so far, and the audience (adult
+> gut-health users) cannot answer family-mode questions. Do not gate the redesign on it.
+> Validation is now the behavioural data pull plus five 15-minute parent conversations
+> ([[source-family-mode-context]] §7, [[decision-2026-09-06-family-mode-pivot]]).
 
 ## Method
 - **Audience:** all registered users at send time (current testers + any new signups).

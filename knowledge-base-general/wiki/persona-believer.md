@@ -3,7 +3,7 @@ title: The Believer (target user)
 type: persona
 tags: [persona, target-user]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-06
 sources: [source-brand-promise-deck.md]
 ---
 
@@ -12,6 +12,10 @@ sources: [source-brand-promise-deck.md]
 **One-liner:** Someone who believes food is connected to how they feel and wants a simple,
 gamified way to act on that belief. (Provisional persona derived from the brand deck's "for
 someone in particular" — not yet validated with user research.)
+
+> **Status (2026-09-06):** superseded as the *primary* target by [[persona-household-parent]]
+> after the family-mode pivot ([[source-family-mode-context]]). Kept as the adult-tracker
+> persona: it describes the current user base and the audience of the legacy 30-plants content.
 
 ## Profile
 - **Context:** Health-curious; sees a link between diet and wellbeing.

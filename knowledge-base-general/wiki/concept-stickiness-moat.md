@@ -3,7 +3,7 @@ title: Stickiness & moat
 type: concept
 tags: [strategy, retention, moat]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-06
 sources: [source-brand-promise-deck.md]
 ---
 
@@ -32,6 +32,21 @@ Investment rule: **invest in recurring moments, not one-time delights.** A featu
 once but isn't reused is worth less than one that quietly removes friction every Sunday for
 years. Useful as a prioritization lens for the roadmap.
 *"Without us, Sunday gets harder."*
+
+## Family mode update (2026-09-06)
+[[source-family-mode-context]] makes both voids concrete for the household and adds a daily one:
+- **Daily void — the dinner-table question.** A notification ~30 minutes after the household's
+  *real* dinner time asks "What did the kids eat today?" and opens straight into logging; the
+  kid taps, the card unlocks. Push permission is asked only after the first successful log (D9,
+  D10). Three ignored notifications → it moves or goes quiet.
+- **Weekly void — the shopper's Sunday.** The advice is rewritten for the household shopper:
+  what the family has not had in three weeks, what is in season (as texture), how to serve it
+  so kids will taste it (D11). This is the paid feature.
+- **Retention is measured per household**: dinners logged per household per week, checked at
+  week 4 and week 8 (D13). The family streak has a built-in freeze (D7) so pizza night does not
+  cost the household its streak.
+- **Instrumentation from day one:** notification → open rate; time from notification to log;
+  dinners per household per week; where the week-4 cliff sits.
 
 ## Contradictions / open questions
 - Void #1 is "partially shipped"; void #2 is roadmap — confirm current shipped state before

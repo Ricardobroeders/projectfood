@@ -75,3 +75,20 @@ Fonds runs a yearly NL "30 Planten Challenge" (partner target). New competitor f
 social features. Search volumes are unvalidated (DataForSEO connector not authorised). Updated
 [[index]] (new SEO section), [[overview]] (growth channel + Clove open question), and CLAUDE.md
 (new `seo-` page type in `wiki/seo/`).
+
+## [2026-09-06] ingest | Family mode context (raw/FAMILY_MODE_CONTEXT.md)
+Ingested Ricardo's direction document for the pivot to a **family app** with native Expo
+clients. Created [[source-family-mode-context]], [[persona-household-parent]] (new primary
+persona) and [[decision-2026-09-06-family-mode-pivot]] (D1–D14). Rewrote [[overview]] around
+the pivot. Updated [[persona-believer]] (superseded as primary), [[concept-word-of-mouth]]
+(class as unit of spread; cards and collective milestones), [[concept-stickiness-moat]]
+(dinner-table question; shopper's Sunday; per-household retention), 
+[[compare-projectfood-vs-competitors]] (picky-eater app field; ZOE cannot follow), and
+[[research-survey-plan]] (deprioritised). **Rewrote all of `wiki/seo/`** (same-day v1 had
+targeted adult gut-health searchers): SEO is now a background asset behind the class launch
+channel; keyword strategy re-centred on parent intent in NL/IT/EN; new [[seo-app-store-aso]]
+page; roadmap gated on dinner-habit and class-replication validation. Research added: ~16 web
+searches on parent SERPs, picky-eater apps, Tiny Tastes / Food Dudes evidence, EU-Schoolfruit
+(NL deliveries 9 Nov 2026 – 16 Apr 2027) and Frutta e verdura nelle scuole. Flagged:
+`STRATEGY.md` (May 2026) is out of date on audience, platform and distribution; hero copy
+carries a health claim; keyword volumes still need DataForSEO.

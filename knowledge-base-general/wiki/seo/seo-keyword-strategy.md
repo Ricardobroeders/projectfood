@@ -1,140 +1,125 @@
 ---
-title: SEO — keyword strategy (EN / NL / IT)
+title: SEO — keyword strategy for family mode (NL / IT / EN)
 type: seo
-tags: [seo, keywords, research]
+tags: [seo, keywords, research, family-mode]
 created: 2026-09-06
 updated: 2026-09-06
-sources: [seo-serp-landscape.md]
+sources: [source-family-mode-context.md, seo-serp-landscape.md]
 ---
 
-# SEO — keyword strategy (EN / NL / IT)
+# SEO — keyword strategy for family mode (NL / IT / EN)
 
-**In one line:** Eight intent clusters, three languages. Priority goes to question-shaped
-"what counts" queries, app-intent queries, and everything Dutch and Italian, because those are
-the terms a zero-authority domain can actually rank for in year one.
+**In one line:** Seven intent clusters built around the parent, not the adult tracker.
+Priority goes to the Dutch "kind lust geen groente" problem cluster, the behavioural-method
+cluster (tasting, exposures) that matches the card mechanic, and printable/tool queries that
+produce forwardable artefacts. The old 30-plants clusters are kept as a P2 asset.
 
-> **Read this first:** demand tiers (H/M/L) are **estimates inferred from who ranks and how
-> many publishers bother to cover a term**. No volume tool was available for this pass (the
-> DataForSEO connector needs authorising). Validate before writing: [[seo-roadmap]] Phase 0.
-> Difficulty is judged from the domains on page 1 _(SERPs checked 2026-09-05/06)_.
+> **Demand tiers are inferred from SERP composition, not from volume data.** The family-mode
+> context file explicitly requires DataForSEO volumes for the parent cluster *before* content
+> investment ([[source-family-mode-context]] §6, §8). Treat every H/M/L below as a hypothesis.
+> SERPs checked 2026-09-06.
 
 ## How to read the tables
-- **Demand:** H = many publishers and paid products compete for it; M = regularly covered;
-  L = a handful of results, mostly forums or app listings.
-- **Difficulty:** H = page 1 is national publishers / ZOE / retailers; M = mixed mid-size sites
-  and blogs; L = app-store listings, tiny sites, or forum threads on page 1.
-- **Priority:** P1 = build in Phase 1–2; P2 = Phase 3; P3 = opportunistic.
-- **Target** = the page type from [[seo-content-types]] that should answer it.
+- **Demand:** H = many publishers/products compete; M = regularly covered; L = a few results.
+- **Difficulty:** H = institutions/national media on page 1; M = mid-size media and expert
+  blogs; L = small blogs, forums, app listings.
+- **Priority:** P1 = Phase 1 (Nov–Jan); P2 = Phase 2; P3 = opportunistic. See [[seo-roadmap]].
+- **Voice check:** every cluster must be answerable without a health claim. Clusters that are
+  inherently medical (ARFID, allergies, growth) are excluded on purpose.
 
-## The eight intent clusters
+## The seven clusters
 
-| # | Cluster | What the searcher wants | Funnel stage |
+| # | Cluster | What the parent wants | Loop moment |
 |---|---|---|---|
-| A | Core concept | "What is this 30 plants thing?" | Awareness |
-| B | What counts | A ruling on one food: coffee, tea, chocolate, potatoes, bread, spices, hummus | Consideration (highest intent to *track*) |
-| C | How-to & lists | A list, a checklist, a week plan, a shopping list | Consideration |
-| D | App / tool | An app to track it; free; Android; alternatives | **Conversion** |
-| E | Science & scepticism | Where "30" comes from; is it a myth; the American Gut Project | Awareness / trust |
-| F | Seasonal & local | What is in season this month, locally | Awareness (recurring) |
-| G | Single plant | One plant: what it is, does it count, when it is in season | Long tail (programmatic) |
-| H | Challenge & social | Doing it with friends, a 4-week challenge, a team | Awareness → conversion (our wedge) |
+| P | Parent problem | "My kid won't eat vegetables. What actually works?" | Dinner |
+| M | Method & science (behavioural) | "How many times do they have to taste it? Do rewards work?" | Dinner |
+| T | Tools & printables | A tasting chart, sticker card, bingo, plant cards to print | Dinner / fridge |
+| A | App intent | "An app that makes my kid want to try vegetables" | Conversion |
+| S | School & class | School fruit weeks, class challenges, "what did you eat at school?" | Class channel |
+| W | What counts / 30 plants (legacy, adult + parent) | "Does ketchup count? What is a plant point?" | Groceries |
+| B | Brand / navigational | "project food app", "project food kinderen" after a WhatsApp share | Conversion |
 
-## English (EN)
-EN page 1 for head terms is owned by zoe.com/learn, Boots, Waitrose, Symprove, Vitality, The Gut
-Health Doctor. We do not fight that. We take questions, app intent and Android.
-
-| Keyword (representative) | Cluster | Demand | Difficulty | Priority | Target |
-|---|---|---|---|---|---|
-| 30 plants a week | A | H | H | P3 (brand mention only) | Home + pillar |
-| plant points / what is a plant point | A | M | H | P2 | Cluster article |
-| what counts as a plant (30 plants) | B | M | M | **P1** | "What counts" hub |
-| does coffee count as one of your 30 plants | B | M | M | **P1** | Food ruling page |
-| do herbs and spices count towards 30 plants | B | M | M | **P1** | Cluster `herbs-spices-count` |
-| does dark chocolate / tea / olive oil count | B | M | M | **P1** | Food ruling pages |
-| do potatoes / bread / hummus / popcorn count | B | L–M | L–M | **P1** | Food ruling pages |
-| do different colour peppers count separately | B | L | L | P2 | FAQ on hub |
-| 30 plants a week list / checklist / printable pdf | C | H | M | **P1** | Checklist page + PDF |
-| how to eat 30 plants a week | C | H | H | P2 | Cluster `how-to-hit-30-plants` |
-| 30 plants a week meal plan / shopping list | C | M | M | P2 | Weekly plan page (no recipe library) |
-| 30 plants a week app | D | M | M | **P1** | App landing section |
-| best app to track 30 plants a week | D | M | L–M | **P1** | Honest comparison page |
-| 30 plants a week app **android** | D | L–M | **L** | **P1** | Comparison + landing (we are the only Android option) |
-| eating30 alternative / plant points app alternative | D | L | L | P2 | Comparison page |
-| 30 plants a week tracker free | D | M | M | **P1** | Landing |
-| is 30 plants a week a myth / arbitrary | E | L–M | M | P2 | Cluster `30-plants-science-origin` |
-| American Gut Project 30 plants | E | L | M | P2 | Same |
-| fibre diversity / fibermaxxing gut health | E | M (rising) | M | P2 | New cluster (fibre) |
-| what vegetables are in season in september | F | H | H | P3 | Seasonal pages (EN low priority) |
-| 30 plants challenge with friends / gut health challenge | H | L | L | **P1** | Challenge landing (our wedge) |
-
-## Dutch (NL)
-NL page 1 is mid-size media (Women's Health NL, Bedrock), a charity (MDL Fonds), dietitian
-blogs and one book. Much lower authority than the UK field. App-intent queries return App
-Store listings and eating30.app/nl only. **This is the market to win first.**
+## Dutch (NL): first market
+Page 1 today: Voedingscentrum (institution, JGZ page), Tommy Tomato (school-lunch company
+blog), Kiind, Compananny, dietitian and coach blogs (De Voedietist, Kieskeurige Eters, Sterk &
+Zoet, Nutry, Loes Waanders, Allesoverkinderen). Mid authority, no single owner, and **no app**
+in the results.
 
 | Keyword (representative) | Cluster | Demand | Difficulty | Priority | Target |
 |---|---|---|---|---|---|
-| 30 planten per week | A | H | M | **P1** | NL home + pillar |
-| 30 planten challenge | H/A | M (peaks June, MDL Fonds) | M | **P1** | Challenge landing NL |
-| 30 planten per week lijst | C | M | M | **P1** | Checklist page NL |
-| welke planten tellen mee / wat telt als plant | B | M | L–M | **P1** | "Wat telt mee" hub |
-| telt koffie mee 30 planten / telt chocolade mee / tellen kruiden mee | B | L–M | **L** | **P1** | Food ruling pages NL |
-| 30 planten per week app | D | M | **L** | **P1** | NL landing (only App Store + Eating30 rank) |
-| 30 planten per week app android / gratis | D | L | **L** | **P1** | Same |
-| 30 planten per week recepten / weekmenu / boodschappenlijst | C | M | M | P2 | Weekly plan page NL (not a recipe library) |
-| plantpunten / plantenpunten | A | L | L | P2 | Glossary FAQ |
-| darmflora verbeteren voeding / vezels variatie | E | H | H | P3 | Pillar mention |
-| 30 planten per week boek (Kosmos) | A | L | n/a | P3 | Mention in landscape only |
-| seizoensgroenten september / groente van het seizoen [maand] | F | H | M–H | P2 | Seasonal month pages NL: "30 planten die nu in seizoen zijn" |
-| [plant] telt mee / wat is koolrabi | G | L | L | P3 | Programmatic plant pages |
+| kind lust geen groente | P | H | M | **P1** | Cornerstone NL article |
+| kind eet geen groente tips / kind wil geen groente eten | P | H | M | **P1** | Same cornerstone + FAQ |
+| moeilijke eter kind / kieskeurige eter | P | M | M | **P1** | Cluster article |
+| peuter eet geen groente | P | M | M | P2 | Age-specific section |
+| hoe vaak moet een kind iets proeven / 10 keer proeven | M | M | **L** | **P1** | Method article ("10–15 keer proeven") |
+| kind belonen voor proeven / stickers proeven groente | M | L–M | L | **P1** | Rewards-that-work article |
+| neofobie kinderen eten / voedselneofobie | M | L | L | P2 | Method article |
+| groente proefkaart / groentebingo / beloningskaart groente | T | M | **L** | **P1** | Printable plant cards + tasting chart |
+| plantenkaarten kinderen printen | T | L | L | **P1** | Same (our 3D cards) |
+| app kind groente eten / app moeilijke eter | A | L–M | **L** | **P1** | NL landing + App Store |
+| spel om kinderen groente te laten eten | A | M | L–M | **P1** | Landing ("een spel, geen therapie") |
+| EU-Schoolfruit thuis / schoolfruit weken tips ouders | S | M (Nov–Apr) | M | **P1** | Schoolfruit companion page |
+| klas challenge gezond eten / klassenuitdaging groente | S | L | **L** | **P1** | Class challenge page |
+| wat heb je op school gegeten (vraag) | S | L | L | P2 | Ritual article |
+| 30 planten per week kinderen / gezin | W | L | L | P2 | Family 30 page |
+| welke planten tellen mee / telt ketchup mee | W | M | L–M | P2 | "Wat telt mee" hub (legacy plan) |
+| project food app / project food kinderen | B | n/a | n/a | **P1** | Home page must win this outright |
 
-## Italian (IT)
-IT coverage is thin: a few health/media articles (ok-salute, greenMe, Internazionale,
-fortuneita) and one localised App Store listing (Plant Points). No Italian site owns the
-question cluster. Note the **phrasing**: Italian media says **"30 vegetali a settimana"** far
-more than "30 piante"; our current IT article uses "piante". Target both, lead with "vegetali".
+## Italian (IT): second market
+Page 1 today: Donna Moderna, PianetaMamma, Nostrofiglio, BimbiSanieBelli, Uppa, Fondazione
+Veronesi, Nutripiatto, plus food brands (Selenella, Hurom). Higher-authority media than NL but
+purely editorial: no tool, no app, no printable. "Neofobia alimentare" is a well-used term.
 
 | Keyword (representative) | Cluster | Demand | Difficulty | Priority | Target |
 |---|---|---|---|---|---|
-| 30 vegetali a settimana | A | M | M | **P1** | IT home + pillar (rename phrasing) |
-| 30 piante a settimana | A | L–M | L | **P1** | Same page, secondary phrasing |
-| 30 alimenti vegetali diversi a settimana | A | L | L | P2 | Same |
-| cosa conta come vegetale / cosa conta nei 30 vegetali | B | L | **L** | **P1** | "Cosa conta" hub |
-| il caffè conta / il cioccolato conta / le spezie contano | B | L | **L** | **P1** | Food ruling pages IT |
-| app 30 vegetali a settimana / app contare vegetali | D | L | **L** | **P1** | IT landing (no competition) |
-| lista 30 vegetali a settimana / checklist | C | L–M | L | **P1** | Checklist page IT |
-| microbiota intestinale alimentazione varietà | E | H | H | P3 | Pillar mention |
-| verdura di stagione settembre | F | H | H | P3 | Seasonal pages IT (later) |
-| punti pianta | A | L | L | P2 | Glossary FAQ |
+| bambini non mangiano verdura / il mio bambino non mangia le verdure | P | H | M–H | **P1** (after NL) | Cornerstone IT article |
+| come far mangiare le verdure ai bambini | P | H | M–H | **P1** | Same + FAQ |
+| neofobia alimentare bambini | M | M | M | **P1** | Method article (term is mainstream in IT) |
+| quante volte assaggiare un cibo nuovo bambini | M | L–M | L | **P1** | Method article |
+| premi per assaggiare / tabella assaggi bambini | T | L | **L** | **P1** | Printable cards + chart IT |
+| app bambini verdure / gioco per far mangiare le verdure | A | L | **L** | **P1** | IT landing + App Store |
+| frutta e verdura nelle scuole a casa / merenda scuola | S | M (school year) | H (gov site) | P2 | Companion page for the programme |
+| sfida di classe alimentazione sana | S | L | L | P2 | Class challenge IT |
+| 30 vegetali a settimana bambini / famiglia | W | L | L | P2 | Family 30 page |
+| cosa conta come vegetale | W | L | L | P2 | Legacy hub |
 
-## Priority shortlist: the 10 terms per language we track from day one
-Use these as the rank-tracking set in Search Console (and DataForSEO once connected).
+## English (EN): served last
+Page 1 today: CDC, Cleveland Clinic, children's hospitals, Kids Eat in Color, Pathways, plus
+Teach Your Monster (free game). App Store is crowded with picky-eater apps, many therapy-adjacent
+(ARFID, sensory). We do not out-rank institutions; we can rank for the *game* angle and for
+app comparisons.
 
-- **EN:** what counts as a plant 30 plants · does coffee count 30 plants · do herbs and spices
-  count 30 plants · 30 plants a week checklist · 30 plants a week app · best 30 plants a week
-  app · 30 plants app android · 30 plants a week tracker free · 30 plants challenge friends ·
-  is 30 plants a week a myth
-- **NL:** 30 planten per week · 30 planten challenge · 30 planten per week lijst · welke
-  planten tellen mee · telt koffie mee 30 planten · 30 planten per week app · 30 planten app
-  android · 30 planten per week weekmenu · plantpunten · seizoensgroenten september
-- **IT:** 30 vegetali a settimana · 30 piante a settimana · cosa conta come vegetale · il caffè
-  conta 30 vegetali · app 30 vegetali a settimana · lista 30 vegetali a settimana · punti
-  pianta · microbiota varietà vegetali · 30 vegetali sfida · verdura di stagione settembre
+| Keyword (representative) | Cluster | Demand | Difficulty | Priority | Target |
+|---|---|---|---|---|---|
+| how to get kids to eat vegetables / picky eater vegetables | P | H | **H** | P3 | Cornerstone EN (late) |
+| food neophobia children exposures / 10 to 15 tastes | M | M | M | P2 | Method article |
+| tiny tastes method / food dudes at home | M | L–M | L–M | P2 | Method article (cite the research, not our app) |
+| vegetable tasting chart printable / picky eater chart | T | M | M | P2 | Printable cards + chart EN |
+| app to get kids to eat vegetables / picky eater app | A | M | M | P2 | Comparison page ("game, not therapy") |
+| family food challenge app / kids 30 plants | A/W | L | L | P2 | Family 30 page |
+| what counts as a plant / does coffee count 30 plants | W | M | M | P2 | Legacy "what counts" hub |
+| 30 plants a week app android | A | L | L | P2 | Keep: still the only Android option in the 30-plants field |
 
-## The "what counts" ruling list (seed for cluster B pages)
-Foods people actually ask about, in rough order of how often they show up in EN/NL/IT
-articles and forums: coffee · tea (green/black/herbal) · dark chocolate / cocoa · olive oil ·
-herbs & spices (as a group, then garlic, onion, cinnamon, pepper) · potatoes · sweet potato ·
-bread / pasta / white rice (refined vs wholegrain) · hummus · mixed beans (tin = 1 plant?) ·
-nuts (mixed nuts = several?) · peanut butter · popcorn · wine / beer · fruit juice · frozen /
-tinned veg · different colours of the same vegetable · tofu / tempeh / soy milk · oat milk ·
-mushrooms (not a plant, but counts?) · seaweed · pickles / sauerkraut / kimchi · smoothies ·
-"does a salad count as one".
+## Tracking shortlist (10 per language, set up in Search Console from day one)
+- **NL:** kind lust geen groente · kind eet geen groente tips · moeilijke eter · hoe vaak
+  proeven kind · groente proefkaart · plantenkaarten kinderen · app kind groente eten · spel
+  kinderen groente · schoolfruit tips ouders · klas challenge gezond eten
+- **IT:** bambini non mangiano verdura · come far mangiare le verdure ai bambini · neofobia
+  alimentare bambini · quante volte assaggiare · tabella assaggi bambini · app bambini verdure ·
+  gioco verdure bambini · frutta e verdura nelle scuole casa · sfida di classe · 30 vegetali
+  famiglia
+- **EN:** picky eater vegetables · food neophobia exposures · tiny tastes method · vegetable
+  tasting chart printable · picky eater app · app kids eat vegetables · family food challenge
+  app · what counts as a plant · 30 plants app android · 30 plants kids
 
-Roughly 30 rulings. Each is a short page (or a section in the hub) with one clear answer, the
-reasoning in two sentences, and "log it in Project Food". Mushrooms and ferments are worth
-their own honest ruling because our DB counts them as categories.
+## Excluded on purpose
+- Medical and clinical terms: ARFID, sensory processing, failure to thrive, allergies, weight.
+  Wrong audience, wrong voice, YMYL exposure. If a parent lands here with those, the honest
+  answer is "talk to your JGZ / pediatrician", and the article should say so.
+- Seasonal calendar queries ("seizoensgroenten september"): decision D12 says seasonal is
+  texture, not a message. Dropped from the plan.
+- Recipe queries ("recepten kinderen groente"): non-goal. Serve via AI suggestions only.
 
 ## Related pages
-- [[seo-overview]] · [[seo-serp-landscape]] · [[seo-content-types]] · [[seo-roadmap]] ·
-  [[concept-30-plants-a-week]] · [[concept-logging-behaviour]]
+- [[seo-overview]] · [[seo-serp-landscape]] · [[seo-content-types]] · [[seo-app-store-aso]] ·
+  [[seo-roadmap]] · [[persona-household-parent]] · [[source-family-mode-context]]

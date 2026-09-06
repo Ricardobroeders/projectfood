@@ -1,138 +1,127 @@
 ---
-title: SEO — content types & formats
+title: SEO — content types for family mode
 type: seo
-tags: [seo, content, marketing]
+tags: [seo, content, marketing, family-mode]
 created: 2026-09-06
 updated: 2026-09-06
-sources: [seo-keyword-strategy.md, seo-serp-landscape.md, concept-brand-pillars.md]
+sources: [source-family-mode-context.md, seo-keyword-strategy.md, seo-serp-landscape.md, concept-brand-pillars.md]
 ---
 
-# SEO — content types & formats
+# SEO — content types for family mode
 
-**In one line:** Ten content formats, each tied to a keyword cluster from
-[[seo-keyword-strategy]], a funnel stage, and a strategy check against [[concept-brand-pillars]]
-and the `STRATEGY.md` non-goals. Two things we deliberately will not build are listed at the end.
+**In one line:** Nine formats, each tied to a loop moment (dinner, groceries, class), a keyword
+cluster, and a pillar check. The two link magnets are **printable plant cards** and the
+**class challenge kit**, because those are what a parent or teacher actually forwards. Content
+volume stays small until the class channel is proven.
 
 ## Summary table
-| # | Format | Clusters served | Funnel | Effort | Lives at |
+| # | Format | Clusters | Loop moment | Effort | Phase |
 |---|---|---|---|---|---|
-| 1 | Learn pillar & cluster articles | A, E | Awareness | M per article | `/learn/...` (exists) |
-| 2 | "What counts" hub + food rulings | B | Consideration | S per ruling | `/learn/what-counts/...` |
-| 3 | Checklist page + printable PDF | C | Consideration → conversion | M once | `/learn/checklist` |
-| 4 | Honest app comparison | D | Conversion | M once, refresh quarterly | `/compare` or `/learn/best-apps` |
-| 5 | Localised app landing sections (NL/IT/Android) | D | Conversion | S | `/nl/`, `/it/`, `/android` |
-| 6 | Plant reference pages (programmatic) | G, B, F | Long tail | L to build, then automatic | `/plants/[slug]` |
-| 7 | Seasonal month pages | F | Recurring awareness | M + data | `/learn/in-season/[month]` |
-| 8 | Challenge / "with friends" landing | H | Conversion (our wedge) | M | `/challenge` |
-| 9 | Shareable week pages & OG images | H | Word of mouth | M | `/u/[username]`, dynamic OG |
-| 10 | Off-site: directories, forums, AI-search presence | D | Conversion + authority | ongoing S | external |
+| 1 | Parent landing page + App Store badges | B, A | Conversion (WhatsApp click) | M once | 0–1 |
+| 2 | Class challenge page + kit | S | Class channel | M | 1 (Nov) |
+| 3 | Printable plant cards + tasting chart | T, M | Dinner / fridge | M once | 1 |
+| 4 | "Learn to eat everything" pillar + method articles | P, M | Dinner | M each | 1–2 (NL first) |
+| 5 | Schoolfruit companion pages (NL, IT) | S | Class channel, seasonal by calendar not by produce | S | 1 |
+| 6 | Honest app comparison ("game, not therapy") | A | Conversion | M, quarterly refresh | 2 |
+| 7 | Plant card pages (programmatic, gated) | T, W | Long tail + GEO | L | 3 |
+| 8 | Family 30 + "what counts" (legacy asset) | W | Groceries | S–M | 2–3 |
+| 9 | Off-site & shareable artefacts | all | Word of mouth | ongoing S | 1+ |
 
-## 1. Learn pillar & cluster articles (exists: expand)
-- **What:** The `/learn` hub already has pillar `plant-diversity` and cluster
-  `what-counts-as-a-plant`. Six clusters are already specified in the
-  `content-creation:create-learn-issues` skill (what counts, gut microbiome, science origin,
-  gut-brain, how to hit 30, herbs & spices). Only one is written.
-- **Fix first:** bodies are ~300 words EN / ~200 words NL & IT and FAQs exist only in EN. Page-1
-  competitors run 1,200–2,500 words with FAQ. Expand before adding new ones.
-- **Strategy check:** allowed on the website (see principle 1 in [[seo-overview]]); keep the tone
-  "honest explainer", not "microbiome lecture". Cite DOIs (the schema already supports
-  `sd_citations`).
-- **Next pillars (P2/P3):** "Fibre diversity, not fibre quantity" (rides the 2026 trend);
-  "Eating 30 plants on a budget / in the Netherlands / in Italy".
+## 1. Parent landing page + App Store badges (Phase 0–1)
+- **What:** The home page rewritten for the parent who arrives from a class WhatsApp group:
+  one sentence ("Your kids tap what they ate at dinner. The family collects 30 plants a week.
+  Together."), three screenshots (kid unlocking a card, family ring, class milestone), App
+  Store + Google Play badges, "free for families", languages. Below the fold: how it works in
+  three steps, the tasting science in two sentences (no health claims), FAQ (age, privacy,
+  "is it a kids app?": no, it is the parent's phone).
+- **Until native ships:** same page with "Coming to the App Store" and a WhatsApp-friendly
+  share link; the PWA stays as the fallback for the five-family cohort.
+- **Pillar check:** Joy not guilt in every headline; no "fix your picky eater".
 
-## 2. "What counts" hub + one ruling per food (P1, biggest lever)
-- **What:** A hub page ("Does it count? The complete list") plus ~30 short ruling pages or
-  anchored sections: *coffee, tea, dark chocolate, olive oil, potatoes, bread/pasta, hummus,
-  mixed beans, mixed nuts, peanut butter, popcorn, juice, frozen/tinned, colour variants, tofu,
-  oat milk, mushrooms, seaweed, ferments, smoothies* (full seed list in
-  [[seo-keyword-strategy]]).
-- **Template (per ruling):** one-line verdict → 2–3 sentence reasoning → "how we count it in
-  Project Food" (ties to our 7 categories; mushrooms and ferments get an honest note) →
-  FAQ (2–3 Q&A, feeds `FAQPage` schema) → "Log it" CTA.
-- **Why it wins:** question-shaped, snippet-friendly, AI-citable, and every visitor is already
-  tracking or about to. Three languages, cheap to produce, and no one owns it.
-- **Structured data:** `FAQPage` + `Article` (already implemented for clusters).
+## 2. Class challenge page + kit (Phase 1, live before the November pilot)
+- **What:** `/klas` (`/class`, `/classe`): how a class challenge works (one parent starts it,
+  households join by link, the class collects plants together, milestones at 50/100/150
+  different plants, no per-child ranking), a printable A4 poster for the classroom door, a
+  WhatsApp message template, and the shareable milestone card.
+- **Why:** this *is* the launch channel (file §6). The page must be forwardable, not rankable.
+  Ranking for "klas challenge gezond eten" is a bonus.
+- **Rules from the decisions:** collective milestones only (D6); asynchronous between
+  households (D5); no child names or photos on any public artefact.
 
-## 3. Checklist page + printable PDF (P1)
-- **What:** A web checklist of ~100 common plants grouped by our categories, with a free PDF
-  (no email gate: the gate is "or track it in the app instead"). NL and IT versions.
-- **Why:** "30 plants a week checklist / printable / lijst" is proven demand (Etsy sellers,
-  dietitian PDFs rank). The PDF earns links from bloggers and dietitians.
-- **Strategy check:** Pillar 3 says "tap as you eat", so the page's message is "print it if you
-  like paper; the app remembers for you". Fine.
+## 3. Printable plant cards + tasting chart (Phase 1, the link magnet)
+- **What:** A free PDF set of the 3D clay-render plant cards (start with ~40 common veg and
+  fruit), a "proefkaart" tasting chart (tick a box per taste, 10–15 boxes, sticker-sized), and a
+  veg bingo. NL, IT, EN.
+- **Why:** proven demand (gratisbeloningskaart.nl, Pinterest, Sterk & Zoet) with clip-art
+  quality on page 1; our renders are the best-looking version by far; the physical card mirrors
+  the in-app unlock (D8), so the PDF *is* the onboarding.
+- **Science note on the page:** rewards work when they reward *tasting* (Tiny Tastes, Food
+  Dudes), not clean plates. Say it in one line, cite it, move on.
+- **Asset reuse:** the `food-images` bucket and the n8n image pipeline already exist.
 
-## 4. Honest app comparison (P1)
-- **What:** "Best apps to track 30 plants a week (2026)": Eating30, Plant Points, Clove, 30Veg,
-  Thirty Plants, ZOE, Project Food. Feature matrix (platform, price, plant count, barcode/voice,
-  social, Android/web, languages). Say plainly where others are stronger.
-- **Why:** app-intent traffic converts; small sites already rank for it; AI assistants cite
-  comparison tables when asked "which app should I use".
-- **Rules:** update quarterly, date it, disclose it is written by us. Google's review-content
-  guidance rewards first-hand testing, so actually use the apps.
+## 4. "Learn to eat everything" pillar + method articles (Phase 1–2, NL first)
+- **Pillar:** "Kind lust geen groente? Zo leert een kind alles eten (zonder strijd)": the
+  cornerstone NL article. Behavioural, honest, warm. Structure: why kids refuse (neophobia is
+  normal, 2–6 y), what the research says (10–15 tastes; taste beats look; rewards for tasting;
+  peer modelling), what backfires (pressure, dessert bribes, clean-plate rule, sibling
+  competition), the dinner-table question ritual, a tasting chart, FAQ. 1,500+ words.
+- **Method clusters:** "Hoe vaak moet een kind iets proeven?" · "Belonen voor proeven: wat
+  werkt en wat niet" · "Voedselneofobie: normaal, en zo ga je ermee om" · "De ene vraag die het
+  avondeten verandert" (what did you eat today) · "Schoolfruit weken: thuis meedoen".
+- **Voice rules:** no diagnoses, no medical outcomes, no "your child should". When a case is
+  clearly clinical, point to JGZ / pediatrician / a dietitian (Spoony, Kieskeurige Eters).
+- **Then IT** (neofobia alimentare vocabulary), **then EN**.
+- **What happens to the existing adult learn hub:** keep the two articles live and dated; do
+  not write the planned gut-brain/mood cluster (health claim); the "what counts" cluster moves
+  to format 8.
 
-## 5. Localised app landing sections (P1, small)
-- **What:** Add a short indexable section to the NL and IT home pages that literally answers
-  "30 planten per week app (gratis, ook op Android)" / "app 30 vegetali a settimana", plus an
-  `/android` (and `/pwa`) page explaining install on Android/iPhone.
-- **Why:** these queries have no web competition; the current hero copy never says "app",
-  "gratis", "Android" or "vegetali".
-- **Also:** add `SoftwareApplication` schema ([[seo-technical-audit]]).
+## 5. Schoolfruit companion pages (Phase 1)
+- **What:** "EU-Schoolfruit: zo doe je thuis mee" (NL) and "Frutta e verdura nelle scuole: a
+  casa" (IT): the calendar (NL 9 Nov 2026 – 16 Apr 2027), what the kids get at school, the
+  one question to ask at pick-up, how the class challenge fits, printable chart.
+- **Why:** this is the *only* seasonal content we make, and it is seasonal by calendar, not by
+  produce, so it respects D12 while riding a real institutional cycle. Every participating
+  class is a pre-warmed audience.
 
-## 6. Plant reference pages, programmatic (P2/P3, the compounding asset)
-- **What:** `/[locale]/plants/[slug]` for the 224 active plants: name in three languages,
-  aliases, category, botanical family, colour, "counts as 1 plant", season months, image,
-  related plants (same family/category), the ruling if it is an edge case, "log it" CTA.
-- **Why:** entity pages are what LLMs and Google both like; no tracker exposes its DB; the
-  seasonal and alias data make each page genuinely distinct.
-- **Quality gates (do not index a page until it passes):**
-  1. ≥150 words of *plant-specific* prose (how it is eaten, season, one useful fact),
-     generated once and human-reviewed, not templated boilerplate.
-  2. At least one unique data point beyond the name (season, family, alias, edge-case ruling).
-  3. Internal links in and out (category hub, seasonal month, related plants).
-  4. Start with the 39 seasonal plants and the ~30 edge cases; hold the rest as `noindex`
-     until they clear the bar.
-- **Risk:** 672 thin pages would look like doorway spam. The gates are the answer.
+## 6. Honest app comparison (Phase 2)
+- **What:** "Apps that help kids try vegetables: a parent's comparison" (and NL/IT): Teach
+  Your Monster, Yummi, EatPal, Food Explorer Club, Food Hopper, Spoony (offline), Project Food.
+  Columns: who holds the phone, reward model (extrinsic shop vs intrinsic cards), family vs
+  single child, therapy vs game, price, languages, Android.
+- **Rules:** test each app first; disclose authorship; update quarterly; be generous about
+  Teach Your Monster (free, research-backed).
 
-## 7. Seasonal month pages (P2)
-- **What:** "30 plants in season in September (Netherlands)": twelve pages per locale, generated
-  from `season_months` and refreshed monthly, with "in season now" featured in the app.
-- **Why:** recurring monthly demand; our angle ("hit 30 with what is in season") is unique
-  against Milieu Centraal/AH style calendars; also a retention hook ("Sunday gets harder",
-  [[concept-stickiness-moat]]).
-- **Data gap:** only 39 of 224 plants carry season data. Fill it for at least the fruit and
-  vegetable categories first.
+## 7. Plant card pages, programmatic and gated (Phase 3)
+- **What:** `/[locale]/plants/[slug]` reframed as the **card**: image, name in three languages,
+  one kid-level fun fact, "how families serve it so kids will taste it" (two sentences), counts
+  as one plant, related cards, "collect it in the app". Later, anonymous aggregate stats from
+  our own data ("tasted by 1,200 kids", the proprietary-data moat).
+- **Quality gates (unchanged):** ≥150 words of plant-specific prose, ≥1 unique data point,
+  internal links both ways, start with ~40 common plants, hold the rest as `noindex`.
+- **Privacy gate:** aggregates only, minimum group sizes, never per-household.
 
-## 8. Challenge / "with friends" landing (P1)
-- **What:** `/challenge`: "Do the 30 plants challenge with friends": how it works, a 4-week
-  structure, invite flow, leaderboard screenshot. NL version timed against the MDL Fonds June
-  challenge; offer it as the companion app.
-- **Why:** the only cluster where we are the natural answer ([[concept-word-of-mouth]],
-  [[concept-engagement-drivers]]: friends ≈ 2× engagement), and "challenge" is a rising NL query.
+## 8. Family 30 + "what counts" (Phase 2–3, legacy asset)
+- **What:** "30 plants a week as a family: how the count works when four people eat" plus the
+  "does it count?" hub (ketchup, coffee for parents, chocolate, potatoes, bread, mixed beans)
+  in three languages. Grocery-moment content: what the family has not had in three weeks
+  mirrors the paid advice (D11) without giving it away.
+- **Why keep it:** still the most searched question in the adult niche, still unowned, parents
+  ask it too, and it feeds the AI-search answers for "what counts".
 
-## 9. Shareable week pages & OG images (P2)
-- **What:** Public profile pages (`/u/[username]`, already exist but client-rendered) and a
-  "my 30/30 week" share card with a dynamic Open Graph image.
-- **Why:** not search volume, but the "30/30 week" is the deck's screenshot-worthy moment; a
-  link that unfurls with a real image travels further than a screenshot. Decide indexability
-  in [[seo-technical-audit]].
+## 9. Off-site & shareable artefacts (ongoing)
+- Class milestone card, card-unlock share image, class poster: each with a dynamic OG image
+  so the link unfurls in WhatsApp. This is the word-of-mouth container (D6, D8).
+- Directories and communities: see [[seo-serp-landscape]]. GEO: monthly probe of AI assistants
+  in three languages; make sure the comparison page and directories carry us.
 
-## 10. Off-site presence (ongoing)
-- Directories and comparison articles (nobigapps, AlternativeTo, Product Hunt), forum answers
-  where the question is asked, dietitian and Substack outreach, MDL Fonds partnership. See
-  [[seo-serp-landscape]]. This is what makes AI assistants recommend us: they cite lists and
-  directories, not home pages.
-- **GEO basics on-site:** every page states plainly what Project Food is ("a free web app to
-  track 30 plants a week with friends, EN/NL/IT, Android and iPhone"), FAQ blocks with direct
-  answers, dated and attributed articles, and an `llms.txt` at the root summarising the site.
-
-## What we will not build for SEO (and why)
-- **A recipe library.** Explicit `STRATEGY.md` non-goal; huge content cost; undifferentiated.
-  "30 plants meal plan" demand is served with a *weekly plan* page built from categories and
-  swaps, not recipes. The current `/recipes` placeholder should go ([[seo-technical-audit]]).
-- **Microbiome deep-science content beyond the pillars.** ZOE owns it; against Pillar 1's
-  spirit; not our audience ([[persona-believer]] wants a simple way to act, not a course).
+## What we will not build
+- **Recipes.** Non-goal; AI suggestions tied to gaps only.
+- **Seasonal produce calendars.** D12: texture inside advice, not a theme.
+- **Medical picky-eating content** (ARFID, sensory feeding therapy). Refer out.
+- **Anything that names or pictures a child.** Households and classes only.
+- **Adult gut-science expansion.** Keep what exists, dated; no new pillars.
 
 ## Related pages
-- [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-serp-landscape]] ·
+- [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-serp-landscape]] · [[seo-app-store-aso]] ·
   [[seo-technical-audit]] · [[seo-roadmap]] · [[concept-brand-pillars]] ·
-  [[concept-word-of-mouth]] · [[concept-stickiness-moat]]
+  [[concept-word-of-mouth]] · [[decision-2026-09-06-family-mode-pivot]]

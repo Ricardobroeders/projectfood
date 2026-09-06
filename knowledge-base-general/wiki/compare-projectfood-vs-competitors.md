@@ -3,7 +3,7 @@ title: Project Food vs competitors
 type: comparison
 tags: [comparison, competitors, strategy]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-06
 sources: [source-competitor-scan.md, source-30plants-origin-research.md]
 ---
 
@@ -43,6 +43,15 @@ photo logging.
   market where ZOE's premium price is a barrier.
 
 ## Contradictions / open questions
+- **Family-mode pivot (2026-09-06) changes the competitive set.** ZOE cannot follow into
+  families (adult testing, medical framing, stricter YMYL for children). The direct rivals become
+  picky-eater / family apps — Yummi, EatPal, Food Explorer Club, Food Hopper, Playful Eats, the
+  free Teach Your Monster Adventurous Eating game, and Spoony (NL, via dietitians) — mostly
+  therapy-adjacent or extrinsic reward shops, none with a household goal + class layer. The
+  matrix above describes the adult tracker field only. See [[seo-serp-landscape]] and
+  [[source-family-mode-context]].
+- **Clove** (adult tracker, iOS, free) now ships a community feed, XP and shared milestones —
+  the first direct rival with social features _(store listing, 2026-09)_.
 - The brand deck only names MyFitnessPal as competition — it predates / omits the real "30 plants"
   field. Strategy should acknowledge this set.
 - Competitor feature details are from store listings/marketing; verify social features and plant
