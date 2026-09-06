@@ -11,17 +11,17 @@ Tasks are tracked in Linear under the **Project Food** team (key: `PF`).
 
 ## Workflow
 
-Each task is implemented on a dedicated feature branch (named after the Linear issue, e.g. `rico/pf-7-...`).
+Work directly on `main`. No feature branches for now: this is a one-person project and Vercel
+keeps a deployment per commit with instant rollback, so branches only add ceremony
+(decided 2026-09-06; revisit if a second contributor joins).
 
-1. **Implement** — work on the feature branch, commit when done.
-2. **Test locally** — Ricardo tests the branch locally before anything is pushed.
-3. **Merge** — once Ricardo confirms it looks good ("looks good", "ship it", etc.), Claude:
-   - Pushes the branch to origin
-   - Merges it into `main` (fast-forward)
-   - Deletes the remote and local feature branch
-   - Marks the Linear issue as Done
+1. **Implement** — make the change and run whatever check applies (`npm run build`, a quick local test).
+2. **Commit** — one commit per task on `main`, conventional-commit style (`feat(...)`, `fix(...)`, `docs(...)`).
+3. **Push** — push right after committing. Every push to `main` deploys to production on Vercel; tell Ricardo when it is live.
+4. **Linear** — if the task belongs to a Linear issue, mark it Done after the push.
 
-Do not push or merge without explicit confirmation from Ricardo.
+Rollback: Vercel → instant rollback to the previous deployment, or `git revert` + push.
+Flag risky changes (DB migrations, auth, billing) before pushing, not after.
 
 ## Stack
 
