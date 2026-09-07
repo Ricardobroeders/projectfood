@@ -6,13 +6,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { StampShelf } from '@/components/StampShelf';
-import { CATS, colors, fonts, radii, shadows } from '@/constants/theme';
+import { CATS, colors, fonts, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
 import { useStore } from '@/state/store';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
-  const { checked, xp, locale, t } = useStore();
+  const { checked, xp, t } = useStore();
   const recent = checked.slice(-4).reverse().map((s) => PLANT_BY_SLUG[s]);
 
   return (
@@ -26,7 +26,8 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <View style={[styles.hero, shadows.md]}>
+      {/* Grey surface on white, no shadow: the distinction rule from the first device test. */}
+      <View style={styles.hero}>
         <Text style={styles.heroNumber}>
           {checked.length}
           <Text style={styles.heroDenominator}> / 30</Text>
@@ -49,7 +50,7 @@ export default function HomeScreen() {
 
       <Text style={styles.section}>{t.achievements}</Text>
       <StampShelf />
-      <Text style={styles.footnote}>{locale === 'nl' ? 'POC · Project Food' : 'POC · Project Food'}</Text>
+      <Text style={styles.footnote}>POC · Project Food</Text>
     </View>
   );
 }
@@ -57,19 +58,19 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20 },
-  title: { fontFamily: fonts.extrabold, fontSize: 26, color: colors.ink, letterSpacing: -0.4 },
-  xp: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: colors.accentSoft, borderRadius: radii.full, paddingHorizontal: 12, paddingVertical: 8 },
+  title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, letterSpacing: -0.4 },
+  xp: { flexDirection: 'row', alignItems: 'center', gap: 6, backgroundColor: colors.accentSoft, borderRadius: radii.full, paddingHorizontal: 12, height: 36 },
   xpNumber: { fontFamily: fonts.bold, fontSize: 16, color: colors.ink, minWidth: 24, textAlign: 'right' },
-  xpLabel: { fontFamily: fonts.semibold, fontSize: 12, color: colors.ink2 },
-  hero: { margin: 20, backgroundColor: colors.surface, borderRadius: radii.xl, padding: 24, gap: 6 },
-  heroNumber: { fontFamily: fonts.extrabold, fontSize: 56, color: colors.ink, letterSpacing: -1.5 },
+  xpLabel: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2 },
+  hero: { margin: 20, backgroundColor: colors.bgSoft, borderRadius: radii.xl, padding: 24, gap: 6 },
+  heroNumber: { fontFamily: fonts.extrabold, fontSize: 56, lineHeight: 62, color: colors.ink, letterSpacing: -1.5 },
   heroDenominator: { fontFamily: fonts.semibold, fontSize: 22, color: colors.ink3, letterSpacing: 0 },
-  heroLabel: { fontFamily: fonts.medium, fontSize: 15, color: colors.ink2 },
+  heroLabel: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.ink2 },
   recent: { flexDirection: 'row', gap: 8, marginTop: 12, minHeight: 52 },
   recentTile: { width: 52, height: 52, borderRadius: radii.sm, alignItems: 'center', justifyContent: 'center' },
   recentImage: { width: 36, height: 36 },
-  cta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: colors.accent, borderRadius: radii.md, paddingVertical: 16, marginTop: 16 },
-  ctaText: { fontFamily: fonts.bold, fontSize: 17, color: colors.ink },
-  section: { fontFamily: fonts.bold, fontSize: 15, color: colors.ink, paddingHorizontal: 20, marginBottom: 8 },
-  footnote: { fontFamily: fonts.medium, fontSize: 12, color: colors.ink3, textAlign: 'center', marginTop: 'auto', marginBottom: 12 },
+  cta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: colors.accent, borderRadius: radii.md, height: 54, marginTop: 16 },
+  ctaText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.ink },
+  section: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink, paddingHorizontal: 20, marginBottom: 8 },
+  footnote: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center', marginTop: 'auto', marginBottom: 12 },
 });

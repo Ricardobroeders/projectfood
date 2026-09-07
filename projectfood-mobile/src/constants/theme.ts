@@ -1,21 +1,22 @@
-import type { ViewStyle } from 'react-native';
-
 /**
  * Project Food mobile tokens (POC, 2026-09-07).
- * Carried over from the live PWA (projectfood-app/app/globals.css) with one change:
- * the page background moves from warm cream to white so food colours carry the colour.
+ * Carried over from the live PWA (projectfood-app/app/globals.css) with two changes decided on
+ * the first device test:
+ * - the page background moves from warm cream to white so food colours carry the colour;
+ * - no drop shadows anywhere. Distinction comes from grey surfaces (bgSoft) on white.
  */
 export const colors = {
   bg: '#FFFFFF',
   bgSoft: '#F6F5F2',
   surface: '#FFFFFF',
+  hairline: '#ECEAE5',
   ink: '#1F1B16',
   ink2: '#6B645C',
   ink3: '#A39B91',
   accent: '#F5C518',
   accentPressed: '#F59A0E',
   accentSoft: '#FBEDB5',
-  checkedRow: '#FFF9E3',
+  checkedRow: '#FFF6D6',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;
@@ -28,13 +29,6 @@ export const fonts = {
   bold: 'PlusJakartaSans_700Bold',
   extrabold: 'PlusJakartaSans_800ExtraBold',
 } as const;
-
-const shadowColor = '#1F1B16';
-export const shadows: Record<'sm' | 'md' | 'lg', ViewStyle> = {
-  sm: { shadowColor, shadowOpacity: 0.05, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 1 },
-  md: { shadowColor, shadowOpacity: 0.07, shadowRadius: 16, shadowOffset: { width: 0, height: 8 }, elevation: 3 },
-  lg: { shadowColor, shadowOpacity: 0.12, shadowRadius: 32, shadowOffset: { width: 0, height: 20 }, elevation: 8 },
-};
 
 export type Category = 'fruit' | 'vegetable' | 'herb' | 'nut_seed' | 'legume' | 'whole_grain' | 'ferment';
 

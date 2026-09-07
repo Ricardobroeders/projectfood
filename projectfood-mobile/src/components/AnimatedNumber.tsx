@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { TextInput, type TextStyle } from 'react-native';
-import Animated, { Easing, useAnimatedProps, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, { useAnimatedProps, useSharedValue, withTiming } from 'react-native-reanimated';
+
+import { motion } from '@/constants/motion';
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
@@ -9,7 +11,7 @@ export function AnimatedNumber({ value, style }: { value: number; style?: TextSt
   const sv = useSharedValue(value);
 
   useEffect(() => {
-    sv.value = withTiming(value, { duration: 650, easing: Easing.out(Easing.cubic) });
+    sv.value = withTiming(value, motion.number); // number class
   }, [value, sv]);
 
   const animatedProps = useAnimatedProps(() => {

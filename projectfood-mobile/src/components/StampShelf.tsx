@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 
 import { Stamp } from '@/components/Stamp';
+import { motion } from '@/constants/motion';
 import { colors, fonts } from '@/constants/theme';
 import type { AchievementId } from '@/i18n';
 import { useStore } from '@/state/store';
@@ -27,8 +28,9 @@ function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: bool
 
   useEffect(() => {
     if (unlocked && !wasUnlocked.current) {
-      scale.value = withSequence(withTiming(0.6, { duration: 0 }), withDelay(120, withSpring(1, { damping: 7, stiffness: 180 })));
-      rotate.value = withSequence(withTiming(-14, { duration: 0 }), withDelay(120, withSpring(0, { damping: 6, stiffness: 160 })));
+      // reward class: a new stamp pops onto the shelf
+      scale.value = withSequence(withTiming(0.6, { duration: 0 }), withDelay(120, withSpring(1, motion.reward)));
+      rotate.value = withSequence(withTiming(-14, { duration: 0 }), withDelay(120, withSpring(0, motion.reward)));
     }
     wasUnlocked.current = unlocked;
   }, [unlocked, scale, rotate]);

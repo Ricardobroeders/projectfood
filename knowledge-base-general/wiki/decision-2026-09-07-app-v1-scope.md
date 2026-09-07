@@ -85,6 +85,13 @@ collectable stamps and tiered badge colours, not glossy 3D. XP (~10 per checked 
 experiment for the POC, not a v1 commitment. Validation: a one-screen POC (Linear PF-56) before
 the design library is rewritten.
 
+**First device test (2026-09-07, OnePlus via Expo Go):** UI direction confirmed; two refinements.
+No drop shadows anywhere — distinction by grey surfaces on white (the placeholder-tile style).
+Motion is organised in seven named classes (sheet, modal, reward, toggle, press, flip, number) and
+bounce is reserved for the reward class; a drawer never bounces. Achievements move off the logging
+screen. The clay renders next to Reanimated/Skia motion read well; Rive is still to be judged in
+a development build.
+
 ## Rationale
 - **Data:** reaching 30 did not retain (7 of 13 hit it, 5 left); streak rescue 46% vs daily
   reminder 8%; 46% of logs at 17:00–21:00; avatars hidden → 5 of 15 used them

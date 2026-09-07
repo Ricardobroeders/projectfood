@@ -24,7 +24,7 @@ const ICONS: Record<string, FeatherName> = {
   family: 'users',
 };
 
-/** Bottom nav ported from the PWA: white, top shadow, yellow active state, JS-only so it runs in Expo Go. */
+/** Bottom nav ported from the PWA: white, hairline top edge, yellow active state. JS-only so it runs in Expo Go. */
 export function TabBar({ state, navigation }: TabBarProps) {
   const insets = useSafeAreaInsets();
   const { t } = useStore();
@@ -59,12 +59,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: colors.surface,
     paddingTop: 10,
-    shadowColor: '#1F1B16',
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: -2 },
-    elevation: 10,
+    borderTopWidth: 1,
+    borderTopColor: colors.hairline,
   },
   tab: { flex: 1, alignItems: 'center', gap: 4, paddingVertical: 4 },
-  label: { fontFamily: fonts.medium, fontSize: 12 },
+  label: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16 },
 });

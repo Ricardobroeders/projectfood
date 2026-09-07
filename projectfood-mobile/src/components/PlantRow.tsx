@@ -14,7 +14,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { CATS, colors, fonts, radii, shadows } from '@/constants/theme';
+import { motion } from '@/constants/motion';
+import { CATS, colors, fonts, radii } from '@/constants/theme';
 import type { Plant } from '@/data/plants';
 import type { Locale } from '@/i18n';
 import { XP_PER_PLANT } from '@/state/store';
@@ -37,32 +38,30 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
   const mounted = useRef(false);
 
   useEffect(() => {
-    progress.value = withSpring(checked ? 1 : 0, { damping: 14, stiffness: 220 });
+    // toggle class: the check state itself
+    progress.value = withSpring(checked ? 1 : 0, motion.toggle);
     if (!mounted.current) {
       mounted.current = true;
       return;
     }
     if (checked) {
-      // The clay render gets a little shake and a bump; the animation lives around the raster asset.
+      // reward class: the clay render shakes and bumps, the XP chip floats up
       wiggle.value = withSequence(withTiming(-10, { duration: 70 }), withSpring(0, { damping: 5, stiffness: 260 }));
-      bump.value = withSequence(
-        withTiming(1.18, { duration: 110, easing: Easing.out(Easing.quad) }),
-        withSpring(1, { damping: 8, stiffness: 240 }),
-      );
+      bump.value = withSequence(withTiming(1.18, { duration: 110, easing: Easing.out(Easing.quad) }), withSpring(1, motion.rewardSoft));
       burst.value = 0;
       burst.value = withTiming(1, { duration: 850, easing: Easing.out(Easing.cubic) });
     }
   }, [checked, progress, wiggle, bump, burst]);
 
   const rowStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.surface, colors.checkedRow]),
+    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.bgSoft, colors.checkedRow]),
     transform: [{ scale: press.value }],
   }));
   const imageStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${wiggle.value}deg` }, { scale: bump.value }],
   }));
   const circleStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.bgSoft, colors.accent]),
+    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.surface, colors.accent]),
     transform: [{ scale: interpolate(progress.value, [0, 0.5, 1], [1, 1.22, 1]) }],
   }));
   const checkStyle = useAnimatedStyle(() => ({
@@ -76,8 +75,8 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
 
   return (
     <Pressable
-      onPressIn={() => (press.value = withTiming(0.98, { duration: 80 }))}
-      onPressOut={() => (press.value = withSpring(1, { damping: 12, stiffness: 300 }))}
+      onPressIn={() => (press.value = withTiming(0.98, motion.pressIn))}
+      onPressOut={() => (press.value = withSpring(1, motion.pressOut))}
       onPress={() => {
         Haptics.impactAsync(checked ? Haptics.ImpactFeedbackStyle.Light : Haptics.ImpactFeedbackStyle.Medium);
         onToggle(plant.slug);
@@ -85,7 +84,7 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
       accessibilityRole="checkbox"
       accessibilityState={{ checked }}
       accessibilityLabel={plant.name[locale]}>
-      <Animated.View style={[styles.row, shadows.md, rowStyle]}>
+      <Animated.View style={[styles.row, rowStyle]}>
         <View style={[styles.tile, { backgroundColor: cat.bg }]}>
           <Animated.View style={imageStyle}>
             <Image source={plant.image} style={styles.image} contentFit="contain" transition={120} />
@@ -121,23 +120,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: radii.lg,
-    marginBottom: 12,
+    marginBottom: 10,
     height: 84,
+    overflow: 'hidden',
   },
   tile: {
     width: 84,
     height: 84,
-    borderTopLeftRadius: radii.lg,
-    borderBottomLeftRadius: radii.lg,
     alignItems: 'center',
     justifyContent: 'center',
   },
   image: { width: 58, height: 58 },
   text: { flex: 1, paddingHorizontal: 16, gap: 2 },
-  name: { fontFamily: fonts.semibold, fontSize: 17, color: colors.ink },
-  cat: { fontFamily: fonts.medium, fontSize: 13 },
+  name: { fontFamily: fonts.semibold, fontSize: 17, lineHeight: 22, color: colors.ink },
+  cat: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },
   checkWrap: { width: 64, height: 84, alignItems: 'center', justifyContent: 'center' },
   circle: { width: 40, height: 40, borderRadius: radii.full, alignItems: 'center', justifyContent: 'center' },
   burst: { position: 'absolute', top: 6 },
-  burstText: { fontFamily: fonts.bold, fontSize: 15, color: colors.accentPressed },
+  burstText: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.accentPressed },
 });

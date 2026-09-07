@@ -7,7 +7,6 @@ import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { CelebrationSheet } from '@/components/CelebrationSheet';
 import { FunFactCard } from '@/components/FunFactCard';
 import { PlantRow } from '@/components/PlantRow';
-import { StampShelf } from '@/components/StampShelf';
 import { CAT_ORDER, CATS, colors, fonts, radii, type Category } from '@/constants/theme';
 import { PLANTS, type Plant } from '@/data/plants';
 import { useStore } from '@/state/store';
@@ -60,10 +59,8 @@ export default function LogScreen() {
         </Pressable>
       </View>
 
-      <Text style={styles.section}>{t.achievements}</Text>
-      <StampShelf />
-
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filters} style={styles.filtersScroll}>
+      {/* Fixed height so Android never collapses the horizontal bar and clips the chips. */}
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filtersScroll} contentContainerStyle={styles.filters}>
         <FilterChip label={t.all} active={filter === 'all'} onPress={() => setFilter('all')} />
         {CAT_ORDER.map((c) => (
           <FilterChip key={c} label={t.cats[c]} active={filter === c} color={CATS[c]} onPress={() => setFilter(c)} />
@@ -90,7 +87,9 @@ function FilterChip({ label, active, color, onPress }: { label: string; active: 
   const fg = active ? '#FFFFFF' : color ? color.fg : colors.ink2;
   return (
     <Pressable onPress={onPress} style={[styles.filter, { backgroundColor: bg }]}>
-      <Text style={[styles.filterText, { color: fg }]}>{label}</Text>
+      <Text style={[styles.filterText, { color: fg }]} numberOfLines={1}>
+        {label}
+      </Text>
     </Pressable>
   );
 }
@@ -98,8 +97,8 @@ function FilterChip({ label, active, color, onPress }: { label: string; active: 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   header: { flexDirection: 'row', alignItems: 'flex-start', paddingHorizontal: 20, gap: 12 },
-  title: { fontFamily: fonts.extrabold, fontSize: 26, color: colors.ink, letterSpacing: -0.4 },
-  subtitle: { fontFamily: fonts.medium, fontSize: 14, color: colors.ink2, marginTop: 2 },
+  title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, letterSpacing: -0.4 },
+  subtitle: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.ink2, marginTop: 2 },
   xp: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -107,11 +106,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accentSoft,
     borderRadius: radii.full,
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    height: 36,
     marginTop: 2,
   },
   xpNumber: { fontFamily: fonts.bold, fontSize: 16, color: colors.ink, minWidth: 24, textAlign: 'right' },
-  xpLabel: { fontFamily: fonts.semibold, fontSize: 12, color: colors.ink2 },
+  xpLabel: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2 },
   toolbar: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 20, marginTop: 14 },
   chip: {
     flexDirection: 'row',
@@ -120,13 +119,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bgSoft,
     borderRadius: radii.full,
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    height: 36,
   },
-  chipText: { fontFamily: fonts.semibold, fontSize: 13, color: colors.ink },
-  section: { fontFamily: fonts.bold, fontSize: 15, color: colors.ink, paddingHorizontal: 20, marginTop: 18, marginBottom: 8 },
-  filtersScroll: { flexGrow: 0, marginTop: 14 },
-  filters: { paddingHorizontal: 20, gap: 8 },
-  filter: { borderRadius: radii.full, paddingHorizontal: 14, paddingVertical: 9 },
-  filterText: { fontFamily: fonts.semibold, fontSize: 14 },
-  list: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 24 },
+  chipText: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
+  filtersScroll: { height: 40, flexGrow: 0, marginTop: 16 },
+  filters: { paddingHorizontal: 20, gap: 8, alignItems: 'center' },
+  filter: { height: 36, borderRadius: radii.full, paddingHorizontal: 14, justifyContent: 'center' },
+  filterText: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18 },
+  list: { paddingHorizontal: 20, paddingTop: 12, paddingBottom: 24 },
 });
