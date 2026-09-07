@@ -76,6 +76,15 @@ re-brief (2026-09-07)".
 Ricardo's stated preference (2026-09-07): flat elements, little shading, a hint of depth; six
 Rive marketplace references and an avatar-builder architecture note are recorded there.
 
+**Resolved later on 2026-09-07:** keep the live PWA's UI language (rounded corners, borderless
+cards with soft shadows, Plus Jakarta Sans, pastel category tints); move the background from warm
+cream to white/near-white so food colours carry the colour; accent yellow stays pending the POC;
+**plants stay 3D clay renders** (2D loses the detail that tells fruits apart); everything else
+(achievements, celebrations, mascot, empty states) animates in Rive; achievement art leans to
+collectable stamps and tiered badge colours, not glossy 3D. XP (~10 per checked plant) is an
+experiment for the POC, not a v1 commitment. Validation: a one-screen POC (Linear PF-56) before
+the design library is rewritten.
+
 ## Rationale
 - **Data:** reaching 30 did not retain (7 of 13 hit it, 5 left); streak rescue 46% vs daily
   reminder 8%; 46% of logs at 17:00–21:00; avatars hidden → 5 of 15 used them
@@ -99,6 +108,10 @@ Rive marketplace references and an avatar-builder architecture note are recorded
 ## Consequences
 - Work is tracked in Linear (team Project Food, project "Family app v1"); this page and
   [[concept-retention-loop]] are the spec the issues link to.
+- A one-screen POC (PF-56: bottom nav, plant checklist with clay renders, check-off animation,
+  first achievement after three checks, fun-fact card whose opening is a second achievement,
+  XP counter) runs on Ricardo's OnePlus before the Expo scaffold is styled. It decides colours,
+  motion style, clay + Rive together, and whether XP stays.
 - The family-mode data model (D3) must carry per-member taste counters and album membership
   from the first migration.
 - Content: 224 plants × 2 facts × 5 locales, plus `plant_translations` rows for de and fr (448).

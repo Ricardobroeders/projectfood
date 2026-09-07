@@ -109,3 +109,12 @@ eleven v1 features and an out-of-scope list, design-library re-brief. Updated [[
 [[concept-engagement-drivers]], [[concept-stickiness-moat]], [[persona-household-parent]], and
 `design-library/README.md` (new "Family mode re-brief" section). Linear project "Family app v1"
 created in team Project Food with the v1 epics linking back here.
+
+## [2026-09-07] query | Design direction resolved + POC defined
+Ricardo reviewed the live PWA screens and four reference boards (gamified badge tiers, hexagonal
+achievement grid with unlock modal, collectable stamps on white, pastel-tinted timeline cards).
+Resolved: keep the PWA UI language, white/near-white background, plants stay 3D clay renders,
+everything else animates in Rive, achievement art as stamps and tiered colours, XP as a POC
+experiment. Recorded in [[decision-2026-09-07-app-v1-scope]] and `design-library/README.md`
+(gitignored, local). Linear PF-56 created: one-screen POC on Android (OnePlus) testing colours,
+motion, clay + Rive, and the platform; PF-53 updated with the resolutions.
