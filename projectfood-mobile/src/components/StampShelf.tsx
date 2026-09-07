@@ -1,0 +1,70 @@
+import { Feather } from '@expo/vector-icons';
+import { useEffect, useRef } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
+
+import { Stamp } from '@/components/Stamp';
+import { colors, fonts } from '@/constants/theme';
+import type { AchievementId } from '@/i18n';
+import { useStore } from '@/state/store';
+
+type FeatherName = keyof typeof Feather.glyphMap;
+
+export const STAMP_META: Record<AchievementId, { color: string; icon: FeatherName }> = {
+  first_bites: { color: colors.accent, icon: 'smile' },
+  curious: { color: '#6A4880', icon: 'book-open' },
+  rainbow: { color: '#C2533D', icon: 'sun' },
+  streak_7: { color: '#3C6A60', icon: 'zap' },
+  album: { color: '#4F7A3D', icon: 'grid' },
+};
+
+const ORDER: AchievementId[] = ['first_bites', 'curious', 'rainbow', 'streak_7', 'album'];
+
+function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: boolean; label: string }) {
+  const scale = useSharedValue(1);
+  const rotate = useSharedValue(0);
+  const wasUnlocked = useRef(unlocked);
+
+  useEffect(() => {
+    if (unlocked && !wasUnlocked.current) {
+      scale.value = withSequence(withTiming(0.6, { duration: 0 }), withDelay(120, withSpring(1, { damping: 7, stiffness: 180 })));
+      rotate.value = withSequence(withTiming(-14, { duration: 0 }), withDelay(120, withSpring(0, { damping: 6, stiffness: 160 })));
+    }
+    wasUnlocked.current = unlocked;
+  }, [unlocked, scale, rotate]);
+
+  const style = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }, { rotate: `${rotate.value}deg` }],
+  }));
+
+  const meta = STAMP_META[id];
+  return (
+    <View style={styles.item}>
+      <Animated.View style={style}>
+        <Stamp size={64} color={meta.color} locked={!unlocked}>
+          <Feather name={unlocked ? meta.icon : 'lock'} size={24} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
+        </Stamp>
+      </Animated.View>
+      <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
+        {label}
+      </Text>
+    </View>
+  );
+}
+
+export function StampShelf() {
+  const { unlocked, t } = useStore();
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.shelf}>
+      {ORDER.map((id) => (
+        <ShelfStamp key={id} id={id} unlocked={unlocked.includes(id)} label={t.stamps[id]} />
+      ))}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  shelf: { paddingHorizontal: 20, gap: 14, paddingVertical: 4 },
+  item: { width: 72, alignItems: 'center', gap: 6 },
+  label: { fontFamily: fonts.medium, fontSize: 11, color: colors.ink2, textAlign: 'center' },
+});
