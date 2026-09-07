@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-09-06
+updated: 2026-09-07
 ---
 
 # Index
@@ -15,7 +15,8 @@ Start here: [[overview]] — the synthesized big-picture entry point.
 - [[source-family-mode-context]] — Ricardo's 2026-09-06 direction doc: pivot to a family app + native Expo apps; class WhatsApp group as launch channel; 14 decisions; things not to do.
 - [[source-brand-promise-deck]] — 11-slide internal deck: promise, 4 pillars, Maslow, growth & moat.
 - [[source-app-mockups]] — 5 app mockups (May 2026): Home, Stats, Log, Profile, Avatar.
-- [[source-supabase-metrics]] — aggregate usage metrics snapshot from the live DB (2026-05-30).
+- [[source-supabase-metrics-2026-09]] — 19-week usage pull (2026-09-07): retention curve, per-user lifecycle, hour-of-day, notification effectiveness, catalog metadata. Supersedes the May snapshot.
+- [[source-supabase-metrics]] — aggregate usage metrics snapshot from the live DB (2026-05-30; May baseline).
 - [[source-30plants-origin-research]] — web research: origin & science of "30 plants a week".
 - [[source-competitor-scan]] — web research: the "30 plants" competitor landscape.
 
@@ -35,6 +36,7 @@ Start here: [[overview]] — the synthesized big-picture entry point.
 - [[concept-logging-behaviour]] — same-day logging, category mix, under-logged categories.
 - [[concept-engagement-drivers]] — directional correlations; friends ≈ 2× engagement.
 - [[concept-30-plants-origin]] — the science origin (American Gut Project, Spector, ZOE).
+- [[concept-retention-loop]] — trigger, action, reward, investment: what the PWA lacked and the v1 loop for the family app (cards that level with tastings, dinner-time triggers, avatar as investment).
 
 ## Comparisons
 - [[compare-projectfood-vs-competitors]] — positioning matrix vs ZOE, Eating30, 30 PLANTS, MFP.
@@ -59,5 +61,6 @@ Start here: [[overview]] — the synthesized big-picture entry point.
 _(none yet)_
 
 ## Decisions
+- [[decision-2026-09-07-app-v1-scope]] — greenfield Expo app; stack S1–S6 (Supabase-only, Free at launch, RevenueCat, Rive, five locales); eleven v1 features; out-of-scope list; design-library re-brief.
 - [[decision-2026-09-06-family-mode-pivot]] — family mode + native iOS/Android (Expo); household data model; cooperative goals; plant cards; class launch; D1–D14.
 

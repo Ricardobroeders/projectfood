@@ -3,7 +3,7 @@ title: The dinner-table parent (household)
 type: persona
 tags: [persona, target-user, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-07
 sources: [source-family-mode-context.md]
 ---
 
@@ -37,6 +37,9 @@ founder's own household; to be validated with five parent conversations.
   _(D6, D8; [[concept-word-of-mouth]])_.
 - A Sunday nudge that makes the shopping decision for them: what the family has not had in
   three weeks and how to serve it so kids will taste it — _(D11; [[concept-stickiness-moat]])_.
+- A measurable outcome over months, not a weekly number: the kid's taste count per plant and
+  "plants eaten now vs at start" — _(PWA data: reaching 30 did not retain,
+  [[source-supabase-metrics-2026-09]]; mechanic in [[concept-retention-loop]])_.
 - Plain privacy: one parent account, no child profiles online — _(§3.3)_.
 - No health claims, no pressure, no "fix your picky eater" — _([[concept-brand-pillars]])_.
 

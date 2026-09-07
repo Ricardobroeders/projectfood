@@ -92,3 +92,20 @@ searches on parent SERPs, picky-eater apps, Tiny Tastes / Food Dudes evidence, E
 (NL deliveries 9 Nov 2026 – 16 Apr 2027) and Frutta e verdura nelle scuole. Flagged:
 `STRATEGY.md` (May 2026) is out of date on audience, platform and distribution; hero copy
 carries a health claim; keyword volumes still need DataForSEO.
+
+## [2026-09-07] ingest | Supabase metrics (19 weeks) + family app v1 scope
+Pulled a second behavioural snapshot from the live DB (retention cohorts, per-user lifecycle,
+hour-of-day, notification effectiveness, profile/social usage, catalog metadata) into
+[[source-supabase-metrics-2026-09]]; the May page is marked superseded. Key findings: 7 of 13
+users ever hit 30 and 5 of them left anyway; only the founder and one other user remain after
+week 14; streak-rescue pushes led to a log within 3 h 46% of the time vs 8% for the daily
+reminder; 46% of logs fall 17:00–21:00; avatars were customised by 5 of 15 (hidden feature),
+friendships by 12 of 15. Synthesised into [[concept-retention-loop]] (trigger, action, reward,
+investment) and recorded the session's decisions in [[decision-2026-09-07-app-v1-scope]]:
+greenfield Expo + TypeScript (Flutter reconsidered, not chosen), Supabase-only backend on the
+Free plan until paying households, RevenueCat, Rive animation, five locales (en/nl/it/de/fr),
+eleven v1 features and an out-of-scope list, design-library re-brief. Updated [[overview]]
+(metrics section, decisions), [[index]], [[concept-engagement-snapshot]],
+[[concept-engagement-drivers]], [[concept-stickiness-moat]], [[persona-household-parent]], and
+`design-library/README.md` (new "Family mode re-brief" section). Linear project "Family app v1"
+created in team Project Food with the v1 epics linking back here.

@@ -3,7 +3,7 @@ title: Stickiness & moat
 type: concept
 tags: [strategy, retention, moat]
 created: 2026-05-30
-updated: 2026-09-06
+updated: 2026-09-07
 sources: [source-brand-promise-deck.md]
 ---
 
@@ -54,4 +54,4 @@ years. Useful as a prioritization lens for the roadmap.
 
 ## Related pages
 - [[overview]] · [[concept-30-plants-a-week]] · [[concept-word-of-mouth]] ·
-  [[concept-brand-pillars]]
+  [[concept-brand-pillars]] · [[concept-retention-loop]] (the daily loop in detail, 2026-09-07)

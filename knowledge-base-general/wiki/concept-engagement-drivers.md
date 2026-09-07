@@ -3,7 +3,7 @@ title: Engagement drivers (correlations)
 type: concept
 tags: [metrics, retention, correlations]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-07
 sources: [source-supabase-metrics.md]
 ---
 
@@ -29,6 +29,15 @@ social connection stands out. **Correlational, n=13, not causal.** Source:
   esteem/belonging layers of [[concept-30-plants-a-week]].
 - Suggests an experiment: measure whether prompting friend-adds during onboarding lifts
   week-2+ goal completion.
+
+## Update (2026-09-07, [[source-supabase-metrics-2026-09]])
+- **Trigger specificity matters more than trigger volume.** Of 294 pushes, the loss-framed
+  `streak_rescue` was followed by a log within 3 h 46% of the time (23 of 50); the generic
+  `daily_reminder` 8% (19 of 242). Still only 5 opted-in users, so directional.
+- **Hidden investment is no investment.** 5 of 15 customised an avatar, 8 unlocked a border;
+  the feature lived under Account → Avatar and was used only after in-person explanation.
+  Friends (12 of 15) were the one investment people found on their own.
+- Both feed the v1 loop design in [[concept-retention-loop]].
 
 ## Contradictions / open questions
 - Direction of causality is unknown for both signals (engaged people may simply add friends and

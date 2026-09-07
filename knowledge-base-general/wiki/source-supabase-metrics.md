@@ -3,13 +3,16 @@ title: Supabase metrics snapshot (2026-05-30)
 type: source
 tags: [data, metrics, supabase]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-07
 origin: Supabase project ProjectFood (lkmfmdehysmbstnfdbyg, eu-west-1)
 date_published: 2026-05-30
 ingested: 2026-05-30
 ---
 
 # Supabase metrics snapshot (2026-05-30)
+
+> **Superseded 2026-09-07:** a 19-week pull with retention curve, notification effectiveness and
+> hour-of-day data lives at [[source-supabase-metrics-2026-09]]. Keep this page as the May baseline.
 
 **What it is:** A point-in-time pull of aggregate, anonymized usage metrics from the live
 ProjectFood database. No PII (no usernames, emails, or per-user identities) is stored in the
