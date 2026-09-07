@@ -90,7 +90,10 @@ No drop shadows anywhere — distinction by grey surfaces on white (the placehol
 Motion is organised in seven named classes (sheet, modal, reward, toggle, press, flip, number) and
 bounce is reserved for the reward class; a drawer never bounces. Achievements move off the logging
 screen. The clay renders next to Reanimated/Skia motion read well; Rive is still to be judged in
-a development build.
+a development build. **Round 2 (same day):** reward bounces capped (pops start at 0.7, ≤ 8%
+overshoot, in-place bumps peak at 1.10, nothing leaves its box); corner radius follows element
+height (sm 12 ≤ 40pt, md 18 to 64pt, lg 24 to 140pt, xl 32 above; full only for genuinely round
+elements, never text pills); icons ≈ 45% of their container. Details in the design-library README.
 
 ## Rationale
 - **Data:** reaching 30 did not retain (7 of 13 hit it, 5 left); streak rescue 46% vs daily

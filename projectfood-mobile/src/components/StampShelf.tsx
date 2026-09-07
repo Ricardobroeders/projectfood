@@ -4,8 +4,8 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 
 import { Stamp } from '@/components/Stamp';
-import { motion } from '@/constants/motion';
-import { colors, fonts } from '@/constants/theme';
+import { motion, REWARD_POP_FROM } from '@/constants/motion';
+import { colors, fonts, iconFor } from '@/constants/theme';
 import type { AchievementId } from '@/i18n';
 import { useStore } from '@/state/store';
 
@@ -29,8 +29,8 @@ function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: bool
   useEffect(() => {
     if (unlocked && !wasUnlocked.current) {
       // reward class: a new stamp pops onto the shelf
-      scale.value = withSequence(withTiming(0.6, { duration: 0 }), withDelay(120, withSpring(1, motion.reward)));
-      rotate.value = withSequence(withTiming(-14, { duration: 0 }), withDelay(120, withSpring(0, motion.reward)));
+      scale.value = withSequence(withTiming(REWARD_POP_FROM, { duration: 0 }), withDelay(120, withSpring(1, motion.reward)));
+      rotate.value = withSequence(withTiming(-8, { duration: 0 }), withDelay(120, withSpring(0, motion.reward)));
     }
     wasUnlocked.current = unlocked;
   }, [unlocked, scale, rotate]);
@@ -44,7 +44,7 @@ function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: bool
     <View style={styles.item}>
       <Animated.View style={style}>
         <Stamp size={64} color={meta.color} locked={!unlocked}>
-          <Feather name={unlocked ? meta.icon : 'lock'} size={24} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
+          <Feather name={unlocked ? meta.icon : 'lock'} size={iconFor(64)} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
         </Stamp>
       </Animated.View>
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>

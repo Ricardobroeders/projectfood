@@ -7,8 +7,8 @@ import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue,
 
 import { Stamp } from '@/components/Stamp';
 import { STAMP_META } from '@/components/StampShelf';
-import { motion } from '@/constants/motion';
-import { CATS, colors, fonts, radii } from '@/constants/theme';
+import { motion, REWARD_POP_FROM } from '@/constants/motion';
+import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
 import { useStore } from '@/state/store';
 
@@ -52,7 +52,7 @@ export function FunFactCard() {
   }));
   const badgeStyle = useAnimatedStyle(() => ({
     opacity: badge.value,
-    transform: [{ scale: interpolate(badge.value, [0, 1], [0.5, 1]) }],
+    transform: [{ scale: interpolate(badge.value, [0, 1], [REWARD_POP_FROM, 1]) }],
   }));
 
   const plant = card ? PLANT_BY_SLUG[card] : null;
@@ -90,14 +90,14 @@ export function FunFactCard() {
               <Text style={styles.fact}>{plant.fact[locale]}</Text>
               <Animated.View style={[styles.badge, badgeStyle]}>
                 <Stamp size={44} color={STAMP_META.curious.color}>
-                  <Feather name={STAMP_META.curious.icon} size={18} color="#FFFFFF" />
+                  <Feather name={STAMP_META.curious.icon} size={iconFor(44)} color="#FFFFFF" />
                 </Stamp>
                 <Text style={styles.badgeText}>{t.curiousUnlocked}</Text>
               </Animated.View>
             </Animated.View>
           </Pressable>
           <Pressable style={styles.close} onPress={() => dispatch({ type: 'hideCard' })} accessibilityRole="button" accessibilityLabel={t.close}>
-            <Feather name="x" size={20} color={colors.ink} />
+            <Feather name="x" size={iconFor(48)} color={colors.ink} />
           </Pressable>
         </Animated.View>
       </View>
@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
     backgroundColor: colors.bgSoft,
-    borderRadius: radii.full,
-    paddingVertical: 6,
+    borderRadius: radii.md,
+    height: 56,
     paddingLeft: 6,
     paddingRight: 14,
   },

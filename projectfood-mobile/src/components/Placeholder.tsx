@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { colors, fonts, radii } from '@/constants/theme';
+import { colors, fonts, iconFor, radii } from '@/constants/theme';
 import { useStore } from '@/state/store';
 
 type FeatherName = keyof typeof Feather.glyphMap;
@@ -15,7 +15,7 @@ export function Placeholder({ title, icon }: { title: string; icon: FeatherName 
       <Text style={styles.title}>{title}</Text>
       <View style={styles.empty}>
         <View style={styles.iconWrap}>
-          <Feather name={icon} size={28} color={colors.ink3} />
+          <Feather name={icon} size={iconFor(72)} color={colors.ink3} />
         </View>
         <Text style={styles.body}>{t.placeholder}</Text>
       </View>

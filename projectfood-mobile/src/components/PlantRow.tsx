@@ -14,7 +14,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { motion } from '@/constants/motion';
+import { motion, REWARD_BUMP_PEAK } from '@/constants/motion';
 import { CATS, colors, fonts, radii } from '@/constants/theme';
 import type { Plant } from '@/data/plants';
 import type { Locale } from '@/i18n';
@@ -46,8 +46,8 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
     }
     if (checked) {
       // reward class: the clay render shakes and bumps, the XP chip floats up
-      wiggle.value = withSequence(withTiming(-10, { duration: 70 }), withSpring(0, { damping: 5, stiffness: 260 }));
-      bump.value = withSequence(withTiming(1.18, { duration: 110, easing: Easing.out(Easing.quad) }), withSpring(1, motion.rewardSoft));
+      wiggle.value = withSequence(withTiming(-8, { duration: 70 }), withSpring(0, { damping: 7, stiffness: 260 }));
+      bump.value = withSequence(withTiming(REWARD_BUMP_PEAK, { duration: 110, easing: Easing.out(Easing.quad) }), withSpring(1, motion.rewardSoft));
       burst.value = 0;
       burst.value = withTiming(1, { duration: 850, easing: Easing.out(Easing.cubic) });
     }
@@ -62,7 +62,7 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
   }));
   const circleStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(progress.value, [0, 1], [colors.surface, colors.accent]),
-    transform: [{ scale: interpolate(progress.value, [0, 0.5, 1], [1, 1.22, 1]) }],
+    transform: [{ scale: interpolate(progress.value, [0, 0.5, 1], [1, REWARD_BUMP_PEAK, 1]) }],
   }));
   const checkStyle = useAnimatedStyle(() => ({
     opacity: progress.value,
@@ -70,7 +70,7 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
   }));
   const burstStyle = useAnimatedStyle(() => ({
     opacity: burst.value === 0 ? 0 : 1 - burst.value,
-    transform: [{ translateY: -34 * burst.value }, { scale: 0.8 + 0.4 * burst.value }],
+    transform: [{ translateY: -34 * burst.value }, { scale: 0.9 + 0.2 * burst.value }],
   }));
 
   return (

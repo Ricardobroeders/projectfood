@@ -9,7 +9,7 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { Confetti } from '@/components/Confetti';
 import { Stamp } from '@/components/Stamp';
 import { STAMP_META } from '@/components/StampShelf';
-import { motion } from '@/constants/motion';
+import { motion, REWARD_POP_FROM } from '@/constants/motion';
 import { colors, fonts, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
 import { useStore } from '@/state/store';
@@ -24,7 +24,7 @@ export function CelebrationSheet() {
 
   const backdrop = useSharedValue(0);
   const slide = useSharedValue(HIDDEN_Y);
-  const pop = useSharedValue(0.4);
+  const pop = useSharedValue(REWARD_POP_FROM);
 
   useEffect(() => {
     if (visible) {
@@ -36,7 +36,7 @@ export function CelebrationSheet() {
     } else {
       backdrop.value = 0;
       slide.value = HIDDEN_Y;
-      pop.value = 0.4;
+      pop.value = REWARD_POP_FROM;
     }
   }, [visible, backdrop, slide, pop]);
 
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   stampImage: { width: 88, height: 88 },
   title: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, textAlign: 'center' },
   body: { fontFamily: fonts.medium, fontSize: 16, color: colors.ink2, textAlign: 'center', lineHeight: 22, maxWidth: 300 },
-  bonus: { backgroundColor: colors.accentSoft, borderRadius: radii.full, paddingHorizontal: 14, paddingVertical: 6, marginTop: 4 },
+  bonus: { backgroundColor: colors.accentSoft, borderRadius: radii.sm, paddingHorizontal: 14, height: 32, justifyContent: 'center', marginTop: 4 },
   bonusText: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18, color: colors.ink },
   primary: {
     alignSelf: 'stretch',
