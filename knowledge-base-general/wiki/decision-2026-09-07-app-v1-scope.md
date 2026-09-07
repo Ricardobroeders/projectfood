@@ -93,7 +93,8 @@ screen. The clay renders next to Reanimated/Skia motion read well; Rive is still
 a development build. **Round 2 (same day):** reward bounces capped (pops start at 0.7, ≤ 8%
 overshoot, in-place bumps peak at 1.10, nothing leaves its box); corner radius follows element
 height (sm 12 ≤ 40pt, md 18 to 64pt, lg 24 to 140pt, xl 32 above; full only for genuinely round
-elements, never text pills); icons ≈ 45% of their container. Details in the design-library README.
+elements, never text pills); icons ≈ 45% of their container. Details in the design-library README. **Round 3:** confetti dropped; the unlock moment is the stamp pressing
+down with an ink ring and contained sparkles, plus the tasted plants sliding in.
 
 ## Rationale
 - **Data:** reaching 30 did not retain (7 of 13 hit it, 5 left); streak rescue 46% vs daily

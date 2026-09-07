@@ -1,44 +1,44 @@
 import * as Haptics from 'expo-haptics';
 import { Image } from 'expo-image';
 import { useCallback, useEffect } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming } from 'react-native-reanimated';
+import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeInDown, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 
-import { Confetti } from '@/components/Confetti';
 import { Stamp } from '@/components/Stamp';
+import { StampPress } from '@/components/StampPress';
 import { STAMP_META } from '@/components/StampShelf';
-import { motion, REWARD_POP_FROM } from '@/constants/motion';
-import { colors, fonts, radii } from '@/constants/theme';
+import { motion } from '@/constants/motion';
+import { CATS, colors, fonts, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
 import { useStore } from '@/state/store';
 
 const HIDDEN_Y = 640;
+const STAMP_SIZE = 132;
 
 export function CelebrationSheet() {
-  const { celebration, card, t, dispatch } = useStore();
-  const { width, height } = useWindowDimensions();
+  const { celebration, card, checked, locale, t, dispatch } = useStore();
   const insets = useSafeAreaInsets();
   const visible = celebration === 'first_bites';
 
   const backdrop = useSharedValue(0);
   const slide = useSharedValue(HIDDEN_Y);
-  const pop = useSharedValue(REWARD_POP_FROM);
 
   useEffect(() => {
     if (visible) {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      // sheet class: ease out, no overshoot. Only the stamp inside (reward class) may bounce.
+      // sheet class: ease out, no overshoot. The stamp inside is the reward.
       backdrop.value = withTiming(1, motion.backdrop);
       slide.value = withTiming(0, motion.sheetIn);
-      pop.value = withDelay(220, withSpring(1, motion.reward));
     } else {
       backdrop.value = 0;
       slide.value = HIDDEN_Y;
-      pop.value = REWARD_POP_FROM;
     }
-  }, [visible, backdrop, slide, pop]);
+  }, [visible, backdrop, slide]);
+
+  const onLanded = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+  }, []);
 
   /** Slide the sheet out first, then let the store close the modal. */
   const close = useCallback(
@@ -53,9 +53,9 @@ export function CelebrationSheet() {
 
   const backdropStyle = useAnimatedStyle(() => ({ opacity: backdrop.value }));
   const sheetStyle = useAnimatedStyle(() => ({ transform: [{ translateY: slide.value }] }));
-  const popStyle = useAnimatedStyle(() => ({ transform: [{ scale: pop.value }] }));
 
   const plant = card ? PLANT_BY_SLUG[card] : null;
+  const tasted = checked.slice(0, 3).map((s) => PLANT_BY_SLUG[s]).filter(Boolean);
 
   return (
     <Modal visible={visible} transparent statusBarTranslucent animationType="none" onRequestClose={() => close('dismissCelebration')}>
@@ -63,19 +63,31 @@ export function CelebrationSheet() {
         <Animated.View style={[styles.backdrop, backdropStyle]}>
           <Pressable style={StyleSheet.absoluteFill} onPress={() => close('dismissCelebration')} />
         </Animated.View>
-        <Confetti width={width} height={height} play={visible} />
         <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
           <View style={styles.handle} />
-          <Animated.View style={[styles.stampWrap, popStyle]}>
-            <Stamp size={132} color={STAMP_META.first_bites.color}>
+          <StampPress size={STAMP_SIZE} color={STAMP_META.first_bites.color} play={visible} onLanded={onLanded}>
+            <Stamp size={STAMP_SIZE} color={STAMP_META.first_bites.color}>
               {plant ? <Image source={plant.image} style={styles.stampImage} contentFit="contain" /> : null}
             </Stamp>
-          </Animated.View>
+          </StampPress>
           <Text style={styles.title}>{t.firstBitesTitle}</Text>
           <Text style={styles.body}>{t.firstBitesBody}</Text>
-          <View style={styles.bonus}>
-            <Text style={styles.bonusText}>{t.bonus}</Text>
-          </View>
+          {visible ? (
+            <View style={styles.tasted}>
+              {tasted.map((p, i) => (
+                <Animated.View
+                  key={p.slug}
+                  entering={FadeInDown.delay(560 + i * 90).duration(320)}
+                  style={[styles.tastedTile, { backgroundColor: CATS[p.category].bg }]}
+                  accessibilityLabel={p.name[locale]}>
+                  <Image source={p.image} style={styles.tastedImage} contentFit="contain" />
+                </Animated.View>
+              ))}
+              <Animated.View entering={FadeInDown.delay(560 + tasted.length * 90).duration(320)} style={styles.bonus}>
+                <Text style={styles.bonusText}>{t.bonus}</Text>
+              </Animated.View>
+            </View>
+          ) : null}
           <Pressable style={({ pressed }) => [styles.primary, pressed && { backgroundColor: colors.accentPressed }]} onPress={() => close('showCard')}>
             <Text style={styles.primaryText}>{t.showCard}</Text>
           </Pressable>
@@ -98,22 +110,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 12,
     alignItems: 'center',
-    gap: 10,
+    gap: 8,
   },
-  handle: { width: 40, height: 4, borderRadius: radii.full, backgroundColor: colors.hairline, marginBottom: 10 },
-  stampWrap: { marginBottom: 6 },
+  handle: { width: 40, height: 4, borderRadius: radii.full, backgroundColor: colors.hairline, marginBottom: 2 },
   stampImage: { width: 88, height: 88 },
   title: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, textAlign: 'center' },
   body: { fontFamily: fonts.medium, fontSize: 16, color: colors.ink2, textAlign: 'center', lineHeight: 22, maxWidth: 300 },
-  bonus: { backgroundColor: colors.accentSoft, borderRadius: radii.sm, paddingHorizontal: 14, height: 32, justifyContent: 'center', marginTop: 4 },
+  tasted: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8, height: 52 },
+  tastedTile: { width: 52, height: 52, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
+  tastedImage: { width: 36, height: 36 },
+  bonus: { backgroundColor: colors.accentSoft, borderRadius: radii.sm, paddingHorizontal: 12, height: 32, justifyContent: 'center', marginLeft: 4 },
   bonusText: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18, color: colors.ink },
   primary: {
     alignSelf: 'stretch',
     backgroundColor: colors.accent,
     borderRadius: radii.md,
-    paddingVertical: 16,
+    height: 54,
     alignItems: 'center',
-    marginTop: 12,
+    justifyContent: 'center',
+    marginTop: 14,
   },
   primaryText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.ink },
   secondary: { paddingVertical: 12 },
