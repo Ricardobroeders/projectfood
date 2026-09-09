@@ -5,6 +5,29 @@
  * - the page background moves from warm cream to white so food colours carry the colour;
  * - no drop shadows anywhere. Distinction comes from grey surfaces (bgSoft) on white.
  */
+/**
+ * Accent candidates (branding round, 2026-09-09). The PWA yellow sits close to ZOE's brand yellow,
+ * and on our screens the food already owns yellow, green, red and orange. Switch with
+ * `EXPO_PUBLIC_ACCENT=<name>` when starting Metro (restart with --clear to pick up a change).
+ * `onAccent` is the text/icon colour that sits on the accent: dark ink on light accents, white on
+ * saturated ones.
+ */
+const ACCENTS = {
+  /** Current PWA yellow. ZOE-adjacent. */
+  marigold: { accent: '#F5C518', pressed: '#F59A0E', soft: '#FBEDB5', row: '#FFF6D6', onAccent: '#1F1B16' },
+  /** The hue no plant owns: a blueberry periwinkle. Distinct from every food competitor. */
+  blueberry: { accent: '#5B6CF0', pressed: '#4353D9', soft: '#E6E9FD', row: '#EEF0FE', onAccent: '#FFFFFF' },
+  /** Warm and kid-friendly; borders on the fruit tint. */
+  coral: { accent: '#F2695C', pressed: '#D9503F', soft: '#FDE1DC', row: '#FFF0EC', onAccent: '#FFFFFF' },
+  /** Low-risk shift: warmer amber, still yellow-family. */
+  amber: { accent: '#F5A524', pressed: '#D98A0E', soft: '#FDEBC8', row: '#FFF4DE', onAccent: '#1F1B16' },
+} as const;
+
+export type AccentName = keyof typeof ACCENTS;
+const ACCENT_NAME: AccentName = (process.env.EXPO_PUBLIC_ACCENT as AccentName | undefined) && process.env.EXPO_PUBLIC_ACCENT! in ACCENTS ? (process.env.EXPO_PUBLIC_ACCENT as AccentName) : 'marigold';
+const A = ACCENTS[ACCENT_NAME];
+export const accentName = ACCENT_NAME;
+
 export const colors = {
   bg: '#FFFFFF',
   bgSoft: '#F6F5F2',
@@ -13,10 +36,13 @@ export const colors = {
   ink: '#1F1B16',
   ink2: '#6B645C',
   ink3: '#A39B91',
-  accent: '#F5C518',
-  accentPressed: '#F59A0E',
-  accentSoft: '#FBEDB5',
-  checkedRow: '#FFF6D6',
+  accent: A.accent as string,
+  accentPressed: A.pressed as string,
+  accentSoft: A.soft as string,
+  onAccent: A.onAccent as string,
+  checkedRow: A.row as string,
+  /** Reward metal for card levels; stays gold regardless of the brand accent. */
+  gold: '#F5C518',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;

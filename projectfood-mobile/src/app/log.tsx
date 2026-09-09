@@ -36,7 +36,7 @@ export default function LogScreen() {
           <Text style={styles.subtitle}>{t.subtitle}</Text>
         </View>
         <View style={styles.xp}>
-          <Feather name="star" size={16} color={colors.accentPressed} />
+          <Feather name="star" size={16} color={colors.gold} />
           <AnimatedNumber value={xp} style={styles.xpNumber} />
           <Text style={styles.xpLabel}>{t.xp}</Text>
         </View>

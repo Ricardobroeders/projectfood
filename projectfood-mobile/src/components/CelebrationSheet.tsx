@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 14,
   },
-  primaryText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.ink },
+  primaryText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.onAccent },
   secondary: { paddingVertical: 12 },
   secondaryText: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink2 },
 });

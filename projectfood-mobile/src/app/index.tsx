@@ -20,7 +20,7 @@ export default function HomeScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{t.homeTitle}</Text>
         <View style={styles.xp}>
-          <Feather name="star" size={16} color={colors.accentPressed} />
+          <Feather name="star" size={16} color={colors.gold} />
           <AnimatedNumber value={xp} style={styles.xpNumber} />
           <Text style={styles.xpLabel}>{t.xp}</Text>
         </View>
@@ -42,7 +42,7 @@ export default function HomeScreen() {
         </View>
         <Link href="/log" asChild>
           <Pressable style={({ pressed }) => [styles.cta, pressed && { backgroundColor: colors.accentPressed }]}>
-            <Feather name="plus" size={18} color={colors.ink} />
+            <Feather name="plus" size={18} color={colors.onAccent} />
             <Text style={styles.ctaText}>{t.homeCta}</Text>
           </Pressable>
         </Link>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   recentTile: { width: 52, height: 52, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
   recentImage: { width: 36, height: 36 },
   cta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: colors.accent, borderRadius: radii.md, height: 54, marginTop: 16 },
-  ctaText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.ink },
+  ctaText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.onAccent },
   section: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink, paddingHorizontal: 20, marginBottom: 8 },
   footnote: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center', marginTop: 'auto', marginBottom: 12 },
 });

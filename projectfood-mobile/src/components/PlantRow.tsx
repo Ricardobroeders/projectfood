@@ -104,7 +104,7 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
           </Animated.View>
           <Animated.View style={[styles.circle, circleStyle]}>
             <Animated.View style={checkStyle}>
-              <Feather name="check" size={22} color={colors.ink} />
+              <Feather name="check" size={22} color={colors.onAccent} />
             </Animated.View>
           </Animated.View>
         </View>
