@@ -21,6 +21,10 @@ const ACCENTS = {
   coral: { accent: '#F2695C', pressed: '#D9503F', soft: '#FDE1DC', row: '#FFF0EC', onAccent: '#FFFFFF' },
   /** Low-risk shift: warmer amber, still yellow-family. */
   amber: { accent: '#F5A524', pressed: '#D98A0E', soft: '#FDEBC8', row: '#FFF4DE', onAccent: '#1F1B16' },
+  /** From Ricardo's Figma palette (2026-09-09): raspberry / beetroot. Food-adjacent warmth, no category owns it. */
+  raspberry: { accent: '#C62A85', pressed: '#A81F6E', soft: '#F9E1EE', row: '#FDF1F7', onAccent: '#FFFFFF' },
+  /** From Ricardo's Figma palette: leaf green. Reads "plants", but the most crowded hue among health apps. */
+  leaf: { accent: '#00880D', pressed: '#00700A', soft: '#DDF1DF', row: '#EEF8EF', onAccent: '#FFFFFF' },
 } as const;
 
 export type AccentName = keyof typeof ACCENTS;
