@@ -21,6 +21,22 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - When a topic is decided, write `decision-YYYY-MM-DD-<slug>.md`, link it here, and move the row.
 - Add topics freely; remove none. Date every status change.
 
+## Next to pick up
+_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-10._
+
+**Ricardo's decisions**
+1. Accent on device: true blue or teal (row 2). Then Claude binds the app theme to Figma variables.
+2. Achievements: XP keep or drop, where the collection lives in navigation, a "refused" tap at logging (row 5).
+3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]).
+4. Accounts: `npx eas-cli login` in `projectfood-mobile`; Apple Developer enrolment (Individual). Google Play done 2026-09-10.
+5. Five parent conversations (Linear PF-55).
+
+**Claude's next build steps (after the above)**
+6. PF-38 family data model on a Supabase branch, with the household entitlement from row 9.
+7. Bind the theme to role-named Figma variables; write `decision-…-visual-identity`.
+8. Draft tone of voice (row 8) and the privacy & kids' data page (row 14).
+9. Five-family test protocol and the five v1 success numbers (rows 4, 11) before TestFlight.
+
 ## Summary
 | # | Topic | Status | Next step |
 |---|---|---|---|
@@ -32,7 +48,7 @@ holds execution work; this page holds thinking that still needs a call from Rica
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
-| 9 | Business model | open | Decide free/paid boundary, price, period, trial before PF-38 is final (PF-54) |
+| 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; then decision page before PF-38 (PF-54) |
 | 10 | Market | drafted | Kids-food competitor teardown + NL/IT household sizing |
 | 11 | KPIs / success definition | open | Five numbers that define v1 success, before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
@@ -114,15 +130,17 @@ holds execution work; this page holds thinking that still needs a call from Rica
   then package it as a Claude skill so SEO and store copy use it (Ricardo's point,
   2026-09-10). _(status 2026-09-10)_
 
-### 9. Business model — open (Linear PF-54)
+### 9. Business model — drafted (Linear PF-54)
 - **Have:** [[decision-2026-09-07-app-v1-scope]] S3/S4 (Supabase Free until paying
   households, RevenueCat, store commission after VAT: ≈ €21 kept of €29.99/yr, ≈ €2.80 of
   €3.99/mo); Sunday shopper advice as the paid feature (feature 11); Ricardo's 2026-09-08
   brainstorm: ship the basic version without payments first.
 - **Open:** free/paid boundary; monthly vs annual and price points; trial length; a class or
   teacher tier; when payments switch on.
-- **Next:** decide before the data model is final (entitlements live in the schema). Claude
-  drafts three options with numbers when asked. _(status 2026-09-10)_
+- **Drafted 2026-09-10:** [[concept-business-model]] (goal ladder, net revenue per price,
+  three boundary options with lean A, timing, affiliate facts and illustration, PF-38 needs).
+- **Next:** Ricardo picks the boundary option and confirms €3.99 / €39.99 with an introductory
+  year; then `decision-…-business-model` before the data model is final. _(status 2026-09-10)_
 
 ### 10. Market — drafted for adults, open for families
 - **Have:** [[compare-projectfood-vs-competitors]], [[source-competitor-scan]], [[entity-zoe]],

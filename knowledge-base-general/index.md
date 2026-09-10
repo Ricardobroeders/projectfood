@@ -39,6 +39,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[concept-30-plants-origin]] — the science origin (American Gut Project, Spector, ZOE).
 - [[concept-retention-loop]] — trigger, action, reward, investment: what the PWA lacked and the v1 loop for the family app (cards that level with tastings, dinner-time triggers, avatar as investment).
 - [[concept-achievement-system]] — the goal layer: cards per plant, albums per group, milestone stamps per behaviour; never resets, next goal always visible, earned at the table; ties the paid Sunday advice to album completion (proposed 2026-09-10).
+- [[concept-business-model]] — household subscription (€3.99/mo, €39.99/yr proposed), goal ladder from break-even to "worth continuing", free/paid boundary options with lean A (parent payoff paid), shopping list as paid ritual, AH affiliate 2–3% as NL-only upside (brainstorm 2026-09-10).
 
 ## Comparisons
 - [[compare-projectfood-vs-competitors]] — positioning matrix vs ZOE, Eating30, 30 PLANTS, MFP.

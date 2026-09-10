@@ -136,3 +136,15 @@ media, tone of voice, business model, market, KPIs). Created [[strategy-backlog]
 rows (his eleven plus go-to-market, content pipeline, privacy and kids' data, naming, partnerships),
 each with what the wiki holds, the open question and the next step. Registered the page in
 `CLAUDE.md` (standing register rules), [[index]] and [[overview]].
+
+## [2026-09-10] query | Business model brainstorm + "what's next" wiring
+Ricardo proposed: break even first, subscription €3.99/month or €39.99/year, later a shopping
+cart with a pre-grocery reminder that pushes items to an Albert Heijn list for affiliate revenue.
+Filed [[concept-business-model]]: goal ladder (≈30 paying households cover tools; €1,000 net a
+month needs ≈400 and therefore a replicating class channel), net revenue per price after VAT and
+commission, three free/paid boundary options with lean A (kid loop free for every child, parent
+payoff paid), annual-first timing at the week-4 recap, affiliate facts (AH 2–3% on Partnerize;
+Bring! has no official API; share-sheet list instead) and an illustration putting affiliate at
+20–40% upside on top of subscription at scale. Backlog row 9 → drafted. Added a "Next to pick up"
+section to [[strategy-backlog]] and a repo-root `CLAUDE.md` with the "what's next?" protocol so
+new sessions find the list.
