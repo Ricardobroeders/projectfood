@@ -1,13 +1,11 @@
-import { Feather } from '@expo/vector-icons';
+import type { LucideIcon } from 'lucide-react-native';
 import { StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fonts, iconFor, radii } from '@/constants/theme';
 import { useStore } from '@/state/store';
 
-type FeatherName = keyof typeof Feather.glyphMap;
-
-export function Placeholder({ title, icon }: { title: string; icon: FeatherName }) {
+export function Placeholder({ title, icon: Icon }: { title: string; icon: LucideIcon }) {
   const insets = useSafeAreaInsets();
   const { t } = useStore();
   return (
@@ -15,7 +13,7 @@ export function Placeholder({ title, icon }: { title: string; icon: FeatherName 
       <Text style={styles.title}>{title}</Text>
       <View style={styles.empty}>
         <View style={styles.iconWrap}>
-          <Feather name={icon} size={iconFor(72)} color={colors.ink3} />
+          <Icon size={iconFor(72)} color={colors.ink3} />
         </View>
         <Text style={styles.body}>{t.placeholder}</Text>
       </View>

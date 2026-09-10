@@ -1,6 +1,6 @@
-import { Feather } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { Image } from 'expo-image';
+import { Check } from 'lucide-react-native';
 import { memo, useEffect, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, {
@@ -104,7 +104,7 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
           </Animated.View>
           <Animated.View style={[styles.circle, circleStyle]}>
             <Animated.View style={checkStyle}>
-              <Feather name="check" size={22} color={colors.onAccent} />
+              <Check size={22} color={colors.onAccent} strokeWidth={2.5} />
             </Animated.View>
           </Animated.View>
         </View>

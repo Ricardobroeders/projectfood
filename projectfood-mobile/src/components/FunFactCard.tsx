@@ -1,6 +1,6 @@
-import { Feather } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 import { Image } from 'expo-image';
+import { X } from 'lucide-react-native';
 import { useEffect, useRef } from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withDelay, withSpring } from 'react-native-reanimated';
@@ -58,6 +58,7 @@ export function FunFactCard() {
   const plant = card ? PLANT_BY_SLUG[card] : null;
   if (!plant) return null;
   const cat = CATS[plant.category];
+  const CuriousIcon = STAMP_META.curious.icon;
 
   const flip = () => {
     const toBack = rotation.value < 90;
@@ -90,14 +91,14 @@ export function FunFactCard() {
               <Text style={styles.fact}>{plant.fact[locale]}</Text>
               <Animated.View style={[styles.badge, badgeStyle]}>
                 <Stamp size={44} color={STAMP_META.curious.color}>
-                  <Feather name={STAMP_META.curious.icon} size={iconFor(44)} color="#FFFFFF" />
+                  <CuriousIcon size={iconFor(44)} color="#FFFFFF" />
                 </Stamp>
                 <Text style={styles.badgeText}>{t.curiousUnlocked}</Text>
               </Animated.View>
             </Animated.View>
           </Pressable>
           <Pressable style={styles.close} onPress={() => dispatch({ type: 'hideCard' })} accessibilityRole="button" accessibilityLabel={t.close}>
-            <Feather name="x" size={iconFor(48)} color={colors.ink} />
+            <X size={iconFor(48)} color={colors.ink} />
           </Pressable>
         </Animated.View>
       </View>

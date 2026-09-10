@@ -1,12 +1,10 @@
-import { Feather } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
+import { Circle, Home, Layers, type LucideIcon, Plus, Users } from 'lucide-react-native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fonts } from '@/constants/theme';
 import { useStore } from '@/state/store';
-
-type FeatherName = keyof typeof Feather.glyphMap;
 
 /** The slice of React Navigation's BottomTabBarProps this bar uses (the package is nested under expo-router). */
 type TabBarProps = {
@@ -17,11 +15,12 @@ type TabBarProps = {
   };
 };
 
-const ICONS: Record<string, FeatherName> = {
-  index: 'home',
-  log: 'plus',
-  cards: 'layers',
-  family: 'users',
+/** Lucide, per the Figma design system (fonts frame, 2026-09-10). */
+const ICONS: Record<string, LucideIcon> = {
+  index: Home,
+  log: Plus,
+  cards: Layers,
+  family: Users,
 };
 
 /** Bottom nav ported from the PWA: white, hairline top edge, yellow active state. JS-only so it runs in Expo Go. */
@@ -34,6 +33,7 @@ export function TabBar({ state, navigation }: TabBarProps) {
     <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
       {state.routes.map((route, i) => {
         const active = state.index === i;
+        const Icon = ICONS[route.name] ?? Circle;
         return (
           <Pressable
             key={route.key}
@@ -45,7 +45,7 @@ export function TabBar({ state, navigation }: TabBarProps) {
               const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
               if (!active && !event.defaultPrevented) navigation.navigate(route.name);
             }}>
-            <Feather name={ICONS[route.name] ?? 'circle'} size={22} color={active ? colors.accent : colors.ink3} />
+            <Icon size={22} color={active ? colors.accent : colors.ink3} />
             <Text style={[styles.label, { color: active ? colors.ink : colors.ink3 }]}>{labels[route.name] ?? route.name}</Text>
           </Pressable>
         );

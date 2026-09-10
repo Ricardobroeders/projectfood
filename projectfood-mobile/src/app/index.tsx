@@ -1,6 +1,6 @@
-import { Feather } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
+import { Plus, Star } from 'lucide-react-native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -20,7 +20,7 @@ export default function HomeScreen() {
       <View style={styles.header}>
         <Text style={styles.title}>{t.homeTitle}</Text>
         <View style={styles.xp}>
-          <Feather name="star" size={16} color={colors.gold} />
+          <Star size={16} color={colors.gold} />
           <AnimatedNumber value={xp} style={styles.xpNumber} />
           <Text style={styles.xpLabel}>{t.xp}</Text>
         </View>
@@ -42,7 +42,7 @@ export default function HomeScreen() {
         </View>
         <Link href="/log" asChild>
           <Pressable style={({ pressed }) => [styles.cta, pressed && { backgroundColor: colors.accentPressed }]}>
-            <Feather name="plus" size={18} color={colors.onAccent} />
+            <Plus size={18} color={colors.onAccent} />
             <Text style={styles.ctaText}>{t.homeCta}</Text>
           </Pressable>
         </Link>

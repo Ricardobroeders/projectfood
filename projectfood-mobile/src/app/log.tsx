@@ -1,4 +1,4 @@
-import { Feather } from '@expo/vector-icons';
+import { CreditCard, RotateCcw, Star } from 'lucide-react-native';
 import { useCallback, useMemo, useState } from 'react';
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -36,7 +36,7 @@ export default function LogScreen() {
           <Text style={styles.subtitle}>{t.subtitle}</Text>
         </View>
         <View style={styles.xp}>
-          <Feather name="star" size={16} color={colors.gold} />
+          <Star size={16} color={colors.gold} />
           <AnimatedNumber value={xp} style={styles.xpNumber} />
           <Text style={styles.xpLabel}>{t.xp}</Text>
         </View>
@@ -48,13 +48,13 @@ export default function LogScreen() {
         </Pressable>
         {card ? (
           <Pressable style={[styles.chip, { backgroundColor: colors.accentSoft }]} onPress={() => dispatch({ type: 'showCard' })}>
-            <Feather name="credit-card" size={14} color={colors.ink} />
+            <CreditCard size={14} color={colors.ink} />
             <Text style={styles.chipText}>{t.myCard}</Text>
           </Pressable>
         ) : null}
         <View style={{ flex: 1 }} />
         <Pressable style={styles.chip} onPress={() => dispatch({ type: 'reset' })}>
-          <Feather name="rotate-ccw" size={14} color={colors.ink2} />
+          <RotateCcw size={14} color={colors.ink2} />
           <Text style={[styles.chipText, { color: colors.ink2 }]}>{t.reset}</Text>
         </Pressable>
       </View>

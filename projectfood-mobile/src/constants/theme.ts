@@ -32,6 +32,8 @@ const ACCENTS = {
    * it passes AA (4.6:1), and it stays the same on every Android skin.
    */
   blue: { accent: '#1F6FEB', pressed: '#1558C4', soft: '#DCE8FC', row: '#EEF4FE', onAccent: '#FFFFFF' },
+  /** Ricardo's Figma working colour (variable "turquise", 2026-09-10): petrol teal. Calmer than blue, AA with white (4.8:1). */
+  teal: { accent: '#007C9A', pressed: '#00627A', soft: '#D6EEF3', row: '#EAF6F9', onAccent: '#FFFFFF' },
 } as const;
 
 export type AccentName = keyof typeof ACCENTS;

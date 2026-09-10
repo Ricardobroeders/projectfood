@@ -1,4 +1,4 @@
-import { Feather } from '@expo/vector-icons';
+import { BookOpen, LayoutGrid, Lock, type LucideIcon, Smile, Sun, Zap } from 'lucide-react-native';
 import { useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
@@ -9,14 +9,12 @@ import { colors, fonts, iconFor } from '@/constants/theme';
 import type { AchievementId } from '@/i18n';
 import { useStore } from '@/state/store';
 
-type FeatherName = keyof typeof Feather.glyphMap;
-
-export const STAMP_META: Record<AchievementId, { color: string; icon: FeatherName }> = {
-  first_bites: { color: colors.accent, icon: 'smile' },
-  curious: { color: '#6A4880', icon: 'book-open' },
-  rainbow: { color: '#C2533D', icon: 'sun' },
-  streak_7: { color: '#3C6A60', icon: 'zap' },
-  album: { color: '#4F7A3D', icon: 'grid' },
+export const STAMP_META: Record<AchievementId, { color: string; icon: LucideIcon }> = {
+  first_bites: { color: colors.accent, icon: Smile },
+  curious: { color: '#6A4880', icon: BookOpen },
+  rainbow: { color: '#C2533D', icon: Sun },
+  streak_7: { color: '#3C6A60', icon: Zap },
+  album: { color: '#4F7A3D', icon: LayoutGrid },
 };
 
 const ORDER: AchievementId[] = ['first_bites', 'curious', 'rainbow', 'streak_7', 'album'];
@@ -40,11 +38,12 @@ function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: bool
   }));
 
   const meta = STAMP_META[id];
+  const Icon = unlocked ? meta.icon : Lock;
   return (
     <View style={styles.item}>
       <Animated.View style={style}>
         <Stamp size={64} color={meta.color} locked={!unlocked}>
-          <Feather name={unlocked ? meta.icon : 'lock'} size={iconFor(64)} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
+          <Icon size={iconFor(64)} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
         </Stamp>
       </Animated.View>
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
