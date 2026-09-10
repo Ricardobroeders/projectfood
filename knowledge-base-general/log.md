@@ -148,3 +148,10 @@ Bring! has no official API; share-sheet list instead) and an illustration puttin
 20–40% upside on top of subscription at scale. Backlog row 9 → drafted. Added a "Next to pick up"
 section to [[strategy-backlog]] and a repo-root `CLAUDE.md` with the "what's next?" protocol so
 new sessions find the list.
+
+## [2026-09-10] ingest | Ricardo's plane brainstorm notes
+Ricardo sent raw ideas for a later brainstorm (gold/XP economy spent on avatars and borders,
+fun facts and borders at 5/50/100 tastings, a KPI list, invite-a-friend reward). Stored verbatim
+in `raw/ricardo-brainstorm-2026-09-10-plane.md`; summarised under "Inputs waiting for a
+brainstorm" in [[strategy-backlog]] with links to rows 5, 9, 11 and 12; noted in
+[[concept-achievement-system]] open questions. No decisions taken.

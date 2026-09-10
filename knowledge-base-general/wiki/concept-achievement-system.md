@@ -110,6 +110,11 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
 - Album count and difficulty need the real plant list; 12 is a placeholder.
 - XP: the POC's +10 per plant is a fourth currency next to cards, albums and stamps. Lean: drop
   XP for v1 and revisit if kids ask for a score. Not decided.
+- Ricardo's inputs of 2026-09-10 (plane notes, `raw/ricardo-brainstorm-2026-09-10-plane.md`),
+  to be brainstormed: a gold economy earned per person per taste and spent on avatars and
+  borders, which re-opens the XP question and the "accessories are earned, not bought" rule;
+  fun facts and border colours unlocking at 5 / 50 / 100 tastings of one plant (Tibia bestiary),
+  a longer ladder than the 1 / 5 / 10 card levels that could carry the years after gold.
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).

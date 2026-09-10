@@ -26,7 +26,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 
 **Ricardo's decisions**
 1. Accent on device: true blue or teal (row 2). Then Claude binds the app theme to Figma variables.
-2. Achievements: XP keep or drop, where the collection lives in navigation, a "refused" tap at logging (row 5).
+2. Achievements: XP keep or drop (your plane notes on a gold economy re-open this), where the collection lives in navigation, a "refused" tap at logging (row 5).
 3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]).
 4. Accounts: `npx eas-cli login` in `projectfood-mobile`; Apple Developer enrolment (Individual). Google Play done 2026-09-10.
 5. Five parent conversations (Linear PF-55).
@@ -36,6 +36,24 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 7. Bind the theme to role-named Figma variables; write `decision-…-visual-identity`.
 8. Draft tone of voice (row 8) and the privacy & kids' data page (row 14).
 9. Five-family test protocol and the five v1 success numbers (rows 4, 11) before TestFlight.
+
+## Inputs waiting for a brainstorm
+Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
+when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
+
+- **Gold / XP economy (row 5, 9).** Earn gold per person per tasted plant; when several family
+  members taste the same plant each earns it; spend gold on avatars and profile borders; social
+  comparison as motivation. _(Ricardo, 2026-09-10; touches the "drop XP" lean in
+  [[concept-achievement-system]] and the "no pay-to-win, rewards are earned" rule)_
+- **Fun facts and borders at 5 / 50 / 100 tastings (row 5).** Tibia-bestiary style: a plant's
+  facts and border colour unlock in steps as it is tasted more often, giving purpose beyond
+  invisible health benefits. _(Ricardo, 2026-09-10; compare with the 1 / 5 / 10 card levels)_
+- **KPI list (row 11).** Install rate from the stores and the website, average check-offs per
+  active user, churn rate, most eaten plants, "30 different plants" achievements per user,
+  average streak length. _(Ricardo, 2026-09-10; all PWA-era metrics, to be mapped to the
+  household model)_
+- **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
+  _(Ricardo, 2026-09-10)_
 
 ## Summary
 | # | Topic | Status | Next step |
