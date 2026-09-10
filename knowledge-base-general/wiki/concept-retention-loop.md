@@ -3,7 +3,7 @@ title: Retention loop (trigger, action, reward, investment)
 type: concept
 tags: [retention, habit, gamification, family-mode]
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-10
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md]
 ---
 
@@ -72,6 +72,6 @@ are." The measurable reward becomes the kid's growing collection.
 - Which age band leads the design (3–6 vs 6–11) changes how much the kid can do alone.
 
 ## Related pages
-- [[overview]] · [[concept-stickiness-moat]] · [[concept-engagement-drivers]] ·
+- [[overview]] · [[concept-achievement-system]] · [[concept-stickiness-moat]] · [[concept-engagement-drivers]] ·
   [[concept-engagement-snapshot]] · [[persona-household-parent]] ·
   [[decision-2026-09-07-app-v1-scope]] · [[decision-2026-09-06-family-mode-pivot]]

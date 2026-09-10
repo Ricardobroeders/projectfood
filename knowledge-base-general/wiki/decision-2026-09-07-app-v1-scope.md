@@ -132,6 +132,7 @@ down with an ink ring and contained sparkles, plus the tasted plants sliding in.
   within 3 h, by type.
 
 ## Related pages
+- [[concept-achievement-system]] — the goal layer behind features 1–4, 7 and 11 (proposed 2026-09-10)
 - [[overview]] · [[decision-2026-09-06-family-mode-pivot]] · [[concept-retention-loop]] ·
   [[source-supabase-metrics-2026-09]] · [[persona-household-parent]] ·
   [[concept-stickiness-moat]] · [[seo-app-store-aso]]

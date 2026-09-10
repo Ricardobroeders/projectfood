@@ -118,3 +118,13 @@ everything else animates in Rive, achievement art as stamps and tiered colours, 
 experiment. Recorded in [[decision-2026-09-07-app-v1-scope]] and `design-library/README.md`
 (gitignored, local). Linear PF-56 created: one-screen POC on Android (OnePlus) testing colours,
 motion, clay + Rive, and the platform; PF-53 updated with the resolutions.
+
+## [2026-09-10] query | Achievement system as the goal layer
+Ricardo proposed achievements as the backbone of the goal-oriented mindset and the churn answer.
+Filed [[concept-achievement-system]]: three tiers (cards per plant, albums per group, milestone
+stamps per behaviour), eight design rules (never resets, next goal always visible, earned at the
+table, one celebration per session, per kid never ranked, achievements drive the triggers), a
+starting set of ten stamps, and the link from album completion to the paid Sunday advice. Open:
+XP keep/drop, navigation home for the collection, "refused" state for Brave bite. Same session:
+Google Play Console account approved; accent exploration continues (true blue on device, teal in
+Figma); Figma worksheet reviewed (colours, fonts, components).
