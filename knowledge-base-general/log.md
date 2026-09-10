@@ -128,3 +128,11 @@ starting set of ten stamps, and the link from album completion to the paid Sunda
 XP keep/drop, navigation home for the collection, "refused" state for Brave bite. Same session:
 Google Play Console account approved; accent exploration continues (true blue on device, teal in
 Figma); Figma worksheet reviewed (colours, fonts, components).
+
+## [2026-09-10] setup | Strategy backlog page
+Ricardo asked for one place in the knowledge hub for concept/strategy to-dos: the undecided
+core ideas (value proposition, brand guidelines, personas, retention, achievements, SEO, social
+media, tone of voice, business model, market, KPIs). Created [[strategy-backlog]] with sixteen
+rows (his eleven plus go-to-market, content pipeline, privacy and kids' data, naming, partnerships),
+each with what the wiki holds, the open question and the next step. Registered the page in
+`CLAUDE.md` (standing register rules), [[index]] and [[overview]].

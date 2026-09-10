@@ -42,6 +42,7 @@ knowledge-base-general/
 │   └── assets/        # images and attachments
 ├── wiki/              # LLM-maintained pages (you own this)
 │   ├── overview.md    # top-level synthesis / entry point
+│   ├── strategy-backlog.md  # standing register of undecided core ideas (one row per topic)
 │   └── seo/           # SEO strategy pages (seo- prefix); wikilinks resolve across subfolders
 └── templates/         # page templates to copy when creating new pages
 ```
@@ -130,6 +131,21 @@ Dates are how we know which information is newer when sources overlap or conflic
 3. If the answer is valuable and reusable (a comparison, an analysis, a synthesis), offer to
    **file it back** as a new wiki page (`compare-`, `concept-`, etc.) so explorations compound.
 4. Log significant queries in `log.md`.
+
+### Strategy backlog (standing register)
+
+`wiki/strategy-backlog.md` lists every concept or strategy topic that still needs a call from
+the human (value proposition, brand, personas, retention, achievements, SEO, social, tone of
+voice, business model, market, KPIs, …). Rules:
+
+1. When a conversation touches one of these topics, end by updating its row: status (`open`,
+   `drafted`, `parked`, `decided`), what the wiki now holds, the open question, the next step,
+   and the date of the status change.
+2. When a topic is decided, write a `decision-` page, link it from the row, and move the row to
+   the Decided table. Never delete rows.
+3. New undecided topics get a row immediately, marked with who added them.
+4. Linear is for execution; this page is for thinking. Link Linear issues from rows where they
+   exist (e.g. PF-54), do not duplicate tasks.
 
 ### Lint (periodic health check — run when asked, or proactively suggest it)
 

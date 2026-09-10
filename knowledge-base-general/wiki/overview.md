@@ -97,6 +97,8 @@ live and its users are the current cohort.
 - Superseded by the 2026-09-07 pull above.
 
 ## Open questions
+The standing register of undecided core ideas, with status and next step per topic, is
+[[strategy-backlog]] (since 2026-09-10). The short list:
 - Is family mode *the* wedge or one segment beside the adult tracker? Test, don't decide.
 - Does the dinner habit hold past week 4 in the five families? Does a class replicate without
   founder seeding?

@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-09-07
+updated: 2026-09-10
 ---
 
 # Index
@@ -10,6 +10,7 @@ The catalog of every page in this wiki, grouped by type. Each entry: a wikilink 
 summary. **Read this first when answering a query. Update it on every ingest.**
 
 Start here: [[overview]] — the synthesized big-picture entry point.
+Open decisions: [[strategy-backlog]] — the standing register of undecided core ideas (value proposition, brand, personas, retention, achievements, SEO, social, tone of voice, business model, market, KPIs, and more), one row each with status and next step.
 
 ## Sources
 - [[source-family-mode-context]] — Ricardo's 2026-09-06 direction doc: pivot to a family app + native Expo apps; class WhatsApp group as launch channel; 14 decisions; things not to do.
