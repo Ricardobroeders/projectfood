@@ -25,6 +25,13 @@ const ACCENTS = {
   raspberry: { accent: '#C62A85', pressed: '#A81F6E', soft: '#F9E1EE', row: '#FDF1F7', onAccent: '#FFFFFF' },
   /** From Ricardo's Figma palette: leaf green. Reads "plants", but the most crowded hue among health apps. */
   leaf: { accent: '#00880D', pressed: '#00700A', soft: '#DDF1DF', row: '#EEF8EF', onAccent: '#FFFFFF' },
+  /**
+   * Ricardo's proposal (2026-09-10): a true, bright blue as the functional accent. Blue already means
+   * "tap / selected" on both platforms, no food owns it, and it leaves colour to the plants, the
+   * category tints and gold rewards. Our own value rather than iOS #007AFF: hue 216°, white text on
+   * it passes AA (4.6:1), and it stays the same on every Android skin.
+   */
+  blue: { accent: '#1F6FEB', pressed: '#1558C4', soft: '#DCE8FC', row: '#EEF4FE', onAccent: '#FFFFFF' },
 } as const;
 
 export type AccentName = keyof typeof ACCENTS;
