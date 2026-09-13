@@ -14,44 +14,54 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+import { AvatarStack } from '@/components/MemberAvatar';
 import { motion, REWARD_BUMP_PEAK } from '@/constants/motion';
 import { CATS, colors, fonts, radii } from '@/constants/theme';
 import type { Plant } from '@/data/plants';
 import type { Locale } from '@/i18n';
-import { XP_PER_PLANT } from '@/state/store';
+import { XP_PER_PLANT, type Member } from '@/state/store';
 
 type Props = {
   plant: Plant;
-  checked: boolean;
+  /** Ids of the members who tasted it tonight. */
+  tasters: string[];
+  members: Member[];
+  defaultIds: string[];
   locale: Locale;
   catLabel: string;
-  onToggle: (slug: string) => void;
+  onTap: (slug: string) => void;
+  onHold: (slug: string) => void;
 };
 
-function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
+function PlantRowInner({ plant, tasters, members, defaultIds, locale, catLabel, onTap, onHold }: Props) {
   const cat = CATS[plant.category];
-  const progress = useSharedValue(checked ? 1 : 0);
+  const tasted = tasters.length > 0;
+  // The check circle fills when the whole default set has tasted it; a partial set shows as avatars.
+  const complete = defaultIds.length > 0 && defaultIds.every((id) => tasters.includes(id));
+  const who = members.filter((m) => tasters.includes(m.id));
+
+  const progress = useSharedValue(tasted ? 1 : 0);
+  const full = useSharedValue(complete ? 1 : 0);
   const wiggle = useSharedValue(0);
   const bump = useSharedValue(1);
   const press = useSharedValue(1);
   const burst = useSharedValue(0);
-  const mounted = useRef(false);
+  const prevCount = useRef(tasters.length);
 
   useEffect(() => {
-    // toggle class: the check state itself
-    progress.value = withSpring(checked ? 1 : 0, motion.toggle);
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
-    if (checked) {
+    // toggle class: the state itself
+    progress.value = withSpring(tasted ? 1 : 0, motion.toggle);
+    full.value = withSpring(complete ? 1 : 0, motion.toggle);
+    const added = tasters.length - prevCount.current;
+    prevCount.current = tasters.length;
+    if (added > 0) {
       // reward class: the clay render shakes and bumps, the XP chip floats up
       wiggle.value = withSequence(withTiming(-8, { duration: 70 }), withSpring(0, { damping: 7, stiffness: 260 }));
       bump.value = withSequence(withTiming(REWARD_BUMP_PEAK, { duration: 110, easing: Easing.out(Easing.quad) }), withSpring(1, motion.rewardSoft));
       burst.value = 0;
       burst.value = withTiming(1, { duration: 850, easing: Easing.out(Easing.cubic) });
     }
-  }, [checked, progress, wiggle, bump, burst]);
+  }, [tasted, complete, tasters.length, progress, full, wiggle, bump, burst]);
 
   const rowStyle = useAnimatedStyle(() => ({
     backgroundColor: interpolateColor(progress.value, [0, 1], [colors.bgSoft, colors.checkedRow]),
@@ -61,12 +71,12 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
     transform: [{ rotate: `${wiggle.value}deg` }, { scale: bump.value }],
   }));
   const circleStyle = useAnimatedStyle(() => ({
-    backgroundColor: interpolateColor(progress.value, [0, 1], [colors.surface, colors.accent]),
-    transform: [{ scale: interpolate(progress.value, [0, 0.5, 1], [1, REWARD_BUMP_PEAK, 1]) }],
+    backgroundColor: interpolateColor(full.value, [0, 1], [colors.surface, colors.accent]),
+    transform: [{ scale: interpolate(full.value, [0, 0.5, 1], [1, REWARD_BUMP_PEAK, 1]) }],
   }));
   const checkStyle = useAnimatedStyle(() => ({
-    opacity: progress.value,
-    transform: [{ scale: interpolate(progress.value, [0, 1], [0.3, 1]) }],
+    opacity: full.value,
+    transform: [{ scale: interpolate(full.value, [0, 1], [0.3, 1]) }],
   }));
   const burstStyle = useAnimatedStyle(() => ({
     opacity: burst.value === 0 ? 0 : 1 - burst.value,
@@ -78,11 +88,16 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
       onPressIn={() => (press.value = withTiming(0.98, motion.pressIn))}
       onPressOut={() => (press.value = withSpring(1, motion.pressOut))}
       onPress={() => {
-        Haptics.impactAsync(checked ? Haptics.ImpactFeedbackStyle.Light : Haptics.ImpactFeedbackStyle.Medium);
-        onToggle(plant.slug);
+        Haptics.impactAsync(complete ? Haptics.ImpactFeedbackStyle.Light : Haptics.ImpactFeedbackStyle.Medium);
+        onTap(plant.slug);
       }}
+      onLongPress={() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+        onHold(plant.slug);
+      }}
+      delayLongPress={320}
       accessibilityRole="checkbox"
-      accessibilityState={{ checked }}
+      accessibilityState={{ checked: complete ? true : tasted ? 'mixed' : false }}
       accessibilityLabel={plant.name[locale]}>
       <Animated.View style={[styles.row, rowStyle]}>
         <View style={[styles.tile, { backgroundColor: cat.bg }]}>
@@ -94,9 +109,13 @@ function PlantRowInner({ plant, checked, locale, catLabel, onToggle }: Props) {
           <Text style={styles.name} numberOfLines={1}>
             {plant.name[locale]}
           </Text>
-          <Text style={[styles.cat, { color: cat.fg }]} numberOfLines={1}>
-            {catLabel}
-          </Text>
+          {who.length > 0 && members.length > 1 ? (
+            <AvatarStack members={who} size={22} ring={colors.checkedRow} />
+          ) : (
+            <Text style={[styles.cat, { color: cat.fg }]} numberOfLines={1}>
+              {catLabel}
+            </Text>
+          )}
         </View>
         <View style={styles.checkWrap}>
           <Animated.View style={[styles.burst, burstStyle]} pointerEvents="none">
@@ -124,14 +143,9 @@ const styles = StyleSheet.create({
     height: 84,
     overflow: 'hidden',
   },
-  tile: {
-    width: 84,
-    height: 84,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  tile: { width: 84, height: 84, alignItems: 'center', justifyContent: 'center' },
   image: { width: 58, height: 58 },
-  text: { flex: 1, paddingHorizontal: 16, gap: 2 },
+  text: { flex: 1, paddingHorizontal: 16, gap: 4, justifyContent: 'center' },
   name: { fontFamily: fonts.semibold, fontSize: 17, lineHeight: 22, color: colors.ink },
   cat: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },
   checkWrap: { width: 64, height: 84, alignItems: 'center', justifyContent: 'center' },

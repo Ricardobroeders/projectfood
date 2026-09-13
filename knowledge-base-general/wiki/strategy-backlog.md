@@ -22,13 +22,13 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - Add topics freely; remove none. Date every status change.
 
 ## Next to pick up
-_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-10._
+_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-13._
 
 **Ricardo's decisions**
 1. Accent on device: true blue or teal (row 2). Then Claude binds the app theme to Figma variables.
 2. Achievements: XP keep or drop (your plane notes on a gold economy re-open this), where the collection lives in navigation, a "refused" tap at logging (row 5).
 3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]).
-4. Accounts: `npx eas-cli login` in `projectfood-mobile`; Apple Developer enrolment (Individual). Google Play done 2026-09-10.
+4. Accounts: Apple Developer enrolment (Individual). EAS login done and Google Play approved (2026-09-13 / 2026-09-10).
 5. Five parent conversations (Linear PF-55).
 
 **Claude's next build steps (after the above)**

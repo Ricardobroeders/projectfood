@@ -1,10 +1,11 @@
 import { Image } from 'expo-image';
-import { Link } from 'expo-router';
+import { Link, Redirect } from 'expo-router';
 import { Plus, Star } from 'lucide-react-native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AnimatedNumber } from '@/components/AnimatedNumber';
+import { MemberAvatar } from '@/components/MemberAvatar';
 import { StampShelf } from '@/components/StampShelf';
 import { CATS, colors, fonts, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
@@ -12,8 +13,11 @@ import { useStore } from '@/state/store';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
-  const { checked, xp, t } = useStore();
+  const { checked, members, tastes, xp, t } = useStore();
   const recent = checked.slice(-4).reverse().map((s) => PLANT_BY_SLUG[s]);
+  // Entry screen: a family app starts by asking who is at the table.
+  if (members.length === 0) return <Redirect href="/family" />;
+  const countFor = (id: string) => Object.values(tastes).filter((ids) => ids.includes(id)).length;
 
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 8 }]}>
@@ -33,6 +37,16 @@ export default function HomeScreen() {
           <Text style={styles.heroDenominator}> / 30</Text>
         </Text>
         <Text style={styles.heroLabel}>{t.homeProgress}</Text>
+        {members.length > 1 ? (
+          <View style={styles.members}>
+            {members.map((m) => (
+              <View key={m.id} style={styles.member}>
+                <MemberAvatar member={m} size={28} />
+                <Text style={styles.memberCount}>{countFor(m.id)}</Text>
+              </View>
+            ))}
+          </View>
+        ) : null}
         <View style={styles.recent}>
           {recent.map((p) => (
             <View key={p.slug} style={[styles.recentTile, { backgroundColor: CATS[p.category].bg }]}>
@@ -66,6 +80,9 @@ const styles = StyleSheet.create({
   heroNumber: { fontFamily: fonts.extrabold, fontSize: 56, lineHeight: 62, color: colors.ink, letterSpacing: -1.5 },
   heroDenominator: { fontFamily: fonts.semibold, fontSize: 22, color: colors.ink3, letterSpacing: 0 },
   heroLabel: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.ink2 },
+  members: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 8 },
+  member: { flexDirection: 'row', alignItems: 'center', gap: 6, height: 36, paddingLeft: 4, paddingRight: 12, borderRadius: radii.sm, backgroundColor: colors.surface },
+  memberCount: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },
   recent: { flexDirection: 'row', gap: 8, marginTop: 12, minHeight: 52 },
   recentTile: { width: 52, height: 52, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
   recentImage: { width: 36, height: 36 },

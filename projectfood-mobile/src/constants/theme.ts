@@ -106,4 +106,19 @@ export const CATS: Record<Category, { fg: string; bg: string }> = {
   ferment: { fg: '#6B7A87', bg: '#DFE3E8' },
 };
 
+/**
+ * Family member colours (POC, 2026-09-13): one per member, chosen at add time. Playful, saturated,
+ * distinct from the category tints; `fg` is the initial's colour on top of `bg`.
+ */
+export const MEMBER_COLORS: { bg: string; fg: string }[] = [
+  { bg: '#C62A85', fg: '#FFFFFF' },
+  { bg: '#ED6825', fg: '#FFFFFF' },
+  { bg: '#1AD594', fg: '#1F1B16' },
+  { bg: '#0DABE0', fg: '#FFFFFF' },
+  { bg: '#EDBD0F', fg: '#1F1B16' },
+  { bg: '#00880D', fg: '#FFFFFF' },
+  { bg: '#F12130', fg: '#FFFFFF' },
+  { bg: '#007C9A', fg: '#FFFFFF' },
+];
+
 export const CAT_ORDER: Category[] = ['vegetable', 'fruit', 'herb', 'nut_seed', 'legume', 'whole_grain', 'ferment'];
