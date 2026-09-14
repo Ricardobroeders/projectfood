@@ -1,9 +1,10 @@
 import { createContext, useContext, useMemo, useReducer, type PropsWithChildren } from 'react';
 
-import { STRINGS, type AchievementId, type Locale, type Strings } from '@/i18n';
+import { ACHIEVEMENTS, computeProgress, targetOf, type AchievementId, type Progress, type ProgressCtx } from '@/data/achievements';
+import { PLANT_BY_SLUG } from '@/data/plants';
+import { STRINGS, type Locale, type Strings } from '@/i18n';
 
 export const XP_PER_PLANT = 10;
-export const XP_ACHIEVEMENT = 50;
 
 export type MemberKind = 'kid' | 'adult';
 export type Member = { id: string; name: string; colorIndex: number; kind: MemberKind };
@@ -25,6 +26,8 @@ type State = {
   /** Member picker sheet: closed (null), for the default set (slug null), or for one plant. */
   picker: { slug: string | null } | null;
   holdHintSeen: boolean;
+  /** Achievement detail sheet. */
+  achievement: AchievementId | null;
 };
 
 type Action =
@@ -41,6 +44,8 @@ type Action =
   | { type: 'showCard' }
   | { type: 'hideCard' }
   | { type: 'openCard' }
+  | { type: 'openAchievement'; id: AchievementId }
+  | { type: 'closeAchievement' }
   | { type: 'setLocale'; locale: Locale }
   | { type: 'reset' }
   | { type: 'clearFamily' };
@@ -58,7 +63,36 @@ const initial: State = {
   celebration: null,
   picker: null,
   holdHintSeen: false,
+  achievement: null,
 };
+
+function ctxOf(s: State): ProgressCtx {
+  return {
+    tasted: Object.keys(s.tastes).map((slug) => PLANT_BY_SLUG[slug]).filter(Boolean),
+    tastes: s.tastes,
+    members: s.members,
+    cardOpened: s.cardOpened,
+  };
+}
+
+/**
+ * Unlock every achievement whose progress reached its target. First bites also opens the
+ * celebration sheet and offers the fun-fact card of the plant that triggered it.
+ */
+function settle(s: State, slug: string | null): State {
+  const ctx = ctxOf(s);
+  let { xp, unlocked, card, celebration } = s;
+  for (const a of ACHIEVEMENTS) {
+    if (unlocked.includes(a.id) || a.progress(ctx) < targetOf(a, ctx)) continue;
+    unlocked = [...unlocked, a.id];
+    xp += a.xp;
+    if (a.id === 'first_bites') {
+      card = slug ?? ctx.tasted[ctx.tasted.length - 1]?.slug ?? null;
+      celebration = 'first_bites';
+    }
+  }
+  return unlocked === s.unlocked ? s : { ...s, xp, unlocked, card, celebration };
+}
 
 /** Write the tasters of one plant; XP moves per person (Ricardo's "gold per person" note). */
 function applyTasters(s: State, slug: string, ids: string[]): State {
@@ -66,18 +100,8 @@ function applyTasters(s: State, slug: string, ids: string[]): State {
   const tastes = { ...s.tastes };
   if (ids.length) tastes[slug] = ids;
   else delete tastes[slug];
-  let xp = Math.max(0, s.xp + (ids.length - before.length) * XP_PER_PLANT);
-  let unlocked = s.unlocked;
-  let card = s.card;
-  let celebration = s.celebration;
-  const distinct = Object.keys(tastes).length;
-  if (ids.length > before.length && distinct >= 3 && !unlocked.includes('first_bites')) {
-    unlocked = [...unlocked, 'first_bites' as const];
-    xp += XP_ACHIEVEMENT;
-    card = slug;
-    celebration = 'first_bites';
-  }
-  return { ...s, tastes, xp, unlocked, card, celebration };
+  const xp = Math.max(0, s.xp + (ids.length - before.length) * XP_PER_PLANT);
+  return settle({ ...s, tastes, xp }, ids.length > before.length ? slug : null);
 }
 
 function reducer(s: State, a: Action): State {
@@ -126,11 +150,12 @@ function reducer(s: State, a: Action): State {
       return { ...s, celebration: null, cardVisible: true };
     case 'hideCard':
       return { ...s, cardVisible: false };
-    case 'openCard': {
-      if (s.cardOpened) return s;
-      const unlocked: AchievementId[] = s.unlocked.includes('curious') ? s.unlocked : [...s.unlocked, 'curious' as const];
-      return { ...s, cardOpened: true, unlocked, xp: s.xp + XP_ACHIEVEMENT };
-    }
+    case 'openCard':
+      return s.cardOpened ? s : settle({ ...s, cardOpened: true }, null);
+    case 'openAchievement':
+      return { ...s, achievement: a.id };
+    case 'closeAchievement':
+      return { ...s, achievement: null };
     case 'setLocale':
       return { ...s, locale: a.locale };
     case 'reset':
@@ -144,6 +169,8 @@ type Store = State & {
   t: Strings;
   /** Slugs with at least one taster tonight, in log order. */
   checked: string[];
+  /** Current / target per achievement, derived from tonight's log. */
+  progress: Progress;
   dispatch: React.Dispatch<Action>;
 };
 
@@ -152,7 +179,7 @@ const Ctx = createContext<Store | null>(null);
 export function StoreProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useReducer(reducer, initial);
   const value = useMemo<Store>(
-    () => ({ ...state, t: STRINGS[state.locale], checked: Object.keys(state.tastes), dispatch }),
+    () => ({ ...state, t: STRINGS[state.locale], checked: Object.keys(state.tastes), progress: computeProgress(ctxOf(state)), dispatch }),
     [state],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

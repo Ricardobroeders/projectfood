@@ -1,25 +1,26 @@
-import { BookOpen, LayoutGrid, Lock, type LucideIcon, Smile, Sun, Zap } from 'lucide-react-native';
+import * as Haptics from 'expo-haptics';
+import { Lock } from 'lucide-react-native';
 import { useEffect, useRef } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 
+import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
 import { motion, REWARD_POP_FROM } from '@/constants/motion';
 import { colors, fonts, iconFor } from '@/constants/theme';
-import type { AchievementId } from '@/i18n';
+import { ACHIEVEMENTS, type Achievement } from '@/data/achievements';
 import { useStore } from '@/state/store';
 
-export const STAMP_META: Record<AchievementId, { color: string; icon: LucideIcon }> = {
-  first_bites: { color: colors.accent, icon: Smile },
-  curious: { color: '#6A4880', icon: BookOpen },
-  rainbow: { color: '#C2533D', icon: Sun },
-  streak_7: { color: '#3C6A60', icon: Zap },
-  album: { color: '#4F7A3D', icon: LayoutGrid },
+type ShelfStampProps = {
+  achievement: Achievement;
+  unlocked: boolean;
+  current: number;
+  target: number;
+  label: string;
+  onPress: () => void;
 };
 
-const ORDER: AchievementId[] = ['first_bites', 'curious', 'rainbow', 'streak_7', 'album'];
-
-function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: boolean; label: string }) {
+function ShelfStamp({ achievement, unlocked, current, target, label, onPress }: ShelfStampProps) {
   const scale = useSharedValue(1);
   const rotate = useSharedValue(0);
   const wasUnlocked = useRef(unlocked);
@@ -37,28 +38,48 @@ function ShelfStamp({ id, unlocked, label }: { id: AchievementId; unlocked: bool
     transform: [{ scale: scale.value }, { rotate: `${rotate.value}deg` }],
   }));
 
-  const meta = STAMP_META[id];
-  const Icon = unlocked ? meta.icon : Lock;
+  const Icon = unlocked ? achievement.icon : Lock;
+  const shown = Math.min(current, target);
   return (
-    <View style={styles.item}>
+    <Pressable
+      style={({ pressed }) => [styles.item, pressed && { opacity: 0.7 }]}
+      onPress={() => {
+        Haptics.selectionAsync();
+        onPress();
+      }}
+      accessibilityRole="button"
+      accessibilityLabel={`${label}, ${shown} / ${target}`}>
       <Animated.View style={style}>
-        <Stamp size={64} color={meta.color} locked={!unlocked}>
-          <Icon size={iconFor(64)} color={unlocked ? '#FFFFFF' : colors.lockedInk} />
+        <Stamp size={64} color={achievement.color} locked={!unlocked}>
+          <Icon size={iconFor(64)} color={unlocked ? (achievement.fg ?? '#FFFFFF') : colors.lockedInk} />
         </Stamp>
       </Animated.View>
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
         {label}
       </Text>
-    </View>
+      {/* Ricardo's ask (2026-09-14): a green bar under every achievement with "3/5" so the goal is visible. */}
+      <ProgressBar value={current} max={target} height={4} style={styles.bar} />
+      <Text style={[styles.count, unlocked && { color: colors.success }]}>
+        {shown}/{target}
+      </Text>
+    </Pressable>
   );
 }
 
 export function StampShelf() {
-  const { unlocked, t } = useStore();
+  const { unlocked, progress, t, dispatch } = useStore();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.shelf}>
-      {ORDER.map((id) => (
-        <ShelfStamp key={id} id={id} unlocked={unlocked.includes(id)} label={t.stamps[id]} />
+      {ACHIEVEMENTS.map((a) => (
+        <ShelfStamp
+          key={a.id}
+          achievement={a}
+          unlocked={unlocked.includes(a.id)}
+          current={progress[a.id].current}
+          target={progress[a.id].target}
+          label={t.stamps[a.id].title}
+          onPress={() => dispatch({ type: 'openAchievement', id: a.id })}
+        />
       ))}
     </ScrollView>
   );
@@ -66,6 +87,8 @@ export function StampShelf() {
 
 const styles = StyleSheet.create({
   shelf: { paddingHorizontal: 20, gap: 14, paddingVertical: 4 },
-  item: { width: 72, alignItems: 'center', gap: 6 },
-  label: { fontFamily: fonts.medium, fontSize: 11, color: colors.ink2, textAlign: 'center' },
+  item: { width: 76, alignItems: 'center', gap: 6 },
+  label: { fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink2, textAlign: 'center' },
+  bar: { width: 56, alignSelf: 'center' },
+  count: { fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink3, marginTop: -2 },
 });

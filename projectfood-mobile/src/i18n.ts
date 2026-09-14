@@ -1,7 +1,9 @@
 import type { Category } from '@/constants/theme';
+import type { AchievementId } from '@/data/achievements';
 
 export type Locale = 'en' | 'nl';
-export type AchievementId = 'first_bites' | 'curious' | 'rainbow' | 'streak_7' | 'album';
+
+type Stamp = { title: string; body: string };
 
 const en = {
   tonight: "Tonight's dinner",
@@ -13,6 +15,7 @@ const en = {
   log: 'Log',
   cards: 'Cards',
   family: 'Family',
+  account: 'Account',
   reset: 'Reset',
   firstBitesTitle: 'First bites!',
   firstBitesBody: 'Three plants tasted tonight. That earns the first stamp.',
@@ -48,13 +51,35 @@ const en = {
   holdHint: 'Hold a plant to choose who tasted it',
   logEmpty: 'Add your family first, then log who tasted what.',
   goFamily: 'Add family',
+  language: 'Language',
+  english: 'English',
+  dutch: 'Nederlands',
+  prototype: 'Prototype',
+  pocNote: 'Test controls. They leave the app before launch.',
+  resetTonight: "Reset tonight's log",
+  clearFamily: 'Remove the family',
+  progressLabel: 'Progress',
+  unlocked: 'Unlocked',
+  xpReward: '+{n} XP',
+  ofUnlocked: '{n} of {m} unlocked',
   stamps: {
-    first_bites: 'First bites',
-    curious: 'Curious',
-    rainbow: 'Rainbow',
-    streak_7: '7 dinners',
-    album: 'Tomato family',
-  } satisfies Record<AchievementId, string>,
+    first_bites: { title: 'First bites', body: 'Taste {n} plants in one dinner' },
+    curious: { title: 'Curious', body: 'Flip a fun-fact card' },
+    full_table: { title: 'Full table', body: 'Everyone at the table tastes a plant' },
+    rainbow: { title: 'Rainbow', body: 'Taste {n} different colours in one dinner' },
+    ten_tonight: { title: 'Big dinner', body: 'Taste {n} plants in one dinner' },
+    veg_5: { title: 'Green machine', body: 'Taste {n} vegetables' },
+    fruit_5: { title: 'Fruit basket', body: 'Taste {n} fruits' },
+    herb_3: { title: 'Herb garden', body: 'Taste {n} herbs & spices' },
+    nut_3: { title: 'Nutcracker', body: 'Taste {n} nuts & seeds' },
+    legume_3: { title: 'Bean counter', body: 'Taste {n} legumes' },
+    grain_3: { title: 'Grain train', body: 'Taste {n} whole grains' },
+    ferment_2: { title: 'Bubbly', body: 'Taste {n} ferments' },
+    superfood_5: { title: 'Superfood', body: 'Taste {n} superfoods' },
+    album: { title: 'Tomato family', body: 'Taste all {n} plants of the nightshade family' },
+    streak_7: { title: '7 dinners', body: 'Log {n} dinners in a row' },
+    thirty: { title: 'Thirty', body: 'Taste {n} different plants' },
+  } satisfies Record<AchievementId, Stamp>,
   cats: {
     fruit: 'Fruit',
     vegetable: 'Vegetable',
@@ -63,6 +88,16 @@ const en = {
     legume: 'Legume',
     whole_grain: 'Whole grain',
     ferment: 'Ferment',
+  } satisfies Record<Category, string>,
+  /** Tab labels on the log screen (Figma uses plurals there). */
+  catsPlural: {
+    fruit: 'Fruits',
+    vegetable: 'Vegetables',
+    herb: 'Herbs & spices',
+    nut_seed: 'Nuts & seeds',
+    legume: 'Legumes',
+    whole_grain: 'Whole grains',
+    ferment: 'Ferments',
   } satisfies Record<Category, string>,
 };
 
@@ -78,6 +113,7 @@ const nl: Strings = {
   log: 'Loggen',
   cards: 'Kaarten',
   family: 'Gezin',
+  account: 'Account',
   reset: 'Reset',
   firstBitesTitle: 'Eerste hapjes!',
   firstBitesBody: 'Drie planten geproefd vanavond. Dat is de eerste stempel.',
@@ -113,12 +149,34 @@ const nl: Strings = {
   holdHint: 'Houd een plant vast om te kiezen wie heeft geproefd',
   logEmpty: 'Voeg eerst je gezin toe, log daarna wie wat heeft geproefd.',
   goFamily: 'Gezin toevoegen',
+  language: 'Taal',
+  english: 'English',
+  dutch: 'Nederlands',
+  prototype: 'Prototype',
+  pocNote: 'Testknoppen. Ze verdwijnen uit de app voor de lancering.',
+  resetTonight: 'Log van vanavond wissen',
+  clearFamily: 'Gezin verwijderen',
+  progressLabel: 'Voortgang',
+  unlocked: 'Behaald',
+  xpReward: '+{n} XP',
+  ofUnlocked: '{n} van {m} behaald',
   stamps: {
-    first_bites: 'Eerste hapjes',
-    curious: 'Nieuwsgierig',
-    rainbow: 'Regenboog',
-    streak_7: '7 avondmalen',
-    album: 'Tomatenfamilie',
+    first_bites: { title: 'Eerste hapjes', body: 'Proef {n} planten bij één avondeten' },
+    curious: { title: 'Nieuwsgierig', body: 'Draai een weetjeskaart om' },
+    full_table: { title: 'Volle tafel', body: 'Iedereen aan tafel proeft een plant' },
+    rainbow: { title: 'Regenboog', body: 'Proef {n} verschillende kleuren bij één avondeten' },
+    ten_tonight: { title: 'Groot diner', body: 'Proef {n} planten bij één avondeten' },
+    veg_5: { title: 'Groentekanjer', body: 'Proef {n} groenten' },
+    fruit_5: { title: 'Fruitmand', body: 'Proef {n} soorten fruit' },
+    herb_3: { title: 'Kruidentuin', body: 'Proef {n} kruiden & specerijen' },
+    nut_3: { title: 'Notenkraker', body: 'Proef {n} noten & zaden' },
+    legume_3: { title: 'Bonenteller', body: 'Proef {n} peulvruchten' },
+    grain_3: { title: 'Graantrein', body: 'Proef {n} volkoren granen' },
+    ferment_2: { title: 'Bubbels', body: 'Proef {n} gefermenteerde dingen' },
+    superfood_5: { title: 'Superfood', body: 'Proef {n} superfoods' },
+    album: { title: 'Tomatenfamilie', body: 'Proef alle {n} planten van de nachtschadefamilie' },
+    streak_7: { title: '7 avondmalen', body: 'Log {n} avondmalen achter elkaar' },
+    thirty: { title: 'Dertig', body: 'Proef {n} verschillende planten' },
   },
   cats: {
     fruit: 'Fruit',
@@ -129,6 +187,20 @@ const nl: Strings = {
     whole_grain: 'Volkoren',
     ferment: 'Gefermenteerd',
   },
+  catsPlural: {
+    fruit: 'Fruit',
+    vegetable: 'Groenten',
+    herb: 'Kruiden',
+    nut_seed: 'Noten & zaden',
+    legume: 'Peulvruchten',
+    whole_grain: 'Volkoren',
+    ferment: 'Gefermenteerd',
+  },
 };
 
 export const STRINGS: Record<Locale, Strings> = { en, nl };
+
+/** Fill `{n}` / `{m}` placeholders in a string. */
+export function fmt(s: string, values: Record<string, number | string>): string {
+  return s.replace(/\{(\w+)\}/g, (_, k: string) => (k in values ? String(values[k]) : `{${k}}`));
+}

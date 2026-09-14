@@ -56,6 +56,9 @@ export const colors = {
   checkedRow: A.row as string,
   /** Reward metal for card levels; stays gold regardless of the brand accent. */
   gold: '#F5C518',
+  /** Progress toward a goal and its completion (Ricardo: "a green bar", 2026-09-14). Never a control colour. */
+  success: '#00880D',
+  successSoft: '#DDF1DF',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;

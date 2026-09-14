@@ -10,6 +10,10 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
+import { AchievementSheet } from '@/components/AchievementSheet';
+import { CelebrationSheet } from '@/components/CelebrationSheet';
+import { FunFactCard } from '@/components/FunFactCard';
+import { MemberPickerSheet } from '@/components/MemberPickerSheet';
 import { TabBar } from '@/components/TabBar';
 import { colors } from '@/constants/theme';
 import { StoreProvider } from '@/state/store';
@@ -40,7 +44,13 @@ export default function RootLayout() {
         <Tabs.Screen name="log" />
         <Tabs.Screen name="cards" />
         <Tabs.Screen name="family" />
+        <Tabs.Screen name="account" />
       </Tabs>
+      {/* Sheets and cards mount once here so no tab renders a second copy of the same modal. */}
+      <MemberPickerSheet />
+      <CelebrationSheet />
+      <FunFactCard />
+      <AchievementSheet />
     </StoreProvider>
   );
 }

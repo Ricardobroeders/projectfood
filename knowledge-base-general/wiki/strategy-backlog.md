@@ -22,11 +22,11 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - Add topics freely; remove none. Date every status change.
 
 ## Next to pick up
-_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-13._
+_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-14._
 
 **Ricardo's decisions**
 1. Accent on device: true blue or teal (row 2). Then Claude binds the app theme to Figma variables.
-2. Achievements: XP keep or drop (your plane notes on a gold economy re-open this), where the collection lives in navigation, a "refused" tap at logging (row 5).
+2. Achievements: judge the POC shelf on device (16 goals, green progress bars with "3/5", detail sheet on tap; build of 2026-09-14), then XP keep or drop (your plane notes on a gold economy re-open this), where the collection lives in navigation, a "refused" tap at logging (row 5).
 3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]).
 4. Accounts: Apple Developer enrolment (Individual). EAS login done and Google Play approved (2026-09-13 / 2026-09-10).
 5. Five parent conversations (Linear PF-55).
@@ -62,7 +62,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Write the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ricardo decides XP, navigation home, "refused" tap; fold into PF-38 |
+| 5 | Achievements | drafted | Judge the 16-goal POC on device (2026-09-14); decide XP, navigation home, "refused" tap; fold into PF-38 |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -114,6 +114,10 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   _(status 2026-09-10)_
 
 ### 5. Achievements — drafted
+- **POC (2026-09-14):** 16 goals in `projectfood-mobile/src/data/achievements.ts` (first bites, curious,
+  full table, rainbow, big dinner, one per category, superfood, tomato family, 7 dinners, thirty),
+  each a stamp with a green progress bar and "3/5" under it and a detail sheet on tap. Tonight-only
+  scope until the backend holds history.
 - **Have:** [[concept-achievement-system]] (three tiers, eight rules, ten starting stamps, link
   to the paid Sunday advice), POC stamps on device (PF-56).
 - **Open:** XP keep or drop (lean: drop); where the collection lives in navigation; a "refused"

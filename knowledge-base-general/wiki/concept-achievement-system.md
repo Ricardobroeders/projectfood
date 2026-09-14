@@ -118,6 +118,9 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).
+- POC 2026-09-14: 16 goals with progress bars and a detail sheet are in the app
+  (`projectfood-mobile/src/data/achievements.ts`). "7 dinners" and "Thirty" count tonight only
+  until the backend holds history; the shelf order is the intended difficulty ladder.
 
 ## Related pages
 - [[overview]] · [[concept-retention-loop]] · [[concept-brand-pillars]] ·

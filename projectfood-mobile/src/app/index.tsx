@@ -8,12 +8,14 @@ import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { StampShelf } from '@/components/StampShelf';
 import { CATS, colors, fonts, radii } from '@/constants/theme';
+import { ACHIEVEMENTS } from '@/data/achievements';
 import { PLANT_BY_SLUG } from '@/data/plants';
+import { fmt } from '@/i18n';
 import { useStore } from '@/state/store';
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
-  const { checked, members, tastes, xp, t } = useStore();
+  const { checked, members, tastes, xp, unlocked, t } = useStore();
   const recent = checked.slice(-4).reverse().map((s) => PLANT_BY_SLUG[s]);
   // Entry screen: a family app starts by asking who is at the table.
   if (members.length === 0) return <Redirect href="/family" />;
@@ -62,7 +64,10 @@ export default function HomeScreen() {
         </Link>
       </View>
 
-      <Text style={styles.section}>{t.achievements}</Text>
+      <View style={styles.sectionRow}>
+        <Text style={styles.section}>{t.achievements}</Text>
+        <Text style={styles.sectionMeta}>{fmt(t.ofUnlocked, { n: unlocked.length, m: ACHIEVEMENTS.length })}</Text>
+      </View>
       <StampShelf />
       <Text style={styles.footnote}>POC · Project Food</Text>
     </View>
@@ -88,6 +93,8 @@ const styles = StyleSheet.create({
   recentImage: { width: 36, height: 36 },
   cta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: colors.accent, borderRadius: radii.md, height: 54, marginTop: 16 },
   ctaText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.onAccent },
-  section: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink, paddingHorizontal: 20, marginBottom: 8 },
+  sectionRow: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', paddingHorizontal: 20, marginBottom: 8 },
+  section: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },
+  sectionMeta: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink3 },
   footnote: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center', marginTop: 'auto', marginBottom: 12 },
 });

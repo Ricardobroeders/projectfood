@@ -155,3 +155,11 @@ fun facts and borders at 5/50/100 tastings, a KPI list, invite-a-friend reward).
 in `raw/ricardo-brainstorm-2026-09-10-plane.md`; summarised under "Inputs waiting for a
 brainstorm" in [[strategy-backlog]] with links to rows 5, 9, 11 and 12; noted in
 [[concept-achievement-system]] open questions. No decisions taken.
+
+## [2026-09-14] build | Log tabs, 72-plant catalog, achievements POC with progress
+Ricardo's review of the family POC: category pills become the Figma underline tabs, the
+prototype chips (language, fun-fact card) leave the log screen for a new Account tab, the
+catalog grows from 24 to 72 plants (names from Supabase `plants` + `plant_translations`, kid
+facts written here), and achievements become a 16-goal shelf with a green progress bar and
+"3/5" under every stamp plus a detail sheet. Backlog row 5 and [[concept-achievement-system]]
+note the POC; the XP / navigation / "refused" decisions stay open.

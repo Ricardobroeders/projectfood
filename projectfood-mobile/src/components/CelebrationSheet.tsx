@@ -8,7 +8,7 @@ import { scheduleOnRN } from 'react-native-worklets';
 
 import { Stamp } from '@/components/Stamp';
 import { StampPress } from '@/components/StampPress';
-import { STAMP_META } from '@/components/StampShelf';
+import { ACHIEVEMENT_BY_ID } from '@/data/achievements';
 import { motion } from '@/constants/motion';
 import { CATS, colors, fonts, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
@@ -65,8 +65,8 @@ export function CelebrationSheet() {
         </Animated.View>
         <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
           <View style={styles.handle} />
-          <StampPress size={STAMP_SIZE} color={STAMP_META.first_bites.color} play={visible} onLanded={onLanded}>
-            <Stamp size={STAMP_SIZE} color={STAMP_META.first_bites.color}>
+          <StampPress size={STAMP_SIZE} color={ACHIEVEMENT_BY_ID.first_bites.color} play={visible} onLanded={onLanded}>
+            <Stamp size={STAMP_SIZE} color={ACHIEVEMENT_BY_ID.first_bites.color}>
               {plant ? <Image source={plant.image} style={styles.stampImage} contentFit="contain" /> : null}
             </Stamp>
           </StampPress>

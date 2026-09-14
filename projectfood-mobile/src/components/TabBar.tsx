@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { Circle, Home, Layers, type LucideIcon, Plus, Users } from 'lucide-react-native';
+import { Circle, CircleUserRound, Home, Layers, type LucideIcon, Plus, Users } from 'lucide-react-native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -21,13 +21,14 @@ const ICONS: Record<string, LucideIcon> = {
   log: Plus,
   cards: Layers,
   family: Users,
+  account: CircleUserRound,
 };
 
 /** Bottom nav ported from the PWA: white, hairline top edge, yellow active state. JS-only so it runs in Expo Go. */
 export function TabBar({ state, navigation }: TabBarProps) {
   const insets = useSafeAreaInsets();
   const { t } = useStore();
-  const labels: Record<string, string> = { index: t.home, log: t.log, cards: t.cards, family: t.family };
+  const labels: Record<string, string> = { index: t.home, log: t.log, cards: t.cards, family: t.family, account: t.account };
 
   return (
     <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 8) }]}>

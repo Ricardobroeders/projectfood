@@ -6,7 +6,7 @@ import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withDelay, withSpring } from 'react-native-reanimated';
 
 import { Stamp } from '@/components/Stamp';
-import { STAMP_META } from '@/components/StampShelf';
+import { ACHIEVEMENT_BY_ID } from '@/data/achievements';
 import { motion, REWARD_POP_FROM } from '@/constants/motion';
 import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
 import { PLANT_BY_SLUG } from '@/data/plants';
@@ -58,7 +58,7 @@ export function FunFactCard() {
   const plant = card ? PLANT_BY_SLUG[card] : null;
   if (!plant) return null;
   const cat = CATS[plant.category];
-  const CuriousIcon = STAMP_META.curious.icon;
+  const CuriousIcon = ACHIEVEMENT_BY_ID.curious.icon;
 
   const flip = () => {
     const toBack = rotation.value < 90;
@@ -90,7 +90,7 @@ export function FunFactCard() {
               <Text style={[styles.eyebrow, { color: cat.fg }]}>{t.didYouKnow.toUpperCase()}</Text>
               <Text style={styles.fact}>{plant.fact[locale]}</Text>
               <Animated.View style={[styles.badge, badgeStyle]}>
-                <Stamp size={44} color={STAMP_META.curious.color}>
+                <Stamp size={44} color={ACHIEVEMENT_BY_ID.curious.color}>
                   <CuriousIcon size={iconFor(44)} color="#FFFFFF" />
                 </Stamp>
                 <Text style={styles.badgeText}>{t.curiousUnlocked}</Text>
