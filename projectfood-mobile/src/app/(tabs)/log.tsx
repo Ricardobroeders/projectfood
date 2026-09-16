@@ -1,12 +1,14 @@
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { PlantRow } from '@/components/PlantRow';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
+import { motion } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useSession } from '@/features/auth/useSession';
 import { track } from '@/features/events/track';
@@ -19,6 +21,7 @@ import { supabase } from '@/features/supabase/client';
 import { useDefaultIds, useUi } from '@/state/ui';
 
 type Filter = 'all' | Category;
+const FILTER_ORDER: Filter[] = ['all', ...CAT_ORDER];
 const NONE: string[] = [];
 
 function useDebounced<T>(value: T, ms: number): T {
@@ -50,6 +53,8 @@ export default function LogScreen() {
   const settings = useSettings();
 
   const [filter, setFilter] = useState<Filter>('all');
+  // The tab indicator moves at once; the list follows in a deferred render so the tap never waits on it.
+  const listFilter = useDeferredValue(filter);
   const [query, setQuery] = useState('');
   const debounced = useDebounced(query, 300);
   const [submitted, setSubmitted] = useState<string | null>(null);
@@ -66,7 +71,24 @@ export default function LogScreen() {
   }, [tasteCounts]);
   const ordered = useMemo(() => [...catalog.plants].sort((a, b) => (frequency[b.id] ?? 0) - (frequency[a.id] ?? 0) || a.name.localeCompare(b.name)), [catalog.plants, frequency]);
   const searched = usePlantSearch(ordered, debounced);
-  const plants = useMemo(() => (filter === 'all' ? searched : searched.filter((p) => p.category === filter)), [searched, filter]);
+  const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
+
+  // swap class: the new list fades in and slides from the side the tab came from, starting at the top.
+  const listRef = useRef<FlatList<Plant>>(null);
+  const swapX = useSharedValue(0);
+  const swapA = useSharedValue(1);
+  const prevFilter = useRef<Filter>(listFilter);
+  useLayoutEffect(() => {
+    if (prevFilter.current === listFilter) return;
+    const dir = FILTER_ORDER.indexOf(listFilter) > FILTER_ORDER.indexOf(prevFilter.current) ? 1 : -1;
+    prevFilter.current = listFilter;
+    listRef.current?.scrollToOffset({ offset: 0, animated: false });
+    swapX.value = 16 * dir;
+    swapA.value = 0;
+    swapX.value = withTiming(0, motion.swap);
+    swapA.value = withTiming(1, motion.swap);
+  }, [listFilter, swapX, swapA]);
+  const swapStyle = useAnimatedStyle(() => ({ opacity: swapA.value, transform: [{ translateX: swapX.value }] }));
 
   const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
 
@@ -183,28 +205,31 @@ export default function LogScreen() {
         <Tabs tabs={tabs} value={filter} onChange={setFilter} />
       </View>
 
-      <FlatList
-        data={plants}
-        keyExtractor={(p) => p.id}
-        renderItem={renderItem}
-        extraData={renderItem}
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
-        initialNumToRender={12}
-        windowSize={7}
-        keyboardShouldPersistTaps="handled"
-        ListEmptyComponent={
-          debounced.trim() ? (
-            <View style={styles.missing}>
-              <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
-              <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
-              {!submitted ? <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} /> : null}
-            </View>
-          ) : (
-            <Text style={styles.prompt}>{t('log.searchPrompt')}</Text>
-          )
-        }
-      />
+      <Animated.View style={[styles.listWrap, swapStyle]}>
+        <FlatList
+          ref={listRef}
+          data={plants}
+          keyExtractor={(p) => p.id}
+          renderItem={renderItem}
+          extraData={renderItem}
+          contentContainerStyle={styles.list}
+          showsVerticalScrollIndicator={false}
+          initialNumToRender={12}
+          windowSize={7}
+          keyboardShouldPersistTaps="handled"
+          ListEmptyComponent={
+            debounced.trim() ? (
+              <View style={styles.missing}>
+                <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
+                <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
+                {!submitted ? <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} /> : null}
+              </View>
+            ) : (
+              <Text style={styles.prompt}>{t('log.searchPrompt')}</Text>
+            )
+          }
+        />
+      </Animated.View>
     </Screen>
   );
 }
@@ -222,6 +247,7 @@ const styles = StyleSheet.create({
   hint: { flexDirection: 'row', alignItems: 'center', gap: 8, marginHorizontal: 20, marginTop: 8, height: 36, paddingHorizontal: 12, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   hintText: { flex: 1, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   tabs: { marginTop: 8 },
+  listWrap: { flex: 1 },
   list: { paddingHorizontal: 20, paddingTop: 12, paddingBottom: 24, flexGrow: 1 },
   missing: { marginTop: 24, padding: 20, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 6 },
   missingTitle: { fontFamily: fonts.bold, fontSize: 16, lineHeight: 22, color: colors.ink },

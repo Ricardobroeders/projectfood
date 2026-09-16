@@ -103,16 +103,16 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
   const onboarded = !!hh.data?.household.onboarded_at;
 
   return (
-    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg } }}>
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg }, animation: 'ios_from_right' }}>
       <Stack.Protected guard={!signedIn}>
-        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
       </Stack.Protected>
       <Stack.Protected guard={signedIn && !onboarded}>
-        <Stack.Screen name="(onboarding)" />
+        <Stack.Screen name="(onboarding)" options={{ animation: 'fade' }} />
       </Stack.Protected>
       <Stack.Protected guard={signedIn && onboarded}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="plant/[id]" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="(tabs)" options={{ animation: 'fade' }} />
+        <Stack.Screen name="plant/[id]" options={{ presentation: 'modal', animation: 'slide_from_bottom' }} />
         <Stack.Screen name="unlocks/[category]" />
         <Stack.Screen name="account/members" />
         <Stack.Screen name="account/household" />

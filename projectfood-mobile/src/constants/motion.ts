@@ -11,6 +11,8 @@ import { Easing, type WithSpringConfig, type WithTimingConfig } from 'react-nati
  * - press:   touch feedback. 80 ms in, spring back.
  * - flip:    content swap. Smooth, clamped so faces never over-rotate.
  * - number:  counters rolling to a value. Ease-out timing.
+ * - swap:    content replaced in place (a list under a filter tab). Short fade plus a slide
+ *            in the direction of travel. Ease-out, never overshoot.
  *
  * Amplitude rule (device test round 2): a spring's overshoot grows with the distance it travels,
  * so reward pops start close to their target (0.7 → 1, not 0.4 → 1) and scale peaks stay ≤ 1.12.
@@ -28,6 +30,7 @@ export const motion = {
   pressOut: { damping: 12, stiffness: 300 } satisfies WithSpringConfig,
   flip: { damping: 18, stiffness: 120, overshootClamping: true } satisfies WithSpringConfig,
   number: { duration: 650, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
+  swap: { duration: 200, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
 } as const;
 
 /** Where reward pops start from, so the settle stays inside the element's box. */
