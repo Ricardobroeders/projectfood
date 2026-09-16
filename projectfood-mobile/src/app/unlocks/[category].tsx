@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -14,6 +14,7 @@ const LEVEL_BG = { bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' } as co
 /** All-time list for one category: tried (with taste count and card level) and not yet tried. */
 export default function CategoryScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const { category, member } = useLocalSearchParams<{ category: Category; member?: string }>();
   const { catalog, isLoading } = usePlantCatalog();
   const { members, ctx, ready } = useAchievements();
@@ -40,35 +41,31 @@ export default function CategoryScreen() {
           {tried.map(({ p, n }) => {
             const level = n >= 10 ? 'gold' : n >= 5 ? 'silver' : 'bronze';
             return (
-              <Link key={p.id} href={{ pathname: '/plant/[id]', params: { id: p.id } }} asChild>
-                <Pressable style={({ pressed }) => [styles.row, pressed && { opacity: 0.8 }]}>
-                  <View style={[styles.tile, { backgroundColor: cat.bg }]}>
-                    <PlantImage plant={p} size={40} />
-                  </View>
-                  <Text style={styles.name} numberOfLines={1}>
-                    {p.name}
-                  </Text>
-                  <View style={[styles.badge, { backgroundColor: LEVEL_BG[level] }]}>
-                    <Text style={styles.badgeText}>{n === 1 ? t('unlocks.tastesOne') : t('unlocks.tastes', { n })}</Text>
-                  </View>
-                </Pressable>
-              </Link>
+              <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.row, pressed && { opacity: 0.8 }]}>
+                <View style={[styles.tile, { backgroundColor: cat.bg }]}>
+                  <PlantImage plant={p} size={40} />
+                </View>
+                <Text style={styles.name} numberOfLines={1}>
+                  {p.name}
+                </Text>
+                <View style={[styles.badge, { backgroundColor: LEVEL_BG[level] }]}>
+                  <Text style={styles.badgeText}>{n === 1 ? t('unlocks.tastesOne') : t('unlocks.tastes', { n })}</Text>
+                </View>
+              </Pressable>
             );
           })}
         </View>
         <SectionTitle meta={`${untried.length}`}>{t('unlocks.notYetTried')}</SectionTitle>
         <View style={styles.list}>
           {untried.map((p) => (
-            <Link key={p.id} href={{ pathname: '/plant/[id]', params: { id: p.id } }} asChild>
-              <Pressable style={({ pressed }) => [styles.row, styles.rowMuted, pressed && { opacity: 0.8 }]}>
-                <View style={[styles.tile, { backgroundColor: colors.surface }]}>
-                  <PlantImage plant={p} size={40} style={{ opacity: 0.55 }} />
-                </View>
-                <Text style={[styles.name, { color: colors.ink2 }]} numberOfLines={1}>
-                  {p.name}
-                </Text>
-              </Pressable>
-            </Link>
+            <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.row, styles.rowMuted, pressed && { opacity: 0.8 }]}>
+              <View style={[styles.tile, { backgroundColor: colors.surface }]}>
+                <PlantImage plant={p} size={40} style={{ opacity: 0.55 }} />
+              </View>
+              <Text style={[styles.name, { color: colors.ink2 }]} numberOfLines={1}>
+                {p.name}
+              </Text>
+            </Pressable>
           ))}
         </View>
       </ScrollView>

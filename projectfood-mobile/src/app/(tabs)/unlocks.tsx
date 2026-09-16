@@ -1,4 +1,4 @@
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { ChevronRight } from 'lucide-react-native';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import { useUi } from '@/state/ui';
 /** Stats, reborn as Unlocks: stamps, card levels and the foods tried, per kid (never ranked) with the family's shared stamps. */
 export default function UnlocksScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const { members, progress, unlockedKeys, ready, ctx } = useAchievements();
   const { catalog } = usePlantCatalog();
   const openAchievement = useUi((s) => s.openAchievement);
@@ -79,20 +80,18 @@ export default function UnlocksScreen() {
         <SectionTitle meta={`${triedTotal} ${t('unlocks.ofTotal', { total: catalog.plants.length })}`}>{t('unlocks.foodsTried')}</SectionTitle>
         <View style={styles.cats}>
           {perCat.map(({ c, tried, total }) => (
-            <Link key={c} href={{ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } }} asChild>
-              <Pressable style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
-                <View style={{ flex: 1, gap: 6 }}>
-                  <View style={styles.catHead}>
-                    <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
-                    <Text style={[styles.catCount, { color: CATS[c].fg }]}>
-                      {tried}/{total}
-                    </Text>
-                  </View>
-                  <ProgressBar value={tried} max={total} height={4} color={CATS[c].fg} />
+            <Pressable key={c} onPress={() => router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } })} style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
+              <View style={{ flex: 1, gap: 6 }}>
+                <View style={styles.catHead}>
+                  <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
+                  <Text style={[styles.catCount, { color: CATS[c].fg }]}>
+                    {tried}/{total}
+                  </Text>
                 </View>
-                <ChevronRight size={18} color={CATS[c].fg} />
-              </Pressable>
-            </Link>
+                <ProgressBar value={tried} max={total} height={4} color={CATS[c].fg} />
+              </View>
+              <ChevronRight size={18} color={CATS[c].fg} />
+            </Pressable>
           ))}
         </View>
       </ScrollView>

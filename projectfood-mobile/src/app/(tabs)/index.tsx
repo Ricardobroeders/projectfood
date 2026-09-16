@@ -1,4 +1,4 @@
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { Flame, Plus, Snowflake } from 'lucide-react-native';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -136,14 +136,12 @@ export default function HomeScreen() {
             <SectionTitle>{t('home.today')}</SectionTitle>
             <View style={styles.chips}>
               {todayPlants.map((p) => (
-                <Link key={p.id} href={{ pathname: '/plant/[id]', params: { id: p.id } }} asChild>
-                  <Pressable style={[styles.chip, { backgroundColor: CATS[p.category].bg }]}>
-                    <PlantImage plant={p} size={22} />
-                    <Text style={styles.chipText} numberOfLines={1}>
-                      {p.name}
-                    </Text>
-                  </Pressable>
-                </Link>
+                <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.chip, { backgroundColor: CATS[p.category].bg }, pressed && { opacity: 0.8 }]}>
+                  <PlantImage plant={p} size={22} />
+                  <Text style={styles.chipText} numberOfLines={1}>
+                    {p.name}
+                  </Text>
+                </Pressable>
               ))}
             </View>
           </>
@@ -165,13 +163,11 @@ export default function HomeScreen() {
                 </View>
                 <View style={styles.pills}>
                   {plants.map((p) => (
-                    <Link key={p.id} href={{ pathname: '/plant/[id]', params: { id: p.id } }} asChild>
-                      <Pressable style={styles.pill}>
-                        <Text style={styles.pillText} numberOfLines={1}>
-                          {p.name}
-                        </Text>
-                      </Pressable>
-                    </Link>
+                    <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.pill, pressed && { opacity: 0.8 }]}>
+                      <Text style={styles.pillText} numberOfLines={1}>
+                        {p.name}
+                      </Text>
+                    </Pressable>
                   ))}
                 </View>
               </View>
