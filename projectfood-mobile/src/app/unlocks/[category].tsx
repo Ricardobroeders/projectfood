@@ -114,7 +114,7 @@ export default function CategoryScreen() {
           windowSize={5}
         />
       ) : (
-        <SkeletonRows count={8} height={64} tile={64} style={styles.skeleton} />
+        <SkeletonRows count={8} height={64} tile={64} header style={styles.skeleton} />
       )}
     </Screen>
   );
@@ -152,7 +152,7 @@ const UntriedRow = memo(function UntriedRow({ plant, onPress }: { plant: Plant; 
 
 const styles = StyleSheet.create({
   content: { paddingBottom: 32 },
-  skeleton: { paddingHorizontal: 20, paddingTop: 44 },
+  skeleton: { paddingHorizontal: 20 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, height: 64, marginHorizontal: 20, marginBottom: 8, paddingRight: 12, borderRadius: radii.md, backgroundColor: colors.bgSoft, overflow: 'hidden' },
   rowMuted: { backgroundColor: colors.bg, borderWidth: 1, borderColor: colors.hairline },
   tile: { width: 64, height: 64, alignItems: 'center', justifyContent: 'center' },

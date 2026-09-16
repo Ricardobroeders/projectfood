@@ -2,14 +2,14 @@ import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { PlantRow } from '@/components/PlantRow';
 import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
-import { motion, revealFor } from '@/constants/motion';
+import { revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useSession } from '@/features/auth/useSession';
 import { perfEnd, perfStart } from '@/features/dev/perf';
@@ -23,7 +23,6 @@ import { supabase } from '@/features/supabase/client';
 import { useDefaultIds, useUi } from '@/state/ui';
 
 type Filter = 'all' | Category;
-const FILTER_ORDER: Filter[] = ['all', ...CAT_ORDER];
 const NONE: string[] = [];
 const NO_PLANTS: Plant[] = [];
 /** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
@@ -86,25 +85,19 @@ export default function LogScreen() {
   const searched = usePlantSearch(ordered, debounced);
   const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
 
-  // swap class: the new list slides in from the side the tab came from, starting at the top; its rows
-  // cascade in (reveal class) under the fading skeleton.
+  // A new list starts at the top and fills in where the skeleton stood (reveal class); nothing travels.
   const listRef = useRef<FlatList<Plant>>(null);
-  const swapX = useSharedValue(0);
   const prevFilter = useRef<Filter>(listFilter);
   useLayoutEffect(() => {
     if (prevFilter.current === listFilter) return;
     perfEnd('log filter', `${plants.length} plants`);
-    const dir = FILTER_ORDER.indexOf(listFilter) > FILTER_ORDER.indexOf(prevFilter.current) ? 1 : -1;
     prevFilter.current = listFilter;
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
-    swapX.value = 16 * dir;
-    swapX.value = withTiming(0, motion.swap);
-  }, [listFilter, plants.length, swapX]);
+  }, [listFilter, plants.length]);
   useEffect(() => {
     if (mounted) perfEnd('tab→log', `${plants.length} plants`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mounted]);
-  const swapStyle = useAnimatedStyle(() => ({ transform: [{ translateX: swapX.value }] }));
 
   const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
 
@@ -230,7 +223,7 @@ export default function LogScreen() {
         />
       </View>
 
-      <Animated.View style={[styles.listWrap, swapStyle]}>
+      <View style={styles.listWrap}>
         <FlatList
           ref={listRef}
           data={mounted ? plants : NO_PLANTS}
@@ -258,7 +251,7 @@ export default function LogScreen() {
           }
         />
         {pending ? <SkeletonRows count={8} height={84} tile={84} gap={10} style={styles.skeletonOverlay} /> : null}
-      </Animated.View>
+      </View>
     </Screen>
   );
 }

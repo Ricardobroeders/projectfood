@@ -12,6 +12,8 @@ type Props = {
   /** Width of the image tile on the left. */
   tile: number;
   gap?: number;
+  /** Start with a section-title placeholder occupying the same box as SectionTitle. */
+  header?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -19,7 +21,7 @@ type Props = {
  * Placeholder rows that claim a list's space before its rows exist (pulse class), then fade out
  * under the real rows as they arrive (reveal class). Opaque, so it also covers a list being replaced.
  */
-export function SkeletonRows({ count, height, tile, gap = 8, style }: Props) {
+export function SkeletonRows({ count, height, tile, gap = 8, header = false, style }: Props) {
   const pulse = useSharedValue(1);
   useEffect(() => {
     pulse.value = withRepeat(withTiming(0.55, motion.pulse), -1, true);
@@ -28,6 +30,7 @@ export function SkeletonRows({ count, height, tile, gap = 8, style }: Props) {
   return (
     <Animated.View style={[styles.wrap, style]} exiting={FadeOut.duration(160)} pointerEvents="none">
       <Animated.View style={breathing}>
+        {header ? <View style={styles.header} /> : null}
         {Array.from({ length: count }, (_, i) => (
           <View key={i} style={[styles.row, { height, marginBottom: gap, borderRadius: radiusFor(height) }]}>
             <View style={[styles.tile, { width: tile, height }]} />
@@ -41,6 +44,7 @@ export function SkeletonRows({ count, height, tile, gap = 8, style }: Props) {
 
 const styles = StyleSheet.create({
   wrap: { backgroundColor: colors.bg },
+  header: { width: '34%', height: 20, borderRadius: 7, marginTop: 24, marginBottom: 8, backgroundColor: colors.hairline },
   row: { flexDirection: 'row', alignItems: 'center', gap: 16, backgroundColor: colors.bgSoft, overflow: 'hidden' },
   tile: { backgroundColor: colors.hairline },
   line: { height: 14, borderRadius: 7, backgroundColor: colors.hairline },

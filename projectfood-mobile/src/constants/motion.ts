@@ -1,4 +1,4 @@
-import { Easing, FadeInDown, type WithSpringConfig, type WithTimingConfig } from 'react-native-reanimated';
+import { Easing, FadeIn, type WithSpringConfig, type WithTimingConfig } from 'react-native-reanimated';
 
 /**
  * Motion classes (POC v1, 2026-09-07). Pick by what the element *is*, not by taste.
@@ -13,8 +13,9 @@ import { Easing, FadeInDown, type WithSpringConfig, type WithTimingConfig } from
  * - number:  counters rolling to a value. Ease-out timing.
  * - swap:    content replaced in place (a list under a filter tab). Short fade plus a slide
  *            in the direction of travel. Ease-out, never overshoot.
- * - reveal:  rows arriving after a skeleton. Fade plus a 12 px rise, staggered 35 ms per row for
- *            the first screenful only; rows that mount while scrolling appear plainly. Ease-out.
+ * - reveal:  rows filling in over their skeleton. A fade in place, no travel (the skeleton already
+ *            holds the row's spot), staggered 35 ms per row for the first screenful only; rows
+ *            that mount while scrolling appear plainly. Ease-out.
  * - pulse:   skeleton placeholders breathing while the real rows are built. Slow and symmetric.
  *
  * Amplitude rule (device test round 2): a spring's overshoot grows with the distance it travels,
@@ -43,7 +44,6 @@ export const REWARD_POP_FROM = 0.7;
 /** Peak scale for a "bump" on an element that stays in place (check circle, clay render). */
 export const REWARD_BUMP_PEAK = 1.1;
 
-const REVEAL_RISE = 12;
 const REVEAL_STAGGER = 35;
 /** How many rows take part in the cascade: about one screenful. */
 export const REVEAL_ROWS = 8;
@@ -51,8 +51,5 @@ export const REVEAL_ROWS = 8;
 /** Entrance for a list row by index (reveal class); undefined past the first screenful. */
 export function revealFor(index: number) {
   if (index >= REVEAL_ROWS) return undefined;
-  return FadeInDown.duration(motion.reveal.duration)
-    .delay(index * REVEAL_STAGGER)
-    .easing(motion.reveal.easing)
-    .withInitialValues({ opacity: 0, transform: [{ translateY: REVEAL_RISE }] });
+  return FadeIn.duration(motion.reveal.duration).delay(index * REVEAL_STAGGER).easing(motion.reveal.easing);
 }
