@@ -1,15 +1,31 @@
+import { Image } from 'expo-image';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, fonts, MEMBER_COLORS, radii } from '@/constants/theme';
-import type { Member } from '@/state/store';
+import { AVATAR_IMAGES } from '@/data/avatars';
+import type { Member } from '@/features/household/queries';
 
-export function memberColor(member: Member) {
-  return MEMBER_COLORS[member.colorIndex % MEMBER_COLORS.length];
+/** Enough of a member row to draw an avatar; drafts in the editor use it too. */
+export type MemberLike = Pick<Member, 'id' | 'name' | 'color_index'> & Partial<Pick<Member, 'avatar_image' | 'avatar_bg'>>;
+
+export function memberColor(member: Pick<Member, 'color_index'>) {
+  return MEMBER_COLORS[member.color_index % MEMBER_COLORS.length];
 }
 
-/** Initial on a coloured disc; `muted` shows the grey "not selected" state. Genuinely round, so full radius. */
-export function MemberAvatar({ member, size, muted = false }: { member: Member; size: number; muted?: boolean }) {
+/**
+ * Illustrated head from the PWA avatar set when the member picked one, otherwise the initial on
+ * the member colour. `muted` is the grey "not selected" state. Genuinely round, so full radius.
+ */
+export function MemberAvatar({ member, size, muted = false }: { member: MemberLike; size: number; muted?: boolean }) {
   const c = memberColor(member);
+  const image = member.avatar_image ? AVATAR_IMAGES[member.avatar_image] : undefined;
+  if (image) {
+    return (
+      <View style={[styles.disc, { width: size, height: size, backgroundColor: muted ? colors.bgSoft : (member.avatar_bg ?? c.bg) }]}>
+        <Image source={image} style={{ width: size, height: size, borderRadius: size / 2, opacity: muted ? 0.35 : 1 }} contentFit="cover" />
+      </View>
+    );
+  }
   const initial = (member.name.trim()[0] ?? '?').toUpperCase();
   return (
     <View style={[styles.disc, { width: size, height: size, backgroundColor: muted ? colors.bgSoft : c.bg }]}>
@@ -19,7 +35,7 @@ export function MemberAvatar({ member, size, muted = false }: { member: Member; 
 }
 
 /** Overlapping mini avatars, at most four, then "+n". */
-export function AvatarStack({ members, size = 22, ring = colors.surface }: { members: Member[]; size?: number; ring?: string }) {
+export function AvatarStack({ members, size = 22, ring = colors.surface }: { members: MemberLike[]; size?: number; ring?: string }) {
   const shown = members.slice(0, 4);
   const extra = members.length - shown.length;
   return (
@@ -35,7 +51,7 @@ export function AvatarStack({ members, size = 22, ring = colors.surface }: { mem
 }
 
 const styles = StyleSheet.create({
-  disc: { borderRadius: radii.full, alignItems: 'center', justifyContent: 'center' },
+  disc: { borderRadius: radii.full, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
   initial: { fontFamily: fonts.bold, includeFontPadding: false, textAlignVertical: 'center' },
   stack: { flexDirection: 'row', alignItems: 'center' },
   ring: { borderWidth: 2, borderRadius: radii.full },

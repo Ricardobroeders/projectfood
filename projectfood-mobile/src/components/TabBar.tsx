@@ -1,10 +1,10 @@
 import * as Haptics from 'expo-haptics';
-import { Circle, CircleUserRound, Home, Layers, type LucideIcon, Plus, Users } from 'lucide-react-native';
+import { Award, Circle, CircleUserRound, Home, type LucideIcon, Plus } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fonts } from '@/constants/theme';
-import { useStore } from '@/state/store';
 
 /** The slice of React Navigation's BottomTabBarProps this bar uses (the package is nested under expo-router). */
 type TabBarProps = {
@@ -19,16 +19,15 @@ type TabBarProps = {
 const ICONS: Record<string, LucideIcon> = {
   index: Home,
   log: Plus,
-  cards: Layers,
-  family: Users,
+  unlocks: Award,
   account: CircleUserRound,
 };
 
-/** Bottom nav ported from the PWA: white, hairline top edge, yellow active state. JS-only so it runs in Expo Go. */
+/** Bottom nav ported from the PWA: white, hairline top edge, accent active icon. */
 export function TabBar({ state, navigation }: TabBarProps) {
   const insets = useSafeAreaInsets();
-  const { t } = useStore();
-  const labels: Record<string, string> = { index: t.home, log: t.log, cards: t.cards, family: t.family, account: t.account };
+  const { t } = useTranslation();
+  const labels: Record<string, string> = { index: t('nav.home'), log: t('nav.log'), unlocks: t('nav.unlocks'), account: t('nav.account') };
 
   return (
     <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
@@ -56,13 +55,7 @@ export function TabBar({ state, navigation }: TabBarProps) {
 }
 
 const styles = StyleSheet.create({
-  bar: {
-    flexDirection: 'row',
-    backgroundColor: colors.surface,
-    paddingTop: 10,
-    borderTopWidth: 1,
-    borderTopColor: colors.hairline,
-  },
+  bar: { flexDirection: 'row', backgroundColor: colors.surface, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.hairline },
   tab: { flex: 1, alignItems: 'center', gap: 4, paddingVertical: 4 },
   label: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16 },
 });

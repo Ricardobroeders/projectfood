@@ -41,3 +41,8 @@ example
 # generated native folders
 /ios
 /android
+
+# Firebase (FCM) config, provided to EAS as a file env var
+google-services.json
+# generated assets input cache
+scripts/.cache/
