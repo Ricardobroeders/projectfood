@@ -11,6 +11,7 @@ import { Loading, PrimaryButton, Screen } from '@/components/ui';
 import { motion } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useSession } from '@/features/auth/useSession';
+import { perfEnd, perfStart } from '@/features/dev/perf';
 import { track } from '@/features/events/track';
 import { useHousehold, useSettings } from '@/features/household/queries';
 import { dateKey, tasteMapFor } from '@/features/logs/model';
@@ -80,6 +81,7 @@ export default function LogScreen() {
   const prevFilter = useRef<Filter>(listFilter);
   useLayoutEffect(() => {
     if (prevFilter.current === listFilter) return;
+    perfEnd('log filter', `${plants.length} plants`);
     const dir = FILTER_ORDER.indexOf(listFilter) > FILTER_ORDER.indexOf(prevFilter.current) ? 1 : -1;
     prevFilter.current = listFilter;
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
@@ -87,7 +89,11 @@ export default function LogScreen() {
     swapA.value = 0;
     swapX.value = withTiming(0, motion.swap);
     swapA.value = withTiming(1, motion.swap);
-  }, [listFilter, swapX, swapA]);
+  }, [listFilter, plants.length, swapX, swapA]);
+  useEffect(() => {
+    perfEnd('tab→log', `${plants.length} plants`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const swapStyle = useAnimatedStyle(() => ({ opacity: swapA.value, transform: [{ translateX: swapX.value }] }));
 
   const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
@@ -202,7 +208,14 @@ export default function LogScreen() {
       ) : null}
 
       <View style={styles.tabs}>
-        <Tabs tabs={tabs} value={filter} onChange={setFilter} />
+        <Tabs
+          tabs={tabs}
+          value={filter}
+          onChange={(k) => {
+            perfStart('log filter');
+            setFilter(k);
+          }}
+        />
       </View>
 
       <Animated.View style={[styles.listWrap, swapStyle]}>

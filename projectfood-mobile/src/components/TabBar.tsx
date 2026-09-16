@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { perfStart } from '@/features/dev/perf';
 import { colors, fonts } from '@/constants/theme';
 
 /** The slice of React Navigation's BottomTabBarProps this bar uses (the package is nested under expo-router). */
@@ -43,7 +44,10 @@ export function TabBar({ state, navigation }: TabBarProps) {
             onPress={() => {
               Haptics.selectionAsync();
               const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
-              if (!active && !event.defaultPrevented) navigation.navigate(route.name);
+              if (!active && !event.defaultPrevented) {
+                perfStart(`tab→${route.name}`);
+                navigation.navigate(route.name);
+              }
             }}>
             <Icon size={22} color={active ? colors.accent : colors.ink3} />
             <Text style={[styles.label, { color: active ? colors.ink : colors.ink3 }]}>{labels[route.name] ?? route.name}</Text>

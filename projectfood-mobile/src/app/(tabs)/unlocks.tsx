@@ -11,6 +11,7 @@ import { Loading, Screen, ScreenTitle, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, progressFor, unlockKey } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
+import { perfStart } from '@/features/dev/perf';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { useUi } from '@/state/ui';
 
@@ -80,7 +81,13 @@ export default function UnlocksScreen() {
         <SectionTitle meta={`${triedTotal} ${t('unlocks.ofTotal', { total: catalog.plants.length })}`}>{t('unlocks.foodsTried')}</SectionTitle>
         <View style={styles.cats}>
           {perCat.map(({ c, tried, total }) => (
-            <Pressable key={c} onPress={() => router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } })} style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
+            <Pressable
+              key={c}
+              onPress={() => {
+                perfStart('→category');
+                router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } });
+              }}
+              style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={styles.catHead}>
                   <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>

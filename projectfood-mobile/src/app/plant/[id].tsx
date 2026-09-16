@@ -1,5 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { BookOpen, Sparkles, X } from 'lucide-react-native';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,6 +9,7 @@ import { MemberAvatar } from '@/components/MemberAvatar';
 import { Loading, PrimaryButton, SecondaryButton, SectionTitle } from '@/components/ui';
 import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
 import { useAchievements } from '@/features/achievements/useAchievements';
+import { perfEnd } from '@/features/dev/perf';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
 import { PlantImage } from '@/features/plants/PlantImage';
@@ -34,6 +36,9 @@ export default function PlantDetailScreen() {
   const { data: fact } = usePlantFact(plant?.id);
   const showFactCard = useUi((s) => s.showFactCard);
   const openPicker = useUi((s) => s.openPicker);
+  useEffect(() => {
+    if (plant) perfEnd('→plant', plant.slug);
+  }, [plant]);
 
   if (isLoading) return <Loading />;
   if (!plant) return null;

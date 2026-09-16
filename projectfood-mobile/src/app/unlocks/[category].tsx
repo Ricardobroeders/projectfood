@@ -1,11 +1,12 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { BackHeader, Loading, Screen, SectionTitle } from '@/components/ui';
 import { CATS, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useAchievements } from '@/features/achievements/useAchievements';
+import { perfEnd, perfStart } from '@/features/dev/perf';
 import { type Plant, usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 
@@ -43,7 +44,21 @@ export default function CategoryScreen() {
     ];
   }, [ctx.tasteCounts, catalog.plants, category, memberId, t]);
 
-  const open = useCallback((id: string) => router.push({ pathname: '/plant/[id]', params: { id } }), [router]);
+  const measured = useRef(false);
+  useEffect(() => {
+    if (ready && !measured.current) {
+      measured.current = true;
+      perfEnd('→category', `${rows.length} rows`);
+    }
+  }, [ready, rows.length]);
+
+  const open = useCallback(
+    (id: string) => {
+      perfStart('→plant');
+      router.push({ pathname: '/plant/[id]', params: { id } });
+    },
+    [router],
+  );
   const renderItem = useCallback(
     ({ item }: { item: Row }) => {
       if (item.kind === 'head') return <SectionTitle meta={item.meta}>{item.title}</SectionTitle>;

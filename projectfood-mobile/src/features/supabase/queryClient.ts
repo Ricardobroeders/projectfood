@@ -22,6 +22,24 @@ export const queryClient = new QueryClient({
   },
 });
 
+if (__DEV__) {
+  // Dev-only: how long each network fetch takes, printed to the Metro terminal.
+  const started = new Map<string, number>();
+  queryClient.getQueryCache().subscribe((e) => {
+    if (e.type !== 'updated') return;
+    const q = e.query;
+    if (e.action.type === 'fetch') started.set(q.queryHash, performance.now());
+    else if (e.action.type === 'success' || e.action.type === 'error') {
+      const t0 = started.get(q.queryHash);
+      if (t0 === undefined) return;
+      started.delete(q.queryHash);
+      const data: unknown = e.action.type === 'success' ? e.action.data : undefined;
+      const size = Array.isArray(data) ? `${data.length} rows` : data && typeof data === 'object' && 'plants' in data ? `${(data as { plants: unknown[] }).plants.length} plants` : e.action.type;
+      console.log(`[perf] query ${String(q.queryKey[0])}: ${Math.round(performance.now() - t0)} ms (${size})`);
+    }
+  });
+}
+
 export const queryPersister = createAsyncStoragePersister({
   storage: AsyncStorage,
   key: 'pf-query-cache',
