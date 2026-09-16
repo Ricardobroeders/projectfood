@@ -1,14 +1,15 @@
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { PlantRow } from '@/components/PlantRow';
+import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
-import { motion } from '@/constants/motion';
+import { motion, revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useSession } from '@/features/auth/useSession';
 import { perfEnd, perfStart } from '@/features/dev/perf';
@@ -24,6 +25,7 @@ import { useDefaultIds, useUi } from '@/state/ui';
 type Filter = 'all' | Category;
 const FILTER_ORDER: Filter[] = ['all', ...CAT_ORDER];
 const NONE: string[] = [];
+const NO_PLANTS: Plant[] = [];
 /** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
 const ROW_H = 94;
 const LIST_TOP = 12;
@@ -59,6 +61,13 @@ export default function LogScreen() {
   const [filter, setFilter] = useState<Filter>('all');
   // The tab indicator moves at once; the list follows in a deferred render so the tap never waits on it.
   const listFilter = useDeferredValue(filter);
+  // First paint is the skeleton; the rows come one frame later so the tab switch never freezes.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+  const pending = !mounted || filter !== listFilter;
   const [query, setQuery] = useState('');
   const debounced = useDebounced(query, 300);
   const [submitted, setSubmitted] = useState<string | null>(null);
@@ -77,10 +86,10 @@ export default function LogScreen() {
   const searched = usePlantSearch(ordered, debounced);
   const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
 
-  // swap class: the new list fades in and slides from the side the tab came from, starting at the top.
+  // swap class: the new list slides in from the side the tab came from, starting at the top; its rows
+  // cascade in (reveal class) under the fading skeleton.
   const listRef = useRef<FlatList<Plant>>(null);
   const swapX = useSharedValue(0);
-  const swapA = useSharedValue(1);
   const prevFilter = useRef<Filter>(listFilter);
   useLayoutEffect(() => {
     if (prevFilter.current === listFilter) return;
@@ -89,15 +98,13 @@ export default function LogScreen() {
     prevFilter.current = listFilter;
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
     swapX.value = 16 * dir;
-    swapA.value = 0;
     swapX.value = withTiming(0, motion.swap);
-    swapA.value = withTiming(1, motion.swap);
-  }, [listFilter, plants.length, swapX, swapA]);
+  }, [listFilter, plants.length, swapX]);
   useEffect(() => {
-    perfEnd('tab→log', `${plants.length} plants`);
+    if (mounted) perfEnd('tab→log', `${plants.length} plants`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const swapStyle = useAnimatedStyle(() => ({ opacity: swapA.value, transform: [{ translateX: swapX.value }] }));
+  }, [mounted]);
+  const swapStyle = useAnimatedStyle(() => ({ transform: [{ translateX: swapX.value }] }));
 
   const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
 
@@ -130,8 +137,10 @@ export default function LogScreen() {
   const onHold = useCallback((plantId: string) => openPicker(plantId), [openPicker]);
 
   const renderItem = useCallback(
-    ({ item }: { item: Plant }) => (
-      <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />
+    ({ item, index }: { item: Plant; index: number }) => (
+      <Animated.View entering={revealFor(index)}>
+        <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />
+      </Animated.View>
     ),
     [tastes, members, defaultIds, t, onTap, onHold],
   );
@@ -224,7 +233,7 @@ export default function LogScreen() {
       <Animated.View style={[styles.listWrap, swapStyle]}>
         <FlatList
           ref={listRef}
-          data={plants}
+          data={mounted ? plants : NO_PLANTS}
           keyExtractor={(p) => p.id}
           renderItem={renderItem}
           extraData={renderItem}
@@ -235,10 +244,9 @@ export default function LogScreen() {
           maxToRenderPerBatch={8}
           updateCellsBatchingPeriod={40}
           windowSize={5}
-          removeClippedSubviews={Platform.OS === 'android'}
           keyboardShouldPersistTaps="handled"
           ListEmptyComponent={
-            debounced.trim() ? (
+            !mounted ? null : debounced.trim() ? (
               <View style={styles.missing}>
                 <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
                 <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
@@ -249,6 +257,7 @@ export default function LogScreen() {
             )
           }
         />
+        {pending ? <SkeletonRows count={8} height={84} tile={84} gap={10} style={styles.skeletonOverlay} /> : null}
       </Animated.View>
     </Screen>
   );
@@ -268,6 +277,7 @@ const styles = StyleSheet.create({
   hintText: { flex: 1, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   tabs: { marginTop: 8 },
   listWrap: { flex: 1 },
+  skeletonOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, paddingHorizontal: 20, paddingTop: LIST_TOP },
   list: { paddingHorizontal: 20, paddingTop: LIST_TOP, paddingBottom: 24, flexGrow: 1 },
   missing: { marginTop: 24, padding: 20, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 6 },
   missingTitle: { fontFamily: fonts.bold, fontSize: 16, lineHeight: 22, color: colors.ink },

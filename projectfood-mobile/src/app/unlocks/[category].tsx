@@ -1,9 +1,12 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
-import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 
-import { BackHeader, Loading, Screen, SectionTitle } from '@/components/ui';
+import { SkeletonRows } from '@/components/Skeleton';
+import { BackHeader, Screen, SectionTitle } from '@/components/ui';
+import { revealFor } from '@/constants/motion';
 import { CATS, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfEnd, perfStart } from '@/features/dev/perf';
@@ -44,13 +47,27 @@ export default function CategoryScreen() {
     ];
   }, [ctx.tasteCounts, catalog.plants, category, memberId, t]);
 
+  // The push transition plays over a skeleton; the rows mount once it has ended (450 ms at most).
+  const navigation = useNavigation();
+  const [settled, setSettled] = useState(false);
+  useEffect(() => {
+    const nav = navigation as unknown as { addListener: (event: string, cb: () => void) => () => void };
+    const unsub = nav.addListener('transitionEnd', () => setSettled(true));
+    const id = setTimeout(() => setSettled(true), 450);
+    return () => {
+      unsub();
+      clearTimeout(id);
+    };
+  }, [navigation]);
+  const showRows = settled && ready && !isLoading;
+
   const measured = useRef(false);
   useEffect(() => {
-    if (ready && !measured.current) {
+    if (showRows && !measured.current) {
       measured.current = true;
       perfEnd('→category', `${rows.length} rows`);
     }
-  }, [ready, rows.length]);
+  }, [showRows, rows.length]);
 
   const open = useCallback(
     (id: string) => {
@@ -60,31 +77,45 @@ export default function CategoryScreen() {
     [router],
   );
   const renderItem = useCallback(
-    ({ item }: { item: Row }) => {
-      if (item.kind === 'head') return <SectionTitle meta={item.meta}>{item.title}</SectionTitle>;
-      if (item.kind === 'tried') return <TriedRow plant={item.p} n={item.n} label={item.label} bg={cat?.bg ?? colors.bgSoft} onPress={open} />;
-      return <UntriedRow plant={item.p} onPress={open} />;
+    ({ item, index }: { item: Row; index: number }) => {
+      const entering = revealFor(index);
+      if (item.kind === 'head') {
+        return (
+          <Animated.View entering={entering}>
+            <SectionTitle meta={item.meta}>{item.title}</SectionTitle>
+          </Animated.View>
+        );
+      }
+      return (
+        <Animated.View entering={entering}>
+          {item.kind === 'tried' ? <TriedRow plant={item.p} n={item.n} label={item.label} bg={cat?.bg ?? colors.bgSoft} onPress={open} /> : <UntriedRow plant={item.p} onPress={open} />}
+        </Animated.View>
+      );
     },
     [cat, open],
   );
 
-  if (isLoading || !ready || !cat) return <Loading />;
+  if (!cat) return null;
   const who = members.find((m) => m.id === memberId);
 
   return (
     <Screen>
       <BackHeader title={`${t(`categoriesPlural.${category as Category}`)}${who && members.length > 1 ? ` · ${who.name}` : ''}`} />
-      <FlatList
-        data={rows}
-        keyExtractor={(r) => r.key}
-        renderItem={renderItem}
-        contentContainerStyle={styles.content}
-        showsVerticalScrollIndicator={false}
-        initialNumToRender={8}
-        maxToRenderPerBatch={8}
-        updateCellsBatchingPeriod={40}
-        windowSize={5}
-      />
+      {showRows ? (
+        <FlatList
+          data={rows}
+          keyExtractor={(r) => r.key}
+          renderItem={renderItem}
+          contentContainerStyle={styles.content}
+          showsVerticalScrollIndicator={false}
+          initialNumToRender={8}
+          maxToRenderPerBatch={8}
+          updateCellsBatchingPeriod={40}
+          windowSize={5}
+        />
+      ) : (
+        <SkeletonRows count={8} height={64} tile={64} style={styles.skeleton} />
+      )}
     </Screen>
   );
 }
@@ -121,6 +152,7 @@ const UntriedRow = memo(function UntriedRow({ plant, onPress }: { plant: Plant; 
 
 const styles = StyleSheet.create({
   content: { paddingBottom: 32 },
+  skeleton: { paddingHorizontal: 20, paddingTop: 44 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, height: 64, marginHorizontal: 20, marginBottom: 8, paddingRight: 12, borderRadius: radii.md, backgroundColor: colors.bgSoft, overflow: 'hidden' },
   rowMuted: { backgroundColor: colors.bg, borderWidth: 1, borderColor: colors.hairline },
   tile: { width: 64, height: 64, alignItems: 'center', justifyContent: 'center' },

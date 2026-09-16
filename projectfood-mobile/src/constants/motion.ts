@@ -1,4 +1,4 @@
-import { Easing, type WithSpringConfig, type WithTimingConfig } from 'react-native-reanimated';
+import { Easing, FadeInDown, type WithSpringConfig, type WithTimingConfig } from 'react-native-reanimated';
 
 /**
  * Motion classes (POC v1, 2026-09-07). Pick by what the element *is*, not by taste.
@@ -13,6 +13,9 @@ import { Easing, type WithSpringConfig, type WithTimingConfig } from 'react-nati
  * - number:  counters rolling to a value. Ease-out timing.
  * - swap:    content replaced in place (a list under a filter tab). Short fade plus a slide
  *            in the direction of travel. Ease-out, never overshoot.
+ * - reveal:  rows arriving after a skeleton. Fade plus a 12 px rise, staggered 35 ms per row for
+ *            the first screenful only; rows that mount while scrolling appear plainly. Ease-out.
+ * - pulse:   skeleton placeholders breathing while the real rows are built. Slow and symmetric.
  *
  * Amplitude rule (device test round 2): a spring's overshoot grows with the distance it travels,
  * so reward pops start close to their target (0.7 → 1, not 0.4 → 1) and scale peaks stay ≤ 1.12.
@@ -31,9 +34,25 @@ export const motion = {
   flip: { damping: 18, stiffness: 120, overshootClamping: true } satisfies WithSpringConfig,
   number: { duration: 650, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
   swap: { duration: 200, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
+  reveal: { duration: 260, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
+  pulse: { duration: 700, easing: Easing.inOut(Easing.quad) } satisfies WithTimingConfig,
 } as const;
 
 /** Where reward pops start from, so the settle stays inside the element's box. */
 export const REWARD_POP_FROM = 0.7;
 /** Peak scale for a "bump" on an element that stays in place (check circle, clay render). */
 export const REWARD_BUMP_PEAK = 1.1;
+
+const REVEAL_RISE = 12;
+const REVEAL_STAGGER = 35;
+/** How many rows take part in the cascade: about one screenful. */
+export const REVEAL_ROWS = 8;
+
+/** Entrance for a list row by index (reveal class); undefined past the first screenful. */
+export function revealFor(index: number) {
+  if (index >= REVEAL_ROWS) return undefined;
+  return FadeInDown.duration(motion.reveal.duration)
+    .delay(index * REVEAL_STAGGER)
+    .easing(motion.reveal.easing)
+    .withInitialValues({ opacity: 0, transform: [{ translateY: REVEAL_RISE }] });
+}
