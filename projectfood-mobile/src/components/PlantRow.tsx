@@ -2,7 +2,7 @@ import * as Haptics from 'expo-haptics';
 import { Check, Sparkles } from 'lucide-react-native';
 import { memo, useEffect, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming } from 'react-native-reanimated';
+import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming, ZoomIn } from 'react-native-reanimated';
 
 import { AvatarStack } from '@/components/MemberAvatar';
 import { motion, REWARD_BUMP_PEAK } from '@/constants/motion';
@@ -35,6 +35,11 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
   const bump = useSharedValue(1);
   const press = useSharedValue(1);
   const prevCount = useRef(tasters.length);
+  // A row already tasted when it mounts shows its check at once; later toggles zoom it in (toggle class).
+  const settled = useRef(false);
+  useEffect(() => {
+    settled.current = true;
+  }, []);
 
   useEffect(() => {
     // toggle class: the state itself
@@ -60,11 +65,6 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
     backgroundColor: interpolateColor(full.value, [0, 1], [colors.surface, colors.accent]),
     transform: [{ scale: interpolate(full.value, [0, 0.5, 1], [1, REWARD_BUMP_PEAK, 1]) }],
   }));
-  const checkStyle = useAnimatedStyle(() => ({
-    opacity: full.value,
-    transform: [{ scale: interpolate(full.value, [0, 1], [0.3, 1]) }],
-  }));
-
   return (
     <Pressable
       onPressIn={() => (press.value = withTiming(0.98, motion.pressIn))}
@@ -106,9 +106,11 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
         </View>
         <View style={styles.checkWrap}>
           <Animated.View style={[styles.circle, circleStyle]}>
-            <Animated.View style={checkStyle}>
-              <Check size={22} color={colors.onAccent} strokeWidth={2.5} />
-            </Animated.View>
+            {complete ? (
+              <Animated.View entering={settled.current ? ZoomIn.duration(160) : undefined}>
+                <Check size={22} color={colors.onAccent} strokeWidth={2.5} />
+              </Animated.View>
+            ) : null}
           </Animated.View>
         </View>
       </Animated.View>

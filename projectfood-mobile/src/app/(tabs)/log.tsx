@@ -1,7 +1,7 @@
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
@@ -24,6 +24,9 @@ import { useDefaultIds, useUi } from '@/state/ui';
 type Filter = 'all' | Category;
 const FILTER_ORDER: Filter[] = ['all', ...CAT_ORDER];
 const NONE: string[] = [];
+/** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
+const ROW_H = 94;
+const LIST_TOP = 12;
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -227,8 +230,12 @@ export default function LogScreen() {
           extraData={renderItem}
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
-          initialNumToRender={12}
-          windowSize={7}
+          getItemLayout={(_, index) => ({ length: ROW_H, offset: LIST_TOP + ROW_H * index, index })}
+          initialNumToRender={8}
+          maxToRenderPerBatch={8}
+          updateCellsBatchingPeriod={40}
+          windowSize={5}
+          removeClippedSubviews={Platform.OS === 'android'}
           keyboardShouldPersistTaps="handled"
           ListEmptyComponent={
             debounced.trim() ? (
@@ -261,7 +268,7 @@ const styles = StyleSheet.create({
   hintText: { flex: 1, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   tabs: { marginTop: 8 },
   listWrap: { flex: 1 },
-  list: { paddingHorizontal: 20, paddingTop: 12, paddingBottom: 24, flexGrow: 1 },
+  list: { paddingHorizontal: 20, paddingTop: LIST_TOP, paddingBottom: 24, flexGrow: 1 },
   missing: { marginTop: 24, padding: 20, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 6 },
   missingTitle: { fontFamily: fonts.bold, fontSize: 16, lineHeight: 22, color: colors.ink },
   missingBody: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.ink2 },

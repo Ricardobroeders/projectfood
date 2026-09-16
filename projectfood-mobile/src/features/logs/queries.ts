@@ -47,6 +47,7 @@ export function useTasteCounts(hid: string | undefined) {
       return data;
     },
     enabled: !!hid,
+    staleTime: 5 * 60_000,
   });
 }
 
@@ -59,6 +60,7 @@ export function useDailyActivity(hid: string | undefined, days = 90) {
       return data;
     },
     enabled: !!hid,
+    staleTime: 5 * 60_000,
   });
 }
 
@@ -71,6 +73,7 @@ export function useWeeklyHistory(hid: string | undefined, weeks = 12) {
       return data;
     },
     enabled: !!hid,
+    staleTime: 5 * 60_000,
   });
 }
 
@@ -83,6 +86,7 @@ export function useStreak(hid: string | undefined) {
       return data[0] ?? null;
     },
     enabled: !!hid,
+    staleTime: 5 * 60_000,
   });
 }
 

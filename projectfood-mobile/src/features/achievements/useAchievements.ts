@@ -21,6 +21,7 @@ export function useUnlocks(hid: string | undefined) {
       return data;
     },
     enabled: !!hid,
+    staleTime: 5 * 60_000,
   });
 }
 
