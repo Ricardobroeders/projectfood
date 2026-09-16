@@ -46,3 +46,4 @@ example
 google-services.json
 # generated assets input cache
 scripts/.cache/
+scripts/.*.log

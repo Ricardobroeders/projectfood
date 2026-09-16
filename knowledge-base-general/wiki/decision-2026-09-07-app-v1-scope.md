@@ -3,7 +3,7 @@ title: Family app v1 scope, stack and languages
 type: decision
 tags: [decision, family-mode, native-app, scope, i18n, design, rive, costs]
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-09-16
 date: 2026-09-07
 status: accepted   # working scope for the greenfield build; feature priorities re-checked after the five parent conversations
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md]
@@ -132,6 +132,7 @@ down with an ink ring and contained sparkles, plus the tasted plants sliding in.
   within 3 h, by type.
 
 ## Related pages
+- [[decision-2026-09-16-store-poc-scope]] — the first store release ships the PWA's features plus multi-member logging first; the eleven features below stay the roadmap, and the "no PWA parity" line is relaxed for that release (2026-09-16)
 - [[concept-achievement-system]] — the goal layer behind features 1–4, 7 and 11 (proposed 2026-09-10)
 - [[overview]] · [[decision-2026-09-06-family-mode-pivot]] · [[concept-retention-loop]] ·
   [[source-supabase-metrics-2026-09]] · [[persona-household-parent]] ·

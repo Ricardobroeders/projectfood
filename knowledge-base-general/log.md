@@ -163,3 +163,13 @@ catalog grows from 24 to 72 plants (names from Supabase `plants` + `plant_transl
 facts written here), and achievements become a 16-goal shelf with a green progress bar and
 "3/5" under every stamp plus a detail sheet. Backlog row 5 and [[concept-achievement-system]]
 note the POC; the XP / navigation / "refused" decisions stay open.
+
+## [2026-09-16] build | Store POC scope decision, family data model live, Expo app rebuilt on Supabase
+Ricardo re-scoped the first release: ship the PWA's features plus the POC's multi-member logging
+as a store POC and iterate with families ([[decision-2026-09-16-store-poc-scope]]). Same day:
+migrations 0001–0009 on the live project (households, members, `plant_logs.member_id`, plant
+facts, unlocks, push tokens, household RPCs with the streak freeze, pg_cron schedule), Edge
+Functions `delete-account` and `send-notifications`, the Expo app rebuilt with Supabase auth
+(email code, Google, Apple), react-query, i18n en/nl/it, Home / Log / Unlocks / Account and the
+account sub-screens, 224 plant + 25 avatar assets bundled, kid facts + parent tips generated for
+en/nl/it. Backlog rows 4, 5, 9, 11, 13, 14, 15 and "Next to pick up" updated.

@@ -3,7 +3,7 @@ title: Strategy backlog (undecided core ideas)
 type: backlog
 tags: [strategy, decisions, backlog]
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-16
 sources: []
 ---
 
@@ -22,20 +22,20 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - Add topics freely; remove none. Date every status change.
 
 ## Next to pick up
-_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-14._
+_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-16._
 
-**Ricardo's decisions**
-1. Accent on device: true blue or teal (row 2). Then Claude binds the app theme to Figma variables.
-2. Achievements: judge the POC shelf on device (16 goals, green progress bars with "3/5", detail sheet on tap; build of 2026-09-14), then XP keep or drop (your plane notes on a gold economy re-open this), where the collection lives in navigation, a "refused" tap at logging (row 5).
-3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]).
-4. Accounts: Apple Developer enrolment (Individual). EAS login done and Google Play approved (2026-09-13 / 2026-09-10).
+**Ricardo's decisions and accounts**
+1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
+2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
+3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
+4. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
 5. Five parent conversations (Linear PF-55).
 
-**Claude's next build steps (after the above)**
-6. PF-38 family data model on a Supabase branch, with the household entitlement from row 9.
-7. Bind the theme to role-named Figma variables; write `decision-…-visual-identity`.
-8. Draft tone of voice (row 8) and the privacy & kids' data page (row 14).
-9. Five-family test protocol and the five v1 success numbers (rows 4, 11) before TestFlight.
+**Claude's next build steps**
+6. Install the Android development build on the OnePlus, sign in, add a kid, log for two members; fix what the device shows.
+7. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
+8. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
+9. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
 
 ## Inputs waiting for a brainstorm
 Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
@@ -61,18 +61,18 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (PF-55) |
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
-| 4 | Customer retention strategy | drafted | Write the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Judge the 16-goal POC on device (2026-09-14); decide XP, navigation home, "refused" tap; fold into PF-38 |
+| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
+| 5 | Achievements | drafted | XP dropped and stamps moved to the Unlocks tab on real history (2026-09-16, [[decision-2026-09-16-store-poc-scope]]); still open: "refused" tap, albums, tomato-family target (5 of 18) |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
-| 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; then decision page before PF-38 (PF-54) |
+| 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; `households.plan` (free/family) exists since 2026-09-16, payments off in the store POC |
 | 10 | Market | drafted | Kids-food competitor teardown + NL/IT household sizing |
-| 11 | KPIs / success definition | open | Five numbers that define v1 success, before TestFlight |
+| 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
-| 13 | Content & localisation pipeline | open | Generation + review workflow for 224 plants × 2 facts × 5 locales (added by Claude) |
-| 14 | Privacy & kids' data | open | One page before onboarding asks for a child's name and age (added by Claude) |
-| 15 | Naming & store presence | open | Keep "Project Food"? Decide before the store listing (added by Claude) |
+| 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled |
+| 14 | Privacy & kids' data | open | Needed before Play review: privacy page covering kids' data (the app stores first name + kid/adult only), push, deletion; web `/delete-account` page |
+| 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon needs the accent; listing assets and screenshots before Play closed testing |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
 
 ## Topics
@@ -223,7 +223,8 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 |---|---|---|
 | 2026-09-06 | Pivot to a family app on native Expo | [[decision-2026-09-06-family-mode-pivot]] |
 | 2026-09-07 | v1 scope, stack (S1–S6), eleven features, out-of-scope list | [[decision-2026-09-07-app-v1-scope]] |
+| 2026-09-16 | Store POC scope: PWA features + multi-member logging first; social, XP, advice deferred or dropped | [[decision-2026-09-16-store-poc-scope]] |
 
 ## Related pages
 - [[overview]] · [[index]] · [[concept-retention-loop]] · [[concept-achievement-system]] ·
-  [[decision-2026-09-07-app-v1-scope]]
+  [[decision-2026-09-07-app-v1-scope]] · [[decision-2026-09-16-store-poc-scope]]

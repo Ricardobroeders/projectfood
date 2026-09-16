@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-09-10
+updated: 2026-09-16
 ---
 
 # Index
@@ -64,6 +64,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 _(none yet)_
 
 ## Decisions
+- [[decision-2026-09-16-store-poc-scope]] — store POC first: the PWA's features plus multi-member logging on the household model; social, XP and AI advice deferred or dropped; migrations 0001–0009 live; prerequisites for testers.
 - [[decision-2026-09-07-app-v1-scope]] — greenfield Expo app; stack S1–S6 (Supabase-only, Free at launch, RevenueCat, Rive, five locales); eleven v1 features; out-of-scope list; design-library re-brief.
 - [[decision-2026-09-06-family-mode-pivot]] — family mode + native iOS/Android (Expo); household data model; cooperative goals; plant cards; class launch; D1–D14.
 
