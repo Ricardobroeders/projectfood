@@ -1,4 +1,4 @@
-import DateTimePicker, { type DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import DateTimePicker, { type DateTimePickerChangeEvent } from '@react-native-community/datetimepicker';
 import { Clock } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -20,12 +20,13 @@ export function dateToTime(d: Date): string {
 export function DinnerTimePicker({ value, onChange }: { value: string; onChange: (hhmm: string) => void }) {
   const [open, setOpen] = useState(false);
   const date = timeToDate(value);
-  const handle = (e: DateTimePickerEvent, d?: Date) => {
+  const handle = (_e: DateTimePickerChangeEvent, d: Date) => {
     if (Platform.OS === 'android') setOpen(false);
-    if (e.type === 'set' && d) onChange(dateToTime(d));
+    onChange(dateToTime(d));
   };
+  const dismiss = () => setOpen(false);
   if (Platform.OS === 'ios') {
-    return <DateTimePicker value={date} mode="time" display="spinner" minuteInterval={5} onChange={handle} style={styles.spinner} />;
+    return <DateTimePicker value={date} mode="time" display="spinner" minuteInterval={5} onValueChange={handle} style={styles.spinner} />;
   }
   return (
     <View>
@@ -33,7 +34,7 @@ export function DinnerTimePicker({ value, onChange }: { value: string; onChange:
         <Clock size={22} color={colors.ink2} />
         <Text style={styles.time}>{value.slice(0, 5)}</Text>
       </Pressable>
-      {open ? <DateTimePicker value={date} mode="time" display="default" is24Hour minuteInterval={5} onChange={handle} /> : null}
+      {open ? <DateTimePicker value={date} mode="time" display="default" is24Hour minuteInterval={5} onValueChange={handle} onDismiss={dismiss} /> : null}
     </View>
   );
 }

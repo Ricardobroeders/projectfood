@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -66,21 +66,28 @@ export function CelebrationSheet() {
   const plant = lastRow ? catalog.byId[lastRow.plant_id] : undefined;
   const { data: fact } = usePlantFact(plant?.id);
 
+  // Worklets can only schedule a function that already lives on the RN runtime, so the close
+  // handler is a stable reference and the per-call payload travels through a ref.
+  const pending = useRef<{ ids: string[]; then?: () => void } | null>(null);
+  const onClosed = useCallback(() => {
+    const p = pending.current;
+    pending.current = null;
+    setShown(null);
+    if (p) {
+      markSeen.mutate(p.ids);
+      p.then?.();
+    }
+  }, [markSeen]);
+
   const finish = useCallback(
     (then?: () => void) => {
-      const ids = (shown ?? []).map((u) => u.id);
+      pending.current = { ids: (shown ?? []).map((u) => u.id), then };
       backdrop.value = withTiming(0, motion.backdrop);
       slide.value = withTiming(HIDDEN_Y, motion.sheetOut, (finished) => {
-        if (finished) {
-          scheduleOnRN(() => {
-            setShown(null);
-            markSeen.mutate(ids);
-            then?.();
-          });
-        }
+        if (finished) scheduleOnRN(onClosed);
       });
     },
-    [shown, backdrop, slide, markSeen],
+    [shown, backdrop, slide, onClosed],
   );
 
   const backdropStyle = useAnimatedStyle(() => ({ opacity: backdrop.value }));
