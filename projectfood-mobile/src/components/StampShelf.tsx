@@ -19,10 +19,12 @@ type ShelfStampProps = {
   level: number;
   label: string;
   size?: number;
+  /** Cell width; defaults to the stamp plus a little air. The grid passes a column width. */
+  width?: number;
   onPress: () => void;
 };
 
-export function ShelfStamp({ achievement, entry, level, label, size = 64, onPress }: ShelfStampProps) {
+export function ShelfStamp({ achievement, entry, level, label, size = 64, width, onPress }: ShelfStampProps) {
   const { t } = useTranslation();
   const scale = useSharedValue(1);
   const rotate = useSharedValue(0);
@@ -43,7 +45,7 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, onPres
   const unlocked = level > 0;
   return (
     <Pressable
-      style={({ pressed }) => [styles.item, { width: size + 12 }, pressed && { opacity: 0.7 }]}
+      style={({ pressed }) => [styles.item, { width: width ?? size + 12 }, pressed && { opacity: 0.7 }]}
       onPress={() => {
         Haptics.selectionAsync();
         onPress();
@@ -85,18 +87,24 @@ export function StampShelf({ entries, levelOf, onPress }: ShelfProps) {
 }
 
 const GRID_COLUMNS = 4;
-const GRID_ITEM = 64 + 12;
+const GRID_GAP = 8;
 const GRID_PADDING = 20;
 
-/** The same stamps as a wrapping grid, for the Unlocks screen: four fixed columns, a short last row stays left. */
+/** The same stamps as a grid for the Unlocks screen: explicit rows of four, so a short last row stays left with empty slots. */
 export function StampGrid({ entries, levelOf, onPress }: ShelfProps) {
   const { t } = useTranslation();
   const { width } = useWindowDimensions();
-  const columnGap = Math.max(4, (width - GRID_PADDING * 2 - GRID_COLUMNS * GRID_ITEM) / (GRID_COLUMNS - 1));
+  const cell = Math.floor((width - GRID_PADDING * 2 - GRID_GAP * (GRID_COLUMNS - 1)) / GRID_COLUMNS);
+  const rows: Achievement[][] = [];
+  for (let i = 0; i < ACHIEVEMENTS.length; i += GRID_COLUMNS) rows.push(ACHIEVEMENTS.slice(i, i + GRID_COLUMNS));
   return (
-    <View style={[styles.grid, { columnGap }]}>
-      {ACHIEVEMENTS.map((a) => (
-        <ShelfStamp key={a.id} achievement={a} entry={entries[a.id]} level={levelOf(a.id)} label={t(`stamps.${a.id}.title`)} onPress={() => onPress(a.id)} />
+    <View style={styles.grid}>
+      {rows.map((row) => (
+        <View key={row[0].id} style={styles.gridRow}>
+          {row.map((a) => (
+            <ShelfStamp key={a.id} achievement={a} entry={entries[a.id]} level={levelOf(a.id)} label={t(`stamps.${a.id}.title`)} width={cell} onPress={() => onPress(a.id)} />
+          ))}
+        </View>
       ))}
     </View>
   );
@@ -104,7 +112,8 @@ export function StampGrid({ entries, levelOf, onPress }: ShelfProps) {
 
 const styles = StyleSheet.create({
   shelf: { paddingHorizontal: 20, gap: 14, paddingVertical: 4 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start', rowGap: 18, paddingHorizontal: GRID_PADDING },
+  grid: { paddingHorizontal: GRID_PADDING, rowGap: 18 },
+  gridRow: { flexDirection: 'row', justifyContent: 'flex-start', columnGap: GRID_GAP },
   item: { alignItems: 'center', gap: 5 },
   label: { fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink2, textAlign: 'center' },
   count: { fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink3, marginTop: -2 },
