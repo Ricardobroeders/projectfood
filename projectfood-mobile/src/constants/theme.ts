@@ -59,9 +59,11 @@ export const colors = {
   /** Progress toward a goal and its completion (Ricardo: "a green bar", 2026-09-14). Never a control colour. */
   success: '#00880D',
   successSoft: '#DDF1DF',
-  // Goal gauge: the lit segments run red → orange → green as the week fills, dark green once the goal is met.
+  // Goal gauge, stepped like the rest of the palette (no gradients): red 1–5, orange 6–10, yellow 11–15,
+  // green from 16, dark green once the goal is met. Bands live in GoalGauge.
   gaugeLow: '#E5484D',
   gaugeMid: '#F5A524',
+  gaugeYellow: '#F5C518',
   gaugeHigh: '#00880D',
   gaugeDone: '#0B5A2A',
   locked: '#ECEAE5',

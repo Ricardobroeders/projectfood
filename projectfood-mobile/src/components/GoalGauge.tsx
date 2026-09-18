@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
 
 import { motion } from '@/constants/motion';
 import { colors } from '@/constants/theme';
@@ -9,6 +9,20 @@ import { colors } from '@/constants/theme';
 const SWEEP = 200;
 const SEG_LEN = 26;
 const SEG_W = 8;
+
+/** Colour bands by plant count, stepped: the whole lit arc takes the band of the current count. */
+const BANDS: { upTo: number; color: string }[] = [
+  { upTo: 5, color: colors.gaugeLow },
+  { upTo: 10, color: colors.gaugeMid },
+  { upTo: 15, color: colors.gaugeYellow },
+  { upTo: Infinity, color: colors.gaugeHigh },
+];
+
+function bandColor(count: number): string {
+  'worklet';
+  for (const b of BANDS) if (count <= b.upTo) return b.color;
+  return colors.gaugeHigh;
+}
 
 type Props = {
   /** Plants tasted this week. Values above `max` light every segment in the done colour. */
@@ -23,8 +37,8 @@ type Props = {
 
 /**
  * Weekly goal gauge: one segment per plant, filling from empty to the week's count when the
- * screen opens (fill class). The lit colour runs red → orange → green with the count and turns
- * dark green when the goal is met.
+ * screen opens (fill class). The lit colour steps red → orange → yellow → green with the count
+ * and turns dark green when the goal is met.
  */
 export function GoalGauge({ value, max, size = 280, children }: Props) {
   const fill = useSharedValue(0);
@@ -42,7 +56,7 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
         const angle = -SWEEP / 2 + (i * SWEEP) / (max - 1);
         return (
           <View key={i} pointerEvents="none" style={[styles.slot, { left: size / 2 - SEG_W / 2, top: radius, transform: [{ rotate: `${angle}deg` }, { translateY: -radius }] }]}>
-            <Segment index={i} fill={fill} max={max} done={done} />
+            <Segment index={i} fill={fill} done={done} />
           </View>
         );
       })}
@@ -51,11 +65,10 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
   );
 }
 
-function Segment({ index, fill, max, done }: { index: number; fill: SharedValue<number>; max: number; done: boolean }) {
+function Segment({ index, fill, done }: { index: number; fill: SharedValue<number>; done: boolean }) {
   const style = useAnimatedStyle(() => {
     const lit = fill.value >= index + 0.5;
-    const ratio = Math.min(1, fill.value / max);
-    const on = done ? colors.gaugeDone : interpolateColor(ratio, [0, 0.5, 1], [colors.gaugeLow, colors.gaugeMid, colors.gaugeHigh]);
+    const on = done ? colors.gaugeDone : bandColor(Math.round(fill.value));
     return { backgroundColor: lit ? on : colors.hairline };
   });
   return <Animated.View style={[styles.segment, style]} />;
