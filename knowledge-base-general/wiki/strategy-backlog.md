@@ -63,7 +63,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (PF-55) |
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
-| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
+| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
 | 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
@@ -112,8 +112,26 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Open:** notification policy in detail (dinner-time question, quiet after three ignored,
   freeze); the week-4 and week-8 test with five families (D13); the class channel's role in
   retention versus acquisition.
-- **Next:** write the five-family test protocol as a decision page before TestFlight.
-  _(status 2026-09-10)_
+- **Push management outside the app (Ricardo, 2026-09-18, thinking out loud):** the four
+  automated pushes live in `send-notifications` with copy hard-coded per locale; there is no
+  place to edit text or send a one-off message without a deploy. Sketch: two layers, all free.
+  (1) Data-driven pushes (dinner question, streak keeper, later the rung nudges) stay in the
+  function but read their copy from a `notification_templates` table (kind × locale), so text
+  changes need no deploy. (2) One-off or scheduled messages become rows in a
+  `notification_campaigns` table (title/body per locale, audience filter such as locale or
+  "no log for N days", `send_at`, status); the same 15-minute cron picks them up, honours the
+  marketing opt-in and the backoff, and logs to `notification_log`. Creating a campaign is then
+  an insert: from the Supabase table editor today, from an n8n form (Ricardo already runs n8n)
+  next, from an admin page on projectfood.dev (Vercel, behind Supabase auth with an admin flag)
+  when the volume justifies it; that page would also show sent / delivered / opened / logged
+  rates per message from `notification_log`. OneSignal (free to 10k subscribers, dashboard with
+  segments and journeys) only if we want those without building; it adds an SDK, a privacy line
+  and a second source of truth, and the essential pushes would still need our data.
+- **Open:** whether one-off campaigns belong in the store POC at all, and which entry point
+  (table editor, n8n form, admin page) Ricardo wants first.
+- **Next:** write the five-family test protocol as a decision page before TestFlight; decide
+  the push entry point after a week on the preview APK (tables + cron pickup ≈ half a day).
+  _(status 2026-09-18)_
 
 ### 5. Achievements — drafted
 - **Store POC (2026-09-16):** 16 stamps on real history in the Unlocks tab, unlock rows in
