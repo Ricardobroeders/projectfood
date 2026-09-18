@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { Cup } from '@/components/Cup';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { StampGrid } from '@/components/StampShelf';
@@ -64,17 +65,32 @@ export default function UnlocksScreen() {
 
         <SectionTitle meta={t('unlocks.cardsUnlocked', { n: cards.unlocked })}>{t('unlocks.cards')}</SectionTitle>
         <View style={styles.cardsRow}>
-          <View style={[styles.cardStat, { backgroundColor: colors.bgSoft }]}>
-            <Text style={styles.cardNumber}>{cards.unlocked}</Text>
-            <Text style={styles.cardLabel}>{t('unlocks.unlocked')}</Text>
+          <View style={[styles.cardStat, { backgroundColor: '#F1DFC4' }]}>
+            <Cup level="bronze" size={36} />
+            <View style={styles.cardText}>
+              <Text style={styles.cardNumber}>{cards.unlocked}</Text>
+              <Text style={styles.cardLabel} numberOfLines={1}>
+                {t('unlocks.unlocked')}
+              </Text>
+            </View>
           </View>
           <View style={[styles.cardStat, { backgroundColor: '#E9E9EC' }]}>
-            <Text style={styles.cardNumber}>{cards.silver}</Text>
-            <Text style={styles.cardLabel}>{t('unlocks.silver')}</Text>
+            <Cup level="silver" size={36} />
+            <View style={styles.cardText}>
+              <Text style={styles.cardNumber}>{cards.silver}</Text>
+              <Text style={styles.cardLabel} numberOfLines={1}>
+                {t('unlocks.silver')}
+              </Text>
+            </View>
           </View>
           <View style={[styles.cardStat, { backgroundColor: '#FBEDB5' }]}>
-            <Text style={styles.cardNumber}>{cards.gold}</Text>
-            <Text style={styles.cardLabel}>{t('unlocks.gold')}</Text>
+            <Cup level="gold" size={36} />
+            <View style={styles.cardText}>
+              <Text style={styles.cardNumber}>{cards.gold}</Text>
+              <Text style={styles.cardLabel} numberOfLines={1}>
+                {t('unlocks.gold')}
+              </Text>
+            </View>
           </View>
         </View>
 
@@ -112,7 +128,8 @@ const styles = StyleSheet.create({
   memberChip: { flexDirection: 'row', alignItems: 'center', gap: 8, height: 36, paddingLeft: 6, paddingRight: 14, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   memberChipText: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18, color: colors.ink },
   cardsRow: { flexDirection: 'row', gap: 8, paddingHorizontal: 20 },
-  cardStat: { flex: 1, height: 76, borderRadius: radii.lg, padding: 12, justifyContent: 'center', gap: 2 },
+  cardStat: { flex: 1, height: 76, borderRadius: radii.lg, paddingHorizontal: 10, flexDirection: 'row', alignItems: 'center', gap: 8 },
+  cardText: { flex: 1, gap: 2 },
   cardNumber: { fontFamily: fonts.extrabold, fontSize: 24, lineHeight: 28, color: colors.ink },
   cardLabel: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
   cats: { paddingHorizontal: 20, gap: 8 },

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Cup } from '@/components/Cup';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { Loading, PrimaryButton, SecondaryButton, SectionTitle } from '@/components/ui';
 import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
@@ -121,6 +122,7 @@ export default function PlantDetailScreen() {
                 <Text style={styles.next} numberOfLines={2}>
                   {next}
                 </Text>
+                <Cup level={level === 'none' ? 'bronze' : level} size={34} style={level === 'none' ? styles.cupLocked : undefined} />
               </View>
             );
           })}
@@ -166,5 +168,6 @@ const styles = StyleSheet.create({
   memberRow: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 64, paddingHorizontal: 14, paddingVertical: 10, borderRadius: radii.md },
   memberName: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
   memberMeta: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
-  next: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, maxWidth: 120, textAlign: 'right' },
+  next: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, maxWidth: 110, textAlign: 'right' },
+  cupLocked: { opacity: 0.3 },
 });

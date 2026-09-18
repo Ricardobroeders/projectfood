@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { Cup } from '@/components/Cup';
 import { SkeletonRows } from '@/components/Skeleton';
 import { BackHeader, Screen, SectionTitle } from '@/components/ui';
 import { revealFor } from '@/constants/motion';
@@ -131,6 +132,7 @@ const TriedRow = memo(function TriedRow({ plant, n, label, bg, onPress }: { plan
         {plant.name}
       </Text>
       <View style={[styles.badge, { backgroundColor: LEVEL_BG[level] }]}>
+        <Cup level={level} size={20} />
         <Text style={styles.badgeText}>{label}</Text>
       </View>
     </Pressable>
@@ -158,6 +160,6 @@ const styles = StyleSheet.create({
   tile: { width: 64, height: 64, alignItems: 'center', justifyContent: 'center' },
   muted: { opacity: 0.55 },
   name: { flex: 1, fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
-  badge: { height: 28, paddingHorizontal: 10, borderRadius: radii.sm, justifyContent: 'center' },
+  badge: { flexDirection: 'row', alignItems: 'center', gap: 5, height: 28, paddingLeft: 6, paddingRight: 10, borderRadius: radii.sm },
   badgeText: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink },
 });
