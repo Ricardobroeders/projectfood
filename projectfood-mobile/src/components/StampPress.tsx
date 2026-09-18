@@ -1,13 +1,13 @@
-import { Canvas, Group, Path } from '@shopify/react-native-skia';
 import type { PropsWithChildren } from 'react';
 import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Animated, { Easing, interpolate, useAnimatedStyle, useDerivedValue, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
+import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
+import Svg, { Path } from 'react-native-svg';
 import { scheduleOnRN } from 'react-native-worklets';
 
 import { colors } from '@/constants/theme';
 
-/** A rounded four-point star, unit size, centred on 0,0. */
+/** A rounded four-point star, unit size, centred on 0,0 (drawn in a -1..1 viewBox). */
 const STAR = 'M0 -1 C0.12 -0.12 0.12 -0.12 1 0 C0.12 0.12 0.12 0.12 0 1 C-0.12 0.12 -0.12 0.12 -1 0 C-0.12 -0.12 -0.12 -0.12 0 -1 Z';
 
 const SPARKLES = [
@@ -21,19 +21,29 @@ const SPARKLES = [
 
 const SPARKLE_COLORS = [colors.accent, '#C2533D', '#4F7A3D', colors.accentPressed, '#6A4880', colors.accent];
 
-function Sparkle({ index, progress, cx, cy, radius }: { index: number; progress: SharedValue<number>; cx: number; cy: number; radius: number }) {
+function Sparkle({ index, progress, area, radius }: { index: number; progress: SharedValue<number>; area: number; radius: number }) {
   const s = SPARKLES[index];
   const rad = (s.angle * Math.PI) / 180;
-  const transform = useDerivedValue(() => {
+  // The star's half-width at full scale is `size` px, so its box is twice that.
+  const box = s.size * 2;
+  const style = useAnimatedStyle(() => {
     const t = Math.min(1, Math.max(0, (progress.value - s.start) / 0.6));
     const r = radius + 16 * t;
-    const scale = Math.sin(t * Math.PI) * s.size;
-    return [{ translateX: cx + Math.cos(rad) * r }, { translateY: cy + Math.sin(rad) * r }, { scale: Math.max(scale, 0.001) }, { rotate: t * 0.8 }];
+    return {
+      transform: [
+        { translateX: Math.cos(rad) * r },
+        { translateY: Math.sin(rad) * r },
+        { scale: Math.max(Math.sin(t * Math.PI), 0.001) },
+        { rotate: `${t * 0.8}rad` },
+      ],
+    };
   });
   return (
-    <Group transform={transform}>
-      <Path path={STAR} color={SPARKLE_COLORS[index]} />
-    </Group>
+    <Animated.View pointerEvents="none" style={[styles.sparkle, { width: box, height: box, left: area / 2 - box / 2, top: area / 2 - box / 2 }, style]}>
+      <Svg width={box} height={box} viewBox="-1 -1 2 2">
+        <Path d={STAR} fill={SPARKLE_COLORS[index]} />
+      </Svg>
+    </Animated.View>
   );
 }
 
@@ -86,11 +96,9 @@ export function StampPress({ size, color, play, onLanded, children }: Props) {
 
   return (
     <View style={{ width: area, height: area, alignItems: 'center', justifyContent: 'center' }}>
-      <Canvas style={[StyleSheet.absoluteFill, { width: area, height: area }]} pointerEvents="none">
-        {SPARKLES.map((_, i) => (
-          <Sparkle key={i} index={i} progress={spark} cx={area / 2} cy={area / 2} radius={size * 0.62} />
-        ))}
-      </Canvas>
+      {SPARKLES.map((_, i) => (
+        <Sparkle key={i} index={i} progress={spark} area={area} radius={size * 0.62} />
+      ))}
       <Animated.View
         pointerEvents="none"
         style={[{ position: 'absolute', width: size, height: size, borderRadius: size * 0.2, borderWidth: 3, borderColor: color }, ringStyle]}
@@ -99,3 +107,7 @@ export function StampPress({ size, color, play, onLanded, children }: Props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  sparkle: { position: 'absolute' },
+});

@@ -14,6 +14,9 @@ const EAS_PROJECT_ID = 'b7ecbd67-fd95-4fcf-ad4b-7a53fe9cc3ec';
 // gitignored file at the project root. Omitted when absent so a build without push still works.
 const GOOGLE_SERVICES =
   process.env.GOOGLE_SERVICES_JSON ?? (existsSync('./google-services.json') ? './google-services.json' : undefined);
+// Android CPU architectures to build. Phones are 64-bit ARM (plus 32-bit ARM for old devices); the x86
+// ABIs only serve emulators and would double the APK. The preview profile sets ANDROID_ARCHS=arm64-v8a.
+const ANDROID_ARCHS = (process.env.ANDROID_ARCHS ?? 'arm64-v8a,armeabi-v7a').split(',');
 // iOS reversed client id for Google Sign-In; placeholder until the iOS OAuth client exists.
 const GOOGLE_IOS_URL_SCHEME = process.env.GOOGLE_IOS_URL_SCHEME ?? 'com.googleusercontent.apps.placeholder';
 
@@ -48,6 +51,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     'expo-router',
+    [
+      'expo-build-properties',
+      {
+        android: {
+          buildArchs: ANDROID_ARCHS,
+          // R8 code shrinking and resource shrinking in release builds: smaller dex, smaller APK.
+          enableMinifyInReleaseBuilds: true,
+          enableShrinkResourcesInReleaseBuilds: true,
+        },
+      },
+    ],
     ['expo-splash-screen', { backgroundColor: '#FFFFFF', image: './assets/images/splash-icon.png', imageWidth: 76 }],
     ['expo-notifications', { icon: './assets/images/notification-icon.png', color: '#F5C518', defaultChannel: 'dinner' }],
     'expo-secure-store',
