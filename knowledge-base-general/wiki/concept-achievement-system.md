@@ -136,6 +136,11 @@ from Green machine gold"), and a level that crosses 50% and 75% is a push moment
 right. Caveats: n=14, adults only, several of the departed users entered days in bulk (Rob's
 biggest day is 63 plants, Imke's 51), and one household is the founder's.
 
+**Built 2026-09-18** (migration `20260918110000_stamp_ladder.sql`, app commit the same day) with the
+targets exactly as in the table; Ricardo can tune any rung in `definitions.ts`. Rainbow counts
+"weeks with 5 colours" (1 / 4 / 12 / 52), which keeps one metric per stamp; Regulars is the one stamp
+whose metric changes per rung. Rungs unlock in order.
+
 **What it takes to build.** `achievement_unlocks` gains a `level` column (unique on household,
 member, achievement, level); the engine records the highest level reached; the celebration sheet
 says "Green machine · silver"; copy per level in en/nl/it; the Unlocks shelf draws the frame. Level
@@ -252,9 +257,8 @@ lookup, like the plants. Frames are drawn in code.
   home (a Collection tab, or the kid's Family page).
 - Store POC 2026-09-16: the 16 goals run on real history
   (`projectfood-mobile/src/features/achievements/definitions.ts`) and unlock rows live in
-  `achievement_unlocks`. Open since 2026-09-18: Ricardo to confirm the level targets in the ladder
-  above before the `level` column, engine and copy are built; whether Rainbow's top rung should be
-  "all 8 colours in one week" or a count of rainbow weeks.
+  `achievement_unlocks`. The ladder shipped on 2026-09-18 with the proposed targets; still open: whether the targets
+  feel right after a month with families, and the push copy that names a rung at 50% and 75%.
 
 ## Related pages
 - [[overview]] · [[concept-retention-loop]] · [[concept-brand-pillars]] ·

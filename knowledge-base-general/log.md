@@ -183,3 +183,13 @@ stamps, give each four levels at one week / month / season / year, targets set w
 actually stand, the rungs that are half done at the week 5→7 cliff named by the pushes, and a
 17-item prize-image list. Backlog row 5 and "Next to pick up" updated; Ricardo to confirm the
 targets before the build.
+
+## [2026-09-18] build | Stamp ladder, prize renders and cups on device
+Ricardo generated the 17 stamp renders and three card-level cups (n8n, buckets `achievements` and
+`images/app-ui-images`); they are bundled through `scripts/build-assets.mjs`. The ladder from
+[[concept-achievement-system]] was built the same day with the proposed targets: migration 0011
+(`achievement_unlocks.level`, ids renamed, `household_weekly_history` with colours), the engine
+unlocking rungs in order, level rings and the ladder in the stamp sheet, "Level up!" celebrations,
+copy in en/nl/it. Also today: the dev client moved to USB (`adb reverse`), skeleton rows with an
+in-place fade for the lists, flags in the language picker and a reactive locale hook. Backlog row 5
+and "Next to pick up" updated.

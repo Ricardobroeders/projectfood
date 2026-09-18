@@ -27,14 +27,14 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
 2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
-3. Confirm the stamp ladder targets (row 5, [[concept-achievement-system]]) and generate the 17 stamp renders from the image list there.
+3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off.
 4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
 5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
 6. Five parent conversations (Linear PF-55).
 
 **Claude's next build steps**
 7. Device testing continues over USB (`adb reverse`, the tunnel proved unreliable); next: two-member logging with a kid profile, plant page, account screens.
-8. Build the stamp ladder once the targets are confirmed (row 5).
+8. Rung pushes at 50% and 75% in `send-notifications` (row 5).
 9. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
 10. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
 11. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
@@ -64,7 +64,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder proposal calibrated on live data (2026-09-18, [[concept-achievement-system]]): the 16 stamps get four levels (week / month / season / year) with one image each; Ricardo to confirm the targets, then build. Still open: "refused" tap, albums |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 17 stamps × up to four levels with prize renders and level rings; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -126,8 +126,10 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   standings per level, image topics), stamps on device.
 - **Open:** Ricardo confirms or adjusts the level targets; a "refused" tap at logging for Brave
   bite; the real album list (category "all" levels stand in for albums until then).
-- **Next:** on confirmation, `level` column + engine + level copy en/nl/it + shelf frames; Ricardo
-  generates the 17 stamp renders. _(status 2026-09-18)_
+- **Built (2026-09-18):** `level` column, engine, level copy en/nl/it, rings on the shelf, the ladder in
+  the stamp sheet, 17 prize renders and the card-level cups on device.
+- **Next:** watch which rungs families sit on after a month; add the 50% / 75% rung pushes to
+  `send-notifications`. _(status 2026-09-18)_
 
 ### 6. SEO strategy — drafted
 - **Have:** [[seo-overview]], [[seo-keyword-strategy]], [[seo-serp-landscape]],
