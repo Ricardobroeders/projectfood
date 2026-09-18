@@ -77,7 +77,7 @@ export default function CategoryScreen() {
   }, [rows]);
   const hero = (
     <View style={[styles.hero, { backgroundColor: cat?.bg }]}>
-      <CategoryImage category={category as Category} size={128} style={styles.heroImage} />
+      <CategoryImage category={category as Category} size={108} style={styles.heroImage} />
       <View style={styles.heroText}>
         <Text style={[styles.heroTitle, { color: cat?.fg }]}>{t(`categoriesPlural.${category as Category}`)}</Text>
         <Text style={[styles.heroMeta, { color: cat?.fg }]}>{`${tally.tried} ${t('unlocks.ofTotal', { total: tally.total })}`}</Text>
@@ -171,7 +171,7 @@ const UntriedRow = memo(function UntriedRow({ plant, onPress }: { plant: Plant; 
 const styles = StyleSheet.create({
   content: { paddingBottom: 32 },
   hero: { flexDirection: 'row', alignItems: 'center', gap: 16, marginHorizontal: 20, marginTop: 4, padding: 16, borderRadius: radii.lg },
-  heroImage: { marginVertical: -20, marginLeft: -6 },
+  heroImage: { marginVertical: -10 },
   heroText: { flex: 1, gap: 2 },
   heroTitle: { fontFamily: fonts.extrabold, fontSize: 22, lineHeight: 28 },
   heroMeta: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 20, opacity: 0.85 },

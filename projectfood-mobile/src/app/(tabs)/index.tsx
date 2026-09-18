@@ -161,7 +161,7 @@ export default function HomeScreen() {
             {byCat.map(({ c, plants }) => (
               <View key={c} style={[styles.cat, { backgroundColor: CATS[c].bg }]}>
                 <View style={styles.catHead}>
-                  <CategoryImage category={c} size={40} style={styles.catImage} />
+                  <CategoryImage category={c} size={36} style={styles.catImage} />
                   <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
                   <Text style={[styles.catCount, { color: CATS[c].fg }]}>{plants.length}</Text>
                 </View>
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   cats: { paddingHorizontal: 20, gap: 10 },
   cat: { borderRadius: radii.lg, padding: 14, gap: 10 },
   catHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  catImage: { marginRight: 6, marginVertical: -5 },
+  catImage: { marginRight: 6, marginVertical: -3 },
   catTitle: { flex: 1, fontFamily: fonts.bold, fontSize: 14, lineHeight: 18 },
   catCount: { fontFamily: fonts.extrabold, fontSize: 18, lineHeight: 22 },
   pills: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },

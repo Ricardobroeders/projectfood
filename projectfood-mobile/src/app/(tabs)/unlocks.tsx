@@ -106,7 +106,7 @@ export default function UnlocksScreen() {
                 router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } });
               }}
               style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
-              <CategoryImage category={c} size={80} style={styles.catImage} />
+              <CategoryImage category={c} size={64} style={styles.catImage} />
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={styles.catHead}>
                   <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
@@ -136,9 +136,9 @@ const styles = StyleSheet.create({
   cardNumber: { fontFamily: fonts.extrabold, fontSize: 24, lineHeight: 28, color: colors.ink },
   cardLabel: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
   cats: { paddingHorizontal: 20, gap: 8 },
-  catRow: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 72, paddingLeft: 10, paddingRight: 16, paddingVertical: 10, borderRadius: radii.md },
-  // The render is bigger than the row: it bleeds 4 px past the top and bottom and sits close to the left edge.
-  catImage: { marginVertical: -14, marginLeft: -4 },
+  catRow: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 72, paddingLeft: 12, paddingRight: 16, paddingVertical: 10, borderRadius: radii.md },
+  // The render reaches into the row padding, leaving 4 px of air above and below.
+  catImage: { marginVertical: -6 },
   catHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
   catTitle: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20 },
   catCount: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18 },
