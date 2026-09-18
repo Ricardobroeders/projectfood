@@ -12,9 +12,9 @@ const SEG_W = 8;
 
 /** Colour bands by plant count, stepped: the whole lit arc takes the band of the current count. */
 const BANDS: { upTo: number; color: string }[] = [
-  { upTo: 5, color: colors.gaugeLow },
-  { upTo: 10, color: colors.gaugeMid },
-  { upTo: 15, color: colors.gaugeYellow },
+  { upTo: 7, color: colors.gaugeLow },
+  { upTo: 15, color: colors.gaugeMid },
+  { upTo: 23, color: colors.gaugeYellow },
   { upTo: Infinity, color: colors.gaugeHigh },
 ];
 
