@@ -12,6 +12,8 @@ export const STAMP_IMAGES: Record<string, ImageSourcePropType> = {
   grain_train: require('@/assets/stamps/grain_train.webp'),
   bubbly: require('@/assets/stamps/bubbly.webp'),
   superfood: require('@/assets/stamps/superfood.webp'),
+  rainbow: require('@/assets/stamps/rainbow.webp'),
+  big_dinner: require('@/assets/stamps/big_dinner.webp'),
   table_talk: require('@/assets/stamps/table_talk.webp'),
   family_of_thirty: require('@/assets/stamps/family_of_thirty.webp'),
   regulars: require('@/assets/stamps/regulars.webp'),
