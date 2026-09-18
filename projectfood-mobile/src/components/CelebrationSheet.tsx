@@ -6,6 +6,7 @@ import Animated, { FadeInDown, useAnimatedStyle, useSharedValue, withTiming } fr
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 
+import { LevelPips } from '@/components/LevelPips';
 import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
 import { StampPress } from '@/components/StampPress';
@@ -122,10 +123,11 @@ export function CelebrationSheet() {
           <View style={styles.handle} />
           {lastNight ? <Text style={styles.eyebrow}>{t('celebration.lastNight')}</Text> : null}
           <StampPress size={STAMP_SIZE} color={a.color} play={visible} onLanded={onLanded}>
-            <Stamp size={STAMP_SIZE} color={a.color} level={first.level}>
+            <Stamp size={STAMP_SIZE} color={a.color}>
               {isFirstBites && plant ? <PlantImage plant={plant} size={88} /> : <StampArt achievement={a} size={STAMP_SIZE} />}
             </Stamp>
           </StampPress>
+          <LevelPips level={first.level} max={a.rungs.length} size={7} style={{ marginTop: 10 }} />
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.body}>{memberName ? `${memberName} · ${body}` : body}</Text>
           {rest.length > 0 ? (
@@ -135,7 +137,7 @@ export function CelebrationSheet() {
                 if (!ra) return null;
                 return (
                   <Animated.View key={u.id} entering={FadeInDown.delay(560 + i * 90).duration(320)}>
-                    <Stamp size={44} color={ra.color} level={u.level}>
+                    <Stamp size={44} color={ra.color}>
                       <StampArt achievement={ra} size={44} />
                     </Stamp>
                   </Animated.View>

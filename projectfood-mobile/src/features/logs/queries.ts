@@ -51,7 +51,7 @@ export function useTasteCounts(hid: string | undefined) {
   });
 }
 
-export function useDailyActivity(hid: string | undefined, days = 90) {
+export function useDailyActivity(hid: string | undefined, days = 400) {
   return useQuery({
     queryKey: [...dailyKey(hid ?? ''), days],
     queryFn: async () => {

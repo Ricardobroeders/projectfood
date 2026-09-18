@@ -157,7 +157,10 @@
     "firstTaste": "Il primo assaggio sblocca la carta",
     "complete": "Completo",
     "levelsUnlocked": "{n} di {m} livelli",
-    "nextLevel": "Prossimo: {level}"
+    "nextLevel": "Prossimo: {level}",
+    "done": "Fatto",
+    "next": "Prossimo",
+    "levelOf": "Livello {n} di {m}"
   },
   "plant": {
     "family": "Famiglia",
@@ -192,7 +195,8 @@
   "stamps": {
     "explorer": {
       "title": "Esploratore",
-      "body": "Assaggia {n} piante diverse"
+      "body": "Assaggia {n} piante diverse",
+      "bodyTwice": "{n} piante diverse assaggiate almeno due volte"
     },
     "curious": {
       "title": "Curioso",
@@ -210,41 +214,58 @@
       "title": "Grande cena",
       "body": "Assaggia {n} piante in una cena"
     },
+    "regular_table": {
+      "title": "Tavola regolare",
+      "body": "Registra la cena in {n} giorni diversi"
+    },
+    "steady_weeks": {
+      "title": "Settimane costanti",
+      "body": "{n} settimane con 4 cene registrate"
+    },
     "green_machine": {
       "title": "Macchina verde",
-      "body": "Assaggia {n} verdure"
+      "body": "Assaggia {n} verdure",
+      "bodyTwice": "{n} verdure assaggiate almeno due volte"
     },
     "fruit_basket": {
       "title": "Cesto di frutta",
-      "body": "Assaggia {n} frutti"
+      "body": "Assaggia {n} frutti",
+      "bodyTwice": "{n} frutti assaggiati almeno due volte"
     },
     "herb_garden": {
       "title": "Giardino di erbe",
-      "body": "Assaggia {n} erbe e spezie"
+      "body": "Assaggia {n} erbe e spezie",
+      "bodyTwice": "{n} erbe e spezie assaggiate almeno due volte"
     },
     "nutcracker": {
       "title": "Schiaccianoci",
-      "body": "Assaggia {n} noci e semi"
+      "body": "Assaggia {n} noci e semi",
+      "bodyTwice": "{n} noci e semi assaggiati almeno due volte"
     },
     "bean_counter": {
       "title": "Conta-fagioli",
-      "body": "Assaggia {n} legumi"
+      "body": "Assaggia {n} legumi",
+      "bodyTwice": "{n} legumi assaggiati almeno due volte"
     },
     "grain_train": {
       "title": "Treno dei cereali",
-      "body": "Assaggia {n} cereali integrali"
+      "body": "Assaggia {n} cereali integrali",
+      "bodyTwice": "{n} cereali integrali assaggiati almeno due volte"
     },
     "bubbly": {
       "title": "Bollicine",
-      "body": "Assaggia {n} fermentati"
+      "body": "Assaggia {n} fermentati",
+      "bodyTwice": "{n} fermentati assaggiati almeno due volte"
     },
     "superfood": {
       "title": "Superfood",
-      "body": "Assaggia {n} superfood"
+      "body": "Assaggia {n} superfood",
+      "bodyTwice": "{n} superfood assaggiati almeno due volte"
     },
     "tomato_family": {
       "title": "Famiglia del pomodoro",
-      "body": "Assaggia {n} piante della famiglia delle solanacee"
+      "body": "Assaggia {n} piante della famiglia delle solanacee",
+      "bodyTwice": "{n} solanacee assaggiate almeno due volte"
     },
     "regulars": {
       "title": "Habitué",

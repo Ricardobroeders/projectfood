@@ -157,7 +157,10 @@
     "firstTaste": "First taste unlocks the card",
     "complete": "Complete",
     "levelsUnlocked": "{n} of {m} levels",
-    "nextLevel": "Next: {level}"
+    "nextLevel": "Next: {level}",
+    "done": "Done",
+    "next": "Next",
+    "levelOf": "Level {n} of {m}"
   },
   "plant": {
     "family": "Family",
@@ -192,7 +195,8 @@
   "stamps": {
     "explorer": {
       "title": "Explorer",
-      "body": "Taste {n} different plants"
+      "body": "Taste {n} different plants",
+      "bodyTwice": "{n} different plants tasted at least twice"
     },
     "curious": {
       "title": "Curious",
@@ -210,41 +214,58 @@
       "title": "Big dinner",
       "body": "Taste {n} plants in one dinner"
     },
+    "regular_table": {
+      "title": "Regular table",
+      "body": "Log dinner on {n} different days"
+    },
+    "steady_weeks": {
+      "title": "Steady weeks",
+      "body": "{n} weeks with 4 dinners logged"
+    },
     "green_machine": {
       "title": "Green machine",
-      "body": "Taste {n} vegetables"
+      "body": "Taste {n} vegetables",
+      "bodyTwice": "{n} vegetables tasted at least twice"
     },
     "fruit_basket": {
       "title": "Fruit basket",
-      "body": "Taste {n} fruits"
+      "body": "Taste {n} fruits",
+      "bodyTwice": "{n} fruits tasted at least twice"
     },
     "herb_garden": {
       "title": "Herb garden",
-      "body": "Taste {n} herbs & spices"
+      "body": "Taste {n} herbs & spices",
+      "bodyTwice": "{n} herbs & spices tasted at least twice"
     },
     "nutcracker": {
       "title": "Nutcracker",
-      "body": "Taste {n} nuts & seeds"
+      "body": "Taste {n} nuts & seeds",
+      "bodyTwice": "{n} nuts & seeds tasted at least twice"
     },
     "bean_counter": {
       "title": "Bean counter",
-      "body": "Taste {n} legumes"
+      "body": "Taste {n} legumes",
+      "bodyTwice": "{n} legumes tasted at least twice"
     },
     "grain_train": {
       "title": "Grain train",
-      "body": "Taste {n} whole grains"
+      "body": "Taste {n} whole grains",
+      "bodyTwice": "{n} whole grains tasted at least twice"
     },
     "bubbly": {
       "title": "Bubbly",
-      "body": "Taste {n} ferments"
+      "body": "Taste {n} ferments",
+      "bodyTwice": "{n} ferments tasted at least twice"
     },
     "superfood": {
       "title": "Superfood",
-      "body": "Taste {n} superfoods"
+      "body": "Taste {n} superfoods",
+      "bodyTwice": "{n} superfoods tasted at least twice"
     },
     "tomato_family": {
       "title": "Tomato family",
-      "body": "Taste {n} plants of the nightshade family"
+      "body": "Taste {n} plants of the nightshade family",
+      "bodyTwice": "{n} nightshades tasted at least twice"
     },
     "regulars": {
       "title": "Regulars",

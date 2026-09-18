@@ -27,7 +27,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
 2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
-3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off.
+3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off; generate the two new renders `achievement-regular_table.png` and `achievement-steady_weeks.png`.
 4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
 5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
 6. Five parent conversations (Linear PF-55).
@@ -64,7 +64,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 17 stamps × up to four levels with prize renders and level rings; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |

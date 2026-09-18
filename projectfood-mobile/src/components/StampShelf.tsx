@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 
+import { LevelPips } from '@/components/LevelPips';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
@@ -50,10 +51,11 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, onPres
       accessibilityRole="button"
       accessibilityLabel={`${label}, ${v.maxed ? t('unlocks.complete') : `${v.current} / ${v.target}`}`}>
       <Animated.View style={style}>
-        <Stamp size={size} color={achievement.color} locked={!unlocked} level={level}>
+        <Stamp size={size} color={achievement.color} locked={!unlocked}>
           <StampArt achievement={achievement} size={size} unlocked={unlocked} />
         </Stamp>
       </Animated.View>
+      <LevelPips level={level} max={v.maxLevel} />
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
         {label}
       </Text>
@@ -97,7 +99,7 @@ export function StampGrid({ entries, levelOf, onPress }: ShelfProps) {
 const styles = StyleSheet.create({
   shelf: { paddingHorizontal: 20, gap: 14, paddingVertical: 4 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 18, paddingHorizontal: 20 },
-  item: { alignItems: 'center', gap: 6 },
+  item: { alignItems: 'center', gap: 5 },
   label: { fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink2, textAlign: 'center' },
   count: { fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink3, marginTop: -2 },
 });

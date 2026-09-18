@@ -1,8 +1,9 @@
-import { Check } from 'lucide-react-native';
+import { Check, Lock } from 'lucide-react-native';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { LevelPips } from '@/components/LevelPips';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Sheet } from '@/components/Sheet';
@@ -10,7 +11,7 @@ import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
 import { colors, fonts, radii } from '@/constants/theme';
 import { levelLabel, rungBody } from '@/features/achievements/copy';
-import { ACHIEVEMENT_BY_ID, LEVEL_COLORS, levelKey, levelName, progressFor, stampView } from '@/features/achievements/definitions';
+import { ACHIEVEMENT_BY_ID, levelKey, progressFor, stampView } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { useUi } from '@/state/ui';
 
@@ -39,14 +40,13 @@ export function AchievementSheet() {
   return (
     <Sheet visible={open !== null} onRequestClose={close}>
       <View style={styles.head}>
-        <Stamp size={STAMP_SIZE} color={a.color} locked={level === 0} level={level}>
+        <Stamp size={STAMP_SIZE} color={a.color} locked={level === 0}>
           <StampArt achievement={a} size={STAMP_SIZE} unlocked={level > 0} />
         </Stamp>
+        <LevelPips level={level} max={v.maxLevel} size={7} />
         <Text style={styles.title}>{t(`stamps.${target.id}.title`)}</Text>
-        {level > 0 ? (
-          <View style={[styles.levelChip, { backgroundColor: LEVEL_COLORS[levelName(level)] }]}>
-            <Text style={styles.levelChipText}>{levelLabel(t, level)}</Text>
-          </View>
+        {v.maxLevel > 1 ? (
+          <Text style={styles.levelLine}>{level > 0 ? `${t('unlocks.levelOf', { n: level, m: v.maxLevel })} · ${levelLabel(t, level)}` : t('unlocks.levelOf', { n: 0, m: v.maxLevel })}</Text>
         ) : null}
         <Text style={styles.body}>{v.maxed ? t('unlocks.complete') : rungBody(t, a, level + 1, v.target)}</Text>
         {member ? (
@@ -72,15 +72,27 @@ export function AchievementSheet() {
           {rungs.map((r, i) => {
             const reached = i < level;
             const next = i === level;
+            const shown = Math.min(r.current, r.target);
             return (
               <View key={i} style={[styles.rung, next && styles.rungNext]}>
-                <View style={[styles.rungDot, { backgroundColor: LEVEL_COLORS[levelName(i + 1)] }, !reached && !next && { opacity: 0.35 }]}>
-                  {reached ? <Check size={12} color="#FFFFFF" strokeWidth={3} /> : null}
+                <View style={[styles.rungNo, reached && styles.rungNoDone, next && styles.rungNoNext]}>
+                  {reached ? <Check size={14} color="#FFFFFF" strokeWidth={3} /> : <Text style={[styles.rungNoText, next && { color: colors.accent }]}>{i + 1}</Text>}
                 </View>
-                <Text style={[styles.rungText, !reached && !next && { color: colors.ink3 }]} numberOfLines={1}>
-                  {rungBody(t, a, i + 1, r.target)}
-                </Text>
-                <Text style={styles.rungLevel}>{levelLabel(t, i + 1)}</Text>
+                <View style={styles.rungText}>
+                  <Text style={[styles.rungBody, !reached && !next && { color: colors.ink3 }]} numberOfLines={2}>
+                    {rungBody(t, a, i + 1, r.target)}
+                  </Text>
+                  <Text style={styles.rungLevel}>{next ? `${t('unlocks.next')} · ${levelLabel(t, i + 1)}` : levelLabel(t, i + 1)}</Text>
+                </View>
+                {reached ? (
+                  <Text style={styles.rungDone}>{t('unlocks.done')}</Text>
+                ) : next ? (
+                  <Text style={styles.rungCount}>
+                    {shown}/{r.target}
+                  </Text>
+                ) : (
+                  <Lock size={16} color={colors.ink3} />
+                )}
               </View>
             );
           })}
@@ -96,9 +108,8 @@ export function AchievementSheet() {
 
 const styles = StyleSheet.create({
   head: { alignItems: 'center', gap: 8, paddingTop: 4 },
-  title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, textAlign: 'center', marginTop: 6 },
-  levelChip: { height: 26, paddingHorizontal: 12, borderRadius: radii.sm, justifyContent: 'center' },
-  levelChipText: { fontFamily: fonts.bold, fontSize: 12, lineHeight: 16, color: '#FFFFFF', letterSpacing: 0.4 },
+  title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, textAlign: 'center', marginTop: 2 },
+  levelLine: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink2, marginTop: -4 },
   body: { fontFamily: fonts.medium, fontSize: 16, lineHeight: 22, color: colors.ink2, textAlign: 'center', maxWidth: 300 },
   who: { flexDirection: 'row', alignItems: 'center', gap: 8, height: 32, paddingLeft: 4, paddingRight: 12, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   whoText: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
@@ -106,11 +117,17 @@ const styles = StyleSheet.create({
   progressLabel: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   progressNumber: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },
   ladder: { marginTop: 16, gap: 6 },
-  rung: { flexDirection: 'row', alignItems: 'center', gap: 10, height: 40, paddingHorizontal: 10, borderRadius: radii.sm },
+  rung: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 52, paddingHorizontal: 10, paddingVertical: 6, borderRadius: radii.sm },
   rungNext: { backgroundColor: colors.bgSoft },
-  rungDot: { width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
-  rungText: { flex: 1, fontFamily: fonts.medium, fontSize: 14, lineHeight: 18, color: colors.ink },
-  rungLevel: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink3 },
+  rungNo: { width: 28, height: 28, borderRadius: 14, borderWidth: 1.5, borderColor: colors.hairline, alignItems: 'center', justifyContent: 'center' },
+  rungNoDone: { backgroundColor: colors.ink, borderColor: colors.ink },
+  rungNoNext: { borderColor: colors.accent, borderWidth: 2 },
+  rungNoText: { fontFamily: fonts.bold, fontSize: 13, lineHeight: 16, color: colors.ink3 },
+  rungText: { flex: 1, gap: 1 },
+  rungBody: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 18, color: colors.ink },
+  rungLevel: { fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink3 },
+  rungDone: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.success },
+  rungCount: { fontFamily: fonts.bold, fontSize: 13, lineHeight: 16, color: colors.ink },
   primary: { alignSelf: 'stretch', backgroundColor: colors.accent, borderRadius: radii.md, height: 54, alignItems: 'center', justifyContent: 'center', marginTop: 16 },
   primaryText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.onAccent },
 });

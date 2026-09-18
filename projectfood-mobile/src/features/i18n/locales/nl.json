@@ -157,7 +157,10 @@
     "firstTaste": "De eerste hap ontgrendelt de kaart",
     "complete": "Compleet",
     "levelsUnlocked": "{n} van {m} levels",
-    "nextLevel": "Volgende: {level}"
+    "nextLevel": "Volgende: {level}",
+    "done": "Klaar",
+    "next": "Volgende",
+    "levelOf": "Level {n} van {m}"
   },
   "plant": {
     "family": "Familie",
@@ -192,7 +195,8 @@
   "stamps": {
     "explorer": {
       "title": "Ontdekker",
-      "body": "Proef {n} verschillende planten"
+      "body": "Proef {n} verschillende planten",
+      "bodyTwice": "{n} verschillende planten minstens twee keer geproefd"
     },
     "curious": {
       "title": "Nieuwsgierig",
@@ -210,41 +214,58 @@
       "title": "Groot diner",
       "body": "Proef {n} planten bij één avondeten"
     },
+    "regular_table": {
+      "title": "Vaste tafel",
+      "body": "Log het avondeten op {n} verschillende dagen"
+    },
+    "steady_weeks": {
+      "title": "Vaste weken",
+      "body": "{n} weken met 4 gelogde avondmalen"
+    },
     "green_machine": {
       "title": "Groentekanjer",
-      "body": "Proef {n} groenten"
+      "body": "Proef {n} groenten",
+      "bodyTwice": "{n} groenten minstens twee keer geproefd"
     },
     "fruit_basket": {
       "title": "Fruitmand",
-      "body": "Proef {n} soorten fruit"
+      "body": "Proef {n} soorten fruit",
+      "bodyTwice": "{n} soorten fruit minstens twee keer geproefd"
     },
     "herb_garden": {
       "title": "Kruidentuin",
-      "body": "Proef {n} kruiden & specerijen"
+      "body": "Proef {n} kruiden & specerijen",
+      "bodyTwice": "{n} kruiden & specerijen minstens twee keer geproefd"
     },
     "nutcracker": {
       "title": "Notenkraker",
-      "body": "Proef {n} noten & zaden"
+      "body": "Proef {n} noten & zaden",
+      "bodyTwice": "{n} noten & zaden minstens twee keer geproefd"
     },
     "bean_counter": {
       "title": "Bonenteller",
-      "body": "Proef {n} peulvruchten"
+      "body": "Proef {n} peulvruchten",
+      "bodyTwice": "{n} peulvruchten minstens twee keer geproefd"
     },
     "grain_train": {
       "title": "Graantrein",
-      "body": "Proef {n} volkoren granen"
+      "body": "Proef {n} volkoren granen",
+      "bodyTwice": "{n} volkoren granen minstens twee keer geproefd"
     },
     "bubbly": {
       "title": "Bubbels",
-      "body": "Proef {n} gefermenteerde dingen"
+      "body": "Proef {n} gefermenteerde dingen",
+      "bodyTwice": "{n} gefermenteerde dingen minstens twee keer geproefd"
     },
     "superfood": {
       "title": "Superfood",
-      "body": "Proef {n} superfoods"
+      "body": "Proef {n} superfoods",
+      "bodyTwice": "{n} superfoods minstens twee keer geproefd"
     },
     "tomato_family": {
       "title": "Tomatenfamilie",
-      "body": "Proef {n} planten van de nachtschadefamilie"
+      "body": "Proef {n} planten van de nachtschadefamilie",
+      "bodyTwice": "{n} nachtschades minstens twee keer geproefd"
     },
     "regulars": {
       "title": "Vaste gasten",

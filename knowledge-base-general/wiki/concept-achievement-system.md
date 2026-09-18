@@ -141,6 +141,20 @@ targets exactly as in the table; Ricardo can tune any rung in `definitions.ts`. 
 "weeks with 5 colours" (1 / 4 / 12 / 52), which keeps one metric per stamp; Regulars is the one stamp
 whose metric changes per rung. Rungs unlock in order.
 
+**Time over bulk (device feedback, same day).** Ricardo's worry: count-based stamps can be dumped
+in one day, and the data agrees (Rob logged 63 plants on one day, Imke 51, both left). Two changes:
+
+- Discovery stamps (Explorer, the eight category stamps, Superfood, Tomato family): rung 1 counts
+  every plant; rungs 2–4 only count a plant once it has been tasted on **two different days**
+  (a taste row is one plant on one day, so card levels and Regulars were already day-based).
+- Two consistency stamps, household scope: **Regular table**, dinner logged on 5 / 20 / 60 / 200
+  different days; **Steady weeks**, weeks with four dinners logged, 1 / 4 / 12 / 40 (migration
+  `20260918130000_weekly_active_days.sql` adds `active_days` to `household_weekly_history`).
+  Renders to generate: `achievement-regular_table.png` (a calendar page with ticked days) and
+  `achievement-steady_weeks.png` (a week strip with four plates).
+
+Levels show as pips under the stamp, not as coloured rings (rings read as noise on the shelf).
+
 **What it takes to build.** `achievement_unlocks` gains a `level` column (unique on household,
 member, achievement, level); the engine records the highest level reached; the celebration sheet
 says "Green machine · silver"; copy per level in en/nl/it; the Unlocks shelf draws the frame. Level
@@ -172,6 +186,8 @@ lookup, like the plants. Frames are drawn in code.
 | Tomato family | `tomato_family` | `tomato_family` |
 | Rainbow | `rainbow` | `rainbow` |
 | Big dinner | `big_dinner` | `big_dinner` |
+| Regular table | new | `regular_table` |
+| Steady weeks | new | `steady_weeks` |
 | Table talk | `streak_7` | `table_talk` |
 | Family of thirty | `thirty` | `family_of_thirty` |
 | Regulars | new | `regulars` |

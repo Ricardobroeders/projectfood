@@ -5,6 +5,7 @@ import { type Achievement, levelName } from './definitions';
 /** The body line for one rung: "Taste 40 vegetables"; Regulars changes metric per rung. */
 export function rungBody(t: TFunction, a: Achievement, level: number, n: number): string {
   if (a.id === 'regulars') return t(`stamps.regulars.rungs.${Math.min(Math.max(level, 1), 4)}` as 'stamps.regulars.rungs.1', { n });
+  if (a.twice && level >= 2) return t(`stamps.${a.id}.bodyTwice` as 'stamps.explorer.bodyTwice', { n });
   return t(`stamps.${a.id}.body`, { n });
 }
 

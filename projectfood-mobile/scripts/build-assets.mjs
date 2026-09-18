@@ -15,7 +15,7 @@ const STAMPS_URL = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/p
 // Card-level cups (bronze 1 taste, silver 5, gold 10) from images/app-ui-images (Ricardo, 2026-09-18).
 const CUPS_URL = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images';
 const CUPS = { bronze: 'Bronze_Cup', silver: 'Silver_Cup', gold: 'Golden_Cup' };
-const STAMPS = ['explorer', 'green_machine', 'fruit_basket', 'herb_garden', 'nutcracker', 'bean_counter', 'grain_train', 'bubbly', 'superfood', 'tomato_family', 'rainbow', 'big_dinner', 'table_talk', 'family_of_thirty', 'regulars', 'full_table', 'curious'];
+const STAMPS = ['explorer', 'green_machine', 'fruit_basket', 'herb_garden', 'nutcracker', 'bean_counter', 'grain_train', 'bubbly', 'superfood', 'tomato_family', 'rainbow', 'big_dinner', 'regular_table', 'steady_weeks', 'table_talk', 'family_of_thirty', 'regulars', 'full_table', 'curious'];
 const AVATARS = {
   female: ['Amara', 'Camila', 'Elena', 'Freya', 'Isabella', 'Ngozi', 'Priya', 'Sophia', 'Yuki', 'Zara'],
   male: ['Anton', 'Diego', 'Erik', 'Hiroshi', 'Jamal', 'Kai', 'Liam', 'Marcus', 'Rashid', 'Tobias'],

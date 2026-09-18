@@ -1061,6 +1061,7 @@ export type Database = {
       household_weekly_history: {
         Args: { p_household_id?: string; p_weeks?: number }
         Returns: {
+          active_days: number
           colours: number
           hit_goal: boolean
           variety: number

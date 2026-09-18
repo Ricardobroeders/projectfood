@@ -1,4 +1,4 @@
-import { Bean, BookOpen, Carrot, Cherry, Flame, FlaskConical, LayoutGrid, Leaf, type LucideIcon, Nut, Rainbow, Smile, Sparkles, Stamp as StampIcon, Trophy, Users, Utensils, Wheat } from 'lucide-react-native';
+import { Bean, BookOpen, CalendarCheck, CalendarDays, Carrot, Cherry, Flame, FlaskConical, LayoutGrid, Leaf, type LucideIcon, Nut, Rainbow, Smile, Sparkles, Stamp as StampIcon, Trophy, Users, Utensils, Wheat } from 'lucide-react-native';
 
 import { CATS, colors, type Category } from '@/constants/theme';
 import type { Member } from '@/features/household/queries';
@@ -12,6 +12,8 @@ export type AchievementId =
   | 'full_table'
   | 'rainbow'
   | 'big_dinner'
+  | 'regular_table'
+  | 'steady_weeks'
   | 'green_machine'
   | 'fruit_basket'
   | 'herb_garden'
@@ -62,27 +64,35 @@ export type Achievement = {
   fg?: string;
   /** Targets per level: first week, first month, a season, a year (KB ladder, calibrated 2026-09-18). */
   rungs: Rung[];
+  /** Discovery stamps: rungs 2–4 only count a plant once it was tasted on two different days. */
+  twice?: boolean;
   /** `memberId` is set for member-scoped achievements. */
   progress: Metric;
 };
 
-function memberPlants(ctx: ProgressCtx, memberId: string | undefined): Plant[] {
+/** Plants this member has tasted on at least `minDays` different days (a taste row is one plant on one day). */
+function memberPlants(ctx: ProgressCtx, memberId: string | undefined, minDays = 1): Plant[] {
   if (!memberId) return [];
   const out: Plant[] = [];
   for (const t of ctx.tasteCounts) {
-    if (t.member_id !== memberId) continue;
+    if (t.member_id !== memberId || t.tastes < minDays) continue;
     const p = ctx.plantsById[t.plant_id];
     if (p) out.push(p);
   }
   return out;
 }
 
-const inCategory = (cat: Category): Metric => (ctx, m) => memberPlants(ctx, m).filter((p) => p.category === cat).length;
+const inCategory = (cat: Category, minDays = 1): Metric => (ctx, m) => memberPlants(ctx, m, minDays).filter((p) => p.category === cat).length;
 /** Plants this member has tasted at least n times (card levels: 5 = silver, 10 = gold). */
 const cardsAtLeast = (n: number): Metric => (ctx, m) => (m ? ctx.tasteCounts.filter((t) => t.member_id === m && t.tastes >= n).length : 0);
 const mostTastesOfOne: Metric = (ctx, m) => (m ? Math.max(0, ...ctx.tasteCounts.filter((t) => t.member_id === m).map((t) => t.tastes)) : 0);
 
 const rungs = (...targets: number[]): Rung[] => targets.map((target) => ({ target }));
+/** A discovery ladder: the first rung counts every plant, the higher rungs only plants tasted on two days (no one-day dump). */
+const discovery = (once: Metric, twice: Metric, ...targets: number[]): Rung[] => targets.map((target, i) => (i === 0 ? { target } : { target, progress: twice }));
+const category = (cat: Category, ...targets: number[]): Rung[] => discovery(inCategory(cat), inCategory(cat, 2), ...targets);
+const superfoods = (minDays: number): Metric => (c, m) => memberPlants(c, m, minDays).filter((p) => p.superfood).length;
+const nightshades = (minDays: number): Metric => (c, m) => memberPlants(c, m, minDays).filter((p) => p.family === 'Solanaceae').length;
 
 /** Weeks whose server row passes `pass`, with this week judged live from the log rows as well. */
 function weeksWhere(ctx: ProgressCtx, pass: (w: WeekRow) => boolean, thisWeekLive: boolean): number {
@@ -106,7 +116,7 @@ function weeksWhere(ctx: ProgressCtx, pass: (w: WeekRow) => boolean, thisWeekLiv
  * stamp climbs through up to four rungs; level 1 is the stamp as it shipped in the store POC.
  */
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'explorer', image: 'explorer', scope: 'member', icon: Smile, color: colors.accent, fg: colors.onAccent, rungs: rungs(3, 50, 100, 200), progress: (c, m) => memberPlants(c, m).length },
+  { id: 'explorer', image: 'explorer', scope: 'member', icon: Smile, color: colors.accent, fg: colors.onAccent, twice: true, rungs: discovery((c, m) => memberPlants(c, m).length, (c, m) => memberPlants(c, m, 2).length, 3, 50, 100, 200), progress: (c, m) => memberPlants(c, m).length },
   { id: 'curious', image: 'curious', scope: 'household', icon: BookOpen, color: '#5B6CF0', rungs: rungs(1), progress: (c) => (c.curiousOpened ? 1 : 0) },
   {
     id: 'full_table',
@@ -155,15 +165,40 @@ export const ACHIEVEMENTS: Achievement[] = [
       return Math.max(best, today);
     },
   },
-  { id: 'green_machine', image: 'green_machine', scope: 'member', icon: Carrot, color: CATS.vegetable.fg, rungs: rungs(5, 20, 40, 76), progress: inCategory('vegetable') },
-  { id: 'fruit_basket', image: 'fruit_basket', scope: 'member', icon: Cherry, color: CATS.fruit.fg, rungs: rungs(5, 12, 25, 49), progress: inCategory('fruit') },
-  { id: 'herb_garden', image: 'herb_garden', scope: 'member', icon: Leaf, color: CATS.herb.fg, rungs: rungs(3, 8, 15, 26), progress: inCategory('herb') },
-  { id: 'nutcracker', image: 'nutcracker', scope: 'member', icon: Nut, color: CATS.nut_seed.fg, rungs: rungs(3, 8, 15, 27), progress: inCategory('nut_seed') },
-  { id: 'bean_counter', image: 'bean_counter', scope: 'member', icon: Bean, color: CATS.legume.fg, rungs: rungs(3, 6, 10, 21), progress: inCategory('legume') },
-  { id: 'grain_train', image: 'grain_train', scope: 'member', icon: Wheat, color: CATS.whole_grain.fg, rungs: rungs(3, 5, 8, 17), progress: inCategory('whole_grain') },
-  { id: 'bubbly', image: 'bubbly', scope: 'member', icon: FlaskConical, color: CATS.ferment.fg, rungs: rungs(2, 4, 6, 8), progress: inCategory('ferment') },
-  { id: 'superfood', image: 'superfood', scope: 'member', icon: Sparkles, color: colors.success, rungs: rungs(5, 15, 30, 44), progress: (c, m) => memberPlants(c, m).filter((p) => p.superfood).length },
-  { id: 'tomato_family', image: 'tomato_family', scope: 'member', icon: LayoutGrid, color: '#D9503F', rungs: rungs(5, 10, 18), progress: (c, m) => memberPlants(c, m).filter((p) => p.family === 'Solanaceae').length },
+  {
+    id: 'regular_table',
+    image: 'regular_table',
+    scope: 'household',
+    icon: CalendarCheck,
+    color: '#3E7CB1',
+    rungs: rungs(5, 20, 60, 200),
+    // days with a dinner logged; today counts as soon as the first plant is in
+    progress: (c) => {
+      const days = new Set<string>();
+      for (const d of c.daily) if (d.member_id === null && d.distinct_plants > 0) days.add(d.day);
+      for (const r of c.weekLogs) days.add(r.logged_on);
+      return days.size;
+    },
+  },
+  {
+    id: 'steady_weeks',
+    image: 'steady_weeks',
+    scope: 'household',
+    icon: CalendarDays,
+    color: '#5C8A5E',
+    rungs: rungs(1, 4, 12, 40),
+    // weeks with four dinners logged
+    progress: (c) => weeksWhere(c, (w) => (w.active_days ?? 0) >= 4, new Set(c.weekLogs.map((r) => r.logged_on)).size >= 4),
+  },
+  { id: 'green_machine', image: 'green_machine', scope: 'member', icon: Carrot, color: CATS.vegetable.fg, twice: true, rungs: category('vegetable', 5, 20, 40, 76), progress: inCategory('vegetable') },
+  { id: 'fruit_basket', image: 'fruit_basket', scope: 'member', icon: Cherry, color: CATS.fruit.fg, twice: true, rungs: category('fruit', 5, 12, 25, 49), progress: inCategory('fruit') },
+  { id: 'herb_garden', image: 'herb_garden', scope: 'member', icon: Leaf, color: CATS.herb.fg, twice: true, rungs: category('herb', 3, 8, 15, 26), progress: inCategory('herb') },
+  { id: 'nutcracker', image: 'nutcracker', scope: 'member', icon: Nut, color: CATS.nut_seed.fg, twice: true, rungs: category('nut_seed', 3, 8, 15, 27), progress: inCategory('nut_seed') },
+  { id: 'bean_counter', image: 'bean_counter', scope: 'member', icon: Bean, color: CATS.legume.fg, twice: true, rungs: category('legume', 3, 6, 10, 21), progress: inCategory('legume') },
+  { id: 'grain_train', image: 'grain_train', scope: 'member', icon: Wheat, color: CATS.whole_grain.fg, twice: true, rungs: category('whole_grain', 3, 5, 8, 17), progress: inCategory('whole_grain') },
+  { id: 'bubbly', image: 'bubbly', scope: 'member', icon: FlaskConical, color: CATS.ferment.fg, twice: true, rungs: category('ferment', 2, 4, 6, 8), progress: inCategory('ferment') },
+  { id: 'superfood', image: 'superfood', scope: 'member', icon: Sparkles, color: colors.success, twice: true, rungs: discovery(superfoods(1), superfoods(2), 5, 15, 30, 44), progress: superfoods(1) },
+  { id: 'tomato_family', image: 'tomato_family', scope: 'member', icon: LayoutGrid, color: '#D9503F', twice: true, rungs: discovery(nightshades(1), nightshades(2), 5, 10, 18), progress: nightshades(1) },
   {
     id: 'regulars',
     image: 'regulars',

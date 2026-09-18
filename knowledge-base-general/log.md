@@ -193,3 +193,6 @@ unlocking rungs in order, level rings and the ladder in the stamp sheet, "Level 
 copy in en/nl/it. Also today: the dev client moved to USB (`adb reverse`), skeleton rows with an
 in-place fade for the lists, flags in the language picker and a reactive locale hook. Backlog row 5
 and "Next to pick up" updated.
+Same evening: device feedback turned the level rings into pips, redesigned the ladder rows, made
+discovery rungs 2–4 count only plants tasted on two days, and added Regular table and Steady weeks
+(migration 0012). Two renders pending.
