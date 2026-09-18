@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   emptyText: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.ink2 },
   cats: { paddingHorizontal: 20, gap: 10 },
   cat: { borderRadius: radii.lg, padding: 14, gap: 10 },
-  catHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
+  catHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   catImage: { marginRight: 8 },
   catTitle: { flex: 1, fontFamily: fonts.bold, fontSize: 14, lineHeight: 18 },
   catCount: { fontFamily: fonts.extrabold, fontSize: 18, lineHeight: 22 },
