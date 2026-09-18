@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { CategoryImage } from '@/components/CategoryImage';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
@@ -160,6 +161,7 @@ export default function HomeScreen() {
             {byCat.map(({ c, plants }) => (
               <View key={c} style={[styles.cat, { backgroundColor: CATS[c].bg }]}>
                 <View style={styles.catHead}>
+                  <CategoryImage category={c} size={30} style={styles.catImage} />
                   <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
                   <Text style={[styles.catCount, { color: CATS[c].fg }]}>{plants.length}</Text>
                 </View>
@@ -217,7 +219,8 @@ const styles = StyleSheet.create({
   cats: { paddingHorizontal: 20, gap: 10 },
   cat: { borderRadius: radii.lg, padding: 14, gap: 10 },
   catHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
-  catTitle: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18 },
+  catImage: { marginRight: 8 },
+  catTitle: { flex: 1, fontFamily: fonts.bold, fontSize: 14, lineHeight: 18 },
   catCount: { fontFamily: fonts.extrabold, fontSize: 18, lineHeight: 22 },
   pills: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   pill: { height: 30, paddingHorizontal: 12, borderRadius: radii.sm, backgroundColor: 'rgba(255,255,255,0.85)', justifyContent: 'center' },

@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { CategoryImage } from '@/components/CategoryImage';
 import { Cup } from '@/components/Cup';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
@@ -105,6 +106,7 @@ export default function UnlocksScreen() {
                 router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } });
               }}
               style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
+              <CategoryImage category={c} size={48} />
               <View style={{ flex: 1, gap: 6 }}>
                 <View style={styles.catHead}>
                   <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>

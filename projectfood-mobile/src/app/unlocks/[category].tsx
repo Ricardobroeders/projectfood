@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { CategoryImage } from '@/components/CategoryImage';
 import { Cup } from '@/components/Cup';
 import { SkeletonRows } from '@/components/Skeleton';
 import { BackHeader, Screen, SectionTitle } from '@/components/ui';
@@ -70,6 +71,20 @@ export default function CategoryScreen() {
     }
   }, [showRows, rows.length]);
 
+  const tally = useMemo(() => {
+    const tried = rows.filter((r) => r.kind === 'tried').length;
+    return { tried, total: tried + rows.filter((r) => r.kind === 'untried').length };
+  }, [rows]);
+  const hero = (
+    <View style={[styles.hero, { backgroundColor: cat?.bg }]}>
+      <CategoryImage category={category as Category} size={88} />
+      <View style={styles.heroText}>
+        <Text style={[styles.heroTitle, { color: cat?.fg }]}>{t(`categoriesPlural.${category as Category}`)}</Text>
+        <Text style={[styles.heroMeta, { color: cat?.fg }]}>{`${tally.tried} ${t('unlocks.ofTotal', { total: tally.total })}`}</Text>
+      </View>
+    </View>
+  );
+
   const open = useCallback(
     (id: string) => {
       perfStart('→plant');
@@ -107,6 +122,7 @@ export default function CategoryScreen() {
           data={rows}
           keyExtractor={(r) => r.key}
           renderItem={renderItem}
+          ListHeaderComponent={hero}
           contentContainerStyle={styles.content}
           showsVerticalScrollIndicator={false}
           initialNumToRender={8}
@@ -154,6 +170,10 @@ const UntriedRow = memo(function UntriedRow({ plant, onPress }: { plant: Plant; 
 
 const styles = StyleSheet.create({
   content: { paddingBottom: 32 },
+  hero: { flexDirection: 'row', alignItems: 'center', gap: 16, marginHorizontal: 20, marginTop: 4, padding: 16, borderRadius: radii.lg },
+  heroText: { flex: 1, gap: 2 },
+  heroTitle: { fontFamily: fonts.extrabold, fontSize: 22, lineHeight: 28 },
+  heroMeta: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 20, opacity: 0.85 },
   skeleton: { paddingHorizontal: 20 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, height: 64, marginHorizontal: 20, marginBottom: 8, paddingRight: 12, borderRadius: radii.md, backgroundColor: colors.bgSoft, overflow: 'hidden' },
   rowMuted: { backgroundColor: colors.bg, borderWidth: 1, borderColor: colors.hairline },
