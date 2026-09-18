@@ -148,9 +148,10 @@ gold, platinum ring), so 17 renders cover the shelf. Style: one object, 3D clay,
 plain white background, no text, square, matching the plant renders.
 
 Ids and files (2026-09-18): the ladder needs ids without a number in them, so the migration renames
-the existing `achievement_unlocks.achievement_id` values. Originals go in a public Storage bucket
-`stamps` as `<id>.png` (square, 1024 px); `scripts/build-assets.mjs` resizes them to
-`assets/stamps/<id>.webp` and generates the lookup, like the plants. Frames are drawn in code.
+the existing `achievement_unlocks.achievement_id` values. Originals go in the public Storage bucket
+`achievements` as `achievement-<id>.png` (square, 1024 px; the name pattern is fixed by Ricardo's n8n
+workflow); `scripts/build-assets.mjs` resizes them to `assets/stamps/<id>.webp` and generates the
+lookup, like the plants. Frames are drawn in code.
 
 | Stamp | Id today | Id after the ladder |
 |---|---|---|
