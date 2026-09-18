@@ -34,10 +34,11 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 
 **Claude's next build steps**
 7. Ricardo lives on the standalone preview APK from 2026-09-18 (gauge, Add a person, 45 MB build) for a while and collects feedback; the next session starts from that list. The dev client over USB stays for live coding (cable was flaky; a keeper loop re-adds `adb reverse`). Still to check on device: two-member logging, plant page, account screens, list performance in the release build.
-8. Rung pushes at 50% and 75% in `send-notifications` (row 5).
-9. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
-10. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
-11. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
+8. Claude's own hands on an emulator (Ricardo, 2026-09-18, via a friend's tip): set up Android Studio with one emulator image on the Mac, install Callstack's open-source `agent-device` CLI and its Claude Code skill (https://oss.callstack.com/agent-device/docs/introduction), install the dev client on the emulator, add test ids on key controls. From then on Claude runs and screenshots flows itself; the OnePlus stays for feel. Does not replace EAS builds (native changes) or Metro (JS changes). About an hour, at the start of the next build session.
+9. Rung pushes at 50% and 75% in `send-notifications` (row 5).
+10. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
+11. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
+12. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
 
 ## Inputs waiting for a brainstorm
 Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
