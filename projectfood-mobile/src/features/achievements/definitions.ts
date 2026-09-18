@@ -43,6 +43,8 @@ export type Achievement = {
   id: AchievementId;
   scope: Scope;
   icon: LucideIcon;
+  /** Prize render id in assets/stamps (bucket achievements/achievement-<id>.png); the icon is the fallback. */
+  image?: string;
   /** Stamp colour. Category goals borrow the category tint so the shelf reads like the log. */
   color: string;
   /** Icon colour on the stamp; white unless the stamp is light (gold). */
@@ -70,10 +72,11 @@ const inCategory = (cat: Category) => (ctx: ProgressCtx, m?: string) => memberPl
  * ones unlock at the first dinner, the category ones over weeks, the last three are the long goals.
  */
 export const ACHIEVEMENTS: Achievement[] = [
-  { id: 'first_bites', scope: 'member', icon: Smile, color: colors.accent, fg: colors.onAccent, target: 3, progress: (c, m) => memberPlants(c, m).length },
-  { id: 'curious', scope: 'household', icon: BookOpen, color: '#5B6CF0', target: 1, progress: (c) => (c.curiousOpened ? 1 : 0) },
+  { id: 'first_bites', image: 'explorer', scope: 'member', icon: Smile, color: colors.accent, fg: colors.onAccent, target: 3, progress: (c, m) => memberPlants(c, m).length },
+  { id: 'curious', image: 'curious', scope: 'household', icon: BookOpen, color: '#5B6CF0', target: 1, progress: (c) => (c.curiousOpened ? 1 : 0) },
   {
     id: 'full_table',
+    image: 'full_table',
     scope: 'household',
     icon: Users,
     color: '#007C9A',
@@ -92,6 +95,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: 'rainbow',
+    image: 'rainbow',
     scope: 'household',
     icon: Rainbow,
     color: '#C62A85',
@@ -100,6 +104,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: 'big_dinner',
+    image: 'big_dinner',
     scope: 'household',
     icon: Utensils,
     color: '#ED6825',
@@ -112,18 +117,19 @@ export const ACHIEVEMENTS: Achievement[] = [
       return Math.max(best, today);
     },
   },
-  { id: 'veg_5', scope: 'member', icon: Carrot, color: CATS.vegetable.fg, target: 5, progress: inCategory('vegetable') },
-  { id: 'fruit_5', scope: 'member', icon: Cherry, color: CATS.fruit.fg, target: 5, progress: inCategory('fruit') },
-  { id: 'herb_3', scope: 'member', icon: Leaf, color: CATS.herb.fg, target: 3, progress: inCategory('herb') },
-  { id: 'nut_3', scope: 'member', icon: Nut, color: CATS.nut_seed.fg, target: 3, progress: inCategory('nut_seed') },
-  { id: 'legume_3', scope: 'member', icon: Bean, color: CATS.legume.fg, target: 3, progress: inCategory('legume') },
-  { id: 'grain_3', scope: 'member', icon: Wheat, color: CATS.whole_grain.fg, target: 3, progress: inCategory('whole_grain') },
-  { id: 'ferment_2', scope: 'member', icon: FlaskConical, color: CATS.ferment.fg, target: 2, progress: inCategory('ferment') },
-  { id: 'superfood_5', scope: 'member', icon: Sparkles, color: colors.success, target: 5, progress: (c, m) => memberPlants(c, m).filter((p) => p.superfood).length },
-  { id: 'tomato_family', scope: 'member', icon: LayoutGrid, color: '#D9503F', target: 5, progress: (c, m) => memberPlants(c, m).filter((p) => p.family === 'Solanaceae').length },
-  { id: 'streak_7', scope: 'household', icon: Flame, color: '#F5A524', target: 7, progress: (c) => Math.max(c.streak?.longest_streak ?? 0, c.streak?.current_streak ?? 0) },
+  { id: 'veg_5', image: 'green_machine', scope: 'member', icon: Carrot, color: CATS.vegetable.fg, target: 5, progress: inCategory('vegetable') },
+  { id: 'fruit_5', image: 'fruit_basket', scope: 'member', icon: Cherry, color: CATS.fruit.fg, target: 5, progress: inCategory('fruit') },
+  { id: 'herb_3', image: 'herb_garden', scope: 'member', icon: Leaf, color: CATS.herb.fg, target: 3, progress: inCategory('herb') },
+  { id: 'nut_3', image: 'nutcracker', scope: 'member', icon: Nut, color: CATS.nut_seed.fg, target: 3, progress: inCategory('nut_seed') },
+  { id: 'legume_3', image: 'bean_counter', scope: 'member', icon: Bean, color: CATS.legume.fg, target: 3, progress: inCategory('legume') },
+  { id: 'grain_3', image: 'grain_train', scope: 'member', icon: Wheat, color: CATS.whole_grain.fg, target: 3, progress: inCategory('whole_grain') },
+  { id: 'ferment_2', image: 'bubbly', scope: 'member', icon: FlaskConical, color: CATS.ferment.fg, target: 2, progress: inCategory('ferment') },
+  { id: 'superfood_5', image: 'superfood', scope: 'member', icon: Sparkles, color: colors.success, target: 5, progress: (c, m) => memberPlants(c, m).filter((p) => p.superfood).length },
+  { id: 'tomato_family', image: 'tomato_family', scope: 'member', icon: LayoutGrid, color: '#D9503F', target: 5, progress: (c, m) => memberPlants(c, m).filter((p) => p.family === 'Solanaceae').length },
+  { id: 'streak_7', image: 'table_talk', scope: 'household', icon: Flame, color: '#F5A524', target: 7, progress: (c) => Math.max(c.streak?.longest_streak ?? 0, c.streak?.current_streak ?? 0) },
   {
     id: 'thirty',
+    image: 'family_of_thirty',
     scope: 'household',
     icon: Trophy,
     color: colors.gold,

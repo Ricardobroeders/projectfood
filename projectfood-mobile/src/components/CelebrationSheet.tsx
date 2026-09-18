@@ -7,9 +7,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 
 import { Stamp } from '@/components/Stamp';
+import { StampArt } from '@/components/StampArt';
 import { StampPress } from '@/components/StampPress';
 import { motion } from '@/constants/motion';
-import { colors, fonts, iconFor, radii } from '@/constants/theme';
+import { colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, type AchievementId } from '@/features/achievements/definitions';
 import { type UnlockRow, useAchievements, useMarkUnlocksSeen } from '@/features/achievements/useAchievements';
 import { dateKey } from '@/features/logs/model';
@@ -97,7 +98,6 @@ export function CelebrationSheet() {
   const first = shown[0];
   const firstId = first.achievement_id as AchievementId;
   const a = ACHIEVEMENT_BY_ID[firstId] ?? ACHIEVEMENT_BY_ID.first_bites;
-  const FirstIcon = a.icon;
   const isFirstBites = firstId === 'first_bites';
   const lastNight = shown.some((u) => dateKey(new Date(u.unlocked_at)) < dateKey());
   const rest = shown.slice(1, 7);
@@ -116,7 +116,7 @@ export function CelebrationSheet() {
           {lastNight ? <Text style={styles.eyebrow}>{t('celebration.lastNight')}</Text> : null}
           <StampPress size={STAMP_SIZE} color={a.color} play={visible} onLanded={onLanded}>
             <Stamp size={STAMP_SIZE} color={a.color}>
-              {isFirstBites && plant ? <PlantImage plant={plant} size={88} /> : <FirstIcon size={iconFor(STAMP_SIZE)} color={a.fg ?? '#FFFFFF'} />}
+              {isFirstBites && plant ? <PlantImage plant={plant} size={88} /> : <StampArt achievement={a} size={STAMP_SIZE} />}
             </Stamp>
           </StampPress>
           <Text style={styles.title}>{title}</Text>
@@ -126,11 +126,10 @@ export function CelebrationSheet() {
               {rest.map((u, i) => {
                 const ra = ACHIEVEMENT_BY_ID[u.achievement_id as AchievementId];
                 if (!ra) return null;
-                const Icon = ra.icon;
                 return (
                   <Animated.View key={u.id} entering={FadeInDown.delay(560 + i * 90).duration(320)}>
                     <Stamp size={44} color={ra.color}>
-                      <Icon size={iconFor(44)} color={ra.fg ?? '#FFFFFF'} />
+                      <StampArt achievement={ra} size={44} />
                     </Stamp>
                   </Animated.View>
                 );

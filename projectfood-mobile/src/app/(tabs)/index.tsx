@@ -7,8 +7,9 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
+import { StampArt } from '@/components/StampArt';
 import { PrimaryButton, Screen, SectionTitle } from '@/components/ui';
-import { CAT_ORDER, CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
+import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, nearestGoals } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { useHousehold, useSettings, useUpdateSettings } from '@/features/household/queries';
@@ -107,12 +108,11 @@ export default function HomeScreen() {
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.rail}>
               {goals.map((g) => {
                 const a = ACHIEVEMENT_BY_ID[g.id];
-                const Icon = a.icon;
                 const member = g.memberId ? members.find((m) => m.id === g.memberId) : null;
                 return (
                   <Pressable key={`${g.id}:${g.memberId ?? 'hh'}`} style={({ pressed }) => [styles.goal, pressed && { backgroundColor: colors.hairline }]} onPress={() => openAchievement(g.id, g.memberId)}>
                     <Stamp size={44} color={a.color}>
-                      <Icon size={iconFor(44)} color={a.fg ?? '#FFFFFF'} />
+                      <StampArt achievement={a} size={44} />
                     </Stamp>
                     <View style={{ flex: 1, gap: 2 }}>
                       <Text style={styles.goalTitle} numberOfLines={1}>

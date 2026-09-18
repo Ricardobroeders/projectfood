@@ -1,5 +1,4 @@
 import * as Haptics from 'expo-haptics';
-import { Lock } from 'lucide-react-native';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -7,8 +6,9 @@ import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, wi
 
 import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
+import { StampArt } from '@/components/StampArt';
 import { motion, REWARD_POP_FROM } from '@/constants/motion';
-import { colors, fonts, iconFor } from '@/constants/theme';
+import { colors, fonts } from '@/constants/theme';
 import { ACHIEVEMENTS, type Achievement, type AchievementId, type ProgressEntry } from '@/features/achievements/definitions';
 
 type ShelfStampProps = {
@@ -37,7 +37,6 @@ export function ShelfStamp({ achievement, unlocked, current, target, label, size
 
   const style = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }, { rotate: `${rotate.value}deg` }] }));
 
-  const Icon = unlocked ? achievement.icon : Lock;
   const shown = Math.min(current, target);
   return (
     <Pressable
@@ -50,7 +49,7 @@ export function ShelfStamp({ achievement, unlocked, current, target, label, size
       accessibilityLabel={`${label}, ${shown} / ${target}`}>
       <Animated.View style={style}>
         <Stamp size={size} color={achievement.color} locked={!unlocked}>
-          <Icon size={iconFor(size)} color={unlocked ? (achievement.fg ?? '#FFFFFF') : colors.lockedInk} />
+          <StampArt achievement={achievement} size={size} unlocked={unlocked} />
         </Stamp>
       </Animated.View>
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>

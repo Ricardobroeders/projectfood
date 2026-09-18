@@ -6,7 +6,8 @@ import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Sheet } from '@/components/Sheet';
 import { Stamp } from '@/components/Stamp';
-import { colors, fonts, iconFor, radii } from '@/constants/theme';
+import { StampArt } from '@/components/StampArt';
+import { colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, progressFor, unlockKey } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { useUi } from '@/state/ui';
@@ -30,7 +31,6 @@ export function AchievementSheet() {
   const p = progressFor(progress, memberId)[target.id] ?? { current: 0, target: 1 };
   const done = unlockedKeys.has(unlockKey(target.id, memberId));
   const member = memberId ? members.find((m) => m.id === memberId) : null;
-  const Icon = a.icon;
   const shown = Math.min(p.current, p.target);
   const remaining = Math.max(0, p.target - p.current);
 
@@ -38,7 +38,7 @@ export function AchievementSheet() {
     <Sheet visible={open !== null} onRequestClose={close}>
       <View style={styles.head}>
         <Stamp size={STAMP_SIZE} color={a.color} locked={!done}>
-          <Icon size={iconFor(STAMP_SIZE)} color={done ? (a.fg ?? '#FFFFFF') : colors.lockedInk} />
+          <StampArt achievement={a} size={STAMP_SIZE} unlocked={done} />
         </Stamp>
         <Text style={styles.title}>{t(`stamps.${target.id}.title`)}</Text>
         <Text style={styles.body}>{t(`stamps.${target.id}.body`, { n: p.target })}</Text>
