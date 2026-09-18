@@ -164,14 +164,14 @@ lookup, like the plants. Frames are drawn in code.
 | Grain train | `grain_3` | `grain_train` |
 | Bubbly | `ferment_2` | `bubbly` |
 | Superfood | `superfood_5` | `superfood` |
-| Tomato family | `tomato_family` | unchanged |
-| Rainbow | `rainbow` | unchanged |
-| Big dinner | `big_dinner` | unchanged |
+| Tomato family | `tomato_family` | `tomato_family` |
+| Rainbow | `rainbow` | `rainbow` |
+| Big dinner | `big_dinner` | `big_dinner` |
 | Table talk | `streak_7` | `table_talk` |
 | Family of thirty | `thirty` | `family_of_thirty` |
 | Regulars | new | `regulars` |
-| Full table | `full_table` | unchanged |
-| Curious | `curious` | unchanged |
+| Full table | `full_table` | `full_table` |
+| Curious | `curious` | `curious` |
 
 1. Explorer: a compass whose needle is a carrot, or a small flag planted in a bitten apple.
 2. Green machine: a toy tractor built from vegetables (broccoli wheels, pepper cab).
