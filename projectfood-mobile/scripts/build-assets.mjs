@@ -16,7 +16,7 @@ const STAMPS_URL = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/p
 const CUPS_URL = 'https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/public/images/app-ui-images';
 const CUPS = { bronze: 'Bronze_Cup', silver: 'Silver_Cup', gold: 'Golden_Cup' };
 // Category renders from images/app-ui-images/category-<name>.png (Ricardo, 2026-09-18), keyed by the app's category ids.
-const CATEGORIES = { vegetable: 'vegetables', fruit: 'fruits', herb: 'herbs', nut_seed: 'nuts', legume: 'legumes', whole_grain: 'grains', ferment: 'ferments' };
+const CATEGORIES = { vegetable: 'vegetables', fruit: 'fruits', herb: 'herbs_and_spices', nut_seed: 'nuts', legume: 'legumes', whole_grain: 'grains', ferment: 'ferments' };
 const STAMPS = ['explorer', 'green_machine', 'fruit_basket', 'herb_garden', 'nutcracker', 'bean_counter', 'grain_train', 'bubbly', 'superfood', 'tomato_family', 'rainbow', 'big_dinner', 'regular_table', 'steady_weeks', 'table_talk', 'family_of_thirty', 'regulars', 'full_table', 'curious'];
 const AVATARS = {
   female: ['Amara', 'Camila', 'Elena', 'Freya', 'Isabella', 'Ngozi', 'Priya', 'Sophia', 'Yuki', 'Zara'],

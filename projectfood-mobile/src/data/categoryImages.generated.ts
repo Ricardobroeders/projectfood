@@ -5,6 +5,7 @@ import type { ImageSourcePropType } from 'react-native';
 export const CATEGORY_IMAGES: Record<string, ImageSourcePropType> = {
   vegetable: require('@/assets/categories/vegetable.webp'),
   fruit: require('@/assets/categories/fruit.webp'),
+  herb: require('@/assets/categories/herb.webp'),
   nut_seed: require('@/assets/categories/nut_seed.webp'),
   legume: require('@/assets/categories/legume.webp'),
   whole_grain: require('@/assets/categories/whole_grain.webp'),

@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withSequence, withSpring, withTiming } from 'react-native-reanimated';
 
 import { LevelPips } from '@/components/LevelPips';
@@ -84,11 +84,17 @@ export function StampShelf({ entries, levelOf, onPress }: ShelfProps) {
   );
 }
 
-/** The same stamps as a wrapping grid, for the Unlocks screen. */
+const GRID_COLUMNS = 4;
+const GRID_ITEM = 64 + 12;
+const GRID_PADDING = 20;
+
+/** The same stamps as a wrapping grid, for the Unlocks screen: four fixed columns, a short last row stays left. */
 export function StampGrid({ entries, levelOf, onPress }: ShelfProps) {
   const { t } = useTranslation();
+  const { width } = useWindowDimensions();
+  const columnGap = Math.max(4, (width - GRID_PADDING * 2 - GRID_COLUMNS * GRID_ITEM) / (GRID_COLUMNS - 1));
   return (
-    <View style={styles.grid}>
+    <View style={[styles.grid, { columnGap }]}>
       {ACHIEVEMENTS.map((a) => (
         <ShelfStamp key={a.id} achievement={a} entry={entries[a.id]} level={levelOf(a.id)} label={t(`stamps.${a.id}.title`)} onPress={() => onPress(a.id)} />
       ))}
@@ -98,7 +104,7 @@ export function StampGrid({ entries, levelOf, onPress }: ShelfProps) {
 
 const styles = StyleSheet.create({
   shelf: { paddingHorizontal: 20, gap: 14, paddingVertical: 4 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 18, paddingHorizontal: 20 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'flex-start', rowGap: 18, paddingHorizontal: GRID_PADDING },
   item: { alignItems: 'center', gap: 5 },
   label: { fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink2, textAlign: 'center' },
   count: { fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink3, marginTop: -2 },
