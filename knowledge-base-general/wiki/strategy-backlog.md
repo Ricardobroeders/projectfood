@@ -22,20 +22,22 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - Add topics freely; remove none. Date every status change.
 
 ## Next to pick up
-_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-16._
+_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-18._
 
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
 2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
-3. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
-4. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
-5. Five parent conversations (Linear PF-55).
+3. Confirm the stamp ladder targets (row 5, [[concept-achievement-system]]) and generate the 17 stamp renders from the image list there.
+4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
+5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
+6. Five parent conversations (Linear PF-55).
 
 **Claude's next build steps**
-6. Install the Android development build on the OnePlus, sign in, add a kid, log for two members; fix what the device shows.
-7. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
-8. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
-9. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
+7. Device testing continues over USB (`adb reverse`, the tunnel proved unreliable); next: two-member logging with a kid profile, plant page, account screens.
+8. Build the stamp ladder once the targets are confirmed (row 5).
+9. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
+10. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
+11. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
 
 ## Inputs waiting for a brainstorm
 Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
@@ -62,7 +64,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | XP dropped and stamps moved to the Unlocks tab on real history (2026-09-16, [[decision-2026-09-16-store-poc-scope]]); still open: "refused" tap, albums, tomato-family target (5 of 18) |
+| 5 | Achievements | drafted | Ladder proposal calibrated on live data (2026-09-18, [[concept-achievement-system]]): the 16 stamps get four levels (week / month / season / year) with one image each; Ricardo to confirm the targets, then build. Still open: "refused" tap, albums |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -114,16 +116,18 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   _(status 2026-09-10)_
 
 ### 5. Achievements — drafted
-- **POC (2026-09-14):** 16 goals in `projectfood-mobile/src/data/achievements.ts` (first bites, curious,
-  full table, rainbow, big dinner, one per category, superfood, tomato family, 7 dinners, thirty),
-  each a stamp with a green progress bar and "3/5" under it and a detail sheet on tap. Tonight-only
-  scope until the backend holds history.
-- **Have:** [[concept-achievement-system]] (three tiers, eight rules, ten starting stamps, link
-  to the paid Sunday advice), POC stamps on device (PF-56).
-- **Open:** XP keep or drop (lean: drop); where the collection lives in navigation; a "refused"
-  tap at logging for Brave bite; the real album list (12 is a placeholder).
-- **Next:** Ricardo decides the three items; requirements fold into the PF-38 data model.
-  _(status 2026-09-10)_
+- **Store POC (2026-09-16):** 16 stamps on real history in the Unlocks tab, unlock rows in
+  `achievement_unlocks`, one celebration sheet per session, XP dropped.
+- **Finding (2026-09-18):** every engaged account unlocked all 16 on day one; the shelf has
+  nothing left to aim at. Ladder proposal with four levels per stamp, calibrated on the 14
+  members' live counts and the retention curve (cliffs at week 0→1 and weeks 5→7), in
+  [[concept-achievement-system]] with the prize-image list.
+- **Have:** [[concept-achievement-system]] (three tiers, eight rules, the ladder with today's
+  standings per level, image topics), stamps on device.
+- **Open:** Ricardo confirms or adjusts the level targets; a "refused" tap at logging for Brave
+  bite; the real album list (category "all" levels stand in for albums until then).
+- **Next:** on confirmation, `level` column + engine + level copy en/nl/it + shelf frames; Ricardo
+  generates the 17 stamp renders. _(status 2026-09-18)_
 
 ### 6. SEO strategy — drafted
 - **Have:** [[seo-overview]], [[seo-keyword-strategy]], [[seo-serp-landscape]],

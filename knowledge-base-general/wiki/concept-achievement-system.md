@@ -3,8 +3,8 @@ title: Achievement system (cards, albums, milestones)
 type: concept
 tags: [retention, gamification, achievements, family-mode]
 created: 2026-09-10
-updated: 2026-09-10
-sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md]
+updated: 2026-09-18
+sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md, live Supabase plant_logs (queried 2026-09-18)]
 ---
 
 # Achievement system (cards, albums, milestones)
@@ -62,6 +62,109 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
 | Full table | every household member tasted the same plant | household | Sibling cooperation, not competition |
 | Cheerleader | first cheer sent to another household | household | The one social investment that correlated with 2× engagement |
 
+### Tier 3 as a ladder: the calibrated proposal (2026-09-18)
+
+**The problem.** The 16 stamps that shipped in the store POC on 2026-09-16 all have first-week
+targets (3 plants, 5 vegetables, 7 dinners, one week of 30). Measured against the live data,
+every engaged user unlocked all of them on their first day in the new app: Ricardo's account
+received 15 stamps at once after onboarding, and the mid-engaged PWA users would have had 14–16
+within their first two weeks _(as of 2026-09-18, live Supabase `plant_logs`, n=14 members with
+logs)_. A shelf that is full on day one gives rule 2 ("the next goal is always visible") nothing
+to point at.
+
+**The fix: keep the 16 stamps, give each one levels.** Levels keep the shelf rare (rule 6: about
+20 stamps), keep one image per stamp, and turn every stamp into a ladder whose rungs sit at one
+week, one month, one season and one year of ordinary dinners. The celebration becomes a level-up;
+the shelf shows the level reached with a frame (bronze, silver, gold, platinum). This is also the
+"5 / 50 / 100" ladder from Ricardo's 2026-09-10 notes, applied to stamps instead of card facts.
+
+**Calibration.** Targets were set on where real users stood, not on round numbers alone
+_(all figures as of 2026-09-18, live data)_:
+
+| Member (days active / span) | Distinct plants | Veg | Fruit | Herb | Nut | Legume | Grain | Ferment | Superfood | Silver / gold / 25× cards | Max one plant | Weeks ≥30 | Longest streak (household) | Biggest day |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Ricardo (118 / 145) | 165 | 60 | 34 | 20 | 23 | 12 | 8 | 8 | 36 | 83 / 58 / 11 | 40 | 21 | 27 | 30 |
+| Alissa (108 / 139) | 139 | 55 | 30 | 12 | 18 | 12 | 4 | 8 | 32 | 69 / 45 / 10 | 46 | 19 | 18 | 29 |
+| Nicole (27 / 117, active) | 75 | 24 | 17 | 8 | 7 | 7 | 8 | 4 | 17 | 13 / 1 / 0 | 13 | 1 | 3 | 13 |
+| Marijke (23 / 47, left) | 74 | 32 | 16 | 8 | 11 | 1 | 5 | 1 | 17 | 23 / 3 / 0 | 10 | 4 | 6 | 27 |
+| Imke (7 / 24, left) | 91 | 34 | 24 | 13 | 14 | 2 | 3 | 1 | 23 | 19 / 0 / 0 | 7 | 4 | 2 | 51 |
+| Bram (17 / 43, left) | 60 | 24 | 15 | 10 | 8 | 6 | 1 | 1 | 13 | 5 / 0 / 0 | 6 | 2 | 4 | 21 |
+| Rob (3 / 21, left) | 74 | 38 | 6 | 17 | 6 | 4 | 1 | 2 | 12 | 0 / 0 / 0 | 3 | 2 | 2 | 63 |
+| Marhein (24 / 96, left) | 59 | 24 | 9 | 6 | 10 | 6 | 1 | 3 | 17 | 0 / 0 / 0 | 3 | 0 | 5 | 9 |
+
+Catalogue ceilings: 224 plants, 76 vegetables, 49 fruits, 26 herbs, 27 nuts and seeds, 21
+legumes, 17 whole grains, 8 ferments, 44 superfoods, 18 nightshades, 8 colours.
+
+**The ladder.** Level 1 is the stamp as it ships today (unchanged, so no unlock is taken away).
+"All" means the whole category, which makes the top level of a category stamp the category album
+of tier 2 until real albums exist.
+
+| Stamp | Scope | Level 1 (first week) | Level 2 (first month) | Level 3 (a season) | Level 4 (a year) | Ricardo / Alissa today |
+|---|---|---|---|---|---|---|
+| Explorer (distinct plants ever; today "First bites") | kid | 3 | 50 | 100 | 200 | L3 · L3 |
+| Green machine (vegetables) | kid | 5 | 20 | 40 | 76, all | L3 · L3 |
+| Fruit basket | kid | 5 | 12 | 25 | 49, all | L3 · L3 |
+| Herb garden | kid | 3 | 8 | 15 | 26, all | L3 · L2 |
+| Nutcracker | kid | 3 | 8 | 15 | 27, all | L3, 4 from L4 · L3 |
+| Bean counter (legumes) | kid | 3 | 6 | 10 | 21, all | L3 · L3 |
+| Grain train | kid | 3 | 5 | 8 | 17, all | L3 · L1 |
+| Bubbly (ferments) | kid | 2 | 4 | 6 | 8, all | L4 · L4 |
+| Superfood | kid | 5 | 15 | 30 | 44, all | L3 · L3 |
+| Tomato family (nightshades) | kid | 5 | 10 | 18, all | – | L2 · L2 |
+| Rainbow (colours) | kid | 5 in one week | all 8 ever | all 8 in one week | – | L2 · L2 |
+| Big dinner (distinct plants in one day) | household | 10 | 15 | 20 | 30 | L4 · L3, 1 away |
+| Table talk (dinners in a row, freeze counts) | household | 7 | 14 | 30 | 100 | L2, 3 from L3 · L2 |
+| Family of thirty (weeks with 30 distinct) | household | 1 | 4 | 12 | 52 | L3 · L3 |
+| Regulars (card levels) | kid | 10 silver cards | 10 gold cards | 10 plants tasted 25× | one plant tasted 50× | L3, 10 from L4 · L3, 4 from L4 |
+| Full table (plants every member tasted) | household | 1 | 10 | 30 | 100 | needs a second member |
+| Curious | household | first card back opened | – | – | – | done |
+
+Reading the last column: after five months the two heaviest users still have six to eight rungs
+open, each between 1 and 60 tastes away. That is the "just far enough" test: the next goal is
+concrete, and none of them is done in a day.
+
+**Where churn sits, and which rung should be half done there.** The retention curve of the 14
+members: 100% log in week 0, 64% in week 1, 50% in week 2, 43% in week 4, 36% in week 5, 21% from
+week 7 on _(as of 2026-09-18, live data)_. Two cliffs: week 0→1 (a third gone; an onboarding
+problem, not a goal problem) and weeks 5→7 (43% to 21%). The five mid-engaged users who left did
+so after 21–47 days holding 59–91 distinct plants, 24–38 vegetables, 4 weeks of 30 at most, and
+0–3 gold cards. On the ladder above that puts them, at the moment they left, at 60–90% of Explorer
+level 3 and of Green machine level 3, at level 2 of Family of thirty, and at 0–30% of Regulars
+level 2. So the rungs that are half done at the second cliff are Explorer 100 and Green machine
+40: the card-teaser push (rule 8) and the Sunday nudge should name those first ("9 vegetables
+from Green machine gold"), and a level that crosses 50% and 75% is a push moment in its own
+right. Caveats: n=14, adults only, several of the departed users entered days in bulk (Rob's
+biggest day is 63 plants, Imke's 51), and one household is the founder's.
+
+**What it takes to build.** `achievement_unlocks` gains a `level` column (unique on household,
+member, achievement, level); the engine records the highest level reached; the celebration sheet
+says "Green machine · silver"; copy per level in en/nl/it; the Unlocks shelf draws the frame. Level
+1 rows already unlocked stay valid. Rainbow level 3 needs the current week's colours only (the
+unlock row persists), so no history RPC is required. Full table needs a household with two members
+to be reachable, which is the family case by design.
+
+**Prize images, one per stamp.** Level is shown by the frame around the same image (bronze, silver,
+gold, platinum ring), so 17 renders cover the shelf. Style: one object, 3D clay, soft studio light,
+plain white background, no text, square, matching the plant renders.
+
+1. Explorer: a compass whose needle is a carrot, or a small flag planted in a bitten apple.
+2. Green machine: a toy tractor built from vegetables (broccoli wheels, pepper cab).
+3. Fruit basket: a woven basket overflowing with fruit.
+4. Herb garden: a terracotta pot with basil, rosemary and thyme.
+5. Nutcracker: a wooden nutcracker soldier holding a walnut.
+6. Bean counter: an abacus with beans for beads.
+7. Grain train: a toy train with wagons of oats, rice and wheat.
+8. Bubbly: a fermentation jar with rising bubbles and a cabbage leaf.
+9. Superfood: a blueberry wearing a cape.
+10. Tomato family: a family portrait of tomato, potato, pepper and aubergine.
+11. Rainbow: an arc built from produce in eight colours.
+12. Big dinner: a long table crowded with dishes.
+13. Table talk: two chairs at a small table with a candle (the streak stamp; a flame alone reads as "hot").
+14. Family of thirty: a large number 30 made of plants.
+15. Regulars: a loyalty stamp card with a golden bite mark.
+16. Full table: a family of avatars around one shared plate.
+17. Curious: an open book with a plant growing out of the page.
+
 ## Design rules
 1. **Never resets.** Levels only go up; a streak can end but stamps and cards stay. Loss is
    absorbed by the freeze.
@@ -100,6 +203,9 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
   correlational, n=13)_.
 - POC (Linear PF-56, 2026-09-07 to 09-08): First bites and Curious stamps and the stamp-press
   celebration were accepted on device ("minimal but noticeable").
+- Store POC on device (2026-09-18): all 16 first-week stamps unlocked on day one for the engaged
+  accounts; the retention curve and per-member counts behind the ladder are in the tier 3 section
+  above _(live Supabase `plant_logs`, n=14 members, queried 2026-09-18)_.
 - Duolingo: daily quests rail, streak with freeze, achievement tiers _(public product knowledge,
   undated)_.
 
@@ -118,9 +224,11 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).
-- POC 2026-09-14: 16 goals with progress bars and a detail sheet are in the app
-  (`projectfood-mobile/src/data/achievements.ts`). "7 dinners" and "Thirty" count tonight only
-  until the backend holds history; the shelf order is the intended difficulty ladder.
+- Store POC 2026-09-16: the 16 goals run on real history
+  (`projectfood-mobile/src/features/achievements/definitions.ts`) and unlock rows live in
+  `achievement_unlocks`. Open since 2026-09-18: Ricardo to confirm the level targets in the ladder
+  above before the `level` column, engine and copy are built; whether Rainbow's top rung should be
+  "all 8 colours in one week" or a count of rainbow weeks.
 
 ## Related pages
 - [[overview]] · [[concept-retention-loop]] · [[concept-brand-pillars]] ·

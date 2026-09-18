@@ -173,3 +173,13 @@ Functions `delete-account` and `send-notifications`, the Expo app rebuilt with S
 (email code, Google, Apple), react-query, i18n en/nl/it, Home / Log / Unlocks / Account and the
 account sub-screens, 224 plant + 25 avatar assets bundled, kid facts + parent tips generated for
 en/nl/it. Backlog rows 4, 5, 9, 11, 13, 14, 15 and "Next to pick up" updated.
+
+## [2026-09-18] query | Achievement ladder calibrated on live data
+Ricardo found the 16 stamps too easy: every engaged account unlocked all of them on day one in
+the store POC. Queried the live `plant_logs` for the 14 members (distinct plants, per-category
+counts, card levels, streaks, weeks of 30, biggest day) and the retention curve (64% in week 1,
+43% in week 4, 21% from week 7). Proposal filed in [[concept-achievement-system]]: keep the 16
+stamps, give each four levels at one week / month / season / year, targets set where the users
+actually stand, the rungs that are half done at the week 5→7 cliff named by the pushes, and a
+17-item prize-image list. Backlog row 5 and "Next to pick up" updated; Ricardo to confirm the
+targets before the build.
