@@ -12,6 +12,7 @@ import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfEnd } from '@/features/dev/perf';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
+import { useLocale } from '@/features/i18n';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useUi } from '@/state/ui';
 
@@ -26,7 +27,8 @@ const LEVEL_COLORS = { none: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC'
 
 /** The food page: clay render, what it is, the facts, and each member's card level for it. */
 export default function PlantDetailScreen() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const locale = useLocale();
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -44,7 +46,7 @@ export default function PlantDetailScreen() {
   if (!plant) return null;
   const cat = CATS[plant.category];
   const month = new Date().getMonth() + 1;
-  const monthName = (m: number) => new Intl.DateTimeFormat(i18n.language, { month: 'short' }).format(new Date(2026, m - 1, 1));
+  const monthName = (m: number) => new Intl.DateTimeFormat(locale, { month: 'short' }).format(new Date(2026, m - 1, 1));
 
   return (
     <View style={[styles.screen, { paddingTop: insets.top + 8 }]}>

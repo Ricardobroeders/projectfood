@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import Fuse from 'fuse.js';
 import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import type { Category } from '@/constants/theme';
-import { currentLocale } from '@/features/i18n';
+import { useLocale } from '@/features/i18n';
 import { supabase } from '@/features/supabase/client';
 import type { Database } from '@/features/supabase/types';
 
@@ -64,8 +63,7 @@ const EMPTY: Catalog = { plants: [], byId: {}, bySlug: {} };
 
 /** The 224-plant catalogue in the UI language. Persisted; refreshed once a day. */
 export function usePlantCatalog() {
-  const { i18n } = useTranslation();
-  const locale = i18n.language || currentLocale();
+  const locale = useLocale();
   const q = useQuery({
     queryKey: catalogKey(locale),
     queryFn: () => fetchCatalog(locale),

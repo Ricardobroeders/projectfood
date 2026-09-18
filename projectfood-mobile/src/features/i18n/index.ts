@@ -1,5 +1,6 @@
 import { getLocales } from 'expo-localization';
 import i18n from 'i18next';
+import { useSyncExternalStore } from 'react';
 import { initReactI18next } from 'react-i18next';
 
 import de from './locales/de.json';
@@ -47,6 +48,22 @@ export function setLocale(locale: Locale) {
 
 export function currentLocale(): Locale {
   return isLocale(i18n.language) ? i18n.language : 'en';
+}
+
+function subscribe(cb: () => void) {
+  i18n.on('languageChanged', cb);
+  return () => {
+    i18n.off('languageChanged', cb);
+  };
+}
+
+/**
+ * The UI language as a React value that re-renders on change. Read this in components and hooks,
+ * not `currentLocale()` or `i18n.language`: the React Compiler memoises those reads, so a screen
+ * kept showing the old language until it was remounted.
+ */
+export function useLocale(): Locale {
+  return useSyncExternalStore(subscribe, currentLocale);
 }
 
 export default i18n;

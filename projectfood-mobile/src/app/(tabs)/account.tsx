@@ -11,7 +11,7 @@ import { colors, fonts, radii } from '@/constants/theme';
 import { signOutEverywhere } from '@/features/auth/signOut';
 import { useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings } from '@/features/household/queries';
-import { currentLocale } from '@/features/i18n';
+import { useLocale } from '@/features/i18n';
 import { ENV } from '@/features/supabase/env';
 import { useSurveyProgress } from '@/features/survey/queries';
 
@@ -22,7 +22,7 @@ export default function AccountScreen() {
   const { data: hh } = useHousehold();
   const { data: settings } = useSettings();
   const survey = useSurveyProgress();
-  const locale = currentLocale();
+  const locale = useLocale();
 
   const legal = (kind: 'privacy' | 'terms') => {
     const l = locale === 'de' || locale === 'fr' ? 'en' : locale;

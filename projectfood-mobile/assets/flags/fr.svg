@@ -1,0 +1,7 @@
+<svg id="flag-icon-css-fr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <g>
+    <path d="M0,0H640V480H0Z" transform="translate(0 0)" fill="#fff" fill-rule="evenodd"/>
+    <path d="M0,0H213.3V480H0Z" transform="translate(0 0)" fill="#00267f" fill-rule="evenodd"/>
+    <path d="M426.7,0H640V480H426.7Z" transform="translate(0 0)" fill="#f31830" fill-rule="evenodd"/>
+  </g>
+</svg>

@@ -1,8 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
 
 import { useSession } from '@/features/auth/useSession';
 import { useSettings } from '@/features/household/queries';
+import { useLocale } from '@/features/i18n';
 import { supabase } from '@/features/supabase/client';
 import type { Json } from '@/features/supabase/types';
 
@@ -36,8 +36,7 @@ function parseOptions(v: Json | null): SurveyOption[] | null {
 }
 
 export function useSurveyQuestions() {
-  const { i18n } = useTranslation();
-  const locale = i18n.language;
+  const locale = useLocale();
   return useQuery({
     queryKey: surveyKey(locale),
     queryFn: async (): Promise<SurveyQuestion[]> => {

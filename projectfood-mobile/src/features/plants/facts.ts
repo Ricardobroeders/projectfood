@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'react-i18next';
-
+import { useLocale } from '@/features/i18n';
 import { supabase } from '@/features/supabase/client';
 import type { Tables } from '@/features/supabase/types';
 
@@ -8,8 +7,7 @@ export type PlantFact = Tables<'plant_facts'>;
 
 /** Kid fact + parent tip in the UI language, English when the locale has none yet, null when none exist. */
 export function usePlantFact(plantId: string | undefined) {
-  const { i18n } = useTranslation();
-  const locale = i18n.language;
+  const locale = useLocale();
   return useQuery({
     queryKey: ['facts', plantId ?? '', locale],
     queryFn: async () => {
