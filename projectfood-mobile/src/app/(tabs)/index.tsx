@@ -2,14 +2,17 @@ import { useRouter } from 'expo-router';
 import { Flame, Plus, Snowflake } from 'lucide-react-native';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
+import { AnimatedNumber } from '@/components/AnimatedNumber';
 import { CategoryImage } from '@/components/CategoryImage';
+import { GoalGauge } from '@/components/GoalGauge';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
 import { PrimaryButton, Screen, SectionTitle } from '@/components/ui';
+import { motion } from '@/constants/motion';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { levelLabel } from '@/features/achievements/copy';
 import { ACHIEVEMENT_BY_ID, nearestGoals } from '@/features/achievements/definitions';
@@ -27,6 +30,7 @@ const GOAL = 30;
 export default function HomeScreen() {
   const { t } = useTranslation();
   const router = useRouter();
+  const { width } = useWindowDimensions();
   const { data: hh } = useHousehold();
   const hid = hh?.household.id;
   const members = hh?.members ?? [];
@@ -50,6 +54,8 @@ export default function HomeScreen() {
   const toGo = Math.max(0, GOAL - weekCount);
   const daysLeft = daysLeftInWeek();
   const showSurvey = survey.pending && !!settings.data;
+  // The gauge fills the hero's inner width, capped so the segments keep their spacing on tablets.
+  const gaugeSize = Math.min(280, width - 40 - 48);
 
   return (
     <Screen>
@@ -71,12 +77,15 @@ export default function HomeScreen() {
             <Text style={styles.heroLabel}>{t('home.thisWeek')}</Text>
             <Text style={styles.heroMeta}>{daysLeft > 0 ? t('home.daysLeft', { days: daysLeft }) : ''}</Text>
           </View>
-          <Text style={styles.heroNumber}>
-            {weekCount}
-            <Text style={styles.heroDenominator}> / {GOAL}</Text>
-          </Text>
-          <Text style={styles.heroSub}>{toGo === 0 ? t('home.goalReached') : t('home.toGo', { n: toGo })}</Text>
-          <ProgressBar value={weekCount} max={GOAL} height={6} color={toGo === 0 ? colors.gold : colors.success} style={{ marginTop: 6 }} />
+          <View style={styles.gaugeWrap}>
+            <GoalGauge value={weekCount} max={GOAL} size={gaugeSize}>
+              <AnimatedNumber value={weekCount} from={0} timing={motion.fill} style={styles.heroNumber} />
+              <Text style={styles.heroDenominator}>{t('home.ofGoal', { n: GOAL })}</Text>
+            </GoalGauge>
+          </View>
+          <View style={styles.heroPill}>
+            <Text style={styles.heroSub}>{toGo === 0 ? t('home.goalReached') : t('home.toGo', { n: toGo })}</Text>
+          </View>
           {members.length > 1 ? (
             <View style={styles.members}>
               {perMember.map(({ m, n }) => (
@@ -193,9 +202,11 @@ const styles = StyleSheet.create({
   heroTop: { flexDirection: 'row', justifyContent: 'space-between' },
   heroLabel: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 20, color: colors.ink2 },
   heroMeta: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 20, color: colors.ink3 },
-  heroNumber: { fontFamily: fonts.extrabold, fontSize: 56, lineHeight: 62, color: colors.ink, letterSpacing: -1.5 },
-  heroDenominator: { fontFamily: fonts.semibold, fontSize: 22, color: colors.ink3, letterSpacing: 0 },
-  heroSub: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.ink2 },
+  gaugeWrap: { alignItems: 'center', marginTop: 8 },
+  heroNumber: { fontFamily: fonts.extrabold, fontSize: 56, lineHeight: 62, color: colors.ink, letterSpacing: -1.5, textAlign: 'center' },
+  heroDenominator: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 20, color: colors.ink2, marginTop: -4 },
+  heroPill: { alignSelf: 'center', height: 34, paddingHorizontal: 16, borderRadius: radii.full, backgroundColor: colors.surface, justifyContent: 'center', marginTop: 4 },
+  heroSub: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18, color: colors.ink },
   members: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 12 },
   member: { flexDirection: 'row', alignItems: 'center', gap: 6, height: 36, paddingLeft: 4, paddingRight: 12, borderRadius: radii.sm, backgroundColor: colors.surface },
   memberCount: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },

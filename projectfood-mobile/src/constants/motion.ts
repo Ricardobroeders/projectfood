@@ -37,6 +37,8 @@ export const motion = {
   swap: { duration: 200, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
   reveal: { duration: 260, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
   pulse: { duration: 700, easing: Easing.inOut(Easing.quad) } satisfies WithTimingConfig,
+  // fill class: a gauge or meter filling to its value when a screen opens; no bounce, that is for rewards
+  fill: { duration: 1100, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
 } as const;
 
 /** Where reward pops start from, so the settle stays inside the element's box. */
