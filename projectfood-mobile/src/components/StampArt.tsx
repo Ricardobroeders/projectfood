@@ -14,7 +14,7 @@ type Props = { achievement: Achievement; size: number; unlocked?: boolean; color
 export function StampArt({ achievement, size, unlocked = true, color }: Props) {
   const source = achievement.image ? STAMP_IMAGES[achievement.image] : undefined;
   if (source) {
-    const art = Math.round(size * 0.74);
+    const art = Math.round(size * 0.88);
     return <Image source={source} style={{ width: art, height: art, opacity: unlocked ? 1 : 0.35 }} contentFit="contain" transition={120} />;
   }
   const Icon = unlocked ? achievement.icon : Lock;
