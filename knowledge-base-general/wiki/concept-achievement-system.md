@@ -147,6 +147,31 @@ to be reachable, which is the family case by design.
 gold, platinum ring), so 17 renders cover the shelf. Style: one object, 3D clay, soft studio light,
 plain white background, no text, square, matching the plant renders.
 
+Ids and files (2026-09-18): the ladder needs ids without a number in them, so the migration renames
+the existing `achievement_unlocks.achievement_id` values. Originals go in a public Storage bucket
+`stamps` as `<id>.png` (square, 1024 px); `scripts/build-assets.mjs` resizes them to
+`assets/stamps/<id>.webp` and generates the lookup, like the plants. Frames are drawn in code.
+
+| Stamp | Id today | Id after the ladder |
+|---|---|---|
+| Explorer | `first_bites` | `explorer` |
+| Green machine | `veg_5` | `green_machine` |
+| Fruit basket | `fruit_5` | `fruit_basket` |
+| Herb garden | `herb_3` | `herb_garden` |
+| Nutcracker | `nut_3` | `nutcracker` |
+| Bean counter | `legume_3` | `bean_counter` |
+| Grain train | `grain_3` | `grain_train` |
+| Bubbly | `ferment_2` | `bubbly` |
+| Superfood | `superfood_5` | `superfood` |
+| Tomato family | `tomato_family` | unchanged |
+| Rainbow | `rainbow` | unchanged |
+| Big dinner | `big_dinner` | unchanged |
+| Table talk | `streak_7` | `table_talk` |
+| Family of thirty | `thirty` | `family_of_thirty` |
+| Regulars | new | `regulars` |
+| Full table | `full_table` | unchanged |
+| Curious | `curious` | unchanged |
+
 1. Explorer: a compass whose needle is a carrot, or a small flag planted in a bitten apple.
 2. Green machine: a toy tractor built from vegetables (broccoli wheels, pepper cab).
 3. Fruit basket: a woven basket overflowing with fruit.
