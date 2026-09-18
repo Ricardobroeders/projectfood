@@ -33,7 +33,8 @@ export default function MembersScreen() {
   const members = hh.members;
 
   const edit = (m: Member) => setDraft({ id: m.id, name: m.name, kind: m.kind as 'kid' | 'adult', color_index: m.color_index, avatar_image: m.avatar_image, avatar_bg: m.avatar_bg });
-  const add = (kind: 'kid' | 'adult') => setDraft({ name: '', kind, color_index: members.length % MEMBER_COLORS.length, avatar_image: null, avatar_bg: null });
+  // New people start as adults; the editor's Kid/Adult chip flips it. The app is about everyone at the table, not kids.
+  const add = () => setDraft({ name: '', kind: 'adult', color_index: members.length % MEMBER_COLORS.length, avatar_image: null, avatar_bg: null });
 
   return (
     <Screen>

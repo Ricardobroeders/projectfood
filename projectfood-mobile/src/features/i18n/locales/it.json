@@ -83,10 +83,9 @@
     "familyTitle": "Chi c'è a tavola?",
     "familySub": "Aggiungi tutti quelli che mangiano con te. Basta il nome o un soprannome.",
     "yourName": "Il tuo nome",
-    "addKid": "Aggiungi un bambino",
-    "addAdult": "Aggiungi un adulto",
+    "addPerson": "Aggiungi una persona",
     "dinnerTitle": "A che ora cenate di solito?",
-    "dinnerSub": "Mezz'ora dopo ti chiederemo cosa hanno assaggiato i bambini. Puoi cambiarlo quando vuoi.",
+    "dinnerSub": "Mezz'ora dopo ti chiederemo cosa hanno assaggiato tutti. Puoi cambiarlo quando vuoi.",
     "finish": "Iniziamo ad assaggiare"
   },
   "home": {
@@ -338,7 +337,7 @@
     "types": {
       "dinnerQuestion": {
         "label": "Domanda della cena",
-        "description": "\"Cosa hanno assaggiato i bambini stasera?\" circa mezz'ora dopo cena"
+        "description": "\"Cosa ha assaggiato la famiglia stasera?\" circa mezz'ora dopo cena"
       },
       "streakKeeper": {
         "label": "Custode della serie",

@@ -13,7 +13,7 @@ type Props = {
   /** Optional per-member count badge (e.g. plants tonight). */
   counts?: Record<string, number>;
   onEdit: (m: Member) => void;
-  onAdd: (kind: 'kid' | 'adult') => void;
+  onAdd: () => void;
 };
 
 /** Family rows shared by onboarding and Account → Family. */
@@ -41,10 +41,7 @@ export function MemberList({ members, meId, counts, onEdit, onAdd }: Props) {
           </Pressable>
         );
       })}
-      <View style={styles.addRow}>
-        <SecondaryButton label={t('onboarding.addKid')} onPress={() => onAdd('kid')} icon={<Plus size={18} color={colors.ink} />} style={{ flex: 1 }} />
-        <SecondaryButton label={t('onboarding.addAdult')} onPress={() => onAdd('adult')} icon={<Plus size={18} color={colors.ink} />} style={{ flex: 1 }} />
-      </View>
+      <SecondaryButton label={t('onboarding.addPerson')} onPress={onAdd} icon={<Plus size={18} color={colors.ink} />} style={styles.add} />
     </View>
   );
 }
@@ -57,5 +54,5 @@ const styles = StyleSheet.create({
   count: { height: 28, paddingHorizontal: 10, borderRadius: radii.sm, backgroundColor: colors.accentSoft, justifyContent: 'center' },
   countText: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink },
   edit: { width: 36, height: 36, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
-  addRow: { flexDirection: 'row', gap: 8, marginTop: 4 },
+  add: { marginTop: 4 },
 });

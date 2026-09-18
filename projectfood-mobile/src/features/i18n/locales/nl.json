@@ -83,10 +83,9 @@
     "familyTitle": "Wie zit er aan tafel?",
     "familySub": "Voeg iedereen toe die meeëet. Een voornaam of bijnaam is genoeg.",
     "yourName": "Jouw naam",
-    "addKid": "Kind toevoegen",
-    "addAdult": "Volwassene toevoegen",
+    "addPerson": "Iemand toevoegen",
     "dinnerTitle": "Hoe laat eten jullie meestal?",
-    "dinnerSub": "Een half uur later vragen we wat de kinderen hebben geproefd. Je kunt dit altijd aanpassen.",
+    "dinnerSub": "Een half uur later vragen we wat iedereen heeft geproefd. Je kunt dit altijd aanpassen.",
     "finish": "Beginnen met proeven"
   },
   "home": {
@@ -338,7 +337,7 @@
     "types": {
       "dinnerQuestion": {
         "label": "Etensvraag",
-        "description": "\"Wat hebben de kinderen vanavond geproefd?\" ongeveer een half uur na het eten"
+        "description": "\"Wat heeft het gezin vanavond geproefd?\" ongeveer een half uur na het eten"
       },
       "streakKeeper": {
         "label": "Reeksbewaker",

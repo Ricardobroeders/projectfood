@@ -83,10 +83,9 @@
     "familyTitle": "Who's at the table?",
     "familySub": "Add everyone who eats with you. First names or nicknames are enough.",
     "yourName": "Your name",
-    "addKid": "Add a kid",
-    "addAdult": "Add an adult",
+    "addPerson": "Add a person",
     "dinnerTitle": "When do you usually eat dinner?",
-    "dinnerSub": "We'll ask what the kids tasted about half an hour later. You can change this any time.",
+    "dinnerSub": "We'll ask what everyone tasted about half an hour later. You can change this any time.",
     "finish": "Start tasting"
   },
   "home": {
@@ -338,7 +337,7 @@
     "types": {
       "dinnerQuestion": {
         "label": "Dinner question",
-        "description": "\"What did the kids taste tonight?\" about half an hour after dinner"
+        "description": "\"What did the family taste tonight?\" about half an hour after dinner"
       },
       "streakKeeper": {
         "label": "Streak keeper",
