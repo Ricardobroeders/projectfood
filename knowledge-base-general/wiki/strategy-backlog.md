@@ -27,13 +27,13 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
 2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
-3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off; generate the two new renders `achievement-regular_table.png` and `achievement-steady_weeks.png`.
+3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off. All 19 renders, the cups and the category renders are bundled (2026-09-18); bucket tidy-up is cosmetic (two files carry a doubled `achievement-achievement-` prefix).
 4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
 5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
 6. Five parent conversations (Linear PF-55).
 
 **Claude's next build steps**
-7. Device testing continues over USB (`adb reverse`, the tunnel proved unreliable); next: two-member logging with a kid profile, plant page, account screens.
+7. Testing moves to the standalone preview APK (`eas build --profile preview`, first build 2026-09-18) so the phone needs no Metro or cable; the dev client over USB stays for live coding. Next on device: two-member logging, plant page, account screens, and the real list performance now that images are embedded.
 8. Rung pushes at 50% and 75% in `send-notifications` (row 5).
 9. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
 10. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
