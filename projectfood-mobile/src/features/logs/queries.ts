@@ -64,7 +64,7 @@ export function useDailyActivity(hid: string | undefined, days = 90) {
   });
 }
 
-export function useWeeklyHistory(hid: string | undefined, weeks = 12) {
+export function useWeeklyHistory(hid: string | undefined, weeks = 60) {
   return useQuery({
     queryKey: [...weeklyKey(hid ?? ''), weeks],
     queryFn: async () => {

@@ -11,6 +11,7 @@ import { StampArt } from '@/components/StampArt';
 import { StampPress } from '@/components/StampPress';
 import { motion } from '@/constants/motion';
 import { colors, fonts, radii } from '@/constants/theme';
+import { levelLabel, rungBody } from '@/features/achievements/copy';
 import { ACHIEVEMENT_BY_ID, type AchievementId } from '@/features/achievements/definitions';
 import { type UnlockRow, useAchievements, useMarkUnlocksSeen } from '@/features/achievements/useAchievements';
 import { dateKey } from '@/features/logs/model';
@@ -97,13 +98,19 @@ export function CelebrationSheet() {
   if (!shown || shown.length === 0) return null;
   const first = shown[0];
   const firstId = first.achievement_id as AchievementId;
-  const a = ACHIEVEMENT_BY_ID[firstId] ?? ACHIEVEMENT_BY_ID.first_bites;
-  const isFirstBites = firstId === 'first_bites';
+  const a = ACHIEVEMENT_BY_ID[firstId] ?? ACHIEVEMENT_BY_ID.explorer;
+  const isFirstBites = firstId === 'explorer' && first.level === 1;
+  const levelUp = first.level > 1;
   const lastNight = shown.some((u) => dateKey(new Date(u.unlocked_at)) < dateKey());
   const rest = shown.slice(1, 7);
   const memberName = first.member_id ? members.find((m) => m.id === first.member_id)?.name : null;
-  const title = shown.length === 1 ? (isFirstBites ? t('celebration.firstBitesTitle') : t('celebration.newStampTitle')) : t('celebration.newStampsTitle', { n: shown.length });
-  const body = isFirstBites ? t('celebration.firstBitesBody') : `${t(`stamps.${firstId}.title`)} · ${t(`stamps.${firstId}.body`, { n: (typeof a.target === 'number' ? a.target : a.target(ctx)) })}`;
+  const title = shown.length === 1 ? (isFirstBites ? t('celebration.firstBitesTitle') : levelUp ? t('celebration.levelUpTitle') : t('celebration.newStampTitle')) : t('celebration.newStampsTitle', { n: shown.length });
+  const rungTarget = a.rungs[Math.min(first.level, a.rungs.length) - 1]?.target ?? 1;
+  const body = isFirstBites
+    ? t('celebration.firstBitesBody')
+    : levelUp
+      ? `${t('celebration.levelUpBody', { stamp: t(`stamps.${firstId}.title`), level: levelLabel(t, first.level) })} · ${rungBody(t, a, first.level, rungTarget)}`
+      : `${t(`stamps.${firstId}.title`)} · ${rungBody(t, a, first.level, rungTarget)}`;
 
   return (
     <Modal visible transparent statusBarTranslucent animationType="none" onRequestClose={() => finish()}>
@@ -115,7 +122,7 @@ export function CelebrationSheet() {
           <View style={styles.handle} />
           {lastNight ? <Text style={styles.eyebrow}>{t('celebration.lastNight')}</Text> : null}
           <StampPress size={STAMP_SIZE} color={a.color} play={visible} onLanded={onLanded}>
-            <Stamp size={STAMP_SIZE} color={a.color}>
+            <Stamp size={STAMP_SIZE} color={a.color} level={first.level}>
               {isFirstBites && plant ? <PlantImage plant={plant} size={88} /> : <StampArt achievement={a} size={STAMP_SIZE} />}
             </Stamp>
           </StampPress>
@@ -128,7 +135,7 @@ export function CelebrationSheet() {
                 if (!ra) return null;
                 return (
                   <Animated.View key={u.id} entering={FadeInDown.delay(560 + i * 90).duration(320)}>
-                    <Stamp size={44} color={ra.color}>
+                    <Stamp size={44} color={ra.color} level={u.level}>
                       <StampArt achievement={ra} size={44} />
                     </Stamp>
                   </Animated.View>

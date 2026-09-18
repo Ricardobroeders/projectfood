@@ -8,7 +8,7 @@ import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue,
 import { Stamp } from '@/components/Stamp';
 import { motion, REWARD_POP_FROM } from '@/constants/motion';
 import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
-import { ACHIEVEMENT_BY_ID, unlockKey } from '@/features/achievements/definitions';
+import { ACHIEVEMENT_BY_ID, levelKey } from '@/features/achievements/definitions';
 import { useAchievements, useUnlockCurious } from '@/features/achievements/useAchievements';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
@@ -24,11 +24,11 @@ export function FunFactCard() {
   const factCard = useUi((s) => s.factCard);
   const hide = useUi((s) => s.hideFactCard);
   const { catalog } = usePlantCatalog();
-  const { hid, unlockedKeys } = useAchievements();
+  const { hid, levels } = useAchievements();
   const curious = useUnlockCurious(hid);
   const plant = factCard ? catalog.byId[factCard.plantId] : undefined;
   const { data: fact } = usePlantFact(plant?.id);
-  const opened = unlockedKeys.has(unlockKey('curious', null));
+  const opened = levels.has(levelKey('curious', null));
 
   const rotation = useSharedValue(0);
   const badge = useSharedValue(0);

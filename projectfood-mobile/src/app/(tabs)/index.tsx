@@ -10,6 +10,7 @@ import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
 import { PrimaryButton, Screen, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
+import { levelLabel } from '@/features/achievements/copy';
 import { ACHIEVEMENT_BY_ID, nearestGoals } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { useHousehold, useSettings, useUpdateSettings } from '@/features/household/queries';
@@ -31,7 +32,7 @@ export default function HomeScreen() {
   const { catalog } = usePlantCatalog();
   const { data: logs = [] } = useWeekLogs(hid);
   const { data: streak } = useStreak(hid);
-  const { progress, unlockedKeys, ready } = useAchievements();
+  const { progress, levels, ready } = useAchievements();
   const openAchievement = useUi((s) => s.openAchievement);
   const survey = useSurveyProgress();
   const settings = useSettings();
@@ -43,7 +44,7 @@ export default function HomeScreen() {
   const weekCount = weekPlantIds.length;
   const todayPlants = Object.keys(tastesToday).map((id) => catalog.byId[id]).filter(Boolean);
   const perMember = members.map((m) => ({ m, n: new Set(logs.filter((r) => r.member_id === m.id).map((r) => r.plant_id)).size }));
-  const goals = ready ? nearestGoals(progress, unlockedKeys, 3) : [];
+  const goals = ready ? nearestGoals(progress, levels, 3) : [];
   const byCat = CAT_ORDER.map((c) => ({ c, plants: weekPlantIds.map((id) => catalog.byId[id]).filter((p) => p && p.category === c) })).filter((x) => x.plants.length > 0);
   const toGo = Math.max(0, GOAL - weekCount);
   const daysLeft = daysLeftInWeek();
@@ -117,6 +118,7 @@ export default function HomeScreen() {
                     <View style={{ flex: 1, gap: 2 }}>
                       <Text style={styles.goalTitle} numberOfLines={1}>
                         {t(`stamps.${g.id}.title`)}
+                        {g.level > 1 ? ` · ${levelLabel(t, g.level)}` : ''}
                       </Text>
                       <Text style={styles.goalMeta} numberOfLines={1}>
                         {g.remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: g.remaining })}

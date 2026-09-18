@@ -1,24 +1,67 @@
 {
   "common": {
-    "save": "Opslaan", "done": "Klaar", "close": "Sluiten", "later": "Later", "remove": "Verwijderen", "cancel": "Annuleren",
-    "back": "Terug", "on": "Aan", "off": "Uit", "saving": "Opslaan…", "saved": "Opgeslagen", "continue": "Verder",
-    "error": "Er is iets misgegaan. Probeer het opnieuw.", "retry": "Opnieuw", "today": "Vandaag", "yesterday": "Gisteren",
-    "you": "Jij", "everyone": "Iedereen", "household": "Gezin", "loading": "Laden…"
+    "save": "Opslaan",
+    "done": "Klaar",
+    "close": "Sluiten",
+    "later": "Later",
+    "remove": "Verwijderen",
+    "cancel": "Annuleren",
+    "back": "Terug",
+    "on": "Aan",
+    "off": "Uit",
+    "saving": "Opslaan…",
+    "saved": "Opgeslagen",
+    "continue": "Verder",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "retry": "Opnieuw",
+    "today": "Vandaag",
+    "yesterday": "Gisteren",
+    "you": "Jij",
+    "everyone": "Iedereen",
+    "household": "Gezin",
+    "loading": "Laden…"
   },
-  "nav": { "home": "Home", "log": "Loggen", "unlocks": "Behaald", "account": "Account" },
+  "nav": {
+    "home": "Home",
+    "log": "Loggen",
+    "unlocks": "Behaald",
+    "account": "Account"
+  },
   "categories": {
-    "fruit": "Fruit", "vegetable": "Groente", "herb": "Kruid & specerij", "nut_seed": "Noot & zaad",
-    "legume": "Peulvrucht", "whole_grain": "Volkoren graan", "ferment": "Gefermenteerd"
+    "fruit": "Fruit",
+    "vegetable": "Groente",
+    "herb": "Kruid & specerij",
+    "nut_seed": "Noot & zaad",
+    "legume": "Peulvrucht",
+    "whole_grain": "Volkoren graan",
+    "ferment": "Gefermenteerd"
   },
   "categoriesPlural": {
-    "fruit": "Fruit", "vegetable": "Groenten", "herb": "Kruiden", "nut_seed": "Noten & zaden",
-    "legume": "Peulvruchten", "whole_grain": "Volkoren", "ferment": "Gefermenteerd"
+    "fruit": "Fruit",
+    "vegetable": "Groenten",
+    "herb": "Kruiden",
+    "nut_seed": "Noten & zaden",
+    "legume": "Peulvruchten",
+    "whole_grain": "Volkoren",
+    "ferment": "Gefermenteerd"
   },
   "colors": {
-    "red": "Rood", "orange": "Oranje", "yellow": "Geel", "green": "Groen", "blue": "Blauw", "purple": "Paars",
-    "white": "Wit", "brown": "Bruin"
+    "red": "Rood",
+    "orange": "Oranje",
+    "yellow": "Geel",
+    "green": "Groen",
+    "blue": "Blauw",
+    "purple": "Paars",
+    "white": "Wit",
+    "brown": "Bruin"
   },
-  "languages": { "en": "English", "nl": "Nederlands", "it": "Italiano", "de": "Deutsch", "fr": "Français" },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "it": "Italiano",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
   "auth": {
     "tagline": "Elke plant die je gezin proeft, verzameld.",
     "continueWithGoogle": "Doorgaan met Google",
@@ -111,7 +154,10 @@
     "moreToSilver": "Nog {n} keer proeven voor zilver",
     "moreToGold": "Nog {n} keer proeven voor goud",
     "goldReached": "Gouden kaart",
-    "firstTaste": "De eerste hap ontgrendelt de kaart"
+    "firstTaste": "De eerste hap ontgrendelt de kaart",
+    "complete": "Compleet",
+    "levelsUnlocked": "{n} van {m} levels",
+    "nextLevel": "Volgende: {level}"
   },
   "plant": {
     "family": "Familie",
@@ -139,25 +185,85 @@
     "lastNight": "Gisteravond behaald",
     "showCard": "Laat mijn kaart zien",
     "later": "Later",
-    "curiousUnlocked": "Stempel Nieuwsgierig behaald"
+    "curiousUnlocked": "Stempel Nieuwsgierig behaald",
+    "levelUpTitle": "Level omhoog!",
+    "levelUpBody": "{stamp} is nu {level}"
   },
   "stamps": {
-    "first_bites": { "title": "Eerste hapjes", "body": "Proef {n} verschillende planten" },
-    "curious": { "title": "Nieuwsgierig", "body": "Open een weetje" },
-    "full_table": { "title": "Volle tafel", "body": "Iedereen aan tafel proeft dezelfde plant" },
-    "rainbow": { "title": "Regenboog", "body": "Proef {n} verschillende kleuren in één week" },
-    "big_dinner": { "title": "Groot diner", "body": "Proef {n} planten bij één avondeten" },
-    "veg_5": { "title": "Groentekanjer", "body": "Proef {n} groenten" },
-    "fruit_5": { "title": "Fruitmand", "body": "Proef {n} soorten fruit" },
-    "herb_3": { "title": "Kruidentuin", "body": "Proef {n} kruiden & specerijen" },
-    "nut_3": { "title": "Notenkraker", "body": "Proef {n} noten & zaden" },
-    "legume_3": { "title": "Bonenteller", "body": "Proef {n} peulvruchten" },
-    "grain_3": { "title": "Graantrein", "body": "Proef {n} volkoren granen" },
-    "ferment_2": { "title": "Bubbels", "body": "Proef {n} gefermenteerde dingen" },
-    "superfood_5": { "title": "Superfood", "body": "Proef {n} superfoods" },
-    "tomato_family": { "title": "Tomatenfamilie", "body": "Proef {n} planten van de nachtschadefamilie" },
-    "streak_7": { "title": "7 avondmalen", "body": "Log {n} avondmalen achter elkaar" },
-    "thirty": { "title": "Dertig", "body": "Proef {n} verschillende planten in één week" }
+    "explorer": {
+      "title": "Ontdekker",
+      "body": "Proef {n} verschillende planten"
+    },
+    "curious": {
+      "title": "Nieuwsgierig",
+      "body": "Open een weetje"
+    },
+    "full_table": {
+      "title": "Volle tafel",
+      "body": "{n} planten die het hele gezin heeft geproefd"
+    },
+    "rainbow": {
+      "title": "Regenboog",
+      "body": "{n} weken met 5 kleuren op tafel"
+    },
+    "big_dinner": {
+      "title": "Groot diner",
+      "body": "Proef {n} planten bij één avondeten"
+    },
+    "green_machine": {
+      "title": "Groentekanjer",
+      "body": "Proef {n} groenten"
+    },
+    "fruit_basket": {
+      "title": "Fruitmand",
+      "body": "Proef {n} soorten fruit"
+    },
+    "herb_garden": {
+      "title": "Kruidentuin",
+      "body": "Proef {n} kruiden & specerijen"
+    },
+    "nutcracker": {
+      "title": "Notenkraker",
+      "body": "Proef {n} noten & zaden"
+    },
+    "bean_counter": {
+      "title": "Bonenteller",
+      "body": "Proef {n} peulvruchten"
+    },
+    "grain_train": {
+      "title": "Graantrein",
+      "body": "Proef {n} volkoren granen"
+    },
+    "bubbly": {
+      "title": "Bubbels",
+      "body": "Proef {n} gefermenteerde dingen"
+    },
+    "superfood": {
+      "title": "Superfood",
+      "body": "Proef {n} superfoods"
+    },
+    "tomato_family": {
+      "title": "Tomatenfamilie",
+      "body": "Proef {n} planten van de nachtschadefamilie"
+    },
+    "regulars": {
+      "title": "Vaste gasten",
+      "body": "Verdien {n} zilveren kaarten",
+      "rungs": {
+        "1": "Verdien {n} zilveren kaarten",
+        "2": "Verdien {n} gouden kaarten",
+        "3": "Proef {n} planten 25 keer",
+        "4": "Proef één plant {n} keer"
+      }
+    },
+    "table_talk": {
+      "title": "Tafelpraat",
+      "body": "Log {n} avondmalen achter elkaar"
+    },
+    "family_of_thirty": {
+      "title": "Familie van dertig",
+      "body": "{n} weken met 30 verschillende planten"
+    }
   },
   "family": {
     "title": "Jouw gezin",
@@ -209,10 +315,22 @@
     "marketing": "Tips & nieuws",
     "marketingDesc": "Kaart-teasers en de zondagse herinnering. Standaard uit.",
     "types": {
-      "dinnerQuestion": { "label": "Etensvraag", "description": "\"Wat hebben de kinderen vanavond geproefd?\" ongeveer een half uur na het eten" },
-      "streakKeeper": { "label": "Reeksbewaker", "description": "Alleen als de gezinsreeks in gevaar is" },
-      "cardTeaser": { "label": "Kaart-teaser", "description": "Na een paar stille avonden: welke kaart bijna klaar is" },
-      "sundayNudge": { "label": "Zondagse herinnering", "description": "Als het gezin nog een paar planten van de 30 is" }
+      "dinnerQuestion": {
+        "label": "Etensvraag",
+        "description": "\"Wat hebben de kinderen vanavond geproefd?\" ongeveer een half uur na het eten"
+      },
+      "streakKeeper": {
+        "label": "Reeksbewaker",
+        "description": "Alleen als de gezinsreeks in gevaar is"
+      },
+      "cardTeaser": {
+        "label": "Kaart-teaser",
+        "description": "Na een paar stille avonden: welke kaart bijna klaar is"
+      },
+      "sundayNudge": {
+        "label": "Zondagse herinnering",
+        "description": "Als het gezin nog een paar planten van de 30 is"
+      }
     },
     "permissionPrompt": {
       "title": "Wil je de etensvraag?",
@@ -246,5 +364,11 @@
     "new_questions": "{count} nieuwe vragen sinds je laatste bezoek",
     "save_go_back": "Opslaan & terug",
     "other": "Anders"
+  },
+  "levels": {
+    "bronze": "Brons",
+    "silver": "Zilver",
+    "gold": "Goud",
+    "platinum": "Platina"
   }
 }

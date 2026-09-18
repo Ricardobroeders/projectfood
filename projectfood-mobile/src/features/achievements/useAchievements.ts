@@ -7,7 +7,7 @@ import { usePlantCatalog } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
 import type { Tables } from '@/features/supabase/types';
 
-import { ACHIEVEMENTS, type AchievementId, computeProgress, type Progress, type ProgressCtx, unlockKey } from './definitions';
+import { ACHIEVEMENTS, type AchievementId, computeProgress, levelKey, type Progress, type ProgressCtx, unlockKey } from './definitions';
 
 export type UnlockRow = Tables<'achievement_unlocks'>;
 export const unlocksKey = (hid: string) => ['unlocks', hid] as const;
@@ -25,8 +25,14 @@ export function useUnlocks(hid: string | undefined) {
   });
 }
 
-export function unlockedKeys(unlocks: UnlockRow[] | undefined): Set<string> {
-  return new Set((unlocks ?? []).map((u) => unlockKey(u.achievement_id as AchievementId, u.member_id)));
+/** Highest level held per stamp and owner (levelKey → level). */
+export function unlockedLevels(unlocks: UnlockRow[] | undefined): Map<string, number> {
+  const m = new Map<string, number>();
+  for (const u of unlocks ?? []) {
+    const k = levelKey(u.achievement_id as AchievementId, u.member_id);
+    m.set(k, Math.max(m.get(k) ?? 0, u.level));
+  }
+  return m;
 }
 
 const EMPTY_PROGRESS: Progress = { household: {} as Progress['household'], byMember: {} };
@@ -47,7 +53,7 @@ export function useAchievements() {
   const ready =
     !!hid && catalog.plants.length > 0 && !!tasteCounts.data && !!weekLogs.data && !!daily.data && !!weekly.data && streak.data !== undefined && !!unlocks.data;
 
-  const keys = useMemo(() => unlockedKeys(unlocks.data), [unlocks.data]);
+  const levels = useMemo(() => unlockedLevels(unlocks.data), [unlocks.data]);
 
   const ctx = useMemo<ProgressCtx>(
     () => ({
@@ -58,14 +64,14 @@ export function useAchievements() {
       weekly: weekly.data ?? [],
       streak: streak.data ?? null,
       plantsById: catalog.byId,
-      curiousOpened: keys.has(unlockKey('curious', null)),
+      curiousOpened: levels.has(levelKey('curious', null)),
     }),
-    [members, tasteCounts.data, weekLogs.data, daily.data, weekly.data, streak.data, catalog.byId, keys],
+    [members, tasteCounts.data, weekLogs.data, daily.data, weekly.data, streak.data, catalog.byId, levels],
   );
 
   const progress = useMemo(() => (ready ? computeProgress(ctx) : EMPTY_PROGRESS), [ctx, ready]);
 
-  return { hid, members, ctx, progress, unlocks: unlocks.data ?? [], unlockedKeys: keys, ready };
+  return { hid, members, ctx, progress, unlocks: unlocks.data ?? [], levels, ready };
 }
 
 /**
@@ -74,30 +80,28 @@ export function useAchievements() {
  * what drives the celebration sheet (fresh or replayed after a late log).
  */
 export function useUnlockEngine() {
-  const { hid, members, progress, unlockedKeys: keys, ready } = useAchievements();
+  const { hid, members, progress, levels, ready } = useAchievements();
   const qc = useQueryClient();
   const inflight = useRef(new Set<string>());
 
   useEffect(() => {
     if (!ready || !hid) return;
-    const rows: { achievement_id: AchievementId; member_id: string | null }[] = [];
+    const rows: { achievement_id: AchievementId; member_id: string | null; level: number }[] = [];
     for (const a of ACHIEVEMENTS) {
       if (a.id === 'curious') continue; // recorded directly when a fact is opened
-      if (a.scope === 'household') {
-        const p = progress.household[a.id];
-        const k = unlockKey(a.id, null);
-        if (p && p.current >= p.target && !keys.has(k) && !inflight.current.has(k)) {
+      const owners: (string | null)[] = a.scope === 'household' ? [null] : members.map((m) => m.id);
+      for (const owner of owners) {
+        const entry = owner ? progress.byMember[owner]?.[a.id] : progress.household[a.id];
+        if (!entry) continue;
+        const held = levels.get(levelKey(a.id, owner)) ?? 0;
+        // rungs unlock in order: a higher rung waits for the ones below it
+        for (let i = held; i < entry.rungs.length; i++) {
+          const r = entry.rungs[i];
+          if (r.current < r.target) break;
+          const k = unlockKey(a.id, owner, i + 1);
+          if (inflight.current.has(k)) continue;
           inflight.current.add(k);
-          rows.push({ achievement_id: a.id, member_id: null });
-        }
-      } else {
-        for (const m of members) {
-          const p = progress.byMember[m.id]?.[a.id];
-          const k = unlockKey(a.id, m.id);
-          if (p && p.current >= p.target && !keys.has(k) && !inflight.current.has(k)) {
-            inflight.current.add(k);
-            rows.push({ achievement_id: a.id, member_id: m.id });
-          }
+          rows.push({ achievement_id: a.id, member_id: owner, level: i + 1 });
         }
       }
     }
@@ -106,12 +110,12 @@ export function useUnlockEngine() {
       for (const r of rows) {
         const { error } = await supabase.from('achievement_unlocks').insert({ household_id: hid, ...r });
         // 23505 = already unlocked on another device; fine
-        if (error && error.code !== '23505' && __DEV__) console.warn('[unlock]', r.achievement_id, error.message);
-        inflight.current.delete(unlockKey(r.achievement_id, r.member_id));
+        if (error && error.code !== '23505' && __DEV__) console.warn('[unlock]', r.achievement_id, r.level, error.message);
+        inflight.current.delete(unlockKey(r.achievement_id, r.member_id, r.level));
       }
       await qc.invalidateQueries({ queryKey: unlocksKey(hid) });
     })();
-  }, [ready, hid, members, progress, keys, qc]);
+  }, [ready, hid, members, progress, levels, qc]);
 }
 
 export function useMarkUnlocksSeen(hid: string | undefined) {
@@ -139,7 +143,7 @@ export function useUnlockCurious(hid: string | undefined) {
   return useMutation({
     mutationFn: async () => {
       if (!hid) return;
-      const { error } = await supabase.from('achievement_unlocks').insert({ household_id: hid, achievement_id: 'curious', member_id: null, seen_at: new Date().toISOString() });
+      const { error } = await supabase.from('achievement_unlocks').insert({ household_id: hid, achievement_id: 'curious', member_id: null, level: 1, seen_at: new Date().toISOString() });
       if (error && error.code !== '23505') throw error;
     },
     onSettled: () => hid && qc.invalidateQueries({ queryKey: unlocksKey(hid) }),

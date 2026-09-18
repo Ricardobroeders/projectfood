@@ -1,24 +1,67 @@
 {
   "common": {
-    "save": "Save", "done": "Done", "close": "Close", "later": "Later", "remove": "Remove", "cancel": "Cancel",
-    "back": "Back", "on": "On", "off": "Off", "saving": "Saving…", "saved": "Saved", "continue": "Continue",
-    "error": "Something went wrong. Please try again.", "retry": "Try again", "today": "Today", "yesterday": "Yesterday",
-    "you": "You", "everyone": "Everyone", "household": "Family", "loading": "Loading…"
+    "save": "Save",
+    "done": "Done",
+    "close": "Close",
+    "later": "Later",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "back": "Back",
+    "on": "On",
+    "off": "Off",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "continue": "Continue",
+    "error": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "you": "You",
+    "everyone": "Everyone",
+    "household": "Family",
+    "loading": "Loading…"
   },
-  "nav": { "home": "Home", "log": "Log", "unlocks": "Unlocks", "account": "Account" },
+  "nav": {
+    "home": "Home",
+    "log": "Log",
+    "unlocks": "Unlocks",
+    "account": "Account"
+  },
   "categories": {
-    "fruit": "Fruit", "vegetable": "Vegetable", "herb": "Herb & spice", "nut_seed": "Nut & seed",
-    "legume": "Legume", "whole_grain": "Whole grain", "ferment": "Ferment"
+    "fruit": "Fruit",
+    "vegetable": "Vegetable",
+    "herb": "Herb & spice",
+    "nut_seed": "Nut & seed",
+    "legume": "Legume",
+    "whole_grain": "Whole grain",
+    "ferment": "Ferment"
   },
   "categoriesPlural": {
-    "fruit": "Fruits", "vegetable": "Vegetables", "herb": "Herbs & spices", "nut_seed": "Nuts & seeds",
-    "legume": "Legumes", "whole_grain": "Whole grains", "ferment": "Ferments"
+    "fruit": "Fruits",
+    "vegetable": "Vegetables",
+    "herb": "Herbs & spices",
+    "nut_seed": "Nuts & seeds",
+    "legume": "Legumes",
+    "whole_grain": "Whole grains",
+    "ferment": "Ferments"
   },
   "colors": {
-    "red": "Red", "orange": "Orange", "yellow": "Yellow", "green": "Green", "blue": "Blue", "purple": "Purple",
-    "white": "White", "brown": "Brown"
+    "red": "Red",
+    "orange": "Orange",
+    "yellow": "Yellow",
+    "green": "Green",
+    "blue": "Blue",
+    "purple": "Purple",
+    "white": "White",
+    "brown": "Brown"
   },
-  "languages": { "en": "English", "nl": "Nederlands", "it": "Italiano", "de": "Deutsch", "fr": "Français" },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "it": "Italiano",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
   "auth": {
     "tagline": "Every plant your family tastes, collected.",
     "continueWithGoogle": "Continue with Google",
@@ -111,7 +154,10 @@
     "moreToSilver": "{n} more tastes to silver",
     "moreToGold": "{n} more tastes to gold",
     "goldReached": "Gold card",
-    "firstTaste": "First taste unlocks the card"
+    "firstTaste": "First taste unlocks the card",
+    "complete": "Complete",
+    "levelsUnlocked": "{n} of {m} levels",
+    "nextLevel": "Next: {level}"
   },
   "plant": {
     "family": "Family",
@@ -139,25 +185,85 @@
     "lastNight": "Earned last night",
     "showCard": "Show my card",
     "later": "Later",
-    "curiousUnlocked": "Curious stamp unlocked"
+    "curiousUnlocked": "Curious stamp unlocked",
+    "levelUpTitle": "Level up!",
+    "levelUpBody": "{stamp} is now {level}"
   },
   "stamps": {
-    "first_bites": { "title": "First bites", "body": "Taste {n} different plants" },
-    "curious": { "title": "Curious", "body": "Open a fun fact" },
-    "full_table": { "title": "Full table", "body": "Everyone at the table tastes the same plant" },
-    "rainbow": { "title": "Rainbow", "body": "Taste {n} different colours in one week" },
-    "big_dinner": { "title": "Big dinner", "body": "Taste {n} plants in one dinner" },
-    "veg_5": { "title": "Green machine", "body": "Taste {n} vegetables" },
-    "fruit_5": { "title": "Fruit basket", "body": "Taste {n} fruits" },
-    "herb_3": { "title": "Herb garden", "body": "Taste {n} herbs & spices" },
-    "nut_3": { "title": "Nutcracker", "body": "Taste {n} nuts & seeds" },
-    "legume_3": { "title": "Bean counter", "body": "Taste {n} legumes" },
-    "grain_3": { "title": "Grain train", "body": "Taste {n} whole grains" },
-    "ferment_2": { "title": "Bubbly", "body": "Taste {n} ferments" },
-    "superfood_5": { "title": "Superfood", "body": "Taste {n} superfoods" },
-    "tomato_family": { "title": "Tomato family", "body": "Taste {n} plants of the nightshade family" },
-    "streak_7": { "title": "7 dinners", "body": "Log {n} dinners in a row" },
-    "thirty": { "title": "Thirty", "body": "Taste {n} different plants in one week" }
+    "explorer": {
+      "title": "Explorer",
+      "body": "Taste {n} different plants"
+    },
+    "curious": {
+      "title": "Curious",
+      "body": "Open a fun fact"
+    },
+    "full_table": {
+      "title": "Full table",
+      "body": "{n} plants the whole family has tasted"
+    },
+    "rainbow": {
+      "title": "Rainbow",
+      "body": "{n} weeks with 5 colours on the table"
+    },
+    "big_dinner": {
+      "title": "Big dinner",
+      "body": "Taste {n} plants in one dinner"
+    },
+    "green_machine": {
+      "title": "Green machine",
+      "body": "Taste {n} vegetables"
+    },
+    "fruit_basket": {
+      "title": "Fruit basket",
+      "body": "Taste {n} fruits"
+    },
+    "herb_garden": {
+      "title": "Herb garden",
+      "body": "Taste {n} herbs & spices"
+    },
+    "nutcracker": {
+      "title": "Nutcracker",
+      "body": "Taste {n} nuts & seeds"
+    },
+    "bean_counter": {
+      "title": "Bean counter",
+      "body": "Taste {n} legumes"
+    },
+    "grain_train": {
+      "title": "Grain train",
+      "body": "Taste {n} whole grains"
+    },
+    "bubbly": {
+      "title": "Bubbly",
+      "body": "Taste {n} ferments"
+    },
+    "superfood": {
+      "title": "Superfood",
+      "body": "Taste {n} superfoods"
+    },
+    "tomato_family": {
+      "title": "Tomato family",
+      "body": "Taste {n} plants of the nightshade family"
+    },
+    "regulars": {
+      "title": "Regulars",
+      "body": "Earn {n} silver cards",
+      "rungs": {
+        "1": "Earn {n} silver cards",
+        "2": "Earn {n} gold cards",
+        "3": "Taste {n} plants 25 times",
+        "4": "Taste one plant {n} times"
+      }
+    },
+    "table_talk": {
+      "title": "Table talk",
+      "body": "Log {n} dinners in a row"
+    },
+    "family_of_thirty": {
+      "title": "Family of thirty",
+      "body": "{n} weeks with 30 different plants"
+    }
   },
   "family": {
     "title": "Your family",
@@ -209,10 +315,22 @@
     "marketing": "Tips & news",
     "marketingDesc": "Card teasers and the Sunday nudge. Off by default.",
     "types": {
-      "dinnerQuestion": { "label": "Dinner question", "description": "\"What did the kids taste tonight?\" about half an hour after dinner" },
-      "streakKeeper": { "label": "Streak keeper", "description": "Only when the family streak is at risk" },
-      "cardTeaser": { "label": "Card teaser", "description": "After a few quiet dinners: which card is close" },
-      "sundayNudge": { "label": "Sunday nudge", "description": "When the family is a few plants from 30" }
+      "dinnerQuestion": {
+        "label": "Dinner question",
+        "description": "\"What did the kids taste tonight?\" about half an hour after dinner"
+      },
+      "streakKeeper": {
+        "label": "Streak keeper",
+        "description": "Only when the family streak is at risk"
+      },
+      "cardTeaser": {
+        "label": "Card teaser",
+        "description": "After a few quiet dinners: which card is close"
+      },
+      "sundayNudge": {
+        "label": "Sunday nudge",
+        "description": "When the family is a few plants from 30"
+      }
     },
     "permissionPrompt": {
       "title": "Want the dinner question?",
@@ -246,5 +364,11 @@
     "new_questions": "{count} new questions since your last visit",
     "save_go_back": "Save & go back",
     "other": "Other"
+  },
+  "levels": {
+    "bronze": "Bronze",
+    "silver": "Silver",
+    "gold": "Gold",
+    "platinum": "Platinum"
   }
 }

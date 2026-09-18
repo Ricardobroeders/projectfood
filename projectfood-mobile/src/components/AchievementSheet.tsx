@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react-native';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -8,18 +9,19 @@ import { Sheet } from '@/components/Sheet';
 import { Stamp } from '@/components/Stamp';
 import { StampArt } from '@/components/StampArt';
 import { colors, fonts, radii } from '@/constants/theme';
-import { ACHIEVEMENT_BY_ID, progressFor, unlockKey } from '@/features/achievements/definitions';
+import { levelLabel, rungBody } from '@/features/achievements/copy';
+import { ACHIEVEMENT_BY_ID, LEVEL_COLORS, levelKey, levelName, progressFor, stampView } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { useUi } from '@/state/ui';
 
 const STAMP_SIZE = 96;
 
-/** Tapping a stamp opens this: what the goal is and how far the family (or the kid) is. */
+/** Tapping a stamp opens this: the level held, the way to the next rung, and the whole ladder. */
 export function AchievementSheet() {
   const { t } = useTranslation();
   const open = useUi((s) => s.achievementSheet);
   const close = useUi((s) => s.closeAchievement);
-  const { members, progress, unlockedKeys } = useAchievements();
+  const { members, progress, levels } = useAchievements();
   // Keep the last content while the sheet slides out.
   const last = useRef(open);
   if (open) last.current = open;
@@ -28,20 +30,25 @@ export function AchievementSheet() {
 
   const a = ACHIEVEMENT_BY_ID[target.id];
   const memberId = a.scope === 'member' ? target.memberId : null;
-  const p = progressFor(progress, memberId)[target.id] ?? { current: 0, target: 1 };
-  const done = unlockedKeys.has(unlockKey(target.id, memberId));
+  const entry = progressFor(progress, memberId)[target.id];
+  const level = levels.get(levelKey(target.id, memberId)) ?? 0;
+  const v = stampView(entry, level);
   const member = memberId ? members.find((m) => m.id === memberId) : null;
-  const shown = Math.min(p.current, p.target);
-  const remaining = Math.max(0, p.target - p.current);
+  const rungs = entry?.rungs ?? [];
 
   return (
     <Sheet visible={open !== null} onRequestClose={close}>
       <View style={styles.head}>
-        <Stamp size={STAMP_SIZE} color={a.color} locked={!done}>
-          <StampArt achievement={a} size={STAMP_SIZE} unlocked={done} />
+        <Stamp size={STAMP_SIZE} color={a.color} locked={level === 0} level={level}>
+          <StampArt achievement={a} size={STAMP_SIZE} unlocked={level > 0} />
         </Stamp>
         <Text style={styles.title}>{t(`stamps.${target.id}.title`)}</Text>
-        <Text style={styles.body}>{t(`stamps.${target.id}.body`, { n: p.target })}</Text>
+        {level > 0 ? (
+          <View style={[styles.levelChip, { backgroundColor: LEVEL_COLORS[levelName(level)] }]}>
+            <Text style={styles.levelChipText}>{levelLabel(t, level)}</Text>
+          </View>
+        ) : null}
+        <Text style={styles.body}>{v.maxed ? t('unlocks.complete') : rungBody(t, a, level + 1, v.target)}</Text>
         {member ? (
           <View style={styles.who}>
             <MemberAvatar member={member} size={24} />
@@ -51,14 +58,34 @@ export function AchievementSheet() {
       </View>
 
       <View style={styles.progressRow}>
-        <Text style={[styles.progressLabel, done && { color: colors.success }]}>
-          {done ? t('unlocks.unlocked') : remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: remaining })}
+        <Text style={[styles.progressLabel, v.maxed && { color: colors.success }]}>
+          {v.maxed ? t('unlocks.complete') : v.remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: v.remaining })}
         </Text>
         <Text style={styles.progressNumber}>
-          {shown}/{p.target}
+          {v.current}/{v.target}
         </Text>
       </View>
-      <ProgressBar value={p.current} max={p.target} height={8} />
+      <ProgressBar value={v.current} max={v.target} height={8} />
+
+      {rungs.length > 1 ? (
+        <View style={styles.ladder}>
+          {rungs.map((r, i) => {
+            const reached = i < level;
+            const next = i === level;
+            return (
+              <View key={i} style={[styles.rung, next && styles.rungNext]}>
+                <View style={[styles.rungDot, { backgroundColor: LEVEL_COLORS[levelName(i + 1)] }, !reached && !next && { opacity: 0.35 }]}>
+                  {reached ? <Check size={12} color="#FFFFFF" strokeWidth={3} /> : null}
+                </View>
+                <Text style={[styles.rungText, !reached && !next && { color: colors.ink3 }]} numberOfLines={1}>
+                  {rungBody(t, a, i + 1, r.target)}
+                </Text>
+                <Text style={styles.rungLevel}>{levelLabel(t, i + 1)}</Text>
+              </View>
+            );
+          })}
+        </View>
+      ) : null}
 
       <Pressable style={({ pressed }) => [styles.primary, pressed && { backgroundColor: colors.accentPressed }]} onPress={close}>
         <Text style={styles.primaryText}>{t('common.close')}</Text>
@@ -70,12 +97,20 @@ export function AchievementSheet() {
 const styles = StyleSheet.create({
   head: { alignItems: 'center', gap: 8, paddingTop: 4 },
   title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, textAlign: 'center', marginTop: 6 },
+  levelChip: { height: 26, paddingHorizontal: 12, borderRadius: radii.sm, justifyContent: 'center' },
+  levelChipText: { fontFamily: fonts.bold, fontSize: 12, lineHeight: 16, color: '#FFFFFF', letterSpacing: 0.4 },
   body: { fontFamily: fonts.medium, fontSize: 16, lineHeight: 22, color: colors.ink2, textAlign: 'center', maxWidth: 300 },
   who: { flexDirection: 'row', alignItems: 'center', gap: 8, height: 32, paddingLeft: 4, paddingRight: 12, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   whoText: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
   progressRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 16 },
   progressLabel: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   progressNumber: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },
+  ladder: { marginTop: 16, gap: 6 },
+  rung: { flexDirection: 'row', alignItems: 'center', gap: 10, height: 40, paddingHorizontal: 10, borderRadius: radii.sm },
+  rungNext: { backgroundColor: colors.bgSoft },
+  rungDot: { width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  rungText: { flex: 1, fontFamily: fonts.medium, fontSize: 14, lineHeight: 18, color: colors.ink },
+  rungLevel: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink3 },
   primary: { alignSelf: 'stretch', backgroundColor: colors.accent, borderRadius: radii.md, height: 54, alignItems: 'center', justifyContent: 'center', marginTop: 16 },
   primaryText: { fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.onAccent },
 });

@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       achievement_unlocks: {
         Row: {
+          level: number
           achievement_id: string
           household_id: string
           id: string
@@ -24,6 +25,7 @@ export type Database = {
           unlocked_at: string
         }
         Insert: {
+          level?: number
           achievement_id: string
           household_id: string
           id?: string
@@ -32,6 +34,7 @@ export type Database = {
           unlocked_at?: string
         }
         Update: {
+          level?: number
           achievement_id?: string
           household_id?: string
           id?: string
@@ -1058,6 +1061,7 @@ export type Database = {
       household_weekly_history: {
         Args: { p_household_id?: string; p_weeks?: number }
         Returns: {
+          colours: number
           hit_goal: boolean
           variety: number
           week_start: string

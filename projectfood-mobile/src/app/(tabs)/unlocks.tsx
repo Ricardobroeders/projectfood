@@ -10,7 +10,7 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { StampGrid } from '@/components/StampShelf';
 import { Loading, Screen, ScreenTitle, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
-import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, progressFor, unlockKey } from '@/features/achievements/definitions';
+import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, levelKey, progressFor } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfStart } from '@/features/dev/perf';
 import { usePlantCatalog } from '@/features/plants/catalog';
@@ -20,15 +20,16 @@ import { useUi } from '@/state/ui';
 export default function UnlocksScreen() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { members, progress, unlockedKeys, ready, ctx } = useAchievements();
+  const { members, progress, levels, ready, ctx } = useAchievements();
   const { catalog } = usePlantCatalog();
   const openAchievement = useUi((s) => s.openAchievement);
   const [view, setView] = useState<string | null>(null);
   const memberId = view ?? members[0]?.id ?? null;
 
   const entries = useMemo(() => progressFor(progress, memberId), [progress, memberId]);
-  const unlocked = (id: AchievementId) => unlockedKeys.has(unlockKey(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null));
-  const unlockedCount = ACHIEVEMENTS.filter((a) => unlocked(a.id)).length;
+  const levelOf = (id: AchievementId) => levels.get(levelKey(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)) ?? 0;
+  const levelsHeld = ACHIEVEMENTS.reduce((n, a) => n + levelOf(a.id), 0);
+  const levelsTotal = ACHIEVEMENTS.reduce((n, a) => n + a.rungs.length, 0);
 
   const counts = useMemo(() => ctx.tasteCounts.filter((c) => c.member_id === memberId), [ctx.tasteCounts, memberId]);
   const cards = { unlocked: counts.length, silver: counts.filter((c) => c.tastes >= 5).length, gold: counts.filter((c) => c.tastes >= 10).length };
@@ -44,7 +45,7 @@ export default function UnlocksScreen() {
   return (
     <Screen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <ScreenTitle meta={t('unlocks.ofUnlocked', { n: unlockedCount, m: ACHIEVEMENTS.length })}>{t('unlocks.title')}</ScreenTitle>
+        <ScreenTitle meta={t('unlocks.levelsUnlocked', { n: levelsHeld, m: levelsTotal })}>{t('unlocks.title')}</ScreenTitle>
 
         {members.length > 1 ? (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.switcher}>
@@ -61,7 +62,7 @@ export default function UnlocksScreen() {
         ) : null}
 
         <SectionTitle>{t('unlocks.stamps')}</SectionTitle>
-        <StampGrid entries={entries} unlocked={unlocked} onPress={(id) => openAchievement(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)} />
+        <StampGrid entries={entries} levelOf={levelOf} onPress={(id) => openAchievement(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)} />
 
         <SectionTitle meta={t('unlocks.cardsUnlocked', { n: cards.unlocked })}>{t('unlocks.cards')}</SectionTitle>
         <View style={styles.cardsRow}>

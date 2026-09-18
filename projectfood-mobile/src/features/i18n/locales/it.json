@@ -1,24 +1,67 @@
 {
   "common": {
-    "save": "Salva", "done": "Fatto", "close": "Chiudi", "later": "Più tardi", "remove": "Rimuovi", "cancel": "Annulla",
-    "back": "Indietro", "on": "Attivo", "off": "Disattivo", "saving": "Salvataggio…", "saved": "Salvato", "continue": "Continua",
-    "error": "Qualcosa è andato storto. Riprova.", "retry": "Riprova", "today": "Oggi", "yesterday": "Ieri",
-    "you": "Tu", "everyone": "Tutti", "household": "Famiglia", "loading": "Caricamento…"
+    "save": "Salva",
+    "done": "Fatto",
+    "close": "Chiudi",
+    "later": "Più tardi",
+    "remove": "Rimuovi",
+    "cancel": "Annulla",
+    "back": "Indietro",
+    "on": "Attivo",
+    "off": "Disattivo",
+    "saving": "Salvataggio…",
+    "saved": "Salvato",
+    "continue": "Continua",
+    "error": "Qualcosa è andato storto. Riprova.",
+    "retry": "Riprova",
+    "today": "Oggi",
+    "yesterday": "Ieri",
+    "you": "Tu",
+    "everyone": "Tutti",
+    "household": "Famiglia",
+    "loading": "Caricamento…"
   },
-  "nav": { "home": "Home", "log": "Registra", "unlocks": "Traguardi", "account": "Account" },
+  "nav": {
+    "home": "Home",
+    "log": "Registra",
+    "unlocks": "Traguardi",
+    "account": "Account"
+  },
   "categories": {
-    "fruit": "Frutta", "vegetable": "Verdura", "herb": "Erba e spezia", "nut_seed": "Noci e semi",
-    "legume": "Legume", "whole_grain": "Cereale integrale", "ferment": "Fermentato"
+    "fruit": "Frutta",
+    "vegetable": "Verdura",
+    "herb": "Erba e spezia",
+    "nut_seed": "Noci e semi",
+    "legume": "Legume",
+    "whole_grain": "Cereale integrale",
+    "ferment": "Fermentato"
   },
   "categoriesPlural": {
-    "fruit": "Frutta", "vegetable": "Verdure", "herb": "Erbe e spezie", "nut_seed": "Noci e semi",
-    "legume": "Legumi", "whole_grain": "Cereali integrali", "ferment": "Fermentati"
+    "fruit": "Frutta",
+    "vegetable": "Verdure",
+    "herb": "Erbe e spezie",
+    "nut_seed": "Noci e semi",
+    "legume": "Legumi",
+    "whole_grain": "Cereali integrali",
+    "ferment": "Fermentati"
   },
   "colors": {
-    "red": "Rosso", "orange": "Arancione", "yellow": "Giallo", "green": "Verde", "blue": "Blu", "purple": "Viola",
-    "white": "Bianco", "brown": "Marrone"
+    "red": "Rosso",
+    "orange": "Arancione",
+    "yellow": "Giallo",
+    "green": "Verde",
+    "blue": "Blu",
+    "purple": "Viola",
+    "white": "Bianco",
+    "brown": "Marrone"
   },
-  "languages": { "en": "English", "nl": "Nederlands", "it": "Italiano", "de": "Deutsch", "fr": "Français" },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "it": "Italiano",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
   "auth": {
     "tagline": "Ogni pianta che la tua famiglia assaggia, collezionata.",
     "continueWithGoogle": "Continua con Google",
@@ -111,7 +154,10 @@
     "moreToSilver": "Ancora {n} assaggi per l'argento",
     "moreToGold": "Ancora {n} assaggi per l'oro",
     "goldReached": "Carta d'oro",
-    "firstTaste": "Il primo assaggio sblocca la carta"
+    "firstTaste": "Il primo assaggio sblocca la carta",
+    "complete": "Completo",
+    "levelsUnlocked": "{n} di {m} livelli",
+    "nextLevel": "Prossimo: {level}"
   },
   "plant": {
     "family": "Famiglia",
@@ -139,25 +185,85 @@
     "lastNight": "Guadagnato ieri sera",
     "showCard": "Mostra la mia carta",
     "later": "Più tardi",
-    "curiousUnlocked": "Timbro Curioso sbloccato"
+    "curiousUnlocked": "Timbro Curioso sbloccato",
+    "levelUpTitle": "Livello su!",
+    "levelUpBody": "{stamp} ora è {level}"
   },
   "stamps": {
-    "first_bites": { "title": "Primi assaggi", "body": "Assaggia {n} piante diverse" },
-    "curious": { "title": "Curioso", "body": "Apri una curiosità" },
-    "full_table": { "title": "Tavola piena", "body": "Tutti a tavola assaggiano la stessa pianta" },
-    "rainbow": { "title": "Arcobaleno", "body": "Assaggia {n} colori diversi in una settimana" },
-    "big_dinner": { "title": "Grande cena", "body": "Assaggia {n} piante in una cena" },
-    "veg_5": { "title": "Macchina verde", "body": "Assaggia {n} verdure" },
-    "fruit_5": { "title": "Cesto di frutta", "body": "Assaggia {n} frutti" },
-    "herb_3": { "title": "Giardino di erbe", "body": "Assaggia {n} erbe e spezie" },
-    "nut_3": { "title": "Schiaccianoci", "body": "Assaggia {n} noci e semi" },
-    "legume_3": { "title": "Conta-fagioli", "body": "Assaggia {n} legumi" },
-    "grain_3": { "title": "Treno dei cereali", "body": "Assaggia {n} cereali integrali" },
-    "ferment_2": { "title": "Bollicine", "body": "Assaggia {n} fermentati" },
-    "superfood_5": { "title": "Superfood", "body": "Assaggia {n} superfood" },
-    "tomato_family": { "title": "Famiglia del pomodoro", "body": "Assaggia {n} piante della famiglia delle solanacee" },
-    "streak_7": { "title": "7 cene", "body": "Registra {n} cene di fila" },
-    "thirty": { "title": "Trenta", "body": "Assaggia {n} piante diverse in una settimana" }
+    "explorer": {
+      "title": "Esploratore",
+      "body": "Assaggia {n} piante diverse"
+    },
+    "curious": {
+      "title": "Curioso",
+      "body": "Apri una curiosità"
+    },
+    "full_table": {
+      "title": "Tavola piena",
+      "body": "{n} piante assaggiate da tutta la famiglia"
+    },
+    "rainbow": {
+      "title": "Arcobaleno",
+      "body": "{n} settimane con 5 colori in tavola"
+    },
+    "big_dinner": {
+      "title": "Grande cena",
+      "body": "Assaggia {n} piante in una cena"
+    },
+    "green_machine": {
+      "title": "Macchina verde",
+      "body": "Assaggia {n} verdure"
+    },
+    "fruit_basket": {
+      "title": "Cesto di frutta",
+      "body": "Assaggia {n} frutti"
+    },
+    "herb_garden": {
+      "title": "Giardino di erbe",
+      "body": "Assaggia {n} erbe e spezie"
+    },
+    "nutcracker": {
+      "title": "Schiaccianoci",
+      "body": "Assaggia {n} noci e semi"
+    },
+    "bean_counter": {
+      "title": "Conta-fagioli",
+      "body": "Assaggia {n} legumi"
+    },
+    "grain_train": {
+      "title": "Treno dei cereali",
+      "body": "Assaggia {n} cereali integrali"
+    },
+    "bubbly": {
+      "title": "Bollicine",
+      "body": "Assaggia {n} fermentati"
+    },
+    "superfood": {
+      "title": "Superfood",
+      "body": "Assaggia {n} superfood"
+    },
+    "tomato_family": {
+      "title": "Famiglia del pomodoro",
+      "body": "Assaggia {n} piante della famiglia delle solanacee"
+    },
+    "regulars": {
+      "title": "Habitué",
+      "body": "Ottieni {n} carte d'argento",
+      "rungs": {
+        "1": "Ottieni {n} carte d'argento",
+        "2": "Ottieni {n} carte d'oro",
+        "3": "Assaggia {n} piante 25 volte",
+        "4": "Assaggia una pianta {n} volte"
+      }
+    },
+    "table_talk": {
+      "title": "Chiacchiere a tavola",
+      "body": "Registra {n} cene di fila"
+    },
+    "family_of_thirty": {
+      "title": "Famiglia dei trenta",
+      "body": "{n} settimane con 30 piante diverse"
+    }
   },
   "family": {
     "title": "La tua famiglia",
@@ -209,10 +315,22 @@
     "marketing": "Consigli e novità",
     "marketingDesc": "Anteprime delle carte e il promemoria della domenica. Disattive di default.",
     "types": {
-      "dinnerQuestion": { "label": "Domanda della cena", "description": "\"Cosa hanno assaggiato i bambini stasera?\" circa mezz'ora dopo cena" },
-      "streakKeeper": { "label": "Custode della serie", "description": "Solo quando la serie di famiglia è a rischio" },
-      "cardTeaser": { "label": "Anteprima carta", "description": "Dopo qualche cena tranquilla: quale carta è vicina" },
-      "sundayNudge": { "label": "Promemoria domenicale", "description": "Quando alla famiglia mancano poche piante per 30" }
+      "dinnerQuestion": {
+        "label": "Domanda della cena",
+        "description": "\"Cosa hanno assaggiato i bambini stasera?\" circa mezz'ora dopo cena"
+      },
+      "streakKeeper": {
+        "label": "Custode della serie",
+        "description": "Solo quando la serie di famiglia è a rischio"
+      },
+      "cardTeaser": {
+        "label": "Anteprima carta",
+        "description": "Dopo qualche cena tranquilla: quale carta è vicina"
+      },
+      "sundayNudge": {
+        "label": "Promemoria domenicale",
+        "description": "Quando alla famiglia mancano poche piante per 30"
+      }
     },
     "permissionPrompt": {
       "title": "Vuoi la domanda della cena?",
@@ -246,5 +364,11 @@
     "new_questions": "{count} nuove domande dalla tua ultima visita",
     "save_go_back": "Salva e torna",
     "other": "Altro"
+  },
+  "levels": {
+    "bronze": "Bronzo",
+    "silver": "Argento",
+    "gold": "Oro",
+    "platinum": "Platino"
   }
 }
