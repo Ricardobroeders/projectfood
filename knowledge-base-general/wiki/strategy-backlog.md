@@ -55,6 +55,21 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   active user, churn rate, most eaten plants, "30 different plants" achievements per user,
   average streak length. _(Ricardo, 2026-09-10; all PWA-era metrics, to be mapped to the
   household model)_
+- **Daily streak with Golden Sprouts (rows 4, 5, 9).** Duolingo-style: the streak sits large on
+  Home and is earned by checking off plants daily; a missed day can be bought back with "Golden
+  Sprouts", earned by checking off daily and by unlocking achievements, so regular use banks a
+  buffer for a missed day or two. Sprouts replace XP as the earned currency, and the streak
+  buy-back is the first and only item in the store; later Sprouts could also be bought for money.
+  To work out: how many Sprouts per check-off and per achievement, what a buy-back costs.
+  _(Ricardo, 2026-09-19; sits next to the plane "Gold / XP economy" input above, the D7 free
+  freeze in [[concept-retention-loop]] (one missed day per rolling week is absorbed without
+  paying) and the "no punishment without a freeze" pillar; the paid-Sprouts idea touches the
+  "rewards are earned, no pay-to-win" rule in [[concept-achievement-system]])_
+- **A "Did you know" per card level (rows 5, 13).** Each plant's bronze / silver / gold card
+  level unlocks its own fun fact, saved on the card; you look them back on the plant page from
+  Unlocks. The more you eat of a plant, the more you learn about it. _(Ricardo, 2026-09-19; a
+  concrete shape for the "Fun facts and borders at 5 / 50 / 100" input above; needs three facts
+  per plant per locale instead of one, i.e. the facts script (row 13) grows ×3)_
 - **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
   _(Ricardo, 2026-09-10)_
 
@@ -65,11 +80,11 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19 (Golden Sprouts streak buy-back, a fact per card level) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
-| 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; `households.plan` (free/family) exists since 2026-09-16, payments off in the store POC |
+| 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; `households.plan` (free/family) exists since 2026-09-16, payments off in the store POC; input 2026-09-19: Golden Sprouts as the first store item, later purchasable |
 | 10 | Market | drafted | Kids-food competitor teardown + NL/IT household sizing |
 | 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
