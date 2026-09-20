@@ -33,15 +33,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: { url: `https://u.expo.dev/${EAS_PROJECT_ID}` },
   ios: {
     bundleIdentifier: APP_ID,
-    icon: './assets/expo.icon',
     supportsTablet: false,
     usesAppleSignIn: true,
     infoPlist: { ITSAppUsesNonExemptEncryption: false },
   },
   android: {
     package: APP_ID,
+    // all generated from assets/brand/app-icon-1024.png by scripts/build-icons.mjs
     adaptiveIcon: {
-      backgroundColor: '#F5C518',
+      backgroundColor: '#FFFFFF',
       foregroundImage: './assets/images/android-icon-foreground.png',
       backgroundImage: './assets/images/android-icon-background.png',
       monochromeImage: './assets/images/android-icon-monochrome.png',
@@ -62,7 +62,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
-    ['expo-splash-screen', { backgroundColor: '#FFFFFF', image: './assets/images/splash-icon.png', imageWidth: 76 }],
+    ['expo-splash-screen', { backgroundColor: '#FFFFFF', image: './assets/images/splash-icon.png', imageWidth: 120 }],
     ['expo-notifications', { icon: './assets/images/notification-icon.png', color: '#F5C518', defaultChannel: 'dinner' }],
     'expo-secure-store',
     'expo-localization',

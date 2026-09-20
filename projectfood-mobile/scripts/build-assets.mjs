@@ -117,16 +117,7 @@ async function run() {
         process.stderr.write(`missing category ${cat}: ${e.message}\n`);
       }
     }
-    // Android notification glyph: 96x96, white on transparent, from the splash icon silhouette.
-    const glyph = join(ROOT, 'assets/images/notification-icon.png');
-    if (!existsSync(glyph)) {
-      const alpha = await sharp(join(ROOT, 'assets/images/splash-icon.png')).resize(96, 96, { fit: 'inside' }).ensureAlpha().extractChannel('alpha').toBuffer();
-      await sharp({ create: { width: 96, height: 96, channels: 3, background: '#FFFFFF' } })
-        .joinChannel(alpha)
-        .png()
-        .toFile(glyph);
-      process.stdout.write('notification icon\n');
-    }
+    // the notification glyph and every app icon come from scripts/build-icons.mjs
   }
 
   // TS maps -------------------------------------------------------------------------------
