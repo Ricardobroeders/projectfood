@@ -206,3 +206,18 @@ the open questions (joke or real penalty and whether it is reversible, how many 
 kind, five-locale copy, how to hint at a hidden stamp), and row 5 (Achievements) updated to list it
 alongside the 2026-09-19 inputs. No page in [[concept-achievement-system]] yet — it waits for the
 brainstorm.
+
+## [2026-09-20] build | Rung nudge, privacy and delete-account pages, PWA web push removed, Linear dropped
+Ricardo dropped Linear: "Next to pick up" in [[strategy-backlog]] is the only to-do list (both
+`CLAUDE.md` files, the KB schema, [[decision-2026-09-07-app-v1-scope]] and the memory updated).
+Built the same session: the rung nudge in `send-notifications` (migration 0013 `achievement_nudges`
++ `households.nudge_baseline_at`; the stamp ladder mirrored server side in `ladder.ts`; copy en/nl/it
+in `rung-copy.ts`; 90–75 minutes before dinner, marketing opt-in under the card-teaser flag, one per
+household per three days, a silent baseline on a household's first run; a `{probe: household_id}`
+POST returns the ladder read-only), recorded in [[concept-achievement-system]] and row 4/5. The
+privacy policy rewritten for the family app in en/nl/it (kids' profiles, what is stored, processors,
+notifications, deletion, rights, cookies, security) and a `/delete-account` page with an email-code
+web flow that calls the `delete-account` Edge Function; row 14 moves to drafted. The PWA's Vercel
+cron, `api/push/*`, service worker, web-push settings page and `web-push` dependency removed. App
+icons generated from Ricardo's Figma export (`projectfood-mobile/scripts/build-icons.mjs`, master
+in `assets/brand/`); row 15 updated. "Next to pick up" renumbered.

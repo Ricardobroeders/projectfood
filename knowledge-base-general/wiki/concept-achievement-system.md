@@ -141,6 +141,14 @@ targets exactly as in the table; Ricardo can tune any rung in `definitions.ts`. 
 "weeks with 5 colours" (1 / 4 / 12 / 52), which keeps one metric per stamp; Regulars is the one stamp
 whose metric changes per rung. Rungs unlock in order.
 
+**Rung nudge (built 2026-09-20).** The push moment above is live: `send-notifications` mirrors the
+ladder (`ladder.ts`, same targets and metrics as `definitions.ts`; change both) and, 90–75 minutes
+before dinner, names the one rung closest to its next level once it passed 50% or 75% ("Halfway
+there: Mia needs 9 more vegetables for Green machine gold"), deep-linking to Unlocks. Marketing
+channel, under the card-teaser flag (off by default), at most one per household every three days,
+each mark once (`achievement_nudges`). A household's first run only records where it already stands,
+so the nudge follows real crossings, not history. Copy in en/nl/it in `rung-copy.ts`.
+
 **Time over bulk (device feedback, same day).** Ricardo's worry: count-based stamps can be dumped
 in one day, and the data agrees (Rob logged 63 plants on one day, Imke 51, both left). Two changes:
 
@@ -274,7 +282,9 @@ lookup, like the plants. Frames are drawn in code.
 - Store POC 2026-09-16: the 16 goals run on real history
   (`projectfood-mobile/src/features/achievements/definitions.ts`) and unlock rows live in
   `achievement_unlocks`. The ladder shipped on 2026-09-18 with the proposed targets; still open: whether the targets
-  feel right after a month with families, and the push copy that names a rung at 50% and 75%.
+  feel right after a month with families. The rung nudge shipped 2026-09-20; open: whether 90 minutes
+  before dinner and one nudge per household per three days feel right, and whether the silent
+  baseline should instead name the single nearest rung on day one.
 
 ## Related pages
 - [[overview]] · [[concept-retention-loop]] · [[concept-brand-pillars]] ·

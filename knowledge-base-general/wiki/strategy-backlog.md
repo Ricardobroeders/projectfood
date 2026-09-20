@@ -10,8 +10,8 @@ sources: []
 # Strategy backlog (undecided core ideas)
 
 **In one line:** The standing register of concept and strategy topics that are not yet decided,
-one row each, with what the wiki already holds, the open question, and the next step. Linear
-holds execution work; this page holds thinking that still needs a call from Ricardo.
+one row each, with what the wiki already holds, the open question, and the next step. "Next to
+pick up" below holds execution work; the rows hold thinking that still needs a call from Ricardo.
 
 ## How to use this page
 - Every strategy conversation ends by updating the relevant row (status, open question, next).
@@ -26,23 +26,22 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
-2. Accent on device: true blue or teal (row 2). The app icon and splash wait on it.
+2. Accent on device: true blue or teal (row 2). The icon and splash no longer wait on it (generated 2026-09-20 from the Figma export, `scripts/build-icons.mjs`); the notification tint (`#F5C518` in `app.config.ts`) and the accent in code do.
 3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off. All 19 renders, the cups and the category renders are bundled (2026-09-18); bucket tidy-up is cosmetic (two files carry a doubled `achievement-achievement-` prefix).
 4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
 5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
-6. Five parent conversations (Linear PF-55).
+6. Five parent conversations (row 3).
+7. Clean-up after 2026-09-20: remove `VAPID_SUBJECT`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` and `CRON_SECRET` from the projectfood-app Vercel project (and `.env.local`); decide whether to drop the PWA-era `push_subscriptions` table (4 rows). Read the new privacy page once for the controller wording (it names Project Food, run from the Netherlands). When the Play listing exists, paste https://projectfood.dev/en/delete-account into the Data safety account-deletion field.
 
 **Claude's next build steps**
-7. Ricardo lives on the standalone preview APK from 2026-09-18 (gauge, Add a person, 45 MB build) for a while and collects feedback; the next session starts from that list. The dev client over USB stays for live coding (cable was flaky; a keeper loop re-adds `adb reverse`). Still to check on device: two-member logging, plant page, account screens, list performance in the release build.
-8. Claude's own hands on an emulator (Ricardo, 2026-09-18, via a friend's tip): set up Android Studio with one emulator image on the Mac, install Callstack's open-source `agent-device` CLI and its Claude Code skill (https://oss.callstack.com/agent-device/docs/introduction), install the dev client on the emulator, add test ids on key controls. From then on Claude runs and screenshots flows itself; the OnePlus stays for feel. Does not replace EAS builds (native changes) or Metro (JS changes). About an hour, at the start of the next build session.
-9. Rung pushes at 50% and 75% in `send-notifications` (row 5).
-10. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
-11. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
-12. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
+8. Ricardo lives on the standalone preview APK from 2026-09-18 (gauge, Add a person, 45 MB build) for a while and collects feedback; the next session starts from that list. The dev client over USB stays for live coding (cable was flaky; a keeper loop re-adds `adb reverse`). Still to check on device: two-member logging, plant page, account screens, list performance in the release build, the new icon set, and the rung nudge (needs a push token, Tips & news on, and the 16:30–16:45 window for a 18:00 dinner; a `{probe: household_id}` POST to `send-notifications` shows the ladder without sending).
+9. Claude's own hands on an emulator (Ricardo, 2026-09-18, via a friend's tip): set up Android Studio with one emulator image on the Mac, install Callstack's open-source `agent-device` CLI and its Claude Code skill (https://oss.callstack.com/agent-device/docs/introduction), install the dev client on the emulator, add test ids on key controls. From then on Claude runs and screenshots flows itself; the OnePlus stays for feel. Does not replace EAS builds (native changes) or Metro (JS changes). About an hour, at the start of the next build session.
+10. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
+11. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**
-13. Achievements economy (row 5, 9): Golden Sprouts as earned currency and streak buy-back, a fact per card level, secret achievements, the advocacy stamp, the plane "gold / XP economy" idea. Settle them together against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. Ideas in the parking lot below.
-14. Friends and social layer (row 17): the social unit (parent account, household or kid) and the kids' safeguarding line; personal streak first, friend streak as a later layer. Outcome = a decision page before any design.
+12. Achievements economy (row 5, 9): Golden Sprouts as earned currency and streak buy-back, a fact per card level, secret achievements, the advocacy stamp, the plane "gold / XP economy" idea. Settle them together against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. Ideas in the parking lot below.
+13. Friends and social layer (row 17): the social unit (parent account, household or kid) and the kids' safeguarding line; personal streak first, friend streak as a later layer. Outcome = a decision page before any design.
 
 ## Parking lot: ideas, not to-dos
 Raw ideas dropped for a later brainstorm; each is linked to its row and to the brainstorm item
@@ -104,11 +103,11 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 ## Summary
 | # | Topic | Status | Next step |
 |---|---|---|---|
-| 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (PF-55) |
+| 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (row 3) |
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
-| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
+| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -117,8 +116,8 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
 | 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled |
-| 14 | Privacy & kids' data | open | Needed before Play review: privacy page covering kids' data (the app stores first name + kid/adult only), push, deletion; web `/delete-account` page |
-| 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon needs the accent; listing assets and screenshots before Play closed testing |
+| 14 | Privacy & kids' data | drafted | Privacy page rewritten 2026-09-20 for the family app (kids' profiles, what is stored, processors, notifications, deletion, rights) in en/nl/it at projectfood.dev/{locale}/privacy, plus `/delete-account` with an email-code web flow; Ricardo reads the controller wording once before Play review; de/fr with those listings |
+| 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon set generated 2026-09-20 from the Figma export (`scripts/build-icons.mjs`; Play 512 in `assets/brand/store`); still needed: feature graphic 1024×500, screenshots, a drawn monochrome glyph if the auto silhouette disappoints |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
 | 17 | Friends & social layer | open | Ricardo wants it back in scope 2026-09-20 (friend list, lookup, other people's profiles, a Duolingo-style friend streak). Personal streak first, friend streak as a later layer (Ricardo, 2026-09-20). Decide the social unit — parent account, household or kid member — and the kids' safeguarding line before anything is designed (added by Ricardo) |
 
@@ -172,6 +171,12 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   rates per message from `notification_log`. OneSignal (free to 10k subscribers, dashboard with
   segments and journeys) only if we want those without building; it adds an SDK, a privacy line
   and a second source of truth, and the essential pushes would still need our data.
+- **Rung nudge (built 2026-09-20):** a fifth kind in `send-notifications`, `rung_nudge`, on the
+  marketing channel under the card-teaser flag: 90–75 minutes before dinner it names the one stamp
+  closest to its next level once that rung passed 50% or 75% ("Mia needs 9 more vegetables for
+  Green machine gold"), deep link to Unlocks, at most one per household per three days, each mark
+  once (`achievement_nudges`). A household's first run only records where it stands, so old
+  states never push. Timing and gap are guesses to test with families.
 - **Open:** whether one-off campaigns belong in the store POC at all, and which entry point
   (table editor, n8n form, admin page) Ricardo wants first.
 - **Next:** write the five-family test protocol as a decision page before TestFlight; decide
@@ -223,7 +228,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   then package it as a Claude skill so SEO and store copy use it (Ricardo's point,
   2026-09-10). _(status 2026-09-10)_
 
-### 9. Business model — drafted (Linear PF-54)
+### 9. Business model — drafted
 - **Have:** [[decision-2026-09-07-app-v1-scope]] S3/S4 (Supabase Free until paying
   households, RevenueCat, store commission after VAT: ≈ €21 kept of €29.99/yr, ≈ €2.80 of
   €3.99/mo); Sunday shopper advice as the paid feature (feature 11); Ricardo's 2026-09-08
@@ -269,13 +274,21 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   translation QA.
 - **Next:** define once topic 8 exists. _(status 2026-09-10)_
 
-### 14. Privacy & kids' data — open _(added by Claude)_
-- **Have:** nothing in the wiki. The app will store a child's name, age band and eating record
-  under a parent's account.
-- **Open:** GDPR basis and parental consent; data minimisation (age band, not birth date; first
-  name or nickname only); retention and deletion; Apple and Google family policies while staying
-  out of the Kids Category; a short privacy notice in five locales.
-- **Next:** one page before onboarding asks for a child's name and age. _(status 2026-09-10)_
+### 14. Privacy & kids' data — drafted _(added by Claude)_
+- **Have:** the privacy policy at projectfood.dev/{en,nl,it}/privacy, rewritten 2026-09-20 for the
+  family app (`projectfood-app/messages/*.json`, `marketing.privacy`): parents only sign in, a
+  child's profile is a first name or nickname plus kid/adult and an avatar, what is stored and why
+  (contract, consent for push and the survey, legitimate interest for security and the few product
+  events), the processors (Supabase in Ireland, Vercel, Expo, Google, Apple, Resend), the
+  notification rules, deletion in-app and on the web, GDPR rights, cookies, security. Plus
+  `/delete-account` (`account-verwijderen`, `elimina-account`) with a self-service flow: email →
+  code → confirm → the `delete-account` Edge Function, session in memory only, and a manual
+  fallback by email.
+- **Open:** the controller wording (the page names Project Food, run from the Netherlands, with
+  info@projectfood.dev; no legal entity named); de/fr copies when those listings are scheduled;
+  Apple and Google family policies while staying out of the Kids Category.
+- **Next:** Ricardo reads the page once; the URL goes into the Play Data safety form when the
+  listing exists. _(status 2026-09-20)_
 
 ### 15. Naming & store presence — open _(added by Claude)_
 - **Have:** "Project Food" is a working name (design-library brief: final naming is the
