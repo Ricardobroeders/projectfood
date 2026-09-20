@@ -72,12 +72,27 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   per plant per locale instead of one, i.e. the facts script (row 13) grows ×3)_
 - **Secret achievements (row 5).** A hidden layer of stamps that are not on the shelf and only
   appear once they fire, so there is something to stumble into after the visible ladder is
-  climbed. Ricardo's example: tick off every plant in the list in a single day → all historical
-  records are wiped → unlock "That's called cheating". To work out: whether the wipe is the joke
-  or a real penalty (and whether it is reversible), how many secrets and of what kind (joke,
-  skill, rare timing), how they read in five locales, and how a hidden stamp is hinted at without
-  giving it away. _(Ricardo, 2026-09-20; sits under the ladder in
-  [[concept-achievement-system]] and touches the "no punishment without a freeze" pillar)_
+  climbed. Ricardo's example: tick off every plant in the list in a single day → unlock
+  "That's called cheating", originally with all historical records wiped. Refined the same day:
+  ticking everything off in one day should carry *some* consequence, but the stamp itself may
+  already be it — a visible shame badge on the shelf, no data touched. To work out: which
+  consequence (shame stamp only, the day's logs discounted, or the wipe) and whether anything
+  destructive is reversible; how many secrets and of what kind (joke, skill, rare timing); how
+  they read in five locales; and how a hidden stamp is hinted at without giving it away.
+  _(Ricardo, 2026-09-20; sits under the ladder in [[concept-achievement-system]] and touches the
+  "no punishment without a freeze" pillar — a shame stamp keeps that pillar intact, a wipe does
+  not)_
+- **Advocacy / community achievement (rows 5, 7, 12).** A stamp for people who talk about
+  Project Food online — Ricardo's example is active Reddit contribution — on the reasoning that
+  it genuinely helps the product. He notes himself that it is hard to measure. To work out: how
+  it is established at all (self-declared with an honour-system tap, a pasted link, a manual
+  founder grant while numbers are small), and three problems before any of that — rewarded
+  posting is undisclosed promotion under Reddit's self-promotion rules and reads as
+  astroturfing if it is not labelled; any self-declared version is trivially gamed, so the stamp
+  stops meaning anything; and this is a parent-and-kid app, so an advocacy stamp belongs on the
+  parent side only, never in the kid's collection. A founder-granted "thank you" stamp for the
+  first families avoids all three and may be the whole idea. _(Ricardo, 2026-09-20; touches
+  [[concept-word-of-mouth]], row 7 social media and row 12 go-to-market)_
 - **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
   _(Ricardo, 2026-09-10)_
 
@@ -88,7 +103,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements) wait for a brainstorm |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -171,8 +186,9 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Built (2026-09-18):** `level` column, engine, level copy en/nl/it, rings on the shelf, the ladder in
   the stamp sheet, 17 prize renders and the card-level cups on device.
 - **Next:** watch which rungs families sit on after a month; add the 50% / 75% rung pushes to
-  `send-notifications`. Parked input 2026-09-20: a hidden layer of secret achievements (see
-  "Inputs waiting for a brainstorm"), nothing to build yet. _(status 2026-09-20)_
+  `send-notifications`. Parked inputs 2026-09-20: a hidden layer of secret achievements (with a
+  consequence for ticking everything off in one day) and an advocacy stamp for people who post
+  about us (see "Inputs waiting for a brainstorm"); nothing to build yet. _(status 2026-09-20)_
 
 ### 6. SEO strategy — drafted
 - **Have:** [[seo-overview]], [[seo-keyword-strategy]], [[seo-serp-landscape]],
