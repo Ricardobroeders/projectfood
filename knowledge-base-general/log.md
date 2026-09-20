@@ -221,3 +221,13 @@ web flow that calls the `delete-account` Edge Function; row 14 moves to drafted.
 cron, `api/push/*`, service worker, web-push settings page and `web-push` dependency removed. App
 icons generated from Ricardo's Figma export (`projectfood-mobile/scripts/build-icons.mjs`, master
 in `assets/brand/`); row 15 updated. "Next to pick up" renumbered.
+
+## [2026-09-20] build | PWA push data removed from the database
+Ricardo could not tell the new app's notifications from the PWA's. Migration 0014 copies the four
+`push_subscriptions` rows and the 331 PWA-era `notification_log` rows (push sends: daily_reminder,
+streak_rescue, weekly_nudge, inactivity_reminder, May to 19 September 2026) into schema
+`backup_20260920`, deletes them from `public`, drops `push_subscriptions`, and sets
+`notifications_enabled` back to false for the five accounts that only had a browser subscription
+(the flag now means "an Expo push token is registered"). `plant_logs` is untouched: the plant
+history stays shared between the PWA and the app. `notification_log` now only ever holds the new
+kinds. Item 7 of "Next to pick up" updated.
