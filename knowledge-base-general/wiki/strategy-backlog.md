@@ -3,7 +3,7 @@ title: Strategy backlog (undecided core ideas)
 type: backlog
 tags: [strategy, decisions, backlog]
 created: 2026-09-10
-updated: 2026-09-16
+updated: 2026-09-20
 sources: []
 ---
 
@@ -70,6 +70,14 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   Unlocks. The more you eat of a plant, the more you learn about it. _(Ricardo, 2026-09-19; a
   concrete shape for the "Fun facts and borders at 5 / 50 / 100" input above; needs three facts
   per plant per locale instead of one, i.e. the facts script (row 13) grows ×3)_
+- **Secret achievements (row 5).** A hidden layer of stamps that are not on the shelf and only
+  appear once they fire, so there is something to stumble into after the visible ladder is
+  climbed. Ricardo's example: tick off every plant in the list in a single day → all historical
+  records are wiped → unlock "That's called cheating". To work out: whether the wipe is the joke
+  or a real penalty (and whether it is reversible), how many secrets and of what kind (joke,
+  skill, rare timing), how they read in five locales, and how a hidden stamp is hinted at without
+  giving it away. _(Ricardo, 2026-09-20; sits under the ladder in
+  [[concept-achievement-system]] and touches the "no punishment without a freeze" pillar)_
 - **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
   _(Ricardo, 2026-09-10)_
 
@@ -80,7 +88,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19 (Golden Sprouts streak buy-back, a fact per card level) wait for a brainstorm |
+| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Still open: rung pushes at 50/75%, "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -163,7 +171,8 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Built (2026-09-18):** `level` column, engine, level copy en/nl/it, rings on the shelf, the ladder in
   the stamp sheet, 17 prize renders and the card-level cups on device.
 - **Next:** watch which rungs families sit on after a month; add the 50% / 75% rung pushes to
-  `send-notifications`. _(status 2026-09-18)_
+  `send-notifications`. Parked input 2026-09-20: a hidden layer of secret achievements (see
+  "Inputs waiting for a brainstorm"), nothing to build yet. _(status 2026-09-20)_
 
 ### 6. SEO strategy — drafted
 - **Have:** [[seo-overview]], [[seo-keyword-strategy]], [[seo-serp-landscape]],
