@@ -334,7 +334,7 @@
     "essential": "Essential",
     "essentialDesc": "The dinner question and your streak. On by default.",
     "marketing": "Tips & news",
-    "marketingDesc": "Card teasers and the Sunday nudge. Off by default.",
+    "marketingDesc": "Card and stamp teasers and the Sunday nudge. Off by default.",
     "types": {
       "dinnerQuestion": {
         "label": "Dinner question",
@@ -345,8 +345,8 @@
         "description": "Only when the family streak is at risk"
       },
       "cardTeaser": {
-        "label": "Card teaser",
-        "description": "After a few quiet dinners: which card is close"
+        "label": "Card & stamp teasers",
+        "description": "After a few quiet dinners: which card is close. And before dinner, when a stamp passes halfway to its next level"
       },
       "sundayNudge": {
         "label": "Sunday nudge",

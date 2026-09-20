@@ -2,17 +2,24 @@
 // Rules (KB retention loop): the copy is a question that opens logging (D10); the streak keeper only
 // when the streak is at risk (D7 freeze); marketing kinds off by default; three ignored in a row ->
 // a week of silence; sent / delivered / opened / logged-within-3h recorded for every message.
+// The rung nudge (KB achievement system) names one stamp that passed 50% or 75% of its next level,
+// before dinner, at most one per household every three days, each mark once.
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
-type Kind = 'dinner_question' | 'streak_keeper' | 'card_teaser' | 'family_30_nudge';
+import { type Ctx, levelKey, nextRungs, type PlantRow, type RungState, type Threshold, thresholdOf } from './ladder.ts';
+import { rungCopy } from './rung-copy.ts';
+
+type Kind = 'dinner_question' | 'streak_keeper' | 'card_teaser' | 'family_30_nudge' | 'rung_nudge';
 const ESSENTIAL = new Set<Kind>(['dinner_question', 'streak_keeper']);
 const EXPO_PUSH = 'https://exp.host/--/api/v2/push';
+/** A household hears about a rung at most this often. */
+const RUNG_NUDGE_GAP_MS = 3 * 86400_000;
 
 const SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 const admin = createClient(Deno.env.get('SUPABASE_URL')!, SERVICE_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
 
-type Vars = { n?: number; kids?: string; member?: string; plant?: string; family?: string };
+type Vars = { n?: number; kids?: string; member?: string; plant?: string; family?: string; rung?: RungState; owner?: string | null; threshold?: Threshold };
 type Copy = { title: string; body: string };
 const COPY: Record<string, Record<Kind, (v: Vars) => Copy>> = {
   en: {
@@ -20,18 +27,21 @@ const COPY: Record<string, Record<Kind, (v: Vars) => Copy>> = {
     streak_keeper: (v) => ({ title: 'One plant keeps the streak', body: `One plant tonight keeps the family streak at ${v.n}.` }),
     card_teaser: (v) => ({ title: 'A card is waiting', body: v.plant ? `${v.member}'s ${v.plant} card is one taste from the next level.` : 'The collection is waiting for tonight’s tastes.' }),
     family_30_nudge: (v) => ({ title: 'Almost 30', body: `${v.n} plants finish the family week.` }),
+    rung_nudge: (v) => rungCopy('en', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
   nl: {
     dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Wat heeft ${v.kids} vanavond geproefd?` : 'Wat heeft het gezin vanavond geproefd?' }),
     streak_keeper: (v) => ({ title: 'Eén plant houdt de reeks', body: `Eén plant vanavond houdt de gezinsreeks op ${v.n}.` }),
     card_teaser: (v) => ({ title: 'Er wacht een kaart', body: v.plant ? `De ${v.plant}-kaart van ${v.member} is één hap van het volgende niveau.` : 'De collectie wacht op de hapjes van vanavond.' }),
     family_30_nudge: (v) => ({ title: 'Bijna 30', body: `Nog ${v.n} planten en de gezinsweek is rond.` }),
+    rung_nudge: (v) => rungCopy('nl', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
   it: {
     dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Cosa ha assaggiato ${v.kids} stasera?` : 'Cosa ha assaggiato la famiglia stasera?' }),
     streak_keeper: (v) => ({ title: 'Una pianta salva la serie', body: `Una pianta stasera tiene la serie di famiglia a ${v.n}.` }),
     card_teaser: (v) => ({ title: 'Una carta ti aspetta', body: v.plant ? `La carta ${v.plant} di ${v.member} è a un assaggio dal prossimo livello.` : 'La collezione aspetta gli assaggi di stasera.' }),
     family_30_nudge: (v) => ({ title: 'Quasi 30', body: `${v.n} piante completano la settimana di famiglia.` }),
+    rung_nudge: (v) => rungCopy('it', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
 };
 const copyFor = (locale: string, kind: Kind, v: Vars) => (COPY[locale] ?? COPY.en)[kind](v);
@@ -59,6 +69,10 @@ type Settings = {
 };
 type Token = { id: string; user_id: string; expo_push_token: string; failure_count: number };
 type LogRow = { id: string; user_id: string; type: string; sent_at: string; opened_at: string | null; logged_within_3h: boolean | null };
+type Member = { id: string; household_id: string; name: string; kind: string };
+type NudgeRow = { member_id: string | null; achievement_id: string; level: number; threshold: number; sent: boolean; sent_at: string };
+/** One message a household could get this run; `after` runs once it reached at least one phone. */
+type Candidate = { kind: Kind; vars: Vars; url?: string; after?: () => Promise<void>; sent?: boolean };
 
 function allowed(s: Settings, kind: Kind): boolean {
   if (ESSENTIAL.has(kind)) {
@@ -66,7 +80,90 @@ function allowed(s: Settings, kind: Kind): boolean {
     return kind === 'dinner_question' ? s.notif_daily_reminder : s.notif_streak_rescue;
   }
   if (!s.notif_marketing) return false;
-  return kind === 'card_teaser' ? s.notif_reengagement : s.notif_weekly_nudge;
+  return kind === 'card_teaser' || kind === 'rung_nudge' ? s.notif_reengagement : s.notif_weekly_nudge;
+}
+
+/** The plant catalogue, fetched once per run and only when a ladder needs it. */
+function plantsOnce() {
+  let p: Promise<Map<string, PlantRow>> | null = null;
+  return () =>
+    (p ??= (async () => {
+      const { data } = await admin.from('plants').select('id, category, color, botanical_family, is_superfood').eq('is_active', true);
+      return new Map<string, PlantRow>(((data ?? []) as PlantRow[]).map((r) => [r.id, r]));
+    })());
+}
+
+/** Every owner's next rung for the household, from the same inputs and windows the app uses (400 days, 60 weeks). */
+async function rungStates(hid: string, members: Member[], plants: Map<string, PlantRow>): Promise<RungState[]> {
+  const [tastes, daily, weekly, streak, unlocks] = await Promise.all([
+    admin.rpc('member_taste_counts', { p_household_id: hid }),
+    admin.rpc('household_daily_activity', { p_household_id: hid, p_days: 400 }),
+    admin.rpc('household_weekly_history', { p_household_id: hid, p_weeks: 60 }),
+    admin.rpc('household_streak', { p_household_id: hid }),
+    admin.from('achievement_unlocks').select('achievement_id, member_id, level').eq('household_id', hid),
+  ]);
+  const ctx: Ctx = {
+    members: members.map((m) => ({ id: m.id, name: m.name })),
+    tastes: (tastes.data ?? []) as Ctx['tastes'],
+    daily: (daily.data ?? []) as Ctx['daily'],
+    weekly: (weekly.data ?? []) as Ctx['weekly'],
+    streak: ((streak.data ?? []) as Ctx['streak'][])[0] ?? null,
+    plants,
+  };
+  const levels = new Map<string, number>();
+  for (const u of (unlocks.data ?? []) as { achievement_id: string; member_id: string | null; level: number }[]) {
+    const k = levelKey(u.achievement_id, u.member_id);
+    levels.set(k, Math.max(levels.get(k) ?? 0, u.level));
+  }
+  return nextRungs(ctx, levels);
+}
+
+const rungRow = (hid: string, s: RungState, threshold: Threshold, sent: boolean) => ({ household_id: hid, member_id: s.memberId, achievement_id: s.id, level: s.level, threshold, sent });
+
+/**
+ * The one rung worth a push today: past 50% or 75% of its next level and not yet nudged at that mark.
+ * A household's first run only records where it already stands (baseline), so old states never push.
+ */
+async function rungCandidate(hid: string, members: Member[], now: Date, plants: Map<string, PlantRow>): Promise<Candidate | null> {
+  const [{ data: hh }, { data: nudgeRows }] = await Promise.all([
+    admin.from('households').select('nudge_baseline_at').eq('id', hid).single(),
+    admin.from('achievement_nudges').select('member_id, achievement_id, level, threshold, sent, sent_at').eq('household_id', hid),
+  ]);
+  const nudges = (nudgeRows ?? []) as NudgeRow[];
+  const lastSent = nudges.filter((n) => n.sent).map((n) => n.sent_at).sort().pop();
+  if (lastSent && new Date(lastSent).getTime() > now.getTime() - RUNG_NUDGE_GAP_MS) return null;
+
+  const states = await rungStates(hid, members, plants);
+  // highest mark already recorded per rung: a 75 row also covers 50
+  const seen = new Map<string, number>();
+  for (const n of nudges) {
+    const k = `${levelKey(n.achievement_id, n.member_id)}:${n.level}`;
+    seen.set(k, Math.max(seen.get(k) ?? 0, n.threshold));
+  }
+  const due: { s: RungState; t: Threshold }[] = [];
+  for (const s of states) {
+    const t = thresholdOf(s.fraction);
+    if (t !== null && (seen.get(`${levelKey(s.id, s.memberId)}:${s.level}`) ?? 0) < t) due.push({ s, t });
+  }
+
+  if (!(hh as { nudge_baseline_at: string | null } | null)?.nudge_baseline_at) {
+    if (due.length) await admin.from('achievement_nudges').insert(due.map((x) => rungRow(hid, x.s, x.t, false)));
+    await admin.from('households').update({ nudge_baseline_at: now.toISOString() }).eq('id', hid);
+    return null;
+  }
+  if (!due.length) return null;
+  // the rung closest to done first; ties by fewest tastes left
+  due.sort((a, b) => b.s.fraction - a.s.fraction || (a.s.target - a.s.current) - (b.s.target - b.s.current));
+  const { s, t } = due[0];
+  const owner = s.memberId ? (members.find((m) => m.id === s.memberId)?.name ?? null) : null;
+  return {
+    kind: 'rung_nudge',
+    vars: { rung: s, owner, threshold: t },
+    url: '/unlocks',
+    after: async () => {
+      await admin.from('achievement_nudges').insert(rungRow(hid, s, t, true));
+    },
+  };
 }
 
 async function sendPhase(now: Date) {
@@ -75,6 +172,7 @@ async function sendPhase(now: Date) {
   if (error) throw error;
   if (!households?.length) return stats;
   const hids = households.map((h) => h.id);
+  const plants = plantsOnce();
 
   const { data: hus } = await admin.from('household_users').select('household_id, user_id').in('household_id', hids);
   const userIds = [...new Set((hus ?? []).map((x) => x.user_id))];
@@ -96,18 +194,20 @@ async function sendPhase(now: Date) {
     if (!users.some((u) => tokensBy.has(u))) continue;
     const local = localParts(h.timezone || 'Europe/Amsterdam', now);
     const dinner = toMinutes(h.dinner_time.slice(0, 5));
+    const prepWindow = local.minutes >= dinner - 90 && local.minutes < dinner - 75;
     const askWindow = local.minutes >= dinner + 30 && local.minutes < dinner + 45;
     const keeperWindow = local.minutes >= Math.max(dinner + 90, 20 * 60 + 30) && local.minutes < 22 * 60 + 45;
-    if (!askWindow && !keeperWindow) continue;
+    if (!askWindow && !keeperWindow && !prepWindow) continue;
 
     const { data: days } = await admin.from('plant_logs').select('logged_on').eq('household_id', h.id).gte('logged_on', shiftDate(local.date, -3));
     const loggedDays = new Set((days ?? []).map((d) => d.logged_on));
     const loggedToday = loggedDays.has(local.date);
-    const kids = (members ?? []).filter((m) => m.household_id === h.id && m.kind === 'kid').map((m) => m.name);
+    const hhMembers = ((members ?? []) as Member[]).filter((m) => m.household_id === h.id);
+    const kids = hhMembers.filter((m) => m.kind === 'kid').map((m) => m.name);
     const kidsLabel = kids.length ? (kids.length === 1 ? kids[0] : `${kids.slice(0, -1).join(', ')} & ${kids[kids.length - 1]}`) : undefined;
 
     // household-level candidates in precedence order
-    const candidates: { kind: Kind; vars: Vars }[] = [];
+    const candidates: Candidate[] = [];
     if (keeperWindow && !loggedToday) {
       const { data: streakRows } = await admin.rpc('household_streak', { p_household_id: h.id });
       const s = streakRows?.[0];
@@ -116,10 +216,10 @@ async function sendPhase(now: Date) {
     if (askWindow && !loggedToday) candidates.push({ kind: 'dinner_question', vars: { kids: kidsLabel } });
     if (askWindow && loggedDays.size === 0) {
       const { data: counts } = await admin.rpc('member_taste_counts', { p_household_id: h.id });
-      const close = (counts ?? []).filter((c) => c.tastes === 4 || c.tastes === 9).sort((a, b) => b.tastes - a.tastes)[0];
+      const close = ((counts ?? []) as { member_id: string; plant_id: string; tastes: number }[]).filter((c) => c.tastes === 4 || c.tastes === 9).sort((a, b) => b.tastes - a.tastes)[0];
       let vars: Vars = {};
       if (close) {
-        const member = (members ?? []).find((m) => m.id === close.member_id);
+        const member = hhMembers.find((m) => m.id === close.member_id);
         const { data: tr } = await admin.from('plant_translations').select('locale, name').eq('plant_id', close.plant_id);
         vars = { member: member?.name, plant: tr?.find((x) => x.locale === 'en')?.name };
         (vars as Vars & { names?: Record<string, string> }).names = Object.fromEntries((tr ?? []).map((x) => [x.locale, x.name]));
@@ -129,6 +229,10 @@ async function sendPhase(now: Date) {
     if (askWindow && local.weekday === 'Sun') {
       const { data: variety } = await admin.rpc('household_weekly_variety', { p_household_id: h.id });
       if (typeof variety === 'number' && variety >= 25 && variety <= 29) candidates.push({ kind: 'family_30_nudge', vars: { n: 30 - variety } });
+    }
+    if (prepWindow) {
+      const rung = await rungCandidate(h.id, hhMembers, now, await plants());
+      if (rung) candidates.push(rung);
     }
     if (!candidates.length) continue;
 
@@ -164,7 +268,7 @@ async function sendPhase(now: Date) {
             to: tok.expo_push_token,
             title: copy.title,
             body: copy.body,
-            data: { url: '/log', log_id: row.id, type: pick.kind },
+            data: { url: pick.url ?? '/log', log_id: row.id, type: pick.kind },
             channelId: ESSENTIAL.has(pick.kind) ? 'dinner' : 'marketing',
             priority: 'high',
           }),
@@ -175,6 +279,7 @@ async function sendPhase(now: Date) {
         if (ticket && ticketStatus === 'ok') {
           await admin.from('notification_log').update({ ticket_id: ticket }).eq('id', row.id);
           stats.sent++;
+          pick.sent = true;
         } else {
           await admin.from('notification_log').update({ delivered: false }).eq('id', row.id);
           if (out?.data?.details?.error === 'DeviceNotRegistered') await dropToken(tok);
@@ -186,6 +291,7 @@ async function sendPhase(now: Date) {
         await admin.from('user_settings').update({ notif_backoff_until: shiftDate(local.date, 7) }).eq('user_id', uid);
       }
     }
+    for (const c of candidates) if (c.sent && c.after) await c.after();
   }
   return stats;
 }
@@ -246,6 +352,27 @@ async function outcomePhase(now: Date) {
   return n;
 }
 
+/** Read-only look at one household's ladder: every next rung, the ones past a mark with their copy, and the nudge history. Nothing is sent or written. */
+async function probe(hid: string) {
+  const [{ data: hh }, { data: memberRows }, { data: nudges }, plants] = await Promise.all([
+    admin.from('households').select('id, name, dinner_time, timezone, nudge_baseline_at').eq('id', hid).maybeSingle(),
+    admin.from('household_members').select('id, household_id, name, kind').eq('household_id', hid).is('archived_at', null),
+    admin.from('achievement_nudges').select('member_id, achievement_id, level, threshold, sent, sent_at').eq('household_id', hid).order('sent_at', { ascending: false }),
+    plantsOnce()(),
+  ]);
+  if (!hh) return { error: 'no such household' };
+  const members = (memberRows ?? []) as Member[];
+  const states = await rungStates(hid, members, plants);
+  const due = states
+    .map((s) => ({ s, t: thresholdOf(s.fraction) }))
+    .filter((x): x is { s: RungState; t: Threshold } => x.t !== null)
+    .map(({ s, t }) => {
+      const owner = s.memberId ? (members.find((m) => m.id === s.memberId)?.name ?? null) : null;
+      return { ...s, owner, threshold: t, en: rungCopy('en', s, owner, t), nl: rungCopy('nl', s, owner, t), it: rungCopy('it', s, owner, t) };
+    });
+  return { household: hh, members, states, due, nudges };
+}
+
 /** The scheduler proves itself with the vault-held cron secret (pg_cron -> pg_net); the service role key also works. */
 async function authorized(req: Request): Promise<boolean> {
   const bearer = (req.headers.get('Authorization') ?? '').replace(/^Bearer\s+/i, '');
@@ -261,6 +388,8 @@ Deno.serve(async (req: Request) => {
   if (!(await authorized(req))) return json({ error: 'forbidden' }, 403);
   const now = new Date();
   try {
+    const body = (await req.json().catch(() => null)) as { probe?: string } | null;
+    if (body?.probe) return json(await probe(body.probe));
     const sent = await sendPhase(now);
     const delivered = await receiptsPhase(now);
     const outcomes = await outcomePhase(now);

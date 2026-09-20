@@ -334,7 +334,7 @@
     "essential": "Essenziali",
     "essentialDesc": "La domanda della cena e la tua serie. Attive di default.",
     "marketing": "Consigli e novità",
-    "marketingDesc": "Anteprime delle carte e il promemoria della domenica. Disattive di default.",
+    "marketingDesc": "Anteprime di carte e timbri e il promemoria della domenica. Disattive di default.",
     "types": {
       "dinnerQuestion": {
         "label": "Domanda della cena",
@@ -345,8 +345,8 @@
         "description": "Solo quando la serie di famiglia è a rischio"
       },
       "cardTeaser": {
-        "label": "Anteprima carta",
-        "description": "Dopo qualche cena tranquilla: quale carta è vicina"
+        "label": "Anteprime carte e timbri",
+        "description": "Dopo qualche cena tranquilla: quale carta è vicina. E prima di cena, quando un timbro supera metà del prossimo livello"
       },
       "sundayNudge": {
         "label": "Promemoria domenicale",

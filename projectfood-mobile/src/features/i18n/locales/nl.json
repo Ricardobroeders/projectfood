@@ -334,7 +334,7 @@
     "essential": "Essentieel",
     "essentialDesc": "De etensvraag en je reeks. Standaard aan.",
     "marketing": "Tips & nieuws",
-    "marketingDesc": "Kaart-teasers en de zondagse herinnering. Standaard uit.",
+    "marketingDesc": "Kaart- en stempel-teasers en de zondagse herinnering. Standaard uit.",
     "types": {
       "dinnerQuestion": {
         "label": "Etensvraag",
@@ -345,8 +345,8 @@
         "description": "Alleen als de gezinsreeks in gevaar is"
       },
       "cardTeaser": {
-        "label": "Kaart-teaser",
-        "description": "Na een paar stille avonden: welke kaart bijna klaar is"
+        "label": "Kaart- en stempel-teasers",
+        "description": "Na een paar stille avonden: welke kaart bijna klaar is. En voor het eten, als een stempel halverwege het volgende niveau is"
       },
       "sundayNudge": {
         "label": "Zondagse herinnering",
