@@ -22,7 +22,7 @@ holds execution work; this page holds thinking that still needs a call from Rica
 - Add topics freely; remove none. Date every status change.
 
 ## Next to pick up
-_Maintained by Claude after every session; this is the answer to "what's next?". Updated 2026-09-18._
+_Maintained by Claude after every session; this is the answer to "what's next?". This is the one to-do list: decisions for Ricardo, build steps for Claude, and brainstorms to hold. Raw ideas live in the parking lot below until a brainstorm turns them into a decision or a build step. Updated 2026-09-20._
 
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP (Resend) in Supabase Auth for the email code; Google OAuth client ids for Android (EAS keystore SHA-1 + Play App Signing SHA-1) and iOS; a Firebase project for FCM (`google-services.json`); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight.
@@ -40,9 +40,14 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 11. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
 12. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
-## Inputs waiting for a brainstorm
-Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
-when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
+**Brainstorms to hold**
+13. Achievements economy (row 5, 9): Golden Sprouts as earned currency and streak buy-back, a fact per card level, secret achievements, the advocacy stamp, the plane "gold / XP economy" idea. Settle them together against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. Ideas in the parking lot below.
+14. Friends and social layer (row 17): the social unit (parent account, household or kid) and the kids' safeguarding line; personal streak first, friend streak as a later layer. Outcome = a decision page before any design.
+
+## Parking lot: ideas, not to-dos
+Raw ideas dropped for a later brainstorm; each is linked to its row and to the brainstorm item
+above that will challenge it. Nothing here is a task until a brainstorm turns it into a decision or
+a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 
 - **Gold / XP economy (row 5, 9).** Earn gold per person per tasted plant; when several family
   members taste the same plant each earns it; spend gold on avatars and profile borders; social
@@ -189,7 +194,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Next:** watch which rungs families sit on after a month; add the 50% / 75% rung pushes to
   `send-notifications`. Parked inputs 2026-09-20: a hidden layer of secret achievements (with a
   consequence for ticking everything off in one day) and an advocacy stamp for people who post
-  about us (see "Inputs waiting for a brainstorm"); nothing to build yet. _(status 2026-09-20)_
+  about us (see the parking lot); nothing to build yet. _(status 2026-09-20)_
 
 ### 6. SEO strategy — drafted
 - **Have:** [[seo-overview]], [[seo-keyword-strategy]], [[seo-serp-landscape]],
