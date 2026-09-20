@@ -12,6 +12,7 @@ const PAGES: Record<string, Record<string, string>> = {
   '/contact': { en: '/en/contact',  nl: '/nl/contact',      it: '/it/contatto'  },
   '/terms':   { en: '/en/terms',    nl: '/nl/voorwaarden',  it: '/it/termini'   },
   '/privacy': { en: '/en/privacy',  nl: '/nl/privacy',      it: '/it/privacy'   },
+  '/delete-account': { en: '/en/delete-account', nl: '/nl/account-verwijderen', it: '/it/elimina-account' },
 }
 
 function learnPaths(pillarSlug?: string, articleSlug?: string): Record<string, string> {

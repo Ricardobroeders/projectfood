@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { Analytics } from '@vercel/analytics/next'
-import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
@@ -39,7 +38,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className="min-h-full font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
-          <ServiceWorkerRegistration />
           {children}
           <Analytics />
         </NextIntlClientProvider>

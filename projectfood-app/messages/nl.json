@@ -63,23 +63,6 @@
     "tabGlobal": "Globaal",
     "emptyFriends": "Voeg vrienden toe via het tabblad Sociaal om jezelf te vergelijken"
   },
-  "notifications": {
-    "settingsTitle": "Meldingen",
-    "masterToggle": "Meldingen inschakelen",
-    "types": {
-      "dailyReminder": { "label": "Dagelijkse herinnering", "description": "Herinnering als je vandaag nog niets gelogd hebt" },
-      "streakRescue": { "label": "Reeks redden", "description": "Red je reeks voor middernacht" },
-      "weeklyNudge": { "label": "Zondagse herinnering", "description": "Laatste kans om 30 planten te halen" }
-    },
-    "iosFirst": "Voeg Project Food eerst toe aan je beginscherm om meldingen in te schakelen.",
-    "permissionDenied": "Meldingen geblokkeerd. Schakel ze in via je browserinstellingen.",
-    "permissionPrompt": {
-      "title": "Blijf op schema met zachte herinneringen",
-      "body": "Ontvang een dagelijkse herinnering om planten te loggen en je reeks te bewaren.",
-      "allow": "Meldingen inschakelen",
-      "notNow": "Niet nu"
-    }
-  },
   "account": {
     "settingsSection": "Instellingen",
     "accountSection": "Account",
@@ -87,9 +70,6 @@
     "chooseName": "Kies een naam",
     "weeklyGoal": "Weekdoel",
     "weeklyGoalValue": "30 planten",
-    "notifications": "Meldingen",
-    "on": "Aan",
-    "off": "Uit",
     "comingSoon": "Binnenkort",
     "installApp": "App installeren",
     "addToHomeScreen": "Voeg toe aan beginscherm",
@@ -266,45 +246,141 @@
     },
     "privacy": {
       "title": "Privacybeleid",
-      "effectiveDate": "Ingangsdatum: 8 mei 2025",
-      "intro": "Dit privacybeleid legt uit hoe Project Food je persoonsgegevens verzamelt, gebruikt en beschermt. Het is van toepassing op alle gebruikers van de Project Food-app en website.",
-      "s1Title": "1. Wie we zijn",
-      "s1Body": "Project Food is de verwerkingsverantwoordelijke voor jouw persoonsgegevens. Je kunt ons bereiken via onze Discord-community.",
-      "s2Title": "2. Welke gegevens we verzamelen",
-      "s2Intro": "Wanneer je Project Food gebruikt, verzamelen we het volgende:",
-      "s2Item1": "Naam en e-mailadres, verstrekt door Google wanneer je inlogt via Google OAuth",
-      "s2Item2": "Je plantlogs — welke planten je registreert en wanneer",
-      "s2Item3": "Je taalvoorkeur, opgeslagen in een functionele cookie genaamd pf_locale",
-      "s2Item4": "Standaard technische logs gegenereerd door onze hosting- en databaseproviders",
-      "s3Title": "3. Rechtsgrondslag voor verwerking",
-      "s3Intro": "We verwerken je gegevens op de volgende grondslagen onder AVG artikel 6:",
-      "s3Item1": "Uitvoering van een overeenkomst (art. 6(1)(b)) — om de dienst te leveren waarvoor je je hebt aangemeld",
-      "s3Item2": "Gerechtvaardigd belang (art. 6(1)(f)) — om de veiligheid en stabiliteit van het platform te waarborgen",
-      "s4Title": "4. Verwerkers",
-      "s4Intro": "We maken gebruik van de volgende vertrouwde verwerkers om de dienst te kunnen leveren:",
-      "s4Item1": "Supabase — database en authenticatie (EU/VS, verwerkersovereenkomst van kracht)",
-      "s4Item2": "Vercel — hosting en edge-netwerk (VS, standaardcontractbepalingen van kracht)",
-      "s4Item3": "Google — OAuth-aanmeldprovider",
-      "s5Title": "5. Cookies",
-      "s5Body": "Project Food gebruikt één cookie: pf_locale, die je taalvoorkeur voor maximaal één jaar opslaat. Dit is een strikt functionele cookie — hij volgt je niet en vereist geen toestemming op grond van de AVG. Als we in de toekomst analytische of advertentiecookies toevoegen, zullen we dit beleid bijwerken en jouw toestemming vragen.",
-      "s6Title": "6. Jouw rechten",
-      "s6Intro": "Op grond van AVG artikelen 15–20 heb je het recht op:",
-      "s6Item1": "Inzage — opvragen van een kopie van de gegevens die we over jou bewaren (art. 15)",
-      "s6Item2": "Rectificatie — corrigeren van onjuiste of onvolledige gegevens (art. 16)",
-      "s6Item3": "Wissing — verwijdering van je account en alle bijbehorende gegevens opvragen (art. 17)",
-      "s6Item4": "Overdraagbaarheid — je gegevens ontvangen in een gestructureerd, machineleesbaar formaat (art. 20)",
-      "s6Item5": "Beperking en bezwaar — beperken of bezwaar maken tegen de verwerking van je gegevens (art. 18, 21)",
-      "s6Contact": "Neem voor het uitoefenen van deze rechten contact op via onze Discord-community.",
-      "s7Title": "7. Bewaartermijn",
-      "s7Body": "We bewaren je gegevens zolang je account actief is. Na een verzoek tot accountverwijdering worden je persoonsgegevens binnen 30 dagen definitief verwijderd.",
-      "s8Title": "8. Geen verkoop van gegevens",
-      "s8Body": "We verkopen, verhuren of verhandelen je persoonsgegevens nooit aan derden.",
-      "s9Title": "9. Toezichthoudende autoriteit",
-      "s9Body": "Als je van mening bent dat we niet correct met je gegevens zijn omgegaan, heb je het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens via www.autoriteitpersoonsgegevens.nl.",
-      "s10Title": "10. Wijzigingen in dit beleid",
-      "s10Body": "We kunnen dit privacybeleid van tijd tot tijd bijwerken. Als we significante wijzigingen aanbrengen, informeren we je per e-mail voordat ze van kracht worden.",
-      "s11Title": "11. Contact",
-      "s11Body": "Voor privacygerelateerde vragen kun je lid worden van onze Discord-community."
+      "effectiveDate": "Ingangsdatum: 20 september 2026",
+      "intro": "Project Food is een gezinsapp. Een ouder logt welke planten het gezin bij het eten heeft geproefd, en de kinderen sparen kaarten en stempels. Dit beleid legt uit wat we opslaan, waarom, wie ons helpt de dienst te draaien en hoe je alles verwijdert. Het geldt voor de Project Food-app en voor projectfood.dev.",
+      "sections": [
+        {
+          "title": "1. Wie we zijn",
+          "body": "Project Food is de verwerkingsverantwoordelijke voor de gegevens die hier worden beschreven en wordt gerund vanuit Nederland. Voor alles rond privacy mail je naar info@projectfood.dev."
+        },
+        {
+          "title": "2. Gemaakt voor gezinnen, gebruikt door ouders",
+          "intro": "Alleen volwassenen maken een account aan en loggen in. Kinderen loggen nooit in, krijgen nooit e-mail of meldingen van ons en zijn via de app niet te bereiken.",
+          "items": [
+            "Een ouder voegt elk gezinslid toe als profiel: een voornaam of bijnaam, en of het een kind of een volwassene is. Meer vragen we niet. Geen geboortedata, achternamen of foto's.",
+            "De ouder bepaalt wat er wordt ingevuld, kan een profiel op elk moment hernoemen of verwijderen, en verwijdert alles door het account te verwijderen.",
+            "Kinderprofielen worden nooit gebruikt voor advertenties of profilering en nooit gedeeld met andere gezinnen."
+          ]
+        },
+        {
+          "title": "3. Wat we opslaan",
+          "intro": "Als je de app gebruikt, slaan we het volgende op:",
+          "items": [
+            "Account: je e-mailadres, en je naam en profielfoto als je inlogt met Google of Apple. Inlogcodes gaan naar je e-mail.",
+            "Huishouden: de gezinsnaam, etenstijd, tijdzone en taal.",
+            "Gezinsleden: voornaam of bijnaam, kind of volwassene, en een avatar uit onze set.",
+            "Hapjes: welke planten elk gezinslid op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, stempels, de gezinsreeks).",
+            "Meldingen: of je pushmeldingen hebt toegestaan, je voorkeuren, een push-token van je telefoon, en per bericht of het is afgeleverd, geopend en binnen drie uur gevolgd door een log. Zo stoppen we met porren als een gezin ons negeert.",
+            "Productgebeurtenissen: een klein aantal gebeurtenissen in de app, zoals een gelogde plant, een afgeronde onboarding of een ingevulde enquête, gekoppeld aan je account. Geen advertentie-id's, geen tracking over apps heen.",
+            "Optioneel: enquête-antwoorden en plantsuggesties, als je die instuurt.",
+            "Technische logs van onze hostingproviders (IP-adres, apparaattype, tijdstippen) om de dienst veilig te houden."
+          ]
+        },
+        {
+          "title": "4. Wat we nooit doen",
+          "items": [
+            "Geen advertenties in de app en geen advertentienetwerken.",
+            "Geen verkoop, verhuur of ruil van persoonsgegevens.",
+            "Geen profilering van kinderen en geen delen van gezinsgegevens met andere gezinnen.",
+            "Geen analytics- of tracking-SDK's van derden in de app."
+          ]
+        },
+        {
+          "title": "5. Waarom we gegevens mogen verwerken",
+          "intro": "Onder de AVG baseren we ons op:",
+          "items": [
+            "Overeenkomst (art. 6(1)(b)): om de app te leveren waarvoor je je hebt aangemeld, inclusief de gezinsprofielen die je aanmaakt.",
+            "Toestemming (art. 6(1)(a)): voor pushmeldingen en de optionele enquête. Je kunt die op elk moment intrekken in de app of in de instellingen van je telefoon.",
+            "Gerechtvaardigd belang (art. 6(1)(f)): om de dienst veilig te houden en om via de paar productgebeurtenissen hierboven te zien of de app werkt."
+          ],
+          "outro": "Kinderprofielen worden verwerkt in opdracht van de ouder, als onderdeel van het account van de ouder. Project Food verzamelt zelf geen gegevens van kinderen."
+        },
+        {
+          "title": "6. Meldingen",
+          "intro": "De app vraagt pas na je eerste log om toestemming voor pushmeldingen, en je mag nee zeggen.",
+          "items": [
+            "Essentieel: de etensvraag en de reeksbewaker. Standaard aan zodra je meldingen toestaat.",
+            "Tips & nieuws: kaart- en stempel-teasers en de zondagse herinnering. Standaard uit.",
+            "Zet elke soort uit via Account → Meldingen, of allemaal in de instellingen van je telefoon. Worden drie berichten op rij genegeerd, dan zijn we een week stil."
+          ],
+          "outro": "Berichten lopen via de pushdienst van Expo en de meldingsdiensten van Apple of Google, die het apparaat-token en de tekst van het bericht ontvangen."
+        },
+        {
+          "title": "7. Wie ons helpt de dienst te draaien",
+          "intro": "We gebruiken deze verwerkers, elk met een verwerkersovereenkomst of standaardcontractbepalingen:",
+          "items": [
+            "Supabase: database, inloggen en serverfuncties, gehost in de EU (Ierland).",
+            "Vercel: hosting van projectfood.dev (VS).",
+            "Expo (EAS): app-builds, updates en het doorgeven van pushmeldingen (VS).",
+            "Google: inloggen met Google en het afleveren van pushmeldingen op Android (Firebase Cloud Messaging).",
+            "Apple: inloggen met Apple en het afleveren van pushmeldingen op iOS.",
+            "Resend: inlogcodes en e-mail van het contactformulier (VS)."
+          ]
+        },
+        {
+          "title": "8. Bewaren en verwijderen",
+          "intro": "We bewaren je gegevens zolang je account bestaat. Je verwijdert ze zelf:",
+          "items": [
+            "In de app: Account → Account verwijderen.",
+            "Op het web: via de pagina hieronder, met een code die naar je e-mail wordt gestuurd."
+          ],
+          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, hapjes, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
+          "link": "deleteAccount",
+          "linkLabel": "Je account verwijderen via het web"
+        },
+        {
+          "title": "9. Jouw rechten",
+          "intro": "Onder de AVG kun je:",
+          "items": [
+            "Inzage: een kopie opvragen van de gegevens die we over je hebben (art. 15).",
+            "Rectificatie: onjuiste of onvolledige gegevens laten corrigeren (art. 16).",
+            "Wissing: je account en alles erin verwijderen (art. 17).",
+            "Overdraagbaarheid: je gegevens ontvangen in een gestructureerd, machineleesbaar formaat (art. 20).",
+            "Beperking en bezwaar: de verwerking van je gegevens beperken of er bezwaar tegen maken (art. 18, 21).",
+            "Toestemming intrekken: voor meldingen en de enquête, op elk moment."
+          ],
+          "outro": "Mail naar info@projectfood.dev. Vind je dat we verkeerd met je gegevens zijn omgegaan, dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."
+        },
+        {
+          "title": "10. Cookies",
+          "body": "De app gebruikt geen cookies. De website gebruikt één functionele cookie, pf_locale, die een jaar lang je taal onthoudt en geen toestemming vereist. De website gebruikt de privacyvriendelijke analytics van Vercel, die geen cookies plaatsen en je niet identificeren."
+        },
+        {
+          "title": "11. Beveiliging",
+          "body": "Gegevens reizen versleuteld (TLS) en worden opgeslagen met beveiliging op rijniveau, zodat elk huishouden alleen bij zijn eigen gegevens kan. Toegang tot de database is beperkt tot de oprichter. Geen enkel systeem is volmaakt veilig; raakt een datalek ooit jouw gegevens, dan informeren we jou en de toezichthouder zoals de wet voorschrijft."
+        },
+        {
+          "title": "12. Wijzigingen",
+          "body": "Verandert dit beleid, dan passen we de datum bovenaan aan. Bij belangrijke wijzigingen laten we het je in de app of per e-mail weten voordat ze ingaan."
+        },
+        {
+          "title": "13. Contact",
+          "body": "info@projectfood.dev"
+        }
+      ]
+    },
+    "deleteAccount": {
+      "title": "Je account verwijderen",
+      "intro": "Verwijderen wist je account, het huishouden dat je hebt aangemaakt met de profielen, hapjes, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Dit kan niet ongedaan worden gemaakt.",
+      "inAppTitle": "In de app",
+      "inAppBody": "Open Account → Account verwijderen. Dat is de snelste weg.",
+      "webTitle": "Op deze pagina",
+      "webBody": "Vul het e-mailadres van je account in. We sturen een code naar dat adres; vul die in en bevestig.",
+      "emailLabel": "E-mailadres",
+      "sendCode": "Code sturen",
+      "codeSent": "Als er een Project Food-account op dit adres bestaat, is er een code onderweg. Kijk in je inbox en je spam.",
+      "codeLabel": "Code uit de e-mail",
+      "verify": "Doorgaan",
+      "confirmTitle": "Laatste check",
+      "confirmBody": "Het account van {email} en alles erin verwijderen? Dit kan niet ongedaan worden gemaakt.",
+      "confirmButton": "Mijn account verwijderen",
+      "cancel": "Annuleren",
+      "doneTitle": "Klaar",
+      "doneBody": "Je account en je gegevens zijn weg. Bedankt dat je aan tafel zat.",
+      "errorCode": "Die code werkte niet. Vraag een nieuwe aan en probeer het opnieuw.",
+      "errorDelete": "Er ging iets mis. Probeer het opnieuw, of mail naar info@projectfood.dev vanaf het adres van je account.",
+      "fallback": "Geen toegang meer tot dat e-mailadres? Mail naar info@projectfood.dev, dan regelen we het binnen 30 dagen met de hand.",
+      "joined": "Ben je aangesloten bij een huishouden dat een andere ouder heeft aangemaakt, dan blijft dat huishouden bij die ouder."
     },
     "learn": {
       "nav": "Ontdekken",

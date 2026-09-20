@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import useSWR from 'swr'
 import { useTranslations, useLocale } from 'next-intl'
-import { ChevronRight, Bell, Pencil, ClipboardList } from 'lucide-react'
+import { ChevronRight, Pencil, ClipboardList } from 'lucide-react'
 import { fetchAccount } from '@/lib/fetchers'
 import { UsernameForm } from './UsernameForm'
 import { InstallButton } from './InstallButton'
@@ -47,8 +47,7 @@ export default function AccountPage() {
     )
   }
 
-  const { userId, name, email, username, notifSettings, unlockedBorders, activeBorder } = data
-  const notifOn = notifSettings.notificationsEnabled
+  const { userId, name, email, username, unlockedBorders, activeBorder } = data
   const availableBorders = ['default', ...(unlockedBorders ?? [])]
 
   return (
@@ -132,22 +131,6 @@ export default function AccountPage() {
       >
         <InstallButton />
       </div>
-
-      {/* Notifications nav row */}
-      <Link
-        href="/account/notifications"
-        className="rounded-[24px] bg-white flex items-center justify-between px-5 py-4 gap-3 active:opacity-70 transition-opacity"
-        style={{ boxShadow: '0 2px 6px rgba(31,27,22,0.04)' }}
-      >
-        <div className="flex items-center gap-3 min-w-0">
-          <Bell size={18} className="text-[#1F1B16] shrink-0" />
-          <span className="text-[15px] font-medium text-[#1F1B16]">{t('notifications')}</span>
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="text-[13px] text-[#A39B91]">{notifOn ? t('on') : t('off')}</span>
-          <ChevronRight size={16} className="text-[#A39B91]" />
-        </div>
-      </Link>
 
       {/* Survey nav row */}
       <Link

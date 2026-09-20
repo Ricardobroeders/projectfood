@@ -1,7 +1,18 @@
 import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
+import Link from 'next/link'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
-import { getAlternates } from '@/lib/marketing'
+import { getAlternates, getLocalizedHref } from '@/lib/marketing'
+
+/** One numbered section of the policy; the copy lives in messages/<locale>.json under marketing.privacy.sections. */
+type Section = {
+  title: string
+  body?: string
+  intro?: string
+  items?: string[]
+  outro?: string
+  link?: 'deleteAccount'
+  linkLabel?: string
+}
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
@@ -17,27 +28,12 @@ export async function generateMetadata({
   const { canonical, languages } = getAlternates('/privacy', locale)
   return {
     title: t('title'),
+    description: t('intro'),
     alternates: { canonical, languages },
   }
 }
 
-function Section({ title, children, last = false }: { title: string; children: ReactNode; last?: boolean }) {
-  return (
-    <div className={last ? '' : 'mb-10'}>
-      <h2 className="text-xl font-extrabold text-[#1F1B16] mb-3">{title}</h2>
-      {children}
-    </div>
-  )
-}
-
-function BulletItem({ children }: { children: ReactNode }) {
-  return (
-    <li className="flex gap-3 text-[17px] text-[#6B645C] leading-relaxed">
-      <span className="text-[#F5C518] font-bold shrink-0 mt-0.5">•</span>
-      <span>{children}</span>
-    </li>
-  )
-}
+const para = 'text-[17px] text-[#6B645C] leading-relaxed'
 
 export default async function PrivacyPage({
   params,
@@ -47,6 +43,7 @@ export default async function PrivacyPage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'marketing.privacy' })
+  const sections = t.raw('sections') as Section[]
 
   return (
     <>
@@ -61,74 +58,36 @@ export default async function PrivacyPage({
 
       <section className="py-16 px-5">
         <div className="max-w-2xl mx-auto">
-          <p className="text-[17px] text-[#6B645C] leading-relaxed mb-12">{t('intro')}</p>
+          <p className={`${para} mb-12`}>{t('intro')}</p>
 
-          <Section title={t('s1Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s1Body')}</p>
-          </Section>
-
-          <Section title={t('s2Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed mb-3">{t('s2Intro')}</p>
-            <ul className="space-y-2">
-              <BulletItem>{t('s2Item1')}</BulletItem>
-              <BulletItem>{t('s2Item2')}</BulletItem>
-              <BulletItem>{t('s2Item3')}</BulletItem>
-              <BulletItem>{t('s2Item4')}</BulletItem>
-            </ul>
-          </Section>
-
-          <Section title={t('s3Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed mb-3">{t('s3Intro')}</p>
-            <ul className="space-y-2">
-              <BulletItem>{t('s3Item1')}</BulletItem>
-              <BulletItem>{t('s3Item2')}</BulletItem>
-            </ul>
-          </Section>
-
-          <Section title={t('s4Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed mb-3">{t('s4Intro')}</p>
-            <ul className="space-y-2">
-              <BulletItem>{t('s4Item1')}</BulletItem>
-              <BulletItem>{t('s4Item2')}</BulletItem>
-              <BulletItem>{t('s4Item3')}</BulletItem>
-            </ul>
-          </Section>
-
-          <Section title={t('s5Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s5Body')}</p>
-          </Section>
-
-          <Section title={t('s6Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed mb-3">{t('s6Intro')}</p>
-            <ul className="space-y-2 mb-4">
-              <BulletItem>{t('s6Item1')}</BulletItem>
-              <BulletItem>{t('s6Item2')}</BulletItem>
-              <BulletItem>{t('s6Item3')}</BulletItem>
-              <BulletItem>{t('s6Item4')}</BulletItem>
-              <BulletItem>{t('s6Item5')}</BulletItem>
-            </ul>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s6Contact')}</p>
-          </Section>
-
-          <Section title={t('s7Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s7Body')}</p>
-          </Section>
-
-          <Section title={t('s8Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s8Body')}</p>
-          </Section>
-
-          <Section title={t('s9Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s9Body')}</p>
-          </Section>
-
-          <Section title={t('s10Title')}>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s10Body')}</p>
-          </Section>
-
-          <Section title={t('s11Title')} last>
-            <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('s11Body')}</p>
-          </Section>
+          {sections.map((s, i) => (
+            <div key={s.title} className={i === sections.length - 1 ? '' : 'mb-10'}>
+              <h2 className="text-xl font-extrabold text-[#1F1B16] mb-3">{s.title}</h2>
+              {s.body && <p className={para}>{s.body}</p>}
+              {s.intro && <p className={`${para} mb-3`}>{s.intro}</p>}
+              {s.items && (
+                <ul className="space-y-2">
+                  {s.items.map((item) => (
+                    <li key={item} className={`flex gap-3 ${para}`}>
+                      <span className="text-[#F5C518] font-bold shrink-0 mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {s.outro && <p className={`${para} mt-4`}>{s.outro}</p>}
+              {s.link === 'deleteAccount' && s.linkLabel && (
+                <p className="mt-4">
+                  <Link
+                    href={getLocalizedHref('/delete-account', locale)}
+                    className="text-[17px] font-semibold text-[#1F1B16] underline decoration-[#F5C518] decoration-2 underline-offset-4 hover:decoration-[#F59A0E]"
+                  >
+                    {s.linkLabel}
+                  </Link>
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </>

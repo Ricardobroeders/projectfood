@@ -63,23 +63,6 @@
     "tabGlobal": "Globale",
     "emptyFriends": "Aggiungi amici dalla scheda Social per vedere come ti confronti"
   },
-  "notifications": {
-    "settingsTitle": "Notifiche",
-    "masterToggle": "Attiva notifiche",
-    "types": {
-      "dailyReminder": { "label": "Promemoria giornaliero", "description": "Avviso se non hai ancora registrato oggi" },
-      "streakRescue": { "label": "Salva la serie", "description": "Salva la tua serie prima di mezzanotte" },
-      "weeklyNudge": { "label": "Promemoria domenicale", "description": "Ultima possibilità per raggiungere 30 piante" }
-    },
-    "iosFirst": "Aggiungi Project Food alla tua schermata Home prima di attivare le notifiche.",
-    "permissionDenied": "Notifiche bloccate. Abilitale nelle impostazioni del browser.",
-    "permissionPrompt": {
-      "title": "Rimani in carreggiata con promemoria gentili",
-      "body": "Ricevi un promemoria giornaliero per registrare le tue piante e non perdere mai una serie.",
-      "allow": "Attiva notifiche",
-      "notNow": "Non ora"
-    }
-  },
   "account": {
     "settingsSection": "Impostazioni",
     "accountSection": "Account",
@@ -87,9 +70,6 @@
     "chooseName": "Scegli un nome",
     "weeklyGoal": "Obiettivo settimanale",
     "weeklyGoalValue": "30 piante",
-    "notifications": "Notifiche",
-    "on": "Attivo",
-    "off": "Disattivo",
     "comingSoon": "Presto disponibile",
     "installApp": "Installa l'app",
     "addToHomeScreen": "Aggiungi alla schermata Home",
@@ -266,45 +246,141 @@
     },
     "privacy": {
       "title": "Informativa sulla privacy",
-      "effectiveDate": "Data di entrata in vigore: 8 maggio 2025",
-      "intro": "Questa informativa sulla privacy spiega come Project Food raccoglie, utilizza e protegge i tuoi dati personali. Si applica a tutti gli utenti dell'app e del sito web di Project Food.",
-      "s1Title": "1. Chi siamo",
-      "s1Body": "Project Food è il titolare del trattamento responsabile dei tuoi dati personali. Puoi contattarci tramite la nostra community Discord.",
-      "s2Title": "2. Dati che raccogliamo",
-      "s2Intro": "Quando utilizzi Project Food, raccogliamo i seguenti dati:",
-      "s2Item1": "Nome e indirizzo email, forniti da Google al momento dell'accesso tramite Google OAuth",
-      "s2Item2": "I tuoi log delle piante: le piante che registri e quando",
-      "s2Item3": "La tua preferenza linguistica, memorizzata in un cookie funzionale chiamato pf_locale",
-      "s2Item4": "Log tecnici standard generati dai nostri provider di hosting e database",
-      "s3Title": "3. Base giuridica del trattamento",
-      "s3Intro": "Trattiamo i tuoi dati sulla base dei seguenti presupposti ai sensi dell'articolo 6 del GDPR:",
-      "s3Item1": "Esecuzione del contratto (art. 6(1)(b)) — per fornire il servizio per cui ti sei registrato",
-      "s3Item2": "Interesse legittimo (art. 6(1)(f)) — per garantire la sicurezza e la stabilità della piattaforma",
-      "s4Title": "4. Responsabili del trattamento",
-      "s4Intro": "Utilizziamo i seguenti sub-responsabili del trattamento per gestire il servizio:",
-      "s4Item1": "Supabase — database e autenticazione (UE/USA, con accordo sul trattamento dei dati in vigore)",
-      "s4Item2": "Vercel — hosting e rete edge (USA, con clausole contrattuali standard in vigore)",
-      "s4Item3": "Google — provider OAuth per l'accesso",
-      "s5Title": "5. Cookie",
-      "s5Body": "Project Food utilizza un solo cookie: pf_locale, che memorizza la tua preferenza linguistica per un massimo di un anno. Si tratta di un cookie strettamente funzionale: non ti traccia e non richiede il tuo consenso ai sensi del GDPR. Se in futuro aggiungeremo cookie analitici o pubblicitari, aggiorneremo questa informativa e richiederemo il tuo consenso.",
-      "s6Title": "6. I tuoi diritti",
-      "s6Intro": "Ai sensi degli articoli 15–20 del GDPR, hai il diritto di:",
-      "s6Item1": "Accesso — richiedere una copia dei dati che conserviamo su di te (art. 15)",
-      "s6Item2": "Rettifica — correggere dati inesatti o incompleti (art. 16)",
-      "s6Item3": "Cancellazione — richiedere l'eliminazione del tuo account e di tutti i dati associati (art. 17)",
-      "s6Item4": "Portabilità — ricevere i tuoi dati in formato strutturato e leggibile da dispositivi automatici (art. 20)",
-      "s6Item5": "Limitazione e opposizione — limitare o opporsi al trattamento dei tuoi dati (artt. 18, 21)",
-      "s6Contact": "Per esercitare uno qualsiasi di questi diritti, contattaci tramite la nostra community Discord.",
-      "s7Title": "7. Conservazione dei dati",
-      "s7Body": "Conserviamo i tuoi dati per tutto il tempo in cui il tuo account è attivo. A seguito di una richiesta di eliminazione dell'account, i tuoi dati personali vengono eliminati definitivamente entro 30 giorni.",
-      "s8Title": "8. Nessuna vendita di dati",
-      "s8Body": "Non vendiamo, affittiamo né cediamo mai i tuoi dati personali a terzi.",
-      "s9Title": "9. Autorità di controllo",
-      "s9Body": "Se ritieni che i tuoi dati non siano stati gestiti correttamente, hai il diritto di presentare un reclamo all'Autoriteit Persoonsgegevens (Autorità olandese per la protezione dei dati) all'indirizzo www.autoriteitpersoonsgegevens.nl.",
-      "s10Title": "10. Modifiche a questa informativa",
-      "s10Body": "Potremmo aggiornare questa informativa sulla privacy di tanto in tanto. In caso di modifiche significative, ti avviseremo via email prima che entrino in vigore.",
-      "s11Title": "11. Contatti",
-      "s11Body": "Per domande sulla privacy, unisciti alla nostra community Discord."
+      "effectiveDate": "Data di entrata in vigore: 20 settembre 2026",
+      "intro": "Project Food è un'app per famiglie. Un genitore registra quali piante la famiglia ha assaggiato a cena, e i bambini collezionano carte e timbri. Questa informativa spiega cosa conserviamo, perché, chi ci aiuta a far funzionare il servizio e come cancellare tutto. Vale per l'app Project Food e per projectfood.dev.",
+      "sections": [
+        {
+          "title": "1. Chi siamo",
+          "body": "Project Food è il titolare del trattamento dei dati descritti qui ed è gestito dai Paesi Bassi. Per qualsiasi questione sulla privacy scrivi a info@projectfood.dev."
+        },
+        {
+          "title": "2. Fatta per le famiglie, usata dai genitori",
+          "intro": "Solo gli adulti creano un account e accedono. I bambini non accedono mai, non ricevono mai email o notifiche da noi e non possono essere contattati tramite l'app.",
+          "items": [
+            "Un genitore aggiunge ogni membro della famiglia come profilo: un nome o soprannome e se è un bambino o un adulto. Non chiediamo altro. Niente date di nascita, cognomi o foto.",
+            "Il genitore decide cosa inserire, può rinominare o rimuovere un profilo in qualsiasi momento e cancella tutto eliminando l'account.",
+            "I profili dei bambini non vengono mai usati per pubblicità o profilazione e non vengono mai condivisi con altre famiglie."
+          ]
+        },
+        {
+          "title": "3. Cosa conserviamo",
+          "intro": "Quando usi l'app conserviamo:",
+          "items": [
+            "Account: il tuo indirizzo email e, se accedi con Google o Apple, il tuo nome e la tua immagine del profilo. I codici di accesso arrivano via email.",
+            "Famiglia: il nome della famiglia, l'ora di cena, il fuso orario e la lingua.",
+            "Membri della famiglia: nome o soprannome, bambino o adulto, e un avatar scelto dal nostro set.",
+            "Assaggi: quali piante ogni membro ha assaggiato in quale giorno, e cosa sblocca (carte, timbri, la serie di famiglia).",
+            "Notifiche: se hai consentito le notifiche push, le tue preferenze, un token push del dispositivo e, per ogni messaggio, se è stato consegnato, aperto e seguito da una registrazione entro tre ore. Ci serve per smettere di insistere con una famiglia che ci ignora.",
+            "Eventi di prodotto: un piccolo insieme di eventi nell'app, come una pianta registrata, l'onboarding completato o un sondaggio inviato, collegati al tuo account. Nessun identificatore pubblicitario, nessun tracciamento tra app.",
+            "Facoltativo: risposte al sondaggio e suggerimenti di piante, se li invii.",
+            "Log tecnici dei nostri provider di hosting (indirizzo IP, tipo di dispositivo, orari) per mantenere sicuro il servizio."
+          ]
+        },
+        {
+          "title": "4. Cosa non facciamo mai",
+          "items": [
+            "Nessuna pubblicità nell'app e nessuna rete pubblicitaria.",
+            "Nessuna vendita, affitto o scambio di dati personali.",
+            "Nessuna profilazione dei bambini e nessuna condivisione dei dati di famiglia con altre famiglie.",
+            "Nessun SDK di analisi o tracciamento di terze parti nell'app."
+          ]
+        },
+        {
+          "title": "5. Perché possiamo trattarli",
+          "intro": "Ai sensi del GDPR ci basiamo su:",
+          "items": [
+            "Contratto (art. 6(1)(b)): per fornire l'app a cui ti sei iscritto, compresi i profili di famiglia che crei.",
+            "Consenso (art. 6(1)(a)): per le notifiche push e il sondaggio facoltativo. Puoi revocarlo in qualsiasi momento nell'app o nelle impostazioni del telefono.",
+            "Interesse legittimo (art. 6(1)(f)): per mantenere sicuro il servizio e per capire, tramite i pochi eventi di prodotto sopra, se l'app funziona."
+          ],
+          "outro": "I profili dei bambini sono trattati su istruzione del genitore, come parte dell'account del genitore. Project Food non raccoglie dati dai bambini."
+        },
+        {
+          "title": "6. Notifiche",
+          "intro": "L'app chiede il permesso per le notifiche push solo dopo la tua prima registrazione, e puoi dire di no.",
+          "items": [
+            "Essenziali: la domanda della cena e il guardiano della serie. Attive di default una volta consentite le notifiche.",
+            "Consigli e novità: anteprime di carte e timbri e il promemoria della domenica. Disattive di default.",
+            "Disattiva ogni tipo in Account → Notifiche, o tutte nelle impostazioni del telefono. Se tre messaggi di fila vengono ignorati, restiamo in silenzio per una settimana."
+          ],
+          "outro": "I messaggi passano dal servizio push di Expo e dai servizi di notifica di Apple o Google, che ricevono il token del dispositivo e il testo del messaggio."
+        },
+        {
+          "title": "7. Chi ci aiuta a far funzionare il servizio",
+          "intro": "Usiamo questi responsabili del trattamento, ciascuno con un accordo sul trattamento dei dati o clausole contrattuali standard:",
+          "items": [
+            "Supabase: database, accesso e funzioni server, ospitati nell'UE (Irlanda).",
+            "Vercel: hosting di projectfood.dev (USA).",
+            "Expo (EAS): build dell'app, aggiornamenti e inoltro delle notifiche push (USA).",
+            "Google: accesso con Google e consegna delle notifiche push su Android (Firebase Cloud Messaging).",
+            "Apple: accesso con Apple e consegna delle notifiche push su iOS.",
+            "Resend: codici di accesso ed email del modulo di contatto (USA)."
+          ]
+        },
+        {
+          "title": "8. Conservazione e cancellazione",
+          "intro": "Conserviamo i tuoi dati finché esiste il tuo account. Li cancelli tu stesso:",
+          "items": [
+            "Nell'app: Account → Elimina account.",
+            "Sul web: dalla pagina linkata qui sotto, con un codice inviato alla tua email."
+          ],
+          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, assaggi, carte e timbri, la cronologia delle notifiche e i token push. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
+          "link": "deleteAccount",
+          "linkLabel": "Elimina il tuo account dal web"
+        },
+        {
+          "title": "9. I tuoi diritti",
+          "intro": "Ai sensi del GDPR puoi:",
+          "items": [
+            "Accesso: chiedere una copia dei dati che conserviamo su di te (art. 15).",
+            "Rettifica: correggere dati inesatti o incompleti (art. 16).",
+            "Cancellazione: eliminare il tuo account e tutto ciò che contiene (art. 17).",
+            "Portabilità: ricevere i tuoi dati in un formato strutturato e leggibile da una macchina (art. 20).",
+            "Limitazione e opposizione: limitare o opporti al trattamento dei tuoi dati (artt. 18, 21).",
+            "Revoca del consenso: per le notifiche e il sondaggio, in qualsiasi momento."
+          ],
+          "outro": "Scrivi a info@projectfood.dev. Se ritieni che abbiamo gestito male i tuoi dati, puoi presentare un reclamo all'autorità olandese per la protezione dei dati (Autoriteit Persoonsgegevens, autoriteitpersoonsgegevens.nl)."
+        },
+        {
+          "title": "10. Cookie",
+          "body": "L'app non usa cookie. Il sito usa un solo cookie funzionale, pf_locale, che ricorda la tua lingua per un anno e non richiede consenso. Il sito usa le analisi rispettose della privacy di Vercel, che non impostano cookie e non ti identificano."
+        },
+        {
+          "title": "11. Sicurezza",
+          "body": "I dati viaggiano cifrati (TLS) e sono conservati con sicurezza a livello di riga, così ogni famiglia raggiunge solo i propri dati. L'accesso al database è limitato al fondatore. Nessun sistema è perfettamente sicuro; se una violazione dovesse mai riguardare i tuoi dati, lo comunicheremo a te e all'autorità come richiede la legge."
+        },
+        {
+          "title": "12. Modifiche",
+          "body": "Quando questa informativa cambia aggiorniamo la data in alto. Per modifiche importanti te lo diciamo nell'app o via email prima che entrino in vigore."
+        },
+        {
+          "title": "13. Contatti",
+          "body": "info@projectfood.dev"
+        }
+      ]
+    },
+    "deleteAccount": {
+      "title": "Elimina il tuo account",
+      "intro": "L'eliminazione rimuove il tuo account, la famiglia che hai creato con i suoi profili, assaggi, carte e timbri, la cronologia delle notifiche e i token push. Non si può annullare.",
+      "inAppTitle": "Nell'app",
+      "inAppBody": "Apri Account → Elimina account. È la via più rapida.",
+      "webTitle": "Da questa pagina",
+      "webBody": "Inserisci l'indirizzo email del tuo account. Inviamo un codice a quell'indirizzo; inseriscilo, poi conferma.",
+      "emailLabel": "Indirizzo email",
+      "sendCode": "Invia il codice",
+      "codeSent": "Se questo indirizzo ha un account Project Food, un codice è in arrivo. Controlla la posta in arrivo e lo spam.",
+      "codeLabel": "Codice ricevuto via email",
+      "verify": "Continua",
+      "confirmTitle": "Ultimo controllo",
+      "confirmBody": "Eliminare l'account di {email} e tutto ciò che contiene? Non si può annullare.",
+      "confirmButton": "Elimina il mio account",
+      "cancel": "Annulla",
+      "doneTitle": "Fatto",
+      "doneBody": "Il tuo account e i tuoi dati non ci sono più. Grazie per essere stato a tavola con noi.",
+      "errorCode": "Quel codice non ha funzionato. Richiedine uno nuovo e riprova.",
+      "errorDelete": "Qualcosa è andato storto. Riprova, oppure scrivi a info@projectfood.dev dall'indirizzo del tuo account.",
+      "fallback": "Non hai più accesso a quell'email? Scrivi a info@projectfood.dev e ce ne occupiamo a mano entro 30 giorni.",
+      "joined": "Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia resta a lui."
     },
     "learn": {
       "nav": "Scopri",

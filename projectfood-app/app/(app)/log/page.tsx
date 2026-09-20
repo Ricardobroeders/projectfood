@@ -12,7 +12,6 @@ import { supabaseImageUrl } from '@/lib/supabase-image'
 import { Search, Check, Send } from 'lucide-react'
 import Image from 'next/image'
 import { GoalModal } from './GoalModal'
-import { NotificationPermissionModal } from '@/components/NotificationPermissionModal'
 
 type Plant = { id: string; name: string; aliases: string[]; category: Category; image_url: string | null; is_superfood: boolean }
 type Toast = { id: string; name: string }
@@ -43,7 +42,6 @@ export default function LogPage() {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
   const [toast, setToast] = useState<Toast | null>(null)
   const [goalModal, setGoalModal] = useState(false)
-  const [showNotifNudge, setShowNotifNudge] = useState(false)
   const [loggedToday, setLoggedToday] = useState<Set<string>>(new Set())
   const [isPending, startTransition] = useTransition()
   const debouncedQuery = useDebounce(query, 300)
@@ -145,33 +143,6 @@ export default function LogPage() {
           setGoalModal(true)
         }
       }
-
-      if (
-        count >= 20 &&
-        'Notification' in window &&
-        Notification.permission !== 'granted' &&
-        !localStorage.getItem('pf_notif_nudged')
-      ) {
-        localStorage.setItem('pf_notif_nudged', '1')
-        setShowNotifNudge(true)
-      }
-    })
-  }
-
-  async function handleNotifNudgeAllow() {
-    setShowNotifNudge(false)
-    const result = await Notification.requestPermission()
-    if (result !== 'granted') return
-    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return
-    const reg = await navigator.serviceWorker.ready
-    const sub = await reg.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-    })
-    await fetch('/api/push/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(sub.toJSON()),
     })
   }
 
@@ -382,12 +353,6 @@ export default function LogPage() {
       </div>
 
       <GoalModal open={goalModal} onClose={() => setGoalModal(false)} />
-      {showNotifNudge && (
-        <NotificationPermissionModal
-          onAllow={handleNotifNudgeAllow}
-          onDismiss={() => setShowNotifNudge(false)}
-        />
-      )}
 
       {/* Toast */}
       {toast && (

@@ -7,9 +7,9 @@ const LOCALE_COOKIE = 'pf_locale'
 
 // External localized slug → internal page segment, keyed by locale
 const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
-  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn' },
-  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn' },
-  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn' },
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn', 'delete-account': 'delete-account' },
+  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn', 'account-verwijderen': 'delete-account' },
+  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn', 'elimina-account': 'delete-account' },
 }
 
 function detectLocale(request: NextRequest): Locale {
@@ -88,7 +88,7 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user && pathname !== '/login' && !pathname.startsWith('/auth') && !pathname.startsWith('/api/cron')) {
+  if (!user && pathname !== '/login' && !pathname.startsWith('/auth')) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)

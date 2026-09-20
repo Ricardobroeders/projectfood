@@ -9,6 +9,7 @@ export const routing = defineRouting({
     '/contact': { en: '/contact', nl: '/contact',     it: '/contatto'  },
     '/terms':   { en: '/terms',   nl: '/voorwaarden', it: '/termini'   },
     '/privacy': { en: '/privacy', nl: '/privacy',     it: '/privacy'   },
+    '/delete-account': { en: '/delete-account', nl: '/account-verwijderen', it: '/elimina-account' },
     '/recipes': { en: '/recipes', nl: '/recepten',    it: '/ricette'   },
     '/learn':   { en: '/learn',   nl: '/leer',        it: '/impara'    },
   },

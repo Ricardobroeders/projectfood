@@ -152,7 +152,7 @@ export async function fetchAccount([, locale]: [string, string]) {
   ] = await Promise.all([
     supabase
       .from('user_settings')
-      .select('username, locale, notifications_enabled, notif_daily_reminder, notif_streak_rescue, notif_weekly_nudge, notif_reengagement, timezone, unlocked_borders, active_border, custom_avatar_image, custom_avatar_bg')
+      .select('username, locale, unlocked_borders, active_border, custom_avatar_image, custom_avatar_bg')
       .eq('user_id', user.id)
       .single(),
     supabase.from('survey_questions').select('id', { count: 'exact', head: true }).eq('is_active', true),
@@ -172,14 +172,6 @@ export async function fetchAccount([, locale]: [string, string]) {
     currentLocale: (settings?.locale ?? locale) as 'en' | 'nl' | 'it',
     unlockedBorders: (settings?.unlocked_borders ?? []) as string[],
     activeBorder: (settings?.active_border ?? 'default') as string,
-    notifSettings: {
-      notificationsEnabled: settings?.notifications_enabled ?? false,
-      notifDailyReminder: settings?.notif_daily_reminder ?? true,
-      notifStreakRescue: settings?.notif_streak_rescue ?? true,
-      notifWeeklyNudge: settings?.notif_weekly_nudge ?? true,
-      notifReengagement: settings?.notif_reengagement ?? true,
-      timezone: settings?.timezone ?? 'Europe/Amsterdam',
-    },
     surveyProgress: {
       answered: (completedResponses ?? []).length,
       total: totalActive ?? 0,
