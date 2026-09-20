@@ -323,7 +323,7 @@
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
     "deleteTitle": "Delete your account?",
-    "deleteBody": "This removes your family, all tastes and stamps for good. There is no undo.",
+    "deleteBody": "This removes your family, its profiles, cards and stamps for good. Your tastes stay only as anonymous statistics, linked to no one. There is no undo.",
     "deleteCta": "Delete everything",
     "version": "Version {v}"
   },

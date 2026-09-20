@@ -231,3 +231,11 @@ streak_rescue, weekly_nudge, inactivity_reminder, May to 19 September 2026) into
 (the flag now means "an Expo push token is registered"). `plant_logs` is untouched: the plant
 history stays shared between the PWA and the app. `notification_log` now only ever holds the new
 kinds. Item 7 of "Next to pick up" updated.
+
+## [2026-09-20] build | Tastes outlive the account
+Ricardo wants the plant history kept for the KPIs after an account is deleted, with nothing else.
+Decided and built: [[decision-2026-09-20-tastes-outlive-the-account]]. Migration 0015 drops the
+three cascading links on `plant_logs` (user, household, member); after a deletion the row's ids point
+at nothing and only the service role can read the rows. The `delete-account` function comment, the
+privacy policy (section 8), the web delete page and the in-app warning now say that tastes stay as
+anonymous statistics (en/nl/it). Row 14 and the index updated.

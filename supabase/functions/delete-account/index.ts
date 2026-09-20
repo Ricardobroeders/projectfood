@@ -1,5 +1,8 @@
-// Deletes the calling user's account. Required by both app stores. Households the user created
-// go with them through the FK cascade (members, logs, unlocks); a household they merely joined stays.
+// Deletes the calling user's account. Required by both app stores. Households the user created go
+// with them through the FK cascade (members, unlocks, nudges, settings, push tokens, notification
+// log, events); a household they merely joined stays. The taste rows in plant_logs stay too, as
+// anonymous statistics: their ids point at nothing once this runs (migration 0015, privacy policy
+// section 8).
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 

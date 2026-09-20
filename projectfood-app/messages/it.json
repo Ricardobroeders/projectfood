@@ -324,7 +324,7 @@
             "Nell'app: Account → Elimina account.",
             "Sul web: dalla pagina linkata qui sotto, con un codice inviato alla tua email."
           ],
-          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, assaggi, carte e timbri, la cronologia delle notifiche e i token push. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
+          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, carte e timbri, la cronologia delle notifiche e i token push. Gli assaggi restano come statistiche anonime: quale pianta in quale giorno, sotto id casuali che non rimandano più a nessuna persona o famiglia. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
           "link": "deleteAccount",
           "linkLabel": "Elimina il tuo account dal web"
         },
@@ -361,7 +361,7 @@
     },
     "deleteAccount": {
       "title": "Elimina il tuo account",
-      "intro": "L'eliminazione rimuove il tuo account, la famiglia che hai creato con i suoi profili, assaggi, carte e timbri, la cronologia delle notifiche e i token push. Non si può annullare.",
+      "intro": "L'eliminazione rimuove il tuo account, la famiglia che hai creato con i suoi profili, carte e timbri, la cronologia delle notifiche e i token push. I tuoi assaggi restano solo come statistiche anonime: quale pianta in quale giorno, senza alcun collegamento a nessuno. Non si può annullare.",
       "inAppTitle": "Nell'app",
       "inAppBody": "Apri Account → Elimina account. È la via più rapida.",
       "webTitle": "Da questa pagina",

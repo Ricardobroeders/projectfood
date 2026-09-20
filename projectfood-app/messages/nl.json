@@ -324,7 +324,7 @@
             "In de app: Account → Account verwijderen.",
             "Op het web: via de pagina hieronder, met een code die naar je e-mail wordt gestuurd."
           ],
-          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, hapjes, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
+          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. De hapjes zelf blijven als anonieme statistiek bewaard: welke plant op welke dag, onder willekeurige id's die aan geen persoon of gezin meer te koppelen zijn. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
           "link": "deleteAccount",
           "linkLabel": "Je account verwijderen via het web"
         },
@@ -361,7 +361,7 @@
     },
     "deleteAccount": {
       "title": "Je account verwijderen",
-      "intro": "Verwijderen wist je account, het huishouden dat je hebt aangemaakt met de profielen, hapjes, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Dit kan niet ongedaan worden gemaakt.",
+      "intro": "Verwijderen wist je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Je hapjes blijven alleen als anonieme statistiek bewaard: welke plant op welke dag, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
       "inAppTitle": "In de app",
       "inAppBody": "Open Account → Account verwijderen. Dat is de snelste weg.",
       "webTitle": "Op deze pagina",

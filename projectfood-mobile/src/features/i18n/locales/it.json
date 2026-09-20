@@ -323,7 +323,7 @@
     "signOut": "Disconnetti",
     "deleteAccount": "Elimina account",
     "deleteTitle": "Eliminare il tuo account?",
-    "deleteBody": "Questo rimuove per sempre la tua famiglia, tutti gli assaggi e i timbri. Non si può annullare.",
+    "deleteBody": "Questo rimuove per sempre la tua famiglia, i profili, le carte e i timbri. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Non si può annullare.",
     "deleteCta": "Elimina tutto",
     "version": "Versione {v}"
   },

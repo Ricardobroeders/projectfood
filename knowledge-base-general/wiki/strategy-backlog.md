@@ -116,7 +116,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
 | 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled |
-| 14 | Privacy & kids' data | drafted | Privacy page rewritten 2026-09-20 for the family app (kids' profiles, what is stored, processors, notifications, deletion, rights) in en/nl/it at projectfood.dev/{locale}/privacy, plus `/delete-account` with an email-code web flow; Ricardo reads the controller wording once before Play review; de/fr with those listings |
+| 14 | Privacy & kids' data | drafted | Privacy page rewritten 2026-09-20 for the family app (kids' profiles, what is stored, processors, notifications, deletion, rights) in en/nl/it at projectfood.dev/{locale}/privacy, plus `/delete-account` with an email-code web flow; tastes outlive the account as anonymous rows ([[decision-2026-09-20-tastes-outlive-the-account]]); Ricardo reads the controller wording once before Play review; de/fr with those listings |
 | 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon set generated 2026-09-20 from the Figma export (`scripts/build-icons.mjs`; Play 512 in `assets/brand/store`); still needed: feature graphic 1024×500, screenshots, a drawn monochrome glyph if the auto silhouette disappoints |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
 | 17 | Friends & social layer | open | Ricardo wants it back in scope 2026-09-20 (friend list, lookup, other people's profiles, a Duolingo-style friend streak). Personal streak first, friend streak as a later layer (Ricardo, 2026-09-20). Decide the social unit — parent account, household or kid member — and the kids' safeguarding line before anything is designed (added by Ricardo) |
@@ -287,6 +287,9 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Open:** the controller wording (the page names Project Food, run from the Netherlands, with
   info@projectfood.dev; no legal entity named); de/fr copies when those listings are scheduled;
   Apple and Google family policies while staying out of the Kids Category.
+- **Decided 2026-09-20:** tastes outlive the account as anonymous rows
+  ([[decision-2026-09-20-tastes-outlive-the-account]], migration 0015); policy section 8 and both
+  deletion screens say so.
 - **Next:** Ricardo reads the page once; the URL goes into the Play Data safety form when the
   listing exists. _(status 2026-09-20)_
 

@@ -324,7 +324,7 @@
             "In the app: Account → Delete account.",
             "On the web: the delete-account page linked below, with a code sent to your email."
           ],
-          "outro": "Deleting removes your account, the household you created with its member profiles, tastes, cards and stamps, notification history and push tokens, immediately. Database backups expire within 30 days. If you joined a household created by another parent, that household and its tastes stay with them; only your account and sign-in go.",
+          "outro": "Deleting removes your account, the household you created with its member profiles, cards and stamps, notification history and push tokens, immediately. The tastes themselves stay as anonymous statistics: which plant on which day, under random ids that no longer link to any person or family. Database backups expire within 30 days. If you joined a household created by another parent, that household and its tastes stay with them; only your account and sign-in go.",
           "link": "deleteAccount",
           "linkLabel": "Delete your account on the web"
         },
@@ -361,7 +361,7 @@
     },
     "deleteAccount": {
       "title": "Delete your account",
-      "intro": "Deleting removes your account, the household you created with its member profiles, tastes, cards and stamps, notification history and push tokens. It cannot be undone.",
+      "intro": "Deleting removes your account, the household you created with its member profiles, cards and stamps, notification history and push tokens. Your tastes stay only as anonymous statistics: which plant on which day, linked to no one. It cannot be undone.",
       "inAppTitle": "In the app",
       "inAppBody": "Open Account → Delete account. That is the quickest way.",
       "webTitle": "On this page",

@@ -323,7 +323,7 @@
     "signOut": "Uitloggen",
     "deleteAccount": "Account verwijderen",
     "deleteTitle": "Je account verwijderen?",
-    "deleteBody": "Dit verwijdert je gezin, alle geproefde planten en stempels voorgoed. Dit kan niet ongedaan worden gemaakt.",
+    "deleteBody": "Dit verwijdert je gezin, de profielen, kaarten en stempels voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
     "deleteCta": "Alles verwijderen",
     "version": "Versie {v}"
   },
