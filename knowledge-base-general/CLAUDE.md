@@ -144,8 +144,8 @@ voice, business model, market, KPIs, …). Rules:
 2. When a topic is decided, write a `decision-` page, link it from the row, and move the row to
    the Decided table. Never delete rows.
 3. New undecided topics get a row immediately, marked with who added them.
-4. Linear is for execution; this page is for thinking. Link Linear issues from rows where they
-   exist (e.g. PF-54), do not duplicate tasks.
+4. There is no external tracker (Linear was dropped on 2026-09-20). Execution steps live in
+   "Next to pick up"; a row's "Next" names the step, it does not duplicate it.
 5. "Next to pick up" at the top is the one to-do list, in three parts: Ricardo's decisions and
    accounts, Claude's next build steps (ordered), brainstorms to hold. Every line has a known
    next action. Keep it to one screen; renumber when inserting.

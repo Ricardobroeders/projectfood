@@ -2,12 +2,9 @@
 
 ## Task management
 
-Tasks are tracked in Linear under the **Project Food** team (key: `PF`).
-
-- When starting a session or picking up new work, check Linear for current issues
-- Check **In Progress** first (resume existing work), then **Todo** (pick up next item)
-- You can reference an issue by number (e.g. `PF-5`) or say "pick up the next todo"
-- Do not maintain a local to-do file — Linear is the single source of truth
+The to-do list is "Next to pick up" in `knowledge-base-general/wiki/strategy-backlog.md`
+(see the repo-root `CLAUDE.md`). There is no external tracker since 2026-09-20. This app is the
+marketing site for projectfood.dev plus the legacy PWA; new product work goes to `projectfood-mobile`.
 
 ## Workflow
 
@@ -18,7 +15,7 @@ keeps a deployment per commit with instant rollback, so branches only add ceremo
 1. **Implement** — make the change and run whatever check applies (`npm run build`, a quick local test).
 2. **Commit** — one commit per task on `main`, conventional-commit style (`feat(...)`, `fix(...)`, `docs(...)`).
 3. **Push** — push right after committing. Every push to `main` deploys to production on Vercel; tell Ricardo when it is live.
-4. **Linear** — if the task belongs to a Linear issue, mark it Done after the push.
+4. **Backlog** — if the task was on "Next to pick up", tick it off there.
 
 Rollback: Vercel → instant rollback to the previous deployment, or `git revert` + push.
 Flag risky changes (DB migrations, auth, billing) before pushing, not after.

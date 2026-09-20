@@ -21,12 +21,13 @@ When Ricardo asks what to pick up next (any phrasing: what's next, to-do list, w
 what's open):
 1. Read `knowledge-base-general/wiki/strategy-backlog.md`: first the "Next to pick up" section,
    then the Summary table.
-2. Read the Linear project "Family app v1" (team Project Food, key PF) through the Linear MCP
-   for execution state (say so if the MCP is not reachable; the backlog is then the only source).
-3. Answer in one screen: Ricardo's open decisions first, then Claude's next build step, then
+2. Answer in one screen: Ricardo's open decisions first, then Claude's next build step, then
    the brainstorms to hold, then blocked items and why.
-4. After any session that changes priorities, update "Next to pick up" in the backlog before
+3. After any session that changes priorities, update "Next to pick up" in the backlog before
    ending.
+
+There is no external tracker: Linear was dropped on 2026-09-20. The backlog's "Next to pick up"
+is the only to-do list; do not look for or reference Linear issues.
 
 How the backlog is organised (since 2026-09-20), so every session reads it the same way:
 - "Next to pick up" is the one to-do list, in three parts: **Ricardo's decisions and accounts**

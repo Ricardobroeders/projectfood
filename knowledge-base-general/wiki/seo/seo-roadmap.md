@@ -16,7 +16,7 @@ Budget: about half a day a week until then. Effort: S = hours, M = a day or two,
 
 > **Operating model:** Claude writes and ships on `main`; Ricardo decides, reviews the copy that
 > speaks to parents, tests, and does the human outreach (sister, party parents, the class,
-> Tommy Tomato / Spoony). Track in Linear with the `content` label.
+> Tommy Tomato / Spoony). Track in the strategy backlog (row 6).
 
 ## Gates (from the validation plan, file §7 and §6)
 - **G1 — Dinner habit holds** for the five families past week 4 (dinners logged per household

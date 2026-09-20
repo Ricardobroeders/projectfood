@@ -13,7 +13,7 @@ sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 on 2026-09-10) sold to the parent once the app has shown evidence about the kid, with the
 weekly shopping list as the paid ritual and grocery affiliate revenue as a later, NL-only
 upside. Status: brainstorm, options laid out, decision pending (strategy backlog row 9,
-Linear PF-54).
+backlog row 9).
 
 ## Explanation
 

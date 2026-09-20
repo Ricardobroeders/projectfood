@@ -117,7 +117,8 @@ down with an ink ring and contained sparkles, plus the tasted plants sliding in.
 - **Port the PWA screens** — rejected 2026-09-06 (no parity rebuild).
 
 ## Consequences
-- Work is tracked in Linear (team Project Food, project "Family app v1"); this page and
+- Work was tracked in Linear until 2026-09-20; since then the to-do list is "Next to pick up" in
+  [[strategy-backlog]]. This page and
   [[concept-retention-loop]] are the spec the issues link to.
 - A one-screen POC (PF-56: bottom nav, plant checklist with clay renders, check-off animation,
   first achievement after three checks, fun-fact card whose opening is a second achievement,
