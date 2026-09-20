@@ -146,6 +146,12 @@ voice, business model, market, KPIs, …). Rules:
 3. New undecided topics get a row immediately, marked with who added them.
 4. Linear is for execution; this page is for thinking. Link Linear issues from rows where they
    exist (e.g. PF-54), do not duplicate tasks.
+5. "Next to pick up" at the top is the one to-do list, in three parts: Ricardo's decisions and
+   accounts, Claude's next build steps (ordered), brainstorms to hold. Every line has a known
+   next action. Keep it to one screen; renumber when inserting.
+6. "Parking lot: ideas, not to-dos" holds raw ideas with their date, the rows they touch and the
+   brainstorm item that will challenge them. Nothing there is a task. A brainstorm turns an idea
+   into a `decision-` page plus build steps on the list, and the idea leaves the parking lot.
 
 ### Lint (periodic health check — run when asked, or proactively suggest it)
 

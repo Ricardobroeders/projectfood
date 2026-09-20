@@ -22,11 +22,23 @@ what's open):
 1. Read `knowledge-base-general/wiki/strategy-backlog.md`: first the "Next to pick up" section,
    then the Summary table.
 2. Read the Linear project "Family app v1" (team Project Food, key PF) through the Linear MCP
-   for execution state.
+   for execution state (say so if the MCP is not reachable; the backlog is then the only source).
 3. Answer in one screen: Ricardo's open decisions first, then Claude's next build step, then
-   blocked items and why.
+   the brainstorms to hold, then blocked items and why.
 4. After any session that changes priorities, update "Next to pick up" in the backlog before
    ending.
+
+How the backlog is organised (since 2026-09-20), so every session reads it the same way:
+- "Next to pick up" is the one to-do list, in three parts: **Ricardo's decisions and accounts**
+  (only he can do these), **Claude's next build steps** (ordered), **Brainstorms to hold**
+  (topics to think through together; each names the ideas it will take and its outcome).
+- "Parking lot: ideas, not to-dos" holds raw ideas Ricardo drops (e.g. Golden Sprouts, a fact
+  per card level). An idea goes there with its date, the rows it touches and the brainstorm item
+  that will challenge it. It is not a task until a brainstorm turns it into a decision page plus
+  build steps on the list, at which point it leaves the parking lot.
+- The Summary table is one row per strategy topic (status, next step); topic detail sections
+  follow. When Ricardo drops an idea mid-conversation: parking lot + a note in the topic's row.
+  When he asks for a to-do: the right part of "Next to pick up".
 
 ## Working rules
 - Git: `main` only, no feature branches. Commit and push when a piece of work is done.
