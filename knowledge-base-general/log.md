@@ -196,3 +196,13 @@ and "Next to pick up" updated.
 Same evening: device feedback turned the level rings into pips, redesigned the ladder rows, made
 discovery rungs 2–4 count only plants tasted on two days, and added Regular table and Steady weeks
 (migration 0012). Two renders pending.
+
+## [2026-09-20] query | Secret achievements noted as a brainstorm input
+Ricardo dropped an idea to park, explicitly not to build: secret achievements — a hidden layer of
+stamps that are absent from the shelf and only appear once they fire. His example: tick off every
+plant in the list in a single day → all historical records are wiped → unlock "That's called
+cheating". Filed as a bullet under "Inputs waiting for a brainstorm" in [[strategy-backlog]] with
+the open questions (joke or real penalty and whether it is reversible, how many secrets and of what
+kind, five-locale copy, how to hint at a hidden stamp), and row 5 (Achievements) updated to list it
+alongside the 2026-09-19 inputs. No page in [[concept-achievement-system]] yet — it waits for the
+brainstorm.
