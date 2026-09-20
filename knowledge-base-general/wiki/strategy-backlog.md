@@ -115,7 +115,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 14 | Privacy & kids' data | open | Needed before Play review: privacy page covering kids' data (the app stores first name + kid/adult only), push, deletion; web `/delete-account` page |
 | 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon needs the accent; listing assets and screenshots before Play closed testing |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
-| 17 | Friends & social layer | open | Ricardo wants it back in scope 2026-09-20 (friend list, lookup, other people's profiles, a Duolingo-style friend streak). Decide the social unit — parent account, household or kid member — and the kids' safeguarding line before anything is designed (added by Ricardo) |
+| 17 | Friends & social layer | open | Ricardo wants it back in scope 2026-09-20 (friend list, lookup, other people's profiles, a Duolingo-style friend streak). Personal streak first, friend streak as a later layer (Ricardo, 2026-09-20). Decide the social unit — parent account, household or kid member — and the kids' safeguarding line before anything is designed (added by Ricardo) |
 
 ## Topics
 
@@ -311,11 +311,16 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   is parent-to-parent links only (invite code or contact, not open search), with a kid's counts
   and stamps visible only to households their parent has approved, and nothing about a child
   discoverable by strangers.
-- **Open — the friend streak cuts against a pillar.** A shared streak is the mechanic Ricardo
-  likes, but a streak two people can break for each other is exactly the punishment the "never
-  resets / no punishment without a freeze" rule in [[concept-achievement-system]] and the D7 free
-  freeze in [[concept-retention-loop]] were written to avoid; on a kid it lands harder than on a
-  Duolingo adult. Interacts with the Golden Sprouts buy-back input above.
+- **Streak order settled (Ricardo, 2026-09-20): the personal streak comes first.** He agrees the
+  family layer makes a shared streak genuinely more complex than Duolingo's, and rates the
+  individual streak the more important of the two. So: build and tune the personal streak (with
+  the D7 free freeze in [[concept-retention-loop]] and, if it lands, the Golden Sprouts buy-back
+  above), and treat the friend streak as a later layer on top of a mechanic that already works.
+  That also defers the pillar problem: a streak two people can break *for each other* is exactly
+  the punishment the "never resets / no punishment without a freeze" rule in
+  [[concept-achievement-system]] was written to avoid, and it lands harder on a kid than on a
+  Duolingo adult. Still to work out when we get there: whose streak it is — the kid's, the
+  parent's or the household's.
 - **Open — also:** what a profile shows and whether kids are ever ranked against each other (the
   "per kid never ranked" rule); how friend notifications fit the existing three-ignored backoff
   without raising push volume; whether this replaces or sits beside cheers between households;
