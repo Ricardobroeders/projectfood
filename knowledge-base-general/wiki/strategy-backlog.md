@@ -38,7 +38,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 9. Rung pushes at 50% and 75% in `send-notifications` (row 5).
 10. Privacy page with kids' data, push and deletion sections plus a web `/delete-account` page on projectfood.dev (row 14); remove the Vercel web-push cron and routes from the PWA.
 11. Play internal testing → closed testing (12 testers × 14 days); iOS build + TestFlight once Apple is enrolled.
-12. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat.
+12. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 ## Inputs waiting for a brainstorm
 Raw ideas Ricardo dropped for a later session; each is linked to its row and will be challenged
@@ -115,6 +115,7 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 14 | Privacy & kids' data | open | Needed before Play review: privacy page covering kids' data (the app stores first name + kid/adult only), push, deletion; web `/delete-account` page |
 | 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon needs the accent; listing assets and screenshots before Play closed testing |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
+| 17 | Friends & social layer | open | Ricardo wants it back in scope 2026-09-20 (friend list, lookup, other people's profiles, a Duolingo-style friend streak). Decide the social unit — parent account, household or kid member — and the kids' safeguarding line before anything is designed (added by Ricardo) |
 
 ## Topics
 
@@ -282,6 +283,46 @@ when we sit down. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Have:** the class channel is a distribution idea, not a partnership yet.
 - **Next:** revisit after the first class replicates without founder seeding.
   _(status 2026-09-10)_
+
+### 17. Friends & social layer — open _(added by Ricardo, 2026-09-20)_
+- **Ricardo's ask (2026-09-20):** social is a big part of how this succeeds — healthy stimulus
+  from people you know. Concretely: add friends, look people up, see someone else's profile (how
+  many plants they have eaten, which achievements they hold), and a Duolingo-style **friend
+  streak** that two people keep alive together, with notifications, so they pull each other into
+  logging.
+- **Have:** the strongest quantitative signal in the wiki — users with at least one accepted
+  friend averaged 3.56 active weeks and 1.67 weeks hitting 30, against 1.75 and 0.75 for users
+  with none, roughly 2× on both ([[concept-engagement-drivers]],
+  [[source-supabase-metrics-2026-09]]; n=13–15, directional, causality unknown — engaged people
+  may simply add friends). Friends were the one investment people found unprompted: 12 accepted
+  friendships among 15 users, every request accepted, while the profile screen went unfound.
+  [[compare-projectfood-vs-competitors]] calls the friends/leaderboard layer our clearest moat
+  because most rivals are solo checklists. The PWA's `friendships` table still exists; the store
+  POC kept the tables and dropped the screens ([[decision-2026-09-16-store-poc-scope]]). "Cheers
+  between households" is already a deferred v1 feature.
+- **Open — the social unit comes first.** The PWA's friendships were adult-to-adult; the app is
+  now households with kid and adult members. Is a friend a parent account, a household, or a kid?
+  Every screen below changes shape depending on the answer, and [[source-family-mode-context]]
+  argues the unit of spread is the class, not the individual friend.
+- **Open — kids' safeguarding (blocks the lookup screen, row 14).** "Look someone up" plus
+  children's first names and eating records is the one part of this that cannot be designed
+  casually: user search that can surface a child is a red line for Google Play Families and the
+  App Store, and needs a GDPR basis with parental consent. The shape that likely survives review
+  is parent-to-parent links only (invite code or contact, not open search), with a kid's counts
+  and stamps visible only to households their parent has approved, and nothing about a child
+  discoverable by strangers.
+- **Open — the friend streak cuts against a pillar.** A shared streak is the mechanic Ricardo
+  likes, but a streak two people can break for each other is exactly the punishment the "never
+  resets / no punishment without a freeze" rule in [[concept-achievement-system]] and the D7 free
+  freeze in [[concept-retention-loop]] were written to avoid; on a kid it lands harder than on a
+  Duolingo adult. Interacts with the Golden Sprouts buy-back input above.
+- **Open — also:** what a profile shows and whether kids are ever ranked against each other (the
+  "per kid never ranked" rule); how friend notifications fit the existing three-ignored backoff
+  without raising push volume; whether this replaces or sits beside cheers between households;
+  and whether the friends layer is free or part of the paid boundary (row 9).
+- **Next:** brainstorm with Ricardo — settle the social unit and the safeguarding line, then
+  write `concept-social-layer` with the screens and the streak rules before any build.
+  _(status 2026-09-20)_
 
 ## Decided
 | Date | Decision | Page |
