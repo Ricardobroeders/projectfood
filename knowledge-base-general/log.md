@@ -267,3 +267,10 @@ locale in user metadata (row 13).
 ## [2026-09-21] build | Sign-in code emails live
 Ricardo put the dark-mode-safe templates live in the dashboard (the scoped-token push read fine but
 the write was refused with 403; noted in `supabase/templates/README.md`). Item 8b closed.
+
+## [2026-09-21] plan | Login: nothing to build, accounts to create; Play app exists
+Ricardo asked whether Google sign-in still needs work. Answer: the app has email code, native Google
+and Apple (iOS) sign-in since 2026-09-16; Google is dead until the Firebase/Google Cloud OAuth
+clients and the Supabase provider exist, now written out as item 1 (a)–(d). Not a Play review
+requirement, but needed before the closed test. Ricardo created the Play app in another session,
+so Claude's next build step is the first production AAB (item 12). Dark-mode email check passed.
