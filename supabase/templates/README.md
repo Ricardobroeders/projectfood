@@ -14,3 +14,6 @@ The only variable is `{{ .Token }}`. Copy is English only; per-language template
 locale in user metadata, which the app does not store (backlog row 13).
 
 Push: `SUPABASE_ACCESS_TOKEN=sbp_... node supabase/templates/push.mjs` (`--dry-run` to preview).
+Known limit (2026-09-21): a token scoped to Auth Config read-write could read the config but the
+write came back 403; pasting the two files in the dashboard worked. Try the script first, fall back
+to the paste.

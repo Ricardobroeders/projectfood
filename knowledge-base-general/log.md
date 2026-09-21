@@ -263,3 +263,7 @@ inline plus dark-mode and Outlook overrides, no images, `{{ .Token }}` only) wit
 sends only the template fields to the Management API. Ricardo pushes them with a personal access
 token (item 8b) or pastes them in the dashboard. English only; per-language emails would need the
 locale in user metadata (row 13).
+
+## [2026-09-21] build | Sign-in code emails live
+Ricardo put the dark-mode-safe templates live in the dashboard (the scoped-token push read fine but
+the write was refused with 403; noted in `supabase/templates/README.md`). Item 8b closed.
