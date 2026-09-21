@@ -274,3 +274,12 @@ and Apple (iOS) sign-in since 2026-09-16; Google is dead until the Firebase/Goog
 clients and the Supabase provider exist, now written out as item 1 (a)–(d). Not a Play review
 requirement, but needed before the closed test. Ricardo created the Play app in another session,
 so Claude's next build step is the first production AAB (item 12). Dark-mode email check passed.
+
+## [2026-09-21] fix | analytics_churn_rate + analytics_weekly_active_users run as the caller
+Supabase's security advisor flagged both views as "Security Definer View" (ERROR). The other
+three `analytics_*` views already had `security_invoker=on`; these two lost it when they were
+rebuilt on 2026-05-30, so PostgREST served all-user WAU and churn to anyone holding the anon key.
+Migration 0016 (`20260921190000_analytics_views_security_invoker.sql`, applied via MCP) sets
+`security_invoker = on` on both. Verified: advisor finding gone; as `postgres` both views still
+return 23 weekly rows (max WAU 10); as `anon` they return 0 rows. Direct-connection dashboards
+(postgres, bypassrls) and service_role are unaffected. Touches [[source-supabase-metrics]].
