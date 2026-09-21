@@ -42,7 +42,7 @@ plan.
 ## Metadata plan (draft, validate with a store keyword tool before submission)
 | Field | EN | NL | IT |
 |---|---|---|---|
-| Name (30) | Project Food: Family Plants | Project Food: Planten Gezin | Project Food: Piante Famiglia |
+| Name (30) | Project Food | Project Food | Project Food |
 | Subtitle (30) | The family tastes, you tap | Het gezin proeft, jij tikt | La famiglia assaggia insieme |
 | Keywords (100, no repeats of name/subtitle) | picky eater,vegetables,kids food,tasting,30 plants,cards,dinner,healthy eating,challenge,class | kind groente,moeilijke eter,proeven,30 planten,gezin,kaarten,avondeten,gezond eten,schoolfruit,klas | bambini verdura,neofobia,assaggiare,30 vegetali,famiglia,carte,cena,mangiare sano,scuola,classe |
 | Category | Health & Fitness (primary), Food & Drink (secondary) | same | same |
@@ -60,6 +60,10 @@ per ogni pianta provata insieme." Apple's keyword field is hidden and may keep t
 phrases ("kids food", "kind groente", "bambini verdura"); every visible field follows the
 family wording (policy rule above). Subtitle changed from "Kids taste, family collects" on
 2026-09-20 for the same reason.
+Name decided 2026-09-21 (Ricardo): plain "Project Food" on both stores, cleaner and easier to
+recognise; the earlier "Project Food: Family Plants" is dropped. The family and plant words live
+in the subtitle (Apple) and the short description (Play), both indexed, and in the full
+description. The launcher label is "Project Food" as well.
 
 ## Screenshots (the real ranking factor for conversion)
 _Rewritten 2026-09-20 for the store POC scope ([[decision-2026-09-16-store-poc-scope]]): the
