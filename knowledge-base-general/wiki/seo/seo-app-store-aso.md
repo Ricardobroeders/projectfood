@@ -30,6 +30,13 @@ plan.
    full description may speak to the parent about their children the way a parental-control app
    does, but nothing is ever "for kids". Inside the app the member kind stays "Kid / Adult" (a
    label the parent sets, not content for a child).
+   Two separate dials, not one (Ricardo asked on 2026-09-21 why we "try so hard to be 18+"
+   when ZOE is PEGI 3 with in-app purchases): the **content rating** (IARC questionnaire →
+   PEGI 3 / Everyone, says what the app contains) and the **target audience** (who it is
+   designed and marketed for, 18+). ZOE is exactly that combination, and so are we. The
+   target audience does not hide the app from anyone; parental-controls filters go by the
+   content rating, which PEGI 3 passes. Declaring children instead would pull in the whole
+   Families policy for a product whose account, phone and payment belong to the parent.
 3. Be findable for the few store searches that matter per language.
 
 ## Metadata plan (draft, validate with a store keyword tool before submission)
