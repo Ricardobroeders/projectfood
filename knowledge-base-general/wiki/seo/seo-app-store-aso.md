@@ -126,7 +126,7 @@ clay renders, not the icon again. Icon 512 × 512 32-bit PNG (`assets/brand/stor
 exists). Text fields: app name (30), short description (80), full description (4000); Play has
 no subtitle, so the subtitle line opens the short description. Timing: the listing has to be
 complete before a closed-testing release, so the frames come after the accent decision and before
-backlog item 11.
+the Play testing step in [[strategy-backlog]].
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
