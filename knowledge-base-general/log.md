@@ -255,3 +255,11 @@ The in-app delete screen now shows "Your account is deleted" with what stays (an
 before it signs out; the Android back button and the iOS swipe lead to the same sign-out. Ricardo
 also wants a confirmation email (needs `RESEND_API_KEY` as an Edge Function secret, his item 8) and
 noticed the Supabase Auth email templates do not read in dark mode; both on "Next to pick up" (item 11).
+
+## [2026-09-21] build | Dark-mode-safe sign-in code emails, in the repo
+The Supabase Auth templates are not reachable from a session without an access token, so they now
+live in `supabase/templates/` (magic-link and confirm-signup: `color-scheme: light`, all colours
+inline plus dark-mode and Outlook overrides, no images, `{{ .Token }}` only) with `push.mjs`, which
+sends only the template fields to the Management API. Ricardo pushes them with a personal access
+token (item 8b) or pastes them in the dashboard. English only; per-language emails would need the
+locale in user metadata (row 13).

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Your Project Food code</title>
+  <style>
+    :root { color-scheme: light; supported-color-schemes: light; }
+    /* Dark mode: the card stays light and the text dark. Apple Mail and iOS Mail honour the media
+       query; the color-scheme meta above stops them inverting anything in the first place. */
+    @media (prefers-color-scheme: dark) {
+      .bg { background-color: #F4EFE8 !important; }
+      .card { background-color: #FFFFFF !important; }
+      .ink { color: #1F1B16 !important; }
+      .ink2 { color: #6B645C !important; }
+      .ink3 { color: #A39B91 !important; }
+      .code { background-color: #FBEDB5 !important; color: #1F1B16 !important; }
+    }
+    /* Outlook.com and the Outlook apps rewrite colours; these hooks put them back. */
+    [data-ogsb] .bg { background-color: #F4EFE8 !important; }
+    [data-ogsb] .card { background-color: #FFFFFF !important; }
+    [data-ogsb] .code { background-color: #FBEDB5 !important; }
+    [data-ogsc] .ink { color: #1F1B16 !important; }
+    [data-ogsc] .ink2 { color: #6B645C !important; }
+    [data-ogsc] .ink3 { color: #A39B91 !important; }
+    [data-ogsc] .code { color: #1F1B16 !important; }
+  </style>
+</head>
+<body class="bg" bgcolor="#F4EFE8" style="margin:0;padding:0;background-color:#F4EFE8;">
+  <table role="presentation" class="bg" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#F4EFE8" style="background-color:#F4EFE8;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" class="card" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" style="max-width:440px;background-color:#FFFFFF;border-radius:24px;">
+          <tr>
+            <td style="padding:32px 28px 8px 28px;font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;">
+              <p class="ink" style="margin:0 0 20px 0;font-size:15px;line-height:20px;font-weight:700;color:#1F1B16;">Project Food</p>
+              <h1 class="ink" style="margin:0 0 8px 0;font-size:22px;line-height:28px;font-weight:800;color:#1F1B16;">Welcome to Project Food</h1>
+              <p class="ink2" style="margin:0 0 20px 0;font-size:15px;line-height:22px;color:#6B645C;">Here is the code that finishes your sign-up. Type it in the app or on the website. It works for one hour.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td class="code" align="center" bgcolor="#FBEDB5" style="background-color:#FBEDB5;border-radius:18px;padding:18px 12px;font-family:Menlo,Consolas,'Courier New',monospace;font-size:32px;line-height:40px;letter-spacing:8px;font-weight:700;color:#1F1B16;">{{ .Token }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 28px 32px 28px;font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;">
+              <p class="ink2" style="margin:0;font-size:13px;line-height:20px;color:#6B645C;">If you did not ask for a code, ignore this email. Nobody can sign in without it.</p>
+            </td>
+          </tr>
+        </table>
+        <p class="ink3" style="margin:16px 0 0 0;font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#A39B91;">Project Food &middot; projectfood.dev</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

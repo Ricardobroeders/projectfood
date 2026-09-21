@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "860dad3330361182",
+        "id": "226abc9e4fdb24a0",
         "type": "tabs",
         "children": [
           {
-            "id": "7afa48b9aca86ec1",
+            "id": "0430839aed185b22",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wiki/overview.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "overview"
+              "title": "New tab"
             }
           }
         ]
@@ -180,18 +176,30 @@
       "bases:Create new base": false
     }
   },
-  "active": "7afa48b9aca86ec1",
+  "active": "0430839aed185b22",
   "lastOpenFiles": [
-    "wiki/research-survey-plan.md",
     "README.md",
-    "log.md",
     "index.md",
-    "wiki/compare-projectfood-vs-competitors.md",
+    "log.md",
+    "CLAUDE.md",
+    "templates/decision.md",
+    "templates/concept.md",
+    "templates/comparison.md",
+    "raw/FAMILY_MODE_CONTEXT.md",
+    "Untitled.canvas",
+    "templates/source-summary.md",
+    "templates/persona.md",
+    "templates/interview.md",
+    "raw/presentations/Brand promise-projectfood.pdf",
+    "raw/images/mockup-0.png",
+    "raw/images/mockup-1.png",
     "wiki/overview.md",
+    "wiki/entity-zoe.md",
+    "wiki/research-survey-plan.md",
+    "wiki/compare-projectfood-vs-competitors.md",
     "wiki/concept-engagement-drivers.md",
     "wiki/entity-30plants-ai.md",
     "wiki/entity-eating30.md",
-    "wiki/entity-zoe.md",
     "wiki/entity-tim-spector.md",
     "wiki/concept-30-plants-origin.md",
     "wiki/source-competitor-scan.md",
@@ -200,30 +208,18 @@
     "wiki/concept-logging-behaviour.md",
     "wiki/source-supabase-metrics.md",
     "wiki/source-app-mockups.md",
-    "wiki/concept-stickiness-moat.md",
-    "wiki/source-brand-promise-deck.md",
-    "wiki/entity-myfitnesspal.md",
-    "wiki/persona-believer.md",
-    "wiki/concept-brand-pillars.md",
-    "wiki/concept-30-plants-a-week.md",
-    "templates/persona.md",
-    "templates/entity.md",
-    "raw/images/mockup-0.png",
-    "raw/images/mockup-1.png",
     "raw/images/mockup-2.png",
     "raw/images/mockup-3.png",
     "raw/images/mockup-4.png",
     "raw/images/mockup-.png",
     "raw/images",
     "raw/untitled folder",
-    "raw/presentations/Brand promise-projectfood.pdf",
     "raw/presentations",
     "raw/assets/Brand promise-projectfood.pdf",
     "templates",
     "wiki",
     "raw/assets",
     "raw",
-    "Untitled.canvas",
     "Untitled.base"
   ]
 }
