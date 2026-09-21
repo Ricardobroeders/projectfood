@@ -143,6 +143,124 @@ no subtitle, so the subtitle line opens the short description. Timing: the listi
 complete before a closed-testing release, so the frames come after the accent decision and before
 the Play testing step in [[strategy-backlog]].
 
+## Play listing texts (2026-09-21)
+Written for the Play Console fields, in the listing rule above: addressed to the parent, the
+family and the table as the words, no health claims, no exclamation marks, no "free". Paste as
+plain text; Play keeps the line breaks and the "•" bullets, nothing else. Same texts serve the
+App Store description later (Apple ignores line breaks less gracefully, check there).
+
+| Field | en-GB | nl-NL | it-IT |
+|---|---|---|---|
+| App name (30) | Project Food | Project Food | Project Food |
+| Short description (80) | The family tastes, you tap. A card for every plant you try, together. | Het gezin proeft, jij tikt. Een kaart voor elke plant die jullie samen proeven. | La famiglia assaggia, tu tocchi. Una carta per ogni pianta provata insieme. |
+
+### Full description, en-GB
+```
+Project Food turns "what did we eat today?" into a one-minute ritual at the table. The family tastes, you tap, and every plant you try together becomes a card in the family collection.
+
+How it works
+• After dinner, open the app and tap the plants everyone tasted. 224 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each with its own picture.
+• Hold a plant to choose who tasted it, or log for the whole table at once.
+• The first taste unlocks the card. Five tastes make it silver, ten make it gold. Nothing ever resets.
+
+One goal for the whole family
+Thirty different plants a week, counted together. Everyone adds to the same number, and nobody is measured against anybody. Skip a dinner and the streak holds, once a week.
+
+Stamps that level up
+Explorer, Rainbow, Full table, Big dinner and more: stamps for the things a family does at the table, in bronze, silver, gold and platinum. Each one shows how far you are from the next level.
+
+Something to talk about while you eat
+Every plant comes with a fact for the table and a tip for the cook.
+
+See what your family eats, month after month
+The Unlocks screen shows, per person, the foods tried so far, the cards held and the stamps earned. That list only grows. Even in a home where new things are not tried easily, every taste counts.
+
+One question, at your dinner time
+Tell the app when you usually eat, and half an hour later it asks what the family tasted. That is the only notification you need. Tips and news stay off until you switch them on.
+
+On your phone, for your family
+One account, yours. Family members are a first name and a colour, nothing more. No ads. Delete everything with one tap, whenever you want.
+
+Missing a plant? Suggest it from the search and we add it.
+
+Project Food is available in English, Dutch and Italian.
+```
+
+### Full description, nl-NL
+```
+Project Food maakt van "wat hebben we vandaag gegeten?" een ritueel van één minuut aan tafel. Het gezin proeft, jij tikt, en elke plant die jullie samen proeven wordt een kaart in de gezinscollectie.
+
+Zo werkt het
+• Open de app na het eten en tik aan welke planten iedereen heeft geproefd. 224 soorten fruit, groente, kruiden, noten, zaden, peulvruchten, volkoren granen en gefermenteerd eten, elk met een eigen plaatje.
+• Houd een plant ingedrukt om te kiezen wie hem heeft geproefd, of log in één keer voor de hele tafel.
+• De eerste hap ontgrendelt de kaart. Vijf keer proeven maakt hem zilver, tien keer goud. Niets gaat ooit verloren.
+
+Eén doel voor het hele gezin
+Dertig verschillende planten per week, samen geteld. Iedereen telt mee voor hetzelfde getal en niemand wordt met iemand vergeleken. Een avond overslaan? De reeks blijft staan, één keer per week.
+
+Stempels die stijgen in level
+Ontdekker, Regenboog, Volle tafel, Groot diner en meer: stempels voor wat een gezin aan tafel doet, in brons, zilver, goud en platina. Elke stempel laat zien hoe ver je bent tot het volgende level.
+
+Iets om over te praten tijdens het eten
+Bij elke plant hoort een weetje voor aan tafel en een tip voor de kok.
+
+Zie wat jullie eten, maand na maand
+Het scherm Behaald laat per persoon zien wat er al geproefd is, welke kaarten er zijn en welke stempels. Die lijst wordt alleen maar langer. Ook als je kind niet snel iets nieuws proeft: elke hap telt.
+
+Eén vraag, op jullie etenstijd
+Geef aan wanneer jullie meestal eten en een half uur later vraagt de app wat het gezin heeft geproefd. Meer meldingen heb je niet nodig. Tips en nieuws staan uit tot jij ze aanzet.
+
+Op jouw telefoon, voor jouw gezin
+Eén account, van jou. Gezinsleden zijn een voornaam en een kleur, meer niet. Geen advertenties. Alles verwijderen kan met één tik, wanneer je maar wilt.
+
+Mis je een plant? Stel hem voor via het zoekveld en we voegen hem toe.
+
+Project Food is beschikbaar in het Nederlands, Engels en Italiaans.
+```
+
+### Full description, it-IT
+```
+Project Food trasforma "cosa abbiamo mangiato oggi?" in un rituale di un minuto a tavola. La famiglia assaggia, tu tocchi, e ogni pianta che provate insieme diventa una carta nella collezione di famiglia.
+
+Come funziona
+• Dopo cena apri l'app e tocca le piante che tutti hanno assaggiato. 224 tra frutta, verdura, erbe e spezie, noci, semi, legumi, cereali integrali e fermentati, ognuna con la sua immagine.
+• Tieni premuta una pianta per scegliere chi l'ha assaggiata, oppure registra per tutta la tavola in una volta.
+• Il primo assaggio sblocca la carta. Cinque assaggi la fanno d'argento, dieci d'oro. Niente si azzera mai.
+
+Un obiettivo per tutta la famiglia
+Trenta piante diverse a settimana, contate insieme. Ognuno contribuisce allo stesso numero e nessuno viene confrontato con nessuno. Salti una cena? La serie resiste, una volta a settimana.
+
+Timbri che salgono di livello
+Esploratore, Arcobaleno, Tavola piena, Grande cena e altri: timbri per quello che una famiglia fa a tavola, in bronzo, argento, oro e platino. Ogni timbro mostra quanto manca al livello successivo.
+
+Qualcosa di cui parlare mentre si mangia
+Ogni pianta ha una curiosità per la tavola e un consiglio per chi cucina.
+
+Guarda cosa mangiate, mese dopo mese
+La schermata Traguardi mostra, per ogni persona, i cibi già provati, le carte ottenute e i timbri guadagnati. Quella lista può solo crescere. Anche se a casa vostra le novità a tavola non passano facilmente: ogni assaggio conta.
+
+Una domanda, all'ora della vostra cena
+Indica a che ora cenate di solito e mezz'ora dopo l'app chiede cosa ha assaggiato la famiglia. Altre notifiche non servono. Consigli e novità restano spenti finché non li attivi tu.
+
+Sul tuo telefono, per la tua famiglia
+Un solo account, il tuo. I membri della famiglia sono un nome e un colore, niente di più. Nessuna pubblicità. Puoi cancellare tutto con un tocco, quando vuoi.
+
+Manca una pianta? Suggeriscila dalla ricerca e la aggiungiamo.
+
+Project Food è disponibile in italiano, inglese e olandese.
+```
+
+### Store settings (one set, not per language)
+- Category: **Parenting** on Play. It puts the app next to family organisers, where the person
+  browsing is our persona, and away from fitness trackers and ZOE-style comparisons. Health &
+  Fitness (the 2026-09-06 draft) stays the Apple primary if wanted; Play allows one category.
+  Ricardo's call.
+- Tags: pick up to five that exist in the list, in this order: Parenting, Food & drink, Family,
+  Healthy eating, Cooking.
+- Contact: the mailbox you read, website `https://projectfood.dev`, privacy policy
+  `https://www.projectfood.dev/en/privacy` (one field, not localised).
+- Release notes per language are on the release, not the listing; three lines, same rule.
+
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
   never after a notification (mirrors D9 for push permission).
