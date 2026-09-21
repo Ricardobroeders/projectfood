@@ -239,3 +239,19 @@ three cascading links on `plant_logs` (user, household, member); after a deletio
 at nothing and only the service role can read the rows. The `delete-account` function comment, the
 privacy policy (section 8), the web delete page and the in-app warning now say that tastes stay as
 anonymous statistics (en/nl/it). Row 14 and the index updated.
+
+## [2026-09-21] ingest | Weekly metrics refresh — blocked, no data pulled
+The scheduled weekly metrics refresh ran but could not reach the database: every
+`execute_sql` call to Supabase project `ProjectFood` was auto-declined because the run is
+unattended and the tool needs per-call approval. No numbers were read, so no page was changed —
+[[source-supabase-metrics-2026-09]], [[concept-engagement-snapshot]],
+[[concept-logging-behaviour]], [[concept-engagement-drivers]] and the Metrics section of
+[[overview]] still hold the 2026-09-07 figures. Nothing here is stale by more than two weeks.
+To unblock: allow the Supabase MCP `execute_sql` tool to run without approval in scheduled tasks
+(read-only aggregate queries), or run the refresh in an attended session.
+
+## [2026-09-21] build | In-app deletion receipt; confirmation email and dark-mode templates parked
+The in-app delete screen now shows "Your account is deleted" with what stays (anonymous tastes)
+before it signs out; the Android back button and the iOS swipe lead to the same sign-out. Ricardo
+also wants a confirmation email (needs `RESEND_API_KEY` as an Edge Function secret, his item 8) and
+noticed the Supabase Auth email templates do not read in dark mode; both on "Next to pick up" (item 11).

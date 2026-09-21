@@ -325,6 +325,9 @@
     "deleteTitle": "Je account verwijderen?",
     "deleteBody": "Dit verwijdert je gezin, de profielen, kaarten en stempels voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
     "deleteCta": "Alles verwijderen",
+    "deletedTitle": "Je account is verwijderd",
+    "deletedBody": "Je gezin, de profielen, kaarten en stempels zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
+    "deletedCta": "Sluiten",
     "version": "Versie {v}"
   },
   "notifications": {

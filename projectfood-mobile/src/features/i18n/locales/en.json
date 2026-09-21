@@ -325,6 +325,9 @@
     "deleteTitle": "Delete your account?",
     "deleteBody": "This removes your family, its profiles, cards and stamps for good. Your tastes stay only as anonymous statistics, linked to no one. There is no undo.",
     "deleteCta": "Delete everything",
+    "deletedTitle": "Your account is deleted",
+    "deletedBody": "Your family, its profiles, cards and stamps are gone. Your tastes stay only as anonymous statistics, linked to no one. Thank you for having been at the table.",
+    "deletedCta": "Close",
     "version": "Version {v}"
   },
   "notifications": {
