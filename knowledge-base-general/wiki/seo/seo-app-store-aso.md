@@ -117,10 +117,14 @@ Member 2: 23 foods tried, 6 silver, 2 gold, 11 of 72 levels. Strawberry tastes: 
 (silver), member 3 two (bronze), parent eleven (gold). The fact and tip are the real
 `plant_facts` rows (status generated; row 13 review may change them).
 
-**Rules.** The listing is addressed to the adult who holds the phone: no "kids" or "children" on
-any frame, in the app name, the short description or the feature graphic; the family and the
-table are the words. No child faces or photos, no character avatars: clay renders, initials and
-UI only. No empty states. No "free" claims (the paid plan comes later and a stale frame is worse
+**Rules.** The listing is addressed to the adult who holds the phone. The family is the focus
+and the headline word; speaking to the parent about their kids ("what the kids tasted") is
+allowed in sub-lines and the description, the way parental-control apps do (clarified
+2026-09-21). What is not allowed is anything that reads as made for children: "for kids" in the
+app name or short description, copy addressed to a child, young characters or child illustrations
+in the graphics, imagery of a child using the app. So no child faces or photos and no character
+avatars: clay renders, initials and UI only. The copy table above stays family-worded as the
+default; a parent-directed "kids" may replace "family" where it is clearer. No empty states. No "free" claims (the paid plan comes later and a stale frame is worse
 than none). Each locale gets its own set with the app in that language: en-GB is the default
 listing, nl-NL and it-IT the launch markets.
 
