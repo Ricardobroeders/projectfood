@@ -3,7 +3,7 @@ title: Business model (subscription first, affiliate as upside)
 type: concept
 tags: [business-model, pricing, monetisation, family-mode]
 created: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-21 # was 2026-09-10
 sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 ---
 
@@ -79,6 +79,21 @@ the parent gets, which is exactly feature 11 of the v1 scope.
    arrives with the first monthly recap at week 4 ("Mila tasted 14 new plants in September"),
    annual first, monthly second.
 4. Founding-cohort introductory price for the first classes; standard price after.
+
+### Store mechanics: the app stays free to download (2026-09-21)
+Play Console asks "free or paid" before the first publish and warns that a free app can never
+become paid. That setting is the **download price** only. The paid plan here is an in-app
+**subscription** (Play Billing on Android, StoreKit on iOS, both through RevenueCat), and
+subscription products can be added to a free app at any time, without a new listing and
+without users reinstalling. So: publish as free, add the subscription when the boundary is
+decided, and the store shows "In-app purchases" on the listing from then on. A separate paid
+app would split reviews, installs and the class links; never do that.
+
+What can churn the first households is the boundary, not the store: a plan that takes away
+something they already use. Hold the sequence above: everything free in the POC, the paid
+feature is something new (the Sunday shopper advice), and the founding cohorts get the
+introductory price or a founder-granted free year (see the advocacy "thank you" stamp idea in
+[[strategy-backlog]]).
 
 ### Network effects, honestly
 The kid's collection is single-household value; the network effects are local: one parent
