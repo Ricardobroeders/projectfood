@@ -5,3 +5,6 @@ design-library/
 
 # preserved secret from removed projectfood-backend (do NOT commit)
 projectfood-backend.env.local
+
+# Supabase CLI scratch
+supabase/.temp/
