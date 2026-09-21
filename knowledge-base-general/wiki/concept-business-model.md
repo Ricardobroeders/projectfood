@@ -3,7 +3,7 @@ title: Business model (subscription first, affiliate as upside)
 type: concept
 tags: [business-model, pricing, monetisation, family-mode]
 created: 2026-09-10
-updated: 2026-09-21 # was 2026-09-10
+updated: 2026-09-21
 sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 ---
 
