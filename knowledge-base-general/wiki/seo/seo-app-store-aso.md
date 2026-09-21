@@ -53,10 +53,8 @@ NL and IT locales must be real local keyword research, not translations. On Goog
 long description is indexed, so the NL/IT descriptions carry the parent-problem phrasing
 ("kind lust geen groente") naturally, once.
 
-Short description drafts for Play (80 characters, the subtitle line first): EN "The family
-tastes, you tap. A card for every plant you try, together." · NL "Het gezin proeft, jij tikt. Een
-kaart voor elke plant die jullie samen proeven." · IT "La famiglia assaggia, tu tocchi. Una carta
-per ogni pianta provata insieme." Apple's keyword field is hidden and may keep the parent search
+Short descriptions for Play (80 characters): see the table under "Play listing texts" below, the
+goal-first version of 2026-09-21 replaces the earlier subtitle-first drafts. Apple's keyword field is hidden and may keep the parent search
 phrases ("kids food", "kind groente", "bambini verdura"); every visible field follows the
 family wording (policy rule above). Subtitle changed from "Kids taste, family collects" on
 2026-09-20 for the same reason.
@@ -152,7 +150,9 @@ App Store description later (Apple ignores line breaks less gracefully, check th
 | Field | en-GB | nl-NL | it-IT |
 |---|---|---|---|
 | App name (30) | Project Food | Project Food | Project Food |
-| Short description (80) | The family tastes, you tap. A card for every plant you try, together. | Het gezin proeft, jij tikt. Een kaart voor elke plant die jullie samen proeven. | La famiglia assaggia, tu tocchi. Una carta per ogni pianta provata insieme. |
+| Short description (80) | 30 different plants a week. Tap what you tasted, collect a card for each. | 30 verschillende planten per week. Tik aan wat je proefde en spaar de kaarten. | 30 piante diverse a settimana. Tocca cosa hai assaggiato e colleziona le carte. |
+
+Short description rewritten 2026-09-21 at Ricardo's request: the goal first, no "family" in it (73 / 78 / 79 characters; Italian fallback "raccogli" for "colleziona" if the console counts differently).
 
 ### Full description, en-GB
 ```
