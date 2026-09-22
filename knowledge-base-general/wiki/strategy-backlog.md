@@ -101,6 +101,17 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   [[concept-word-of-mouth]], row 7 social media and row 12 go-to-market)_
 - **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
   _(Ricardo, 2026-09-10)_
+- **Admin panel for notifications and plant content (rows 4, 13).** One internal screen instead
+  of the Supabase table editor: notification templates and one-off campaigns with their sent /
+  delivered / opened / logged rates (the two-layer sketch under row 4), and the plant catalogue
+  with its facts, translations and card copy, so a text fix or a new plant needs no SQL and no
+  deploy. Ricardo's framing: "once later", after the store POC; Expo and Firebase are the pipe,
+  not a place to manage anything. To work out: where it lives (a route on projectfood.dev behind
+  Supabase auth with an admin flag, an n8n form, or a Retool-style tool), which content the app
+  reads live and which it bundles (only the live part is editable without a release), and review
+  states for generated facts. _(Ricardo, 2026-09-22; sits under the push-management sketch in
+  row 4 and the content pipeline in row 13; challenged when row 4's entry point is decided after
+  a week on the preview APK)_
 
 ## Summary
 | # | Topic | Status | Next step |
@@ -108,7 +119,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (row 3) |
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
-| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
+| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided; an admin panel that also covers plant content parked 2026-09-22, see the parking lot); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
 | 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend; Play screenshot brief (five frames, copy in en/nl/it, template, mock data, Play specs) written 2026-09-20 in [[seo-app-store-aso]], Ricardo builds the frames in Figma; Play policy rule the same day: audience 18+, listing addressed to the parent, no "kids" wording or character avatars on the frames |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
@@ -117,7 +128,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 10 | Market | drafted | Kids-food competitor teardown + NL/IT household sizing |
 | 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
-| 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled |
+| 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled; an admin panel for facts, translations and card copy parked 2026-09-22 (parking lot, with row 4) |
 | 14 | Privacy & kids' data | drafted | Privacy page rewritten 2026-09-20 for the family app (kids' profiles, what is stored, processors, notifications, deletion, rights) in en/nl/it at projectfood.dev/{locale}/privacy, plus `/delete-account` with an email-code web flow; tastes outlive the account as anonymous rows ([[decision-2026-09-20-tastes-outlive-the-account]]); Ricardo reads the controller wording once before Play review; de/fr with those listings |
 | 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon set generated 2026-09-20 from the Figma export (`scripts/build-icons.mjs`; Play 512 in `assets/brand/store`); still needed: feature graphic 1024×500, screenshots, a drawn monochrome glyph if the auto silhouette disappoints |
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |
