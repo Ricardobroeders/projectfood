@@ -277,50 +277,61 @@ Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arr
   `https://www.projectfood.dev/en/privacy` (one field, not localised).
 - Release notes per language are on the release, not the listing; three lines, same rule.
 
-### Play declarations (App content, answers as of 2026-09-22)
-Filled by Ricardo on 2026-09-22 from these answers; reuse them for Apple's privacy labels later.
-Facts behind them: no ad or analytics SDK in the app (checked `package.json`), no `AD_ID`
-permission in the versionCode 5 bundle, every processor (Supabase, Expo, Google FCM, Resend,
-Vercel) works under a DPA, so nothing counts as "shared" in Play's sense; privacy page
-https://projectfood.dev/en/privacy (the www host redirects there), deletion page
-https://projectfood.dev/en/delete-account plus Account → Delete account in the app.
+### Play declarations (App content, filled 2026-09-22)
+All of App content was completed on 2026-09-22 with these answers; reuse them for Apple's
+privacy labels. Facts behind them, checked the same day against the versionCode 5 bundle and
+`package.json`: no ad, analytics or crash SDK; the merged manifest carries no `AD_ID`, no
+location, no `READ_MEDIA_*` and no `QUERY_ALL_PACKAGES`, so no sensitive-permission
+declaration applies. Every processor (Supabase, Expo, Google FCM, Resend, Vercel) works under
+a DPA, which is Play's service-provider exemption, so nothing counts as "shared".
 
-- **Ads:** no, the app contains no ads.
-- **App access:** restricted; the review account (email + password + the one-line instruction).
-  Done 2026-09-22.
-- **Content rating (IARC):** category "Utility, productivity, communication or other"; no
-  violence, fear, sexuality, language, controlled substances or gambling; no user interaction
-  or content exchange (cheers between households are deferred, re-rate when they ship); no
-  location sharing; no personal-info sharing with third parties; no digital purchases (re-rate
-  when the subscription ships); no unrestricted web access. Expected result PEGI 3 / Everyone.
-- **Target audience and content:** age group "18 and over" only; the app is not designed for
-  children, the listing speaks to the parent, graphics are initial discs and plant renders, so
-  "not appealing to children"; Designed for Families not opted in. Reasoning in
-  "What the listing has to do", point 2.
-- **News app:** no. **Government app:** no. **Financial features:** none. **COVID-19:** no.
-- **Health apps:** yes, "Health & fitness → nutrition / diet" (food logging), because Play's
-  definition covers diet trackers even though the app makes no health claims and stores no
-  health data as Play defines it; consequence: the Health Content and Services policy, which
-  the listing already satisfies (no claims, privacy policy). Health Connect: no.
-- **Privacy policy:** https://projectfood.dev/en/privacy.
-- **Data safety:** collects data, yes; encrypted in transit, yes; deletion available, yes
-  (account deletion URL above, also in the app); processed ephemerally, no; nothing shared.
-  Data types, all "collected", none "shared", purpose App functionality unless noted:
-  - Personal info → Email address (required; account management).
-  - Personal info → Name (required; first names or nicknames of the family members, the
-    parent's name from Google when used).
-  - Personal info → User IDs (required; the account id).
-  - Personal info → Other info (required; household name, dinner time, language, time zone).
-  - App activity → Other user-generated content (required; which plants each member tasted on
-    which day; survey answers and plant suggestions when submitted).
-  - App activity → App interactions (required; product events such as plant logged, onboarding
-    completed, survey submitted; purpose Analytics).
-  - Device or other IDs (optional, only after allowing notifications; the device push token,
-    relayed by Expo and FCM as processors).
-  - Not collected: location (time zone comes from phone settings), contacts, calendar, photos or
-    videos (the avatar is chosen from our set), files, audio, messages, financial info, health
-    or fitness info as Play defines it, web browsing, installed apps, crash logs, diagnostics,
-    advertising ID.
+- **Privacy policy:** https://projectfood.dev/en/privacy (the www host redirects there).
+- **App access:** restricted. `review@projectfood.dev` with a password, plus the line "type the
+  email address, a password field appears". The password lives only in Ricardo's password
+  manager and in Play Console, never in this repo.
+- **Ads:** none. **Advertising ID:** no. **Government app:** no. **News app:** no.
+  **Financial features:** none (cards, stamps and a future in-app currency are not rewards with
+  monetary value; a subscription is an in-app purchase, declared elsewhere).
+- **Content rating (IARC):** category "All other app types"; no violence, fear, sexuality,
+  language, controlled substances, gambling, user interaction, location sharing, digital
+  purchases, play-to-earn or web browsing; "primarily news or educational" answered **no** (the
+  card facts are a side dish, not the product). Expected PEGI 3 / Everyone. **Re-run it** when
+  the subscription ships (digital purchases → yes) and when the social layer ships (see row 17).
+- **Target audience:** "18 and over" only, not designed for families, does not appeal to
+  children. The optional "restrict users Google determines to be minors" was left **off**: it is
+  not needed for the 18+ declaration, it does not affect the "appeals to children" assessment
+  (Google judges that from the listing assets), and it would block edge-case adults for no gain.
+  Reasoning for the two dials in "What the listing has to do", point 2.
+- **Health apps:** yes → Health and fitness → **Nutrition and weight management**, nothing else.
+  Google reads food and diet logging as nutrition tracking even without calories or advice, and
+  this keeps the three forms consistent with the Health info type in Data safety. Consequence:
+  the health review team sees the submission and the Health Content and Services policy applies,
+  whose rule against unsupported health claims the listing already meets. Step 2 (regional
+  requirements) asked nothing.
+- **Data safety.** Collects data yes; encrypted in transit yes; account deletion yes, with
+  https://projectfood.dev/en/delete-account; partial deletion without deleting the account
+  answered **no** (untoggling a log is ordinary editing, not a deletion *request* mechanism;
+  flip to yes if a rights form or a "clear my history" action is ever built). Account creation
+  methods: "username and other authentication" (email + one-time code) and "OAuth" (Google, and
+  Apple when iOS ships); "username and password" left off because the review account was created
+  server-side and the password only signs in to it. Independent security review badge skipped
+  (a paid lab audit). Every type below is collected, never shared, never ephemeral:
+
+  | Data type | Required? | Purposes | What it is |
+  |---|---|---|---|
+  | Personal info → Name | required | App functionality, Account management | member first names, the parent's Google name |
+  | Personal info → Email address | required | App functionality, Account management | sign-in |
+  | Personal info → User IDs | required | App functionality, Account management | the account id |
+  | Personal info → Other info | required | App functionality | household name, dinner time, language, time zone, member kind and colour |
+  | Health and fitness → Health info | required | App functionality | the plant tastes |
+  | App activity → App interactions | required | App functionality, Analytics | `app_events` |
+  | App activity → Other user-generated content | user choice | App functionality, Analytics | survey answers, plant suggestions |
+  | Device or other IDs | user choice | App functionality | the Expo push token, only after permission |
+
+  Not collected: location, contacts, calendar, photos or videos, files, audio, messages,
+  financial info, web browsing, installed apps, in-app search history (plant search runs on the
+  phone against the bundled catalogue), crash logs, diagnostics, advertising ID.
+
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
