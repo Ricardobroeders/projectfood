@@ -52,12 +52,14 @@ are." The measurable reward becomes the kid's growing collection.
   quiet ([[source-family-mode-context]] §5).
 - The permission ask lives on the dinner-time step of onboarding since 2026-09-22 (Ricardo): a
   ping row, on by default, whose sub line names the time ("One question around 18:30"); the OS
-  dialog opens only when the parent leaves it on. The first-log sheet from D9 is the fallback,
+  dialog opens only when the parent leaves it on. Ricardo, 2026-09-22: "asking for the time is
+  useless otherwise", and the onboarding is short enough to carry it. The first-log sheet from D9 is the fallback,
   Account → Notifications the third route. [[source-family-mode-context]] lists "push permission
   at onboarding" under things not to do; that meant the bare OS dialog on first open, which this
   is not: the parent has just typed the dinner time the ping refers to.
 - Onboarding is three steps (2026-09-22): you (name, face, one colour) → who else is at the
-  table → dinner time with the ping. One colour per member; the separate avatar background went.
+  table → dinner time with the ping. One colour per member (Ricardo: it dresses the avatar and
+  tells people at the table apart); the separate avatar background went.
 - No sibling-vs-sibling competition; no punishment without a freeze (pillar 4,
   [[concept-brand-pillars]]).
 - Instrument sent / delivered / opened / logged-within-3h from day one. The PWA recorded none.

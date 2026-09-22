@@ -54,8 +54,9 @@ reward, weak triggers and a hidden profile ([[concept-retention-loop]]).
    delivered, opened, logged within 3 h.
    _Amended 2026-09-22 (Ricardo):_ the in-app ask is now the ping row on the dinner-time step
    of onboarding ("Ping us after dinner", on by default); the OS dialog opens only when the
-   parent leaves it on and taps "Start tasting". Reason: the loop's trigger has to exist for
-   the first dinner, or the first log the old rule waited for never happens. The
+   parent leaves it on and taps "Start tasting". Ricardo's reasoning (confirmed 2026-09-22):
+   the onboarding is short, so the ask fits next to the dinner time, and asking for the time
+   without the ping would be useless; the loop's trigger has to exist for the first dinner. The
    after-first-log sheet stays as the fallback for parents who switch the row off; Account →
    Notifications is the third route. See [[concept-retention-loop]].
 
