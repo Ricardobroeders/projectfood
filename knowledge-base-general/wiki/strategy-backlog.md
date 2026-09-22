@@ -105,13 +105,14 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   of the Supabase table editor: notification templates and one-off campaigns with their sent /
   delivered / opened / logged rates (the two-layer sketch under row 4), and the plant catalogue
   with its facts, translations and card copy, so a text fix or a new plant needs no SQL and no
-  deploy. Ricardo's framing: "once later", after the store POC; Expo and Firebase are the pipe,
-  not a place to manage anything. To work out: where it lives (a route on projectfood.dev behind
-  Supabase auth with an admin flag, an n8n form, or a Retool-style tool), which content the app
-  reads live and which it bundles (only the live part is editable without a release), and review
-  states for generated facts. _(Ricardo, 2026-09-22; sits under the push-management sketch in
-  row 4 and the content pipeline in row 13; challenged when row 4's entry point is decided after
-  a week on the preview APK)_
+  deploy. Expo and Firebase are the pipe, not a place to manage anything. Settled by Ricardo on
+  2026-09-22: it lives at **admin.projectfood.dev** as its own project folder in this repo (not a
+  route inside the marketing site), behind Supabase auth with an admin flag; **low priority**,
+  only once the app is live and running. Still to work out: which content the app reads live and
+  which it bundles (only the live part is editable without a release), and review states for
+  generated facts. _(Ricardo, 2026-09-22; sits under the push-management sketch in row 4 and the
+  content pipeline in row 13; challenged when row 4's entry point is decided after a week on the
+  preview APK)_
 
 ## Summary
 | # | Topic | Status | Next step |
@@ -119,7 +120,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 1 | Value proposition | open | Rewrite for the household parent after the five parent conversations (row 3) |
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
-| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided; an admin panel that also covers plant content parked 2026-09-22, see the parking lot); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
+| 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided; an admin panel that also covers plant content parked 2026-09-22 at admin.projectfood.dev, own project folder, low priority, see the parking lot); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
 | 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend; Play screenshot brief (five frames, copy in en/nl/it, template, mock data, Play specs) written 2026-09-20 in [[seo-app-store-aso]], Ricardo builds the frames in Figma; Play policy rule the same day: audience 18+, listing addressed to the parent, no "kids" wording or character avatars on the frames |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
