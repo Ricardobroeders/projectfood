@@ -297,7 +297,7 @@
         },
         {
           "title": "6. Notifiche",
-          "intro": "L'app chiede il permesso per le notifiche push solo dopo la tua prima registrazione, e puoi dire di no.",
+          "intro": "L'app chiede il permesso per le notifiche push durante la configurazione, proprio dove scegli l'ora della cena, e puoi dire di no. Se lo salti, lo chiediamo un'altra volta dopo la tua prima registrazione e poi solo se lo attivi tu in Account → Notifiche.",
           "items": [
             "Essenziali: la domanda della cena e il guardiano della serie. Attive di default una volta consentite le notifiche.",
             "Consigli e novità: anteprime di carte e timbri e il promemoria della domenica. Disattive di default.",

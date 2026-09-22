@@ -277,6 +277,51 @@ Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arr
   `https://www.projectfood.dev/en/privacy` (one field, not localised).
 - Release notes per language are on the release, not the listing; three lines, same rule.
 
+### Play declarations (App content, answers as of 2026-09-22)
+Filled by Ricardo on 2026-09-22 from these answers; reuse them for Apple's privacy labels later.
+Facts behind them: no ad or analytics SDK in the app (checked `package.json`), no `AD_ID`
+permission in the versionCode 5 bundle, every processor (Supabase, Expo, Google FCM, Resend,
+Vercel) works under a DPA, so nothing counts as "shared" in Play's sense; privacy page
+https://projectfood.dev/en/privacy (the www host redirects there), deletion page
+https://projectfood.dev/en/delete-account plus Account → Delete account in the app.
+
+- **Ads:** no, the app contains no ads.
+- **App access:** restricted; the review account (email + password + the one-line instruction).
+  Done 2026-09-22.
+- **Content rating (IARC):** category "Utility, productivity, communication or other"; no
+  violence, fear, sexuality, language, controlled substances or gambling; no user interaction
+  or content exchange (cheers between households are deferred, re-rate when they ship); no
+  location sharing; no personal-info sharing with third parties; no digital purchases (re-rate
+  when the subscription ships); no unrestricted web access. Expected result PEGI 3 / Everyone.
+- **Target audience and content:** age group "18 and over" only; the app is not designed for
+  children, the listing speaks to the parent, graphics are initial discs and plant renders, so
+  "not appealing to children"; Designed for Families not opted in. Reasoning in
+  "What the listing has to do", point 2.
+- **News app:** no. **Government app:** no. **Financial features:** none. **COVID-19:** no.
+- **Health apps:** yes, "Health & fitness → nutrition / diet" (food logging), because Play's
+  definition covers diet trackers even though the app makes no health claims and stores no
+  health data as Play defines it; consequence: the Health Content and Services policy, which
+  the listing already satisfies (no claims, privacy policy). Health Connect: no.
+- **Privacy policy:** https://projectfood.dev/en/privacy.
+- **Data safety:** collects data, yes; encrypted in transit, yes; deletion available, yes
+  (account deletion URL above, also in the app); processed ephemerally, no; nothing shared.
+  Data types, all "collected", none "shared", purpose App functionality unless noted:
+  - Personal info → Email address (required; account management).
+  - Personal info → Name (required; first names or nicknames of the family members, the
+    parent's name from Google when used).
+  - Personal info → User IDs (required; the account id).
+  - Personal info → Other info (required; household name, dinner time, language, time zone).
+  - App activity → Other user-generated content (required; which plants each member tasted on
+    which day; survey answers and plant suggestions when submitted).
+  - App activity → App interactions (required; product events such as plant logged, onboarding
+    completed, survey submitted; purpose Analytics).
+  - Device or other IDs (optional, only after allowing notifications; the device push token,
+    relayed by Expo and FCM as processors).
+  - Not collected: location (time zone comes from phone settings), contacts, calendar, photos or
+    videos (the avatar is chosen from our set), files, audio, messages, financial info, health
+    or fitness info as Play defines it, web browsing, installed apps, crash logs, diagnostics,
+    advertising ID.
+
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
   never after a notification (mirrors D9 for push permission).

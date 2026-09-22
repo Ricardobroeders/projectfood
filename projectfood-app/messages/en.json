@@ -297,7 +297,7 @@
         },
         {
           "title": "6. Notifications",
-          "intro": "The app only asks for push permission after your first log, and you can say no.",
+          "intro": "The app asks for push permission while you set up your family, right where you choose the dinner time, and you can say no. If you skip it, we ask once more after your first log, and after that only when you turn it on in Account → Notifications.",
           "items": [
             "Essential: the dinner question and the streak keeper. On by default once you allow notifications.",
             "Tips & news: card and stamp teasers and the Sunday nudge. Off by default.",

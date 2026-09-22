@@ -297,7 +297,7 @@
         },
         {
           "title": "6. Meldingen",
-          "intro": "De app vraagt pas na je eerste log om toestemming voor pushmeldingen, en je mag nee zeggen.",
+          "intro": "De app vraagt om toestemming voor pushmeldingen tijdens het instellen, precies waar je de etenstijd kiest, en je mag nee zeggen. Sla je het over, dan vragen we het nog één keer na je eerste log en daarna alleen als je het zelf aanzet in Account → Meldingen.",
           "items": [
             "Essentieel: de etensvraag en de reeksbewaker. Standaard aan zodra je meldingen toestaat.",
             "Tips & nieuws: kaart- en stempel-teasers en de zondagse herinnering. Standaard uit.",
