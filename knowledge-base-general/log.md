@@ -310,3 +310,15 @@ comments, in every wiki page ([[concept-achievement-system]], [[strategy-backlog
 decisions, [[concept-business-model]], index) and in both CLAUDE.md files (vocabulary rule). Code
 identifiers, i18n keys (`stamps.*`) and `assets/stamps/` keep `stamp` on purpose. Older log entries
 above keep the old word.
+
+## [2026-09-22] query | SEO content focus for projectfood.dev; brand SERP lost to namesakes
+Ricardo wants the website's SEO "on par" with the app, started early because it compounds. His
+screenshot of a Google search for "projectfood" shows the query owned by namesakes (a UK food
+charity, an Italian catering-equipment firm whose description fills the AI Overview, an Alkmaar
+food-bank Facebook page, a cooking YouTube channel, a Hungarian machinery firm) with projectfood.dev
+absent. Checked against the site: roadmap Phase 0 (2026-09-06) never started, the hero still says
+"boosts gut diversity", no OG image, no Search Console verification, two adult learn articles of
+1,100–2,000 characters, `/recipes` live. Answer: win the brand query first, then the printable plant
+cards as the link magnet, then the NL "kind lust geen groente" cornerstone once DataForSEO numbers
+exist; class-channel content holds for row 12. Filed as a brand-SERP section in [[seo-serp-landscape]],
+a status note in [[seo-roadmap]], row 6 and items 9 (Ricardo) and 14 (Claude) in [[strategy-backlog]].

@@ -3,7 +3,7 @@ title: SEO — roadmap & KPIs (family mode)
 type: seo
 tags: [seo, plan, roadmap, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-22
 sources: [source-family-mode-context.md, seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-app-store-aso.md]
 ---
 
@@ -27,6 +27,8 @@ Budget: about half a day a week until then. Effort: S = hours, M = a day or two,
   programmatic plant cards.
 
 ## Phase 0 — clean-up & validation (Sep – Oct 2026)
+_Status 2026-09-22: nothing in Phase 0 has shipped yet (hero and meta still carry the health claim, no OG image, Search Console unverified, DataForSEO unauthorised, `/recipes` live). Ricardo asked to start now. Order, per the brand-SERP finding in [[seo-serp-landscape]]: the brand query and the family home page first, then the printable cards (Phase 1 format 3), then the NL cornerstone once volumes are in. The class kit and schoolfruit pages hold until row 12 decides the class channel._
+
 | Task | Owner | Effort | Done when |
 |---|---|---|---|
 | Rewrite hero, meta, manifest to the family promise; remove health claims (#1, #9) | Claude, Ricardo approves wording | S | Deployed, no "boosts gut diversity" anywhere |

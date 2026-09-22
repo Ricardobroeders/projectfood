@@ -3,7 +3,7 @@ title: SEO — SERP landscape for parent search & the picky-eater app field
 type: seo
 tags: [seo, competitors, research, market, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-22
 origin: web research (multiple), 2026-09-05/06
 date_published: 2026-09-06
 sources: [source-family-mode-context.md, source-competitor-scan.md]
@@ -37,6 +37,30 @@ secondary asset. Product-side competitor notes: [[source-competitor-scan]].
   Italy's *Frutta e verdura nelle scuole* covers primary pupils 6–11; 2026/27 registrations
   ran 11 Jun – 6 Jul 2026. Every participating class already has a "what did you eat at school
   today?" moment.
+
+## Brand SERP: "projectfood" _(as of 2026-09-22, Ricardo's screenshot, NL Google, signed in)_
+The name is decided (plain "Project Food" on both stores, 2026-09-21), so this is the query a
+parent types after hearing the name in a WhatsApp group or seeing the app on a friend's phone.
+Today it is lost:
+- Google corrects the query to "project food" ("Did you mean") and the **AI Overview describes
+  ProjectFood, an Italian catering-equipment company** (projectfood.it) with its equipment and
+  kitchen-design services.
+- Organic page 1: project-food.org.uk (a food-support charity in East Devon, Somerset and
+  Dorset), projectfood.it, the Facebook page of Project FOOD Alkmaar (a food-bank volunteer
+  group, 130 followers), a YouTube cooking channel "Project Food" (290 followers), and
+  projectfood.hu (a Hungarian food-industry machinery firm). Sponsored product tiles on the
+  right are Dutch food shops.
+- **projectfood.dev is absent** from page 1. The reasons are on our side: the home page still
+  sells the adult tracker ("Track 30 plants a week", "Good gut, good life", a health claim in the
+  meta description), never says "app", has no Open Graph image, is not verified in Search
+  Console, and no other domain links to it as an app.
+- **Winnable.** None of the namesakes is strong: a local charity, a Facebook page, a 290-follower
+  channel and two small firms. A Play listing (Google ranks its own store for brand + app
+  queries within days), a home page that says "Project Food app" in three languages,
+  `Organization` and `SoftwareApplication` structured data with `sameAs` to the store listing,
+  the founder's About page, and a handful of links from directories and the founder's own sites
+  should put the app at the top for "project food app" first and "project food" over a few
+  months. Track both spellings from day one (item 9b in [[strategy-backlog]]).
 
 ## Who ranks, by language _(as of 2026-09-06)_
 
