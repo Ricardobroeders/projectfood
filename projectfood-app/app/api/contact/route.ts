@@ -29,6 +29,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 })
   }
 
+  // Public, unauthenticated endpoint: keep a payload from being used as a mail cannon.
+  if (n.length > 100 || e.length > 200 || m.length > 5000) {
+    return NextResponse.json({ error: 'Message is too long.' }, { status: 400 })
+  }
+
   try {
     await resend.emails.send({
       from: 'Project Food <info@projectfood.dev>',
