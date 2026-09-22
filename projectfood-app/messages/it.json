@@ -268,7 +268,7 @@
           "items": [
             "Account: il tuo indirizzo email e, se accedi con Google o Apple, il tuo nome e la tua immagine del profilo. I codici di accesso arrivano via email.",
             "Famiglia: il nome della famiglia, l'ora di cena, il fuso orario e la lingua.",
-            "Membri della famiglia: nome o soprannome, bambino o adulto, e un avatar scelto dal nostro set.",
+            "Membri della famiglia: nome o soprannome, bambino o adulto, un colore e un avatar scelto dal nostro set.",
             "Assaggi: quali piante ogni membro ha assaggiato in quale giorno, e cosa sblocca (carte, timbri, la serie di famiglia).",
             "Notifiche: se hai consentito le notifiche push, le tue preferenze, un token push del dispositivo e, per ogni messaggio, se è stato consegnato, aperto e seguito da una registrazione entro tre ore. Ci serve per smettere di insistere con una famiglia che ci ignora.",
             "Eventi di prodotto: un piccolo insieme di eventi nell'app, come una pianta registrata, l'onboarding completato o un sondaggio inviato, collegati al tuo account. Nessun identificatore pubblicitario, nessun tracciamento tra app.",

@@ -268,7 +268,7 @@
           "items": [
             "Account: je e-mailadres, en je naam en profielfoto als je inlogt met Google of Apple. Inlogcodes gaan naar je e-mail.",
             "Huishouden: de gezinsnaam, etenstijd, tijdzone en taal.",
-            "Gezinsleden: voornaam of bijnaam, kind of volwassene, en een avatar uit onze set.",
+            "Gezinsleden: voornaam of bijnaam, kind of volwassene, een kleur, en een avatar uit onze set.",
             "Hapjes: welke planten elk gezinslid op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, stempels, de gezinsreeks).",
             "Meldingen: of je pushmeldingen hebt toegestaan, je voorkeuren, een push-token van je telefoon, en per bericht of het is afgeleverd, geopend en binnen drie uur gevolgd door een log. Zo stoppen we met porren als een gezin ons negeert.",
             "Productgebeurtenissen: een klein aantal gebeurtenissen in de app, zoals een gelogde plant, een afgeronde onboarding of een ingevulde enquête, gekoppeld aan je account. Geen advertentie-id's, geen tracking over apps heen.",

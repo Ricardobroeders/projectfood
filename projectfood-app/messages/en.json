@@ -268,7 +268,7 @@
           "items": [
             "Account: your email address, and your name and profile picture if you sign in with Google or Apple. Sign-in codes go to your email.",
             "Household: the family name, dinner time, time zone and language.",
-            "Family members: first name or nickname, child or adult, and an avatar chosen from our set.",
+            "Family members: first name or nickname, child or adult, a colour, and an avatar chosen from our set.",
             "Tastes: which plants each member tasted on which day, and what that unlocks (cards, stamps, the family streak).",
             "Notifications: whether you allowed push notifications, your preferences, a device push token, and per message whether it was delivered, opened and followed by a log within three hours. We use this to stop nudging a family that ignores us.",
             "Product events: a small set of in-app events such as a plant logged, onboarding completed or a survey submitted, tied to your account. No advertising identifiers, no tracking across apps.",
