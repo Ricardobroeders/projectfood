@@ -2,6 +2,7 @@ import { Bell } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { askTimeFor } from '@/components/DinnerTimePicker';
 import { Sheet } from '@/components/Sheet';
 import { PrimaryButton, TextButton } from '@/components/ui';
 import { colors, fonts, iconFor, radii } from '@/constants/theme';
@@ -11,7 +12,10 @@ import { useHousehold, useUpdateSettings } from '@/features/household/queries';
 import { registerPushToken, requestPermission } from '@/features/notifications/push';
 import { useUi } from '@/state/ui';
 
-/** The in-app question before the one-shot OS dialog. Shown once, after the first successful log. */
+/**
+ * The in-app question before the one-shot OS dialog, shown once after the first successful log.
+ * Since 2026-09-22 this is the fallback: parents who left the ping on at onboarding never see it.
+ */
 export function PushPromptSheet() {
   const { t } = useTranslation();
   const open = useUi((s) => s.pushPrompt);
@@ -20,20 +24,18 @@ export function PushPromptSheet() {
   const { session } = useSession();
   const { data: hh } = useHousehold();
   const updateSettings = useUpdateSettings();
-  const dinner = (hh?.household.dinner_time ?? '18:00').slice(0, 5);
-  const [h, m] = dinner.split(':').map(Number);
-  const askTime = `${String((h + Math.floor((m + 30) / 60)) % 24).padStart(2, '0')}:${String((m + 30) % 60).padStart(2, '0')}`;
+  const askTime = askTimeFor(hh?.household.dinner_time ?? '18:00');
 
   const allow = async () => {
     close();
     updateSettings.mutate({ push_prompt_at: new Date().toISOString() });
     const granted = await requestPermission();
-    track('push_permission', { granted }, hh?.household.id);
+    track('push_permission', { granted, via: 'first_log' }, hh?.household.id);
     if (granted && session) await registerPushToken(session.user.id);
   };
   const notNow = () => {
     decline();
-    track('push_prompt_declined', {}, hh?.household.id);
+    track('push_prompt_declined', { via: 'first_log' }, hh?.household.id);
     close();
   };
 

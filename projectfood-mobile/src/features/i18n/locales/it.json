@@ -80,12 +80,17 @@
     "privacy": "informativa sulla privacy"
   },
   "onboarding": {
+    "step": "Passo {n} di {m}",
+    "youTitle": "Iniziamo da te",
+    "youSub": "Il tuo nome, un volto e un colore. Poi tutti quelli che mangiano con te.",
+    "yourName": "Il tuo nome",
     "familyTitle": "Chi c'è a tavola?",
     "familySub": "Aggiungi tutti quelli che mangiano con te. Basta il nome o un soprannome.",
-    "yourName": "Il tuo nome",
     "addPerson": "Aggiungi una persona",
     "dinnerTitle": "A che ora cenate di solito?",
-    "dinnerSub": "Mezz'ora dopo ti chiederemo cosa hanno assaggiato tutti. Puoi cambiarlo quando vuoi.",
+    "dinnerSub": "Così sappiamo quando fare la domanda della cena. Puoi cambiarlo quando vuoi.",
+    "pingLabel": "Mandaci un promemoria dopo cena",
+    "pingSub": "Una domanda verso le {time}: cosa ha assaggiato ognuno? Nient'altro, a meno che tu non lo chieda.",
     "finish": "Iniziamo ad assaggiare"
   },
   "home": {
@@ -300,7 +305,6 @@
     "avatarGroup_male": "Bambini",
     "avatarGroup_unknown": "Altro",
     "noAvatar": "Solo iniziale",
-    "background": "Sfondo",
     "removeConfirm": "Rimuovere {name} dalla famiglia? I suoi assaggi restano nella collezione.",
     "tonight": "{n} stasera",
     "you": "Sei tu"

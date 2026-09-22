@@ -3,7 +3,7 @@ title: Family app v1 scope, stack and languages
 type: decision
 tags: [decision, family-mode, native-app, scope, i18n, design, rive, costs]
 created: 2026-09-07
-updated: 2026-09-16
+updated: 2026-09-22
 date: 2026-09-07
 status: accepted   # working scope for the greenfield build; feature priorities re-checked after the five parent conversations
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md]
@@ -52,6 +52,12 @@ reward, weak triggers and a hidden profile ([[concept-retention-loop]]).
    milestone number.
 9. Push permission after the first successful log (D9); every push instrumented: sent,
    delivered, opened, logged within 3 h.
+   _Amended 2026-09-22 (Ricardo):_ the in-app ask is now the ping row on the dinner-time step
+   of onboarding ("Ping us after dinner", on by default); the OS dialog opens only when the
+   parent leaves it on and taps "Start tasting". Reason: the loop's trigger has to exist for
+   the first dinner, or the first log the old rule waited for never happens. The
+   after-first-log sheet stays as the fallback for parents who switch the row off; Account →
+   Notifications is the third route. See [[concept-retention-loop]].
 
 *Action*
 10. Log at the table in under a minute: "who tasted it?" per kid, household's frequent plants

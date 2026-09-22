@@ -14,7 +14,7 @@ type Flag = keyof Pick<Settings, 'notif_essential' | 'notif_marketing' | 'notif_
 
 /**
  * Essential (the dinner question, the streak keeper) is on by default; Tips & news (card teaser,
- * Sunday nudge) is off by default. The OS permission itself is asked only after the first log.
+ * Sunday nudge) is off by default. The OS permission is asked at onboarding (ping row), else after the first log, else here.
  */
 export default function NotificationsScreen() {
   const { t } = useTranslation();

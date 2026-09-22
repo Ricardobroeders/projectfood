@@ -80,12 +80,17 @@
     "privacy": "privacyverklaring"
   },
   "onboarding": {
+    "step": "Stap {n} van {m}",
+    "youTitle": "Eerst jij",
+    "youSub": "Je naam, een gezicht en een kleur. Daarna iedereen die meeëet.",
+    "yourName": "Jouw naam",
     "familyTitle": "Wie zit er aan tafel?",
     "familySub": "Voeg iedereen toe die meeëet. Een voornaam of bijnaam is genoeg.",
-    "yourName": "Jouw naam",
     "addPerson": "Iemand toevoegen",
     "dinnerTitle": "Hoe laat eten jullie meestal?",
-    "dinnerSub": "Een half uur later vragen we wat iedereen heeft geproefd. Je kunt dit altijd aanpassen.",
+    "dinnerSub": "Dit bepaalt wanneer de etensvraag komt. Je kunt het altijd aanpassen.",
+    "pingLabel": "Stuur ons na het eten een seintje",
+    "pingSub": "Eén vraag rond {time}: wat heeft iedereen geproefd? Verder niets, tenzij je erom vraagt.",
     "finish": "Beginnen met proeven"
   },
   "home": {
@@ -300,7 +305,6 @@
     "avatarGroup_male": "Jongens",
     "avatarGroup_unknown": "Anders",
     "noAvatar": "Alleen initiaal",
-    "background": "Achtergrond",
     "removeConfirm": "{name} uit het gezin verwijderen? De geproefde planten blijven in de collectie.",
     "tonight": "{n} vanavond",
     "you": "Dat ben jij"

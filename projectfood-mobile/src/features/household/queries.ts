@@ -92,13 +92,13 @@ export function useUpdateSettings() {
   });
 }
 
+/** One colour per member (2026-09-22): `color_index` fills the initial disc and sits behind the face. */
 export type MemberDraft = {
   id?: string;
   name: string;
   kind: MemberKind;
   color_index: number;
   avatar_image: string | null;
-  avatar_bg: string | null;
 };
 
 export function useSaveMember() {
@@ -112,7 +112,8 @@ export function useSaveMember() {
           kind: draft.kind,
           color_index: draft.color_index,
           avatar_image: draft.avatar_image,
-          avatar_bg: draft.avatar_bg,
+          // retired column; nulled on edit so older rows take the member colour too
+          avatar_bg: null,
         };
         const { error } = await supabase.from('household_members').update(patch).eq('id', draft.id);
         if (error) throw error;
@@ -124,7 +125,7 @@ export function useSaveMember() {
         kind: draft.kind,
         color_index: draft.color_index,
         avatar_image: draft.avatar_image,
-        avatar_bg: draft.avatar_bg,
+        avatar_bg: null,
         sort_order: sortOrder,
       };
       const { data, error } = await supabase.from('household_members').insert(row).select('id').single();

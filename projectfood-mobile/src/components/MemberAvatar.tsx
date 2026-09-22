@@ -6,22 +6,24 @@ import { AVATAR_IMAGES } from '@/data/avatars';
 import type { Member } from '@/features/household/queries';
 
 /** Enough of a member row to draw an avatar; drafts in the editor use it too. */
-export type MemberLike = Pick<Member, 'id' | 'name' | 'color_index'> & Partial<Pick<Member, 'avatar_image' | 'avatar_bg'>>;
+export type MemberLike = Pick<Member, 'id' | 'name' | 'color_index'> & Partial<Pick<Member, 'avatar_image'>>;
 
 export function memberColor(member: Pick<Member, 'color_index'>) {
   return MEMBER_COLORS[member.color_index % MEMBER_COLORS.length];
 }
 
 /**
- * Illustrated head from the PWA avatar set when the member picked one, otherwise the initial on
- * the member colour. `muted` is the grey "not selected" state. Genuinely round, so full radius.
+ * Illustrated head from the PWA avatar set when the member picked one, otherwise the initial, both
+ * on the member's one colour (the separate avatar background was retired on 2026-09-22; the
+ * `avatar_bg` column stays but is no longer read). `muted` is the grey "not selected" state.
+ * Genuinely round, so full radius.
  */
 export function MemberAvatar({ member, size, muted = false }: { member: MemberLike; size: number; muted?: boolean }) {
   const c = memberColor(member);
   const image = member.avatar_image ? AVATAR_IMAGES[member.avatar_image] : undefined;
   if (image) {
     return (
-      <View style={[styles.disc, { width: size, height: size, backgroundColor: muted ? colors.bgSoft : (member.avatar_bg ?? c.bg) }]}>
+      <View style={[styles.disc, { width: size, height: size, backgroundColor: muted ? colors.bgSoft : c.bg }]}>
         <Image source={image} style={{ width: size, height: size, borderRadius: size / 2, opacity: muted ? 0.35 : 1 }} contentFit="cover" />
       </View>
     );

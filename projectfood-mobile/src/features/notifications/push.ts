@@ -29,7 +29,7 @@ export async function getPermissionState(): Promise<PermissionState> {
   return status;
 }
 
-/** The OS prompt. Only ever called after the first successful log (KB D9). */
+/** The OS prompt. Only ever behind an in-app yes: the ping row at onboarding, the sheet after the first log, or Account → Notifications. */
 export async function requestPermission(): Promise<boolean> {
   if (!pushAvailable()) return false;
   await ensureChannels();

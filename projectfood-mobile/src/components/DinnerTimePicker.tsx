@@ -16,6 +16,13 @@ export function dateToTime(d: Date): string {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
+/** Half an hour after dinner: when the dinner question arrives (KB habit loop). */
+export function askTimeFor(dinner: string): string {
+  const d = timeToDate(dinner);
+  d.setMinutes(d.getMinutes() + 30);
+  return dateToTime(d);
+}
+
 /** iOS shows the spinner inline; Android opens the system dialog from a big time button. */
 export function DinnerTimePicker({ value, onChange }: { value: string; onChange: (hhmm: string) => void }) {
   const [open, setOpen] = useState(false);

@@ -80,12 +80,17 @@
     "privacy": "privacy notice"
   },
   "onboarding": {
+    "step": "Step {n} of {m}",
+    "youTitle": "Let's start with you",
+    "youSub": "Your name, a face and a colour. Everyone who eats with you comes next.",
+    "yourName": "Your name",
     "familyTitle": "Who's at the table?",
     "familySub": "Add everyone who eats with you. First names or nicknames are enough.",
-    "yourName": "Your name",
     "addPerson": "Add a person",
     "dinnerTitle": "When do you usually eat dinner?",
-    "dinnerSub": "We'll ask what everyone tasted about half an hour later. You can change this any time.",
+    "dinnerSub": "This sets the moment for the dinner question. You can change it any time.",
+    "pingLabel": "Ping us after dinner",
+    "pingSub": "One question around {time}: what did everyone taste? Nothing else unless you ask for it.",
     "finish": "Start tasting"
   },
   "home": {
@@ -300,7 +305,6 @@
     "avatarGroup_male": "Boys",
     "avatarGroup_unknown": "Other",
     "noAvatar": "Initial only",
-    "background": "Background",
     "removeConfirm": "Remove {name} from the family? Their tastes stay in the collection.",
     "tonight": "{n} tonight",
     "you": "That's you"

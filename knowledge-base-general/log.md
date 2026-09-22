@@ -283,3 +283,13 @@ Migration 0016 (`20260921190000_analytics_views_security_invoker.sql`, applied v
 `security_invoker = on` on both. Verified: advisor finding gone; as `postgres` both views still
 return 23 weekly rows (max WAU 10); as `anon` they return 0 rows. Direct-connection dashboards
 (postgres, bypassrls) and service_role are unaffected. Touches [[source-supabase-metrics]].
+
+## [2026-09-22] build | Onboarding: you → table → dinner time, push ask on the dinner step
+Ricardo asked for the first-login flow: add a person (name, face, colour) and then the dinner
+time with a "ping me when it's time" line that doubles as the push ask. Built in
+`projectfood-mobile`: a new "you" step for the parent's own row (name from the signup trigger,
+face, one colour), the family list as step 2, the dinner-time step with a ping row (Switch, on
+by default; the OS dialog opens only when it stays on; `push_permission {via: 'onboarding'}`);
+the two colour pickers collapsed into one (`avatar_bg` retired, column kept, nulled on edit).
+Amends D9 in [[decision-2026-09-07-app-v1-scope]] and the design rules in
+[[concept-retention-loop]]; backlog item 9 (device checks) and row 4 updated.
