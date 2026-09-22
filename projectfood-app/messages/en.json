@@ -312,7 +312,7 @@
             "Supabase: database, sign-in and server functions, hosted in the EU (Ireland).",
             "Vercel: hosting of projectfood.dev (USA).",
             "Expo (EAS): app builds, updates and the push notification relay (USA).",
-            "Google: Google sign-in and Android push delivery (Firebase Cloud Messaging).",
+            "Google: Google sign-in, Android push delivery (Firebase Cloud Messaging) and the mailbox behind info@projectfood.dev (Google Workspace).",
             "Apple: Sign in with Apple and iOS push delivery.",
             "Resend: sign-in codes and contact-form email (USA)."
           ]

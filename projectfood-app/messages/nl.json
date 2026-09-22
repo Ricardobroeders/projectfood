@@ -312,7 +312,7 @@
             "Supabase: database, inloggen en serverfuncties, gehost in de EU (Ierland).",
             "Vercel: hosting van projectfood.dev (VS).",
             "Expo (EAS): app-builds, updates en het doorgeven van pushmeldingen (VS).",
-            "Google: inloggen met Google en het afleveren van pushmeldingen op Android (Firebase Cloud Messaging).",
+            "Google: inloggen met Google, het afleveren van pushmeldingen op Android (Firebase Cloud Messaging) en de mailbox achter info@projectfood.dev (Google Workspace).",
             "Apple: inloggen met Apple en het afleveren van pushmeldingen op iOS.",
             "Resend: inlogcodes en e-mail van het contactformulier (VS)."
           ]

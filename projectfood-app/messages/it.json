@@ -312,7 +312,7 @@
             "Supabase: database, accesso e funzioni server, ospitati nell'UE (Irlanda).",
             "Vercel: hosting di projectfood.dev (USA).",
             "Expo (EAS): build dell'app, aggiornamenti e inoltro delle notifiche push (USA).",
-            "Google: accesso con Google e consegna delle notifiche push su Android (Firebase Cloud Messaging).",
+            "Google: accesso con Google, consegna delle notifiche push su Android (Firebase Cloud Messaging) e la casella di posta dietro info@projectfood.dev (Google Workspace).",
             "Apple: accesso con Apple e consegna delle notifiche push su iOS.",
             "Resend: codici di accesso ed email del modulo di contatto (USA)."
           ]
