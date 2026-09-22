@@ -1,7 +1,7 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { Mail } from 'lucide-react-native';
+import { KeyRound, Mail } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
@@ -12,6 +12,7 @@ import { colors, fonts, radii } from '@/constants/theme';
 import { signInWithApple } from '@/features/auth/apple';
 import { signInWithGoogle } from '@/features/auth/google';
 import { sendEmailCode } from '@/features/auth/otp';
+import { isReviewEmail, signInWithPassword } from '@/features/auth/password';
 import { currentLocale } from '@/features/i18n';
 import { ENV } from '@/features/supabase/env';
 
@@ -22,10 +23,13 @@ export default function SignInScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
   const [email, setEmail] = useState('');
-  const [busy, setBusy] = useState<'google' | 'apple' | 'email' | null>(null);
+  const [password, setPassword] = useState('');
+  const [busy, setBusy] = useState<'google' | 'apple' | 'email' | 'password' | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // The store review account: the same email field, but a password instead of the code (App access declaration).
+  const review = isReviewEmail(email);
 
-  const run = async (kind: 'google' | 'apple' | 'email', fn: () => Promise<unknown>) => {
+  const run = async (kind: NonNullable<typeof busy>, fn: () => Promise<unknown>) => {
     setBusy(kind);
     setError(null);
     try {
@@ -42,6 +46,18 @@ export default function SignInScreen() {
       await sendEmailCode(email);
       router.push({ pathname: '/verify', params: { email: email.trim().toLowerCase() } });
     });
+
+  const signInReview = () =>
+    run('password', async () => {
+      try {
+        await signInWithPassword(email, password);
+      } catch {
+        throw new Error(t('auth.errorInvalidPassword'));
+      }
+    });
+
+  const canSubmit = EMAIL_RE.test(email) && busy === null && (!review || password.length > 0);
+  const submit = () => canSubmit && (review ? signInReview() : sendCode());
 
   const openLegal = (kind: 'privacy' | 'terms') => {
     const url = (kind === 'privacy' ? ENV.privacyUrl : ENV.termsUrl).replace('{locale}', currentLocale() === 'de' || currentLocale() === 'fr' ? 'en' : currentLocale());
@@ -85,11 +101,29 @@ export default function SignInScreen() {
             autoCapitalize="none"
             autoComplete="email"
             autoCorrect={false}
-            returnKeyType="send"
-            onSubmitEditing={() => EMAIL_RE.test(email) && sendCode()}
+            returnKeyType={review ? 'next' : 'send'}
+            onSubmitEditing={() => !review && submit()}
           />
         </View>
-        <PrimaryButton label={t('auth.sendCode')} onPress={sendCode} disabled={!EMAIL_RE.test(email) || busy !== null} loading={busy === 'email'} />
+        {review ? (
+          <View style={styles.inputWrap}>
+            <KeyRound size={18} color={colors.ink3} />
+            <TextInput
+              style={styles.input}
+              value={password}
+              onChangeText={setPassword}
+              placeholder={t('auth.passwordPlaceholder')}
+              placeholderTextColor={colors.ink3}
+              secureTextEntry
+              autoCapitalize="none"
+              autoComplete="password"
+              autoCorrect={false}
+              returnKeyType="go"
+              onSubmitEditing={submit}
+            />
+          </View>
+        ) : null}
+        <PrimaryButton label={review ? t('auth.signIn') : t('auth.sendCode')} onPress={submit} disabled={!canSubmit} loading={busy === 'email' || busy === 'password'} />
         <ErrorText>{error}</ErrorText>
       </View>
 

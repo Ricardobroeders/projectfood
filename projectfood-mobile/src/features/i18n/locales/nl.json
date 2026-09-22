@@ -71,10 +71,13 @@
     "sendCode": "Stuur me een code",
     "codeSentBody": "We hebben een code gestuurd naar {email}",
     "codePlaceholder": "Code",
+    "passwordPlaceholder": "Wachtwoord",
+    "signIn": "Inloggen",
     "verifyCode": "Verifiëren",
     "resendCode": "Code opnieuw sturen",
     "useDifferentEmail": "Ander e-mailadres gebruiken",
     "errorInvalidCode": "Ongeldige of verlopen code. Probeer het opnieuw.",
+    "errorInvalidPassword": "Verkeerd e-mailadres of wachtwoord.",
     "legal": "Door verder te gaan ga je akkoord met onze {terms} en {privacy}.",
     "terms": "voorwaarden",
     "privacy": "privacyverklaring"

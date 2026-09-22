@@ -71,10 +71,13 @@
     "sendCode": "Inviami un codice",
     "codeSentBody": "Abbiamo inviato un codice a {email}",
     "codePlaceholder": "Codice",
+    "passwordPlaceholder": "Password",
+    "signIn": "Accedi",
     "verifyCode": "Verifica",
     "resendCode": "Invia di nuovo il codice",
     "useDifferentEmail": "Usa un'altra email",
     "errorInvalidCode": "Codice non valido o scaduto. Riprova.",
+    "errorInvalidPassword": "Email o password errati.",
     "legal": "Continuando accetti i nostri {terms} e la {privacy}.",
     "terms": "termini",
     "privacy": "informativa sulla privacy"

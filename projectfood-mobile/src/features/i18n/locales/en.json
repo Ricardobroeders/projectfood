@@ -71,10 +71,13 @@
     "sendCode": "Send me a code",
     "codeSentBody": "We sent a code to {email}",
     "codePlaceholder": "Code",
+    "passwordPlaceholder": "Password",
+    "signIn": "Sign in",
     "verifyCode": "Verify",
     "resendCode": "Resend code",
     "useDifferentEmail": "Use a different email",
     "errorInvalidCode": "Invalid or expired code. Please try again.",
+    "errorInvalidPassword": "Wrong email or password.",
     "legal": "By continuing you agree to our {terms} and {privacy}.",
     "terms": "terms",
     "privacy": "privacy notice"
