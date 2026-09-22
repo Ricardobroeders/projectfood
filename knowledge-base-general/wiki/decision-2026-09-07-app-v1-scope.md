@@ -88,7 +88,7 @@ cards with soft shadows, Plus Jakarta Sans, pastel category tints); move the bac
 cream to white/near-white so food colours carry the colour; accent yellow stays pending the POC;
 **plants stay 3D clay renders** (2D loses the detail that tells fruits apart); everything else
 (achievements, celebrations, mascot, empty states) animates in Rive; achievement art leans to
-collectable stamps and tiered badge colours, not glossy 3D. XP (~10 per checked plant) is an
+collectable achievements and tiered badge colours, not glossy 3D. XP (~10 per checked plant) is an
 experiment for the POC, not a v1 commitment. Validation: a one-screen POC (Linear PF-56) before
 the design library is rewritten.
 
@@ -100,7 +100,7 @@ screen. The clay renders next to Reanimated/Skia motion read well; Rive is still
 a development build. **Round 2 (same day):** reward bounces capped (pops start at 0.7, ≤ 8%
 overshoot, in-place bumps peak at 1.10, nothing leaves its box); corner radius follows element
 height (sm 12 ≤ 40pt, md 18 to 64pt, lg 24 to 140pt, xl 32 above; full only for genuinely round
-elements, never text pills); icons ≈ 45% of their container. Details in the design-library README. **Round 3:** confetti dropped; the unlock moment is the stamp pressing
+elements, never text pills); icons ≈ 45% of their container. Details in the design-library README. **Round 3:** confetti dropped; the unlock moment is the achievement pressing
 down with an ink ring and contained sparkles, plus the tasted plants sliding in.
 
 ## Rationale

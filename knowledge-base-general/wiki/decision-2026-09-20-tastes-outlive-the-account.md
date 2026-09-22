@@ -3,7 +3,7 @@ title: Tastes outlive the account — plant logs stay as anonymous rows after de
 type: decision
 tags: [decision, privacy, data, kpis, deletion]
 created: 2026-09-20
-updated: 2026-09-20
+updated: 2026-09-22
 date: 2026-09-20
 status: accepted
 sources: []
@@ -27,7 +27,7 @@ deletion took the history with it and every departed family disappeared from the
 - After a deletion the row's `user_id`, `household_id` and `member_id` are bare random ids: no
   name, email, household name or profile exists behind them anywhere in the database. Row-level
   security makes them unreachable to any signed-in user; only the service role reads them.
-- Nothing else is kept. Stamps, nudges, settings, push tokens, notification log, events and the
+- Nothing else is kept. Achievements, nudges, settings, push tokens, notification log, events and the
   household itself still cascade.
 - Why this is allowed: the GDPR does not cover data that can no longer be linked to a person,
   children's data included. The residual link lives only in database backups, which the privacy

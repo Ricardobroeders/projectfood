@@ -1,4 +1,4 @@
-// The stamp ladder, server side. A mirror of projectfood-mobile/src/features/achievements/definitions.ts:
+// The achievement ladder, server side. A mirror of projectfood-mobile/src/features/achievements/definitions.ts:
 // the targets and metrics must stay identical (Ricardo tunes rungs there, then here). Curious is left
 // out: one binary rung, nothing to be halfway to.
 
@@ -101,7 +101,7 @@ export type RungState = { id: string; memberId: string | null; level: number; cu
 
 export const levelKey = (id: string, memberId: string | null | undefined) => `${id}:${memberId ?? 'household'}`;
 
-/** The next rung of every stamp for every owner. `levels` = highest level held, keyed by levelKey. Maxed stamps are left out. */
+/** The next rung of every achievement for every owner. `levels` = highest level held, keyed by levelKey. Maxed achievements are left out. */
 export function nextRungs(ctx: Ctx, levels: Map<string, number>): RungState[] {
   const out: RungState[] = [];
   for (const l of LADDERS) {

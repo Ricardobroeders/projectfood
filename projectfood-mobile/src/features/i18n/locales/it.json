@@ -24,7 +24,7 @@
   "nav": {
     "home": "Home",
     "log": "Registra",
-    "unlocks": "Traguardi",
+    "unlocks": "Collezione",
     "account": "Account"
   },
   "categories": {
@@ -142,8 +142,8 @@
     "goFamily": "Aggiungi la famiglia"
   },
   "unlocks": {
-    "title": "Traguardi",
-    "stamps": "Timbri",
+    "title": "Collezione",
+    "stamps": "Traguardi",
     "cards": "Carte",
     "cardsUnlocked": "{n} sbloccate",
     "silver": "argento",
@@ -190,13 +190,13 @@
   },
   "celebration": {
     "firstBitesTitle": "Primi assaggi!",
-    "firstBitesBody": "Tre piante assaggiate. Ecco il primo timbro.",
-    "newStampTitle": "Nuovo timbro!",
-    "newStampsTitle": "{n} nuovi timbri!",
+    "firstBitesBody": "Tre piante assaggiate. Ecco il primo traguardo.",
+    "newStampTitle": "Nuovo traguardo!",
+    "newStampsTitle": "{n} nuovi traguardi!",
     "lastNight": "Guadagnato ieri sera",
     "showCard": "Mostra la mia carta",
     "later": "Più tardi",
-    "curiousUnlocked": "Timbro Curioso sbloccato",
+    "curiousUnlocked": "Traguardo Curioso sbloccato",
     "levelUpTitle": "Livello su!",
     "levelUpBody": "{stamp} ora è {level}"
   },
@@ -330,10 +330,10 @@
     "signOut": "Disconnetti",
     "deleteAccount": "Elimina account",
     "deleteTitle": "Eliminare il tuo account?",
-    "deleteBody": "Questo rimuove per sempre la tua famiglia, i profili, le carte e i timbri. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Non si può annullare.",
+    "deleteBody": "Questo rimuove per sempre la tua famiglia, i profili, le carte e i traguardi. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Non si può annullare.",
     "deleteCta": "Elimina tutto",
     "deletedTitle": "Il tuo account è stato eliminato",
-    "deletedBody": "La tua famiglia, i profili, le carte e i timbri non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Grazie per essere stato a tavola con noi.",
+    "deletedBody": "La tua famiglia, i profili, le carte e i traguardi non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Grazie per essere stato a tavola con noi.",
     "deletedCta": "Chiudi",
     "version": "Versione {v}"
   },
@@ -344,7 +344,7 @@
     "essential": "Essenziali",
     "essentialDesc": "La domanda della cena e la tua serie. Attive di default.",
     "marketing": "Consigli e novità",
-    "marketingDesc": "Anteprime di carte e timbri e il promemoria della domenica. Disattive di default.",
+    "marketingDesc": "Anteprime di carte e traguardi e il promemoria della domenica. Disattive di default.",
     "types": {
       "dinnerQuestion": {
         "label": "Domanda della cena",
@@ -355,8 +355,8 @@
         "description": "Solo quando la serie di famiglia è a rischio"
       },
       "cardTeaser": {
-        "label": "Anteprime carte e timbri",
-        "description": "Dopo qualche cena tranquilla: quale carta è vicina. E prima di cena, quando un timbro supera metà del prossimo livello"
+        "label": "Anteprime carte e traguardi",
+        "description": "Dopo qualche cena tranquilla: quale carta è vicina. E prima di cena, quando un traguardo supera metà del prossimo livello"
       },
       "sundayNudge": {
         "label": "Promemoria domenicale",

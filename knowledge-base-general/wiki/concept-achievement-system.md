@@ -3,14 +3,16 @@ title: Achievement system (cards, albums, milestones)
 type: concept
 tags: [retention, gamification, achievements, family-mode]
 created: 2026-09-10
-updated: 2026-09-18
+updated: 2026-09-22
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md, live Supabase plant_logs (queried 2026-09-18)]
 ---
+
+_Naming (2026-09-22): these are **achievements** in the app and in every piece of copy (NL prestaties, IT traguardi). Until 2026-09-22 they were called "stamps"; code identifiers, i18n keys and asset paths keep `stamp` and are not renamed._
 
 # Achievement system (cards, albums, milestones)
 
 **In one line:** The goal layer of the family app: three tiers of things to earn (a card per
-plant, an album per group of plants, a milestone stamp per behaviour) that never reset, always
+plant, an album per group of plants, a milestone achievement per behaviour) that never reset, always
 show the next reachable goal, and are earned at the dinner table while the kid watches. Proposed
 by Ricardo on 2026-09-10 as the backbone of the goal-oriented mindset and the main answer to
 churn; it fills the reward and investment steps of [[concept-retention-loop]]. Status: design
@@ -31,7 +33,7 @@ to?".
 - The atomic achievement. With roughly 150 plants in the database each kid has hundreds of card
   states to move; the tier never runs out.
 - The card back carries one kid fact and one parent tip (feature 3). Opening the back is itself
-  a first-time stamp (Curious); the POC showed this lands.
+  a first-time achievement (Curious); the POC showed this lands.
 - Progress copy is always remaining effort ("2 more tastes to silver"), never a percentage.
 
 ### Tier 2: Albums (groups of cards)
@@ -45,18 +47,18 @@ to?".
   two weeks of ordinary dinners, aimed at the week 0→1 and week 4→5 cliffs; later albums take a
   season.
 
-### Tier 3: Milestone stamps (behaviours, per kid or per household)
-Rare, behavioural, capped at about 20 at launch. Every stamp maps to a behaviour we want at the
+### Tier 3: Milestone achievements (behaviours, per kid or per household)
+Rare, behavioural, capped at about 20 at launch. Every achievement maps to a behaviour we want at the
 table, never to opening the app, sharing, or changing a setting. Starting set:
 
-| Stamp | Trigger | Level | Why |
+| Achievement | Trigger | Level | Why |
 |---|---|---|---|
 | First bites | 3 tastes logged | kid | Day-one win; proven in the POC |
 | Curious | first card back opened | kid | Teaches that the card has two sides |
 | Brave bite | tasted a plant previously marked "refused" | kid | The behaviour parents pay for: exposure becomes acceptance |
 | Rainbow week | 5 colours in one week | kid | Variety without the number 30 |
 | Table talk 7 / 30 / 100 | dinners logged in a row, freeze covers a miss (D7) | household | Streak rescue worked (46%); the freeze keeps pillar 4 |
-| Family of 30 | 30 distinct plants in a week | household | The old goal, demoted to one stamp among many |
+| Family of 30 | 30 distinct plants in a week | household | The old goal, demoted to one achievement among many |
 | Album keeper | first album completed | kid | Bridges tiers 2 and 3 |
 | Season keeper | a seasonal album completed in time | kid | Time-limited reason to come back |
 | Full table | every household member tasted the same plant | household | Sibling cooperation, not competition |
@@ -64,19 +66,19 @@ table, never to opening the app, sharing, or changing a setting. Starting set:
 
 ### Tier 3 as a ladder: the calibrated proposal (2026-09-18)
 
-**The problem.** The 16 stamps that shipped in the store POC on 2026-09-16 all have first-week
+**The problem.** The 16 achievements that shipped in the store POC on 2026-09-16 all have first-week
 targets (3 plants, 5 vegetables, 7 dinners, one week of 30). Measured against the live data,
 every engaged user unlocked all of them on their first day in the new app: Ricardo's account
-received 15 stamps at once after onboarding, and the mid-engaged PWA users would have had 14–16
+received 15 achievements at once after onboarding, and the mid-engaged PWA users would have had 14–16
 within their first two weeks _(as of 2026-09-18, live Supabase `plant_logs`, n=14 members with
 logs)_. A shelf that is full on day one gives rule 2 ("the next goal is always visible") nothing
 to point at.
 
-**The fix: keep the 16 stamps, give each one levels.** Levels keep the shelf rare (rule 6: about
-20 stamps), keep one image per stamp, and turn every stamp into a ladder whose rungs sit at one
+**The fix: keep the 16 achievements, give each one levels.** Levels keep the shelf rare (rule 6: about
+20 achievements), keep one image per achievement, and turn every achievement into a ladder whose rungs sit at one
 week, one month, one season and one year of ordinary dinners. The celebration becomes a level-up;
 the shelf shows the level reached with a frame (bronze, silver, gold, platinum). This is also the
-"5 / 50 / 100" ladder from Ricardo's 2026-09-10 notes, applied to stamps instead of card facts.
+"5 / 50 / 100" ladder from Ricardo's 2026-09-10 notes, applied to achievements instead of card facts.
 
 **Calibration.** Targets were set on where real users stood, not on round numbers alone
 _(all figures as of 2026-09-18, live data)_:
@@ -95,11 +97,11 @@ _(all figures as of 2026-09-18, live data)_:
 Catalogue ceilings: 224 plants, 76 vegetables, 49 fruits, 26 herbs, 27 nuts and seeds, 21
 legumes, 17 whole grains, 8 ferments, 44 superfoods, 18 nightshades, 8 colours.
 
-**The ladder.** Level 1 is the stamp as it ships today (unchanged, so no unlock is taken away).
-"All" means the whole category, which makes the top level of a category stamp the category album
+**The ladder.** Level 1 is the achievement as it ships today (unchanged, so no unlock is taken away).
+"All" means the whole category, which makes the top level of a category achievement the category album
 of tier 2 until real albums exist.
 
-| Stamp | Scope | Level 1 (first week) | Level 2 (first month) | Level 3 (a season) | Level 4 (a year) | Ricardo / Alissa today |
+| Achievement | Scope | Level 1 (first week) | Level 2 (first month) | Level 3 (a season) | Level 4 (a year) | Ricardo / Alissa today |
 |---|---|---|---|---|---|---|
 | Explorer (distinct plants ever; today "First bites") | kid | 3 | 50 | 100 | 200 | L3 · L3 |
 | Green machine (vegetables) | kid | 5 | 20 | 40 | 76, all | L3 · L3 |
@@ -138,7 +140,7 @@ biggest day is 63 plants, Imke's 51), and one household is the founder's.
 
 **Built 2026-09-18** (migration `20260918110000_stamp_ladder.sql`, app commit the same day) with the
 targets exactly as in the table; Ricardo can tune any rung in `definitions.ts`. Rainbow counts
-"weeks with 5 colours" (1 / 4 / 12 / 52), which keeps one metric per stamp; Regulars is the one stamp
+"weeks with 5 colours" (1 / 4 / 12 / 52), which keeps one metric per achievement; Regulars is the one achievement
 whose metric changes per rung. Rungs unlock in order.
 
 **Rung nudge (built 2026-09-20).** The push moment above is live: `send-notifications` mirrors the
@@ -149,19 +151,19 @@ channel, under the card-teaser flag (off by default), at most one per household 
 each mark once (`achievement_nudges`). A household's first run only records where it already stands,
 so the nudge follows real crossings, not history. Copy in en/nl/it in `rung-copy.ts`.
 
-**Time over bulk (device feedback, same day).** Ricardo's worry: count-based stamps can be dumped
+**Time over bulk (device feedback, same day).** Ricardo's worry: count-based achievements can be dumped
 in one day, and the data agrees (Rob logged 63 plants on one day, Imke 51, both left). Two changes:
 
-- Discovery stamps (Explorer, the eight category stamps, Superfood, Tomato family): rung 1 counts
+- Discovery achievements (Explorer, the eight category achievements, Superfood, Tomato family): rung 1 counts
   every plant; rungs 2–4 only count a plant once it has been tasted on **two different days**
   (a taste row is one plant on one day, so card levels and Regulars were already day-based).
-- Two consistency stamps, household scope: **Regular table**, dinner logged on 5 / 20 / 60 / 200
+- Two consistency achievements, household scope: **Regular table**, dinner logged on 5 / 20 / 60 / 200
   different days; **Steady weeks**, weeks with four dinners logged, 1 / 4 / 12 / 40 (migration
   `20260918130000_weekly_active_days.sql` adds `active_days` to `household_weekly_history`).
   Renders to generate: `achievement-regular_table.png` (a calendar page with ticked days) and
   `achievement-steady_weeks.png` (a week strip with four plates).
 
-Levels show as pips under the stamp, not as coloured rings (rings read as noise on the shelf).
+Levels show as pips under the achievement, not as coloured rings (rings read as noise on the shelf).
 
 **What it takes to build.** `achievement_unlocks` gains a `level` column (unique on household,
 member, achievement, level); the engine records the highest level reached; the celebration sheet
@@ -170,7 +172,7 @@ says "Green machine · silver"; copy per level in en/nl/it; the Unlocks shelf dr
 unlock row persists), so no history RPC is required. Full table needs a household with two members
 to be reachable, which is the family case by design.
 
-**Prize images, one per stamp.** Level is shown by the frame around the same image (bronze, silver,
+**Prize images, one per achievement.** Level is shown by the frame around the same image (bronze, silver,
 gold, platinum ring), so 17 renders cover the shelf. Style: one object, 3D clay, soft studio light,
 plain white background, no text, square, matching the plant renders.
 
@@ -180,7 +182,7 @@ the existing `achievement_unlocks.achievement_id` values. Originals go in the pu
 workflow); `scripts/build-assets.mjs` resizes them to `assets/stamps/<id>.webp` and generates the
 lookup, like the plants. Frames are drawn in code.
 
-| Stamp | Id today | Id after the ladder |
+| Achievement | Id today | Id after the ladder |
 |---|---|---|
 | Explorer | `first_bites` | `explorer` |
 | Green machine | `veg_5` | `green_machine` |
@@ -214,14 +216,14 @@ lookup, like the plants. Frames are drawn in code.
 10. Tomato family: a family portrait of tomato, potato, pepper and aubergine.
 11. Rainbow: an arc built from produce in eight colours.
 12. Big dinner: a long table crowded with dishes.
-13. Table talk: two chairs at a small table with a candle (the streak stamp; a flame alone reads as "hot").
+13. Table talk: two chairs at a small table with a candle (the streak achievement; a flame alone reads as "hot").
 14. Family of thirty: a large number 30 made of plants.
 15. Regulars: a loyalty stamp card with a golden bite mark.
 16. Full table: a family of avatars around one shared plate.
 17. Curious: an open book with a plant growing out of the page.
 
 ## Design rules
-1. **Never resets.** Levels only go up; a streak can end but stamps and cards stay. Loss is
+1. **Never resets.** Levels only go up; a streak can end but achievements and cards stay. Loss is
    absorbed by the freeze.
 2. **The next goal is always visible.** Home shows the three nearest achievements by remaining
    effort ("1 more taste", "2 plants to finish", "3 dinners to 7"). Without this rail the
@@ -231,10 +233,10 @@ lookup, like the plants. Frames are drawn in code.
    ("Mila earned 2 things last night").
 4. **One system, two audiences.** The same events roll up into the parent's monthly recap
    ("Mila eats 41 plants now, 12 in September; 6 gold cards"). No separate parent gamification.
-5. **One celebration per session.** Several unlocks from one log stack into one sheet (stamp
+5. **One celebration per session.** Several unlocks from one log stack into one sheet (achievement
    press first, then the cards), never a chain of modals (POC rounds 1–3: contained motion).
-6. **Scarcity by tier.** Cards are abundant, albums are the middle, stamps are rare.
-7. **Per kid, never ranked.** Each kid owns a collection; household stamps are shared; no sibling
+6. **Scarcity by tier.** Cards are abundant, albums are the middle, achievements are rare.
+7. **Per kid, never ranked.** Each kid owns a collection; household achievements are shared; no sibling
    leaderboard ([[concept-brand-pillars]], pillar 4).
 8. **Achievements drive the triggers.** The card-teaser push (feature 7) names the nearest
    achievement ("Your pumpkin card is 1 taste from silver"); the Sunday advice names the nearest
@@ -256,9 +258,9 @@ lookup, like the plants. Frames are drawn in code.
 - Streak rescue 46% vs daily reminder 8% logged within 3 h _(same source)_.
 - Users with ≥ 1 friend ≈ 2× active weeks _(as of 2026-05-30, [[source-supabase-metrics]],
   correlational, n=13)_.
-- POC (Linear PF-56, 2026-09-07 to 09-08): First bites and Curious stamps and the stamp-press
+- POC (Linear PF-56, 2026-09-07 to 09-08): First bites and Curious achievements and the press-down
   celebration were accepted on device ("minimal but noticeable").
-- Store POC on device (2026-09-18): all 16 first-week stamps unlocked on day one for the engaged
+- Store POC on device (2026-09-18): all 16 first-week achievements unlocked on day one for the engaged
   accounts; the retention curve and per-member counts behind the ladder are in the tier 3 section
   above _(live Supabase `plant_logs`, n=14 members, queried 2026-09-18)_.
 - Duolingo: daily quests rail, streak with freeze, achievement tiers _(public product knowledge,
@@ -269,7 +271,7 @@ lookup, like the plants. Frames are drawn in code.
   families (D13).
 - "Brave bite" needs a "refused" state at logging time (one extra tap per kid, not a form).
 - Album count and difficulty need the real plant list; 12 is a placeholder.
-- XP: the POC's +10 per plant is a fourth currency next to cards, albums and stamps. Lean: drop
+- XP: the POC's +10 per plant is a fourth currency next to cards, albums and achievements. Lean: drop
   XP for v1 and revisit if kids ask for a score. Not decided.
 - Ricardo's inputs of 2026-09-10 (plane notes, `raw/ricardo-brainstorm-2026-09-10-plane.md`),
   to be brainstormed: a gold economy earned per person per taste and spent on avatars and

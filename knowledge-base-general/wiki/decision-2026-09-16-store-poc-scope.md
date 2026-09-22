@@ -3,7 +3,7 @@ title: Store POC scope — ship the family app with the PWA's features first
 type: decision
 tags: [decision, app, scope, family-mode, stores]
 created: 2026-09-16
-updated: 2026-09-16
+updated: 2026-09-22
 date: 2026-09-16
 status: accepted
 sources: [decision-2026-09-07-app-v1-scope, concept-retention-loop, concept-achievement-system, source-family-mode-context]
@@ -16,7 +16,7 @@ sources: [decision-2026-09-07-app-v1-scope, concept-retention-loop, concept-achi
 ## Context
 [[decision-2026-09-07-app-v1-scope]] set a greenfield v1 with eleven new features and the line
 "do not rebuild to parity with the PWA". By 2026-09-16 the Expo POC had validated the pieces that
-matter at the table (multi-member logging with hold-to-pick, stamps with progress, the celebration
+matter at the table (multi-member logging with hold-to-pick, achievements with progress, the celebration
 motion), but a full design system and the eleven features would take months. Ricardo decided that a
 store-listed POC, improved with real families, beats a waterfall build: get into the Play Store and
 App Store with what the PWA already does well plus the family model, then iterate.
@@ -27,9 +27,9 @@ Build the store POC on the household data model with this scope:
 | In | Deferred (roadmap unchanged) | Dropped |
 |---|---|---|
 | Household → members (kid/adult) → per-member logs; one auth account per parent phone | Albums, avatar accessories, cheers between households, class milestone | Recipe builder and AI food suggestor (`weekly_advice`, `recipe_batches`, advice/recipes routes) |
-| Log as in the PWA (catalog, fuzzy search, category tabs, missing-plant suggestion) + POC multi-member logging (tap = default set, hold = picker, "everyone", sticky default) | Sunday shopper advice and the paid plan (RevenueCat); `households.plan` exists, everything free | XP counter and any XP ledger (stamps stay) |
+| Log as in the PWA (catalog, fuzzy search, category tabs, missing-plant suggestion) + POC multi-member logging (tap = default set, hold = picker, "everyone", sticky default) | Sunday shopper advice and the paid plan (RevenueCat); `households.plan` exists, everything free | XP counter and any XP ledger (achievements stay) |
 | Home: household week /30, per-member counts, next goals rail, today's plants, week collection, survey banner | Rive characters and card animation (Reanimated + Skia carry the motion) | Leaderboard, friends, public profiles (tables kept, screens not ported) |
-| Stats renamed **Unlocks**: 16 stamps on real history (per kid + household), card levels 1/5/10, foods tried per category, plant detail page with kid fact + parent tip (`plant_facts`, AI-generated for en/nl/it, reviewed later) | de/fr UI strings and plant names (string layer accepts them, falls back to English) | Weekly goal editing, avatar borders, PWA install prompts |
+| Stats renamed **Unlocks**: 16 achievements on real history (per kid + household), card levels 1/5/10, foods tried per category, plant detail page with kid fact + parent tip (`plant_facts`, AI-generated for en/nl/it, reviewed later) | de/fr UI strings and plant names (string layer accepts them, falls back to English) | Weekly goal editing, avatar borders, PWA install prompts |
 | Account: members with the PWA avatar set, household name + dinner time, language en/nl/it, notifications split **essential** (dinner question, streak keeper; on) / **marketing** (card teaser, Sunday nudge; off), survey (existing tables), privacy/terms, sign out, **delete account** | "Refused" tap at logging (Brave bite) | |
 | Auth: email code, Google native sign-in, Apple sign-in on iOS (mandatory next to Google) | | |
 | Native push via Expo: permission asked after the first log, sender Edge Function on pg_cron every 15 min, three ignored → a week of quiet, sent/delivered/opened/logged-within-3h recorded | | |
@@ -42,7 +42,7 @@ Build the store POC on the household data model with this scope:
   build now, not after a design system.
 - Social was individual-based in the PWA and would violate D5 (never head-to-head); redoing it as
   between-household cheers belongs to the next release.
-- XP was a fourth currency with no decided economy; stamps and cards already carry the reward.
+- XP was a fourth currency with no decided economy; achievements and cards already carry the reward.
 
 ## Alternatives considered
 - Finish design system and the eleven v1 features first (the 2026-09-07 plan) — months before any

@@ -42,6 +42,10 @@ How the backlog is organised (since 2026-09-20), so every session reads it the s
   When he asks for a to-do: the right part of "Next to pick up".
 
 ## Working rules
+- Vocabulary: the milestone rewards are **achievements** (NL prestaties, IT traguardi). They were
+  called "stamps" until 2026-09-22; never write "stamp" in UI text, store copy or KB pages. Code
+  identifiers, i18n keys (`stamps.*`) and asset paths still say stamp and stay that way. Cards
+  stay cards (one per plant). The Italian Unlocks tab is "Collezione".
 - Git: `main` only, no feature branches. Commit and push when a piece of work is done.
 - Strategy topics (value proposition, brand, personas, retention, achievements, SEO, social,
   tone of voice, business model, market, KPIs, …): end the conversation by updating the

@@ -143,7 +143,7 @@
   },
   "unlocks": {
     "title": "Behaald",
-    "stamps": "Stempels",
+    "stamps": "Prestaties",
     "cards": "Kaarten",
     "cardsUnlocked": "{n} ontgrendeld",
     "silver": "zilver",
@@ -190,13 +190,13 @@
   },
   "celebration": {
     "firstBitesTitle": "Eerste hapjes!",
-    "firstBitesBody": "Drie planten geproefd. Dat is de eerste stempel.",
-    "newStampTitle": "Nieuwe stempel!",
-    "newStampsTitle": "{n} nieuwe stempels!",
+    "firstBitesBody": "Drie planten geproefd. Dat is de eerste prestatie.",
+    "newStampTitle": "Nieuwe prestatie!",
+    "newStampsTitle": "{n} nieuwe prestaties!",
     "lastNight": "Gisteravond behaald",
     "showCard": "Laat mijn kaart zien",
     "later": "Later",
-    "curiousUnlocked": "Stempel Nieuwsgierig behaald",
+    "curiousUnlocked": "Prestatie Nieuwsgierig behaald",
     "levelUpTitle": "Level omhoog!",
     "levelUpBody": "{stamp} is nu {level}"
   },
@@ -330,10 +330,10 @@
     "signOut": "Uitloggen",
     "deleteAccount": "Account verwijderen",
     "deleteTitle": "Je account verwijderen?",
-    "deleteBody": "Dit verwijdert je gezin, de profielen, kaarten en stempels voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
+    "deleteBody": "Dit verwijdert je gezin, de profielen, kaarten en prestaties voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
     "deleteCta": "Alles verwijderen",
     "deletedTitle": "Je account is verwijderd",
-    "deletedBody": "Je gezin, de profielen, kaarten en stempels zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
+    "deletedBody": "Je gezin, de profielen, kaarten en prestaties zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
     "deletedCta": "Sluiten",
     "version": "Versie {v}"
   },
@@ -344,7 +344,7 @@
     "essential": "Essentieel",
     "essentialDesc": "De etensvraag en je reeks. Standaard aan.",
     "marketing": "Tips & nieuws",
-    "marketingDesc": "Kaart- en stempel-teasers en de zondagse herinnering. Standaard uit.",
+    "marketingDesc": "Kaart- en prestatie-teasers en de zondagse herinnering. Standaard uit.",
     "types": {
       "dinnerQuestion": {
         "label": "Etensvraag",
@@ -355,8 +355,8 @@
         "description": "Alleen als de gezinsreeks in gevaar is"
       },
       "cardTeaser": {
-        "label": "Kaart- en stempel-teasers",
-        "description": "Na een paar stille avonden: welke kaart bijna klaar is. En voor het eten, als een stempel halverwege het volgende niveau is"
+        "label": "Kaart- en prestatie-teasers",
+        "description": "Na een paar stille avonden: welke kaart bijna klaar is. En voor het eten, als een prestatie halverwege het volgende niveau is"
       },
       "sundayNudge": {
         "label": "Zondagse herinnering",

@@ -175,6 +175,8 @@ Then suggest concrete next questions to investigate and sources to seek out.
 
 ## Conventions & style
 
+- Vocabulary: **achievements**, never "stamps" (renamed 2026-09-22, see [[concept-achievement-system]]);
+  NL prestaties, IT traguardi. Cards are the per-plant collectable.
 - Write in clear, neutral prose. Pages are reference material, not essays.
 - Always cite where a claim comes from (link the `source-` page or `raw/` file).
 - Prefer updating an existing page over creating a near-duplicate. Before creating a page,

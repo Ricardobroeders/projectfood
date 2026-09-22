@@ -1,5 +1,5 @@
 // Copy for the rung nudge, per locale: "Mia needs 9 more vegetables for Green machine gold."
-// Stamp names follow the app's locale files (projectfood-mobile/src/features/i18n/locales/*.json,
+// Achievement names follow the app's locale files (projectfood-mobile/src/features/i18n/locales/*.json,
 // key stamps.<id>.title); unit phrases read after a number, singular and plural.
 import type { RungState, Threshold } from './ladder.ts';
 
@@ -108,7 +108,7 @@ const BODY: Record<Locale, (owner: string | null, n: number, unit: string, stamp
 
 const asLocale = (l: string): Locale => (l === 'nl' || l === 'it' ? l : 'en');
 
-/** Title and body for one rung nudge. `owner` is the member's name, null for a household stamp. */
+/** Title and body for one rung nudge. `owner` is the member's name, null for a household achievement. */
 export function rungCopy(locale: string, r: RungState, owner: string | null, threshold: Threshold): { title: string; body: string } {
   const l = asLocale(locale);
   const n = Math.max(1, r.target - r.current);

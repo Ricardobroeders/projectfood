@@ -3,7 +3,7 @@ title: Business model (subscription first, affiliate as upside)
 type: concept
 tags: [business-model, pricing, monetisation, family-mode]
 created: 2026-09-10
-updated: 2026-09-21
+updated: 2026-09-22
 sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 ---
 
@@ -65,7 +65,7 @@ revisit only at stage 2.
 ### Free/paid boundary (the decision that shapes the schema)
 | Option | Free | Paid "Family" plan | Assessment |
 |---|---|---|---|
-| A. Parent payoff paid (lean) | The whole kid loop for every child: logging, cards, albums, stamps, streak, cheers, class milestone | Sunday shopper advice + shopping list + pre-grocery reminder, monthly recap card, "over time" insights, export | Never paywalls a child's reward (pillar 4), keeps the class network free to form, converts at week 4–5 with evidence |
+| A. Parent payoff paid (lean) | The whole kid loop for every child: logging, cards, albums, achievements, streak, cheers, class milestone | Sunday shopper advice + shopping list + pre-grocery reminder, monthly recap card, "over time" insights, export | Never paywalls a child's reward (pillar 4), keeps the class network free to form, converts at week 4–5 with evidence |
 | B. Capacity paid | One child + the core loop | More children + the parent tools | Converts two-kid families fast but paywalls a sibling's collection; hurts the classroom network |
 | C. Trial then hard paywall | 14 days | Everything | Highest revenue per install, kills class virality and the five-family learning; rejected for v1 |
 
@@ -92,7 +92,7 @@ app would split reviews, installs and the class links; never do that.
 What can churn the first households is the boundary, not the store: a plan that takes away
 something they already use. Hold the sequence above: everything free in the POC, the paid
 feature is something new (the Sunday shopper advice), and the founding cohorts get the
-introductory price or a founder-granted free year (see the advocacy "thank you" stamp idea in
+introductory price or a founder-granted free year (see the advocacy "thank you" achievement idea in
 [[strategy-backlog]]).
 
 ### Network effects, honestly

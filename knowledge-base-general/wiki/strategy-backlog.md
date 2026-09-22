@@ -3,7 +3,7 @@ title: Strategy backlog (undecided core ideas)
 type: backlog
 tags: [strategy, decisions, backlog]
 created: 2026-09-10
-updated: 2026-09-20
+updated: 2026-09-22
 sources: []
 ---
 
@@ -27,7 +27,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 **Ricardo's decisions and accounts**
 1. Store POC prerequisites (see [[decision-2026-09-16-store-poc-scope]]): custom SMTP was already in place (checked 2026-09-21: Resend, smtp.resend.com:465, sender "Project Food <noreply@projectfood.dev>", key `supabase-oauth-projectfood` from April; email rate limit raised to 100/hour under Authentication → Rate Limits on 2026-09-21); Apple Developer enrolment (Individual) for iOS builds, Apple sign-in and TestFlight: parked by Ricardo on 2026-09-21 until the Android app is ready (Play closed test running); the €99/year starts at enrolment, so no reason to start earlier. Until then the test families are Android-only. Google sign-in is built in the app (native id-token flow, button on the sign-in screen since 2026-09-16) but dead until these accounts exist, in this order (2026-09-21): (a) done 2026-09-21: Firebase added to the existing Cloud project `projectfood-494514` (a first attempt created a stray project `project-food-494fc`, deleted), Android app `dev.projectfood.app` registered without SHA-1s, `google-services.json` in `projectfood-mobile/` (gitignored) and on EAS as the secret file variable `GOOGLE_SERVICES_JSON` for production/preview/development, FCM V1 service account key uploaded to the EAS Android credentials; first build with it is versionCode 4, uploaded to internal testing the same day; push verified end to end on 2026-09-21 (token stored, a test push through Expo's API delivered to the OnePlus, receipt ok); (b) done 2026-09-21 by reusing the PWA's Google Cloud project `projectfood-494514` (org ricardobroeders.nl): consent screen in production, branding verified with the logo, web client `436737851150-1d59…` from 2026-04-26 kept as is; its id is in `eas.json` (base env, commit ba7124e) and `.env.local`; the id was already in Supabase Auth → Providers → Google → "Authorized Client IDs" from the PWA days, so nothing to do there; (c) done 2026-09-21: two Android OAuth clients for `dev.projectfood.app`, Play app signing SHA-1 `6D:64:66:2A:C6:01:37:BB:C9:A1:A2:28:4C:EB:A4:80:13:E1:79:73` and EAS upload key SHA-1 `65:CE:A0:DE:3B:40:34:71:D0:03:9B:53:CA:05:DF:B1:D0:28:F5:20` (read from the signed AAB; Play shows both under App integrity); matched server-side, no rebuild; verified 2026-09-21: Google sign-in works on the Play internal-testing install (versionCode 3); (d) an iOS client, still to create (bundle id `dev.projectfood.app` only, no Apple account needed) (`EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID` + `GOOGLE_IOS_URL_SCHEME`). The web client id is inlined at build time; the rebuild happened (versionCode 3, 2026-09-21). Google sign-in is not a Play review requirement (the email code plus a password review account cover that), but it must work before the closed test starts. Store listing assets: the five Play screenshots and the feature graphic in Figma, from the brief in [[seo-app-store-aso]] (written 2026-09-20; make them after the accent decision in item 2, the listing must be complete before closed testing).
 2. Accent on device: true blue or teal (row 2). The icon and splash no longer wait on it (generated 2026-09-20 from the Figma export, `scripts/build-icons.mjs`); the notification tint (`#F5C518` in `app.config.ts`) and the accent in code do.
-3. Try the stamp ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off. All 19 renders, the cups and the category renders are bundled (2026-09-18); bucket tidy-up is cosmetic (two files carry a doubled `achievement-achievement-` prefix).
+3. Try the achievement ladder on device (row 5, [[concept-achievement-system]]) and say which targets feel off. All 19 renders, the cups and the category renders are bundled (2026-09-18); bucket tidy-up is cosmetic (two files carry a doubled `achievement-achievement-` prefix).
 4. Business model: pick the free/paid boundary (option A/B/C) and confirm €3.99 / €39.99 with an introductory year (row 9, [[concept-business-model]]). Payments stay off in the store POC.
 5. Review the generated kid facts and parent tips (row 13): `node scripts/generate-plant-facts.mjs --review` in `projectfood-mobile`.
 6. Five parent conversations (row 3).
@@ -42,7 +42,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 13. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**
-14. Achievements economy (row 5, 9): Golden Sprouts as earned currency and streak buy-back, a fact per card level, secret achievements, the advocacy stamp, the plane "gold / XP economy" idea. Settle them together against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. Ideas in the parking lot below.
+14. Achievements economy (row 5, 9): Golden Sprouts as earned currency and streak buy-back, a fact per card level, secret achievements, the advocacy achievement, the plane "gold / XP economy" idea. Settle them together against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. Ideas in the parking lot below.
 15. Friends and social layer (row 17): the social unit (parent account, household or kid) and the kids' safeguarding line; personal streak first, friend streak as a later layer. Outcome = a decision page before any design.
 
 ## Parking lot: ideas, not to-dos
@@ -76,27 +76,27 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   Unlocks. The more you eat of a plant, the more you learn about it. _(Ricardo, 2026-09-19; a
   concrete shape for the "Fun facts and borders at 5 / 50 / 100" input above; needs three facts
   per plant per locale instead of one, i.e. the facts script (row 13) grows ×3)_
-- **Secret achievements (row 5).** A hidden layer of stamps that are not on the shelf and only
+- **Secret achievements (row 5).** A hidden layer of achievements that are not on the shelf and only
   appear once they fire, so there is something to stumble into after the visible ladder is
   climbed. Ricardo's example: tick off every plant in the list in a single day → unlock
   "That's called cheating", originally with all historical records wiped. Refined the same day:
-  ticking everything off in one day should carry *some* consequence, but the stamp itself may
+  ticking everything off in one day should carry *some* consequence, but the achievement itself may
   already be it — a visible shame badge on the shelf, no data touched. To work out: which
-  consequence (shame stamp only, the day's logs discounted, or the wipe) and whether anything
+  consequence (shame achievement only, the day's logs discounted, or the wipe) and whether anything
   destructive is reversible; how many secrets and of what kind (joke, skill, rare timing); how
-  they read in five locales; and how a hidden stamp is hinted at without giving it away.
+  they read in five locales; and how a hidden achievement is hinted at without giving it away.
   _(Ricardo, 2026-09-20; sits under the ladder in [[concept-achievement-system]] and touches the
-  "no punishment without a freeze" pillar — a shame stamp keeps that pillar intact, a wipe does
+  "no punishment without a freeze" pillar — a shame achievement keeps that pillar intact, a wipe does
   not)_
-- **Advocacy / community achievement (rows 5, 7, 12).** A stamp for people who talk about
+- **Advocacy / community achievement (rows 5, 7, 12).** An achievement for people who talk about
   Project Food online — Ricardo's example is active Reddit contribution — on the reasoning that
   it genuinely helps the product. He notes himself that it is hard to measure. To work out: how
   it is established at all (self-declared with an honour-system tap, a pasted link, a manual
   founder grant while numbers are small), and three problems before any of that — rewarded
   posting is undisclosed promotion under Reddit's self-promotion rules and reads as
-  astroturfing if it is not labelled; any self-declared version is trivially gamed, so the stamp
-  stops meaning anything; and this is a parent-and-kid app, so an advocacy stamp belongs on the
-  parent side only, never in the kid's collection. A founder-granted "thank you" stamp for the
+  astroturfing if it is not labelled; any self-declared version is trivially gamed, so the achievement
+  stops meaning anything; and this is a parent-and-kid app, so an advocacy achievement belongs on the
+  parent side only, never in the kid's collection. A founder-granted "thank you" achievement for the
   first families avoids all three and may be the whole idea. _(Ricardo, 2026-09-20; touches
   [[concept-word-of-mouth]], row 7 social media and row 12 go-to-market)_
 - **Invite a friend (rows 9, 12).** Referral reward such as a free period of the paid plan.
@@ -121,7 +121,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 2 | Brand guidelines | drafted | Decide the accent on device (blue vs teal); then bind app theme to Figma variables |
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band |
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided; an admin panel that also covers plant content parked 2026-09-22 at admin.projectfood.dev, own project folder, low priority, see the parking lot); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
-| 5 | Achievements | drafted | Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 stamps × up to four levels, discovery rungs 2–4 need two tasting days, two consistency stamps (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy stamp) wait for a brainstorm |
+| 5 | Achievements | drafted | Named achievements since 2026-09-22 (NL prestaties, IT traguardi; "stamps" before). Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 achievements × up to four levels, discovery rungs 2–4 need two tasting days, two consistency achievements (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy achievement) wait for a brainstorm |
 | 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend; Play screenshot brief (five frames, copy in en/nl/it, template, mock data, Play specs) written 2026-09-20 in [[seo-app-store-aso]], Ricardo builds the frames in Figma; Play policy rule the same day: audience 18+, listing addressed to the parent, no "kids" wording or character avatars on the frames |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
@@ -186,7 +186,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   segments and journeys) only if we want those without building; it adds an SDK, a privacy line
   and a second source of truth, and the essential pushes would still need our data.
 - **Rung nudge (built 2026-09-20):** a fifth kind in `send-notifications`, `rung_nudge`, on the
-  marketing channel under the card-teaser flag: 90–75 minutes before dinner it names the one stamp
+  marketing channel under the card-teaser flag: 90–75 minutes before dinner it names the one achievement
   closest to its next level once that rung passed 50% or 75% ("Mia needs 9 more vegetables for
   Green machine gold"), deep link to Unlocks, at most one per household per three days, each mark
   once (`achievement_nudges`). A household's first run only records where it stands, so old
@@ -198,21 +198,21 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   _(status 2026-09-18)_
 
 ### 5. Achievements — drafted
-- **Store POC (2026-09-16):** 16 stamps on real history in the Unlocks tab, unlock rows in
+- **Store POC (2026-09-16):** 16 achievements on real history in the Unlocks tab, unlock rows in
   `achievement_unlocks`, one celebration sheet per session, XP dropped.
 - **Finding (2026-09-18):** every engaged account unlocked all 16 on day one; the shelf has
-  nothing left to aim at. Ladder proposal with four levels per stamp, calibrated on the 14
+  nothing left to aim at. Ladder proposal with four levels per achievement, calibrated on the 14
   members' live counts and the retention curve (cliffs at week 0→1 and weeks 5→7), in
   [[concept-achievement-system]] with the prize-image list.
 - **Have:** [[concept-achievement-system]] (three tiers, eight rules, the ladder with today's
-  standings per level, image topics), stamps on device.
+  standings per level, image topics), achievements on device.
 - **Open:** Ricardo confirms or adjusts the level targets; a "refused" tap at logging for Brave
   bite; the real album list (category "all" levels stand in for albums until then).
 - **Built (2026-09-18):** `level` column, engine, level copy en/nl/it, rings on the shelf, the ladder in
-  the stamp sheet, 17 prize renders and the card-level cups on device.
+  the achievement sheet, 17 prize renders and the card-level cups on device.
 - **Next:** watch which rungs families sit on after a month; add the 50% / 75% rung pushes to
   `send-notifications`. Parked inputs 2026-09-20: a hidden layer of secret achievements (with a
-  consequence for ticking everything off in one day) and an advocacy stamp for people who post
+  consequence for ticking everything off in one day) and an advocacy achievement for people who post
   about us (see the parking lot); nothing to build yet. _(status 2026-09-20)_
 
 ### 6. SEO strategy — drafted
@@ -344,7 +344,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   casually: user search that can surface a child is a red line for Google Play Families and the
   App Store, and needs a GDPR basis with parental consent. The shape that likely survives review
   is parent-to-parent links only (invite code or contact, not open search), with a kid's counts
-  and stamps visible only to households their parent has approved, and nothing about a child
+  and achievements visible only to households their parent has approved, and nothing about a child
   discoverable by strangers.
 - **Streak order settled (Ricardo, 2026-09-20): the personal streak comes first.** He agrees the
   family layer makes a shared streak genuinely more complex than Duolingo's, and rates the

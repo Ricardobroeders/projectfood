@@ -2,7 +2,7 @@
 // Rules (KB retention loop): the copy is a question that opens logging (D10); the streak keeper only
 // when the streak is at risk (D7 freeze); marketing kinds off by default; three ignored in a row ->
 // a week of silence; sent / delivered / opened / logged-within-3h recorded for every message.
-// The rung nudge (KB achievement system) names one stamp that passed 50% or 75% of its next level,
+// The rung nudge (KB achievement system) names one achievement that passed 50% or 75% of its next level,
 // before dinner, at most one per household every three days, each mark once.
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { createClient } from 'jsr:@supabase/supabase-js@2';

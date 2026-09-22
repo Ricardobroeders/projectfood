@@ -3,7 +3,7 @@ title: SEO — App Store & Google Play (ASO) for the native launch
 type: seo
 tags: [seo, aso, app-store, family-mode]
 created: 2026-09-06
-updated: 2026-09-20
+updated: 2026-09-22
 sources: [source-family-mode-context.md, seo-serp-landscape.md]
 ---
 
@@ -69,6 +69,35 @@ class-milestone and Sunday-advice frames wait for their features. Ricardo builds
 Figma; this section is the brief. Same day, second pass: every "kids" wording and every
 character avatar left the frames, see the policy rule under "What the listing has to do"._
 
+**Final frames (built by Ricardo in Figma, reviewed 2026-09-22).** Four screenshots on the
+icon's pale green, headline above or below the phone with the key words in the accent green,
+plus a title artboard (01) not reviewed here. This set replaces the six-frame brief of 2026-09-20;
+the "Template", "Mock family" and "Rules" paragraphs below still apply. Order and content:
+
+| # | Message | Screen and state shown |
+|---|---|---|
+| 02 | The goal, for one person or the whole family | Home: gauge 18 of 30, "12 to go", "5d left", streak chip "7 dinners in a row", Next goals rail (Nutcracker · Platinum, 6 more to go; Tomato family, 8 more), Tasted today chips; a sauerkraut-jar clay render beside the phone |
+| 03 | The reward accumulates, and every plant has something to say | Unlocks: achievement grid (Grain train 4/17, Bubbly complete, Superfood 33/44, Tomato family 10/18, Regulars 41/50, Table talk 56/100, Family of thirty 22/52), Cards 166 unlocked · 84 silver · 58 gold, Foods tried 166 of 224; two card renders over the phone |
+| 04 | Levels, with the next one always visible | Achievement sheet for Superfood: Level 3 of 4 · Gold, "44 superfoods tasted at least twice", 33/44 and "11 more to go", rungs Bronze / Silver / Gold done, Platinum next |
+| 05 | How logging works | Log: "Logging for Everyone", search "Search 200+ plants…", category tabs, rows Black pepper and Cherry tomato unchecked, Avocado checked on the accent, Blueberry and Cantaloupe (Superfood ribbon) unchecked |
+
+Frames 03 and 04 show the Superfood render (a blueberry with a face and a cape) and card renders
+with faces. The Play reviewer looks for "young characters" in an 18+ listing; flagged to Ricardo on
+2026-09-22, his call.
+
+**Copy per frame, final (2026-09-22).** Headline first, sub-line second; the words in bold are
+set in the accent green. English capitalisation is Ricardo's; Dutch and Italian are sentence
+case. Ricardo's English frame 04 sub-line still says "stamp" and needs "achievement".
+
+| # | EN | NL | IT |
+|---|---|---|---|
+| 02 | **30 Different Plants** a week / One goal for you or the whole family. Count them on your phone. | **30 verschillende planten** per week / Eén doel voor jou of het hele gezin. Tel ze op jouw telefoon. | **30 piante diverse** a settimana / Un obiettivo per te o per tutta la famiglia. Contale sul tuo telefono. |
+| 03 | Earn **Achievements** and unlock fun facts for the table, and tips for the cook. / Every plant has something to tell and a way to serve it. | Spaar **prestaties** en ontgrendel weetjes voor aan tafel en tips voor de kok. / Elke plant heeft iets om te vertellen en een manier om het op tafel te zetten. | Guadagna **traguardi** e sblocca curiosità per la tavola e consigli per chi cucina. / Ogni pianta ha qualcosa da raccontare e un modo per servirla. |
+| 04 | From **Bronze** to **Platinum** / Each achievement shows how far you are from the next level. | Van **brons** tot **platina** / Elke prestatie laat zien hoe ver je bent tot het volgende level. | Dal **bronzo** al **platino** / Ogni traguardo mostra quanto manca al livello successivo. |
+| 05 | **Tap** what you **Taste** / Over 200 plants. Hold one to say who had it. | **Tik** aan wat je **proeft** / Meer dan 200 planten. Houd er een vast om te kiezen wie hem proefde. | **Tocca** cosa **assaggi** / Oltre 200 piante. Tienine premuta una per dire chi l'ha assaggiata. |
+
+_Superseded six-frame brief of 2026-09-20, kept for the reasoning behind the order:_
+
 **What the carousel has to do.** A parent from a class WhatsApp link sees the first two frames
 without swiping and decides in about 20 seconds. The order follows the questions as they come
 up: what is it (1), what does the family get out of it (2), what do we do together (3), what do I
@@ -80,9 +109,9 @@ children.
 | # | Message (why it is here) | Screen and state to show | Background |
 |---|---|---|---|
 | 1 | The ritual: the family tastes, the parent taps. Answers "what is it" and the reflex worry "another app, another account" (persona: nothing that needs a child device or account) | Log ("Tonight's dinner"), logging for two family members with the parent's own avatar muted, All tab. Rows: broccoli tasted by both (accent check + two initial discs), carrot tasted by one (initial disc, circle empty), then cucumber, tomato, strawberry, banana untouched | mint `#B8E0D1` |
-| 2 | The reward accumulates and never resets (the retention insight in [[concept-retention-loop]]) | Celebration sheet "Level up!" over the dimmed Log: the household stamp Full table pressed down, pips 2 of 4, body "Full table is now Silver · 10 plants the whole family has tasted", Done button. A household stamp, so no name and no per-child framing | peach `#EFC0B1` |
+| 2 | The reward accumulates and never resets (the retention insight in [[concept-retention-loop]]) | Celebration sheet "Level up!" over the dimmed Log: the household achievement Full table pressed down, pips 2 of 4, body "Full table is now Silver · 10 plants the whole family has tasted", Done button. A household achievement, so no name and no per-child framing | peach `#EFC0B1` |
 | 3 | One goal for the whole family, nobody competing (pillar 4, D4) | Home: gauge 17 of 30, "13 to go", "3d left", streak chip "6 dinners in a row", member counts 14 · 11 · 9, Next goals rail (Table talk 6/7, Fruit basket 11/12, Rainbow 3/4), Tasted today chips (Broccoli, Carrot, Cucumber, Pear) | lavender `#D6BDE5` |
-| 4 | The parent's long-term payoff: the family's list of foods grows, per person | Unlocks with the second member selected: "11 of 72 levels"; stamp grid with Explorer, Curious, Full table, Rainbow, Big dinner, Regular table, Steady weeks, Green machine, Fruit basket and Superfood unlocked, the rest faded; Cards 23 unlocked · 6 silver · 2 gold; Foods tried 23 of 224 (Vegetables 7/76, Fruits 11/49, Herbs 2/26, Nuts 1/27, Legumes 1/21, Whole grains 0/17, Ferments 1/8) | sand `#E5CBA8` |
+| 4 | The parent's long-term payoff: the family's list of foods grows, per person | Unlocks with the second member selected: "11 of 72 levels"; achievement grid with Explorer, Curious, Full table, Rainbow, Big dinner, Regular table, Steady weeks, Green machine, Fruit basket and Superfood unlocked, the rest faded; Cards 23 unlocked · 6 silver · 2 gold; Foods tried 23 of 224 (Vegetables 7/76, Fruits 11/49, Herbs 2/26, Nuts 1/27, Legumes 1/21, Whole grains 0/17, Ferments 1/8) | sand `#E5CBA8` |
 | 5 | Something to say at the table: a fact to tell and a way to serve it, per plant | Plant page for Strawberry: hero on the fruit tint, Superfood pill, facts (Rosaceae, Red, All year), "Did you know?" card with the fact, "Tip for the table", Tasted by: member 2 six tastes · silver · "4 more tastes to gold", member 3 two · bronze, parent eleven · gold | mint `#B8E0D1` |
 | 6 (optional) | Low-nag trigger: one question after dinner, nothing else | The dinner-question push on the lock screen ("What did the family taste tonight?") with the Notifications screen behind it: Essential on, Tips & news off | peach `#EFC0B1` |
 
@@ -95,7 +124,7 @@ swipes, and frames 1 and 2 do most of the work.
 | # | EN | NL | IT |
 |---|---|---|---|
 | 1 | **The family tastes. You tap.** / One account on your phone, for the whole table. | **Het gezin proeft. Jij tikt.** / Eén account op jouw telefoon, voor de hele tafel. | **La famiglia assaggia. Tu tocchi.** / Un solo account sul tuo telefono, per tutta la tavola. |
-| 2 | **Every taste earns something** / Stamps and cards level up. Nothing ever resets. | **Elke hap levert iets op** / Stempels en kaarten stijgen in level. Niets gaat ooit verloren. | **Ogni assaggio vale qualcosa** / Timbri e carte salgono di livello. Niente si azzera mai. |
+| 2 | **Every taste earns something** / Achievements and cards level up. Nothing ever resets. | **Elke hap levert iets op** / Prestaties en kaarten stijgen in level. Niets gaat ooit verloren. | **Ogni assaggio vale qualcosa** / Traguardi e carte salgono di livello. Niente si azzera mai. |
 | 3 | **30 different plants a week. Together.** / One goal for the whole family, nobody against anybody. | **30 verschillende planten per week. Samen.** / Eén doel voor het hele gezin, niemand tegen elkaar. | **30 piante diverse a settimana. Insieme.** / Un obiettivo per tutta la famiglia, nessuno contro nessuno. |
 | 4 | **Watch your family's list of foods grow** / Cards go bronze, silver, gold. Per person, month after month. | **Zie de lijst van wat jullie eten groeien** / Kaarten worden brons, zilver, goud. Per persoon, maand na maand. | **Guarda crescere la lista di ciò che mangiate** / Le carte diventano bronzo, argento, oro. A persona, mese dopo mese. |
 | 5 | **A fact for the table, a tip for the cook** / Every plant comes with something to tell and a way to serve it. | **Een weetje voor aan tafel, een tip voor de kok** / Elke plant heeft iets om te vertellen en een manier om het op tafel te zetten. | **Una curiosità per la tavola, un consiglio per chi cucina** / Ogni pianta ha qualcosa da raccontare e un modo per servirla. |
@@ -141,11 +170,13 @@ no subtitle, so the subtitle line opens the short description. Timing: the listi
 complete before a closed-testing release, so the frames come after the accent decision and before
 the Play testing step in [[strategy-backlog]].
 
-## Play listing texts (2026-09-21)
+## Play listing texts (2026-09-21, full descriptions rewritten 2026-09-22)
+Full descriptions: Ricardo's rewrite of 2026-09-22, checked against the app (224 plants, no per-plant "benefits", no "alternative", no secret achievements, no health claims) and then translated; the vocabulary is achievements (NL prestaties, IT traguardi), see [[concept-achievement-system]]. The short descriptions are unchanged from 2026-09-21.
 Written for the Play Console fields, in the listing rule above: addressed to the parent, the
 family and the table as the words, no health claims, no exclamation marks, no "free". Paste as
 plain text; Play keeps the line breaks and the "•" bullets, nothing else. Same texts serve the
-App Store description later (Apple ignores line breaks less gracefully, check there).
+App Store description later (Apple ignores line breaks less gracefully, check there). The
+bullet-free paragraph form of 2026-09-22 replaced the "•" bullets of the first draft.
 
 | Field | en-GB | nl-NL | it-IT |
 |---|---|---|---|
@@ -156,98 +187,83 @@ Short description rewritten 2026-09-21 at Ricardo's request: the goal first, no 
 
 ### Full description, en-GB
 ```
-Project Food turns "what did we eat today?" into a one-minute ritual at the table. The family tastes, you tap, and every plant you try together becomes a card in the family collection.
+Project Food turns "what did we eat today?" into a one-minute ritual at the table. The family tastes, you tap, and every new plant you try becomes a card in the family collection.
 
 How it works
-• After dinner, open the app and tap the plants everyone tasted. 224 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each with its own picture.
-• Hold a plant to choose who tasted it, or log for the whole table at once.
-• The first taste unlocks the card. Five tastes make it silver, ten make it gold. Nothing ever resets.
+After dinner, or just once a day, open the app and tap the plants you tasted. Over 200 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each with its own picture. Tap a plant to log it for tonight. Hold it to choose who tasted it. Aim for 30 different plants a week, counted together as a family. Every taste adds to the collection, and nothing ever resets.
 
-One goal for the whole family
-Thirty different plants a week, counted together. Everyone adds to the same number, and nobody is measured against anybody. Skip a dinner and the streak holds, once a week.
-
-Stamps that level up
-Explorer, Rainbow, Full table, Big dinner and more: stamps for the things a family does at the table, in bronze, silver, gold and platinum. Each one shows how far you are from the next level.
+Collect all the achievements
+Explorer, Rainbow, Full table, Big dinner and more: achievements for the things a family does at the table, in bronze, silver, gold and platinum. Each one shows how far you are from the next level.
 
 Something to talk about while you eat
 Every plant comes with a fact for the table and a tip for the cook.
 
 See what your family eats, month after month
-The Unlocks screen shows, per person, the foods tried so far, the cards held and the stamps earned. That list only grows. Even in a home where new things are not tried easily, every taste counts.
+The Unlocks screen shows, per person, the foods tried so far, the cards held and the achievements earned. That list only grows. Even in a home where new things are not tried easily, every taste counts.
 
 One question, at your dinner time
 Tell the app when you usually eat, and half an hour later it asks what the family tasted. That is the only notification you need. Tips and news stay off until you switch them on.
 
 On your phone, for your family
-One account, yours. Family members are a first name and a colour, nothing more. No ads. Delete everything with one tap, whenever you want.
+One account, yours. Add family members to collect plants together: a first name and a colour, nothing more. No ads. Delete everything with one tap, whenever you want.
 
 Missing a plant? Suggest it from the search and we add it.
 
-Project Food is available in English, Dutch and Italian.
+Project Food is available in English, Dutch and Italian. More languages are on the way.
 ```
 
 ### Full description, nl-NL
 ```
-Project Food maakt van "wat hebben we vandaag gegeten?" een ritueel van één minuut aan tafel. Het gezin proeft, jij tikt, en elke plant die jullie samen proeven wordt een kaart in de gezinscollectie.
+Project Food maakt van "wat hebben we vandaag gegeten?" een ritueel van één minuut aan tafel. Het gezin proeft, jij tikt, en elke nieuwe plant die je proeft wordt een kaart in de gezinscollectie.
 
 Zo werkt het
-• Open de app na het eten en tik aan welke planten iedereen heeft geproefd. 224 soorten fruit, groente, kruiden, noten, zaden, peulvruchten, volkoren granen en gefermenteerd eten, elk met een eigen plaatje.
-• Houd een plant ingedrukt om te kiezen wie hem heeft geproefd, of log in één keer voor de hele tafel.
-• De eerste hap ontgrendelt de kaart. Vijf keer proeven maakt hem zilver, tien keer goud. Niets gaat ooit verloren.
+Open de app na het eten, of gewoon één keer per dag, en tik aan welke planten je hebt geproefd. Meer dan 200 soorten fruit, groente, kruiden, noten, zaden, peulvruchten, volkoren granen en gefermenteerd eten, elk met een eigen plaatje. Tik op een plant om hem voor vanavond te loggen. Houd hem vast om te kiezen wie heeft geproefd. Ga voor 30 verschillende planten per week, samen geteld als gezin. Elke hap telt mee voor de collectie en niets gaat ooit verloren.
 
-Eén doel voor het hele gezin
-Dertig verschillende planten per week, samen geteld. Iedereen telt mee voor hetzelfde getal en niemand wordt met iemand vergeleken. Een avond overslaan? De reeks blijft staan, één keer per week.
-
-Stempels die stijgen in level
-Ontdekker, Regenboog, Volle tafel, Groot diner en meer: stempels voor wat een gezin aan tafel doet, in brons, zilver, goud en platina. Elke stempel laat zien hoe ver je bent tot het volgende level.
+Spaar alle prestaties
+Ontdekker, Regenboog, Volle tafel, Groot diner en meer: prestaties voor wat een gezin aan tafel doet, in brons, zilver, goud en platina. Elke prestatie laat zien hoe ver je bent tot het volgende level.
 
 Iets om over te praten tijdens het eten
 Bij elke plant hoort een weetje voor aan tafel en een tip voor de kok.
 
 Zie wat jullie eten, maand na maand
-Het scherm Behaald laat per persoon zien wat er al geproefd is, welke kaarten er zijn en welke stempels. Die lijst wordt alleen maar langer. Ook als je kind niet snel iets nieuws proeft: elke hap telt.
+Het scherm Behaald laat per persoon zien wat er al geproefd is, welke kaarten er zijn en welke prestaties. Die lijst wordt alleen maar langer. Ook in een huis waar nieuwe dingen niet makkelijk geproefd worden: elke hap telt.
 
 Eén vraag, op jullie etenstijd
 Geef aan wanneer jullie meestal eten en een half uur later vraagt de app wat het gezin heeft geproefd. Meer meldingen heb je niet nodig. Tips en nieuws staan uit tot jij ze aanzet.
 
 Op jouw telefoon, voor jouw gezin
-Eén account, van jou. Gezinsleden zijn een voornaam en een kleur, meer niet. Geen advertenties. Alles verwijderen kan met één tik, wanneer je maar wilt.
+Eén account, van jou. Voeg gezinsleden toe om samen planten te sparen: een voornaam en een kleur, meer niet. Geen advertenties. Alles verwijderen kan met één tik, wanneer je maar wilt.
 
 Mis je een plant? Stel hem voor via het zoekveld en we voegen hem toe.
 
-Project Food is beschikbaar in het Nederlands, Engels en Italiaans.
+Project Food is beschikbaar in het Nederlands, Engels en Italiaans. Meer talen volgen.
 ```
 
 ### Full description, it-IT
 ```
-Project Food trasforma "cosa abbiamo mangiato oggi?" in un rituale di un minuto a tavola. La famiglia assaggia, tu tocchi, e ogni pianta che provate insieme diventa una carta nella collezione di famiglia.
+Project Food trasforma "cosa abbiamo mangiato oggi?" in un rituale di un minuto a tavola. La famiglia assaggia, tu tocchi, e ogni nuova pianta che provi diventa una carta nella collezione di famiglia.
 
 Come funziona
-• Dopo cena apri l'app e tocca le piante che tutti hanno assaggiato. 224 tra frutta, verdura, erbe e spezie, noci, semi, legumi, cereali integrali e fermentati, ognuna con la sua immagine.
-• Tieni premuta una pianta per scegliere chi l'ha assaggiata, oppure registra per tutta la tavola in una volta.
-• Il primo assaggio sblocca la carta. Cinque assaggi la fanno d'argento, dieci d'oro. Niente si azzera mai.
+Dopo cena, o semplicemente una volta al giorno, apri l'app e tocca le piante che hai assaggiato. Oltre 200 tra frutta, verdura, erbe e spezie, noci, semi, legumi, cereali integrali e fermentati, ognuna con la sua immagine. Tocca una pianta per registrarla per stasera. Tienila premuta per scegliere chi l'ha assaggiata. Punta a 30 piante diverse a settimana, contate insieme come famiglia. Ogni assaggio si aggiunge alla collezione e niente si azzera mai.
 
-Un obiettivo per tutta la famiglia
-Trenta piante diverse a settimana, contate insieme. Ognuno contribuisce allo stesso numero e nessuno viene confrontato con nessuno. Salti una cena? La serie resiste, una volta a settimana.
-
-Timbri che salgono di livello
-Esploratore, Arcobaleno, Tavola piena, Grande cena e altri: timbri per quello che una famiglia fa a tavola, in bronzo, argento, oro e platino. Ogni timbro mostra quanto manca al livello successivo.
+Colleziona tutti i traguardi
+Esploratore, Arcobaleno, Tavola piena, Grande cena e altri: traguardi per quello che una famiglia fa a tavola, in bronzo, argento, oro e platino. Ogni traguardo mostra quanto manca al livello successivo.
 
 Qualcosa di cui parlare mentre si mangia
 Ogni pianta ha una curiosità per la tavola e un consiglio per chi cucina.
 
 Guarda cosa mangiate, mese dopo mese
-La schermata Traguardi mostra, per ogni persona, i cibi già provati, le carte ottenute e i timbri guadagnati. Quella lista può solo crescere. Anche se a casa vostra le novità a tavola non passano facilmente: ogni assaggio conta.
+La schermata Collezione mostra, per ogni persona, i cibi già provati, le carte ottenute e i traguardi guadagnati. Quella lista può solo crescere. Anche in una casa dove le novità a tavola non passano facilmente: ogni assaggio conta.
 
 Una domanda, all'ora della vostra cena
 Indica a che ora cenate di solito e mezz'ora dopo l'app chiede cosa ha assaggiato la famiglia. Altre notifiche non servono. Consigli e novità restano spenti finché non li attivi tu.
 
 Sul tuo telefono, per la tua famiglia
-Un solo account, il tuo. I membri della famiglia sono un nome e un colore, niente di più. Nessuna pubblicità. Puoi cancellare tutto con un tocco, quando vuoi.
+Un solo account, il tuo. Aggiungi i membri della famiglia per collezionare le piante insieme: un nome e un colore, niente di più. Nessuna pubblicità. Puoi cancellare tutto con un tocco, quando vuoi.
 
 Manca una pianta? Suggeriscila dalla ricerca e la aggiungiamo.
 
-Project Food è disponibile in italiano, inglese e olandese.
+Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arrivo.
 ```
 
 ### Store settings (one set, not per language)

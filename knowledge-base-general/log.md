@@ -293,3 +293,20 @@ by default; the OS dialog opens only when it stays on; `push_permission {via: 'o
 the two colour pickers collapsed into one (`avatar_bg` retired, column kept, nulled on edit).
 Amends D9 in [[decision-2026-09-07-app-v1-scope]] and the design rules in
 [[concept-retention-loop]]; backlog item 9 (device checks) and row 4 updated.
+
+## [2026-09-22] ingest | Play listing: final full descriptions and screenshot copy (Ricardo's rewrite)
+Ricardo rewrote the en-GB full description and built four screenshot frames in Figma (Home,
+Unlocks, Superfood achievement sheet, Log). Checked against the app: 224 plants (not "250+"), no
+per-plant "benefits", no "alternative when you don't like it", no secret achievements, and "satisfy
+your gut" dropped as a health claim. NL and IT translations of the description and of the frame
+copy filed in [[seo-app-store-aso]], which now records the final frames and marks the 2026-09-20
+six-frame brief as superseded. Short descriptions unchanged.
+
+## [2026-09-22] fix | Achievements replace "stamps" as the user-facing word
+Ricardo's call while reviewing the store copy: "achievements" is understood at a glance, "stamps"
+needed explaining. Renamed in the app strings (EN achievements, NL prestaties, IT traguardi; the
+Italian Unlocks tab became "Collezione" because it was already "Traguardi"), in the push-function
+comments, in every wiki page ([[concept-achievement-system]], [[strategy-backlog]], the store
+decisions, [[concept-business-model]], index) and in both CLAUDE.md files (vocabulary rule). Code
+identifiers, i18n keys (`stamps.*`) and `assets/stamps/` keep `stamp` on purpose. Older log entries
+above keep the old word.
