@@ -331,3 +331,14 @@ de/fr rows. Drafted position: a small shell in all five languages now (home, abo
 terms, contact, the two learn pages), editorial per market in sequence (NL, IT, then DE/FR once the app
 speaks them; EN the default fallback), printables as the first DE/FR asset. Cost driver is maintenance
 drift across five copies, not translation. Recorded on row 6 and as item 9c in [[strategy-backlog]].
+
+## [2026-09-23] query | Site architecture: hubs, structured data, research first or not
+Ricardo decided the website stays en/nl/it until the Dutch numbers prove the model, then de/fr
+(row 6 open question closed). He asked, from a sitemap point of view, whether to build topic
+clusters with structured data or to do keyword research first. Answer filed as
+[[seo-site-architecture]]: the site already routes pillar → cluster and emits the right schema, so
+the skeleton (home as the app page, printables hub) starts now and research runs in parallel to
+order the cluster pages; three hubs (learn to eat everything, 30 plants, printables), gated plant
+pages, schema per page type with `SoftwareApplication` and `Person` added and no fake ratings, a
+manual research sheet with thresholds for a new domain, and the de/fr gate (April 2027 NL KPIs
+plus the app locale). Row 6, item 9c and item 14 updated.

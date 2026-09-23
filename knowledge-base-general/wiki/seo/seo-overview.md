@@ -3,7 +3,7 @@ title: SEO strategy — overview (family mode)
 type: seo
 tags: [seo, growth, marketing, strategy, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-23
 sources: [source-family-mode-context.md, seo-serp-landscape.md, seo-technical-audit.md]
 ---
 
@@ -26,6 +26,7 @@ effort until the class channel is proven.
 > - [[seo-content-types]] — formats mapped to the family loop (dinner, groceries, class)
 > - [[seo-app-store-aso]] — App Store / Play listing strategy, the new front door
 > - [[seo-technical-audit]] — site state, plus the app-link and no-health-claims fixes
+> - [[seo-site-architecture]] — sitemap, page types, structured data, research brief (2026-09-23)
 > - [[seo-roadmap]] — small, timed to the November class pilot and EU-Schoolfruit
 
 ## What the pivot changes for search

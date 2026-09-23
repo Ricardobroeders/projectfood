@@ -58,6 +58,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[seo-content-types]] — 9 formats tied to dinner/groceries/class moments; link magnets = printable plant cards and the class challenge kit; what we won't build.
 - [[seo-app-store-aso]] — App Store / Play listing plan in 3 locales, screenshots, ratings, Universal Links for class invites, store funnel KPIs.
 - [[seo-technical-audit]] — site state; 14 gaps led by removing health-claim copy and adding app-link plumbing; 4 decisions for Ricardo.
+- [[seo-site-architecture]] — sitemap in en/nl/it (home, two learn pillars with clusters, printables hub, gated plant pages), structured data per page type, the manual keyword-research brief and thresholds, the de/fr gate (2026-09-23).
 - [[seo-roadmap]] — Phase 0–3 gated on G1 (dinner habit holds), G2 (one class runs), G3 (a second class replicates); ~half a day a week; KPIs led by class-link install conversion.
 
 ## Interviews
