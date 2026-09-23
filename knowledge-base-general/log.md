@@ -322,3 +322,12 @@ absent. Checked against the site: roadmap Phase 0 (2026-09-06) never started, th
 cards as the link magnet, then the NL "kind lust geen groente" cornerstone once DataForSEO numbers
 exist; class-channel content holds for row 12. Filed as a brand-SERP section in [[seo-serp-landscape]],
 a status note in [[seo-roadmap]], row 6 and items 9 (Ricardo) and 14 (Claude) in [[strategy-backlog]].
+
+## [2026-09-23] query | Website languages: shell in five, editorial in market order
+Ricardo asked whether the website should focus on en/nl or open de/fr/it at once, citing BXWY where
+starting languages early paid off. Facts: the site is already live in en/nl/it (497 strings each, both
+learn articles in three languages); the app's de/fr files are three-line stubs and plant names have no
+de/fr rows. Drafted position: a small shell in all five languages now (home, about, printables, privacy,
+terms, contact, the two learn pages), editorial per market in sequence (NL, IT, then DE/FR once the app
+speaks them; EN the default fallback), printables as the first DE/FR asset. Cost driver is maintenance
+drift across five copies, not translation. Recorded on row 6 and as item 9c in [[strategy-backlog]].
