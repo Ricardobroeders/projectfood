@@ -342,3 +342,15 @@ order the cluster pages; three hubs (learn to eat everything, 30 plants, printab
 pages, schema per page type with `SoftwareApplication` and `Person` added and no fake ratings, a
 manual research sheet with thresholds for a new domain, and the de/fr gate (April 2027 NL KPIs
 plus the app locale). Row 6, item 9c and item 14 updated.
+
+## [2026-09-23] research | Pillar 1 "Alles leren eten": nine clusters and the keyword map in NL/EN/IT
+Ricardo asked for the SEO research behind pillar 1, the clusters that belong to it and why, and
+the keywords per page in three languages, to export into Semrush for volume and KD. Twenty live
+searches (NL, EN, IT) fixed the phrasing and the page-1 competitors per cluster. Result:
+[[seo-pillar-alles-leren-eten]]: the idiom is "alles leren eten" (slug changed in
+[[seo-site-architecture]]), nine clusters (how many tastes, rewards, neophobia, toddler, picky
+eater, no dinner battle, hiding vegetables, fruit, the dinner question), each with primary,
+secondary and question keywords in NL, EN and IT, page-1 competitors, our angle, and the expected
+build order. Export files in `wiki/seo/exports/pillar-1/` (csv + txt per language, ~150 terms
+each). Volumes and KD come back from Ricardo's Semrush run and are filed on the page. Row 6 next
+step updated.

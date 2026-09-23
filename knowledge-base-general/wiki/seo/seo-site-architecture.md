@@ -20,12 +20,16 @@ decides the *order* of cluster pages and what to expect, not the shape of the si
 /                                  Home = the app page. Owns the brand query.
 /over                              About: Ricardo, the greengrocer story. Trust anchor for parents.
 /leer                              Learn hub index.
-/leer/leren-alles-eten             PILLAR 1 · "Kind lust geen groente? Zo leert een kind alles eten"
+/leer/alles-leren-eten             PILLAR 1 · "Kind lust geen groente? Zo leert een kind alles eten" (keyword map: [[seo-pillar-alles-leren-eten]])
    /hoe-vaak-proeven                 how many tastes (10–15), the honest number
    /belonen-voor-proeven             rewards that work (tasting, not clean plates)
    /voedselneofobie                  neophobia is normal, 2–6 y
-   /de-vraag-aan-tafel               the one question at dinner ("wat heb je vandaag gegeten?")
-   /peuter-eet-geen-groente          age-specific (toddler)
+   /peuter-eet-geen-groente          the toddler years
+   /moeilijke-eter                   the picky-eater identity, without the label sticking
+   /geen-strijd-aan-tafel            pressure, forcing, dessert bribes: what backfires
+   /groente-verstoppen               hiding vegetables: the stance page
+   /eet-geen-fruit                   fruit, the same method
+   /de-vraag-aan-tafel               the one question at dinner (brand content, low volume)
 /leer/30-planten                   PILLAR 2 · existing "Waarom 30 verschillende planten per week?", reframed for the family
    /wat-telt-mee                     existing cluster → the does-it-count hub (ketchup, koffie, aardappel, brood)
    /als-gezin                        30 as a family: how the count works when four people eat
@@ -40,7 +44,7 @@ decides the *order* of cluster pages and what to expect, not the shape of the si
 
 | Page | en | nl | it |
 |---|---|---|---|
-| Pillar 1 | `/learn/learn-to-eat-everything` | `/leer/leren-alles-eten` | `/impara/imparare-a-mangiare-tutto` |
+| Pillar 1 | `/learn/learn-to-eat-everything` | `/leer/alles-leren-eten` | `/impara/imparare-a-mangiare-tutto` |
 | Pillar 2 | `/learn/30-plants` | `/leer/30-planten` | `/impara/30-piante` |
 | Printables hub | `/printables` | `/printables` | `/stampabili` |
 | Tasting chart | `/printables/tasting-chart` | `/printables/proefkaart` | `/stampabili/tabella-assaggi` |
@@ -65,7 +69,7 @@ slugs (they are indexed since 2026-05) and change titles and copy, do not redire
   printables hub goes live with real PDFs; plant pages stay noindex until they carry 150 words of
   their own.
 - **Voice gates apply to URLs too.** No "kind" or "kinderen" in the hub slugs that will be
-  shared (the store rule); "leren-alles-eten" not "kind-lust-geen-groente" as the pillar slug,
+  shared (the store rule); "alles-leren-eten" (the Dutch idiom) not "kind-lust-geen-groente" as the pillar slug,
   the title carries the search phrase instead.
 
 ## Structured data per page type

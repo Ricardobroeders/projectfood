@@ -27,6 +27,7 @@ effort until the class channel is proven.
 > - [[seo-app-store-aso]] — App Store / Play listing strategy, the new front door
 > - [[seo-technical-audit]] — site state, plus the app-link and no-health-claims fixes
 > - [[seo-site-architecture]] — sitemap, page types, structured data, research brief (2026-09-23)
+> - [[seo-pillar-alles-leren-eten]] — pillar 1 clusters and keyword map, NL/EN/IT (2026-09-23)
 > - [[seo-roadmap]] — small, timed to the November class pilot and EU-Schoolfruit
 
 ## What the pivot changes for search

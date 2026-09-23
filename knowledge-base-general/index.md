@@ -59,6 +59,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[seo-app-store-aso]] — App Store / Play listing plan in 3 locales, screenshots, ratings, Universal Links for class invites, store funnel KPIs.
 - [[seo-technical-audit]] — site state; 14 gaps led by removing health-claim copy and adding app-link plumbing; 4 decisions for Ricardo.
 - [[seo-site-architecture]] — sitemap in en/nl/it (home, two learn pillars with clusters, printables hub, gated plant pages), structured data per page type, the manual keyword-research brief and thresholds, the de/fr gate (2026-09-23).
+- [[seo-pillar-alles-leren-eten]] — pillar 1 keyword map: nine clusters with the reason for each, page-1 competitors per language (2026-09-23), primary/secondary/question keywords in NL/EN/IT, Semrush export files.
 - [[seo-roadmap]] — Phase 0–3 gated on G1 (dinner habit holds), G2 (one class runs), G3 (a second class replicates); ~half a day a week; KPIs led by class-link install conversion.
 
 ## Interviews

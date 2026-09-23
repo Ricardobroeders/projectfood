@@ -3,7 +3,7 @@ title: SEO — keyword strategy for family mode (NL / IT / EN)
 type: seo
 tags: [seo, keywords, research, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-23
 sources: [source-family-mode-context.md, seo-serp-landscape.md]
 ---
 
@@ -26,6 +26,8 @@ produce forwardable artefacts. The old 30-plants clusters are kept as a P2 asset
 - **Priority:** P1 = Phase 1 (Nov–Jan); P2 = Phase 2; P3 = opportunistic. See [[seo-roadmap]].
 - **Voice check:** every cluster must be answerable without a health claim. Clusters that are
   inherently medical (ARFID, allergies, growth) are excluded on purpose.
+
+> **2026-09-23:** the P and M clusters are worked out page by page in [[seo-pillar-alles-leren-eten]] (nine cluster pages, keywords per page in three languages, Semrush export lists). The numbers land there first.
 
 ## The seven clusters
 
