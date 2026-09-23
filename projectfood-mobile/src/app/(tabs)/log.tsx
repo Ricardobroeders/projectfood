@@ -8,6 +8,7 @@ import { MemberAvatar } from '@/components/MemberAvatar';
 import { PlantRow } from '@/components/PlantRow';
 import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
+import { WeekMeter } from '@/components/WeekMeter';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
 import { revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
@@ -15,7 +16,7 @@ import { useSession } from '@/features/auth/useSession';
 import { perfEnd, perfStart } from '@/features/dev/perf';
 import { track } from '@/features/events/track';
 import { useHousehold, useSettings } from '@/features/household/queries';
-import { dateKey, tasteMapFor } from '@/features/logs/model';
+import { dateKey, distinctPlants, tasteMapFor } from '@/features/logs/model';
 import { useLogMutations, useTasteCounts, useWeekLogs } from '@/features/logs/queries';
 import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
@@ -28,6 +29,8 @@ const NO_PLANTS: Plant[] = [];
 /** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
 const ROW_H = 94;
 const LIST_TOP = 12;
+/** Distinct plants in a week, the same goal the Home gauge counts to. */
+const GOAL = 30;
 
 function useDebounced<T>(value: T, ms: number): T {
   const [v, setV] = useState(value);
@@ -74,6 +77,7 @@ export default function LogScreen() {
 
   const today = dateKey();
   const tastes = useMemo(() => tasteMapFor(logs, today), [logs, today]);
+  const weekCount = useMemo(() => distinctPlants(logs).length, [logs]);
 
   // The household's frequent plants first, then the alphabet (KB: log in under a minute).
   const frequency = useMemo(() => {
@@ -157,8 +161,12 @@ export default function LogScreen() {
   return (
     <Screen>
       <View style={styles.header}>
-        <Text style={styles.title}>{t('log.title')}</Text>
-        <Text style={styles.subtitle}>{t('log.subtitle')}</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.title}>{t('log.title')}</Text>
+          <Text style={styles.subtitle}>{t('log.subtitle')}</Text>
+        </View>
+        {/* The week's count where the taps happen; Home's gauge is one screen away. */}
+        <WeekMeter value={weekCount} max={GOAL} label={t('home.thisWeek')} />
       </View>
 
       {/* Who a plain tap logs for. Tapping opens the same picker as holding a plant. */}
@@ -257,7 +265,7 @@ export default function LogScreen() {
 }
 
 const styles = StyleSheet.create({
-  header: { paddingHorizontal: 20 },
+  header: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 20 },
   title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, letterSpacing: -0.4 },
   subtitle: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.ink2, marginTop: 2 },
   forBar: { flexDirection: 'row', alignItems: 'center', gap: 12, marginHorizontal: 20, marginTop: 14, height: 60, paddingHorizontal: 14, borderRadius: radii.md, backgroundColor: colors.bgSoft },

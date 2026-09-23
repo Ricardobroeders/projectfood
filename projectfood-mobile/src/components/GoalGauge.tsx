@@ -18,7 +18,8 @@ const BANDS: { upTo: number; color: string }[] = [
   { upTo: Infinity, color: colors.gaugeHigh },
 ];
 
-function bandColor(count: number): string {
+/** The lit colour for a count, shared with the Log screen's week meter so both read the same. */
+export function bandColor(count: number): string {
   'worklet';
   for (const b of BANDS) if (count <= b.upTo) return b.color;
   return colors.gaugeHigh;
