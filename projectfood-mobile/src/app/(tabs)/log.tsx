@@ -1,3 +1,4 @@
+import { useFocusEffect } from 'expo-router';
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,7 @@ import { track } from '@/features/events/track';
 import { useHousehold, useSettings } from '@/features/household/queries';
 import { dateKey, distinctPlants, tasteMapFor } from '@/features/logs/model';
 import { useLogMutations, useTasteCounts, useWeekLogs } from '@/features/logs/queries';
+import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
@@ -80,17 +82,40 @@ export default function LogScreen() {
   const weekCount = useMemo(() => distinctPlants(logs).length, [logs]);
 
   // The household's frequent plants first, then the alphabet (KB: log in under a minute).
-  const frequency = useMemo(() => {
+  const live = useMemo(() => {
     const f: Record<string, number> = {};
     for (const tc of tasteCounts ?? []) f[tc.plant_id] = (f[tc.plant_id] ?? 0) + tc.tastes;
     return f;
   }, [tasteCounts]);
-  const ordered = useMemo(() => [...catalog.plants].sort((a, b) => (frequency[b.id] ?? 0) - (frequency[a.id] ?? 0) || a.name.localeCompare(b.name)), [catalog.plants, frequency]);
+  // The order is fixed per visit: taken once the counts are in, refreshed only while the tab is
+  // away. A plant logged tonight stays where the thumb found it (Ricardo, 2026-09-24: moving it to
+  // the top was "unexpected behaviour"); the shelf reshuffles on the way back.
+  const liveRef = useRef(live);
+  const loadedRef = useRef(false);
+  useEffect(() => {
+    liveRef.current = live;
+    loadedRef.current = !!tasteCounts;
+  }, [live, tasteCounts]);
+  const [order, setOrder] = useState<Record<string, number> | null>(null);
+  if (order === null && tasteCounts) setOrder(live);
+  useFocusEffect(
+    useCallback(
+      () => () => {
+        if (loadedRef.current) setOrder(liveRef.current);
+      },
+      [],
+    ),
+  );
+  const ordered = useMemo(() => {
+    const f = order ?? live;
+    return [...catalog.plants].sort((a, b) => (f[b.id] ?? 0) - (f[a.id] ?? 0) || a.name.localeCompare(b.name));
+  }, [catalog.plants, order, live]);
   const searched = usePlantSearch(ordered, debounced);
   const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
 
   // A new list starts at the top and fills in where the skeleton stood (reveal class); nothing travels.
   const listRef = useRef<FlatList<Plant>>(null);
+  useScrollToTopOnTab(listRef);
   const prevFilter = useRef<Filter>(listFilter);
   useLayoutEffect(() => {
     if (prevFilter.current === listFilter) return;

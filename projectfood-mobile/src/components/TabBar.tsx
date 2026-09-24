@@ -30,8 +30,9 @@ export function TabBar({ state, navigation }: TabBarProps) {
   const { t } = useTranslation();
   const labels: Record<string, string> = { index: t('nav.home'), log: t('nav.log'), unlocks: t('nav.unlocks'), account: t('nav.account') };
 
+  // The labels sat on the Android nav bar (Ricardo, 2026-09-24): air below them on top of the inset.
   return (
-    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 8) }]}>
+    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, 12) + 8 }]}>
       {state.routes.map((route, i) => {
         const active = state.index === i;
         const Icon = ICONS[route.name] ?? Circle;

@@ -2,6 +2,7 @@ import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { Bell, Clock, FileText, Globe, LogOut, MessageSquare, Shield, Trash2, Users } from 'lucide-react-native';
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -12,6 +13,7 @@ import { signOutEverywhere } from '@/features/auth/signOut';
 import { useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings } from '@/features/household/queries';
 import { useLocale } from '@/features/i18n';
+import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { ENV } from '@/features/supabase/env';
 import { useSurveyProgress } from '@/features/survey/queries';
 
@@ -23,6 +25,8 @@ export default function AccountScreen() {
   const { data: settings } = useSettings();
   const survey = useSurveyProgress();
   const locale = useLocale();
+  const scrollRef = useRef<ScrollView>(null);
+  useScrollToTopOnTab(scrollRef);
 
   const legal = (kind: 'privacy' | 'terms') => {
     const l = locale === 'de' || locale === 'fr' ? 'en' : locale;
@@ -31,7 +35,7 @@ export default function AccountScreen() {
 
   return (
     <Screen>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <ScreenTitle>{t('account.title')}</ScreenTitle>
 
         <View style={styles.profile}>

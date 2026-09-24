@@ -1,9 +1,11 @@
 import { useEffect, useState, type PropsWithChildren } from 'react';
 import { KeyboardAvoidingView, Modal, Platform, Pressable, StyleSheet, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
+import Animated, { interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
 
+import { useSwipeDown } from '@/components/SwipeDown';
 import { motion } from '@/constants/motion';
 import { colors, radii } from '@/constants/theme';
 
@@ -13,13 +15,16 @@ type Props = PropsWithChildren<{ visible: boolean; onRequestClose: () => void }>
 
 /**
  * Bottom sheet in the sheet motion class: eases in, eases out, never bounces. Stays mounted
- * until the slide-out has finished so closing is animated too.
+ * until the slide-out has finished so closing is animated too. Swiping it down closes it as well
+ * (2026-09-24): the drag drives the same offset the slide-out starts from, so letting go past the
+ * threshold continues the movement instead of restarting it.
  */
 export function Sheet({ visible, onRequestClose, children }: Props) {
   const insets = useSafeAreaInsets();
   const [mounted, setMounted] = useState(visible);
   const backdrop = useSharedValue(0);
   const slide = useSharedValue(HIDDEN_Y);
+  const pan = useSwipeDown({ y: slide, onDismiss: onRequestClose });
 
   useEffect(() => {
     if (visible) {
@@ -35,20 +40,26 @@ export function Sheet({ visible, onRequestClose, children }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible]);
 
-  const backdropStyle = useAnimatedStyle(() => ({ opacity: backdrop.value }));
+  // The backdrop thins as the sheet is dragged away, so the drag reads as leaving.
+  const backdropStyle = useAnimatedStyle(() => ({ opacity: backdrop.value * interpolate(slide.value, [0, HIDDEN_Y], [1, 0], 'clamp') }));
   const sheetStyle = useAnimatedStyle(() => ({ transform: [{ translateY: slide.value }] }));
 
   return (
     <Modal visible={mounted} transparent statusBarTranslucent animationType="none" onRequestClose={onRequestClose}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.root}>
-        <Animated.View style={[styles.backdrop, backdropStyle]}>
-          <Pressable style={StyleSheet.absoluteFill} onPress={onRequestClose} />
-        </Animated.View>
-        <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
-          <View style={styles.handle} />
-          {children}
-        </Animated.View>
-      </KeyboardAvoidingView>
+      {/* A Modal is its own native window on Android: gestures inside need their own root. */}
+      <GestureHandlerRootView style={styles.root}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.root}>
+          <Animated.View style={[styles.backdrop, backdropStyle]}>
+            <Pressable style={StyleSheet.absoluteFill} onPress={onRequestClose} />
+          </Animated.View>
+          <GestureDetector gesture={pan}>
+            <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
+              <View style={styles.handle} />
+              {children}
+            </Animated.View>
+          </GestureDetector>
+        </KeyboardAvoidingView>
+      </GestureHandlerRootView>
     </Modal>
   );
 }

@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { Flame, Plus, Snowflake } from 'lucide-react-native';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
@@ -20,6 +20,7 @@ import { useAchievements } from '@/features/achievements/useAchievements';
 import { useHousehold, useSettings, useUpdateSettings } from '@/features/household/queries';
 import { dateKey, daysLeftInWeek, distinctPlants, tasteMapFor } from '@/features/logs/model';
 import { useStreak, useWeekLogs } from '@/features/logs/queries';
+import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useSurveyProgress } from '@/features/survey/queries';
@@ -42,6 +43,8 @@ export default function HomeScreen() {
   const survey = useSurveyProgress();
   const settings = useSettings();
   const updateSettings = useUpdateSettings();
+  const scrollRef = useRef<ScrollView>(null);
+  useScrollToTopOnTab(scrollRef);
 
   const today = dateKey();
   const tastesToday = useMemo(() => tasteMapFor(logs, today), [logs, today]);
@@ -59,7 +62,7 @@ export default function HomeScreen() {
 
   return (
     <Screen>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.title}>{t('home.greeting')}</Text>
           {streak && streak.current_streak > 0 ? (

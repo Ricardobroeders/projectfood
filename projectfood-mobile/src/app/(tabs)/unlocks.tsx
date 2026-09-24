@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { ChevronRight } from 'lucide-react-native';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -14,6 +14,7 @@ import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, levelKey, progressFor } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfStart } from '@/features/dev/perf';
+import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { useUi } from '@/state/ui';
 
@@ -25,6 +26,8 @@ export default function UnlocksScreen() {
   const { catalog } = usePlantCatalog();
   const openAchievement = useUi((s) => s.openAchievement);
   const [view, setView] = useState<string | null>(null);
+  const scrollRef = useRef<ScrollView>(null);
+  useScrollToTopOnTab(scrollRef);
   const memberId = view ?? members[0]?.id ?? null;
 
   const entries = useMemo(() => progressFor(progress, memberId), [progress, memberId]);
@@ -45,7 +48,7 @@ export default function UnlocksScreen() {
 
   return (
     <Screen>
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <ScreenTitle meta={t('unlocks.levelsUnlocked', { n: levelsHeld, m: levelsTotal })}>{t('unlocks.title')}</ScreenTitle>
 
         {members.length > 1 ? (
