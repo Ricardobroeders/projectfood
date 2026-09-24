@@ -39,8 +39,15 @@ was exported before the metrics had loaded; a refresh fills them). Saved as
   the sum of its keyword set (≥ 100/month summed) and by KD, not by one term; (4) volume is the
   constraint, difficulty is not, so NL is won with fewer, complete pages plus the printables,
   exactly the plan.
-- **Next:** re-export the NL run after the KD column has filled, add the remaining 54 terms, and
-  run Keyword Magic Tool in broad match on short seeds ("peuter groente", "kind groente",
+- **Second partial (same day, `raw/…-partial-2.csv`):** KD 10–22 on five more terms. Two SERP
+  readings: "gezellig eten met kinderen" is commercial with a local pack (restaurants), so it
+  leaves C9; "groente verstoppen" carries the Recipes feature, so C7 competes with recipe rich
+  results and stays the stance page, not a recipe page. "peuter eet geen fruit" has ads top
+  and bottom (supplements), KD 22, the highest seen.
+- **Tooling:** the bulk Overview computes KD one term at a time on refresh, too slow for 150
+  terms. Keyword Magic Tool on short seeds returns volume and KD for every variant at once
+  and exports in one go; use it for the rest, bulk Overview only for terms it does not list.
+- **Next:** run Keyword Magic Tool in broad match on short seeds ("peuter groente", "kind groente",
   "moeilijke eter", "proeven kind", "peuter eten") to see which phrasings Semrush actually
   holds; cross-check the top ten in Google Keyword Planner (ranges) before any title is fixed.
 
