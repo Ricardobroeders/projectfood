@@ -36,6 +36,35 @@ Flag risky changes (DB migrations, auth, billing) before pushing, not after.
 - All app pages are Client Components using SWR for instant cached navigation; no server pages in `(app)/`.
 - `user_id` must be passed explicitly on `plant_logs` inserts (no column default; required by RLS).
 
+## Learn content (projectfood.dev/learn)
+
+Articles are files, the database is the render source. Never edit `learn_articles` /
+`learn_article_content` by hand.
+
+- `content/learn/<internal-slug>/article.json` (`type`, `pillar`, `display_order`, `emoji`) and
+  `<locale>.md` (YAML front matter + Markdown body) per locale that exists. Front matter: `slug`
+  (that locale's public slug), `title`, `subtitle`, `meta_title` (≤ 55, the layout appends
+  " | Project Food"), `meta_description` (120 to 155), `keywords`, `related` (two internal slugs),
+  `faq` (4 to 6 `q`/`a`), `citations`, optional `draft: true`.
+- The internal slug is the folder name and `learn_articles.slug`; public slugs differ per locale
+  (`learn_article_content.slug`, migration `20260924120000_learn_locale_slugs`). Pairing for
+  pillar 1: `learn-to-eat-everything` = alles-leren-eten / imparare-a-mangiare-tutto;
+  `toddler-wont-eat` = peuter-wil-niet-eten / il-bambino-non-mangia; `how-many-times-to-try-a-food`
+  = hoe-vaak-proeven; `picky-eater-toddler` = moeilijke-eter / selettivita-alimentare;
+  `toddler-wont-eat-vegetables` = peuter-eet-geen-groente (nl only); `vegetables-kids-will-eat` =
+  welke-groente-vinden-kinderen-lekker; `hiding-vegetables` = groente-verstoppen (nl only);
+  `food-neophobia` = voedselneofobie / neofobia-alimentare.
+- `npm run learn:check -- --only <internal>` lints (lengths, FAQ, links, banned words);
+  `npm run learn:publish -- --only <internal> [--dry] [--publish]` upserts through PostgREST with
+  the service role key and calls `/api/revalidate` when `REVALIDATE_SECRET` is set (Vercel +
+  `.env.local`). `--publish` sets `is_published` and `published_at` once; a pillar goes live only
+  with at least two clusters in that locale.
+- Pages are static (`revalidate = 3600`), read with the anon client, and render the FAQ as a
+  visible `<details>` accordion (the FAQPage JSON-LD must match visible content), related cards
+  from `related_article_slugs`, a byline with the Person author, and `hasPart` / `isPartOf`.
+- Writing an article: the `pf-seo-article` skill (repo root `.claude/skills/`), which loads
+  `pf-voice` first.
+
 ## Translations
 
 The app has three locales: **en**, **nl**, **it** — files in `messages/`. When adding or changing any user-facing string, always update all three files. Never add a key to one locale without adding it to the others.

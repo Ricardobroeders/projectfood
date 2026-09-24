@@ -410,3 +410,27 @@ and the AAP "repeated exposure 10–15 times" lookups (≈ 450, KD 15), then the
 "picky eater chart" (320, KD 16) becomes the tasting-chart printable's target; toddler-won't-eat,
 neophobia and picky-eater-toddler are KD 30–58 and come last. Hiding vegetables and forcing are
 sections. EN plan table filed; row 6 updated.
+
+## [2026-09-24] build | Writing kit (brand voice, humour, stats) + pf-voice / pf-seo-article skills; learn hub plumbing for the article routine
+Ricardo asked for a writing kit before any article is written (tone of voice on the four NN/g
+dials, a humour rule, the numbers we may use) and for a routine that writes one SEO article per
+row of the pillar-1 page plan. Decided: humour is dry, one line, intros only; scope includes the
+site plumbing. New KB folder `wiki/brand/` with [[brand-voice]], [[brand-humour]] and
+[[brand-stats-and-claims]] (citations verified the same day: Birch 1982, Wardle 2003 ×2, Cooke
+2011, Dovey 2008, Horne 2004, McDonald 2018, AAP "10 or more", CDC "8 to 10", Voedingscentrum
+Leren-lusten-plan which advises against stickers; recorded as a contradiction to say honestly).
+Skills at the repo root: `.claude/skills/pf-voice` (reads the three files, runs the three gates)
+and `.claude/skills/pf-seo-article` (brief → outline → draft → meta → FAQ → links → file → check
+→ publish); the stale Linear command `create-learn-issues` deleted. Root, KB, app and mobile
+CLAUDE.md files point at them. Site (`projectfood-app`): migration `learn_locale_slugs` (per-locale
+public slugs in `learn_article_content.slug`, internal key unchanged), pages static with hourly
+revalidation and a secret-guarded `/api/revalidate`, visible FAQ accordion (native details) so
+FAQPage markup matches the page, related cards from `related_article_slugs`, byline and Person
+author, `hasPart` / `isPartOf`, BCP-47 `inLanguage`, sitemap with per-locale slugs and x-default,
+308 from `/nl/learn/…` to `/nl/leer/…`, typography plugin installed. Content pipeline:
+`content/learn/<internal>/{article.json,<locale>.md}`, `npm run learn:check`, `npm run
+learn:publish` (PostgREST, service role, `--dry`, `--publish`). Dry run: the NL pillar
+`alles-leren-eten` drafted as a file, checked, not published (it goes live with two clusters).
+Research notes: Google removed FAQ rich results on 2026-05-07 (HowTo in 2023-09); FAQPage markup
+stays because it matches visible content and feeds AI answers. Row 8 → drafted; row 6 and item
+14 updated; Ricardo's item 9 gets (d): read the dials and the NL draft.

@@ -15,6 +15,8 @@ then the memory index; open the knowledge base when the work touches product or 
   read it before writing there. The app spec is `wiki/decision-2026-09-07-app-v1-scope.md` plus
   `wiki/concept-retention-loop.md`. Undecided ideas: `wiki/strategy-backlog.md`.
 - `design-library/` — gitignored, local only; its README holds the family-mode re-brief.
+- `.claude/skills/` — `pf-voice` (the writing voice) and `pf-seo-article` (the learn-article
+  routine). The brand files they read live in `knowledge-base-general/wiki/brand/`.
 
 ## "What's next?" protocol
 When Ricardo asks what to pick up next (any phrasing: what's next, to-do list, where were we,
@@ -46,6 +48,13 @@ How the backlog is organised (since 2026-09-20), so every session reads it the s
   called "stamps" until 2026-09-22; never write "stamp" in UI text, store copy or KB pages. Code
   identifiers, i18n keys (`stamps.*`) and asset paths still say stamp and stay that way. Cards
   stay cards (one per plant). The Italian Unlocks tab is "Collezione".
+- Writing: before any user-facing copy (app strings, notifications, store listing, website
+  pages, learn articles, printables, social posts, emails), load the `pf-voice` skill. It reads
+  the source of truth in `knowledge-base-general/wiki/brand/` (`brand-voice.md`,
+  `brand-humour.md`, `brand-stats-and-claims.md`) and runs the three gates: joy not guilt, no
+  health claim for a child, a family app not a kids app. Humour is dry, one line, intros only.
+  Numbers only from the stats page. Learn articles go through `pf-seo-article`
+  (content files in `projectfood-app/content/learn/`, `npm run learn:check`, `learn:publish`).
 - Git: `main` only, no feature branches. Commit and push when a piece of work is done.
 - Strategy topics (value proposition, brand, personas, retention, achievements, SEO, social,
   tone of voice, business model, market, KPIs, …): end the conversation by updating the

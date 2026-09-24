@@ -43,7 +43,8 @@ knowledge-base-general/
 ├── wiki/              # LLM-maintained pages (you own this)
 │   ├── overview.md    # top-level synthesis / entry point
 │   ├── strategy-backlog.md  # standing register of undecided core ideas (one row per topic)
-│   └── seo/           # SEO strategy pages (seo- prefix); wikilinks resolve across subfolders
+│   ├── seo/           # SEO strategy pages (seo- prefix); wikilinks resolve across subfolders
+│   └── brand/         # writing kit (brand- prefix): voice, humour, stats and claims; read by the pf-voice skill
 └── templates/         # page templates to copy when creating new pages
 ```
 
@@ -61,6 +62,7 @@ Use a filename prefix so pages group naturally and the graph stays legible:
 | `decision-`     | Decision        | An internal decision and its rationale (lightweight ADR)      | `templates/decision.md`        |
 | `compare-`      | Comparison      | A side-by-side analysis (e.g. competitor vs competitor)       | `templates/comparison.md`      |
 | `seo-`          | SEO             | Search / AI-search strategy, keyword research, roadmap. Lives in the `wiki/seo/` subfolder | `templates/concept.md` (adapt) |
+| `brand-`        | Brand           | The writing kit: voice, humour, stats and claims. Lives in `wiki/brand/`; the `pf-voice` skill reads it before any copy | `templates/concept.md` (adapt) |
 
 Filenames: lowercase, kebab-case, after the prefix. E.g. `entity-myfitnesspal.md`,
 `concept-habit-loop.md`, `persona-busy-parent.md`, `decision-2026-05-30-freemium-tiers.md`.
@@ -72,7 +74,7 @@ Every wiki page starts with YAML frontmatter so Obsidian's Dataview can query it
 ```yaml
 ---
 title: MyFitnessPal
-type: entity            # source | entity | concept | persona | interview | decision | comparison
+type: entity            # source | entity | concept | persona | interview | decision | comparison | seo | brand
 tags: [competitor, nutrition-tracking]
 created: 2026-05-30
 updated: 2026-05-30
@@ -170,7 +172,8 @@ Then suggest concrete next questions to investigate and sources to seek out.
 - **`index.md`** is content-oriented: a catalog of every wiki page, grouped by type, each with
   a wikilink and a one-line summary. Update it on every ingest. Read it first on every query.
 - **`log.md`** is chronological and append-only. Every entry starts with a parseable prefix:
-  `## [YYYY-MM-DD] <op> | <title>` where `<op>` is `ingest`, `query`, `lint`, or `setup`.
+  `## [YYYY-MM-DD] <op> | <title>` where `<op>` is `ingest`, `query`, `lint`, `setup`, `build`
+  (something shipped in the app or the site) or `fix`.
   This makes `grep "^## \[" log.md | tail -5` give the last 5 operations.
 
 ## Conventions & style

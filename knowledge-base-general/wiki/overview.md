@@ -3,7 +3,7 @@ title: Overview
 type: overview
 tags: [meta]
 created: 2026-05-30
-updated: 2026-09-07
+updated: 2026-09-24
 sources: [source-family-mode-context.md, source-brand-promise-deck.md, source-app-mockups.md, source-supabase-metrics.md]
 ---
 
@@ -58,6 +58,9 @@ live and its users are the current cohort.
   ([[compare-projectfood-vs-competitors]], [[source-competitor-scan]]). Family side —
   picky-eater/family apps (Yummi, EatPal, Food Explorer Club, Teach Your Monster, Food Hopper;
   Spoony in NL) and parenting publishers; ZOE cannot follow ([[seo-serp-landscape]]).
+- **Writing kit:** `wiki/brand/` — [[brand-voice]] (the four dials, two registers, per-locale
+  rules, the three gates), [[brand-humour]] (dry, one line, intros only), [[brand-stats-and-claims]]
+  (the only numbers allowed in copy). Read by the `pf-voice` skill before any copy (2026-09-24).
 - **Search & stores:** `wiki/seo/` — parent-intent keyword strategy (NL/IT/EN), SERP
   landscape, content formats, App Store/ASO plan, technical audit, gated roadmap.
 - **Competitive contrast (from the deck):** [[entity-myfitnesspal]] — the anti-pattern.

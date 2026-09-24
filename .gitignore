@@ -8,3 +8,7 @@ projectfood-backend.env.local
 
 # Supabase CLI scratch
 supabase/.temp/
+
+# Claude Code skills are part of the repo (pf-voice, pf-seo-article)
+!.claude/skills/
+!.claude/skills/**

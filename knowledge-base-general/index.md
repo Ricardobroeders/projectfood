@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-09-16
+updated: 2026-09-24
 ---
 
 # Index
@@ -61,6 +61,11 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[seo-site-architecture]] — sitemap in en/nl/it (home, two learn pillars with clusters, printables hub, gated plant pages), structured data per page type, the manual keyword-research brief and thresholds, the de/fr gate (2026-09-23).
 - [[seo-pillar-alles-leren-eten]] — pillar 1 keyword map: nine clusters with the reason for each, page-1 competitors per language (2026-09-23), primary/secondary/question keywords in NL/EN/IT, Semrush export files.
 - [[seo-roadmap]] — Phase 0–3 gated on G1 (dinner habit holds), G2 (one class runs), G3 (a second class replicates); ~half a day a week; KPIs led by class-link install conversion.
+
+## Brand & voice (folder `wiki/brand/`, the writing kit, first drafts 2026-09-24)
+- [[brand-voice]] — the tone of voice: who speaks to whom, the four NN/g dials for the parent and the kid-visible register, rules per surface, sentence rules, vocabulary per locale (en/nl/it), examples, the three gates. Read by the `pf-voice` skill before any copy.
+- [[brand-humour]] — dry, one line, intros only (Ricardo, 2026-09-24): where humour belongs, where never, the style, on/off examples in three languages.
+- [[brand-stats-and-claims]] — the only numbers allowed in public copy with verified sources (8 to 15 tastes, Wardle 2003, Cooke 2011, Dovey 2008, Food Dudes, American Gut, AAP, CDC, Voedingscentrum), the claims we never make, how to cite, the contradictions handled honestly.
 
 ## Interviews
 _(none yet)_
