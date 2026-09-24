@@ -354,3 +354,14 @@ secondary and question keywords in NL, EN and IT, page-1 competitors, our angle,
 build order. Export files in `wiki/seo/exports/pillar-1/` (csv + txt per language, ~150 terms
 each). Volumes and KD come back from Ricardo's Semrush run and are filed on the page. Row 6 next
 step updated.
+
+## [2026-09-24] ingest | Semrush NL run for pillar 1, partial (42 of 100 terms)
+Ricardo's first Keyword Overview bulk export, saved as
+`raw/semrush-pillar-1-nl-2026-09-24-partial.csv`: exported before the metrics loaded, so KD on
+five terms only and 58 terms missing. First readings filed in [[seo-pillar-alles-leren-eten]]:
+NL volumes are small (top term "peuter wil niet eten" 170/month, most terms 20–50, 42 terms ≈
+700/month) and KD is under 20 everywhere; "peuter" phrasings beat "kind" phrasings; the head term
+"kind lust geen groente" is absent from Semrush's database (0), which is a data gap, not zero
+demand. Per-page threshold for NL changed to the sum of a page's keyword set. Next: re-export
+after KD loads, add the remaining terms, Keyword Magic Tool broad-match on short seeds, Keyword
+Planner cross-check.

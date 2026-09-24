@@ -20,6 +20,30 @@ without a health claim and ends in the tasting chart and the app.
 > lists below into Semrush (databases NL, UK, IT; US as a second EN run) and the numbers come
 > back into this page. Until then every "why" below is about intent and competition, not size.
 
+## First numbers (NL, Semrush, 2026-09-24, partial)
+Ricardo's first bulk run came back with 42 of the 100 terms and KD on five of them (the table
+was exported before the metrics had loaded; a refresh fills them). Saved as
+`raw/semrush-pillar-1-nl-2026-09-24-partial.csv`. What it already says:
+- **NL is a small, very easy space.** Largest term "peuter wil niet eten" 170/month, KD 12.
+  Then "leren lusten plan", "moeilijke eter", "peuter eet geen groente" at 50, KD 8–15;
+  "dreumes eet geen groente", "kind eet geen groente", "voedselneofobie" at 30; fourteen terms
+  at 20 or 10. The 42 terms sum to about 700 searches a month. Every KD seen is under 20.
+- **The age word wins.** "peuter …" phrasings carry the volume; "kind lust geen groente", the
+  head term we planned the pillar on, returns 0, which in Semrush means "not in the database"
+  (page 1 is full of pages written for exactly that phrase), not "nobody searches it". Semrush's
+  Dutch database is thin on conversational long-tail; treat zeros as unknown, not as zero.
+- **Consequences, pending the full export:** (1) the NL pillar title should carry "peuter" next
+  to "kind" (or C4 becomes the NL pillar); (2) "leren lusten plan" (Voedingscentrum's programme
+  name, 50/month, KD 15) is the closest existing term to our tasting-count idea and deserves its
+  own mention in C1; (3) the per-page threshold of 100/month is too high for NL: judge a page by
+  the sum of its keyword set (≥ 100/month summed) and by KD, not by one term; (4) volume is the
+  constraint, difficulty is not, so NL is won with fewer, complete pages plus the printables,
+  exactly the plan.
+- **Next:** re-export the NL run after the KD column has filled, add the remaining 54 terms, and
+  run Keyword Magic Tool in broad match on short seeds ("peuter groente", "kind groente",
+  "moeilijke eter", "proeven kind", "peuter eten") to see which phrasings Semrush actually
+  holds; cross-check the top ten in Google Keyword Planner (ranges) before any title is fixed.
+
 ## Naming
 The Dutch idiom is **"alles leren eten"** ("je kind alles leren eten"), not "leren alles
 eten". Slug `/leer/alles-leren-eten`; EN `/learn/learn-to-eat-everything`; IT
