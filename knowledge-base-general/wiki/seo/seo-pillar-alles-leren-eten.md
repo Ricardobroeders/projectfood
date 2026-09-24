@@ -228,6 +228,29 @@ before; every KD seen is 8–23.
 Measured total for the pillar family: about 3,500–4,800 searches a month in NL at KD under 25,
 against the 700 the first bulk run suggested. Still small, still easy: fewer, complete pages.
 
+## The NL plan in one table (2026-09-24)
+All pages nl-NL (Netherlands database; Flemish sites rank on page 1 too, Belgium is a bonus,
+not a target). Slugs under `/nl/leer/alles-leren-eten/` except the pillar itself.
+
+| Slug | Keywords to focus on | Topic of the article |
+|---|---|---|
+| `/nl/leer/alles-leren-eten` (pillar) | kinderen en groente · groenten voor kinderen · groente voor kinderen · kind eet geen groente · kinderen groenten leren eten | "Kinderen en groente: zo leert je kind groente eten, zonder strijd." The playbook: refusal is normal, 10–15 tastes, no pressure, reward the tasting, eat together, the one question at dinner; links every cluster, the proefkaart and the app |
+| `…/peuter-wil-niet-eten` | peuter wil niet eten · peuter die niet wil eten · mijn peuter wil niet eten · peuter weigert te eten · peuter 2 jaar wil niet eten · peuter eet geen warm eten | Why toddlers stop eating (growth slows, autonomy), what works, what backfires (forcing, clean plate, dessert as bribe), when to call the JGZ |
+| `…/hoe-vaak-proeven` | hoe vaak moet een kind iets proeven · leren lusten plan · proeven kinderen · 10x proeven schema · beloningskaart eten | The number, honestly (10–15, spitting out counts); the Voedingscentrum Leren-lusten-plan at home; stickers for tasting, not for clean plates; the proefkaart download and the app as counter |
+| `…/moeilijke-eter` | moeilijke eter · peuter moeilijke eter · moeilijke eters kinderen · tips voor moeilijke eters · moeilijke eter test | What a "moeilijke eter" is and is not, normal versus when to worry, widening the plate one taste at a time (self-test later, parked) |
+| `…/peuter-eet-geen-groente` | peuter eet geen groente · peuter wil geen groente eten · peuter groente laten eten · peuter eet geen groente meer · peuter eet geen groente en fruit | Toddler and vegetables: portions, textures, the two-year dip, raw versus cooked; fruit as a section |
+| `…/welke-groente-vinden-kinderen-lekker` | welke groente vinden kinderen lekker · groente die kinderen lekker vinden · lekkere groente voor kinderen · welke groenten vinden peuters lekker | The 20 easiest vegetables to start with (sweet, mild, crunchy) and how to serve each; later the Project Food tasting data |
+| `…/groente-verstoppen` | groente verstoppen · groente verstoppen in eten · verstopte groenten · groente verstoppen peuter | Hiding feeds the belly, tasting teaches the tongue: do both, always one visible piece; five ways to hide, one rule to keep |
+| `…/voedselneofobie` | voedselneofobie · wat is voedselneofobie · neofobie kinderen | Definition in parent words, ages 2–6, why it happens, what helps, that it passes |
+
+## Seed keywords for the EN and IT runs (Keyword Magic Tool, broad match)
+Same method as NL: short two-word seeds, export everything, Claude classifies.
+
+| | Seeds | Database |
+|---|---|---|
+| EN | kids vegetables · toddler vegetables · toddler eating · fussy eater · try new foods (sixth: food neophobia) | United Kingdom first; repeat with **picky eater** instead of fussy eater on United States |
+| IT | bambini verdure · bambino non mangia · selettività alimentare · assaggiare bambini · neofobia alimentare (sixth: capricci a tavola) | Italy |
+
 ## Order of writing (NL, from the numbers)
 1. Pillar "Kinderen en groente" + C4b "Peuter wil niet eten" + C1 "Hoe vaak proeven" (the
    mechanic, with the proefkaart) together, so the pillar launches with two clusters.
