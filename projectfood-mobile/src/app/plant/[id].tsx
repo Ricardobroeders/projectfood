@@ -1,8 +1,9 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { BookOpen, Sparkles, X } from 'lucide-react-native';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -41,11 +42,13 @@ export default function PlantDetailScreen() {
   const { data: fact } = usePlantFact(plant?.id);
   const showFactCard = useUi((s) => s.showFactCard);
   const openPicker = useUi((s) => s.openPicker);
-  // The page slides in from the bottom, so it can be swiped back down, once the content is at the top.
+  // The page slides in from the bottom, so it can be swiped back down from anywhere, as long as the
+  // content is at the top; the scroll view is a native gesture so the swipe runs alongside it.
   const scrollY = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler((e) => {
     scrollY.value = e.contentOffset.y;
   });
+  const scrollGesture = useMemo(() => Gesture.Native(), []);
   useEffect(() => {
     if (plant) perfEnd('→plant', plant.slug);
   }, [plant]);
@@ -57,13 +60,14 @@ export default function PlantDetailScreen() {
   const monthName = (m: number) => new Intl.DateTimeFormat(locale, { month: 'short' }).format(new Date(2026, m - 1, 1));
 
   return (
-    <SwipeDown onDismiss={() => router.back()} scrollY={scrollY} style={[styles.screen, { paddingTop: insets.top + 8 }]}>
+    <SwipeDown onDismiss={() => router.back()} scrollY={scrollY} scrollGesture={scrollGesture} style={[styles.screen, { paddingTop: insets.top + 8 }]}>
       <View style={styles.top}>
         <Pressable onPress={() => router.back()} style={styles.close} accessibilityRole="button" accessibilityLabel={t('common.close')}>
           <X size={iconFor(40)} color={colors.ink} />
         </Pressable>
       </View>
-      <Animated.ScrollView onScroll={onScroll} scrollEventThrottle={16} contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 24 }]} showsVerticalScrollIndicator={false}>
+      <GestureDetector gesture={scrollGesture}>
+        <Animated.ScrollView onScroll={onScroll} scrollEventThrottle={16} overScrollMode="never" contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 24 }]} showsVerticalScrollIndicator={false}>
         <View style={[styles.hero, { backgroundColor: cat.bg }]}>
           <Text style={[styles.eyebrow, { color: cat.fg }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
           <PlantImage plant={plant} size={180} />
@@ -136,7 +140,8 @@ export default function PlantDetailScreen() {
         </View>
 
         <PrimaryButton label={t('plant.logTonight')} onPress={(e) => openPicker(plant.id, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} style={{ marginHorizontal: 20, marginTop: 24 }} />
-      </Animated.ScrollView>
+        </Animated.ScrollView>
+      </GestureDetector>
     </SwipeDown>
   );
 }

@@ -1,6 +1,6 @@
 import { useMemo, type PropsWithChildren } from 'react';
 import { StyleSheet, type StyleProp, type ViewStyle } from 'react-native';
-import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector, type NativeGesture } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 
@@ -17,6 +17,11 @@ type Opts = {
   y: SharedValue<number>;
   /** Scroll offset of a scroll view inside; the swipe only starts while that content sits at the top. */
   scrollY?: SharedValue<number>;
+  /**
+   * The scroll view inside, as a native gesture, so the swipe runs alongside it. Without this the
+   * scroll claims any vertical drag after Android's 8 px slop and the swipe never gets its 14.
+   */
+  scrollGesture?: NativeGesture;
   onDismiss: () => void;
 };
 
@@ -27,14 +32,13 @@ type Opts = {
  * manual so a scroll view inside keeps its own drags: the swipe takes over only when the content
  * is at the top and the finger moves down more than sideways.
  */
-export function useSwipeDown({ y, scrollY, onDismiss }: Opts) {
+export function useSwipeDown({ y, scrollY, scrollGesture, onDismiss }: Opts) {
   const startX = useSharedValue(0);
   const startY = useSharedValue(0);
   const base = useSharedValue(0);
   const inner = scrollY ?? null;
-  return useMemo(
-    () =>
-      Gesture.Pan()
+  return useMemo(() => {
+    const pan = Gesture.Pan()
         .manualActivation(true)
         .onTouchesDown((e) => {
           startX.value = e.allTouches[0].x;
@@ -56,17 +60,17 @@ export function useSwipeDown({ y, scrollY, onDismiss }: Opts) {
         .onEnd((e) => {
           if (y.value > DISMISS_DISTANCE || e.velocityY > DISMISS_VELOCITY) scheduleOnRN(onDismiss);
           else y.value = withTiming(0, motion.sheetIn);
-        }),
-    [y, inner, onDismiss, startX, startY, base],
-  );
+        });
+    return scrollGesture ? pan.simultaneousWithExternalGesture(scrollGesture) : pan;
+  }, [y, inner, scrollGesture, onDismiss, startX, startY, base]);
 }
 
-type Props = PropsWithChildren<{ onDismiss: () => void; scrollY?: SharedValue<number>; style?: StyleProp<ViewStyle> }>;
+type Props = PropsWithChildren<{ onDismiss: () => void; scrollY?: SharedValue<number>; scrollGesture?: NativeGesture; style?: StyleProp<ViewStyle> }>;
 
 /** A full screen that can be swiped down to leave; the modal plant page uses it. */
-export function SwipeDown({ onDismiss, scrollY, style, children }: Props) {
+export function SwipeDown({ onDismiss, scrollY, scrollGesture, style, children }: Props) {
   const y = useSharedValue(0);
-  const pan = useSwipeDown({ y, scrollY, onDismiss });
+  const pan = useSwipeDown({ y, scrollY, scrollGesture, onDismiss });
   const drag = useAnimatedStyle(() => ({ transform: [{ translateY: y.value }] }));
   return (
     <GestureDetector gesture={pan}>
