@@ -434,3 +434,14 @@ learn:publish` (PostgREST, service role, `--dry`, `--publish`). Dry run: the NL 
 Research notes: Google removed FAQ rich results on 2026-05-07 (HowTo in 2023-09); FAQPage markup
 stays because it matches visible content and feeds AI answers. Row 8 → drafted; row 6 and item
 14 updated; Ricardo's item 9 gets (d): read the dials and the NL draft.
+
+## [2026-09-24] build | NL pillar "alles-leren-eten" published
+Ricardo asked to publish the pillar and iterate from there, instead of waiting for two clusters.
+The seven links to planned clusters were turned into plain mentions (the check refuses dead
+links at publish time); each comes back as a link when its cluster goes live and the pillar is
+republished. `npm run learn:publish --only learn-to-eat-everything --publish` uploaded the NL row,
+set `is_published`, and revalidated the site. Verified live: 200 at
+https://projectfood.dev/nl/leer/alles-leren-eten, title with the search phrase, six FAQ items
+visible, hreflang nl + x-default only, JSON-LD Article (nl-NL, 1,736 words, Person author,
+FAQPage), listed on `/nl/leer` and in the sitemap. Backlog item 14, row 6 and item 9(d) updated.
+

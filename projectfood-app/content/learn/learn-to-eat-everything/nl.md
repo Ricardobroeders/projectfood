@@ -45,13 +45,13 @@ citations:
 ---
 Een kind dat geen groente lust doet niets geks. Tussen de 2 en 6 jaar wijzen de meeste kinderen nieuw of bitter eten af, en de meeste groeien eroverheen. Wat het verschil maakt is niet overhalen maar herhalen: een klein hapje, vaak, zonder druk. De meeste kinderen hebben 8 tot 15 keer proeven nodig voordat iets lekker wordt, soms meer. Een peuter ziet vanaf de andere kant van de tafel dat de broccoli de aardappel heeft aangeraakt. Toch is datzelfde kind over een paar weken te vinden voor een stukje wortel, als je het slim aanpakt.
 
-Dit is het overzicht: waarom kinderen groente afwijzen, het getal dat alles verandert, wat werkt aan tafel en wat averechts werkt. Elk onderdeel heeft een eigen pagina met meer diepte; de links staan in de tekst.
+Dit is het overzicht: waarom kinderen groente afwijzen, het getal dat alles verandert, wat werkt aan tafel en wat averechts werkt. Elk onderdeel krijgt een eigen pagina met meer diepte; die volgen de komende weken.
 
 ## Waarom je kind geen groente lust
 
 Drie dingen spelen tegelijk. Ten eerste smaak: veel groente is licht bitter, en kinderen proeven bitter sterker dan volwassenen. Ten tweede nieuwheid: rond het tweede jaar worden kinderen voorzichtig met alles wat ze niet kennen, ook op hun bord. Dat heet voedselneofobie, het is normaal tussen de 2 en 6 jaar en het gaat bij de meeste kinderen vanzelf over (Dovey, 2008). Ten derde autonomie: een peuter ontdekt dat nee zeggen werkt, en het bord is een van de weinige plekken waar dat nee meteen iets doet.
 
-Geen van de drie is een teken dat je iets fout doet. Het is de leeftijd. Wat je wel kunt doen, is het proeven makkelijker maken en de strijd eruit halen. De naam en de fase staan uitgelegd op [voedselneofobie: normaal, en zo ga je ermee om](/nl/leer/alles-leren-eten/voedselneofobie).
+Geen van de drie is een teken dat je iets fout doet. Het is de leeftijd. Wat je wel kunt doen, is het proeven makkelijker maken en de strijd eruit halen. Over de naam en de fase volgt een eigen artikel.
 
 ## Het getal dat alles verandert: 8 tot 15 keer proeven
 
@@ -59,7 +59,7 @@ Kinderen leren iets lusten door het te proeven, niet door erover te praten. In e
 
 De vuistregel die daaruit volgt: 8 tot 15 keer proeven, soms vaker. Een likje telt. Een hapje dat weer uitgaat telt ook. Het gaat om het contact met de smaak, niet om de hoeveelheid. De meeste ouders stoppen na drie keer, precies op het moment dat het begint te werken.
 
-Hoe je telt zonder dat het een project wordt, en waarom de teller belangrijker is dan de portie, staat op [hoe vaak moet een kind iets proeven](/nl/leer/alles-leren-eten/hoe-vaak-proeven). Daar vind je ook de proefkaart om op de koelkast te hangen.
+Hoe je telt zonder dat het een project wordt, en waarom de teller belangrijker is dan de portie, krijgt een eigen artikel, met een proefkaart om op de koelkast te hangen.
 
 ## Zonder druk: wat werkt aan tafel
 
@@ -101,25 +101,25 @@ Daar hoort één vraag bij, na het eten of aan het eind van de dag: wat heb je v
 
 Rond de 1 tot 2 jaar vertraagt de groei en daarmee de honger. Een peuter die ineens weinig eet, of een paar dagen bijna niets, doet meestal niets anders dan luisteren naar zijn lichaam. Tel de week, niet de maaltijd: over zeven dagen komt het meestal goed uit.
 
-Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd. Wat niet helpt: dwingen, afleiden met een scherm, of het bord een uur laten staan. Dit onderwerp heeft zijn eigen pagina: [peuter wil niet eten: wat werkt en wanneer je hulp zoekt](/nl/leer/alles-leren-eten/peuter-wil-niet-eten). Gaat het specifiek om groente en fruit, lees dan [peuter eet geen groente](/nl/leer/alles-leren-eten/peuter-eet-geen-groente).
+Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd. Wat niet helpt: dwingen, afleiden met een scherm, of het bord een uur laten staan. Dit onderwerp krijgt zijn eigen artikel, net als de vraag wat je doet als je peuter juist groente en fruit laat staan.
 
 ## Moeilijke eter of gewoon een kind
 
 "Moeilijke eter" is een woord van ouders, niet van artsen. De meeste kinderen die zo genoemd worden, eten twintig tot dertig verschillende dingen, groeien normaal en zitten in de fase die hierboven staat. Ze hebben tijd en herhaling nodig, geen etiket.
 
-Er is wel een grens. Neem contact op met het consultatiebureau of de huisarts als je kind afvalt of niet groeit, als het minder dan een stuk of twintig verschillende dingen eet, als hele groepen ontbreken (geen enkele groente, geen enkel fruit), als het kokhalst of in paniek raakt bij nieuw eten, of als de zorg jou als ouder boven het hoofd groeit. Dat is een andere situatie dan deze pagina beschrijft, en daar is hulp voor. Wat normaal is en wat niet, staat uitgebreider op [moeilijke eter: wat het is en wat niet](/nl/leer/alles-leren-eten/moeilijke-eter).
+Er is wel een grens. Neem contact op met het consultatiebureau of de huisarts als je kind afvalt of niet groeit, als het minder dan een stuk of twintig verschillende dingen eet, als hele groepen ontbreken (geen enkele groente, geen enkel fruit), als het kokhalst of in paniek raakt bij nieuw eten, of als de zorg jou als ouder boven het hoofd groeit. Dat is een andere situatie dan deze pagina beschrijft, en daar is hulp voor. Wat normaal is en wat niet, komt uitgebreider aan bod in een eigen artikel over de moeilijke eter.
 
 ## Welke groente werkt het eerst
 
 Begin met wat de meeste kinderen makkelijk vinden: zoet, mild, knapperig. Wortel, komkommer, mais, doperwten, paprika, cherrytomaat, zoete aardappel. Bittere en zachte groente (spruitjes, spinazie, gekookte andijvie) komen later, als proeven al gewoon is.
 
-Rauw is vaak makkelijker dan gekookt: een stukje rauwe wortel is knapperig en zoet, gekookte wortel is zacht en anders van smaak. Bied dezelfde groente ook in verschillende vormen aan; een kind dat gekookte bloemkool weigert, eet soms rauwe roosjes met een dip. De lijst met de twintig makkelijkste groenten en hoe je ze op tafel zet staat op [welke groente vinden kinderen lekker](/nl/leer/alles-leren-eten/welke-groente-vinden-kinderen-lekker).
+Rauw is vaak makkelijker dan gekookt: een stukje rauwe wortel is knapperig en zoet, gekookte wortel is zacht en anders van smaak. Bied dezelfde groente ook in verschillende vormen aan; een kind dat gekookte bloemkool weigert, eet soms rauwe roosjes met een dip. De lijst met de twintig makkelijkste groenten en hoe je ze op tafel zet, volgt als eigen artikel.
 
 ## Groente verstoppen: mag dat
 
 Ja, en doe het niet alleen. Courgette in de pastasaus of spinazie in de smoothie zorgt dat er groente binnenkomt, en dat is waardevol op dagen dat proeven niet lukt. Maar een kind leert niets van groente die het niet ziet. De tong leert alleen van wat het proeft.
 
-De regel die beide combineert: verstop wat je wilt, en leg altijd één zichtbaar stukje naast het bord. Dat stukje is de proefbeurt. Vijf manieren om te verstoppen en de ene regel om vol te houden staan op [groente verstoppen](/nl/leer/alles-leren-eten/groente-verstoppen).
+De regel die beide combineert: verstop wat je wilt, en leg altijd één zichtbaar stukje naast het bord. Dat stukje is de proefbeurt. Vijf manieren om te verstoppen en de ene regel om vol te houden, volgen in een eigen artikel.
 
 ## Zo doet Project Food dit aan tafel
 
