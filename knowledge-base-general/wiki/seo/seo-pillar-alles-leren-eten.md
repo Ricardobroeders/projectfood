@@ -293,6 +293,19 @@ All pages it-IT (Italy). Slugs under `/it/impara/imparare-a-mangiare-tutto/` exc
 **Still to run (Ricardo):** seeds "capricci a tavola", "bambino frutta", "bambino 2 anni mangia"
 (age phrasings), "bambini a tavola". Then UK and US.
 
+## EN numbers: the UK run is not usable (2026-09-24)
+Two UK seeds came back ("kids vegetables" 1,290 rows, "toddler vegetables" 662 rows, one
+duplicate file; `raw/*_broad-match_uk_2026-09-24*.csv`): 1,952 unique terms adding up to only
+1,010 searches a month, **no KD on any row**, and the head terms at implausible sizes
+("vegetables for kids" 40, "how to get kids to eat vegetables" 10, "toddler won't eat
+vegetables" 30, "fussy eater" absent). Page 1 for these queries in the UK is NHS, BBC Good Food
+and national media, which does not happen at 10 searches a month. Read this as Semrush's UK
+database returning a thin fallback set for these seeds (the Topics view failed and Groups gave a
+reduced list), not as UK demand. Decision: **size English on the United States database**
+(Semrush's deepest), seeds "picky eater", "kids vegetables", "toddler won't eat", "child won't
+eat vegetables", "food neophobia"; the UK gets the same pages, the numbers just come from US.
+Until then the EN cluster map above stays a hypothesis.
+
 ## Seed keywords for the EN and IT runs (Keyword Magic Tool, broad match)
 Same method as NL: short two-word seeds, export everything, Claude classifies.
 

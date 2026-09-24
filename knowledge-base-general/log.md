@@ -392,3 +392,10 @@ Findings on [[seo-pillar-alles-leren-eten]]: Italy is behaviour-first, "il bambi
 ≈ 1,650 (KD 6–13, semi-clinical, needs the line to the pediatra), the vegetable head term 680,
 neofobia 500 (a full page in IT). Four IT pages instead of NL's eight; assaggiare, premi, verdure
 nascoste (recipe intent) and quali verdure fold into pillar sections. Row 6 next step updated.
+
+## [2026-09-24] ingest | Semrush UK seed runs for pillar 1: not usable, English moves to the US database
+Two UK exports ("kids vegetables", "toddler vegetables", plus a duplicate) in `raw/`: 1,952 terms
+but 1,010 searches/month in total, no KD anywhere, head terms at 10–40/month while page 1 is NHS and
+BBC Good Food. Judged a thin fallback set from Semrush's UK database, not demand. Recorded on
+[[seo-pillar-alles-leren-eten]]; English will be sized on the US database with the seeds listed
+there. Row 6 next step updated.

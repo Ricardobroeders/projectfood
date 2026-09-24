@@ -244,7 +244,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   are behaviour-first (general refusal > the picky-eater label > vegetables), KD under 25
   everywhere; NL ≈ 3,500–4,800/month, IT ≈ 4,800/month. Ricardo runs the last seeds (NL:
   kleuter eten, kleuter groente, peuter fruit, beloningskaart eten; IT: capricci a tavola,
-  bambino frutta), then UK and US. Claude builds the skeleton and writes NL first, IT one
+  bambino frutta); the UK export came back empty of KD and implausibly small, so English is sized on the US database (seeds on the pillar page). Claude builds the skeleton and writes NL first, IT one
   step behind, in the order on the pillar page. _(status 2026-09-24)_
 
 ### 7. Social media strategy — open
