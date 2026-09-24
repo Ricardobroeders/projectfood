@@ -335,7 +335,11 @@
     "deletedTitle": "Je account is verwijderd",
     "deletedBody": "Je gezin, de profielen, kaarten en prestaties zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
     "deletedCta": "Sluiten",
-    "version": "Versie {v}"
+    "version": "Versie {v}",
+    "updateCheck": "Controleren op updates",
+    "updateChecking": "Controleren…",
+    "updateNone": "Je hebt de nieuwste versie",
+    "updateEmbedded": "storeversie"
   },
   "notifications": {
     "title": "Meldingen",

@@ -335,7 +335,11 @@
     "deletedTitle": "Your account is deleted",
     "deletedBody": "Your family, its profiles, cards and achievements are gone. Your tastes stay only as anonymous statistics, linked to no one. Thank you for having been at the table.",
     "deletedCta": "Close",
-    "version": "Version {v}"
+    "version": "Version {v}",
+    "updateCheck": "Check for updates",
+    "updateChecking": "Checking…",
+    "updateNone": "You're up to date",
+    "updateEmbedded": "store build"
   },
   "notifications": {
     "title": "Notifications",

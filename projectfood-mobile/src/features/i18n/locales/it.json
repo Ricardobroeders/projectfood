@@ -335,7 +335,11 @@
     "deletedTitle": "Il tuo account è stato eliminato",
     "deletedBody": "La tua famiglia, i profili, le carte e i traguardi non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Grazie per essere stato a tavola con noi.",
     "deletedCta": "Chiudi",
-    "version": "Versione {v}"
+    "version": "Versione {v}",
+    "updateCheck": "Controlla aggiornamenti",
+    "updateChecking": "Controllo…",
+    "updateNone": "Sei aggiornato",
+    "updateEmbedded": "versione store"
   },
   "notifications": {
     "title": "Notifiche",

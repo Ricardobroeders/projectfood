@@ -1,10 +1,11 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
+import * as Updates from 'expo-updates';
 import * as WebBrowser from 'expo-web-browser';
 import { Bell, Clock, FileText, Globe, LogOut, MessageSquare, Shield, Trash2, Users } from 'lucide-react-native';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { Screen, ScreenTitle, SectionTitle, SettingsRow } from '@/components/ui';
@@ -27,6 +28,26 @@ export default function AccountScreen() {
   const locale = useLocale();
   const scrollRef = useRef<ScrollView>(null);
   useScrollToTopOnTab(scrollRef);
+  // Pull the latest over-the-air update on demand: the launch check downloads in the background
+  // and only applies on the next start, which makes "did it change?" a guess without this.
+  const [checking, setChecking] = useState(false);
+  const checkUpdates = async () => {
+    if (checking) return;
+    setChecking(true);
+    try {
+      const r = await Updates.checkForUpdateAsync();
+      if (!r.isAvailable) {
+        Alert.alert(t('account.updateNone'));
+        return;
+      }
+      await Updates.fetchUpdateAsync();
+      await Updates.reloadAsync();
+    } catch (e) {
+      Alert.alert(t('common.error'), e instanceof Error ? e.message : String(e));
+    } finally {
+      setChecking(false);
+    }
+  };
 
   const legal = (kind: 'privacy' | 'terms') => {
     const l = locale === 'de' || locale === 'fr' ? 'en' : locale;
@@ -68,7 +89,12 @@ export default function AccountScreen() {
           <SettingsRow icon={Trash2} label={t('account.deleteAccount')} destructive onPress={() => router.push('/account/delete')} />
         </View>
 
-        <Text style={styles.version}>{t('account.version', { v: Constants.expoConfig?.version ?? '' })}</Text>
+        <Pressable onPress={() => void checkUpdates()} style={styles.versionBtn} accessibilityRole="button">
+          <Text style={styles.version}>
+            {t('account.version', { v: Constants.expoConfig?.version ?? '' })} · {Updates.updateId ? Updates.updateId.slice(0, 8) : t('account.updateEmbedded')}
+          </Text>
+          <Text style={styles.versionAction}>{checking ? t('account.updateChecking') : t('account.updateCheck')}</Text>
+        </Pressable>
       </ScrollView>
     </Screen>
   );
@@ -80,5 +106,7 @@ const styles = StyleSheet.create({
   name: { fontFamily: fonts.bold, fontSize: 18, lineHeight: 24, color: colors.ink },
   email: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   rows: { paddingHorizontal: 20, gap: 8 },
-  version: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center', marginTop: 32 },
+  versionBtn: { alignItems: 'center', gap: 4, marginTop: 32, paddingVertical: 8 },
+  version: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center' },
+  versionAction: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, textAlign: 'center' },
 });
