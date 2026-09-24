@@ -3,7 +3,7 @@ import { Tabs } from 'expo-router';
 import { AchievementSheet } from '@/components/AchievementSheet';
 import { CelebrationSheet } from '@/components/CelebrationSheet';
 import { FunFactCard } from '@/components/FunFactCard';
-import { MemberPickerSheet } from '@/components/MemberPickerSheet';
+import { MemberMenu } from '@/components/MemberMenu';
 import { PushPromptSheet } from '@/components/PushPromptSheet';
 import { TabBar } from '@/components/TabBar';
 import { colors } from '@/constants/theme';
@@ -22,7 +22,7 @@ export default function TabsLayout() {
         <Tabs.Screen name="account" />
       </Tabs>
       {/* Sheets and cards mount once here so no tab renders a second copy of the same modal. */}
-      <MemberPickerSheet />
+      <MemberMenu />
       <CelebrationSheet />
       <FunFactCard />
       <AchievementSheet />

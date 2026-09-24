@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { Check, Sparkles } from 'lucide-react-native';
 import { memo, useEffect, useRef } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { type GestureResponderEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming, ZoomIn } from 'react-native-reanimated';
 
 import { AvatarStack } from '@/components/MemberAvatar';
@@ -10,6 +10,7 @@ import { CATS, colors, fonts, radii } from '@/constants/theme';
 import type { Member } from '@/features/household/queries';
 import type { Plant } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
+import type { Point } from '@/state/ui';
 
 type Props = {
   plant: Plant;
@@ -18,9 +19,12 @@ type Props = {
   members: Member[];
   defaultIds: string[];
   catLabel: string;
-  onTap: (plantId: string) => void;
-  onHold: (plantId: string) => void;
+  /** `at` is where the finger was, in window coordinates: the member menu grows from that point. */
+  onTap: (plantId: string, at: Point) => void;
+  onHold: (plantId: string, at: Point) => void;
 };
+
+const pointOf = (e: GestureResponderEvent): Point => ({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY });
 
 function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, onHold }: Props) {
   const cat = CATS[plant.category];
@@ -69,13 +73,13 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
     <Pressable
       onPressIn={() => (press.value = withTiming(0.98, motion.pressIn))}
       onPressOut={() => (press.value = withSpring(1, motion.pressOut))}
-      onPress={() => {
+      onPress={(e) => {
         Haptics.impactAsync(complete ? Haptics.ImpactFeedbackStyle.Light : Haptics.ImpactFeedbackStyle.Medium);
-        onTap(plant.id);
+        onTap(plant.id, pointOf(e));
       }}
-      onLongPress={() => {
+      onLongPress={(e) => {
         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
-        onHold(plant.id);
+        onHold(plant.id, pointOf(e));
       }}
       delayLongPress={320}
       accessibilityRole="checkbox"

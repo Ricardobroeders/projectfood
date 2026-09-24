@@ -21,7 +21,7 @@ import { useLogMutations, useTasteCounts, useWeekLogs } from '@/features/logs/qu
 import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
-import { useDefaultIds, useUi } from '@/state/ui';
+import { type Point, useDefaultIds, useUi } from '@/state/ui';
 
 type Filter = 'all' | Category;
 const NONE: string[] = [];
@@ -114,9 +114,9 @@ export default function LogScreen() {
   }, [settings.data, pushDeclinedAt, openPushPrompt]);
 
   const onTap = useCallback(
-    (plantId: string) => {
+    (plantId: string, at: Point) => {
       if (!defaultIds.length) {
-        openPicker(plantId);
+        openPicker(plantId, at);
         return;
       }
       const cur = tastes[plantId] ?? NONE;
@@ -131,7 +131,7 @@ export default function LogScreen() {
     },
     [defaultIds, tastes, today, logTaste, unlogTaste, openPicker, maybePromptPush, hid],
   );
-  const onHold = useCallback((plantId: string) => openPicker(plantId), [openPicker]);
+  const onHold = useCallback((plantId: string, at: Point) => openPicker(plantId, at), [openPicker]);
 
   const renderItem = useCallback(
     ({ item, index }: { item: Plant; index: number }) => (
@@ -169,8 +169,8 @@ export default function LogScreen() {
         <WeekMeter value={weekCount} max={GOAL} label={t('home.thisWeek')} />
       </View>
 
-      {/* Who a plain tap logs for. Tapping opens the same picker as holding a plant. */}
-      <Pressable style={styles.forBar} onPress={() => openPicker(null)} accessibilityRole="button">
+      {/* Who a plain tap logs for. Tapping opens the same member menu as holding a plant, from the finger. */}
+      <Pressable style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
         <View style={styles.forAvatars}>
           {members.slice(0, 5).map((m) => (
             <MemberAvatar key={m.id} member={m} size={32} muted={!defaultIds.includes(m.id)} />

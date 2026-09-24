@@ -1,14 +1,14 @@
 import { useRouter } from 'expo-router';
 import { ChevronLeft, ChevronRight, type LucideIcon } from 'lucide-react-native';
 import type { PropsWithChildren, ReactNode } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ActivityIndicator, type GestureResponderEvent, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fonts, radii } from '@/constants/theme';
 
 /** Small shared primitives so screens stay declarative. Radius by height, grey surfaces, no shadows. */
 
-type ButtonProps = { label: string; onPress: () => void; disabled?: boolean; loading?: boolean; icon?: ReactNode; style?: StyleProp<ViewStyle> };
+type ButtonProps = { label: string; onPress: (e: GestureResponderEvent) => void; disabled?: boolean; loading?: boolean; icon?: ReactNode; style?: StyleProp<ViewStyle> };
 
 export function PrimaryButton({ label, onPress, disabled, loading, icon, style }: ButtonProps) {
   return (

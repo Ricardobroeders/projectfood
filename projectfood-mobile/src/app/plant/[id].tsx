@@ -128,7 +128,7 @@ export default function PlantDetailScreen() {
           })}
         </View>
 
-        <PrimaryButton label={t('plant.logTonight')} onPress={() => openPicker(plant.id)} style={{ marginHorizontal: 20, marginTop: 24 }} />
+        <PrimaryButton label={t('plant.logTonight')} onPress={(e) => openPicker(plant.id, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} style={{ marginHorizontal: 20, marginTop: 24 }} />
       </ScrollView>
     </View>
   );

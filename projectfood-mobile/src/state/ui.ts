@@ -4,6 +4,9 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 import type { AchievementId } from '@/features/achievements/definitions';
 
+/** A point in window coordinates (pageX / pageY of a touch). */
+export type Point = { x: number; y: number };
+
 /**
  * Local-only UI state. What is persisted is the phone's own convenience (who a plain tap logs for,
  * dismissed hints); everything that matters lives on the server.
@@ -13,8 +16,8 @@ type UiState = {
   defaultIds: Record<string, string[]>;
   holdHintSeen: boolean;
   pushPromptDeclinedAt: string | null;
-  /** Member picker: closed (null), for the default set (plantId null), or for one plant. */
-  picker: { plantId: string | null } | null;
+  /** Member menu: closed (null), for the default set (plantId null), or for one plant; `at` is where the finger was, the menu grows from there. */
+  picker: { plantId: string | null; at: Point } | null;
   achievementSheet: { id: AchievementId; memberId: string | null } | null;
   factCard: { plantId: string } | null;
   /** The in-app pre-prompt before the OS push permission dialog. */
@@ -23,7 +26,7 @@ type UiState = {
   setDefaultIds: (householdId: string, ids: string[]) => void;
   dismissHoldHint: () => void;
   declinePushPrompt: () => void;
-  openPicker: (plantId: string | null) => void;
+  openPicker: (plantId: string | null, at: Point) => void;
   closePicker: () => void;
   openAchievement: (id: AchievementId, memberId: string | null) => void;
   closeAchievement: () => void;
@@ -47,7 +50,7 @@ export const useUi = create<UiState>()(
       setDefaultIds: (householdId, ids) => set((s) => ({ defaultIds: { ...s.defaultIds, [householdId]: ids } })),
       dismissHoldHint: () => set({ holdHintSeen: true }),
       declinePushPrompt: () => set({ pushPromptDeclinedAt: new Date().toISOString() }),
-      openPicker: (plantId) => set((s) => ({ picker: { plantId }, holdHintSeen: plantId ? true : s.holdHintSeen })),
+      openPicker: (plantId, at) => set((s) => ({ picker: { plantId, at }, holdHintSeen: plantId ? true : s.holdHintSeen })),
       closePicker: () => set({ picker: null }),
       openAchievement: (id, memberId) => set({ achievementSheet: { id, memberId } }),
       closeAchievement: () => set({ achievementSheet: null }),
