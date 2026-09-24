@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "learn:check": "node scripts/learn-check.mjs",
+    "learn:publish": "node scripts/learn-publish.mjs --env .env.local"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
@@ -31,9 +33,11 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "js-yaml": "^5.4.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

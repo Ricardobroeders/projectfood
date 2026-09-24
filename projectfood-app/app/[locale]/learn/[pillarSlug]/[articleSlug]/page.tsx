@@ -3,15 +3,21 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getLearnAlternates, getLocalizedHref } from '@/lib/marketing'
-import { getAllPublishedClusterSlugs, getClusterPage } from '@/lib/learn'
+import {
+  getAllPublishedClusterParams, getArticlesBySlugs, getClusterPage, getSiblingSlugs, lastModified,
+} from '@/lib/learn'
+import { countWords } from '@/lib/seo'
 import { ClusterJsonLd } from '@/components/learn-json-ld'
 import { LearnMarkdown } from '@/components/learn-markdown'
+import { LearnFaq } from '@/components/learn-faq'
+import { LearnRelated } from '@/components/learn-related'
+import { LearnByline } from '@/components/learn-byline'
+
+// Static with hourly revalidation; the publish script also revalidates on demand.
+export const revalidate = 3600
 
 export async function generateStaticParams() {
-  const pairs = await getAllPublishedClusterSlugs()
-  return ['en', 'nl', 'it'].flatMap((locale) =>
-    pairs.map(({ pillarSlug, articleSlug }) => ({ locale, pillarSlug, articleSlug }))
-  )
+  return getAllPublishedClusterParams()
 }
 
 export async function generateMetadata({
@@ -23,7 +29,7 @@ export async function generateMetadata({
   const data = await getClusterPage(pillarSlug, articleSlug, locale)
   if (!data) return {}
   const { article } = data
-  const { canonical, languages } = getLearnAlternates(pillarSlug, articleSlug, locale)
+  const { canonical, languages } = getLearnAlternates(await getSiblingSlugs(article.id), locale)
   return {
     title: article.meta_title ?? article.title,
     description: article.meta_description ?? article.subtitle ?? undefined,
@@ -45,6 +51,8 @@ export default async function ClusterArticlePage({
 
   const { article, pillar } = data
   const learnBase = getLocalizedHref('/learn', locale)
+  const faq = article.sd_faq ?? []
+  const related = await getArticlesBySlugs(article.related_article_slugs, locale)
 
   return (
     <>
@@ -56,9 +64,10 @@ export default async function ClusterArticlePage({
         title={article.meta_title ?? article.title}
         description={article.meta_description ?? article.subtitle ?? ''}
         keywords={article.sd_keywords}
+        wordCount={countWords(article.body_md)}
         publishedAt={article.published_at}
-        updatedAt={article.updated_at}
-        faq={article.sd_faq}
+        updatedAt={lastModified(article)}
+        faq={faq}
         hubTitle={t('hubTitle')}
       />
 
@@ -90,20 +99,7 @@ export default async function ClusterArticlePage({
               {article.subtitle}
             </p>
           )}
-          <div className="flex items-center justify-center gap-4 mt-4 text-sm text-[#A39B91]">
-            {article.reading_time_min && (
-              <span>{t('readingTime', { min: article.reading_time_min })}</span>
-            )}
-            {article.published_at && (
-              <span>
-                {t('publishedOn', {
-                  date: new Date(article.published_at).toLocaleDateString(locale, {
-                    year: 'numeric', month: 'long', day: 'numeric',
-                  }),
-                })}
-              </span>
-            )}
-          </div>
+          <LearnByline locale={locale} readingTimeMin={article.reading_time_min} publishedAt={article.published_at} />
         </div>
       </section>
 
@@ -116,6 +112,9 @@ export default async function ClusterArticlePage({
         </section>
       )}
 
+      {/* FAQ (visible; mirrored in the FAQPage JSON-LD above) */}
+      <LearnFaq title={t('faqTitle')} items={faq} />
+
       {/* Citations */}
       {article.sd_citations && article.sd_citations.length > 0 && (
         <section className="px-5 pb-10">
@@ -127,14 +126,14 @@ export default async function ClusterArticlePage({
               {article.sd_citations.map((c, i) => (
                 <li key={i} className="text-sm text-[#6B645C]">
                   {c.author} ({c.year}). <em>{c.title}</em>.{' '}
-                  {c.doi && (
+                  {(c.doi || c.url) && (
                     <a
                       href={c.url ?? `https://doi.org/${c.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#1F1B16] underline"
                     >
-                      {c.doi}
+                      {c.doi ?? c.url}
                     </a>
                   )}
                 </li>
@@ -144,8 +143,16 @@ export default async function ClusterArticlePage({
         </section>
       )}
 
+      {/* Related articles (two siblings, from related_article_slugs) */}
+      <LearnRelated
+        title={t('relatedArticles')}
+        items={related}
+        learnBase={learnBase}
+        readingTimeLabel={(min) => t('readingTime', { min })}
+      />
+
       {/* Back to pillar */}
-      <section className="px-5 pb-16">
+      <section className="px-5 py-12">
         <div className="max-w-2xl mx-auto">
           <Link
             href={`${learnBase}/${pillarSlug}`}

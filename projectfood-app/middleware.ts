@@ -12,6 +12,14 @@ const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
   it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn', 'elimina-account': 'delete-account' },
 }
 
+// Internal page segment → external localized slug, the inverse of the table above.
+const INTERNAL_TO_SLUG: Record<Locale, Record<string, string>> = Object.fromEntries(
+  (Object.keys(SLUG_TO_INTERNAL) as Locale[]).map((locale) => [
+    locale,
+    Object.fromEntries(Object.entries(SLUG_TO_INTERNAL[locale]).map(([external, internal]) => [internal, external])),
+  ]),
+) as Record<Locale, Record<string, string>>
+
 function detectLocale(request: NextRequest): Locale {
   const accept = request.headers.get('accept-language') ?? ''
   const preferred = accept.split(',')[0]?.split('-')[0]?.toLowerCase() ?? ''
@@ -46,6 +54,18 @@ export async function middleware(request: NextRequest) {
     const slug = parts[1]
 
     if (slug) {
+      // An internal page name under a non-English locale (/nl/learn/x, /nl/about) is the same
+      // page as its localized URL; redirect so it never indexes as a duplicate.
+      const external = INTERNAL_TO_SLUG[locale]?.[slug]
+      if (external && external !== slug) {
+        const subSegments = parts.slice(2)
+        const url = request.nextUrl.clone()
+        url.pathname = subSegments.length
+          ? `/${locale}/${external}/${subSegments.join('/')}`
+          : `/${locale}/${external}`
+        return NextResponse.redirect(url, 308)
+      }
+
       const internalSlug = SLUG_TO_INTERNAL[locale]?.[slug]
       if (internalSlug && internalSlug !== slug) {
         // Rewrite /nl/over → /nl/about, /nl/leer/plant-diversity → /nl/learn/plant-diversity, etc.

@@ -5,6 +5,9 @@ import { getAlternates, getLocalizedHref } from '@/lib/marketing'
 import { getLearnHub } from '@/lib/learn'
 import { HubJsonLd } from '@/components/learn-json-ld'
 
+// Static with hourly revalidation; the publish script also revalidates on demand.
+export const revalidate = 3600
+
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
 }
@@ -37,7 +40,12 @@ export default async function LearnHubPage({
 
   return (
     <>
-      <HubJsonLd locale={locale} title={t('hubTitle')} description={t('hubSubtitle')} />
+      <HubJsonLd
+        locale={locale}
+        title={t('hubTitle')}
+        description={t('hubSubtitle')}
+        pillars={pillars.map((p) => ({ slug: p.slug, title: p.title }))}
+      />
 
       {/* Hero */}
       <section className="bg-[#F4EFE8] pt-20 pb-24 px-5 text-center">

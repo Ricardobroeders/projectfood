@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 
@@ -14,42 +15,53 @@ const LOCALE_META: Record<Locale, { label: string; flag: string }> = {
 
 // External slug → internal page name, per locale
 const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
-  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn' },
-  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn' },
-  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn' },
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn', 'delete-account': 'delete-account' },
+  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn', 'account-verwijderen': 'delete-account' },
+  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn', 'elimina-account': 'delete-account' },
 }
 
 // Internal page name → external slug per locale
 const INTERNAL_TO_SLUG: Record<Locale, Record<string, string>> = {
-  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn' },
-  nl: { about: 'over', contact: 'contact', terms: 'voorwaarden', privacy: 'privacy', recipes: 'recepten', learn: 'leer' },
-  it: { about: 'chi-siamo', contact: 'contatto', terms: 'termini', privacy: 'privacy', recipes: 'ricette', learn: 'impara' },
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn', 'delete-account': 'delete-account' },
+  nl: { about: 'over', contact: 'contact', terms: 'voorwaarden', privacy: 'privacy', recipes: 'recepten', learn: 'leer', 'delete-account': 'account-verwijderen' },
+  it: { about: 'chi-siamo', contact: 'contatto', terms: 'termini', privacy: 'privacy', recipes: 'ricette', learn: 'impara', 'delete-account': 'elimina-account' },
 }
 
 export function MarketingLanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   const pathname = usePathname()
 
-  // pathname as the browser sees it, e.g. /nl/over or /en/ or /nl/leer/plant-diversity
+  // pathname as the browser sees it, e.g. /nl/over or /en/ or /nl/leer/alles-leren-eten
   const parts = pathname.split('/').filter(Boolean)
   const locale = (parts[0] ?? 'en') as Locale
   const externalSlug = parts[1] // may be a localized slug like 'over' or 'leer'
   const internalPage = externalSlug
     ? (SLUG_TO_INTERNAL[locale]?.[externalSlug] ?? externalSlug)
     : ''
-  // Sub-segments after the base (e.g. pillarSlug/articleSlug for /learn paths)
-  const subSegments = parts.slice(2)
+
+  // Learn articles have a different slug per locale and do not exist in every locale, so the
+  // page's own hreflang links (emitted by generateMetadata) are the source of truth. Read them
+  // after hydration; the server render uses the base-page fallback below.
+  const [alternates, setAlternates] = useState<Record<string, string>>({})
+  useEffect(() => {
+    const found: Record<string, string> = {}
+    document.querySelectorAll<HTMLLinkElement>('link[rel="alternate"][hreflang]').forEach((link) => {
+      try {
+        found[link.hreflang] = new URL(link.href).pathname
+      } catch {
+        /* ignore malformed hrefs */
+      }
+    })
+    setAlternates(found)
+  }, [pathname])
 
   return (
     <div className="flex items-center gap-1.5">
       {LOCALES.map((loc) => {
         const { label, flag } = LOCALE_META[loc]
         const slug = internalPage ? INTERNAL_TO_SLUG[loc]?.[internalPage] : undefined
-        // For /learn paths, carry through sub-segments (slugs are shared across locales)
-        const href = slug
-          ? subSegments.length
-            ? `/${loc}/${slug}/${subSegments.join('/')}`
-            : `/${loc}/${slug}`
-          : `/${loc}/`
+        // Sibling page from hreflang when known; otherwise the localized base page (the hub for
+        // a learn article the locale does not have), never a sub-path carried over verbatim.
+        const href = alternates[loc] ?? (slug ? `/${loc}/${slug}` : `/${loc}/`)
 
         return (
           <a

@@ -1,15 +1,8 @@
-const BASE = 'https://projectfood.dev'
-const ORG_ID = `${BASE}/#organization`
-
-const LEARN_BASE: Record<string, string> = { en: 'learn', nl: 'leer', it: 'impara' }
-
-function learnUrl(locale: string, pillarSlug?: string, articleSlug?: string) {
-  const base = LEARN_BASE[locale] ?? 'learn'
-  const parts = [BASE, locale, base, pillarSlug, articleSlug].filter(Boolean)
-  return parts.join('/')
-}
+import { learnUrl } from '@/lib/marketing'
+import { AUTHOR_ID, BCP47, ORG_ID, SITE, organizationNode, personNode } from '@/lib/seo'
 
 type FaqItem = { question: string; answer: string }
+type PartRef = { slug: string; title: string }
 
 function faqGraph(items: FaqItem[]) {
   return {
@@ -22,15 +15,25 @@ function faqGraph(items: FaqItem[]) {
   }
 }
 
+function jsonLd(graph: object[]) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) }}
+    />
+  )
+}
+
 // ── Hub page ─────────────────────────────────────────────────────────────────
 
 type HubJsonLdProps = {
   locale: string
   title: string
   description: string
+  pillars: PartRef[]
 }
 
-export function HubJsonLd({ locale, title, description }: HubJsonLdProps) {
+export function HubJsonLd({ locale, title, description, pillars }: HubJsonLdProps) {
   const url = learnUrl(locale)
   const graph = [
     {
@@ -39,160 +42,123 @@ export function HubJsonLd({ locale, title, description }: HubJsonLdProps) {
       url,
       name: `${title} | Project Food`,
       description,
-      inLanguage: locale,
+      inLanguage: BCP47[locale] ?? locale,
       publisher: { '@id': ORG_ID },
+      hasPart: pillars.map((p) => ({
+        '@type': 'Article',
+        '@id': `${learnUrl(locale, p.slug)}#article`,
+        name: p.title,
+        url: learnUrl(locale, p.slug),
+      })),
       breadcrumb: {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/${locale}/` },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/${locale}/` },
           { '@type': 'ListItem', position: 2, name: title, item: url },
         ],
       },
     },
-    {
-      '@type': 'Organization',
-      '@id': ORG_ID,
-      name: 'Project Food',
-      url: BASE,
-    },
+    organizationNode(),
   ]
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) }}
-    />
-  )
+  return jsonLd(graph)
 }
 
-// ── Pillar page ───────────────────────────────────────────────────────────────
+// ── Article pages ────────────────────────────────────────────────────────────
 
-type PillarJsonLdProps = {
+type ArticleJsonLdBase = {
   locale: string
-  pillarSlug: string
   title: string
   description: string
   keywords: string[]
+  wordCount: number
   publishedAt: string | null
+  /** The later of the article's and the content row's updated_at (see lastModified). */
   updatedAt: string
+  /** Only pass the FAQ that is rendered on the page; the markup must match visible content. */
   faq?: FaqItem[] | null
   hubTitle: string
 }
 
-export function PillarJsonLd({
-  locale, pillarSlug, title, description, keywords,
-  publishedAt, updatedAt, faq, hubTitle,
-}: PillarJsonLdProps) {
-  const hubUrl = learnUrl(locale)
-  const url = learnUrl(locale, pillarSlug)
-  const articleId = `${url}#article`
+function articleNode(url: string, p: ArticleJsonLdBase, extra: object) {
+  return {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    headline: p.title,
+    description: p.description,
+    inLanguage: BCP47[p.locale] ?? p.locale,
+    keywords: p.keywords,
+    wordCount: p.wordCount,
+    datePublished: p.publishedAt ?? p.updatedAt,
+    dateModified: p.updatedAt,
+    author: { '@id': AUTHOR_ID },
+    publisher: { '@id': ORG_ID },
+    ...extra,
+  }
+}
+
+type PillarJsonLdProps = ArticleJsonLdBase & {
+  pillarSlug: string
+  clusters: PartRef[]
+}
+
+export function PillarJsonLd(p: PillarJsonLdProps) {
+  const hubUrl = learnUrl(p.locale)
+  const url = learnUrl(p.locale, p.pillarSlug)
 
   const graph: object[] = [
-    {
-      '@type': 'Article',
-      '@id': articleId,
-      url,
-      headline: title,
-      description,
-      inLanguage: locale,
-      keywords,
-      datePublished: publishedAt ?? updatedAt,
-      dateModified: updatedAt,
-      author: { '@id': ORG_ID },
-      publisher: { '@id': ORG_ID },
+    articleNode(url, p, {
       isPartOf: { '@id': `${hubUrl}#webpage` },
-    },
+      hasPart: p.clusters.map((c) => ({
+        '@type': 'Article',
+        '@id': `${learnUrl(p.locale, p.pillarSlug, c.slug)}#article`,
+        name: c.title,
+        url: learnUrl(p.locale, p.pillarSlug, c.slug),
+      })),
+    }),
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/${locale}/` },
-        { '@type': 'ListItem', position: 2, name: hubTitle, item: hubUrl },
-        { '@type': 'ListItem', position: 3, name: title, item: url },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/${p.locale}/` },
+        { '@type': 'ListItem', position: 2, name: p.hubTitle, item: hubUrl },
+        { '@type': 'ListItem', position: 3, name: p.title, item: url },
       ],
     },
-    {
-      '@type': 'Organization',
-      '@id': ORG_ID,
-      name: 'Project Food',
-      url: BASE,
-    },
+    personNode(p.locale),
+    organizationNode(),
   ]
-
-  if (faq && faq.length > 0) graph.push(faqGraph(faq))
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) }}
-    />
-  )
+  if (p.faq && p.faq.length > 0) graph.push(faqGraph(p.faq))
+  return jsonLd(graph)
 }
 
-// ── Cluster article page ──────────────────────────────────────────────────────
-
-type ClusterJsonLdProps = {
-  locale: string
+type ClusterJsonLdProps = ArticleJsonLdBase & {
   pillarSlug: string
   pillarTitle: string
   articleSlug: string
-  title: string
-  description: string
-  keywords: string[]
-  publishedAt: string | null
-  updatedAt: string
-  faq?: FaqItem[] | null
-  hubTitle: string
 }
 
-export function ClusterJsonLd({
-  locale, pillarSlug, pillarTitle, articleSlug, title, description,
-  keywords, publishedAt, updatedAt, faq, hubTitle,
-}: ClusterJsonLdProps) {
-  const hubUrl = learnUrl(locale)
-  const pillarUrl = learnUrl(locale, pillarSlug)
-  const url = learnUrl(locale, pillarSlug, articleSlug)
+export function ClusterJsonLd(p: ClusterJsonLdProps) {
+  const hubUrl = learnUrl(p.locale)
+  const pillarUrl = learnUrl(p.locale, p.pillarSlug)
+  const url = learnUrl(p.locale, p.pillarSlug, p.articleSlug)
 
   const graph: object[] = [
-    {
-      '@type': 'Article',
-      '@id': `${url}#article`,
-      url,
-      headline: title,
-      description,
-      inLanguage: locale,
-      keywords,
-      datePublished: publishedAt ?? updatedAt,
-      dateModified: updatedAt,
-      author: { '@id': ORG_ID },
-      publisher: { '@id': ORG_ID },
-      isPartOf: {
-        '@type': 'Article',
-        '@id': `${pillarUrl}#article`,
-      },
-    },
+    articleNode(url, p, {
+      isPartOf: { '@type': 'Article', '@id': `${pillarUrl}#article` },
+    }),
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE}/${locale}/` },
-        { '@type': 'ListItem', position: 2, name: hubTitle, item: hubUrl },
-        { '@type': 'ListItem', position: 3, name: pillarTitle, item: pillarUrl },
-        { '@type': 'ListItem', position: 4, name: title, item: url },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/${p.locale}/` },
+        { '@type': 'ListItem', position: 2, name: p.hubTitle, item: hubUrl },
+        { '@type': 'ListItem', position: 3, name: p.pillarTitle, item: pillarUrl },
+        { '@type': 'ListItem', position: 4, name: p.title, item: url },
       ],
     },
-    {
-      '@type': 'Organization',
-      '@id': ORG_ID,
-      name: 'Project Food',
-      url: BASE,
-    },
+    personNode(p.locale),
+    organizationNode(),
   ]
-
-  if (faq && faq.length > 0) graph.push(faqGraph(faq))
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }) }}
-    />
-  )
+  if (p.faq && p.faq.length > 0) graph.push(faqGraph(p.faq))
+  return jsonLd(graph)
 }

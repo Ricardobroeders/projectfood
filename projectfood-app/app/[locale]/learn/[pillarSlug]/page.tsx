@@ -3,15 +3,18 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getLearnAlternates, getLocalizedHref } from '@/lib/marketing'
-import { getAllPublishedPillarSlugs, getPillarPage } from '@/lib/learn'
+import { getAllPublishedPillarParams, getPillarPage, getSiblingSlugs, lastModified } from '@/lib/learn'
+import { countWords } from '@/lib/seo'
 import { PillarJsonLd } from '@/components/learn-json-ld'
 import { LearnMarkdown } from '@/components/learn-markdown'
+import { LearnFaq } from '@/components/learn-faq'
+import { LearnByline } from '@/components/learn-byline'
+
+// Static with hourly revalidation; the publish script also revalidates on demand.
+export const revalidate = 3600
 
 export async function generateStaticParams() {
-  const slugs = await getAllPublishedPillarSlugs()
-  return ['en', 'nl', 'it'].flatMap((locale) =>
-    slugs.map((pillarSlug) => ({ locale, pillarSlug }))
-  )
+  return getAllPublishedPillarParams()
 }
 
 export async function generateMetadata({
@@ -23,7 +26,7 @@ export async function generateMetadata({
   const data = await getPillarPage(pillarSlug, locale)
   if (!data) return {}
   const { pillar } = data
-  const { canonical, languages } = getLearnAlternates(pillarSlug, null, locale)
+  const { canonical, languages } = getLearnAlternates(await getSiblingSlugs(pillar.id), locale)
   return {
     title: pillar.meta_title ?? pillar.title,
     description: pillar.meta_description ?? pillar.subtitle ?? undefined,
@@ -45,6 +48,7 @@ export default async function PillarPage({
 
   const { pillar, clusters } = data
   const learnBase = getLocalizedHref('/learn', locale)
+  const faq = pillar.sd_faq ?? []
 
   return (
     <>
@@ -54,10 +58,12 @@ export default async function PillarPage({
         title={pillar.meta_title ?? pillar.title}
         description={pillar.meta_description ?? pillar.subtitle ?? ''}
         keywords={pillar.sd_keywords}
+        wordCount={countWords(pillar.body_md)}
         publishedAt={pillar.published_at}
-        updatedAt={pillar.updated_at}
-        faq={pillar.sd_faq}
+        updatedAt={lastModified(pillar)}
+        faq={faq}
         hubTitle={t('hubTitle')}
+        clusters={clusters.map((c) => ({ slug: c.slug, title: c.title }))}
       />
 
       {/* Breadcrumb */}
@@ -87,11 +93,7 @@ export default async function PillarPage({
               {pillar.subtitle}
             </p>
           )}
-          {pillar.reading_time_min && (
-            <p className="text-sm text-[#A39B91] mt-4">
-              {t('readingTime', { min: pillar.reading_time_min })}
-            </p>
-          )}
+          <LearnByline locale={locale} readingTimeMin={pillar.reading_time_min} publishedAt={pillar.published_at} />
         </div>
       </section>
 
@@ -104,6 +106,9 @@ export default async function PillarPage({
         </section>
       )}
 
+      {/* FAQ (visible; mirrored in the FAQPage JSON-LD above) */}
+      <LearnFaq title={t('faqTitle')} items={faq} />
+
       {/* Citations */}
       {pillar.sd_citations && pillar.sd_citations.length > 0 && (
         <section className="px-5 pb-10">
@@ -115,14 +120,14 @@ export default async function PillarPage({
               {pillar.sd_citations.map((c, i) => (
                 <li key={i} className="text-sm text-[#6B645C]">
                   {c.author} ({c.year}). <em>{c.title}</em>.{' '}
-                  {c.doi && (
+                  {(c.doi || c.url) && (
                     <a
                       href={c.url ?? `https://doi.org/${c.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#1F1B16] underline"
                     >
-                      {c.doi}
+                      {c.doi ?? c.url}
                     </a>
                   )}
                 </li>

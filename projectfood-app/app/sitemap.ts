@@ -1,13 +1,14 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
+import { LOCALES, getLearnAlternates, learnUrl, type LearnAlternateMap, type Locale } from '@/lib/marketing'
+
+// Regenerated hourly; the learn publish script also revalidates it on demand.
+export const revalidate = 3600
 
 const BASE = 'https://projectfood.dev'
-const LOCALES = ['en', 'nl', 'it']
-
-const LEARN_BASE: Record<string, string> = { en: 'learn', nl: 'leer', it: 'impara' }
 
 const PAGES: Record<string, Record<string, string>> = {
-  '/':        { en: '/en',          nl: '/nl',              it: '/it'           },
+  '/':        { en: '/en/',         nl: '/nl/',             it: '/it/'          },
   '/about':   { en: '/en/about',    nl: '/nl/over',         it: '/it/chi-siamo' },
   '/contact': { en: '/en/contact',  nl: '/nl/contact',      it: '/it/contatto'  },
   '/terms':   { en: '/en/terms',    nl: '/nl/voorwaarden',  it: '/it/termini'   },
@@ -15,96 +16,86 @@ const PAGES: Record<string, Record<string, string>> = {
   '/delete-account': { en: '/en/delete-account', nl: '/nl/account-verwijderen', it: '/it/elimina-account' },
 }
 
-function learnPaths(pillarSlug?: string, articleSlug?: string): Record<string, string> {
-  return Object.fromEntries(
-    LOCALES.map((loc) => {
-      const base = LEARN_BASE[loc]
-      const parts = [loc, base, pillarSlug, articleSlug].filter(Boolean)
-      return [loc, `/${parts.join('/')}`]
-    })
-  )
+type SlugRow = { locale: string; slug: string; updated_at?: string }
+type ArticleRow = {
+  type: 'pillar' | 'cluster'
+  updated_at: string
+  learn_article_content: SlugRow[] | null
+  pillar: { learn_article_content: SlugRow[] | null } | Array<{ learn_article_content: SlugRow[] | null }> | null
+}
+
+function staticAlternates(paths: Record<string, string>) {
+  const languages = Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}${paths[loc]}`]))
+  return { languages: { ...languages, 'x-default': `${BASE}${paths.en}` } }
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = []
 
-  // Static marketing pages
-  for (const paths of Object.values(PAGES)) {
+  // Static marketing pages. No lastModified: a fake build date on every URL teaches crawlers
+  // to ignore the field.
+  for (const [page, paths] of Object.entries(PAGES)) {
     for (const locale of LOCALES) {
       entries.push({
         url: `${BASE}${paths[locale]}`,
-        lastModified: new Date(),
         changeFrequency: 'weekly',
-        priority: paths === PAGES['/'] ? 1.0 : 0.8,
-        alternates: {
-          languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}${paths[loc]}`])),
-        },
+        priority: page === '/' ? 1.0 : 0.8,
+        alternates: staticAlternates(paths),
       })
     }
   }
 
   // Learn hub (one per locale)
-  const hubPaths = learnPaths()
+  const hubLanguages = Object.fromEntries(LOCALES.map((loc) => [loc, learnUrl(loc)]))
   for (const locale of LOCALES) {
     entries.push({
-      url: `${BASE}${hubPaths[locale]}`,
-      lastModified: new Date(),
+      url: learnUrl(locale),
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: {
-        languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}${hubPaths[loc]}`])),
-      },
+      alternates: { languages: { ...hubLanguages, 'x-default': hubLanguages.en } },
     })
   }
 
-  // Dynamic learn articles from Supabase (public RLS — anon key is sufficient)
+  // Learn articles: one entry per locale the article exists in, hreflang set from the same
+  // rule as the pages (getLearnAlternates), slugs per locale.
   try {
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { autoRefreshToken: false, persistSession: false } },
     )
 
-    const { data: pillars } = await supabase
+    const { data } = await supabase
       .from('learn_articles')
-      .select('slug, updated_at')
-      .eq('type', 'pillar')
+      .select('type, updated_at, learn_article_content(locale, slug, updated_at), pillar:pillar_id(learn_article_content(locale, slug))')
       .eq('is_published', true)
 
-    for (const pillar of pillars ?? []) {
-      const paths = learnPaths(pillar.slug)
-      for (const locale of LOCALES) {
-        entries.push({
-          url: `${BASE}${paths[locale]}`,
-          lastModified: new Date(pillar.updated_at),
-          changeFrequency: 'monthly',
-          priority: 0.8,
-          alternates: {
-            languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}${paths[loc]}`])),
-          },
-        })
+    for (const row of (data ?? []) as unknown as ArticleRow[]) {
+      const own = row.learn_article_content ?? []
+      const pillar = Array.isArray(row.pillar) ? row.pillar[0] : row.pillar
+      const pillarRows = pillar?.learn_article_content ?? []
+
+      const map: LearnAlternateMap = {}
+      for (const c of own) {
+        if (row.type === 'pillar') {
+          map[c.locale as Locale] = { pillarSlug: c.slug }
+        } else {
+          const pillarSlug = pillarRows.find((p) => p.locale === c.locale)?.slug
+          if (pillarSlug) map[c.locale as Locale] = { pillarSlug, articleSlug: c.slug }
+        }
       }
-    }
 
-    const { data: clusters } = await supabase
-      .from('learn_articles')
-      .select('slug, updated_at, pillar:pillar_id(slug)')
-      .eq('type', 'cluster')
-      .eq('is_published', true)
-
-    for (const cluster of clusters ?? []) {
-      const p = cluster.pillar
-      const pillarSlug = Array.isArray(p) ? (p[0] as { slug: string })?.slug : (p as { slug: string } | null)?.slug
-      if (!pillarSlug) continue
-      const paths = learnPaths(pillarSlug, cluster.slug)
-      for (const locale of LOCALES) {
+      for (const c of own) {
+        const loc = c.locale as Locale
+        if (!map[loc]) continue
+        const { canonical, languages } = getLearnAlternates(map, loc)
+        const contentUpdated = c.updated_at ?? row.updated_at
         entries.push({
-          url: `${BASE}${paths[locale]}`,
-          lastModified: new Date(cluster.updated_at),
+          url: canonical,
+          lastModified: new Date(contentUpdated > row.updated_at ? contentUpdated : row.updated_at),
           changeFrequency: 'monthly',
-          priority: 0.7,
-          alternates: {
-            languages: Object.fromEntries(LOCALES.map((loc) => [loc, `${BASE}${paths[loc]}`])),
-          },
+          priority: row.type === 'pillar' ? 0.8 : 0.7,
+          alternates: { languages },
         })
       }
     }

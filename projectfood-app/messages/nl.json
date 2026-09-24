@@ -391,6 +391,8 @@
       "backToLearn": "Alle onderwerpen",
       "backToPillar": "Terug naar {title}",
       "relatedArticles": "Gerelateerde artikelen",
+      "faqTitle": "Veelgestelde vragen",
+      "byAuthor": "Door {name}",
       "citations": "Bronnen & referenties",
       "publishedOn": "Gepubliceerd op {date}",
       "articleCount": "{count} artikelen in dit cluster",
