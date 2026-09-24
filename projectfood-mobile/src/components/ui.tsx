@@ -2,6 +2,8 @@ import { useRouter } from 'expo-router';
 import { ChevronLeft, ChevronRight, type LucideIcon } from 'lucide-react-native';
 import type { PropsWithChildren, ReactNode } from 'react';
 import { ActivityIndicator, type GestureResponderEvent, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+
+import { ShapeMorph } from '@/components/ShapeMorph';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fonts, radii } from '@/constants/theme';
@@ -125,10 +127,11 @@ export function ErrorText({ children }: { children: string | null | undefined })
   return <Text style={styles.error}>{children}</Text>;
 }
 
+/** The app's spinner: the same morphing shape as the splash, small and in the muted ink. */
 export function Loading() {
   return (
     <View style={styles.loading}>
-      <ActivityIndicator color={colors.ink3} />
+      <ShapeMorph size={28} color={colors.ink3} />
     </View>
   );
 }

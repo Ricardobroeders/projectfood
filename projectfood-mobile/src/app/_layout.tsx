@@ -10,8 +10,10 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { AnimatedSplash } from '@/components/AnimatedSplash';
 import { PrimaryButton } from '@/components/ui';
 import { colors, fonts } from '@/constants/theme';
+import { useAppReady } from '@/features/auth/useAppReady';
 import { SessionProvider, useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings, useUpdateHousehold, useUpdateSettings } from '@/features/household/queries';
 import { deviceLocale, isLocale, setLocale } from '@/features/i18n';
@@ -33,6 +35,8 @@ export default function RootLayout() {
       <SessionProvider>
         <StatusBar style="dark" />
         <Gate fontsLoaded={fontsLoaded} />
+        {/* On top of everything until the gate is ready; it also retires the native splash. */}
+        <AnimatedSplash fontsLoaded={fontsLoaded} />
       </SessionProvider>
     </PersistQueryClientProvider>
   );
@@ -44,19 +48,14 @@ export default function RootLayout() {
  */
 function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
   const { t } = useTranslation();
-  const { session, loading } = useSession();
+  const { session } = useSession();
   const hh = useHousehold();
   const settings = useSettings();
   const updateHousehold = useUpdateHousehold();
   const updateSettings = useUpdateSettings();
 
   const signedIn = !!session;
-  const householdKnown = !signedIn || hh.data !== undefined || hh.isError;
-  const ready = fontsLoaded && !loading && householdKnown;
-
-  useEffect(() => {
-    if (ready) SplashScreen.hideAsync();
-  }, [ready]);
+  const ready = useAppReady(fontsLoaded);
 
   // Language: the account setting wins; a fresh account takes the phone's language.
   useEffect(() => {
