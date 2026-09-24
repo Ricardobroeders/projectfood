@@ -52,7 +52,8 @@ How the backlog is organised (since 2026-09-20), so every session reads it the s
   topic's row in the strategy backlog (status, holdings, open question, next step, date).
   A decision becomes a `decision-` page in the KB.
 - Design taste: minimal but noticeable. Grey surfaces on white, no drop shadows, radius by
-  height, named motion classes, only rewards bounce. Plants are 3D clay renders; other imagery
+  height, named motion classes; only two classes bounce, `reward` and `expressive` (a menu
+  growing out of the finger), and never more than ~8%. Plants are 3D clay renders; other imagery
   animates in Rive.
 - Decided, do not re-open: Expo over Flutter, Supabase-only backend, no PWA parity, five
   locales (en/nl/it/de/fr), RevenueCat for payments.

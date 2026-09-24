@@ -3,7 +3,7 @@ title: Achievement system (cards, albums, milestones)
 type: concept
 tags: [retention, gamification, achievements, family-mode]
 created: 2026-09-10
-updated: 2026-09-22
+updated: 2026-09-24
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md, live Supabase plant_logs (queried 2026-09-18)]
 ---
 
@@ -222,6 +222,20 @@ lookup, like the plants. Frames are drawn in code.
 16. Full table: a family of avatars around one shared plate.
 17. Curious: an open book with a plant growing out of the page.
 
+### Secret achievements (brainstorm 2026-09-23/24, not yet decided)
+A hidden layer under the ladder, for the "what is left" after the shelf is known (Ricardo's input of
+2026-09-20, worked through with Claude on 2026-09-23/24; the live state sits in the parking lot of
+[[strategy-backlog]], item 16). Rules agreed so far: one level only, never a ladder; hidden tiles show
+a `?` on the grey locked ground and the real render once found (a faded render would give the
+answer away); the shelf reveals how many are hidden, never a name; never in a push or the paid
+layer; a secret rewards behaviour the family would want anyway, never a puzzle. The cheating
+achievement is kept as **Nice try** (the idiom exists in all five locales), fires at 50 distinct
+plants in one day, touches no data, and its body states the two-day rule that already makes a bulk
+day worthless for rungs 2–4 (the PWA bulk-loggers hit 51 and 63 plants in a day and left; Big dinner
+level 4 celebrates 30). Six candidates that need no backend work, Ricardo cuts to five: Nice try,
+Full spectrum, At the table, Night owl, Same again, Everyone different. Technically a secret is a
+definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text), so no migration.
+
 ## Design rules
 1. **Never resets.** Levels only go up; a streak can end but achievements and cards stay. Loss is
    absorbed by the freeze.
@@ -281,6 +295,7 @@ lookup, like the plants. Frames are drawn in code.
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).
+- Secret achievements: six candidates await Ricardo's cut to five (section above, 2026-09-24).
 - Store POC 2026-09-16: the 16 goals run on real history
   (`projectfood-mobile/src/features/achievements/definitions.ts`) and unlock rows live in
   `achievement_unlocks`. The ladder shipped on 2026-09-18 with the proposed targets; still open: whether the targets

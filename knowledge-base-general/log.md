@@ -378,3 +378,6 @@ groente vinden kinderen lekker" (~150/month) becomes a list page with a propriet
 rewards, no-strijd, fruit and the dinner question fold into sections. Pillar family ≈
 3,500–4,800/month in NL at KD under 25. Sitemap under pillar 1 rewritten in
 [[seo-site-architecture]]; "moeilijke eter"-test idea parked; row 6 next step updated.
+
+## [2026-09-24] build | Game feel: week meter on the Log screen, member menu from the finger, secret achievements half settled
+Ricardo (2026-09-23) asked for hidden achievements and animations that make the app feel more like a game while the seven-of-twelve testers are gathered. Claude's read: the row micro-motion was already good; the Log screen showed nothing accumulating (the gauge lives on Home). Shipped in `projectfood-mobile` (commits 45a3426, e3dd12c) and to the phone over the air: `WeekMeter` in the Log header, and `MemberMenu`, an M3-expressive spring menu that grows out of the touch point and replaces the hold sheet (new `expressive` motion class, damping ratio 0.65, 40 ms stagger). Judged on device: "animation looks great". Secret achievements: rules agreed, "Nice try" at 50 plants a day, six candidates, Ricardo to cut to five (item 16, parking lot). Golden Sprouts stays parked. Pages: strategy-backlog (items 10, 16, row 5, parking lot), concept-achievement-system (secret achievements section).
