@@ -3,7 +3,7 @@ title: SEO — pillar 1 "Alles leren eten": clusters and keyword map (NL / EN / 
 type: seo
 tags: [seo, keywords, pillar, family-mode, research]
 created: 2026-09-23
-updated: 2026-09-23
+updated: 2026-09-24
 sources: [seo-keyword-strategy.md, seo-site-architecture.md, seo-serp-landscape.md]
 ---
 
@@ -137,11 +137,18 @@ H2 or FAQ entries (also the "People also ask" seeds to verify in Semrush). EN li
 ## Semrush export (Ricardo)
 Files in `wiki/seo/exports/pillar-1/`: `nl-NL.csv`, `en-GB.csv`, `it-IT.csv` (columns keyword,
 page, role) and the same lists as one-keyword-per-line `.txt`. Around 150 terms per language.
-1. Keyword Manager → new list per language → paste the `.txt`; database **Netherlands**, **United
-   Kingdom**, **Italy**. Run EN a second time on **United States** (bigger, "picky" wording).
-2. Export volume, KD, intent, SERP features and the top result per keyword; send the CSVs back
-   (drop them in `raw/` as `semrush-pillar-1-<db>-2026-09.csv`) and Claude files the numbers here
-   and re-orders the clusters.
+1. **Keyword Overview, bulk mode** (the search box takes one keyword per line, up to 100 at a
+   time): paste the `.txt` in two batches per language, database **Netherlands**, **United
+   Kingdom**, **Italy**; run EN a second time on **United States** (bigger, "picky" wording).
+   Export each batch: volume, KD %, intent, SERP features, trend.
+2. **Keyword Strategy Builder** (the successor of Keyword Manager) as the cross-check, not the
+   source of numbers: seed it with three heads per language (NL: kind lust geen groente ·
+   moeilijke eter · hoe vaak moet een kind iets proeven) and let it propose pillar pages and
+   subpages; where its clusters disagree with the nine here, that is a signal to look at.
+   Export it too. Optional: **Keyword Magic Tool**, "Questions" filter on each cluster's
+   primary, to harvest question phrasings with volume for the FAQ sections.
+   Send the CSVs back (drop them in `raw/` as `semrush-pillar-1-<db>-2026-09.csv`) and Claude
+   files the numbers here and re-orders the clusters.
 3. Thresholds from [[seo-site-architecture]]: KD ≤ 20 (Semrush ≤ 30) for the first clusters,
    up to 40 for the pillar; ≥ 100/month NL, ≥ 200 IT, ≥ 500 EN before a term earns a page.
    A cluster whose primary comes back below the line folds into the pillar as an H2.
