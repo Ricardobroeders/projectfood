@@ -116,6 +116,11 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   content pipeline in row 13; challenged when row 4's entry point is decided after a week on the
   preview APK)_
 
+- **"Moeilijke eter"-test** (2026-09-24, from the Semrush run: "moeilijke eter test" 20/month). A
+  five-question self-test on the website ("is mijn kind een moeilijke eter?") that ends in the
+  proefkaart and the app; a cheap link magnet. Touches rows 6 and 12. Challenged by brainstorm
+  item 14 or a content session after the pillar is live.
+
 ## Summary
 | # | Topic | Status | Next step |
 |---|---|---|---|
@@ -124,7 +129,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 3 | Customers / personas | drafted | Five parent conversations → `interview-` pages → decide the leading age band | Open since 2026-09-22 (Ricardo): does the listing also speak to the solo adult, the independent thirty-something who was the PWA audience? He fears Parenting plus family-first copy writes them off. Today the short description is deliberately goal-first and audience-neutral ("30 different plants a week. Tap what you tasted, collect a card for each."), while the full description turns family in its second sentence. Options: leave it, lead the full description with the goal and bring the family in later, or treat the solo adult as a second listing audience after the five parent conversations. Not a category question; settle it with row 1 and the interviews.
 | 4 | Customer retention strategy | drafted | Notification policy shipped in the store POC (essential/marketing split, three ignored → a week of quiet, freeze streak); push ask moved to the onboarding dinner step on 2026-09-22 (ping row, in-app first, OS dialog only when left on; first-log sheet as fallback, D9 amended in [[decision-2026-09-07-app-v1-scope]]); push management outside the app sketched 2026-09-18 (templates + campaigns tables, entry point undecided; an admin panel that also covers plant content parked 2026-09-22 at admin.projectfood.dev, own project folder, low priority, see the parking lot); rung nudge shipped 2026-09-20 (90 min before dinner, marketing opt-in, one per household per three days, silent baseline on a household's first run); still to write: the five-family test protocol (week 4 / week 8) before TestFlight |
 | 5 | Achievements | drafted | Named achievements since 2026-09-22 (NL prestaties, IT traguardi; "stamps" before). Ladder built 2026-09-18 ([[concept-achievement-system]]): 19 achievements × up to four levels, discovery rungs 2–4 need two tasting days, two consistency achievements (days, steady weeks), pips for levels; targets tunable in code. Rung pushes at 50/75% shipped 2026-09-20 (`achievement_nudges`, the ladder mirrored in `supabase/functions/send-notifications/ladder.ts`; retune both when targets change). Still open: "refused" tap, albums; new inputs 2026-09-19/20 (Golden Sprouts streak buy-back, a fact per card level, secret achievements, an advocacy achievement) wait for a brainstorm |
-| 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend; Play screenshot brief written 2026-09-20 in [[seo-app-store-aso]], final frames and copy filed 2026-09-22; Play policy rule: audience 18+, listing addressed to the parent. **2026-09-22:** Ricardo wants the website on par and started early. Found: the brand query "projectfood" is lost to namesakes and projectfood.dev is absent; roadmap Phase 0 never started (hero still a health claim, no OG image, Search Console unverified). Order now: brand query → printable cards → NL cornerstone ([[seo-serp-landscape]] brand section). Items 9 and 14 on the list; DataForSEO still unauthorised; 2026-09-23: website languages drafted as shell in five, editorial in market order (item 9c); 2026-09-23 decided: en/nl/it until proven, sitemap + research brief in [[seo-site-architecture]]; pillar-1 keyword map + Semrush export lists 2026-09-23 ([[seo-pillar-alles-leren-eten]]) |
+| 6 | SEO strategy | drafted | Keyword volumes (DataForSEO) before any content spend; Play screenshot brief written 2026-09-20 in [[seo-app-store-aso]], final frames and copy filed 2026-09-22; Play policy rule: audience 18+, listing addressed to the parent. **2026-09-22:** Ricardo wants the website on par and started early. Found: the brand query "projectfood" is lost to namesakes and projectfood.dev is absent; roadmap Phase 0 never started (hero still a health claim, no OG image, Search Console unverified). Order now: brand query → printable cards → NL cornerstone ([[seo-serp-landscape]] brand section). Items 9 and 14 on the list; DataForSEO still unauthorised; 2026-09-23: website languages drafted as shell in five, editorial in market order (item 9c); 2026-09-23 decided: en/nl/it until proven, sitemap + research brief in [[seo-site-architecture]]; pillar-1 keyword map + Semrush export lists 2026-09-23 ([[seo-pillar-alles-leren-eten]]); NL Semrush numbers filed 2026-09-24: head term is "kinderen en groente", new cluster "peuter wil niet eten" |
 | 7 | Social media strategy | open | Decide "none until five families" vs one channel |
 | 8 | Tone of voice | open | Write the family voice (two registers), then package as a writing skill |
 | 9 | Business model | drafted | Pick option A/B/C and confirm prices in [[concept-business-model]]; `households.plan` (free/family) exists since 2026-09-16, payments off in the store POC; input 2026-09-19: Golden Sprouts as the first store item, later purchasable; 2026-09-21: the app is published free to download, the paid plan is an in-app subscription added later (Play's "free can never become paid" concerns the download price only, no second app) |
@@ -227,10 +232,11 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   class channel content (class kit, schoolfruit pages) is still wanted, which is row 12's call.
   Decided 2026-09-23: en/nl/it only until proven, de/fr follow the app locale
   ([[seo-site-architecture]]).
-- **Next:** Ricardo runs the pillar-1 lists through Semrush (NL, UK, IT, plus US for EN) and
-  drops the exports in `raw/`; Claude files the numbers in [[seo-pillar-alles-leren-eten]],
-  orders the clusters, and meanwhile builds the skeleton (home as the app page, printables
-  hub). _(status 2026-09-23)_
+- **Next:** NL numbers are in (2026-09-24, [[seo-pillar-alles-leren-eten]]): pillar family
+  3,500–4,800/month at KD under 25, head term "kinderen en groente", biggest cluster "peuter wil
+  niet eten". Ricardo runs the last NL seeds (kleuter eten, kleuter groente, peuter fruit,
+  beloningskaart eten, eetgedrag kind), then UK, US and IT. Claude builds the skeleton and
+  then writes NL in the order on the pillar page. _(status 2026-09-24)_
 
 ### 7. Social media strategy — open
 - **Have:** [[concept-word-of-mouth]] (three talkable moments), class WhatsApp group as launch

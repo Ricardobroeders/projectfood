@@ -365,3 +365,16 @@ NL volumes are small (top term "peuter wil niet eten" 170/month, most terms 20�
 demand. Per-page threshold for NL changed to the sum of a page's keyword set. Next: re-export
 after KD loads, add the remaining terms, Keyword Magic Tool broad-match on short seeds, Keyword
 Planner cross-check.
+
+## [2026-09-24] ingest | Semrush NL seed runs for pillar 1 (six exports, 1,224 terms)
+Ricardo dropped six Keyword Magic Tool broad-match exports in `raw/` (seeds kind groente, peuter
+groente, peuter eten, moeilijke eter, proeven kind, voedselneofobie). Merged, cleaned (recipes,
+norms, illness, pets, crossword clues out) and classified per cluster in
+`wiki/seo/exports/pillar-1/nl-NL-semrush-classified-2026-09-24.csv`. Findings on
+[[seo-pillar-alles-leren-eten]]: the head term is the plain "groente(n) voor kinderen / kinderen en
+groente" family (1,300–2,650/month, KD 14–23), not "kind lust geen groente"; "peuter wil niet
+eten" is the biggest cluster (880/month, KD 11, general refusal) and becomes a page; "welke
+groente vinden kinderen lekker" (~150/month) becomes a list page with a proprietary-data angle;
+rewards, no-strijd, fruit and the dinner question fold into sections. Pillar family ≈
+3,500–4,800/month in NL at KD under 25. Sitemap under pillar 1 rewritten in
+[[seo-site-architecture]]; "moeilijke eter"-test idea parked; row 6 next step updated.

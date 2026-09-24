@@ -1,0 +1,141 @@
+cluster,keyword,volume,kd,intent,serp_features,seed
+H groente-voor-kinderen (head),kinder groenten,1300,21,Informational,"AI Overview, People also ask, Recipes, Related searches",kind-groente
+H groente-voor-kinderen (head),groenten voor kinderen,210,21,Informational,"AI Overview, Image, Video, People also ask, Recipes, Related searches",kind-groente
+H groente-voor-kinderen (head),kinderen en groenten,210,18,Informational,"AI Overview, Video, Video carousel, People also ask, Related searches",kind-groente
+H groente-voor-kinderen (head),groente kinderen,170,17,Informational,"AI Overview, Image, Video, People also ask, Recipes, Related searches",kind-groente
+H groente-voor-kinderen (head),kinderen groente,170,14,Informational,"AI Overview, Video, Video carousel, People also ask, Recipes, Related searches",kind-groente
+H groente-voor-kinderen (head),kinderen groenten,170,15,Informational,"AI Overview, Video, Video carousel, People also ask, Related searches",kind-groente
+H groente-voor-kinderen (head),groente voor kinderen,140,18,Informational,"AI Overview, Image, Image pack, Video, People also ask, Recipes, Related searches",kind-groente
+H groente-voor-kinderen (head),groenten kinderen,140,23,Informational,"AI Overview, Image, Video, People also ask, Related searches",kind-groente
+H groente-voor-kinderen (head),groente peuter,20,,,,peuter-groente
+H groente-voor-kinderen (head),groente voor peuters,20,,,,peuter-groente
+H groente-voor-kinderen (head),groenten peuter,20,,,,peuter-groente
+H groente-voor-kinderen (head),peuter groente,20,,,,peuter-groente
+H groente-voor-kinderen (head),groente eten met kinderen,20,,,,kind-groente
+H groente-voor-kinderen (head),kinder groente,20,,,,kind-groente
+H groente-voor-kinderen (head),kinderen groenten eten,20,,,,kind-groente
+C7 groente-verstoppen,groente verstoppen peuter,20,,,,peuter-groente
+C7 groente-verstoppen,groenten verstoppen peuter,20,,,,peuter-groente
+C7 groente-verstoppen,verstopte groenten peuter,20,,,,peuter-groente
+C7 groente-verstoppen,verstopte groente peuter,10,,,,peuter-groente
+C7 groente-verstoppen,verborgen groenten kind,10,,,,kind-groente
+C7 groente-verstoppen,groente verstoppen kind,0,,,,kind-groente
+C7 groente-verstoppen,kinderen ongemerkt groente laten eten,0,,,,kind-groente
+C7 groente-verstoppen,kinderen ongemerkt groente latneten,0,,,,kind-groente
+C7 groente-verstoppen,verborgen groente kind,0,,,,kind-groente
+C7 groente-verstoppen,verstopte groente kinderen,0,,,,kind-groente
+C3 voedselneofobie,voedselneofobie,30,,,,voedselneofobie
+C3 voedselneofobie,wat is voedselneofobie,20,,,,voedselneofobie
+C3 voedselneofobie,3 voedselneofobie,0,,,,voedselneofobie
+C3 voedselneofobie,eetproblemen peuters kleuters voedselneofobie,0,,,,voedselneofobie
+C3 voedselneofobie,op welke leeftijd is voedselneofobie het sterkst aanwezig,0,,,,voedselneofobie
+C3 voedselneofobie,voedselneofobie behandeling,0,,,,voedselneofobie
+C3 voedselneofobie,voedselneofobie betekenis,0,,,,voedselneofobie
+C3 voedselneofobie,voedselneofobie definitie,0,,,,voedselneofobie
+C3 voedselneofobie,voedselneofobie kind,0,,,,voedselneofobie
+C3 voedselneofobie,voedselneofobie voorkomen,0,,,,voedselneofobie
+C8 eet-geen-fruit,peuter eet geen groente en fruit,20,,,,peuter-groente
+C8 eet-geen-fruit,mijn peuter eet geen groente en fruit,0,,,,peuter-groente
+C8 eet-geen-fruit,peuter eet geen fruit en groente,0,,,,peuter-groente
+C8 eet-geen-fruit,peuter eet geen groenten en fruit,0,,,,peuter-groente
+C8 eet-geen-fruit,kind 2 jaar eet geen groente en fruit,0,,,,kind-groente
+C8 eet-geen-fruit,kind eet geen fruit en groente,0,,,,kind-groente
+C8 eet-geen-fruit,kind eet geen groente en fruit,0,,,,kind-groente
+C8 eet-geen-fruit,kind eet geen groente wel fruit,0,,,,kind-groente
+C8 eet-geen-fruit,mijn kind eet geen fruit en groente,0,,,,kind-groente
+C8 eet-geen-fruit,mijn kind eet geen groente en fruit,0,,,,kind-groente
+C1 hoe-vaak-proeven,proeven kinderen,20,,,,proeven-kind
+C1 hoe-vaak-proeven,10x proeven schema eten kind,0,,,,proeven-kind
+C1 hoe-vaak-proeven,hoe vaak moet een kind iets proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind 7 dwingen om te proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind eet 10x proeven schema,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind eten laten proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind wil geen eten proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind wil geen nieuwe dingen proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind wil niet proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kind wil niks proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kinderen laten proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,kinderen proeven eten,0,,,,proeven-kind
+C1 hoe-vaak-proeven,mijn kind wil niets proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,online kinder chemische proeven,0,,,,proeven-kind
+C1 hoe-vaak-proeven,proefjes proeven kinderen,0,,,,proeven-kind
+C1 hoe-vaak-proeven,proeven doen kind amsterdam,0,,,,proeven-kind
+C1 hoe-vaak-proeven,proeven kinderen vacatures,0,,,,proeven-kind
+C1 hoe-vaak-proeven,proeven lab voor kinderen,0,,,,proeven-kind
+C1 hoe-vaak-proeven,stickers vel voor groente proeven kinderen,0,,,,proeven-kind
+C1 hoe-vaak-proeven,zien horen voelen proeven kunst met kinderen,0,,,,proeven-kind
+C2 belonen-voor-proeven,peuter leren eten beloningen,0,,,,peuter-eten
+C2 belonen-voor-proeven,peuter wil niet eten wel toetje,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter eten weigeren,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter weigert eten,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter weigert te eten,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter weigert warm eten,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter wil niet aan tafel eten,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter zonder eten naar bed,20,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter weigert groente en fruit,0,,,,peuter-groente
+C6 geen-strijd-aan-tafel,peuter weigert groenten,0,,,,peuter-groente
+C6 geen-strijd-aan-tafel,kind 2 jaar weigert groente,0,,,,kind-groente
+C6 geen-strijd-aan-tafel,kind weigert groente te eten,0,,,,kind-groente
+C6 geen-strijd-aan-tafel,als peuters weigeren te eten,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,elke dag strijd met peuter met eten,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,eten weigeren peuter,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,mijn peuter weigert te eten,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter drama eten,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter drama tijdens eten,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter eten drama,0,,,,peuter-eten
+C6 geen-strijd-aan-tafel,peuter wil niet eten aan tafel,0,,,,peuter-eten
+C5 moeilijke-eter,moeilijke eter,50,8,Informational,"AI Overview, Reviews, Image pack, Video, People also ask, Related searches",moeilijke-eter
+C5 moeilijke-eter,peuter moeilijke eter,50,11,Informational,"AI Overview, Video, People also ask, Related searches, Ads bottom",moeilijke-eter
+C5 moeilijke-eter,groenten voor moeilijke eters,20,,,,moeilijke-eter
+C5 moeilijke-eter,moeilijke eter peuter,20,16,Informational,"Sitelinks, AI Overview, People also ask, Related searches",moeilijke-eter
+C5 moeilijke-eter,moeilijke eter test,20,,,,moeilijke-eter
+C5 moeilijke-eter,moeilijke eters,20,,,,moeilijke-eter
+C5 moeilijke-eter,moeilijke eters kinderen,20,,,,moeilijke-eter
+C5 moeilijke-eter,moeilijke eters peuters,20,,,,moeilijke-eter
+C5 moeilijke-eter,tips voor moeilijke eters,20,,,,moeilijke-eter
+C5 moeilijke-eter,peuter 2 jaar slecht eten,20,,,,peuter-eten
+C5 moeilijke-eter,peuter moeilijk eten,20,,,,peuter-eten
+C5 moeilijke-eter,peuter slecht eten,20,,,,peuter-eten
+C5 moeilijke-eter,peuters die slecht eten,20,,,,peuter-eten
+C5 moeilijke-eter,ander woord voor moeilijke eter,10,,,,moeilijke-eter
+C5 moeilijke-eter,de moeilijke eter test,10,,,,moeilijke-eter
+C4a peuter-eet-geen-groente,peuter eet geen groente,50,8,Informational,"Sitelinks, AI Overview, Video, People also ask, Related searches",peuter-groente
+C4a peuter-eet-geen-groente,mijn peuter eet geen groente,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter eet geen groente meer,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter eet geen groenten,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter groente laten eten,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter wil geen groente eten,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter wil geen groenten eten,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter wil geen groenten meer eten,20,,,,peuter-groente
+C4a peuter-eet-geen-groente,peuter wil niks eten,20,,,,peuter-eten
+C4a peuter-eet-geen-groente,peuter groente leren eten,10,,,,peuter-groente
+C4b peuter-wil-niet-eten (general refusal),peuter wil niet eten,170,12,Informational,"AI Overview, Video, People also ask, Related searches",peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter die niet wil eten,140,11,Informational,"Sitelinks, AI Overview, Video, People also ask, Related searches, Ads middle",peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wilt niet eten,140,11,Informational,"Sitelinks, AI Overview, Video, People also ask, Related searches",peuter-eten
+C4b peuter-wil-niet-eten (general refusal),mijn peuter wil niet eten,30,9,Informational,"Sitelinks, Video, People also ask, Related searches",peuter-eten
+C4b peuter-wil-niet-eten (general refusal),help mijn peuter wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),mijn peuter wilt niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 2 5 wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 2 jaar wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 2 wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 20 maanden wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 3 jaar wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter eet geen warm eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter leren eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter niet willen eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter van 2 wil niet eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wil geen warm eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wil ineens niet meer eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wil niet meer eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wil niet warm eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuters die niet willen eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),tips om peuter te laten eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),wat als peuter niet wil eten,20,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter 2 5 jaar wil niet eten,10,,,,peuter-eten
+C4b peuter-wil-niet-eten (general refusal),peuter wil geen warm eten meer,10,,,,peuter-eten
+P kind-alles-leren-eten,kind eet geen groente,30,,,,kind-groente
+P kind-alles-leren-eten,mijn kind eet geen groente,20,,,,kind-groente
+P kind-alles-leren-eten,kind meer groente laten eten,10,,,,kind-groente
+P kind-alles-leren-eten,kind wil geen groente eten,10,,,,kind-groente

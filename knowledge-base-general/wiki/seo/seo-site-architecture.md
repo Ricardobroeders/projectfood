@@ -3,7 +3,7 @@ title: SEO — site architecture (sitemap, page types, structured data, research
 type: seo
 tags: [seo, sitemap, structured-data, keyword-research, family-mode]
 created: 2026-09-23
-updated: 2026-09-23
+updated: 2026-09-24
 sources: [seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-serp-landscape.md]
 ---
 
@@ -20,16 +20,15 @@ decides the *order* of cluster pages and what to expect, not the shape of the si
 /                                  Home = the app page. Owns the brand query.
 /over                              About: Ricardo, the greengrocer story. Trust anchor for parents.
 /leer                              Learn hub index.
-/leer/alles-leren-eten             PILLAR 1 · "Kind lust geen groente? Zo leert een kind alles eten" (keyword map: [[seo-pillar-alles-leren-eten]])
-   /hoe-vaak-proeven                 how many tastes (10–15), the honest number
-   /belonen-voor-proeven             rewards that work (tasting, not clean plates)
-   /voedselneofobie                  neophobia is normal, 2–6 y
-   /peuter-eet-geen-groente          the toddler years
+/leer/alles-leren-eten             PILLAR 1 · "Kinderen en groente: zo leert je kind groente eten, zonder strijd" (numbers: [[seo-pillar-alles-leren-eten]])
+   /peuter-wil-niet-eten             general toddler refusal, the biggest NL cluster (880/mo, KD 11)
+   /hoe-vaak-proeven                 how many tastes, the Leren-lusten-plan, the proefkaart (absorbs rewards)
    /moeilijke-eter                   the picky-eater identity, without the label sticking
-   /geen-strijd-aan-tafel            pressure, forcing, dessert bribes: what backfires
+   /peuter-eet-geen-groente          toddler + vegetables, with fruit as a section
+   /welke-groente-vinden-kinderen-lekker   the list page, later fed by our own tasting data
    /groente-verstoppen               hiding vegetables: the stance page
-   /eet-geen-fruit                   fruit, the same method
-   /de-vraag-aan-tafel               the one question at dinner (brand content, low volume)
+   /voedselneofobie                  neophobia is normal, 2–6 y (short)
+   (sections, not pages: rewards, pressure and clean plates, fruit, the dinner question)
 /leer/30-planten                   PILLAR 2 · existing "Waarom 30 verschillende planten per week?", reframed for the family
    /wat-telt-mee                     existing cluster → the does-it-count hub (ketchup, koffie, aardappel, brood)
    /als-gezin                        30 as a family: how the count works when four people eat

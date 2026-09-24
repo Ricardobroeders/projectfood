@@ -47,7 +47,8 @@ was exported before the metrics had loaded; a refresh fills them). Saved as
 - **Tooling:** the bulk Overview computes KD one term at a time on refresh, too slow for 150
   terms. Keyword Magic Tool on short seeds returns volume and KD for every variant at once
   and exports in one go; use it for the rest, bulk Overview only for terms it does not list.
-- **Next:** run Keyword Magic Tool in broad match on short seeds ("peuter groente", "kind groente",
+- **Done 2026-09-24:** six seed runs, classified below under "NL numbers".
+- ~~**Next:** run Keyword Magic Tool in broad match on short seeds ("peuter groente", "kind groente",
   "moeilijke eter", "proeven kind", "peuter eten") to see which phrasings Semrush actually
   holds; cross-check the top ten in Google Keyword Planner (ranges) before any title is fixed.
 
@@ -184,14 +185,59 @@ page, role) and the same lists as one-keyword-per-line `.txt`. Around 150 terms 
    up to 40 for the pillar; ≥ 100/month NL, ≥ 200 IT, ≥ 500 EN before a term earns a page.
    A cluster whose primary comes back below the line folds into the pillar as an H2.
 
-## Expected order (to confirm with the numbers)
-1. Pillar (NL), then C1 hoe-vaak-proeven and C2 belonen-voor-proeven together with the
-   printables hub, because those two carry the artefacts.
-2. C7 groente-verstoppen (high demand, recipe-owned, our angle is different) and C5
-   moeilijke-eter (the identity term).
-3. C3, C4, C6, C8. C9 whenever, it is brand content.
-4. IT one step behind on every cluster; EN pillar last, EN clusters where page 1 is blogs
-   rather than hospitals (C1, C2, C7).
+## NL numbers: what the Semrush seed runs say (2026-09-24)
+Six broad-match exports (seeds "kind groente", "peuter groente", "peuter eten", "moeilijke
+eter", "proeven kind", "voedselneofobie"; 1,224 unique terms, 9,380 searches/month), saved in
+`raw/*_broad-match_nl_2026-09-24.csv`, classified in
+`wiki/seo/exports/pillar-1/nl-NL-semrush-classified-2026-09-24.csv`. Recipes, feeding norms
+("hoeveel gram"), illness, pets and crossword clues are excluded (about 4,500/month, half of it
+recipe intent, a non-goal by decision). KD is only present on terms Semrush had analysed
+before; every KD seen is 8–23.
+
+| Page (NL) | Measured volume / month | KD seen | Head phrasings |
+|---|---|---|---|
+| **Pillar** "Kinderen en groente" | 1,300–2,650 (the top row "kinder groenten" at 1,300 is a Semrush aggregation; the rest of the family is 1,350) | 14–23 | kinder groenten · groenten voor kinderen · kinderen en groenten · groente kinderen · groente voor kinderen; plus kind eet geen groente (30), mijn kind eet geen groente (20), kinderen groenten leren eten (20) |
+| **C4b Peuter wil niet eten** (new) | 880 | 9–12 | peuter wil niet eten (170) · peuter die niet wil eten (140) · peuter wilt niet eten (140) · mijn peuter wil niet eten (30) · age variants 20 each · peuter weigert (te) eten · peuter eet geen warm eten |
+| **C5 Moeilijke eter** | ≈ 380 | 8–16 | moeilijke eter (50) · peuter moeilijke eter (50) · moeilijke eter peuter (20) · moeilijke eters kinderen/peuters · moeilijke eter test (20) · tips voor moeilijke eters |
+| **C4a Peuter eet geen groente** | 220 (+ 40 fruit) | 8 | peuter eet geen groente (50) · peuter wil geen groente(n) eten · peuter eet geen groente meer · peuter groente laten eten · peuter eet geen groente en fruit |
+| **C10 Welke groente vinden kinderen lekker** (new) | ≈ 150 | – | welke groente(n) vinden kinderen/peuters lekker · groente die kinderen lekker vinden · lekkere groente(n) voor kinderen · welke groenten eten kinderen graag |
+| **C7 Groente verstoppen** | ≈ 140 | 10–13 | groente verstoppen (20) · groente verstoppen in eten (20) · verstopte groenten (20) · peuter variants 20 each |
+| **C1 Hoe vaak proeven** (absorbs C2) | ≈ 70 | 15 | leren lusten plan (50) · proeven kinderen (20) · hoe vaak moet een kind iets proeven (not in DB) · 10x proeven schema eten kind (not in DB, but the phrasing is the chart) · beloningskaart eten (20) |
+| **C3 Voedselneofobie** | 50 | – | voedselneofobie (30) · wat is voedselneofobie (20) |
+| Folded into other pages | | | C2 rewards → C1 + printables hub (0 measured); C6 no-strijd → H2s in C4b and the pillar (weigert/dwingen phrasings 120, all inside C4b); C8 fruit → H2 in C4a (40); C9 dinner question → brand page, not an SEO target (0) |
+
+**What changed against the plan of 2026-09-23**
+1. **The head term is the plain one.** Dutch parents search "groente(n) voor kinderen" and
+   "kinderen en groente" far more than "kind lust geen groente" (absent from Semrush). Page 1 is
+   half recipe sites, half tip lists (Ouders van Nu, Jaimy's Kitchen, Voedingscentrum's
+   "9x zo eet je peuter groente"). The pillar title becomes **"Kinderen en groente: zo leert je
+   kind groente eten, zonder strijd"**; slug stays `alles-leren-eten`.
+2. **"Peuter wil niet eten" is the biggest cluster**, general refusal rather than vegetables.
+   Page 1: Oei ik groei, Nutricia, JGZ, WIJ.nl, 24Baby, Ouders van Nu, Voedingscentrum. KD 11.
+   Our method (no pressure, you decide what and they decide how much, small portions, repeated
+   tasting) is the answer; the vegetable angle is a section. New page C4b.
+3. **"Welke groente vinden kinderen lekker" is a list page we can own** with our own data later
+   ("de 20 groenten die kinderen in Project Food het vaakst proeven"): the proprietary-data
+   angle from [[seo-content-types]] format 7, a year early. New page C10.
+4. **Four clusters had no measurable demand** (rewards, no-strijd, fruit, the dinner question)
+   and fold into sections. Semrush's Dutch database is thin on question phrasings, so they stay
+   as H2s and FAQ entries where AI-search answers are built.
+5. **"Moeilijke eter test"** (20/month) is a quiz intent: a five-question self-test that ends in
+   the app is a cheap link magnet. Parked, see [[strategy-backlog]].
+
+Measured total for the pillar family: about 3,500–4,800 searches a month in NL at KD under 25,
+against the 700 the first bulk run suggested. Still small, still easy: fewer, complete pages.
+
+## Order of writing (NL, from the numbers)
+1. Pillar "Kinderen en groente" + C4b "Peuter wil niet eten" + C1 "Hoe vaak proeven" (the
+   mechanic, with the proefkaart) together, so the pillar launches with two clusters.
+2. C5 "Moeilijke eter", C4a "Peuter eet geen groente" (with fruit).
+3. C10 "Welke groente vinden kinderen lekker", C7 "Groente verstoppen", C3 "Voedselneofobie".
+4. EN and IT keep the nine-cluster map above as hypotheses until their exports are in; expect
+   the same shift towards the plain head term and the toddler phrasing.
+
+**Still to run (Ricardo):** seeds "kleuter eten" and "kleuter groente" (ages 4–6, the app's
+core), "peuter fruit", "beloningskaart eten", "eetgedrag kind"; then UK, US and IT.
 
 ## Related pages
 - [[seo-site-architecture]] · [[seo-keyword-strategy]] · [[seo-content-types]] ·
