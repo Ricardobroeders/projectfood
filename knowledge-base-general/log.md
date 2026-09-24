@@ -399,3 +399,14 @@ but 1,010 searches/month in total, no KD anywhere, head terms at 10–40/month w
 BBC Good Food. Judged a thin fallback set from Semrush's UK database, not demand. Recorded on
 [[seo-pillar-alles-leren-eten]]; English will be sized on the US database with the seeds listed
 there. Row 6 next step updated.
+
+## [2026-09-24] ingest | Semrush US seed runs for pillar 1 (five exports, 11,232 terms)
+Ricardo dropped five US exports in `raw/` (picky eater, kids vegetables, toddler won't eat, food
+neophobia, child won't eat vegetables). Two thirds of the 108,600 searches/month are noise
+(a vitamin brand, a viral quiz, an anime character, dog food, adults, recipes, ICD codes).
+Findings on [[seo-pillar-alles-leren-eten]]: the pillar family ≈ 8,000/month but KD 13–58; the
+winnable English pages are "vegetables kids will eat / kid friendly vegetables" (≈ 1,000, KD 13–17)
+and the AAP "repeated exposure 10–15 times" lookups (≈ 450, KD 15), then the pillar (KD 17–27);
+"picky eater chart" (320, KD 16) becomes the tasting-chart printable's target; toddler-won't-eat,
+neophobia and picky-eater-toddler are KD 30–58 and come last. Hiding vegetables and forcing are
+sections. EN plan table filed; row 6 updated.

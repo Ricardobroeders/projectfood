@@ -306,6 +306,61 @@ reduced list), not as UK demand. Decision: **size English on the United States d
 eat vegetables", "food neophobia"; the UK gets the same pages, the numbers just come from US.
 Until then the EN cluster map above stays a hypothesis.
 
+## EN numbers: the US run (2026-09-24)
+Five US exports (seeds "picky eater" 7,013 rows, "kids vegetables" 3,385, "toddler won't eat"
+690, "food neophobia" 130, "child won't eat vegetables" 26; 11,232 unique terms, 108,600
+searches/month), saved in `raw/*_broad-match_us_2026-09-24.csv`, first-pass classification in
+`wiki/seo/exports/pillar-1/en-US-semrush-classified-2026-09-24.csv`. Two thirds of the volume is
+noise we leave: a vitamin brand ("renzo's picky eater" 12,100), "picky eater test/quiz" (7,000,
+a viral quiz), "kid vegeta" (anime, 2,400), dog food, adult picky eaters, recipes and meal
+ideas, ICD codes and ARFID. KD is present on most terms with volume and runs **13–58**, far
+above NL and IT: English is where volume and difficulty both live.
+
+| Page (EN, sized on US) | Measured volume / month | KD | Head phrasings |
+|---|---|---|---|
+| **C10 Vegetables kids will eat** | ≈ 1,000 | 13–17 | vegetables kids will eat (390, KD 13) · kid friendly vegetables (320, KD 17) · best vegetables for kids (90) · vegetables kids like (90) · top 15 kid-friendly vegetables (40) · kids favorite vegetables (30) |
+| **Pillar** "How to get kids to eat vegetables" | ≈ 1,840 | 17–27 | how to get kids to eat vegetables (720, KD 27) · vegetables for kids (720, KD 17, half recipes) · why do kids hate vegetables (90) · why do kids not like vegetables (70, KD 5) · kids vegetables (40) |
+| **C1 How many times to try a food** | ≈ 450 | 15 | "aap picky eating toddler repeated exposure 10 15 times" and eight spellings (≈ 300 together, KD 15: parents looking up the AAP number) · how to get a picky eater to try new foods (≈ 140 across variants) · cdc picky eating repeated exposure new foods (30) |
+| **C4b Toddler won't eat** | ≈ 980 | 25–49 | toddler won't eat (480, KD 37) · my toddler won't eat (210, KD 49) · why won't my toddler eat (140, KD 37) · toddler won't eat anything (70, KD 25) · what to do when toddler won't eat (40) |
+| **C3 Food neophobia** | ≈ 1,000 | 36–40 | food neophobia (880, KD 36) · food neophobia in childhood (110, KD 40); the "scale / questionnaire" terms are academic and skipped |
+| **C5 Picky eater toddler** | ≈ 2,700 | 30–58 | picky eater toddler (260, KD 50) · toddler picky eater (260, KD 58) · how to get a picky toddler to eat (170, KD 36) · picky eating in childhood (170) · how to deal with picky eater toddler (110) · 2 / 3 / 4 year old picky eater (90 / 70 / 70) · how to handle a picky eater (90, KD 27) · picky eater tips (70) · when does picky eating stop (50). The bare "picky eater" (5,400, KD 52) is adults, dogs and commerce, not a target |
+| **Printable: picky eater chart** | ≈ 360 | 16 | picky eater chart (320, KD 16) · picky eater food chart (20) · picky eater reward chart (20). This is the tasting-chart PDF page in [[seo-site-architecture]], not a learn article |
+| Sections, not pages | | | hiding vegetables (≈ 180: how to hide vegetables for kids 50, KD 23) · pressure ("how to punish kid for not eating vegetables" 140, "should you force a picky eater to eat" 20: answer inside the pillar, honestly) · toddler + vegetables (20; the general refusal dwarfs it in English) · family dinner (0) |
+
+**What it says**
+1. **English is big and hard.** The pillar family measures about 8,000/month against 4,800 in
+   NL and IT, but KD 30–58 on the toddler and picky-eater clusters means a new domain does not
+   rank there in year one. Page 1 is Solid Starts, Kids Eat in Color, KidsHealth, Cleveland
+   Clinic, Healthline and the AAP.
+2. **The way in is the list page and the number.** "Vegetables kids will eat" and "kid friendly
+   vegetables" (≈ 1,000/month at KD 13–17) and the AAP "repeated exposure 10–15 times" lookups
+   (≈ 450 at KD 15) are the two English pages a new site can win. Both are pages we wanted
+   anyway: the list feeds on our own tasting data later, the number page carries the chart.
+3. **The chart is a query in English.** "picky eater chart" at 320/month, KD 16, is the
+   printables page's target; in NL the same intent measured 20.
+4. **Hiding vegetables and forcing are sections in English**, as in Italian; only Dutch has
+   enough "verstoppen" demand for a page.
+5. **The bare terms are traps.** "picky eater" (5,400), "picky eating" (720) and "food
+   neophobia" (880) look big but are adult, commercial or academic; the kid-specific phrasings
+   are the real targets.
+
+### The EN plan in one table
+Sized on the US database; the pages serve the UK too (the UK export was unusable, see above).
+Slugs under `/en/learn/learn-to-eat-everything/` except the pillar and the printable.
+
+| Slug | Keywords to focus on | Topic of the article |
+|---|---|---|
+| `…/vegetables-kids-will-eat` | vegetables kids will eat · kid friendly vegetables · best vegetables for kids · vegetables kids like · kids favorite vegetables | The 20 easiest vegetables to start with (sweet, mild, crunchy), why kids take to them, how to serve each; later the Project Food tasting data |
+| `/en/learn/learn-to-eat-everything` (pillar) | how to get kids to eat vegetables · vegetables for kids · why do kids hate vegetables · why do kids not like vegetables · kids vegetables | "How to get kids to eat vegetables, without the battle." The playbook: refusal is normal (neophobia), 10–15 tastes, no pressure, reward the tasting, eat together; sections on hiding vegetables (stance), punishing and forcing (don't, and why), toddlers and vegetables |
+| `…/how-many-times-to-try-a-food` | repeated exposure 10 15 times picky eating · how many times does a child need to try a new food · how to get a picky eater to try new foods · cdc picky eating repeated exposure new foods | The AAP and CDC number explained honestly (10–15, sometimes 30; a lick counts), what an exposure is, how to count tastes with the chart and the app |
+| `…/toddler-wont-eat` | toddler won't eat · my toddler won't eat · why won't my toddler eat · toddler won't eat anything · what to do when toddler won't eat | Why toddlers stop eating (growth slows, autonomy, neophobia), what works, what backfires (forcing, clean plate, dessert as bribe), the red flags that mean the pediatrician |
+| `…/food-neophobia` | food neophobia · food neophobia in childhood · fear of new foods children | Definition in parent words, ages 2–6, why it exists, what helps (repeated exposure, modelling, no pressure), that it passes |
+| `…/picky-eater-toddler` | picky eater toddler · how to get a picky toddler to eat · how to deal with picky eater toddler · 2 year old picky eater · picky eater tips · when does picky eating stop | What is normal picky eating and what is not (ARFID, refer out), causes in parent words, widening the plate one taste at a time; written last, the hardest cluster |
+| `/en/printables/tasting-chart` (printable) | picky eater chart · picky eater food chart · picky eater reward chart · new food chart for kids | The tasting chart PDF: ten to fifteen boxes per food, tick a taste not a clean plate, the science line, the app as the digital version |
+
+**Order for English:** C10 and C1 first (KD 13–17), then the pillar and the chart page, then
+neophobia and toddler-won't-eat, picky-eater-toddler last.
+
 ## Seed keywords for the EN and IT runs (Keyword Magic Tool, broad match)
 Same method as NL: short two-word seeds, export everything, Claude classifies.
 
