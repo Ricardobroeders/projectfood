@@ -91,7 +91,10 @@ export default function AccountScreen() {
 
         <Pressable onPress={() => void checkUpdates()} style={styles.versionBtn} accessibilityRole="button">
           <Text style={styles.version}>
-            {t('account.version', { v: Constants.expoConfig?.version ?? '' })} · {Updates.updateId ? Updates.updateId.slice(0, 8) : t('account.updateEmbedded')}
+            {t('account.version', { v: Constants.expoConfig?.version ?? '' })} ·{' '}
+            {Updates.updateId && Updates.createdAt
+              ? `${new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }).format(Updates.createdAt)} · ${Updates.updateId.slice(0, 8)}`
+              : t('account.updateEmbedded')}
           </Text>
           <Text style={styles.versionAction}>{checking ? t('account.updateChecking') : t('account.updateCheck')}</Text>
         </Pressable>
