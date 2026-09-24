@@ -381,3 +381,14 @@ rewards, no-strijd, fruit and the dinner question fold into sections. Pillar fam
 
 ## [2026-09-24] build | Game feel: week meter on the Log screen, member menu from the finger, secret achievements half settled
 Ricardo (2026-09-23) asked for hidden achievements and animations that make the app feel more like a game while the seven-of-twelve testers are gathered. Claude's read: the row micro-motion was already good; the Log screen showed nothing accumulating (the gauge lives on Home). Shipped in `projectfood-mobile` (commits 45a3426, e3dd12c) and to the phone over the air: `WeekMeter` in the Log header, and `MemberMenu`, an M3-expressive spring menu that grows out of the touch point and replaces the hold sheet (new `expressive` motion class, damping ratio 0.65, 40 ms stagger). Judged on device: "animation looks great". Secret achievements: rules agreed, "Nice try" at 50 plants a day, six candidates, Ricardo to cut to five (item 16, parking lot). Golden Sprouts stays parked. Pages: strategy-backlog (items 10, 16, row 5, parking lot), concept-achievement-system (secret achievements section).
+
+## [2026-09-24] ingest | Semrush IT seed runs for pillar 1 (five exports, 3,602 terms)
+Ricardo dropped five Italian Keyword Magic Tool exports in `raw/` (seeds bambini verdure, bambino
+non mangia, selettività alimentare, assaggiare bambini, neofobia alimentare). Merged, cleaned
+(recipes ≈ 2,500/month, weight and illness, infants, autism and ADHD phrasings, adults, courses
+out) and classified in `wiki/seo/exports/pillar-1/it-IT-semrush-classified-2026-09-24.csv`.
+Findings on [[seo-pillar-alles-leren-eten]]: Italy is behaviour-first, "il bambino non mangia"
+≈ 2,000/month (KD 9–16, "psicologia" and "improvvisamente" phrasings), "selettività alimentare"
+≈ 1,650 (KD 6–13, semi-clinical, needs the line to the pediatra), the vegetable head term 680,
+neofobia 500 (a full page in IT). Four IT pages instead of NL's eight; assaggiare, premi, verdure
+nascoste (recipe intent) and quali verdure fold into pillar sections. Row 6 next step updated.

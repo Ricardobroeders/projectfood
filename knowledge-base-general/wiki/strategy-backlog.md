@@ -240,11 +240,12 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   class channel content (class kit, schoolfruit pages) is still wanted, which is row 12's call.
   Decided 2026-09-23: en/nl/it only until proven, de/fr follow the app locale
   ([[seo-site-architecture]]).
-- **Next:** NL numbers are in (2026-09-24, [[seo-pillar-alles-leren-eten]]): pillar family
-  3,500–4,800/month at KD under 25, head term "kinderen en groente", biggest cluster "peuter wil
-  niet eten". Ricardo runs the last NL seeds (kleuter eten, kleuter groente, peuter fruit,
-  beloningskaart eten, eetgedrag kind), then UK, US and IT. Claude builds the skeleton and
-  then writes NL in the order on the pillar page. _(status 2026-09-24)_
+- **Next:** NL and IT numbers are in (2026-09-24, [[seo-pillar-alles-leren-eten]]): both markets
+  are behaviour-first (general refusal > the picky-eater label > vegetables), KD under 25
+  everywhere; NL ≈ 3,500–4,800/month, IT ≈ 4,800/month. Ricardo runs the last seeds (NL:
+  kleuter eten, kleuter groente, peuter fruit, beloningskaart eten; IT: capricci a tavola,
+  bambino frutta), then UK and US. Claude builds the skeleton and writes NL first, IT one
+  step behind, in the order on the pillar page. _(status 2026-09-24)_
 
 ### 7. Social media strategy — open
 - **Have:** [[concept-word-of-mouth]] (three talkable moments), class WhatsApp group as launch

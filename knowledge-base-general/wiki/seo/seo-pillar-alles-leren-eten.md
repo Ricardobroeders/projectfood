@@ -227,6 +227,7 @@ before; every KD seen is 8–23.
 
 Measured total for the pillar family: about 3,500–4,800 searches a month in NL at KD under 25,
 against the 700 the first bulk run suggested. Still small, still easy: fewer, complete pages.
+IT below is about 4,800/month on the same shape.
 
 ## The NL plan in one table (2026-09-24)
 All pages nl-NL (Netherlands database; Flemish sites rank on page 1 too, Belgium is a bonus,
@@ -242,6 +243,55 @@ not a target). Slugs under `/nl/leer/alles-leren-eten/` except the pillar itself
 | `…/welke-groente-vinden-kinderen-lekker` | welke groente vinden kinderen lekker · groente die kinderen lekker vinden · lekkere groente voor kinderen · welke groenten vinden peuters lekker | The 20 easiest vegetables to start with (sweet, mild, crunchy) and how to serve each; later the Project Food tasting data |
 | `…/groente-verstoppen` | groente verstoppen · groente verstoppen in eten · verstopte groenten · groente verstoppen peuter | Hiding feeds the belly, tasting teaches the tongue: do both, always one visible piece; five ways to hide, one rule to keep |
 | `…/voedselneofobie` | voedselneofobie · wat is voedselneofobie · neofobie kinderen | Definition in parent words, ages 2–6, why it happens, what helps, that it passes |
+
+## IT numbers: what the Semrush seed runs say (2026-09-24)
+Five broad-match exports (seeds "bambini verdure", "bambino non mangia", "selettività
+alimentare", "assaggiare bambini", "neofobia alimentare"; 3,602 unique terms, 11,280
+searches/month), saved in `raw/*_broad-match_it_2026-09-24.csv`, classified in
+`wiki/seo/exports/pillar-1/it-IT-semrush-classified-2026-09-24.csv`. Excluded: recipes (about
+2,500/month, "polpette di verdure per bambini" alone is 480), weight and illness, infants under
+a year, autism and ADHD phrasings of selettività (410), adults, professional courses, an
+orthodontic term, a children's book. Every KD seen is 6–16.
+
+| Page (IT) | Measured volume / month | KD seen | Head phrasings |
+|---|---|---|---|
+| **C4b Il bambino non mangia** (general refusal) | ≈ 2,000 | 9–16 | bambino non mangia psicologia (480) · bambino improvvisamente non mangia (390) · bambino 2 anni non mangia più (260) · bambini che non mangiano (210) · bambino 4 anni non mangia niente (90) · improvvisamente non mangia 3 anni (90) · quando preoccuparsi se il bambino non mangia (40) · bambino/bambina non vuole mangiare (150 across variants) · forum variants |
+| **C5 Selettività alimentare** | ≈ 1,650 | 6–13 | selettività alimentare (1,000) · selettività alimentare bambini (210) · alimentazione selettiva cause (140) · alimentazione selettiva (110) · alimentazione selettiva bambini (90) · come superare / curare la selettività alimentare (50) |
+| **Pillar** "Come far mangiare le verdure ai bambini" | ≈ 680 | 13–14 | come far mangiare le verdure ai bambini (260) · verdure per bambini (210, half recipe intent) · verdure bambini (40) · bambini che non mangiano verdure conseguenze (30) · verdure per bambini 2 anni (30) · perché i bambini non mangiano le verdure (10) |
+| **C3 Neofobia alimentare** | ≈ 500 | 12–15 | neofobia alimentare (390) · neofobia alimentare bambini (90) · neofobia alimentare infantile (20) |
+| Sections, not pages | | | assaggiare / quante volte (0 measured; "scheda di assaggio di frutta e verdura per bambini" exists at 0, that is our chart) · premi (0) · verdure nascoste (recipe intent: "ricette bambini verdure nascoste" 170, KD 13; a stance section in the pillar) · quali verdure piacciono ai bambini (20) · frutta (not seeded) · capricci a tavola (not seeded) |
+
+**What it says**
+1. **Italy is behaviour-first, vegetables second.** The three biggest clusters are the general
+   refusal, the "selettività" label and neophobia: together about 4,150/month against 680 for the
+   vegetable head term. Same shape as NL (peuter wil niet eten > moeilijke eter > groente) but
+   three times the volume and the same low difficulty.
+2. **"Bambino non mangia psicologia"** (480, KD 9) is the parent asking for the behavioural
+   explanation, our exact voice. Page 1: Uppa, psychologists' blogs, Nostrofiglio.
+3. **"Selettività alimentare"** is a semi-clinical term (it also covers ARFID and autism
+   phrasings, excluded here). The page has to draw the line early: normal picky eating in the
+   2–6 window versus when to see the pediatra, then the method. Page 1: Nostrofiglio, Coop's
+   alimentazionebambini, psychologists, Club delle Mamme ("mangia solo pasta").
+4. **Neofobia alimentare is a full page in Italy** (500/month; 50 in NL). Page 1 is Fondazione
+   Veronesi, Uppa, Nutripiatto: authority, but KD 12–15.
+5. **Hidden vegetables are recipe territory in IT**, not a stance query. It becomes a section of
+   the pillar with a link out to nothing (recipes are a non-goal).
+6. **The recipe demand we leave** is about 2,500/month, mostly polpette. Noted, not chased.
+
+Measured total for the pillar family in IT: about 4,800/month at KD 6–16.
+
+### The IT plan in one table
+All pages it-IT (Italy). Slugs under `/it/impara/imparare-a-mangiare-tutto/` except the pillar.
+
+| Slug | Keywords to focus on | Topic of the article |
+|---|---|---|
+| `/it/impara/imparare-a-mangiare-tutto` (pillar) | come far mangiare le verdure ai bambini · verdure per bambini · bambini che non mangiano verdure · perché i bambini non mangiano le verdure · verdure per bambini 2 anni | "Come far mangiare le verdure ai bambini, senza battaglie." The playbook: refusal is normal (neofobia), 10–15 assaggi, no pressure, reward the tasting, eat together; sections on quante volte assaggiare (with the scheda di assaggio), premi, verdure nascoste (stance), quali verdure piacciono, the 2-year dip |
+| `…/il-bambino-non-mangia` | bambino non mangia psicologia · bambino improvvisamente non mangia · bambino 2 anni non mangia più · bambini che non mangiano · bambino non vuole mangiare · quando preoccuparsi se il bambino non mangia | What is behind a child who stops eating (growth slows at 1–2, autonomy at 2–3, novelty fear), what works, what backfires (forzare, finire il piatto, dolce come premio), the red flags that mean the pediatra |
+| `…/selettivita-alimentare` | selettività alimentare · selettività alimentare bambini · alimentazione selettiva · alimentazione selettiva cause · come superare la selettività alimentare | What the term means and where the line is (normal 2–6 versus ARFID, refer out), causes in parent words, widening the plate one taste at a time |
+| `…/neofobia-alimentare` | neofobia alimentare · neofobia alimentare bambini · neofobia alimentare infantile | Definition, ages 2–6, why (evolution, autonomy), what helps (esposizione ripetuta, modelling, no pressure), that it passes |
+
+**Still to run (Ricardo):** seeds "capricci a tavola", "bambino frutta", "bambino 2 anni mangia"
+(age phrasings), "bambini a tavola". Then UK and US.
 
 ## Seed keywords for the EN and IT runs (Keyword Magic Tool, broad match)
 Same method as NL: short two-word seeds, export everything, Claude classifies.
