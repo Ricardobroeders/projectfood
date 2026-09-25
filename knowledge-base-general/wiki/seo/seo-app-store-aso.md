@@ -277,6 +277,45 @@ Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arr
   `https://www.projectfood.dev/en/privacy` (one field, not localised).
 - Release notes per language are on the release, not the listing; three lines, same rule.
 
+### Release notes (what's new), versionCode 6 / 1.0.1, 2026-09-25
+
+Play's field takes 500 characters per language. Parent register, no humour (store copy), written
+natively per locale. Written by the `pf-voice` skill; reuse the shape for later releases: what
+changed on Home, what changed at the table, the rest in one line.
+
+**en-GB (354)**
+```
+The goal gauge on Home is new: coloured bars that fill as you tap, so the week reads at a glance.
+
+Hold a plant and the people at the table now appear under your finger instead of in a drawer. Tap a name to log a taste.
+
+The Log screen counts the week while you tap. Sheets close with a swipe down, and a tab always opens at the top.
+
+Plus smaller fixes.
+```
+
+**nl-NL (399)**
+```
+Nieuw op Home: gekleurde balken die vollopen terwijl je aantikt, zodat je de week in één oogopslag ziet.
+
+Houd een plant vast en de mensen aan tafel verschijnen onder je vinger, niet meer in een lade. Tik een naam aan om een hap te loggen.
+
+Het scherm Loggen telt de week mee terwijl je tikt. Vensters sluit je met een veeg omlaag, en een tabblad opent altijd bovenaan.
+
+Verder kleine verbeteringen.
+```
+
+**it-IT (435)**
+```
+Nuovo nella schermata Home: barre colorate che si riempiono mentre tocchi, così vedi la settimana a colpo d'occhio.
+
+Tieni premuta una pianta e le persone a tavola compaiono sotto il dito, non più in un pannello. Tocca un nome per registrare un assaggio.
+
+La schermata Registra conta la settimana mentre tocchi. I pannelli si chiudono con uno scorrimento verso il basso e una scheda si apre sempre in cima.
+
+Inoltre piccole correzioni.
+```
+
 ### Play declarations (App content, filled 2026-09-22)
 All of App content was completed on 2026-09-22 with these answers; reuse them for Apple's
 privacy labels. Facts behind them, checked the same day against the versionCode 5 bundle and
