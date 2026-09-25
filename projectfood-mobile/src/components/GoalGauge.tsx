@@ -26,17 +26,27 @@ const ROUND = 3;
 
 /**
  * Every wedge owns a colour by its place on the arc, red at the start through dark green at the
- * end, in five even bands (Ricardo's SVG, 2026-09-25). A wedge shows its colour once that plant
- * is counted and stays light grey until then; the arc reads as a ladder that fills, not as one
- * colour that changes.
+ * end (Ricardo's SVG, 2026-09-25). A wedge shows its colour once that plant is counted and stays
+ * light grey until then; the arc reads as a ladder that fills, not as one colour that changes.
+ * Bands of 3 / 3 / 4 / 4 / 4 wedges: more green than red (Ricardo, 2026-09-25: "a bit more optimistic").
  */
-const BAND_COLORS = [colors.gaugeLow, colors.gaugeMid, colors.gaugeYellow, colors.gaugeHigh, colors.gaugeDone];
+const BANDS: { wedges: number; color: string }[] = [
+  { wedges: 3, color: colors.gaugeLow },
+  { wedges: 3, color: colors.gaugeMid },
+  { wedges: 4, color: colors.gaugeYellow },
+  { wedges: 4, color: colors.gaugeHigh },
+  { wedges: 4, color: colors.gaugeDone },
+];
 
 /** Colour of the wedge at `index` (0-based). */
 function wedgeColor(index: number): string {
   'worklet';
-  const band = Math.min(BAND_COLORS.length - 1, Math.floor((index * BAND_COLORS.length) / WEDGES));
-  return BAND_COLORS[band];
+  let start = 0;
+  for (const b of BANDS) {
+    if (index < start + b.wedges) return b.color;
+    start += b.wedges;
+  }
+  return BANDS[BANDS.length - 1].color;
 }
 
 /** The colour of the wedge a count of `goal` lands on; the Log screen's week chip borrows it so both read the same. */
