@@ -1,8 +1,9 @@
 import Constants from 'expo-constants';
+import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import * as Updates from 'expo-updates';
 import * as WebBrowser from 'expo-web-browser';
-import { Bell, Clock, FileText, Globe, LogOut, MessageSquare, Shield, Trash2, Users } from 'lucide-react-native';
+import { Bell, Clock, FileText, LogOut, MessageSquare, Shield, Trash2, Users } from 'lucide-react-native';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -10,6 +11,7 @@ import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-nati
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { Screen, ScreenTitle, SectionTitle, SettingsRow } from '@/components/ui';
 import { colors, fonts, radii } from '@/constants/theme';
+import { FLAGS } from '@/data/flags';
 import { signOutEverywhere } from '@/features/auth/signOut';
 import { useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings } from '@/features/household/queries';
@@ -73,7 +75,7 @@ export default function AccountScreen() {
         <View style={styles.rows}>
           <SettingsRow icon={Users} label={t('account.family')} value={hh ? t('account.members', { n: hh.members.length }) : undefined} onPress={() => router.push('/account/members')} />
           <SettingsRow icon={Clock} label={t('account.dinnerTime')} value={hh?.household.dinner_time.slice(0, 5)} onPress={() => router.push('/account/household')} />
-          <SettingsRow icon={Globe} label={t('account.language')} value={t(`languages.${locale}`)} onPress={() => router.push('/account/language')} />
+          <SettingsRow leading={<Image source={FLAGS[locale]} style={styles.flag} contentFit="cover" />} label={t('account.language')} value={t(`languages.${locale}`)} onPress={() => router.push('/account/language')} />
           <SettingsRow icon={Bell} label={t('account.notifications')} value={settings?.notifications_enabled ? t('common.on') : t('common.off')} onPress={() => router.push('/account/notifications')} />
           <SettingsRow icon={MessageSquare} label={t('account.feedback')} value={survey.total ? t('account.feedbackAnswered', { answered: survey.answered, total: survey.total }) : undefined} onPress={() => router.push('/account/survey')} />
         </View>
@@ -109,6 +111,7 @@ const styles = StyleSheet.create({
   name: { fontFamily: fonts.bold, fontSize: 18, lineHeight: 24, color: colors.ink },
   email: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   rows: { paddingHorizontal: 20, gap: 8 },
+  flag: { width: 24, height: 16, borderRadius: 3, overflow: 'hidden' },
   versionBtn: { alignItems: 'center', gap: 4, marginTop: 32, paddingVertical: 8 },
   version: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center' },
   versionAction: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, textAlign: 'center' },

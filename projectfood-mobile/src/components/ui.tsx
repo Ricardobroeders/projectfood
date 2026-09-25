@@ -86,17 +86,19 @@ export function SectionTitle({ children, meta }: { children: string; meta?: stri
   );
 }
 
-type RowProps = { icon?: LucideIcon; label: string; value?: string; onPress?: () => void; destructive?: boolean; right?: ReactNode; disabled?: boolean };
+type RowProps = { icon?: LucideIcon; /** Sits in the icon's disc instead of it (the language flag). */ leading?: ReactNode; label: string; value?: string; onPress?: () => void; destructive?: boolean; right?: ReactNode; disabled?: boolean };
 
 /** Settings row: icon disc, label, optional value, chevron. */
-export function SettingsRow({ icon: Icon, label, value, onPress, destructive, right, disabled }: RowProps) {
+export function SettingsRow({ icon: Icon, leading, label, value, onPress, destructive, right, disabled }: RowProps) {
   return (
     <Pressable
       style={({ pressed }) => [styles.row, pressed && onPress && { backgroundColor: colors.hairline }, disabled && { opacity: 0.45 }]}
       onPress={onPress}
       disabled={!onPress || disabled}
       accessibilityRole={onPress ? 'button' : undefined}>
-      {Icon ? (
+      {leading ? (
+        <View style={styles.rowIcon}>{leading}</View>
+      ) : Icon ? (
         <View style={styles.rowIcon}>
           <Icon size={18} color={destructive ? '#C2533D' : colors.ink} />
         </View>

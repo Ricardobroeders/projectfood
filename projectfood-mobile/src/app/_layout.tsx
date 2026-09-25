@@ -6,7 +6,7 @@ import { getCalendars } from 'expo-localization';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -18,6 +18,7 @@ import { SessionProvider, useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings, useUpdateHousehold, useUpdateSettings } from '@/features/household/queries';
 import { deviceLocale, isLocale, setLocale } from '@/features/i18n';
 import { registerPushToken } from '@/features/notifications/push';
+import { reportUpdatesLog } from '@/features/updates/reportUpdatesLog';
 import { PERSISTED_QUERY_KEYS, queryClient, queryPersister } from '@/features/supabase/queryClient';
 
 SplashScreen.preventAutoHideAsync();
@@ -87,6 +88,14 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
   useEffect(() => {
     if (session && hh.data?.household.onboarded_at) void registerPushToken(session.user.id);
   }, [session, hh.data?.household.onboarded_at]);
+
+  // What expo-updates did on this phone since the last launch (rollbacks show up nowhere else).
+  const reported = useRef(false);
+  useEffect(() => {
+    if (!ready || !session || reported.current) return;
+    reported.current = true;
+    void reportUpdatesLog(hh.data?.household.id);
+  }, [ready, session, hh.data?.household.id]);
 
   if (!ready) return null;
 
