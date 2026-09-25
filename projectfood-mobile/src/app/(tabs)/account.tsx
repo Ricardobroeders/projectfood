@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
   name: { fontFamily: fonts.bold, fontSize: 18, lineHeight: 24, color: colors.ink },
   email: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   rows: { paddingHorizontal: 20, gap: 8 },
-  flag: { width: 24, height: 16, borderRadius: 3, overflow: 'hidden' },
+  // Fills the row's 36 px disc, cropped round like a member avatar (Ricardo, 2026-09-25).
+  flag: { width: 36, height: 36, borderRadius: radii.full, overflow: 'hidden' },
   versionBtn: { alignItems: 'center', gap: 4, marginTop: 32, paddingVertical: 8 },
   version: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, textAlign: 'center' },
   versionAction: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, textAlign: 'center' },
