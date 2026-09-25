@@ -47,8 +47,8 @@ export default function LanguageScreen() {
 const styles = StyleSheet.create({
   list: { padding: 20, gap: 8 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 14, height: 56, paddingHorizontal: 16, borderRadius: radii.md, backgroundColor: colors.bgSoft },
-  // The same round flag as the Account row: a white disc with the flag 2 px inside it.
+  // The same round flag as the Account row: a white disc with the flag 4 px inside it.
   flagDisc: { width: 36, height: 36, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
-  flag: { width: 32, height: 32, borderRadius: radii.full, overflow: 'hidden' },
+  flag: { width: 28, height: 28, borderRadius: radii.full, overflow: 'hidden' },
   label: { flex: 1, fontFamily: fonts.semibold, fontSize: 16, lineHeight: 22, color: colors.ink },
 });
