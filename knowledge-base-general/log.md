@@ -462,3 +462,17 @@ the auto-mode classifier, so the settings and the prompt are filed in
 `.claude/routines/learn-article-nightly.md` (daily 03:00, repo projectfood, Fable 5.1, Supabase
 as the only connector). Backlog: new item 10 for him, build steps renumbered 11 to 16.
 
+## [2026-09-25] build | learn: peuter-wil-niet-eten (nl), first row of the nightly queue written
+The nightly routine wrote `toddler-wont-eat` (cluster of `learn-to-eat-everything`), NL, slug
+`peuter-wil-niet-eten`: 930 words, 6 FAQ entries, meta_title 54 chars, meta_description 144
+chars, one citation (Dovey, 2008). `learn:check` is 0 errors; 2 accepted warnings, both `related`
+pointing at `how-many-times-to-try-a-food` and `picky-eater-toddler`, later queue rows not yet
+written. The pillar's `nl.md` `pillar_mention` sentence was split: a link to the new article plus
+the still-open announcement for `peuter-eet-geen-groente`; the pillar re-checks at 0/0.
+`queue.json` row marked `done: 2026-09-25`.
+Not published: this cloud session's harness assigns and pushes to a session branch
+(`claude/magical-hypatia-y07q3h`) rather than `main`, so the commit landed there instead, per
+the routine's "push rejected" fallback. Publish to Supabase is intentionally skipped until the
+branch is merged to `main`, to keep the database in sync with the published git history. Next
+queue row: `how-many-times-to-try-a-food` (cluster, NL, `hoe-vaak-proeven`).
+
