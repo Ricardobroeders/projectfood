@@ -34,8 +34,8 @@ type Props = {
  * this week moves nothing here, which is honest: the row's own check and wiggle answer that tap.
  */
 export function WeekMeter({ value, max, label }: Props) {
-  const done = value >= max;
-  const color = done ? colors.gaugeDone : bandColor(Math.min(value, max));
+  // The colour of the wedge the count sits on in Home's gauge; the last band is the dark green.
+  const color = bandColor(value, max);
 
   const ring = useSharedValue(Math.min(1, max > 0 ? value / max : 0));
   const bump = useSharedValue(1);

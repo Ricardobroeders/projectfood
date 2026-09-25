@@ -59,13 +59,13 @@ export const colors = {
   /** Progress toward a goal and its completion (Ricardo: "a green bar", 2026-09-14). Never a control colour. */
   success: '#00880D',
   successSoft: '#DDF1DF',
-  // Goal gauge, stepped like the rest of the palette (no gradients): red 1–7, orange 8–15, yellow 16–23,
-  // green from 24, dark green once the goal is met. Bands live in GoalGauge.
-  gaugeLow: '#E5484D',
-  gaugeMid: '#F5A524',
-  gaugeYellow: '#F5C518',
-  gaugeHigh: '#00880D',
-  gaugeDone: '#0B5A2A',
+  // Goal gauge: five colour bands along the arc, red at the start through dark green at the end,
+  // each wedge keeping its own colour once lit (Ricardo's SVG, app-logo-export/plant-loading.svg, 2026-09-25).
+  gaugeLow: '#E22924',
+  gaugeMid: '#EC8B00',
+  gaugeYellow: '#F4D419',
+  gaugeHigh: '#11BA11',
+  gaugeDone: '#008A07',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;

@@ -1,34 +1,46 @@
 import { type ReactNode, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedProps, useSharedValue, withDelay, withTiming, type SharedValue } from 'react-native-reanimated';
+import Svg, { Path } from 'react-native-svg';
 
 import { motion } from '@/constants/motion';
 import { colors } from '@/constants/theme';
 
+const AnimatedPath = Animated.createAnimatedComponent(Path);
+
 /** The arc spans 200°, from 100° left of straight up to 100° right of it. */
 const SWEEP = 200;
-const SEG_LEN = 26;
-const SEG_W = 8;
+/** Radial length of a wedge. */
+const SEG_LEN = 28;
+/** Air between two wedges, in degrees, before the rounding stroke eats into it. */
+const GAP = 2.6;
+/** A stroke in the wedge's own colour rounds its corners (the SVG Ricardo drew, 2026-09-25). */
+const ROUND = 3;
 
-/** Colour bands by plant count, stepped: the whole lit arc takes the band of the current count. */
-const BANDS: { upTo: number; color: string }[] = [
-  { upTo: 7, color: colors.gaugeLow },
-  { upTo: 15, color: colors.gaugeMid },
-  { upTo: 23, color: colors.gaugeYellow },
-  { upTo: Infinity, color: colors.gaugeHigh },
-];
+/**
+ * Every wedge owns a colour by its place on the arc, red at the start through dark green at the
+ * end, in five even bands (Ricardo's SVG, 2026-09-25). A wedge shows its colour once that plant
+ * is counted and stays light grey until then; the arc reads as a ladder that fills, not as one
+ * colour that changes.
+ */
+const BAND_COLORS = [colors.gaugeLow, colors.gaugeMid, colors.gaugeYellow, colors.gaugeHigh, colors.gaugeDone];
 
-/** The lit colour for a count, shared with the Log screen's week meter so both read the same. */
-export function bandColor(count: number): string {
+/** Colour of the wedge at `index` (0-based) on an arc of `max` wedges. */
+function wedgeColor(index: number, max: number): string {
   'worklet';
-  for (const b of BANDS) if (count <= b.upTo) return b.color;
-  return colors.gaugeHigh;
+  const band = Math.min(BAND_COLORS.length - 1, Math.floor((index * BAND_COLORS.length) / max));
+  return BAND_COLORS[band];
+}
+
+/** The colour of the wedge a count lands on; the Log screen's week chip borrows it so both read the same. */
+export function bandColor(count: number, max = 30): string {
+  return wedgeColor(Math.max(0, Math.min(count, max) - 1), max);
 }
 
 type Props = {
-  /** Plants tasted this week. Values above `max` light every segment in the done colour. */
+  /** Plants tasted this week. Values above `max` light every wedge. */
   value: number;
-  /** Segments in the arc, one per plant of the weekly goal. */
+  /** Wedges in the arc, one per plant of the weekly goal. */
   max: number;
   /** Width of the arc. */
   size?: number;
@@ -36,10 +48,19 @@ type Props = {
   children?: ReactNode;
 };
 
+const rad = (deg: number) => (deg * Math.PI) / 180;
+
+/** An annular sector centred on `angle` (degrees from straight up, clockwise), `half` degrees each side. */
+function wedgePath(cx: number, cy: number, inner: number, outer: number, angle: number, half: number): string {
+  const a0 = rad(angle - half - 90);
+  const a1 = rad(angle + half - 90);
+  const p = (r: number, a: number) => `${(cx + r * Math.cos(a)).toFixed(2)} ${(cy + r * Math.sin(a)).toFixed(2)}`;
+  return `M${p(inner, a0)} L${p(outer, a0)} A${outer} ${outer} 0 0 1 ${p(outer, a1)} L${p(inner, a1)} A${inner} ${inner} 0 0 0 ${p(inner, a0)} Z`;
+}
+
 /**
- * Weekly goal gauge: one segment per plant, filling from empty to the week's count when the
- * screen opens (fill class). The lit colour steps red → orange → yellow → green with the count
- * and turns dark green when the goal is met.
+ * Weekly goal gauge: one wedge per plant, filling from empty to the week's count when the screen
+ * opens (fill class). Wedges are tapered like the drawn SVG, wider on the outside.
  */
 export function GoalGauge({ value, max, size = 280, children }: Props) {
   const fill = useSharedValue(0);
@@ -48,35 +69,35 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
     fill.value = withDelay(150, withTiming(Math.min(value, max), motion.fill));
   }, [value, max, fill]);
 
-  const radius = size / 2 - SEG_LEN / 2;
-  const height = Math.round(radius * (1 + Math.cos(((180 - SWEEP / 2) * Math.PI) / 180)) + SEG_LEN);
-  const done = value >= max;
+  const outer = size / 2 - ROUND;
+  const inner = outer - SEG_LEN;
+  const cx = size / 2;
+  const cy = size / 2;
+  // The arc's lowest point: the outer radius at 100° off vertical.
+  const height = Math.round(cy + outer * Math.cos(rad(180 - SWEEP / 2)) + ROUND);
+  const step = SWEEP / (max - 1);
+  const half = (step - GAP) / 2;
+
   return (
     <View style={{ width: size, height }}>
-      {Array.from({ length: max }, (_, i) => {
-        const angle = -SWEEP / 2 + (i * SWEEP) / (max - 1);
-        return (
-          <View key={i} pointerEvents="none" style={[styles.slot, { left: size / 2 - SEG_W / 2, top: radius, transform: [{ rotate: `${angle}deg` }, { translateY: -radius }] }]}>
-            <Segment index={i} fill={fill} done={done} />
-          </View>
-        );
-      })}
-      <View style={[styles.center, { top: radius * 0.45 }]}>{children}</View>
+      <Svg width={size} height={height} pointerEvents="none">
+        {Array.from({ length: max }, (_, i) => (
+          <Wedge key={i} index={i} d={wedgePath(cx, cy, inner, outer, -SWEEP / 2 + i * step, half)} color={wedgeColor(i, max)} fill={fill} />
+        ))}
+      </Svg>
+      <View style={[styles.center, { top: cy * 0.45, bottom: 0 }]}>{children}</View>
     </View>
   );
 }
 
-function Segment({ index, fill, done }: { index: number; fill: SharedValue<number>; done: boolean }) {
-  const style = useAnimatedStyle(() => {
-    const lit = fill.value >= index + 0.5;
-    const on = done ? colors.gaugeDone : bandColor(Math.round(fill.value));
-    return { backgroundColor: lit ? on : colors.hairline };
+function Wedge({ index, d, color, fill }: { index: number; d: string; color: string; fill: SharedValue<number> }) {
+  const animatedProps = useAnimatedProps(() => {
+    const on = fill.value >= index + 0.5 ? color : colors.hairline;
+    return { fill: on, stroke: on };
   });
-  return <Animated.View style={[styles.segment, style]} />;
+  return <AnimatedPath d={d} animatedProps={animatedProps} strokeWidth={ROUND} strokeLinejoin="round" />;
 }
 
 const styles = StyleSheet.create({
-  slot: { position: 'absolute', width: SEG_W, height: SEG_LEN },
-  segment: { width: SEG_W, height: SEG_LEN, borderRadius: SEG_W / 2 },
-  center: { position: 'absolute', left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' },
+  center: { position: 'absolute', left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
 });
