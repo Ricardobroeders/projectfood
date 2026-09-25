@@ -462,6 +462,21 @@ the auto-mode classifier, so the settings and the prompt are filed in
 `.claude/routines/learn-article-nightly.md` (daily 03:00, repo projectfood, Fable 5.1, Supabase
 as the only connector). Backlog: new item 10 for him, build steps renumbered 11 to 16.
 
-
 ## [2026-09-25] build | Device round: gauge rebuilt from the SVG, five UI fixes, and the OTA crash that rolled the phone back
 Ricardo's notes from the phone, all shipped over the air: tabs open at the top, the week meter as a chip, the Log list holding still, tab-bar padding, swipe-down-to-close on sheets and the plant page, the language flag round in a white disc. The Home goal gauge was rebuilt from Ricardo's `plant-loading.svg`: 18 tapered wedges, colour by position in bands of 3/3/4/4/4, grey until earned. The JS splash overlay (M3 shape morph) was built and then dropped — the native splash is the frame people see; the shape stays as the in-app spinner. **Root cause found for the rollbacks:** `eas update --environment <env>` sets `EXPO_NO_DOTENV=1` and skips `.env.local`, so six updates shipped without `EXPO_PUBLIC_SUPABASE_URL`, threw "supabaseUrl is required" before the first frame, and expo-updates fell back to the store build (three `FATAL EXCEPTION: expo-updates-error-recovery` read off the phone over USB). Fixed by putting the three public keys on EAS for all environments and giving `env.ts` a fallback; `reportUpdatesLog` now sends expo-updates' device log to `app_events` so a rollback is visible without a cable. Pages: strategy-backlog (item 11), memory project-dev-device-setup.
+
+## [2026-09-25] build | learn: peuter-wil-niet-eten (nl), first row of the nightly queue written
+The nightly routine wrote `toddler-wont-eat` (cluster of `learn-to-eat-everything`), NL, slug
+`peuter-wil-niet-eten`: 930 words, 6 FAQ entries, meta_title 54 chars, meta_description 144
+chars, one citation (Dovey, 2008). `learn:check` is 0 errors; 2 accepted warnings, both `related`
+pointing at `how-many-times-to-try-a-food` and `picky-eater-toddler`, later queue rows not yet
+written. The pillar's `nl.md` `pillar_mention` sentence was split: a link to the new article plus
+the still-open announcement for `peuter-eet-geen-groente`; the pillar re-checks at 0/0.
+`queue.json` row marked `done: 2026-09-25`.
+Published from the merge, not from the run: a cloud routine session works on a `claude/` branch
+(cloud sessions cannot push to `main`), so the commit landed on `claude/magical-hypatia-y07q3h`
+and the run stopped before Supabase, per the routine's "push rejected" fallback. Merged into
+`main` and published the same day; the routine prompt now says to expect the branch, publish
+anyway and name it in the report. Next queue row: `how-many-times-to-try-a-food` (cluster, NL,
+`hoe-vaak-proeven`).
+
