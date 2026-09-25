@@ -14,10 +14,10 @@ const SWEEP = 200;
 const WEDGES = 15;
 /** Opacity of a wedge with one of its two plants counted: its colour, softened, so every plant moves the arc. */
 const HALF_LIT = 0.45;
-/** Radial length of a wedge. */
-const SEG_LEN = 28;
-/** Air between two wedges, in degrees, before the rounding stroke eats into it. */
-const GAP = 2.6;
+/** Radial length of a wedge: taller than wide, like the drawing. */
+const SEG_LEN = 32;
+/** Air between two wedges, in degrees, before the rounding stroke eats into it (Ricardo, 2026-09-25: 2.6° felt chunky). */
+const GAP = 5.4;
 /** A stroke in the wedge's own colour rounds its corners (the SVG Ricardo drew, 2026-09-25). */
 const ROUND = 3;
 
