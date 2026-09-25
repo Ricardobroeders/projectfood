@@ -99,7 +99,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   "Long time no see" (a plant tasted again after 90 days) needs a last-tasted date the
   `member_taste_counts` RPC does not return. Technically free: `achievement_unlocks.achievement_id`
   is unconstrained text, so a secret is a definition plus copy in `definitions.ts`, no migration,
-  OTA-shippable. Waiting on Ricardo's cut (item 16).
+  OTA-shippable. Waiting on Ricardo's cut (item 17).
 - **Advocacy / community achievement (rows 5, 7, 12).** An achievement for people who talk about
   Project Food online — Ricardo's example is active Reddit contribution — on the reasoning that
   it genuinely helps the product. He notes himself that it is hard to measure. To work out: how
@@ -128,8 +128,8 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 
 - **"Moeilijke eter"-test** (2026-09-24, from the Semrush run: "moeilijke eter test" 20/month). A
   five-question self-test on the website ("is mijn kind een moeilijke eter?") that ends in the
-  proefkaart and the app; a cheap link magnet. Touches rows 6 and 12. Challenged by brainstorm
-  item 14 or a content session after the pillar is live.
+  proefkaart and the app; a cheap link magnet. Touches rows 6 and 12. Challenged by
+  item 15 or a content session now that the pillar is live.
 
 ## Summary
 | # | Topic | Status | Next step |
