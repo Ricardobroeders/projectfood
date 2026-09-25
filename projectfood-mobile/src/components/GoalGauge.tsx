@@ -17,12 +17,16 @@ const WEDGES = 18;
  * its span and full at three quarters, so with 0.6 wedge per plant every plant changes something.
  */
 const HALF_LIT = 0.45;
-/** Radial length of a wedge: taller than wide, like the drawing. */
-const SEG_LEN = 32;
-/** Air between two wedges, in degrees, before the rounding stroke eats into it (Ricardo, 2026-09-25: 2.6° felt chunky). */
-const GAP = 5.4;
-/** A stroke in the wedge's own colour rounds its corners (the SVG Ricardo drew, 2026-09-25). */
-const ROUND = 3;
+/**
+ * A stroke in the wedge's own colour rounds its corners; the corner radius is half of it (the SVG
+ * Ricardo drew, 2026-09-25; 3 → 8 the same day, "slightly bigger, more playful"). The stroke grows
+ * the wedge by half its width on every side, so the path length and gap below are set net of it.
+ */
+const ROUND = 8;
+/** Radial length of the wedge path; on screen it is this plus the stroke (35), taller than wide like the drawing. */
+const SEG_LEN = 27;
+/** Air between two wedge paths, in degrees; on screen about 8 px after the stroke has eaten into it (5.4° at ROUND 3 felt right). */
+const GAP = 7.9;
 
 /**
  * Every wedge owns a colour by its place on the arc, red at the start through dark green at the
@@ -88,14 +92,15 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
     fill.value = withDelay(150, withTiming((Math.min(value, max) * WEDGES) / max, motion.fill));
   }, [value, max, fill]);
 
-  const outer = size / 2 - ROUND;
+  // Path radii; the stroke adds ROUND / 2 outside and inside, so the drawn arc touches the box edge.
+  const outer = size / 2 - ROUND / 2;
   const inner = outer - SEG_LEN;
   const cx = size / 2;
   const cy = size / 2;
   const step = SWEEP / (WEDGES - 1);
   const half = (step - GAP) / 2;
-  // The lowest point on screen: the outer corner of the last wedge, plus the rounding stroke.
-  const height = Math.ceil(cy - outer * Math.cos(rad(SWEEP / 2 + half)) + ROUND);
+  // The lowest point on screen: the outer corner of the last wedge, plus its half of the rounding stroke.
+  const height = Math.ceil(cy - outer * Math.cos(rad(SWEEP / 2 + half)) + ROUND / 2 + 1);
 
   return (
     <View style={{ width: size, height }}>
