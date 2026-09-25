@@ -137,10 +137,21 @@ The claude.ai routine `projectfood-learn-article-nightly` and the local command
 `/run-learn-article` both run this. Nobody is watching: every step is mandatory and the report
 at the end is the only trace. One article per run.
 
-0. **Preconditions.** Repo root, branch `main`, `git status` clean. `cd projectfood-app && npm ci
-   --ignore-scripts` succeeds (the scripts need js-yaml). If not, stop and report.
-1. **Pick the row.** `projectfood-app/content/learn/queue.json`, the first row without `done`. If
-   there is none, stop and report "queue empty" and do nothing else. The row gives `internal`,
+0. **Preconditions.** Repo root, `git status` clean, `cd projectfood-app && npm ci
+   --ignore-scripts` succeeds (the scripts need js-yaml). If not, stop and report. The branch is
+   whatever the session is on: a cloud routine session is put on a `claude/…` branch and cannot
+   push to `main`, which is expected and not a reason to stop.
+1. **Pick the row.** `projectfood-app/content/learn/queue.json`, in order. Skip a row that is
+   marked `done` **or** already live in the database, so an unmerged branch never makes a run
+   rewrite yesterday's article. One query answers it:
+
+   ```sql
+   select a.slug as internal, c.locale from public.learn_articles a
+   join public.learn_article_content c on c.article_id = a.id where a.is_published = true;
+   ```
+
+   Take the first row whose `internal` and `locale` are not in that result and not marked `done`.
+   If there is none, stop and report "queue empty" and do nothing else. The row gives `internal`,
    `type`, `pillar`, `locale`, `slug`, `display_order`, `title_hint`, `keywords`, `topic`,
    `related`, `pillar_mention`.
 2. **Write the article** with steps 1 to 9 above, in that locale, natively. `article.json`
@@ -158,10 +169,12 @@ at the end is the only trace. One article per run.
    `knowledge-base-general/log.md`: `## [<date>] build | learn: <slug> (<locale>) written and
    published by the nightly routine` with a three-line paragraph (words, FAQ count, warnings).
 6. **Commit and push.** `git add projectfood-app/content knowledge-base-general/log.md`, commit as
-   `content(<locale>): <slug>, nightly routine` with the trailer
-   `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`, then `git push origin HEAD:main`.
-   If the push is rejected, push `HEAD:claude/learn-<slug>` instead, stop before publishing, and
-   report the branch.
+   `content(<locale>): <slug>, nightly routine`, ending the message with a `Co-Authored-By:`
+   trailer naming the model you are running as. Then push the branch you are on
+   (`git push -u origin HEAD`). A cloud session's `claude/…` branch is the normal case: push it,
+   carry on to the publish step, and name the branch in the report so it gets merged. Only in a
+   local session where the branch is `main` does this push go to `main` directly. Never
+   force-push, never switch branches.
 7. **Publish.** `npm run learn:publish -- --only <internal> --only <pillar internal> --publish
    --sql` prints the exact SQL (no keys needed): the upserts plus a verification select. Run
    every statement through the Supabase connector's `execute_sql` tool (project
@@ -176,7 +189,11 @@ at the end is the only trace. One article per run.
    the hour" (the SQL path does not revalidate; the pages refresh on their own).
 
 Never: publish with check errors; touch any article other than this one and its pillar; edit
-the database by hand beyond the printed SQL; force-push; run a second row in the same run.
+the database by hand beyond the printed SQL; force-push; run a second row in the same run;
+stop because the branch is not `main`.
+
+Unrelated files that change on their own during a run (a lock file rewritten by `npm install`,
+for instance) are reverted before staging, never committed.
 
 ## The gate checklist
 
