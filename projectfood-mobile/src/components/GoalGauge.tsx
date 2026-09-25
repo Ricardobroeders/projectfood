@@ -10,9 +10,12 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 /** The arc spans 200°, from 100° left of straight up to 100° right of it. */
 const SWEEP = 200;
-/** Wedges on the arc; the goal of 30 plants makes two plants per wedge (Ricardo, 2026-09-25: 30 was "like 25 or something", 15 or 12). */
-const WEDGES = 15;
-/** Opacity of a wedge with one of its two plants counted: its colour, softened, so every plant moves the arc. */
+/** Wedges on the arc (Ricardo, 2026-09-25: 30 was too many, 15 too chunky, 18 with the wider gaps). 30 plants make 1⅔ per wedge. */
+const WEDGES = 18;
+/**
+ * Opacity of a wedge that is partly earned: its colour, softened. A wedge goes half at a quarter of
+ * its span and full at three quarters, so with 0.6 wedge per plant every plant changes something.
+ */
 const HALF_LIT = 0.45;
 /** Radial length of a wedge: taller than wide, like the drawing. */
 const SEG_LEN = 32;
@@ -64,11 +67,11 @@ function wedgePath(cx: number, cy: number, inner: number, outer: number, angle: 
 }
 
 /**
- * Weekly goal gauge: fifteen wedges for the thirty plants, filling from empty to the week's count
+ * Weekly goal gauge: eighteen wedges for the thirty plants, filling from empty to the week's count
  * when the screen opens (fill class). Wedges are tapered like the drawn SVG, wider on the outside.
  */
 export function GoalGauge({ value, max, size = 280, children }: Props) {
-  // Progress in wedges, continuous: 30 plants over 15 wedges is 2 per wedge.
+  // Progress in wedges, continuous: 30 plants over 18 wedges is 0.6 wedge per plant.
   const fill = useSharedValue(0);
   useEffect(() => {
     fill.value = 0;
@@ -98,7 +101,7 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
 
 function Wedge({ index, d, color, fill }: { index: number; d: string; color: string; fill: SharedValue<number> }) {
   const animatedProps = useAnimatedProps(() => {
-    // full at the wedge's second plant, half at its first, grey before
+    // full past three quarters of the wedge, half past a quarter, grey before
     const lit = fill.value >= index + 0.75 ? 1 : fill.value >= index + 0.25 ? HALF_LIT : 0;
     const on = lit > 0 ? color : colors.hairline;
     return { fill: on, stroke: on, fillOpacity: lit > 0 ? lit : 1, strokeOpacity: lit > 0 ? lit : 1 };
