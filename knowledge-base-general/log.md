@@ -445,3 +445,20 @@ https://projectfood.dev/nl/leer/alles-leren-eten, title with the search phrase, 
 visible, hreflang nl + x-default only, JSON-LD Article (nl-NL, 1,736 words, Person author,
 FAQPage), listed on `/nl/leer` and in the sitemap. Backlog item 14, row 6 and item 9(d) updated.
 
+## [2026-09-25] build | The article routine runs nightly: queue, unattended mode, SQL publish path
+Ricardo: "we could setup the content create as a routine to run every night, so every day an
+article", publish on (not draft), the way the BXWY agents run as claude.ai routines. Built:
+`projectfood-app/content/learn/queue.json` with the 17 remaining pillar-1 rows in order (seven NL
+clusters, then the IT pillar and its three, then the EN pillar and its five), each carrying the
+locale, slug, keywords, topic, related slugs and the sentence in the live pillar the run turns
+into a link. [[seo-pillar-alles-leren-eten]] stays the research source; the queue is the work
+order. `pf-seo-article` gained an "Unattended run" section: preconditions, pick the first row
+without `done`, write, check, link from the pillar, log, commit and push to main, publish,
+report, clean halt on an empty queue. `learn-publish.mjs --sql` prints the upserts with
+IS DISTINCT FROM guards and a verification select, so the cloud run publishes through the
+Supabase connector without keys (the routine environment has none). `/run-learn-article` runs
+the same steps locally. The routine itself is Ricardo's to create: the API call is blocked by
+the auto-mode classifier, so the settings and the prompt are filed in
+`.claude/routines/learn-article-nightly.md` (daily 03:00, repo projectfood, Fable 5.1, Supabase
+as the only connector). Backlog: new item 10 for him, build steps renumbered 11 to 16.
+
