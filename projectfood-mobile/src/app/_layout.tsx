@@ -10,7 +10,6 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { AnimatedSplash } from '@/components/AnimatedSplash';
 import { PrimaryButton } from '@/components/ui';
 import { colors, fonts } from '@/constants/theme';
 import { useAppReady } from '@/features/auth/useAppReady';
@@ -36,8 +35,6 @@ export default function RootLayout() {
       <SessionProvider>
         <StatusBar style="dark" />
         <Gate fontsLoaded={fontsLoaded} />
-        {/* On top of everything until the gate is ready; it also retires the native splash. */}
-        <AnimatedSplash fontsLoaded={fontsLoaded} />
       </SessionProvider>
     </PersistQueryClientProvider>
   );
@@ -57,6 +54,11 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
 
   const signedIn = !!session;
   const ready = useAppReady(fontsLoaded);
+
+  // The native splash (a still image; Android draws it before any JS) stays until the first screen can render.
+  useEffect(() => {
+    if (ready) void SplashScreen.hideAsync();
+  }, [ready]);
 
   // Language: the account setting wins; a fresh account takes the phone's language.
   useEffect(() => {
