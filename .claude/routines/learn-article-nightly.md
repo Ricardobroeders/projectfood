@@ -13,11 +13,11 @@ so the routine has to be created from your own session or the web UI.
 | Field | Value |
 |---|---|
 | Name | `projectfood-learn-article-nightly` |
-| Schedule | daily, 03:00 Europe/Amsterdam (times are entered in your local zone; runs may start a few minutes late by design) |
+| Schedule | daily, 03:05 Europe/Amsterdam (times are entered in your local zone; runs may start a few minutes late by design) |
 | Repository | `Ricardobroeders/projectfood` |
-| Model | Fable 5.1 (Opus 5 is fine too; Sonnet writes thinner articles) |
+| Model | Opus 5.5 or Fable 5.1 (Sonnet writes thinner articles) |
 | Environment | Default (trusted network is enough: npm registry for `npm ci`, nothing else) |
-| Connectors | **Supabase only.** Remove every other connector: a routine may call any tool of an included connector without asking |
+| Connectors | **Supabase only.** Remove Claude Docs, Vercel and visualize: a routine may call any tool of an included connector, writes included, without asking |
 | Notifications | push on (so a blocked run reaches you) |
 
 One article per run, 17 rows in the queue, so it finishes pillar 1 in about two and a half
@@ -37,7 +37,7 @@ You are the nightly content agent for Project Food (projectfood.dev). Your job: 
 3. Pick the first row without `done` in `projectfood-app/content/learn/queue.json`. If every row has `done`, STOP and report "queue empty" without changing anything.
 4. Write that one article in that one locale, natively (never translate another locale's file). Then `cd projectfood-app && npm ci --ignore-scripts` if node_modules is missing, and `npm run learn:check -- --only <internal>` until there are zero errors.
 5. For a cluster row: replace the `pillar_mention` sentence in the pillar's file of that locale with a sentence linking the new article, and re-check the pillar.
-6. Mark the queue row `"done": "<today>"`, append a `build` entry to `knowledge-base-general/log.md`, commit and push to `main` with the trailer `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`. If the push is rejected, push to `claude/learn-<slug>`, stop before publishing, and say so in the report.
+6. Mark the queue row `"done": "<today>"`, append a `build` entry to `knowledge-base-general/log.md`, commit and push to `main`, ending the commit message with a `Co-Authored-By:` trailer naming the model you are running as, for example `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`. If the push is rejected, push to `claude/learn-<slug>`, stop before publishing, and say so in the report.
 7. Publish: `npm run learn:publish -- --only <internal> --only <pillar internal> --publish --sql` prints the exact SQL. Run every statement through the Supabase connector's `execute_sql` tool (project `lkmfmdehysmbstnfdbyg`; the tool may be namespaced, any `execute_sql` from the Supabase connector counts), then the verification select at the end, and confirm `is_published = true` and the locale row for both articles.
 
 ## Constraints
