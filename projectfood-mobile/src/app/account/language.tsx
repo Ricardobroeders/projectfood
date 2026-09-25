@@ -31,7 +31,9 @@ export default function LanguageScreen() {
           const on = l === current;
           return (
             <Pressable key={l} onPress={() => pick(l)} style={({ pressed }) => [styles.row, pressed && { backgroundColor: colors.hairline }]} accessibilityRole="radio" accessibilityState={{ selected: on }}>
-              <Image source={FLAGS[l]} style={styles.flag} contentFit="cover" />
+              <View style={styles.flagDisc}>
+                <Image source={FLAGS[l]} style={styles.flag} contentFit="cover" />
+              </View>
               <Text style={styles.label}>{t(`languages.${l}`)}</Text>
               {on ? <Check size={20} color={colors.accent} strokeWidth={3} /> : null}
             </Pressable>
@@ -45,6 +47,8 @@ export default function LanguageScreen() {
 const styles = StyleSheet.create({
   list: { padding: 20, gap: 8 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 14, height: 56, paddingHorizontal: 16, borderRadius: radii.md, backgroundColor: colors.bgSoft },
-  flag: { width: 36, height: 36, borderRadius: radii.full, overflow: 'hidden' },
+  // The same round flag as the Account row: a white disc with the flag 2 px inside it.
+  flagDisc: { width: 36, height: 36, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
+  flag: { width: 32, height: 32, borderRadius: radii.full, overflow: 'hidden' },
   label: { flex: 1, fontFamily: fonts.semibold, fontSize: 16, lineHeight: 22, color: colors.ink },
 });
