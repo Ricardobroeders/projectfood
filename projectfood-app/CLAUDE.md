@@ -64,6 +64,11 @@ Articles are files, the database is the render source. Never edit `learn_article
   from `related_article_slugs`, a byline with the Person author, and `hasPart` / `isPartOf`.
 - Writing an article: the `pf-seo-article` skill (repo root `.claude/skills/`), which loads
   `pf-voice` first.
+- The nightly routine: `content/learn/queue.json` holds the remaining rows of the page plan in
+  order; the claude.ai routine `projectfood-learn-article-nightly` (and `/run-learn-article`
+  locally) writes the first row without `done`, commits to `main`, publishes with the SQL that
+  `npm run learn:publish -- --sql` prints (through the Supabase connector, no keys in the cloud),
+  and marks the row done. Steps in the skill's "Unattended run" section.
 
 ## Translations
 

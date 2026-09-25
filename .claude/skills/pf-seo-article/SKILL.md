@@ -131,6 +131,53 @@ byline; view source for the JSON-LD (`Article` with `author` Person, `isPartOf` 
 - `wiki/strategy-backlog.md`: row 6 next step; item 14 in "Next to pick up".
 - Ricardo's sheet: the `live` column.
 
+## Unattended run (the nightly routine)
+
+The claude.ai routine `projectfood-learn-article-nightly` and the local command
+`/run-learn-article` both run this. Nobody is watching: every step is mandatory and the report
+at the end is the only trace. One article per run.
+
+0. **Preconditions.** Repo root, branch `main`, `git status` clean. `cd projectfood-app && npm ci
+   --ignore-scripts` succeeds (the scripts need js-yaml). If not, stop and report.
+1. **Pick the row.** `projectfood-app/content/learn/queue.json`, the first row without `done`. If
+   there is none, stop and report "queue empty" and do nothing else. The row gives `internal`,
+   `type`, `pillar`, `locale`, `slug`, `display_order`, `title_hint`, `keywords`, `topic`,
+   `related`, `pillar_mention`.
+2. **Write the article** with steps 1 to 9 above, in that locale, natively. `article.json`
+   exists for every folder of pillar 1; create it only for a new folder. A pillar row also writes
+   one announcement sentence per planned cluster of that locale (queue rows with the same
+   `pillar` and `locale`), each its own sentence ending in that language's "gets its own article",
+   so a later run can turn it into a link. A cluster row links the pillar in its first paragraph.
+3. **Check.** `npm run learn:check -- --only <internal>`: zero errors, or stop and report the
+   errors; commit nothing.
+4. **Link from the pillar** (cluster rows only). In the pillar's `<locale>.md`, replace the
+   `pillar_mention` sentence with one that links `/<locale>/<learn base>/<pillar slug>/<slug>`.
+   If the sentence announces two clusters, keep the announcement of the one still missing as
+   its own sentence. Then `npm run learn:check -- --only <pillar internal>`.
+5. **Bookkeeping.** Set `"done": "<YYYY-MM-DD>"` on the queue row. Append to
+   `knowledge-base-general/log.md`: `## [<date>] build | learn: <slug> (<locale>) written and
+   published by the nightly routine` with a three-line paragraph (words, FAQ count, warnings).
+6. **Commit and push.** `git add projectfood-app/content knowledge-base-general/log.md`, commit as
+   `content(<locale>): <slug>, nightly routine` with the trailer
+   `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`, then `git push origin HEAD:main`.
+   If the push is rejected, push `HEAD:claude/learn-<slug>` instead, stop before publishing, and
+   report the branch.
+7. **Publish.** `npm run learn:publish -- --only <internal> --only <pillar internal> --publish
+   --sql` prints the exact SQL (no keys needed): the upserts plus a verification select. Run
+   every statement through the Supabase connector's `execute_sql` tool (project
+   `lkmfmdehysmbstnfdbyg`; the tool may be namespaced, any `execute_sql` from the Supabase
+   connector counts), then the verification select, and confirm `is_published = true` and the
+   `<locale>` row for both articles. If there is no Supabase `execute_sql` tool but
+   `SUPABASE_SERVICE_ROLE_KEY` is set, run the same command without `--sql` instead. If neither
+   exists, stop and report "BLOCKED: no publish path"; the article stays committed and
+   unpublished. Never simulate a write.
+8. **Report** in this order: locale and slug, the public URL, words, meta lengths, FAQ count,
+   the warnings you accepted, the commit hash, the publish verification rows, and "live within
+   the hour" (the SQL path does not revalidate; the pages refresh on their own).
+
+Never: publish with check errors; touch any article other than this one and its pillar; edit
+the database by hand beyond the printed SQL; force-push; run a second row in the same run.
+
 ## The gate checklist
 
 Before `--publish`, in this order:

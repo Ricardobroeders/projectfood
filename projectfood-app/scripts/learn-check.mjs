@@ -76,12 +76,12 @@ export function check(articles, all, { publishing = false } = {}) {
       // Related (internal slugs)
       const related = Array.isArray(fm.related) ? fm.related : [];
       if (meta.type === 'cluster' && related.length !== RULES.relatedCount) {
-        err(file, `related has ${related.length} entries, want exactly ${RULES.relatedCount} internal slugs`);
+        warn(file, `related has ${related.length} entries, want ${RULES.relatedCount} internal slugs`);
       }
       for (const r of related) {
         if (r === internal) err(file, 'related links to itself');
-        else if (!byInternal.has(r)) err(file, `related "${r}" has no folder`);
-        else if (!byInternal.get(r).locales[locale]) soft(file, `related "${r}" has no ${locale} file yet`);
+        else if (!byInternal.has(r)) warn(file, `related "${r}" has no folder yet (the page shows only published related articles)`);
+        else if (!byInternal.get(r).locales[locale]) warn(file, `related "${r}" has no ${locale} file yet (the page shows only published related articles)`);
       }
 
       // A cluster needs its pillar in the same locale

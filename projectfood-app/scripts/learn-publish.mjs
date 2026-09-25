@@ -6,6 +6,8 @@
 //   (no flag)   upsert the rows; publish state untouched (a new article stays unpublished)
 //   --publish   also set is_published = true and published_at (once; a later run keeps the date)
 //   --dry       run the checks and print what would be written; needs no keys
+//   --sql       print the exact SQL (upserts + a verification select) instead of writing; needs no
+//               keys. The nightly routine runs it through the Supabase MCP connector's execute_sql.
 //
 // Needs NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the env file; REVALIDATE_SECRET
 // (and optionally SITE_URL) to refresh the live pages right away, otherwise they refresh within
@@ -23,6 +25,7 @@ const flag = (name) => {
 const has = (name) => args.includes(name);
 const only = args.flatMap((a, i) => (a === '--only' ? [args[i + 1]] : []));
 const dry = has('--dry');
+const sqlMode = has('--sql');
 const publish = has('--publish');
 
 const envFile = flag('--env');
@@ -34,7 +37,7 @@ if (envFile) {
 }
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
 const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY;
-if (!dry && (!SUPABASE_URL || !SERVICE)) throw new Error('missing SUPABASE url/service key (pass --env .env.local)');
+if (!dry && !sqlMode && (!SUPABASE_URL || !SERVICE)) throw new Error('missing SUPABASE url/service key (pass --env .env.local)');
 
 const headers = { apikey: SERVICE, Authorization: `Bearer ${SERVICE}`, 'Content-Type': 'application/json' };
 async function rest(path, init = {}) {
@@ -84,6 +87,71 @@ function contentRow(articleId, locale, l) {
 
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const pick = (row, keys) => Object.fromEntries(keys.map((k) => [k, row?.[k] ?? null]));
+
+// ── SQL mode ─────────────────────────────────────────────────────────────────
+// The same upserts as the PostgREST path, as statements. Every update is guarded with
+// IS DISTINCT FROM so an unchanged row is not touched and its updated_at (dateModified) stays
+// honest. published_at is set once (coalesce).
+const sqlStr = (v) => (v == null ? 'null' : `'${String(v).replace(/'/g, "''")}'`);
+const sqlDollar = (v, tag) => {
+  let t = tag;
+  while (v.includes(`$${t}$`)) t += 'x';
+  return `$${t}$${v}$${t}$`;
+};
+const sqlTextArray = (arr) => (arr.length ? `array[${arr.map(sqlStr).join(', ')}]::text[]` : `'{}'::text[]`);
+const sqlJson = (v) => (v == null ? 'null' : `${sqlDollar(JSON.stringify(v), 'pfj')}::jsonb`);
+
+function articleSql(a, locales) {
+  const { internal, meta } = a;
+  const out = [];
+  const pillarExpr = meta.type === 'cluster'
+    ? `(select id from public.learn_articles where slug = ${sqlStr(meta.pillar)})`
+    : 'null';
+  const cols = ['slug', 'type', 'pillar_id', 'display_order', 'emoji', 'cover_image_url'];
+  const vals = [sqlStr(internal), sqlStr(meta.type), pillarExpr, String(Number.isInteger(meta.display_order) ? meta.display_order : 0), sqlStr(meta.emoji ?? null), sqlStr(meta.cover_image_url ?? null)];
+  let set = 'type = excluded.type, pillar_id = excluded.pillar_id, display_order = excluded.display_order, emoji = excluded.emoji, cover_image_url = excluded.cover_image_url';
+  let guard = 'learn_articles.type is distinct from excluded.type or learn_articles.pillar_id is distinct from excluded.pillar_id or learn_articles.display_order is distinct from excluded.display_order or learn_articles.emoji is distinct from excluded.emoji or learn_articles.cover_image_url is distinct from excluded.cover_image_url';
+  if (publish) {
+    cols.push('is_published', 'published_at');
+    vals.push('true', 'now()');
+    set += ', is_published = true, published_at = coalesce(learn_articles.published_at, now())';
+    guard += ' or learn_articles.is_published = false';
+  }
+  out.push(`-- ${internal} (${meta.type}${publish ? ', publish' : ''})\ninsert into public.learn_articles (${cols.join(', ')})\nvalues (${vals.join(', ')})\non conflict (slug) do update set ${set}\nwhere ${guard};`);
+  for (const [locale, l] of locales) {
+    const row = contentRow(null, locale, l);
+    const fields = {
+      slug: sqlStr(row.slug),
+      title: sqlStr(row.title),
+      subtitle: sqlStr(row.subtitle),
+      body_md: sqlDollar(row.body_md, 'pf'),
+      reading_time_min: String(row.reading_time_min),
+      meta_title: sqlStr(row.meta_title),
+      meta_description: sqlStr(row.meta_description),
+      sd_keywords: sqlTextArray(row.sd_keywords),
+      sd_faq: sqlJson(row.sd_faq),
+      sd_citations: sqlJson(row.sd_citations),
+      related_article_slugs: sqlTextArray(row.related_article_slugs),
+    };
+    const names = Object.keys(fields);
+    out.push(`-- ${internal} ${locale}\ninsert into public.learn_article_content (article_id, locale, ${names.join(', ')})\nvalues ((select id from public.learn_articles where slug = ${sqlStr(internal)}), ${sqlStr(locale)}, ${names.map((n) => fields[n]).join(', ')})\non conflict (article_id, locale) do update set ${names.map((n) => `${n} = excluded.${n}`).join(', ')}\nwhere ${names.map((n) => `learn_article_content.${n} is distinct from excluded.${n}`).join(' or ')};`);
+  }
+  return out;
+}
+
+if (sqlMode) {
+  const statements = [];
+  const internals = [];
+  for (const a of todo) {
+    const locales = Object.entries(a.locales).filter(([, l]) => !l.fm.draft);
+    if (locales.length === 0) continue;
+    internals.push(a.internal);
+    statements.push(...articleSql(a, locales));
+  }
+  statements.push(`-- verify\nselect a.slug as internal, a.type, a.is_published, a.published_at, c.locale, c.slug as public_slug, c.reading_time_min, c.updated_at\nfrom public.learn_articles a join public.learn_article_content c on c.article_id = a.id\nwhere a.slug in (${internals.map(sqlStr).join(', ')})\norder by a.type desc, a.slug, c.locale;`);
+  console.log(statements.join('\n\n'));
+  process.exit(0);
+}
 
 // ── Publish ──────────────────────────────────────────────────────────────────
 let written = 0;
