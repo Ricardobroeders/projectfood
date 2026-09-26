@@ -3,7 +3,7 @@ title: Retention loop (trigger, action, reward, investment)
 type: concept
 tags: [retention, habit, gamification, family-mode]
 created: 2026-09-07
-updated: 2026-09-22
+updated: 2026-09-26
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md]
 ---
 
@@ -40,7 +40,7 @@ are." The measurable reward becomes the kid's growing collection.
 |---|---|---|
 | Trigger | Dinner question at the household's real dinner time (D10); streak keeper only when at risk, freeze covers pizza night (D7); card teaser after 3 missed dinners; cheer from another household, max one a day | Peak logging 19:00–20:00; streak rescue 46% vs daily reminder 8% |
 | Action | Log at the table in under a minute: "who tasted it?" per kid, household's frequent plants first, repeat last dinner | Median 10 plants per session was recall; target 3–6 per dinner while the kid watches |
-| Reward | Card unlock on first taste, silver at 5 tastes, gold at 10; album completion; family progress to 30; avatar accessory on album completion; facts on the card back | Tiny Tastes / Food Dudes: 10–15 exposures; reaching 30 alone did not retain |
+| Reward | Card unlock on first taste, then bronze at 3 tastes, silver at 8, gold at 15 ([[decision-2026-09-26-card-levels]], placed before the churn moments); album completion; family progress to 30; avatar accessory on album completion; facts on the card back | Tiny Tastes / Food Dudes: 10–15 exposures; reaching 30 alone did not retain |
 | Investment | Kid builds an avatar in the first minute; per-member collection grows; household members and dinner time configured; class group joined | Avatars ignored when hidden; friends ≈ 2× engagement |
 
 ## Design rules that follow

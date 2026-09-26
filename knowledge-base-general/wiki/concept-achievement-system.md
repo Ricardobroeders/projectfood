@@ -28,8 +28,11 @@ which is what "goal-oriented" means in practice: the user can always answer "wha
 to?".
 
 ### Tier 1: Cards (one per plant, per kid)
-- Unlock on the first taste, silver at 5 tastes, gold at 10 (v1 feature 1 in
-  [[decision-2026-09-07-app-v1-scope]]; the Tiny Tastes / Food Dudes exposure counts).
+- The card unlocks on the first taste; bronze at 3 tastes, silver at 8, gold at 15 since
+  2026-09-26 ([[decision-2026-09-26-card-levels]]; was silver 5 / gold 10 with bronze on the first
+  taste, v1 feature 1 in [[decision-2026-09-07-app-v1-scope]]). The rungs are placed so one lands
+  before each moment the PWA's users left; the Tiny Tastes / Food Dudes exposure counts sit at the
+  silver end. Platinum 25 and diamond 50 are agreed and held until there are cup renders.
 - The atomic achievement. With roughly 150 plants in the database each kid has hundreds of card
   states to move; the tier never runs out.
 - The card back carries one kid fact and one parent tip (feature 3). Opening the back is itself
@@ -291,7 +294,8 @@ definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text
   to be brainstormed: a gold economy earned per person per taste and spent on avatars and
   borders, which re-opens the XP question and the "accessories are earned, not bought" rule;
   fun facts and border colours unlocking at 5 / 50 / 100 tastings of one plant (Tibia bestiary),
-  a longer ladder than the 1 / 5 / 10 card levels that could carry the years after gold.
+  a longer ladder than the card levels that could carry the years after gold (the levels half of
+  this is settled in [[decision-2026-09-26-card-levels]]; the fun-fact half is not).
 - Pack opening and rare cards (Ricardo, 2026-09-26; state in the parking lot of [[strategy-backlog]]).
   Packs are the one mechanic that adds anticipation to a deliberately deterministic system, but a pack
   may never grant a plant card without breaking what a card means. Resolved in the brainstorm: rarity
@@ -300,19 +304,12 @@ definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text
   has no value outside the family, which rules out trading and purchasable Sprouts; pulls pace per
   logged day, the same principle as the two-day rule above. Build order: a Sunday reveal of the week's
   already-earned cards, then foils drawn in code, then paced pulls.
-- Card depth past gold (Ricardo, same day). Levels 1 / 5 / 10 extended upward; calibrated on live
-  `plant_logs` the same day, where gold at 10 already catches a third of every card the two heavy
-  accounts own (Ricardo 60 of 169, Alissa 46 of 139) and the best single plant is 43 and 50 over about
-  five months. Proposed rungs 20 (17% / 11% of cards) and 40 (2% / 1%), with 20 shipped first and 40
-  held until a child's depth curve is known; 50 was reached once in the whole database. A per-category
-  target was proposed and withdrawn the same day: ferment holds the highest count (yoghurt) while it
-  would have had the lowest target, and the top plants span every category, so a high count marks a
-  household staple rather than a category. Two limits: a level must be a treatment of the one render that plant already has, drawn in code like the
-  achievement frames, or the art bill is 224 × 5 renders; and the exposure research behind silver and
-  gold (10–15 tastings) does not reach 50, so depth is collection rather than acceptance, never nudged
-  and never claimed. The governing rule for any reward here, from Ricardo's own objection about the
-  tenth spinach: effort maps to outcome upward, the floor is guaranteed and scales with the deed, and
-  randomness may only add on top over variants of equal value.
+- Card depth: **decided on 2026-09-26**, see [[decision-2026-09-26-card-levels]]. Bronze 3, silver 8,
+  gold 15, placed against the churn curve so a level lands before each moment people left; platinum 25
+  and diamond 50 held until there are cup renders; one target set for every plant, never per category.
+  Regulars' first two rungs follow the metals by name (8 and 15) in both `definitions.ts` and the
+  notification mirror. Open: whether gold at 15 still feels earned after a month with families, and
+  what a child's depth curve looks like before platinum is switched on.
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).

@@ -504,3 +504,33 @@ fall back to `npm install --ignore-scripts`, reverting the lock file afterwards.
 `learn:publish` crashed without `.env.local` even in `--sql` mode, which needs no keys at all;
 the run created an empty file to get past it. The script now treats the env file as optional and
 insists on it only for a real write.
+
+
+## [2026-09-26] decide | Card levels at 3 / 8 / 15, placed against the churn curve
+Ricardo asked why anyone would keep logging, out of MTG and Pokemon pack opening, and the
+brainstorm ran down to the card ladder: "I have many gold already." Live `plant_logs` agreed, gold
+at 10 tastes caught a third of every card the two heaviest accounts own. His first proposal was
+10 / 25 / 50, which the data rejected: five of the eight PWA members with 60+ plants logged would
+have owned zero cards, and a typical member's first card would not have arrived until day 31 to 46,
+across the worst retention cliff.
+
+So the rungs were fitted to the churn curve instead, one landing before each moment people left:
+bronze 3 (first one on day 6, before the one-week exit that took a third of the users), silver 8
+(day 24), gold 15 (day 40, before the six to eight week exit). Every user who churned would have
+left holding bronze cards. Gold falls from 36% of a heavy collection to 22%. The card itself stays
+on the first taste, since it is the record the parent's recap counts. Platinum 25 and diamond 50 are
+agreed and wait only for cup renders.
+
+Two things were corrected along the way. A per-category target, which Claude had proposed the day
+before, was withdrawn: ferment holds the highest count in the database while it would have had the
+lowest target, and Ricardo added the better reason, that plants and categories keep being added and
+would move the goalposts under a collection that must never reset. And Claude's first objection to
+raising the thresholds, that day one would be empty, was wrong: Ricardo pointed out the achievement
+shelf covers day one, which it does, sixteen level-1 achievements at once. The real gap was weeks
+two to eight, which is where the argument ended up.
+
+Shipped the same day: thresholds in one module instead of three inline copies, Regulars' first two
+rungs following the metals by name in both the app and the notification mirror, and the plumbing for
+the gold plant renders Ricardo is drawing (bucket folder `food-images/gold/`, missing ones fall back
+to the normal render). New page [[decision-2026-09-26-card-levels]]; rows 5 and 9, the parking lot
+and item 19 updated.
