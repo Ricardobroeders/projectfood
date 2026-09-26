@@ -113,7 +113,7 @@ Er is wel een grens. Neem contact op met het consultatiebureau of de huisarts al
 
 Begin met wat de meeste kinderen makkelijk vinden: zoet, mild, knapperig. Wortel, komkommer, mais, doperwten, paprika, cherrytomaat, zoete aardappel. Bittere en zachte groente (spruitjes, spinazie, gekookte andijvie) komen later, als proeven al gewoon is.
 
-Rauw is vaak makkelijker dan gekookt: een stukje rauwe wortel is knapperig en zoet, gekookte wortel is zacht en anders van smaak. Bied dezelfde groente ook in verschillende vormen aan; een kind dat gekookte bloemkool weigert, eet soms rauwe roosjes met een dip. De lijst met de twintig makkelijkste groenten en hoe je ze op tafel zet, volgt als eigen artikel.
+Rauw is vaak makkelijker dan gekookt: een stukje rauwe wortel is knapperig en zoet, gekookte wortel is zacht en anders van smaak. Bied dezelfde groente ook in verschillende vormen aan; een kind dat gekookte bloemkool weigert, eet soms rauwe roosjes met een dip. De lijst met de twintig makkelijkste groenten en hoe je ze op tafel zet, staat in het artikel over [welke groente kinderen lekker vinden](/nl/leer/alles-leren-eten/welke-groente-vinden-kinderen-lekker).
 
 ## Groente verstoppen: mag dat
 

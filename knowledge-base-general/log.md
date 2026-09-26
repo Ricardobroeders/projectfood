@@ -596,3 +596,21 @@ verbatim, because the run on 2026-09-25 split that sentence in two when it linke
 new rule describes. Also filed the YAML trap that cost time in both of today's runs: a
 front-matter value containing a colon and a space has to be quoted.
 Queue: 6 of 17 done, 11 left.
+
+## [2026-09-26] build | learn: welke-groente-vinden-kinderen-lekker (nl), run by hand
+Fifth NL cluster, `vegetables-kids-will-eat`: 1,059 words, 5 FAQ entries, meta_title 47,
+meta_description 138, two citations (Birch 1982, Dovey 2008). The list page, sub-threshold on
+measured volume but kept in the plan because the format earns links and will later be fed by
+Project Food's own tasting counts. Twenty vegetables in three groups of seven, seven and six,
+each with the form it works in best, plus a section on frozen and tinned, which parents ask
+about and which no study says matters: what counts is how often a child tastes it, not where it
+came from. Two accepted warnings, `related` pointing at `hiding-vegetables` (tomorrow's row) and
+the slug rule below.
+The slug `welke-groente-vinden-kinderen-lekker` carries "kinderen", which the lint flags. Read
+the rule as written in [[seo-site-architecture]]: it forbids "kind" and "kinderen" in the **hub**
+slugs that get shared, and gives the pillar as its example, because that is the URL a parent
+forwards or a store reviewer opens. This is a cluster three levels deep and the slug is the exact
+query, which is the page's whole value. Published as planned; the lint rule is broader than the
+written rule and could be narrowed to hubs.
+Queue: 7 of 17 done, 10 left. The NL set is finished except `groente-verstoppen` and
+`voedselneofobie`.
