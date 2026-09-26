@@ -3,7 +3,7 @@ title: Achievement system (cards, albums, milestones)
 type: concept
 tags: [retention, gamification, achievements, family-mode]
 created: 2026-09-10
-updated: 2026-09-24
+updated: 2026-09-26
 sources: [source-supabase-metrics-2026-09.md, source-family-mode-context.md, live Supabase plant_logs (queried 2026-09-18)]
 ---
 
@@ -292,6 +292,14 @@ definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text
   borders, which re-opens the XP question and the "accessories are earned, not bought" rule;
   fun facts and border colours unlocking at 5 / 50 / 100 tastings of one plant (Tibia bestiary),
   a longer ladder than the 1 / 5 / 10 card levels that could carry the years after gold.
+- Pack opening and rare cards (Ricardo, 2026-09-26; state in the parking lot of [[strategy-backlog]]).
+  Packs are the one mechanic that adds anticipation to a deliberately deterministic system, but a pack
+  may never grant a plant card without breaking what a card means. Resolved in the brainstorm: rarity
+  attaches to the hard bite (a refused plant tasted, a plant new to the household) rather than to a
+  dice roll, so it cannot be faked and it steers behaviour; cheating has no payoff while the reward
+  has no value outside the family, which rules out trading and purchasable Sprouts; pulls pace per
+  logged day, the same principle as the two-day rule above. Build order: a Sunday reveal of the week's
+  already-earned cards, then foils drawn in code, then paced pulls. Open: kid's moment or parent's.
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).
