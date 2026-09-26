@@ -39,7 +39,7 @@ are." The measurable reward becomes the kid's growing collection.
 | Step | Mechanic | Grounding |
 |---|---|---|
 | Trigger | Dinner question at the household's real dinner time (D10); streak keeper only when at risk, freeze covers pizza night (D7); card teaser after 3 missed dinners; cheer from another household, max one a day | Peak logging 19:00–20:00; streak rescue 46% vs daily reminder 8% |
-| Action | Log at the table in under a minute: "who tasted it?" per kid, household's frequent plants first, repeat last dinner | Median 10 plants per session was recall; target 3–6 per dinner while the kid watches |
+| Action | Log at the table in under a minute: "who tasted it?" per kid, repeat last dinner. The shelf was ordered by the household's frequent plants first until 2026-09-26; it is alphabetical since, so the gold cards scatter through the list instead of sorting into one block at the top (Ricardo: coming across a gold plant while scrolling is what makes you want the rest gold). Speed now rests on the search field and the category tabs, so watch whether a dinner still takes under a minute | Median 10 plants per session was recall; target 3–6 per dinner while the kid watches |
 | Reward | Card unlock on first taste, then bronze at 3 tastes, silver at 8, gold at 15 ([[decision-2026-09-26-card-levels]], placed before the churn moments); album completion; family progress to 30; avatar accessory on album completion; facts on the card back | Tiny Tastes / Food Dudes: 10–15 exposures; reaching 30 alone did not retain |
 | Investment | Kid builds an avatar in the first minute; per-member collection grows; household members and dinner time configured; class group joined | Avatars ignored when hidden; friends ≈ 2× engagement |
 

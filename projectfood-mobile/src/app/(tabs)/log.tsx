@@ -1,4 +1,3 @@
-import { useFocusEffect } from 'expo-router';
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,13 +17,14 @@ import { perfEnd, perfStart } from '@/features/dev/perf';
 import { track } from '@/features/events/track';
 import { useHousehold, useSettings } from '@/features/household/queries';
 import { dateKey, distinctPlants, tasteMapFor } from '@/features/logs/model';
-import { useLogMutations, useTasteCounts, useWeekLogs } from '@/features/logs/queries';
+import { useLogMutations, useWeekLogs } from '@/features/logs/queries';
 import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
 import { type Point, useDefaultIds, useUi } from '@/state/ui';
 import { useGoldPlants } from '@/features/plants/useGoldPlants';
+import { useLocale } from '@/features/i18n';
 
 type Filter = 'all' | Category;
 const NONE: string[] = [];
@@ -54,7 +54,6 @@ export default function LogScreen() {
   const defaultIds = useDefaultIds(hid, memberIds);
   const { catalog, isLoading } = usePlantCatalog();
   const { data: logs = [] } = useWeekLogs(hid);
-  const { data: tasteCounts } = useTasteCounts(hid);
   const { logTaste, unlogTaste } = useLogMutations(hid);
   const openPicker = useUi((s) => s.openPicker);
   const holdHintSeen = useUi((s) => s.holdHintSeen);
@@ -83,36 +82,20 @@ export default function LogScreen() {
   const weekCount = useMemo(() => distinctPlants(logs).length, [logs]);
 
   const goldIds = useGoldPlants();
+  const locale = useLocale();
 
-  // The household's frequent plants first, then the alphabet (KB: log in under a minute).
-  const live = useMemo(() => {
-    const f: Record<string, number> = {};
-    for (const tc of tasteCounts ?? []) f[tc.plant_id] = (f[tc.plant_id] ?? 0) + tc.tastes;
-    return f;
-  }, [tasteCounts]);
-  // The order is fixed per visit: taken once the counts are in, refreshed only while the tab is
-  // away. A plant logged tonight stays where the thumb found it (Ricardo, 2026-09-24: moving it to
-  // the top was "unexpected behaviour"); the shelf reshuffles on the way back.
-  const liveRef = useRef(live);
-  const loadedRef = useRef(false);
-  useEffect(() => {
-    liveRef.current = live;
-    loadedRef.current = !!tasteCounts;
-  }, [live, tasteCounts]);
-  const [order, setOrder] = useState<Record<string, number> | null>(null);
-  if (order === null && tasteCounts) setOrder(live);
-  useFocusEffect(
-    useCallback(
-      () => () => {
-        if (loadedRef.current) setOrder(liveRef.current);
-      },
-      [],
-    ),
+  // Alphabetical, in the reader's own locale (Ricardo, 2026-09-26). It used to be the household's
+  // frequent plants first, which sorted every gold card into one block at the top; scattering them
+  // means you come across a gold plant while scrolling, which is the thing that makes you want the
+  // rest gold too. The speed the old order bought is covered by the search field and the tabs.
+  //
+  // It also removes a whole mechanism. The order no longer depends on what has been tasted, so a
+  // plant logged tonight cannot move, and the frozen-per-visit order that fixed that (2026-09-24)
+  // is gone with it.
+  const ordered = useMemo(
+    () => [...catalog.plants].sort((a, b) => a.name.localeCompare(b.name, locale)),
+    [catalog.plants, locale],
   );
-  const ordered = useMemo(() => {
-    const f = order ?? live;
-    return [...catalog.plants].sort((a, b) => (f[b.id] ?? 0) - (f[a.id] ?? 0) || a.name.localeCompare(b.name));
-  }, [catalog.plants, order, live]);
   const searched = usePlantSearch(ordered, debounced);
   const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
 

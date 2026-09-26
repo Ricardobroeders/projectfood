@@ -98,6 +98,13 @@ placed against it for that reason.
   goalposts under a collection that must never reset (design rule 1).
 
 ## Consequences
+- **The Log shelf is alphabetical since 2026-09-26**, not the household's frequent plants first.
+  Frequency order sorted every gold card into one block at the top; alphabetical scatters them, so
+  a gold plant turns up while scrolling. This trades against "log at the table in under a minute"
+  in [[concept-retention-loop]], which is what frequency order was for, and now rests on the search
+  field and the category tabs. Watch it in the closed test. It also deleted a mechanism: the order
+  no longer depends on what has been tasted, so a plant logged tonight cannot jump, and the
+  frozen-per-visit order added on 2026-09-24 to stop that went with it.
 - **Regulars follows the metals by name.** Its first two rungs count cards at 8 and 15 instead of
   5 and 10, so "earn 10 silver cards" stays true, in `definitions.ts` and in the notification mirror
   `supabase/functions/send-notifications/ladder.ts` (change both, they cannot import each other).
