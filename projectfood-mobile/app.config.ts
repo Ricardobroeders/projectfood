@@ -62,7 +62,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
-    ['expo-splash-screen', { backgroundColor: '#FFFFFF', image: './assets/images/splash-icon.png', imageWidth: 120 }],
+    // The pineapple from the favicon on its own mint, Ricardo 2026-09-26 (it was the app icon at
+    // 120 px on white). Android 12+ draws this itself: one centred icon masked to a circle on the
+    // background colour, no text and no animation. `splash-pineapple.png` is his 1024 export scaled
+    // into the middle two thirds, which is the part the mask keeps; the padding is the same flat
+    // #B3E2D9, so the circle edge cannot be seen. Regenerate with scripts/build-splash.mjs.
+    ['expo-splash-screen', { backgroundColor: '#B3E2D9', image: './assets/images/splash-pineapple.png', imageWidth: 288 }],
     ['expo-notifications', { icon: './assets/images/notification-icon.png', color: '#F5C518', defaultChannel: 'dinner' }],
     'expo-secure-store',
     'expo-localization',
