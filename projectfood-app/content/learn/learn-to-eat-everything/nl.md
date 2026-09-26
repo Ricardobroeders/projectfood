@@ -119,7 +119,7 @@ Rauw is vaak makkelijker dan gekookt: een stukje rauwe wortel is knapperig en zo
 
 Ja, en doe het niet alleen. Courgette in de pastasaus of spinazie in de smoothie zorgt dat er groente binnenkomt, en dat is waardevol op dagen dat proeven niet lukt. Maar een kind leert niets van groente die het niet ziet. De tong leert alleen van wat het proeft.
 
-De regel die beide combineert: verstop wat je wilt, en leg altijd één zichtbaar stukje naast het bord. Dat stukje is de proefbeurt. Vijf manieren om te verstoppen en de ene regel om vol te houden, volgen in een eigen artikel.
+De regel die beide combineert: verstop wat je wilt, en leg altijd één zichtbaar stukje naast het bord. Dat stukje is de proefbeurt. Vijf manieren om te verstoppen en de ene regel om vol te houden, staan in het artikel over [groente verstoppen](/nl/leer/alles-leren-eten/groente-verstoppen).
 
 ## Zo doet Project Food dit aan tafel
 

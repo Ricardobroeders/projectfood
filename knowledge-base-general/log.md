@@ -614,3 +614,19 @@ query, which is the page's whole value. Published as planned; the lint rule is b
 written rule and could be narrowed to hubs.
 Queue: 7 of 17 done, 10 left. The NL set is finished except `groente-verstoppen` and
 `voedselneofobie`.
+
+## [2026-09-26] build | learn: groente-verstoppen (nl), run by hand
+Sixth NL cluster, `hiding-vegetables`: 1,014 words, 5 FAQ entries, meta_title 48,
+meta_description 142, two citations (Birch 1982, Wardle 2003). Zero errors and zero warnings,
+the first article of the day with neither, because both `related` targets are live now.
+The stance the page takes: hiding fills the stomach, tasting teaches the tongue, so do both and
+keep one rule, always one visible piece beside the plate. The evidence carries it rather than an
+opinion, since liking comes from recognising a flavour repeatedly and a courgette blended out of
+sight is never recognised as courgette. Three sections were added after the first draft came in
+at 779 words, each answering a question from the keyword map that the draft had left in the FAQ
+only: whether hidden vegetables are the same thing, batching a week of sauce at once (hiding
+fails on time far more than on taste), and letting the child blend the sauce, which is the one
+technique where hiding and tasting do not work against each other.
+The app paragraph makes the same point from the product side: what went into the sauce does not
+count towards a card, and that is deliberate.
+Queue: 8 of 17 done, 9 left. NL has only `voedselneofobie` remaining.
