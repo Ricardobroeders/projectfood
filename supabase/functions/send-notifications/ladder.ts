@@ -84,10 +84,12 @@ export const LADDERS: Ladder[] = [
   {
     id: 'regulars',
     scope: 'member',
-    // the card ladder: 10 silver cards, 10 gold cards, 10 plants tasted 25 times, one plant tasted 50 times
+    // the card ladder: 10 silver cards, 10 gold cards, 10 plants tasted 25 times, one plant tasted 50 times.
+    // Silver and gold are 8 and 15 since 2026-09-26; keep in step with CARD_LEVELS in
+    // projectfood-mobile/src/features/plants/cardLevel.ts (this function cannot import from the app).
     rungs: [
-      { target: 10, progress: cardsAtLeast(5) },
-      { target: 10, progress: cardsAtLeast(10) },
+      { target: 10, progress: cardsAtLeast(8) },
+      { target: 10, progress: cardsAtLeast(15) },
       { target: 10, progress: cardsAtLeast(25) },
       { target: 50, progress: mostTastesOfOne },
     ],

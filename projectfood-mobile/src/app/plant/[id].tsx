@@ -14,20 +14,15 @@ import { Loading, PrimaryButton, SecondaryButton, SectionTitle } from '@/compone
 import { CATS, colors, fonts, iconFor, radii } from '@/constants/theme';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfEnd } from '@/features/dev/perf';
+import { type CardState, cardStateFor, MORE_TO_KEY, nextCardLevel } from '@/features/plants/cardLevel';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
 import { useLocale } from '@/features/i18n';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useUi } from '@/state/ui';
 
-function cardLevel(tastes: number): 'none' | 'bronze' | 'silver' | 'gold' {
-  if (tastes >= 10) return 'gold';
-  if (tastes >= 5) return 'silver';
-  if (tastes >= 1) return 'bronze';
-  return 'none';
-}
-
-const LEVEL_COLORS = { none: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' } as const;
+/** Ground per card state; `tasted` is collected with no cup yet. */
+const LEVEL_COLORS: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' };
 
 /** The food page: clay render, what it is, the facts, and each member's card level for it. */
 export default function PlantDetailScreen() {
@@ -56,6 +51,8 @@ export default function PlantDetailScreen() {
   if (isLoading) return <Loading />;
   if (!plant) return null;
   const cat = CATS[plant.category];
+  // The hero turns gold once anyone at the table has taken this card to gold (Ricardo, 2026-09-26).
+  const anyGold = ctx.tasteCounts.some((c) => c.plant_id === plant.id && cardStateFor(c.tastes) === 'gold');
   const month = new Date().getMonth() + 1;
   const monthName = (m: number) => new Intl.DateTimeFormat(locale, { month: 'short' }).format(new Date(2026, m - 1, 1));
 
@@ -70,7 +67,7 @@ export default function PlantDetailScreen() {
         <Animated.ScrollView onScroll={onScroll} scrollEventThrottle={16} overScrollMode="never" contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 24 }]} showsVerticalScrollIndicator={false}>
         <View style={[styles.hero, { backgroundColor: cat.bg }]}>
           <Text style={[styles.eyebrow, { color: cat.fg }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
-          <PlantImage plant={plant} size={180} />
+          <PlantImage plant={plant} size={180} gold={anyGold} />
           <Text style={styles.name}>{plant.name}</Text>
           {plant.superfood ? (
             <View style={styles.superfood}>
@@ -121,8 +118,9 @@ export default function PlantDetailScreen() {
           {members.map((m) => {
             const tc = ctx.tasteCounts.find((c) => c.member_id === m.id && c.plant_id === plant.id);
             const tastes = tc?.tastes ?? 0;
-            const level = cardLevel(tastes);
-            const next = level === 'none' ? t('plant.locked') : level === 'bronze' ? t('unlocks.moreToSilver', { n: 5 - tastes }) : level === 'silver' ? t('unlocks.moreToGold', { n: 10 - tastes }) : t('plant.cardGold');
+            const level = cardStateFor(tastes);
+            const step = nextCardLevel(tastes);
+            const next = level === 'none' ? t('plant.locked') : step ? t(MORE_TO_KEY[step.level], { n: step.remaining }) : t('plant.cardGold');
             return (
               <View key={m.id} style={[styles.memberRow, { backgroundColor: LEVEL_COLORS[level] }]}>
                 <MemberAvatar member={m} size={40} />
@@ -133,7 +131,11 @@ export default function PlantDetailScreen() {
                 <Text style={styles.next} numberOfLines={2}>
                   {next}
                 </Text>
-                <Cup level={level === 'none' ? 'bronze' : level} size={34} style={level === 'none' ? styles.cupLocked : undefined} />
+                <Cup
+                  level={level === 'none' || level === 'tasted' ? 'bronze' : level}
+                  size={34}
+                  style={level === 'none' ? styles.cupLocked : level === 'tasted' ? styles.cupPending : undefined}
+                />
               </View>
             );
           })}
@@ -182,4 +184,6 @@ const styles = StyleSheet.create({
   memberMeta: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   next: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink2, maxWidth: 110, textAlign: 'right' },
   cupLocked: { opacity: 0.3 },
+  // collected, still short of bronze: the cup is on its way rather than locked
+  cupPending: { opacity: 0.55 },
 });

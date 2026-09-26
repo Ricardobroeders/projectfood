@@ -5,6 +5,7 @@ import type { Member } from '@/features/household/queries';
 import { type LogRow, weekStartOf } from '@/features/logs/model';
 import type { DailyRow, Streak, TasteCount, WeekRow } from '@/features/logs/queries';
 import type { Plant } from '@/features/plants/catalog';
+import { CARD_LEVELS } from '@/features/plants/cardLevel';
 
 export type AchievementId =
   | 'explorer'
@@ -207,12 +208,13 @@ export const ACHIEVEMENTS: Achievement[] = [
     color: '#7A5C3E',
     // the card ladder: 10 silver cards, 10 gold cards, 10 plants tasted 25 times, one plant tasted 50 times
     rungs: [
-      { target: 10, progress: cardsAtLeast(5) },
-      { target: 10, progress: cardsAtLeast(10) },
+      // Rungs 1 and 2 follow the metals by name, so they move with CARD_LEVELS (2026-09-26: 8 and 15).
+      { target: 10, progress: cardsAtLeast(CARD_LEVELS.silver) },
+      { target: 10, progress: cardsAtLeast(CARD_LEVELS.gold) },
       { target: 10, progress: cardsAtLeast(25) },
       { target: 50, progress: mostTastesOfOne },
     ],
-    progress: cardsAtLeast(5),
+    progress: cardsAtLeast(CARD_LEVELS.silver),
   },
   { id: 'table_talk', image: 'table_talk', scope: 'household', icon: Flame, color: '#F5A524', rungs: rungs(7, 14, 30, 100), progress: (c) => Math.max(c.streak?.longest_streak ?? 0, c.streak?.current_streak ?? 0) },
   {

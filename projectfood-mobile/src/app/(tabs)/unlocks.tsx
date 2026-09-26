@@ -15,6 +15,7 @@ import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, levelKey, progress
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfStart } from '@/features/dev/perf';
 import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
+import { CARD_LEVELS } from '@/features/plants/cardLevel';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { useUi } from '@/state/ui';
 
@@ -36,7 +37,13 @@ export default function UnlocksScreen() {
   const levelsTotal = ACHIEVEMENTS.reduce((n, a) => n + a.rungs.length, 0);
 
   const counts = useMemo(() => ctx.tasteCounts.filter((c) => c.member_id === memberId), [ctx.tasteCounts, memberId]);
-  const cards = { unlocked: counts.length, silver: counts.filter((c) => c.tastes >= 5).length, gold: counts.filter((c) => c.tastes >= 10).length };
+  // The card itself is the first taste; the three cups start at 3 / 8 / 15 (see cardLevel.ts).
+  const cards = {
+    unlocked: counts.length,
+    bronze: counts.filter((c) => c.tastes >= CARD_LEVELS.bronze).length,
+    silver: counts.filter((c) => c.tastes >= CARD_LEVELS.silver).length,
+    gold: counts.filter((c) => c.tastes >= CARD_LEVELS.gold).length,
+  };
   const triedIds = useMemo(() => new Set(counts.map((c) => c.plant_id)), [counts]);
   const perCat = CAT_ORDER.map((c) => {
     const all = catalog.plants.filter((p) => p.category === c);
@@ -73,9 +80,9 @@ export default function UnlocksScreen() {
           <View style={[styles.cardStat, { backgroundColor: '#F1DFC4' }]}>
             <Cup level="bronze" size={36} />
             <View style={styles.cardText}>
-              <Text style={styles.cardNumber}>{cards.unlocked}</Text>
+              <Text style={styles.cardNumber}>{cards.bronze}</Text>
               <Text style={styles.cardLabel} numberOfLines={1}>
-                {t('unlocks.unlocked')}
+                {t('unlocks.bronze')}
               </Text>
             </View>
           </View>

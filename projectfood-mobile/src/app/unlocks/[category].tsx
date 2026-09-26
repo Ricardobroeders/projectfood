@@ -12,10 +12,11 @@ import { revealFor } from '@/constants/motion';
 import { CATS, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useAchievements } from '@/features/achievements/useAchievements';
 import { perfEnd, perfStart } from '@/features/dev/perf';
+import { type CardState, cardStateFor } from '@/features/plants/cardLevel';
 import { type Plant, usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 
-const LEVEL_BG = { bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' } as const;
+const LEVEL_BG: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' };
 
 type Row =
   | { kind: 'head'; key: string; title: string; meta: string }
@@ -138,17 +139,18 @@ export default function CategoryScreen() {
 }
 
 const TriedRow = memo(function TriedRow({ plant, n, label, bg, onPress }: { plant: Plant; n: number; label: string; bg: string; onPress: (id: string) => void }) {
-  const level = n >= 10 ? 'gold' : n >= 5 ? 'silver' : 'bronze';
+  // a tried row always has at least one taste, so this is `tasted` or a metal
+  const level = cardStateFor(n);
   return (
     <Pressable onPress={() => onPress(plant.id)} style={({ pressed }) => [styles.row, pressed && { opacity: 0.8 }]}>
       <View style={[styles.tile, { backgroundColor: bg }]}>
-        <PlantImage plant={plant} size={40} />
+        <PlantImage plant={plant} size={40} gold={level === 'gold'} />
       </View>
       <Text style={styles.name} numberOfLines={1}>
         {plant.name}
       </Text>
       <View style={[styles.badge, { backgroundColor: LEVEL_BG[level] }]}>
-        <Cup level={level} size={20} />
+        <Cup level={level === 'tasted' || level === 'none' ? 'bronze' : level} size={20} style={level === 'tasted' || level === 'none' ? styles.cupPending : undefined} />
         <Text style={styles.badgeText}>{label}</Text>
       </View>
     </Pressable>
@@ -180,6 +182,8 @@ const styles = StyleSheet.create({
   rowMuted: { backgroundColor: colors.bg, borderWidth: 1, borderColor: colors.hairline },
   tile: { width: 64, height: 64, alignItems: 'center', justifyContent: 'center' },
   muted: { opacity: 0.55 },
+  // collected, still short of bronze
+  cupPending: { opacity: 0.45 },
   name: { flex: 1, fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
   badge: { flexDirection: 'row', alignItems: 'center', gap: 5, height: 28, paddingLeft: 6, paddingRight: 10, borderRadius: radii.sm },
   badgeText: { fontFamily: fonts.semibold, fontSize: 12, lineHeight: 16, color: colors.ink },
