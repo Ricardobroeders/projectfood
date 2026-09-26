@@ -61,8 +61,9 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
         {label}
       </Text>
-      <ProgressBar value={v.current} max={v.target} height={4} style={{ width: size - 8, alignSelf: 'center' }} />
-      <Text style={[styles.count, v.maxed && { color: colors.success }]}>{v.maxed ? t('unlocks.complete') : `${v.current}/${v.target}`}</Text>
+      {/* green while there is somewhere left to go, gold once the whole ladder is done (Ricardo, 2026-09-26) */}
+      <ProgressBar value={v.current} max={v.target} height={4} color={v.maxed ? colors.gold : colors.success} style={{ width: size - 8, alignSelf: 'center' }} />
+      <Text style={[styles.count, v.maxed && { color: colors.goldInk }]}>{v.maxed ? t('unlocks.complete') : `${v.current}/${v.target}`}</Text>
     </Pressable>
   );
 }

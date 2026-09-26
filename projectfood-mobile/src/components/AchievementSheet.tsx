@@ -58,14 +58,14 @@ export function AchievementSheet() {
       </View>
 
       <View style={styles.progressRow}>
-        <Text style={[styles.progressLabel, v.maxed && { color: colors.success }]}>
+        <Text style={[styles.progressLabel, v.maxed && { color: colors.goldInk }]}>
           {v.maxed ? t('unlocks.complete') : v.remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: v.remaining })}
         </Text>
         <Text style={styles.progressNumber}>
           {v.current}/{v.target}
         </Text>
       </View>
-      <ProgressBar value={v.current} max={v.target} height={8} />
+      <ProgressBar value={v.current} max={v.target} height={8} color={v.maxed ? colors.gold : colors.success} />
 
       {rungs.length > 1 ? (
         <View style={styles.ladder}>
