@@ -172,13 +172,26 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
     "refused then tasted" state (still an open build item, needs the extra tap at logging).
   - **Breadth is already built:** Explorer runs 3 / 50 / 100 / 200 distinct plants
     (`definitions.ts`), Family of thirty covers 30 in a week. Ricardo's 30/50/70/100 is that ladder.
-  - **Depth past gold is the new axis.** Card levels are bronze 1 / silver 5 / gold 10, computed
-    inline in `src/app/(tabs)/unlocks.tsx`; 25 and 50 are a threshold list plus two cup treatments,
-    not a new system. **Targets scale by `category`, which every plant already has** — Ricardo's own
-    three examples split that way (vegetables high, ferment low), so no per-plant tuning and no new
-    column. Calibration from live data: the most-eaten single plant is 40 (Ricardo) and 46 (Alissa)
-    over about five months, so 25 of one plant is a season and 50 is well over a year even for the
-    two heaviest accounts.
+  - **Depth past gold is the new axis.** Card levels are bronze 1 / silver 5 / gold 10 (a taste is one
+    plant on one day), computed inline in `src/app/(tabs)/unlocks.tsx`; a new rung is a threshold plus
+    a cup treatment, not a new system.
+  - **Calibrated on live data, 2026-09-26** (`plant_logs` to 2026-09-25, distinct member-plant-day).
+    Ricardo: 169 cards, 86 silver (51%), 60 gold (36%), 38 at 15, 28 at 20 (17%), 15 at 25, 9 at 30,
+    3 at 40 (2%), none at 50, best plant 43, over 125 logged days in 153. Alissa: 139 cards, 72 silver
+    (52%), 46 gold (33%), 15 at 20 (11%), 12 at 25, 8 at 30, 2 at 40, 1 at 50, best 50, over 112 days
+    in 148. So gold catches a third of everything and the ladder has no top. **Proposed rungs: 20 and
+    40** (17%/11% and 2%/1%), not Ricardo's 20/30/40/50: 50 was reached once in the whole database in
+    five months, and 30 sits 12 points from 20, which does not pay for another treatment plus copy in
+    five locales. **Ship 20 first and hold 40** until the closed test shows a child's depth curve;
+    these figures are two adults logging everything, seasonings included.
+  - **The category-scaled target is withdrawn** (Claude proposed it 2026-09-26, Ricardo's data killed
+    it the same day). Ferment holds the highest count in the database (yoghurt 51 and 43) while it
+    would have had the lowest target, and the top plants come from every category at once: carrot 43,
+    yoghurt 43, chia 41, black pepper 40, mango 39, oats 38. What predicts a high count is being a
+    household staple, not the category. One target set for all plants, or later a per-plant figure
+    derived from how often it is logged across all households.
+  - **Seasonings inflate depth cheaply.** Black pepper 40 and chilli flakes 31 sit in the two heavy
+    accounts' top ten, which is a second reason depth is never a promoted goal.
   - **The constraint that decides whether it ships:** a level must be a treatment of the one render
     that plant already has, drawn in code like the achievement frames. 224 plants × 5 levels = 1,120
     renders through the n8n pipeline otherwise.

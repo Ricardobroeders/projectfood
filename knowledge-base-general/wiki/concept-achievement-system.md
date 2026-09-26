@@ -300,11 +300,14 @@ definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text
   has no value outside the family, which rules out trading and purchasable Sprouts; pulls pace per
   logged day, the same principle as the two-day rule above. Build order: a Sunday reveal of the week's
   already-earned cards, then foils drawn in code, then paced pulls.
-- Card depth past gold (Ricardo, same day). Levels 1 / 5 / 10 extended to 25 and 50, with the target
-  scaled by the plant's `category` rather than tuned per plant (his own examples put vegetables high
-  and a ferment low, and category is already on every plant). Calibration: the most-eaten single plant
-  in the live data is 40 and 46 over about five months, so 25 is a season and 50 is over a year. Two
-  limits: a level must be a treatment of the one render that plant already has, drawn in code like the
+- Card depth past gold (Ricardo, same day). Levels 1 / 5 / 10 extended upward; calibrated on live
+  `plant_logs` the same day, where gold at 10 already catches a third of every card the two heavy
+  accounts own (Ricardo 60 of 169, Alissa 46 of 139) and the best single plant is 43 and 50 over about
+  five months. Proposed rungs 20 (17% / 11% of cards) and 40 (2% / 1%), with 20 shipped first and 40
+  held until a child's depth curve is known; 50 was reached once in the whole database. A per-category
+  target was proposed and withdrawn the same day: ferment holds the highest count (yoghurt) while it
+  would have had the lowest target, and the top plants span every category, so a high count marks a
+  household staple rather than a category. Two limits: a level must be a treatment of the one render that plant already has, drawn in code like the
   achievement frames, or the art bill is 224 × 5 renders; and the exposure research behind silver and
   gold (10–15 tastings) does not reach 50, so depth is collection rather than acceptance, never nudged
   and never claimed. The governing rule for any reward here, from Ricardo's own objection about the
