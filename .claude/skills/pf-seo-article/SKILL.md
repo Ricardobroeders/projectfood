@@ -137,10 +137,23 @@ The claude.ai routine `projectfood-learn-article-nightly` and the local command
 `/run-learn-article` both run this. Nobody is watching: every step is mandatory and the report
 at the end is the only trace. One article per run.
 
-0. **Preconditions.** Repo root, `git status` clean, `cd projectfood-app && npm ci
-   --ignore-scripts` succeeds (the scripts need js-yaml). If not, stop and report. The branch is
-   whatever the session is on: a cloud routine session is put on a `claude/…` branch and cannot
-   push to `main`, which is expected and not a reason to stop.
+0. **Preconditions.** Repo root, `git status` clean. The scripts need `js-yaml` and nothing
+   else, so install only when it is missing:
+
+   ```bash
+   cd projectfood-app
+   node -e "require.resolve('js-yaml')" 2>/dev/null \
+     || npm ci --ignore-scripts \
+     || npm install --ignore-scripts
+   git checkout -- package-lock.json   # npm may rewrite it; it is never part of the commit
+   ```
+
+   `npm ci` fails in some sandboxes: their npm installs optional peer dependencies that the
+   committed lock file omits (`@swc/helpers`, pulled in through `next-intl`). The `npm install`
+   fallback is the expected path there, not a failure worth reporting. Stop only if `js-yaml` is
+   still missing afterwards. The branch is whatever the session is on: a cloud routine session is
+   put on a `claude/…` branch and cannot push to `main`, which is expected and not a reason to
+   stop.
 1. **Pick the row.** `projectfood-app/content/learn/queue.json`, in order. Skip a row that is
    marked `done` **or** already live in the database, so an unmerged branch never makes a run
    rewrite yesterday's article. One query answers it:

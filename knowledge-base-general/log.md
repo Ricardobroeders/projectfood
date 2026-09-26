@@ -492,3 +492,15 @@ This session started `HEAD` detached at `main`, so it created and pushed
 Supabase connector's `execute_sql`, so both the commit and the publish land together this time.
 Next queue row: `picky-eater-toddler` (cluster, NL, `moeilijke-eter`).
 
+
+## [2026-09-26] fix | The two workarounds the nightly run had to invent, fixed in the spec
+The second run published on its own, but it lost about ninety seconds to two environment quirks
+and improvised past both. First, `npm ci` rejected the committed lock file over
+`@swc/helpers`, an optional peer dependency that `next-intl` pulls in through `@swc/core`: npm
+11 leaves optional peers out of the lock, the sandbox's npm insists on installing them. That is
+a disagreement between two npm versions, not a broken lock file, so chasing parity would not
+hold. The skill and the routine prompt now install only when `js-yaml` is actually missing and
+fall back to `npm install --ignore-scripts`, reverting the lock file afterwards. Second,
+`learn:publish` crashed without `.env.local` even in `--sql` mode, which needs no keys at all;
+the run created an empty file to get past it. The script now treats the env file as optional and
+insists on it only for a real write.

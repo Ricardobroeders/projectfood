@@ -12,7 +12,7 @@
 // Needs NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the env file; REVALIDATE_SECRET
 // (and optionally SITE_URL) to refresh the live pages right away, otherwise they refresh within
 // the hour.
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { SITE, loadArticles, publicPath, readingTime } from './lib/learn-content.mjs';
 import { check } from './learn-check.mjs';
@@ -28,12 +28,16 @@ const dry = has('--dry');
 const sqlMode = has('--sql');
 const publish = has('--publish');
 
+// The env file is optional: --dry and --sql need no keys, and the nightly routine runs in a
+// checkout that has none. Only a real write below insists on the url and the service key.
 const envFile = flag('--env');
-if (envFile) {
+if (envFile && existsSync(envFile)) {
   for (const line of readFileSync(envFile, 'utf8').split('\n')) {
     const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/);
     if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '');
   }
+} else if (envFile && !dry && !sqlMode) {
+  throw new Error(`${envFile} not found; a real write needs the url and the service key (use --dry or --sql without them)`);
 }
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
 const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY;
