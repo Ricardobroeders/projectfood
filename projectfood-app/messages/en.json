@@ -384,9 +384,9 @@
     },
     "learn": {
       "nav": "Learn",
-      "hubTitle": "The Science of Eating Well",
-      "hubSubtitle": "Research-backed guides on plant diversity, gut health, and building better habits.",
-      "hubLabel": "Knowledge hub",
+      "hubTitle": "Research, in plain words",
+      "hubSubtitle": "We read the studies on children and food and write down what they actually say. With the source, every time.",
+      "hubLabel": "For parents",
       "readingTime": "{min} min read",
       "backToLearn": "All topics",
       "backToPillar": "Back to {title}",
