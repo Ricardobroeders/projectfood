@@ -155,9 +155,42 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
     one at a time, all ritual and no randomness, no currency and no cheating surface, the cheapest
     test of whether the opening is what lands; (2) foils earned on the hard bites; (3) paced pulls,
     still never purchasable, only if 1 and 2 land.
-  - **Still Ricardo's:** whether the reveal is the kid's moment at the table or the parent's, and
-    whether this becomes a decision page now or waits until the closed test says something about
-    week 4. _(Ricardo 2026-09-26 with Claude; supersedes nothing, but narrows the Golden Sprouts and
+  - **Second round, 2026-09-26.** Ricardo: the reveal belongs to the kid and/or the mother
+    depending on what was achieved and when; Golden Sprouts and buying things with them stay out;
+    everything rare or not is earned by eating. He added a depth axis (eat 20/30/40/50 carrots, 50
+    spinach, 20 kombucha) next to a breadth axis (30/50/70/100 different plants), each minting its
+    own plant card, and then found the flaw in randomness himself: "if you ate 10x spinach you don't
+    like and you get a shitty card, you are dissatisfied instead of happy and proud."
+  - **The rule that follows: effort maps to outcome, always upward.** The floor is guaranteed and
+    scales with the deed (the 10th spinach always yields the gold spinach card), and randomness may
+    only ever add on top, over variants of equal value (which colour the foil is, which of three
+    facts). A common-foil / rare-foil split puts the disappointment straight back in. Alternative
+    ritual with no chance at all: three cards face down, pick one, never show the two unpicked.
+  - **Invert the disliked plant instead of leaving it to the dice.** The plant that took ten tries
+    should deterministically earn the best-looking card the kid owns, and say why. Signals already in
+    the data: a taste count far below that member's norm, a long gap between tastes, and the
+    "refused then tasted" state (still an open build item, needs the extra tap at logging).
+  - **Breadth is already built:** Explorer runs 3 / 50 / 100 / 200 distinct plants
+    (`definitions.ts`), Family of thirty covers 30 in a week. Ricardo's 30/50/70/100 is that ladder.
+  - **Depth past gold is the new axis.** Card levels are bronze 1 / silver 5 / gold 10, computed
+    inline in `src/app/(tabs)/unlocks.tsx`; 25 and 50 are a threshold list plus two cup treatments,
+    not a new system. **Targets scale by `category`, which every plant already has** — Ricardo's own
+    three examples split that way (vegetables high, ferment low), so no per-plant tuning and no new
+    column. Calibration from live data: the most-eaten single plant is 40 (Ricardo) and 46 (Alissa)
+    over about five months, so 25 of one plant is a season and 50 is well over a year even for the
+    two heaviest accounts.
+  - **The constraint that decides whether it ships:** a level must be a treatment of the one render
+    that plant already has, drawn in code like the achievement frames. 224 plants × 5 levels = 1,120
+    renders through the n8n pipeline otherwise.
+  - **Two cautions.** The exposure research behind silver 5 / gold 10 (Tiny Tastes, Food Dudes,
+    10–15 exposures) does not reach 50, so depth copy may not imply anything gained beyond the card
+    itself. And depth is never nudged: pushes and the Sunday advice stay on breadth, or the app
+    starts asking families to eat more spinach, against the thirty-different-plants thesis. Depth
+    accrues quietly and is discovered.
+  - **Reveal follows ownership** (rule 4, one system two audiences): the card is the kid's at the
+    table, household milestones are revealed to everyone, the parent's version is the monthly recap.
+  - **Still Ricardo's:** whether this becomes a decision page now or waits until the closed test says
+    something about week 4. _(Ricardo 2026-09-26 with Claude; supersedes nothing, but narrows the Golden Sprouts and
     gold / XP entries above and the "fact per card level" entry; touches
     [[concept-retention-loop]] (reward step), [[concept-achievement-system]] (the XP lean, "earned
     not bought", scarcity by tier), [[concept-business-model]] and [[concept-brand-pillars]]
