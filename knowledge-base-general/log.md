@@ -548,3 +548,24 @@ white: the learn hub cards became grey cards instead of white cards floating on 
 article cards on the grey sections simply lost their shadow, the contact inputs use the grey
 input token, and the header's hairline is a border now instead of a 1px shadow. The legacy PWA
 under `app/(app)/` still has shadows and was left alone.
+
+## [2026-09-26] build | learn: pillar 1 now exists in Italian and English
+Both pillars written by hand rather than waiting for their nightly slots on 2 and 6 October, so
+the pillar path of the routine is proven with someone reading the output. IT
+`imparare-a-mangiare-tutto`, "Come far mangiare le verdure ai bambini, senza battaglie": 1,674
+words, 5 FAQ entries, meta_title 51, meta_description 143, three citations (Wardle 2003, Cooke
+2011, Dovey 2008). EN `learn-to-eat-everything`, "How to get kids to eat vegetables, without the
+battle": 1,680 words, 6 FAQ entries, meta_title 51, meta_description 139, four citations (the
+same three plus the AAP tips page, which is the English reader's own reference). Written
+natively, not translated: the Italian opens on neofobia and the pediatra, the English on the AAP
+number and "your doctor", and each keeps its own keyword set from the plan. `learn:check` is 0
+errors and 0 warnings for all three locales.
+Both pillars announce their planned clusters as plain sentences, three in Italian and five in
+English, and each sentence is recorded verbatim in that cluster's `queue.json` row as
+`pillar_mention`. That was the gap found earlier the same day: the Italian and English rows had
+none, and a pillar that fails to link a published cluster of its locale is an error at publish
+time, so the first Italian cluster night would have stopped.
+Published together with the Dutch pillar, which now carries `it` and `en` alternates: the three
+pillar URLs cross-link through hreflang with `x-default` on the English one, the sitemap holds
+32 entries, and the Italian and English hubs list a real article for the first time. Queue: 4 of
+17 done, 13 left, finishing about 2026-10-11.
