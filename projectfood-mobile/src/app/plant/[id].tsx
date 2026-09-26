@@ -22,7 +22,7 @@ import { PlantImage } from '@/features/plants/PlantImage';
 import { useUi } from '@/state/ui';
 
 /** Ground per card state; `tasted` is collected with no cup yet. */
-const LEVEL_COLORS: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' };
+const LEVEL_COLORS: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: colors.goldSoft };
 
 /** The food page: clay render, what it is, the facts, and each member's card level for it. */
 export default function PlantDetailScreen() {
@@ -65,8 +65,8 @@ export default function PlantDetailScreen() {
       </View>
       <GestureDetector gesture={scrollGesture}>
         <Animated.ScrollView onScroll={onScroll} scrollEventThrottle={16} overScrollMode="never" contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 24 }]} showsVerticalScrollIndicator={false}>
-        <View style={[styles.hero, { backgroundColor: cat.bg }]}>
-          <Text style={[styles.eyebrow, { color: cat.fg }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
+        <View style={[styles.hero, { backgroundColor: anyGold ? colors.goldSoft : cat.bg }]}>
+          <Text style={[styles.eyebrow, { color: anyGold ? colors.goldInk : cat.fg }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
           <PlantImage plant={plant} size={180} gold={anyGold} />
           <Text style={styles.name}>{plant.name}</Text>
           {plant.superfood ? (

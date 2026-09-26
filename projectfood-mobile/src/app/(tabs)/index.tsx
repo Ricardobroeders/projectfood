@@ -25,6 +25,7 @@ import { usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useSurveyProgress } from '@/features/survey/queries';
 import { useUi } from '@/state/ui';
+import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
 const GOAL = 30;
 
@@ -36,6 +37,7 @@ export default function HomeScreen() {
   const hid = hh?.household.id;
   const members = hh?.members ?? [];
   const { catalog } = usePlantCatalog();
+  const goldPlants = useGoldPlants();
   const { data: logs = [] } = useWeekLogs(hid);
   const { data: streak } = useStreak(hid);
   const { progress, levels, ready } = useAchievements();
@@ -151,8 +153,8 @@ export default function HomeScreen() {
             <SectionTitle>{t('home.today')}</SectionTitle>
             <View style={styles.chips}>
               {todayPlants.map((p) => (
-                <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.chip, { backgroundColor: CATS[p.category].bg }, pressed && { opacity: 0.8 }]}>
-                  <PlantImage plant={p} size={22} />
+                <Pressable key={p.id} onPress={() => router.push({ pathname: '/plant/[id]', params: { id: p.id } })} style={({ pressed }) => [styles.chip, { backgroundColor: goldPlants.has(p.id) ? colors.goldSoft : CATS[p.category].bg }, pressed && { opacity: 0.8 }]}>
+                  <PlantImage plant={p} size={22} gold={goldPlants.has(p.id)} />
                   <Text style={styles.chipText} numberOfLines={1}>
                     {p.name}
                   </Text>

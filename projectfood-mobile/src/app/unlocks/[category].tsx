@@ -16,7 +16,7 @@ import { type CardState, cardStateFor } from '@/features/plants/cardLevel';
 import { type Plant, usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 
-const LEVEL_BG: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: '#FBEDB5' };
+const LEVEL_BG: Record<CardState, string> = { none: colors.bgSoft, tasted: colors.bgSoft, bronze: '#F1DFC4', silver: '#E9E9EC', gold: colors.goldSoft };
 
 type Row =
   | { kind: 'head'; key: string; title: string; meta: string }
@@ -143,7 +143,7 @@ const TriedRow = memo(function TriedRow({ plant, n, label, bg, onPress }: { plan
   const level = cardStateFor(n);
   return (
     <Pressable onPress={() => onPress(plant.id)} style={({ pressed }) => [styles.row, pressed && { opacity: 0.8 }]}>
-      <View style={[styles.tile, { backgroundColor: bg }]}>
+      <View style={[styles.tile, { backgroundColor: level === 'gold' ? colors.goldSoft : bg }]}>
         <PlantImage plant={plant} size={40} gold={level === 'gold'} />
       </View>
       <Text style={styles.name} numberOfLines={1}>

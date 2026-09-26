@@ -16,6 +16,7 @@ import { useLogMutations, useWeekLogs } from '@/features/logs/queries';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { type Point, useDefaultIds, useUi } from '@/state/ui';
+import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
 /** The origin: a disc under the finger, the plant on it (or a close cross for the default set). */
 const DISC = 56;
@@ -53,6 +54,8 @@ function MenuBody({ plantId, at }: { plantId: string | null; at: Point }) {
   const defaultIds = useDefaultIds(hid, members.map((m) => m.id));
   const { catalog } = usePlantCatalog();
   const plant = plantId ? catalog.byId[plantId] : null;
+  // the disc the menu grows from carries the plant, so it turns gold with it
+  const gold = useGoldPlants().has(plantId ?? '');
   const { data: logs } = useWeekLogs(hid);
   const { logTaste, unlogTaste } = useLogMutations(hid);
   const today = dateKey();
@@ -139,9 +142,9 @@ function MenuBody({ plantId, at }: { plantId: string | null; at: Point }) {
         ))}
       </View>
 
-      <Animated.View style={[styles.disc, { left: at.x - DISC / 2, top: at.y - DISC / 2, backgroundColor: plant ? CATS[plant.category].bg : colors.ink }, discStyle]}>
+      <Animated.View style={[styles.disc, { left: at.x - DISC / 2, top: at.y - DISC / 2, backgroundColor: plant ? (gold ? colors.goldSoft : CATS[plant.category].bg) : colors.ink }, discStyle]}>
         <Pressable style={styles.discPress} onPress={close} accessibilityRole="button" accessibilityLabel={plant?.name}>
-          {plant ? <PlantImage plant={plant} size={40} /> : <X size={22} color={colors.surface} strokeWidth={2.5} />}
+          {plant ? <PlantImage plant={plant} size={40} gold={gold} /> : <X size={22} color={colors.surface} strokeWidth={2.5} />}
         </Pressable>
       </Animated.View>
     </Modal>

@@ -19,6 +19,8 @@ type Props = {
   members: Member[];
   defaultIds: string[];
   catLabel: string;
+  /** Anyone at the table has this card at gold: the tile and the render turn gold. */
+  gold?: boolean;
   /** `at` is where the finger was, in window coordinates: the member menu grows from that point. */
   onTap: (plantId: string, at: Point) => void;
   onHold: (plantId: string, at: Point) => void;
@@ -26,7 +28,7 @@ type Props = {
 
 const pointOf = (e: GestureResponderEvent): Point => ({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY });
 
-function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, onHold }: Props) {
+function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, onTap, onHold }: Props) {
   const cat = CATS[plant.category];
   const tasted = tasters.length > 0;
   // The check circle fills when the whole default set has tasted it; a partial set shows as avatars.
@@ -86,9 +88,9 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
       accessibilityState={{ checked: complete ? true : tasted ? 'mixed' : false }}
       accessibilityLabel={plant.name}>
       <Animated.View style={[styles.row, rowStyle]}>
-        <View style={[styles.tile, { backgroundColor: cat.bg }]}>
+        <View style={[styles.tile, { backgroundColor: gold ? colors.goldSoft : cat.bg }]}>
           <Animated.View style={imageStyle}>
-            <PlantImage plant={plant} size={58} />
+            <PlantImage plant={plant} size={58} gold={gold} />
           </Animated.View>
           {plant.superfood ? (
             <View style={styles.superfood}>
@@ -103,7 +105,7 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, onTap, o
           {who.length > 0 && members.length > 1 ? (
             <AvatarStack members={who} size={22} ring={colors.checkedRow} />
           ) : (
-            <Text style={[styles.cat, { color: cat.fg }]} numberOfLines={1}>
+            <Text style={[styles.cat, { color: gold ? colors.goldInk : cat.fg }]} numberOfLines={1}>
               {catLabel}
             </Text>
           )}

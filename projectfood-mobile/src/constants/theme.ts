@@ -66,6 +66,12 @@ export const colors = {
   gaugeYellow: '#F4D419',
   gaugeHigh: '#11BA11',
   gaugeDone: '#008A07',
+  /** A card at gold: the plant's ground turns gold wherever it is shown, and its label with it
+   *  (Ricardo, 2026-09-26: "they will see more and more gold plants occurring in their screen").
+   *  Deeper than the marigold accent's soft tint on purpose, so a gold plant reads as special next
+   *  to an ordinary accent surface, and still pale enough for the gold clay render to stand on. */
+  goldSoft: '#F9DE72',
+  goldInk: '#7A5C00',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;

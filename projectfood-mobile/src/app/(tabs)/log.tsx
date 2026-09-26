@@ -24,6 +24,7 @@ import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
 import { type Point, useDefaultIds, useUi } from '@/state/ui';
+import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
 type Filter = 'all' | Category;
 const NONE: string[] = [];
@@ -80,6 +81,8 @@ export default function LogScreen() {
   const today = dateKey();
   const tastes = useMemo(() => tasteMapFor(logs, today), [logs, today]);
   const weekCount = useMemo(() => distinctPlants(logs).length, [logs]);
+
+  const goldIds = useGoldPlants();
 
   // The household's frequent plants first, then the alphabet (KB: log in under a minute).
   const live = useMemo(() => {
@@ -161,7 +164,7 @@ export default function LogScreen() {
   const renderItem = useCallback(
     ({ item, index }: { item: Plant; index: number }) => (
       <Animated.View entering={revealFor(index)}>
-        <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />
+        <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} gold={goldIds.has(item.id)} onTap={onTap} onHold={onHold} />
       </Animated.View>
     ),
     [tastes, members, defaultIds, t, onTap, onHold],

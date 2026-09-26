@@ -3,5 +3,5 @@ import type { ImageSourcePropType } from 'react-native';
 
 /** Gold renders (bucket food-images/gold/<file>), 256 px webp; a plant without one keeps its normal render. */
 export const PLANT_GOLD_IMAGES: Record<string, ImageSourcePropType> = {
-
+  'yogurt': require('@/assets/plants-gold/yogurt.webp'),
 };

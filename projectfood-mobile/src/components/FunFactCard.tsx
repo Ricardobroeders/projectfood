@@ -14,6 +14,7 @@ import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useUi } from '@/state/ui';
+import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
 const CARD_W = 300;
 const CARD_H = 420;
@@ -63,8 +64,14 @@ export function FunFactCard() {
     transform: [{ scale: interpolate(badge.value, [0, 1], [REWARD_POP_FROM, 1]) }],
   }));
 
+  // every hook runs before the early return below
+  const goldPlants = useGoldPlants();
+
   if (!plant) return null;
   const cat = CATS[plant.category];
+  const gold = goldPlants.has(plant.id);
+  const ground = gold ? colors.goldSoft : cat.bg;
+  const eyebrow = gold ? colors.goldInk : cat.fg;
   const CuriousIcon = ACHIEVEMENT_BY_ID.curious.icon;
 
   const flip = () => {
@@ -84,17 +91,17 @@ export function FunFactCard() {
         <Pressable style={StyleSheet.absoluteFill} onPress={hide} />
         <Animated.View style={[styles.stage, enterStyle]}>
           <Pressable onPress={flip} style={styles.cardBox} accessibilityRole="button" accessibilityLabel={t('plant.tapToFlip')}>
-            <Animated.View style={[styles.face, { backgroundColor: cat.bg }, frontStyle]}>
-              <Text style={[styles.eyebrow, { color: cat.fg }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
-              <PlantImage plant={plant} size={200} />
+            <Animated.View style={[styles.face, { backgroundColor: ground }, frontStyle]}>
+              <Text style={[styles.eyebrow, { color: eyebrow }]}>{t(`categories.${plant.category}`).toUpperCase()}</Text>
+              <PlantImage plant={plant} size={200} gold={gold} />
               <Text style={styles.name}>{plant.name}</Text>
               <Text style={styles.hint}>{t('plant.tapToFlip')}</Text>
             </Animated.View>
             <Animated.View style={[styles.face, { backgroundColor: colors.surface }, backStyle]}>
-              <View style={[styles.miniTile, { backgroundColor: cat.bg }]}>
-                <PlantImage plant={plant} size={60} />
+              <View style={[styles.miniTile, { backgroundColor: ground }]}>
+                <PlantImage plant={plant} size={60} gold={gold} />
               </View>
-              <Text style={[styles.eyebrow, { color: cat.fg }]}>{t('plant.didYouKnow').toUpperCase()}</Text>
+              <Text style={[styles.eyebrow, { color: eyebrow }]}>{t('plant.didYouKnow').toUpperCase()}</Text>
               <Text style={styles.fact}>{fact?.kid_fact ?? plant.name}</Text>
               <Animated.View style={[styles.badge, badgeStyle]}>
                 <Stamp size={44} color={ACHIEVEMENT_BY_ID.curious.color}>
