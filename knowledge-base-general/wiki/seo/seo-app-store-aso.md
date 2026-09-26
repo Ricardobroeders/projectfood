@@ -277,6 +277,25 @@ Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arr
   `https://www.projectfood.dev/en/privacy` (one field, not localised).
 - Release notes per language are on the release, not the listing; three lines, same rule.
 
+### Release notes (what's new), versionCode 7 / 1.0.2, 2026-09-26
+
+The release that goes to the twelve closed testers. What changed since versionCode 6: card levels
+raised to 3 / 8 / 15 and placed against the churn curve ([[decision-2026-09-26-card-levels]]), the
+gold renders of the plants with their gold ground, the alphabetical Log shelf, the pineapple splash
+and the gold "complete" state on the shelf.
+
+**en-GB** (354)
+
+> Cards take longer to earn and go further: bronze at 3 tastes of a plant, silver at 8, gold at 15. A plant at gold turns gold everywhere it appears, so the gold spreads as the family keeps eating. The log list is alphabetical now, so you come across a gold plant while scrolling. New loading screen, and a finished achievement reads gold instead of green.
+
+**nl-NL** (352)
+
+> Kaarten kosten meer tijd en gaan verder: brons na 3 keer proeven, zilver na 8, goud na 15. Een plant op goud wordt overal goud, dus er komt steeds meer goud bij naarmate het gezin doorproeft. De lijst staat nu op alfabetische volgorde, zo kom je onderweg een gouden plant tegen. Nieuw laadscherm, en een afgeronde prestatie is goud in plaats van groen.
+
+**it-IT** (396)
+
+> Le carte richiedono più tempo e arrivano più lontano: bronzo a 3 assaggi di una pianta, argento a 8, oro a 15. Una pianta d'oro diventa dorata ovunque compaia, così l'oro cresce man mano che la famiglia continua ad assaggiare. L'elenco ora è in ordine alfabetico, quindi incontri una pianta d'oro mentre scorri. Nuova schermata di caricamento, e un traguardo completato è dorato invece che verde.
+
 ### Release notes (what's new), versionCode 6 / 1.0.1, 2026-09-25
 
 Play's field takes 500 characters per language. Parent register, no humour (store copy), written
