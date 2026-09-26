@@ -24,7 +24,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: IS_DEV ? 'Project Food (dev)' : 'Project Food',
   slug: 'projectfood',
-  version: '1.0.1',
+  version: '1.0.2',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'projectfood',
@@ -62,21 +62,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
       },
     ],
-    // PARKED until versionCode 7 is built. The pineapple splash below is ready and its asset is in
-    // the repo, but splash config is native: switching it moves the runtime fingerprint from
-    // 38a5ef3a to d8da0646, and every over-the-air update then lands on a runtime no installed
-    // build has (it happened on 2026-09-26, update 01a0de2d went nowhere). So it stays commented
-    // out while versionCode 6 is the build in people's hands. **Uncomment it as the first step of
-    // building versionCode 7**, and republish the updates against the new runtime afterwards.
-    //
     // The pineapple from the favicon on its own mint, Ricardo 2026-09-26 (it was the app icon at
     // 120 px on white). Android 12+ draws this itself: one centred icon masked to a circle on the
     // background colour, no text and no animation. `splash-pineapple.png` is his 1024 export scaled
     // into the middle two thirds, which is the part the mask keeps; the padding is the same flat
     // #B3E2D9, so the circle edge cannot be seen. Regenerate with scripts/build-splash.mjs.
     //
-    // ['expo-splash-screen', { backgroundColor: '#B3E2D9', image: './assets/images/splash-pineapple.png', imageWidth: 288 }],
-    ['expo-splash-screen', { backgroundColor: '#FFFFFF', image: './assets/images/splash-icon.png', imageWidth: 120 }],
+    // Native config: this runtime is d8da0646, versionCode 7 and up. Updates published while an
+    // older build is the one in people's hands must go to that build's runtime instead, which is
+    // what caught us out on 2026-09-26 (update 01a0de2d landed on a runtime nobody had).
+    ['expo-splash-screen', { backgroundColor: '#B3E2D9', image: './assets/images/splash-pineapple.png', imageWidth: 288 }],
     ['expo-notifications', { icon: './assets/images/notification-icon.png', color: '#F5C518', defaultChannel: 'dinner' }],
     'expo-secure-store',
     'expo-localization',
