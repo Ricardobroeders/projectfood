@@ -171,13 +171,21 @@ at the end is the only trace. One article per run.
    exists for every folder of pillar 1; create it only for a new folder. A pillar row also writes
    one announcement sentence per planned cluster of that locale (queue rows with the same
    `pillar` and `locale`), each its own sentence ending in that language's "gets its own article",
-   so a later run can turn it into a link. A cluster row links the pillar in its first paragraph.
+   so a later run can turn it into a link. Copy each of those sentences verbatim into that
+   cluster's queue row as `pillar_mention`, so the run that writes the cluster knows exactly
+   which sentence to replace. The rows for a locale whose pillar is not written yet have
+   `pillar_mention: null`; filling them in is part of writing that pillar. A cluster row links the pillar in its first paragraph.
 3. **Check.** `npm run learn:check -- --only <internal>`: zero errors, or stop and report the
    errors; commit nothing.
 4. **Link from the pillar** (cluster rows only). In the pillar's `<locale>.md`, replace the
    `pillar_mention` sentence with one that links `/<locale>/<learn base>/<pillar slug>/<slug>`.
    If the sentence announces two clusters, keep the announcement of the one still missing as
-   its own sentence. Then `npm run learn:check -- --only <pillar internal>`.
+   its own sentence. If the row has no `pillar_mention`, or that sentence is no longer in the
+   file, find the sentence in the pillar that announces this cluster's topic and replace that
+   one instead; if the pillar does not mention the topic at all, add a sentence with the link in
+   the section it belongs to. This step is not optional: at publish time a pillar that does not
+   link every cluster of its locale is an error, not a warning. Then
+   `npm run learn:check -- --only <pillar internal>`.
 5. **Bookkeeping.** Set `"done": "<YYYY-MM-DD>"` on the queue row. Append to
    `knowledge-base-general/log.md`: `## [<date>] build | learn: <slug> (<locale>) written and
    published by the nightly routine` with a three-line paragraph (words, FAQ count, warnings).
