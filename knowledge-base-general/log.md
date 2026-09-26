@@ -480,3 +480,15 @@ and the run stopped before Supabase, per the routine's "push rejected" fallback.
 anyway and name it in the report. Next queue row: `how-many-times-to-try-a-food` (cluster, NL,
 `hoe-vaak-proeven`).
 
+## [2026-09-26] build | learn: hoe-vaak-proeven (nl), second row of the nightly queue written
+The nightly routine wrote `how-many-times-to-try-a-food` (cluster of `learn-to-eat-everything`),
+NL, slug `hoe-vaak-proeven`: 957 words, 5 FAQ entries, meta_title 52 chars, meta_description 147
+chars, two citations (Wardle, 2003; Cooke, 2011). `learn:check` is 0 errors; 1 accepted warning,
+`related` pointing at `food-neophobia`, a later NL queue row not yet written. The pillar's
+`nl.md` `pillar_mention` sentence for this cluster was turned into a link to the new article; the
+pillar re-checks at 0 errors, 0 warnings. `queue.json` row marked `done: 2026-09-26`.
+This session started `HEAD` detached at `main`, so it created and pushed
+`claude/learn-article-nightly-20260926-010620`; publish ran from the same session via the
+Supabase connector's `execute_sql`, so both the commit and the publish land together this time.
+Next queue row: `picky-eater-toddler` (cluster, NL, `moeilijke-eter`).
+
