@@ -137,3 +137,25 @@
     font-family: var(--font-sans), sans-serif;
   }
 }
+
+/* Learn FAQ accordion (components/learn-faq.tsx).
+   Animates the native <details> without any JavaScript. ::details-content is the anonymous box
+   holding everything after the <summary>; interpolate-size lets it transition to and from the
+   keyword `auto`, and content-visibility with allow-discrete keeps the answer painted while it
+   collapses. A browser without ::details-content opens instantly, which is what it did before,
+   and the "+" still rotates everywhere. */
+.faq-card {
+  interpolate-size: allow-keywords;
+}
+.faq-card::details-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 220ms ease, content-visibility 220ms allow-discrete;
+}
+.faq-card[open]::details-content {
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-card::details-content { transition: none; }
+  .faq-card summary > span:last-child { transition: none; }
+}

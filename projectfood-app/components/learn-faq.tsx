@@ -4,6 +4,10 @@ type FaqItem = { question: string; answer: string }
  * The visible FAQ at the bottom of an article. Native <details>/<summary>: server-rendered,
  * keyboard and screen-reader accessible, no JavaScript, and the answers are in the DOM, which
  * is what lets the FAQPage JSON-LD describe visible content.
+ *
+ * The padding lives on the <summary>, not the <details>, so the whole closed card is the hit
+ * area rather than just the line of text. The open and close animation is the `.faq-card` rule
+ * in globals.css.
  */
 export function LearnFaq({ title, items }: { title: string; items: FaqItem[] }) {
   if (items.length === 0) return null
@@ -13,8 +17,8 @@ export function LearnFaq({ title, items }: { title: string; items: FaqItem[] }) 
         <h2 className="text-2xl font-extrabold text-[#1F1B16] mb-6">{title}</h2>
         <div className="flex flex-col gap-3">
           {items.map((item) => (
-            <details key={item.question} className="group bg-[#F4EFE8] rounded-[18px] px-6 py-4">
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden font-bold text-[#1F1B16]">
+            <details key={item.question} className="faq-card group bg-[#F4EFE8] rounded-[18px]">
+              <summary className="flex items-center justify-between gap-4 px-6 py-4 rounded-[18px] cursor-pointer list-none [&::-webkit-details-marker]:hidden font-bold text-[#1F1B16]">
                 <span>{item.question}</span>
                 <span
                   aria-hidden="true"
@@ -23,7 +27,7 @@ export function LearnFaq({ title, items }: { title: string; items: FaqItem[] }) 
                   +
                 </span>
               </summary>
-              <p className="mt-3 text-[#6B645C] leading-relaxed">{item.answer}</p>
+              <p className="px-6 pb-4 text-[#6B645C] leading-relaxed">{item.answer}</p>
             </details>
           ))}
         </div>
