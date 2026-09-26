@@ -580,3 +580,19 @@ normal growth curve and no completely missing group. Sections for the smallest q
 child who eats only pasta and bread, and whether a child grows out of it.
 The pillar's announcement sentence for this cluster became a link, so `alles-leren-eten` now
 links three of its seven planned NL clusters. Queue: 5 of 17 done, 12 left.
+
+## [2026-09-26] build | learn: peuter-eet-geen-groente (nl), run by hand
+Fourth NL cluster, `toddler-wont-eat-vegetables`: 1,048 words, 6 FAQ entries, meta_title 46,
+meta_description 131, two citations (Dovey 2008, Wardle 2003). One accepted warning, `related`
+points at `vegetables-kids-will-eat`, which is the next queue row. The page answers "hoeveel
+groente moet een peuter eten" without inventing a number: the daily amounts live at the
+Voedingscentrum, and while a child is still learning the useful unit is the taste, not the gram.
+Its own angle is texture over flavour, that raw and cooked carrot are two different products to
+a toddler, and that a toddler who stops eating vegetables is usually meeting them for the first
+time rather than changing their mind, because purée hid them.
+Step 4 used the fallback path added earlier today: the stored `pillar_mention` no longer existed
+verbatim, because the run on 2026-09-25 split that sentence in two when it linked
+`peuter-wil-niet-eten`. The remaining half was found and turned into the link, which is what the
+new rule describes. Also filed the YAML trap that cost time in both of today's runs: a
+front-matter value containing a colon and a space has to be quoted.
+Queue: 6 of 17 done, 11 left.

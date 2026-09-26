@@ -96,6 +96,10 @@ projectfood-app/content/learn/<internal>/article.json     type, pillar, display_
 projectfood-app/content/learn/<internal>/<locale>.md      front matter + body
 ```
 
+YAML trap, hit twice: any front-matter value containing a colon followed by a space (`een
+grens: hoeveel`, `naar achteren: dorst`) must be wrapped in double quotes, or the file fails to
+parse and `learn:check` dies before it lints anything. Colons inside the body are fine.
+
 Front matter keys: `slug`, `title`, `subtitle`, `meta_title`, `meta_description`, `keywords`
 (list), `related` (two internal slugs), `faq` (list of `q` / `a`), `citations` (list), optional
 `draft: true` (kept in git, never uploaded). Body starts after the closing `---`, no H1 (the

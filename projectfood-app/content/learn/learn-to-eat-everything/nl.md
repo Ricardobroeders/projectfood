@@ -101,7 +101,7 @@ Daar hoort één vraag bij, na het eten of aan het eind van de dag: wat heb je v
 
 Rond de 1 tot 2 jaar vertraagt de groei en daarmee de honger. Een peuter die ineens weinig eet, of een paar dagen bijna niets, doet meestal niets anders dan luisteren naar zijn lichaam. Tel de week, niet de maaltijd: over zeven dagen komt het meestal goed uit.
 
-Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd. Wat niet helpt: dwingen, afleiden met een scherm, of het bord een uur laten staan. Waarom dat gebeurt en wat er wel en niet helpt, lees je in het artikel over [peuter wil niet eten](/nl/leer/alles-leren-eten/peuter-wil-niet-eten). De vraag wat je doet als je peuter juist groente en fruit laat staan, krijgt een eigen artikel.
+Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd. Wat niet helpt: dwingen, afleiden met een scherm, of het bord een uur laten staan. Waarom dat gebeurt en wat er wel en niet helpt, lees je in het artikel over [peuter wil niet eten](/nl/leer/alles-leren-eten/peuter-wil-niet-eten). Wat je doet als je peuter juist groente en fruit laat staan, staat in het artikel over [peuter eet geen groente](/nl/leer/alles-leren-eten/peuter-eet-geen-groente).
 
 ## Moeilijke eter of gewoon een kind
 
