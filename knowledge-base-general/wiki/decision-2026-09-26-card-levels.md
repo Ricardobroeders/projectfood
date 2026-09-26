@@ -32,9 +32,22 @@ Thresholds live in one place, `projectfood-mobile/src/features/plants/cardLevel.
 is a line there plus a cup render; the screens follow.
 
 Ricardo is drawing **gold renders of the plants themselves**, so the plant turns gold once a card
-reaches gold. The plumbing shipped the same day: `PlantImage` takes a `gold` flag, `build-assets`
+reaches gold, "this way we could satisfy the customer that they will see more and more gold plants
+occurring in their screen if they keep eating". The plumbing shipped the same day: `build-assets`
 pulls the renders from the bucket folder `food-images/gold/<file>` at the plant's own file name, and
-a plant without one keeps its normal render, so the set can grow one file at a time.
+a plant without one keeps its normal render, so the set can grow one file at a time (Ricardo is
+working most-eaten first, so nobody should notice the gap; yoghurt is in).
+
+**The ground goes gold with the render**, on every surface a plant appears on: the Log shelf, the
+disc the member menu grows from, today's chips on Home, the card window front and back, the
+per-member card tiles under Unlocks and the plant page hero. `useGoldPlants` answers "has anyone at
+the table taken this to gold" from the taste counts already in the cache, so no surface drills the
+flag through props; the Unlocks tiles stay per member because that screen is already scoped to one.
+The ground is its own token, `colors.goldSoft` `#F9DE72`, not the existing `colors.gold` (the metal)
+and not the marigold accent's soft tint, which is the same pale gold and would have made a gold
+plant look like any accent surface; it was picked against the real render at three values, deep
+enough to read as gold next to the pastel category tints and apart from the whole-grain tint, pale
+enough for the gold render to stand on.
 
 ## Rationale
 The rungs are placed against the PWA's churn curve so that one lands **before** each moment people
