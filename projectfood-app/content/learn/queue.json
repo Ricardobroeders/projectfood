@@ -9,9 +9,19 @@
       "slug": "peuter-wil-niet-eten",
       "display_order": 1,
       "title_hint": "Peuter wil niet eten: wat werkt, wat averechts werkt en wanneer je hulp zoekt",
-      "keywords": ["peuter wil niet eten", "peuter die niet wil eten", "mijn peuter wil niet eten", "peuter weigert te eten", "peuter 2 jaar wil niet eten", "peuter eet geen warm eten"],
+      "keywords": [
+        "peuter wil niet eten",
+        "peuter die niet wil eten",
+        "mijn peuter wil niet eten",
+        "peuter weigert te eten",
+        "peuter 2 jaar wil niet eten",
+        "peuter eet geen warm eten"
+      ],
       "topic": "Why toddlers stop eating (growth slows at 1 to 2, autonomy at 2 to 3, fear of new foods), what works (fixed meal moments, small portions, no snacks or drinks right before, eat together, count the week not the meal), what backfires (forcing, the clean plate, dessert as a bribe, screens, cooking twice), the red flags that mean the consultatiebureau or huisarts.",
-      "related": ["how-many-times-to-try-a-food", "picky-eater-toddler"],
+      "related": [
+        "how-many-times-to-try-a-food",
+        "picky-eater-toddler"
+      ],
       "pillar_mention": "Dit onderwerp krijgt zijn eigen artikel, net als de vraag wat je doet als je peuter juist groente en fruit laat staan.",
       "done": "2026-09-25"
     },
@@ -23,9 +33,18 @@
       "slug": "hoe-vaak-proeven",
       "display_order": 2,
       "title_hint": "Hoe vaak moet een kind iets proeven voordat het lekker wordt?",
-      "keywords": ["hoe vaak moet een kind iets proeven", "leren lusten plan", "proeven kinderen", "10x proeven schema", "beloningskaart eten"],
+      "keywords": [
+        "hoe vaak moet een kind iets proeven",
+        "leren lusten plan",
+        "proeven kinderen",
+        "10x proeven schema",
+        "beloningskaart eten"
+      ],
       "topic": "The number honestly (8 to 15, sometimes more; a lick counts, a bite that comes back out counts), why it works (Birch 1982, Wardle 2003), the Voedingscentrum Leren-lusten-plan at home step by step, a sticker or a tick for tasting and never for a clean plate (Cooke 2011, and the Voedingscentrum's reservation, said honestly), how to count without it becoming a project (a chart on the fridge, the app as the counter), what to do when the count stalls.",
-      "related": ["toddler-wont-eat", "food-neophobia"],
+      "related": [
+        "toddler-wont-eat",
+        "food-neophobia"
+      ],
       "pillar_mention": "Hoe je telt zonder dat het een project wordt, en waarom de teller belangrijker is dan de portie, krijgt een eigen artikel, met een proefkaart om op de koelkast te hangen.",
       "done": "2026-09-26"
     },
@@ -37,9 +56,18 @@
       "slug": "moeilijke-eter",
       "display_order": 3,
       "title_hint": "Moeilijke eter: wat het is, wat het niet is en hoe je het bord langzaam breder maakt",
-      "keywords": ["moeilijke eter", "peuter moeilijke eter", "moeilijke eters kinderen", "tips voor moeilijke eters", "moeilijke eter test"],
+      "keywords": [
+        "moeilijke eter",
+        "peuter moeilijke eter",
+        "moeilijke eters kinderen",
+        "tips voor moeilijke eters",
+        "moeilijke eter test"
+      ],
       "topic": "What a \"moeilijke eter\" is and is not (a parent's word, not a diagnosis; normal at 2 to 6 versus the signs that need the consultatiebureau or huisarts: weight, fewer than about 20 foods, whole groups missing, gagging or panic), the causes in parent words, widening the plate one taste at a time (one food at a time, next to a safe food, no pressure), what backfires, the tasting count.",
-      "related": ["toddler-wont-eat", "how-many-times-to-try-a-food"],
+      "related": [
+        "toddler-wont-eat",
+        "how-many-times-to-try-a-food"
+      ],
       "pillar_mention": "Wat normaal is en wat niet, komt uitgebreider aan bod in een eigen artikel over de moeilijke eter."
     },
     {
@@ -50,9 +78,18 @@
       "slug": "peuter-eet-geen-groente",
       "display_order": 4,
       "title_hint": "Peuter eet geen groente: portie, textuur, de dip rond twee jaar en wat wel werkt",
-      "keywords": ["peuter eet geen groente", "peuter wil geen groente eten", "peuter groente laten eten", "peuter eet geen groente meer", "peuter eet geen groente en fruit"],
+      "keywords": [
+        "peuter eet geen groente",
+        "peuter wil geen groente eten",
+        "peuter groente laten eten",
+        "peuter eet geen groente meer",
+        "peuter eet geen groente en fruit"
+      ],
       "topic": "Toddler and vegetables: portions (a piece, not a scoop), textures (raw versus cooked, crunchy versus soft), the dip around two years (a toddler who ate everything and stops), which vegetables to start with, fruit as a section (a toddler who also refuses fruit), what works at the table, when to ask the consultatiebureau.",
-      "related": ["vegetables-kids-will-eat", "toddler-wont-eat"],
+      "related": [
+        "vegetables-kids-will-eat",
+        "toddler-wont-eat"
+      ],
       "pillar_mention": "Dit onderwerp krijgt zijn eigen artikel, net als de vraag wat je doet als je peuter juist groente en fruit laat staan."
     },
     {
@@ -63,9 +100,17 @@
       "slug": "welke-groente-vinden-kinderen-lekker",
       "display_order": 5,
       "title_hint": "Welke groente vinden kinderen lekker? De 20 makkelijkste om mee te beginnen",
-      "keywords": ["welke groente vinden kinderen lekker", "groente die kinderen lekker vinden", "lekkere groente voor kinderen", "welke groenten vinden peuters lekker"],
+      "keywords": [
+        "welke groente vinden kinderen lekker",
+        "groente die kinderen lekker vinden",
+        "lekkere groente voor kinderen",
+        "welke groenten vinden peuters lekker"
+      ],
       "topic": "The 20 easiest vegetables to start with (sweet, mild, crunchy: wortel, komkommer, mais, doperwten, paprika, cherrytomaat, zoete aardappel and so on), why children take to them (sweetness, crunch, no bitterness), how to serve each (raw, a dip, roasted), the ones to keep for later (bitter and soft), how the same vegetable changes with the cut and the cooking. Later fed by Project Food tasting data.",
-      "related": ["toddler-wont-eat-vegetables", "hiding-vegetables"],
+      "related": [
+        "toddler-wont-eat-vegetables",
+        "hiding-vegetables"
+      ],
       "pillar_mention": "De lijst met de twintig makkelijkste groenten en hoe je ze op tafel zet, volgt als eigen artikel."
     },
     {
@@ -76,9 +121,17 @@
       "slug": "groente-verstoppen",
       "display_order": 6,
       "title_hint": "Groente verstoppen: mag dat, en de ene regel die het proeven redt",
-      "keywords": ["groente verstoppen", "groente verstoppen in eten", "verstopte groenten", "groente verstoppen peuter"],
+      "keywords": [
+        "groente verstoppen",
+        "groente verstoppen in eten",
+        "verstopte groenten",
+        "groente verstoppen peuter"
+      ],
       "topic": "Hiding feeds the belly, tasting teaches the tongue: do both. Five ways to hide (in the sauce, in the soup, blended, grated into mince, in the smoothie) and the one rule to keep: always one visible piece next to the plate, the tasting piece. Why hiding alone does not teach a child to eat vegetables, and how to combine it with the tasting count.",
-      "related": ["vegetables-kids-will-eat", "how-many-times-to-try-a-food"],
+      "related": [
+        "vegetables-kids-will-eat",
+        "how-many-times-to-try-a-food"
+      ],
       "pillar_mention": "Vijf manieren om te verstoppen en de ene regel om vol te houden, volgen in een eigen artikel."
     },
     {
@@ -89,9 +142,16 @@
       "slug": "voedselneofobie",
       "display_order": 7,
       "title_hint": "Voedselneofobie: normaal tussen 2 en 6, en zo ga je ermee om",
-      "keywords": ["voedselneofobie", "wat is voedselneofobie", "neofobie kinderen"],
+      "keywords": [
+        "voedselneofobie",
+        "wat is voedselneofobie",
+        "neofobie kinderen"
+      ],
       "topic": "Definition in parent words (the reluctance to eat new foods), the ages 2 to 6, why it exists (evolution, autonomy, bitter sensitivity), how it differs from being a moeilijke eter, what helps (repeated exposure, modelling, no pressure, the same food many times), what makes it worse, that it passes for most children (Dovey 2008), when to ask for help.",
-      "related": ["how-many-times-to-try-a-food", "picky-eater-toddler"],
+      "related": [
+        "how-many-times-to-try-a-food",
+        "picky-eater-toddler"
+      ],
       "pillar_mention": "Over de naam en de fase volgt een eigen artikel."
     },
     {
@@ -102,10 +162,17 @@
       "slug": "imparare-a-mangiare-tutto",
       "display_order": 1,
       "title_hint": "Come far mangiare le verdure ai bambini, senza battaglie",
-      "keywords": ["come far mangiare le verdure ai bambini", "verdure per bambini", "bambini che non mangiano verdure", "perché i bambini non mangiano le verdure", "verdure per bambini 2 anni"],
+      "keywords": [
+        "come far mangiare le verdure ai bambini",
+        "verdure per bambini",
+        "bambini che non mangiano verdure",
+        "perché i bambini non mangiano le verdure",
+        "verdure per bambini 2 anni"
+      ],
       "topic": "The playbook: refusal is normal (neofobia, 2 to 6), 8 to 15 assaggi, no pressure, reward the tasting not the plate, eat together, the one question after dinner. Sections: quante volte assaggiare (with the counting idea), premi, verdure nascoste (the stance: hide and always one visible piece), quali verdure piacciono, the two-year dip, quando parlare con il pediatra. One announcement sentence per planned Italian cluster (il bambino non mangia, selettività alimentare, neofobia alimentare) so later runs can link them.",
       "related": [],
-      "pillar_mention": null
+      "pillar_mention": null,
+      "done": "2026-09-26"
     },
     {
       "internal": "toddler-wont-eat",
@@ -115,10 +182,20 @@
       "slug": "il-bambino-non-mangia",
       "display_order": 1,
       "title_hint": "Il bambino non mangia: cosa c'è dietro, cosa funziona e quando chiamare il pediatra",
-      "keywords": ["bambino non mangia psicologia", "bambino improvvisamente non mangia", "bambino 2 anni non mangia più", "bambini che non mangiano", "bambino non vuole mangiare", "quando preoccuparsi se il bambino non mangia"],
+      "keywords": [
+        "bambino non mangia psicologia",
+        "bambino improvvisamente non mangia",
+        "bambino 2 anni non mangia più",
+        "bambini che non mangiano",
+        "bambino non vuole mangiare",
+        "quando preoccuparsi se il bambino non mangia"
+      ],
       "topic": "What is behind a child who stops eating (growth slows at 1 to 2, autonomy at 2 to 3, fear of new foods), what works, what backfires (forzare, finire il piatto, il dolce come premio), counting the week not the meal, the red flags that mean the pediatra.",
-      "related": ["picky-eater-toddler", "food-neophobia"],
-      "pillar_mention": null
+      "related": [
+        "picky-eater-toddler",
+        "food-neophobia"
+      ],
+      "pillar_mention": "Perché un bambino smette di mangiare e che cosa aiuta davvero avrà un articolo dedicato."
     },
     {
       "internal": "picky-eater-toddler",
@@ -128,10 +205,19 @@
       "slug": "selettivita-alimentare",
       "display_order": 2,
       "title_hint": "Selettività alimentare nei bambini: cosa significa, dove sta il confine e come allargare il piatto",
-      "keywords": ["selettività alimentare", "selettività alimentare bambini", "alimentazione selettiva", "alimentazione selettiva cause", "come superare la selettività alimentare"],
+      "keywords": [
+        "selettività alimentare",
+        "selettività alimentare bambini",
+        "alimentazione selettiva",
+        "alimentazione selettiva cause",
+        "come superare la selettività alimentare"
+      ],
       "topic": "What the term means and where the line is (normal at 2 to 6 versus the signs that need the pediatra: weight, fewer than about 20 foods, whole groups missing, gagging or panic; ARFID named once and referred out), the causes in parent words, widening the plate one taste at a time, what backfires, the tasting count.",
-      "related": ["toddler-wont-eat", "food-neophobia"],
-      "pillar_mention": null
+      "related": [
+        "toddler-wont-eat",
+        "food-neophobia"
+      ],
+      "pillar_mention": "Che cosa vuol dire selettività alimentare e dove sta il confine avrà un articolo dedicato."
     },
     {
       "internal": "food-neophobia",
@@ -141,10 +227,17 @@
       "slug": "neofobia-alimentare",
       "display_order": 3,
       "title_hint": "Neofobia alimentare nei bambini: normale tra i 2 e i 6 anni, e come gestirla",
-      "keywords": ["neofobia alimentare", "neofobia alimentare bambini", "neofobia alimentare infantile"],
+      "keywords": [
+        "neofobia alimentare",
+        "neofobia alimentare bambini",
+        "neofobia alimentare infantile"
+      ],
       "topic": "Definition, ages 2 to 6, why (evolution, autonomy, bitter sensitivity), what helps (esposizione ripetuta, modelling, no pressure), what makes it worse, that it passes (Dovey 2008), when to ask the pediatra.",
-      "related": ["picky-eater-toddler", "toddler-wont-eat"],
-      "pillar_mention": null
+      "related": [
+        "picky-eater-toddler",
+        "toddler-wont-eat"
+      ],
+      "pillar_mention": "Il nome di questa fase e come attraversarla avrà un articolo dedicato."
     },
     {
       "internal": "learn-to-eat-everything",
@@ -154,10 +247,17 @@
       "slug": "learn-to-eat-everything",
       "display_order": 1,
       "title_hint": "How to get kids to eat vegetables, without the battle",
-      "keywords": ["how to get kids to eat vegetables", "vegetables for kids", "why do kids hate vegetables", "why do kids not like vegetables", "kids vegetables"],
+      "keywords": [
+        "how to get kids to eat vegetables",
+        "vegetables for kids",
+        "why do kids hate vegetables",
+        "why do kids not like vegetables",
+        "kids vegetables"
+      ],
       "topic": "The playbook: refusal is normal (neophobia, 2 to 6), 8 to 15 tastes, no pressure, reward the tasting not the plate, eat together, the one question after dinner. Sections: hiding vegetables (the stance: hide and always one visible piece), punishing and forcing (don't, and why), toddlers and vegetables, when to talk to your doctor. One announcement sentence per planned English cluster (vegetables kids will eat, how many times to try a food, food neophobia, toddler won't eat, picky eater toddler) so later runs can link them. British spelling; 'your doctor' as the referral word.",
       "related": [],
-      "pillar_mention": null
+      "pillar_mention": null,
+      "done": "2026-09-26"
     },
     {
       "internal": "vegetables-kids-will-eat",
@@ -167,10 +267,19 @@
       "slug": "vegetables-kids-will-eat",
       "display_order": 1,
       "title_hint": "Vegetables kids will eat: the 20 easiest to start with",
-      "keywords": ["vegetables kids will eat", "kid friendly vegetables", "best vegetables for kids", "vegetables kids like", "kids favorite vegetables"],
+      "keywords": [
+        "vegetables kids will eat",
+        "kid friendly vegetables",
+        "best vegetables for kids",
+        "vegetables kids like",
+        "kids favorite vegetables"
+      ],
       "topic": "The 20 easiest vegetables to start with (sweet, mild, crunchy), why kids take to them, how to serve each (raw, a dip, roasted), the ones to keep for later, how the same vegetable changes with the cut and the cooking. Later the Project Food tasting data.",
-      "related": ["how-many-times-to-try-a-food", "toddler-wont-eat"],
-      "pillar_mention": null
+      "related": [
+        "how-many-times-to-try-a-food",
+        "toddler-wont-eat"
+      ],
+      "pillar_mention": "The 20 easiest vegetables to start with, and how to serve each one, gets its own article."
     },
     {
       "internal": "how-many-times-to-try-a-food",
@@ -180,10 +289,18 @@
       "slug": "how-many-times-to-try-a-food",
       "display_order": 2,
       "title_hint": "How many times does a child need to try a new food? The 10 to 15 rule, explained honestly",
-      "keywords": ["repeated exposure 10 15 times picky eating", "how many times does a child need to try a new food", "how to get a picky eater to try new foods", "cdc picky eating repeated exposure new foods"],
+      "keywords": [
+        "repeated exposure 10 15 times picky eating",
+        "how many times does a child need to try a new food",
+        "how to get a picky eater to try new foods",
+        "cdc picky eating repeated exposure new foods"
+      ],
       "topic": "The AAP and CDC number explained honestly (AAP 'as many as 10 or more', CDC '8 to 10', trials used 12 to 14; we say 8 to 15, sometimes more; a lick counts), what an exposure is, why it works (Birch 1982, Wardle 2003, Cooke 2011), how to count tastes with a chart and the app, a sticker for the taste and never for the plate, what to do when the count stalls.",
-      "related": ["vegetables-kids-will-eat", "food-neophobia"],
-      "pillar_mention": null
+      "related": [
+        "vegetables-kids-will-eat",
+        "food-neophobia"
+      ],
+      "pillar_mention": "How to count tastes without turning it into a project gets its own article."
     },
     {
       "internal": "food-neophobia",
@@ -193,10 +310,17 @@
       "slug": "food-neophobia",
       "display_order": 3,
       "title_hint": "Food neophobia in children: normal from 2 to 6, and what helps",
-      "keywords": ["food neophobia", "food neophobia in childhood", "fear of new foods children"],
+      "keywords": [
+        "food neophobia",
+        "food neophobia in childhood",
+        "fear of new foods children"
+      ],
       "topic": "Definition in parent words, ages 2 to 6, why it exists, how it differs from picky eating, what helps (repeated exposure, modelling, no pressure), what makes it worse, that it passes (Dovey 2008), when to talk to your doctor.",
-      "related": ["how-many-times-to-try-a-food", "picky-eater-toddler"],
-      "pillar_mention": null
+      "related": [
+        "how-many-times-to-try-a-food",
+        "picky-eater-toddler"
+      ],
+      "pillar_mention": "The name for this phase and how to get through it gets its own article."
     },
     {
       "internal": "toddler-wont-eat",
@@ -206,10 +330,19 @@
       "slug": "toddler-wont-eat",
       "display_order": 4,
       "title_hint": "Toddler won't eat: why it happens, what works and when to call your doctor",
-      "keywords": ["toddler won't eat", "my toddler won't eat", "why won't my toddler eat", "toddler won't eat anything", "what to do when toddler won't eat"],
+      "keywords": [
+        "toddler won't eat",
+        "my toddler won't eat",
+        "why won't my toddler eat",
+        "toddler won't eat anything",
+        "what to do when toddler won't eat"
+      ],
       "topic": "Why toddlers stop eating (growth slows, autonomy, neophobia), what works, what backfires (forcing, clean plate, dessert as bribe, screens), counting the week not the meal, the red flags that mean your doctor.",
-      "related": ["picky-eater-toddler", "how-many-times-to-try-a-food"],
-      "pillar_mention": null
+      "related": [
+        "picky-eater-toddler",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": "Why a toddler stops eating and what actually helps gets its own article."
     },
     {
       "internal": "picky-eater-toddler",
@@ -219,10 +352,20 @@
       "slug": "picky-eater-toddler",
       "display_order": 5,
       "title_hint": "Picky eater toddler: what is normal, what is not, and how to widen the plate",
-      "keywords": ["picky eater toddler", "how to get a picky toddler to eat", "how to deal with picky eater toddler", "2 year old picky eater", "picky eater tips", "when does picky eating stop"],
+      "keywords": [
+        "picky eater toddler",
+        "how to get a picky toddler to eat",
+        "how to deal with picky eater toddler",
+        "2 year old picky eater",
+        "picky eater tips",
+        "when does picky eating stop"
+      ],
       "topic": "What is normal picky eating and what is not (ARFID named once and referred out; weight, fewer than about 20 foods, whole groups missing, gagging or panic), causes in parent words, widening the plate one taste at a time, what backfires, when it stops. The search phrase is in the title; the body never labels the child.",
-      "related": ["toddler-wont-eat", "food-neophobia"],
-      "pillar_mention": null
+      "related": [
+        "toddler-wont-eat",
+        "food-neophobia"
+      ],
+      "pillar_mention": "What counts as ordinary fussiness and what does not gets its own article."
     }
   ]
 }
