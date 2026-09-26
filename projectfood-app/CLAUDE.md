@@ -81,6 +81,7 @@ Tokens live in `app/globals.css`. Key values:
 - Accent: `#F5C518` (yellow), pressed: `#F59A0E`, soft: `#FBEDB5`
 - Bg: `#FFFFFF` (bg1), `#F4EFE8` (bg2 warm cream)
 - Ink: `#1F1B16` (fg1), `#6B645C` (fg2), `#A39B91` (fg3)
-- Borderless — no visible borders, soft shadows instead
+- Borderless and shadowless: separate with the warm grey surface (#F4EFE8) on white, not with
+  borders or drop shadows (Ricardo, 2026-09-26; the marketing site carries no box-shadow)
 - Radii: sm 12px, md 18px, lg 24px, xl 32px
 - Category colors in `lib/cats.ts` — use DB enum values (`vegetable` not `veg`)

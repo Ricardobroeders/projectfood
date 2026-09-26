@@ -107,7 +107,7 @@ Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor
 
 "Moeilijke eter" is een woord van ouders, niet van artsen. De meeste kinderen die zo genoemd worden, eten twintig tot dertig verschillende dingen, groeien normaal en zitten in de fase die hierboven staat. Ze hebben tijd en herhaling nodig, geen etiket.
 
-Er is wel een grens. Neem contact op met het consultatiebureau of de huisarts als je kind afvalt of niet groeit, als het minder dan een stuk of twintig verschillende dingen eet, als hele groepen ontbreken (geen enkele groente, geen enkel fruit), als het kokhalst of in paniek raakt bij nieuw eten, of als de zorg jou als ouder boven het hoofd groeit. Dat is een andere situatie dan deze pagina beschrijft, en daar is hulp voor. Wat normaal is en wat niet, komt uitgebreider aan bod in een eigen artikel over de moeilijke eter.
+Er is wel een grens. Neem contact op met het consultatiebureau of de huisarts als je kind afvalt of niet groeit, als het minder dan een stuk of twintig verschillende dingen eet, als hele groepen ontbreken (geen enkele groente, geen enkel fruit), als het kokhalst of in paniek raakt bij nieuw eten, of als de zorg jou als ouder boven het hoofd groeit. Dat is een andere situatie dan deze pagina beschrijft, en daar is hulp voor. Wat normaal is en wat niet, staat uitgebreider in het artikel over de [moeilijke eter](/nl/leer/alles-leren-eten/moeilijke-eter).
 
 ## Welke groente werkt het eerst
 

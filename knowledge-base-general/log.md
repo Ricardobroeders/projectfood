@@ -569,3 +569,14 @@ Published together with the Dutch pillar, which now carries `it` and `en` altern
 pillar URLs cross-link through hreflang with `x-default` on the English one, the sitemap holds
 32 entries, and the Italian and English hubs list a real article for the first time. Queue: 4 of
 17 done, 13 left, finishing about 2026-10-11.
+
+## [2026-09-26] build | learn: moeilijke-eter (nl), run by hand
+Third NL cluster of pillar 1, `picky-eater-toddler`, slug `moeilijke-eter`: 1,096 words, 6 FAQ
+entries, meta_title 48, meta_description 141, two citations (Dovey 2008, Wardle 2003).
+`learn:check` 0 errors, 0 warnings. The angle the page-1 results miss is the honest one: the
+term is a parent's word and not a diagnosis, there is no test behind "de moeilijke eter test"
+(20 searches a month), and the line that does exist is countable, twenty different products, a
+normal growth curve and no completely missing group. Sections for the smallest queries too, the
+child who eats only pasta and bread, and whether a child grows out of it.
+The pillar's announcement sentence for this cluster became a link, so `alles-leren-eten` now
+links three of its seven planned NL clusters. Queue: 5 of 17 done, 12 left.
