@@ -17,7 +17,7 @@ function memoryClient() {
 }
 
 const input =
-  'w-full h-12 px-4 rounded-2xl bg-white shadow-sm text-[#1F1B16] placeholder:text-[#D4CEC7] outline-none focus:ring-2 focus:ring-[#F5C518]'
+  'w-full h-12 px-4 rounded-2xl bg-white text-[#1F1B16] placeholder:text-[#D4CEC7] outline-none focus:ring-2 focus:ring-[#F5C518]'
 const primary =
   'w-full h-12 rounded-full bg-[#F5C518] text-[#1F1B16] text-base font-semibold hover:bg-[#F59A0E] disabled:opacity-50 transition-colors'
 const secondary = 'w-full h-12 rounded-full text-[#6B645C] text-base font-semibold hover:text-[#1F1B16] transition-colors'

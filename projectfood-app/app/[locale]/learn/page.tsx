@@ -76,8 +76,7 @@ export default async function LearnHubPage({
                 <Link
                   key={pillar.slug}
                   href={`${learnBase}/${pillar.slug}`}
-                  className="group flex items-start gap-5 bg-white rounded-[24px] px-7 py-6 transition-shadow hover:shadow-md"
-                  style={{ boxShadow: '0 2px 12px rgba(31,27,22,0.07)' }}
+                  className="group flex items-start gap-5 bg-[#F4EFE8] hover:bg-[#E8E0D5] rounded-[24px] px-7 py-6 transition-colors"
                 >
                   {pillar.emoji && (
                     <span className="text-4xl shrink-0 mt-0.5">{pillar.emoji}</span>

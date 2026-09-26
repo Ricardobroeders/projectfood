@@ -395,7 +395,6 @@
       "byAuthor": "Door {name}",
       "citations": "Bronnen & referenties",
       "publishedOn": "Gepubliceerd op {date}",
-      "articleCount": "{count} artikelen in dit cluster",
       "openApp": "Begin met bijhouden"
     }
   },

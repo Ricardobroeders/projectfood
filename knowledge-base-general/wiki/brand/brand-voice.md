@@ -128,6 +128,7 @@ The kid-visible register adds one thing: the words themselves may be playful.
 | ! | Punctuation rule | A full stop |
 | emoji in copy | Design rule | None (an inline plant emoji is an image fallback, not voice) |
 | proven, guaranteed, 100% | A claim | "in the studies", cited |
+| pillar, cluster, hub, funnel, keyword | Our words for how the site is built, not the reader's | "Related articles", or name the topic |
 
 ---
 

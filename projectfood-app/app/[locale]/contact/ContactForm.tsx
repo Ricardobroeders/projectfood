@@ -41,7 +41,7 @@ export function ContactForm() {
         onChange={(e) => setName(e.target.value)}
         placeholder={t('namePlaceholder')}
         required
-        className="w-full h-12 px-4 rounded-2xl bg-white shadow-sm text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50"
+        className="w-full h-12 px-4 rounded-2xl bg-[#F4EFE8] text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50"
       />
       <input
         type="email"
@@ -49,7 +49,7 @@ export function ContactForm() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder={t('emailPlaceholder')}
         required
-        className="w-full h-12 px-4 rounded-2xl bg-white shadow-sm text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50"
+        className="w-full h-12 px-4 rounded-2xl bg-[#F4EFE8] text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50"
       />
       <textarea
         value={message}
@@ -57,7 +57,7 @@ export function ContactForm() {
         placeholder={t('messagePlaceholder')}
         required
         rows={5}
-        className="w-full px-4 py-3 rounded-2xl bg-white shadow-sm text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50 resize-none"
+        className="w-full px-4 py-3 rounded-2xl bg-[#F4EFE8] text-[15px] text-[#1F1B16] placeholder:text-[#A39B91] outline-none focus:ring-2 focus:ring-[#F5C518]/50 resize-none"
       />
       {status === 'error' && (
         <p className="text-sm text-red-500 text-center">{t('error')}</p>

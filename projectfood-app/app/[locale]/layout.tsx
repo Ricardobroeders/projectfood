@@ -45,7 +45,6 @@ export default async function MarketingLayout({
         labels={{
           home: t('nav.home'),
           about: t('nav.about'),
-          recipes: t('nav.recipes'),
           contact: t('nav.contact'),
           learn: t('nav.learn'),
           openApp: t('nav.openApp'),
@@ -59,18 +58,17 @@ export default async function MarketingLayout({
       <footer className="bg-[#F4EFE8] py-12 mt-16">
         <div className="max-w-5xl mx-auto px-5">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Image
-                  src="/images/logo.png"
-                  alt="Project Food"
-                  width={36}
-                  height={36}
-                  unoptimized
-                  className="shrink-0 rounded-xs"
-                />
-                <span className="font-bold text-[#1F1B16]">Project Food</span>
-              </div>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <Image
+                src="/images/logo.png"
+                alt="Project Food"
+                width={36}
+                height={36}
+                unoptimized
+                className="shrink-0 rounded-xs"
+              />
+              <span className="font-bold text-[#1F1B16]">Project Food</span>
+              <span aria-hidden="true" className="text-[#A39B91]">&middot;</span>
               <p className="text-sm text-[#6B645C]">{t('footer.tagline')}</p>
             </div>
             <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#6B645C]">

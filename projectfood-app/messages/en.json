@@ -395,7 +395,6 @@
       "byAuthor": "By {name}",
       "citations": "Sources & citations",
       "publishedOn": "Published {date}",
-      "articleCount": "{count} articles in this cluster",
       "openApp": "Start tracking your plants"
     }
   },

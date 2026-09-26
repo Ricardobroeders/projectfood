@@ -20,8 +20,7 @@ export function LearnRelated({ title, items, learnBase, readingTimeLabel }: Prop
             <Link
               key={item.internal_slug}
               href={item.articleSlug ? `${learnBase}/${item.pillarSlug}/${item.articleSlug}` : `${learnBase}/${item.pillarSlug}`}
-              className="group flex items-center justify-between bg-white rounded-[18px] px-6 py-4 transition-shadow hover:shadow-md"
-              style={{ boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}
+              className="group flex items-center justify-between bg-white rounded-[18px] px-6 py-4 transition-colors"
             >
               <div>
                 <p className="font-bold text-[#1F1B16] group-hover:text-[#F59A0E] transition-colors">

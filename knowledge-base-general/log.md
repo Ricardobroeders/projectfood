@@ -534,3 +534,17 @@ rungs following the metals by name in both the app and the notification mirror, 
 the gold plant renders Ricardo is drawing (bucket folder `food-images/gold/`, missing ones fall back
 to the normal render). New page [[decision-2026-09-26-card-levels]]; rows 5 and 9, the parking lot
 and item 19 updated.
+
+## [2026-09-26] fix | Website: our jargon out of the copy, drop shadows out of the design
+Four things Ricardo caught while reading the live pillar page. The heading above the article
+list said "2 artikelen in dit cluster": pillar and cluster are our words for how the site is
+built, not the reader's. It now uses the `relatedArticles` string that already existed in all
+three locales, so the pillar and the article pages say the same thing. `brand-voice.md` gained
+an Avoid row for pillar, cluster, hub, funnel and keyword so it does not come back. Recipes left
+the menu, since the page is a placeholder and not where the focus is; the page itself still
+resolves and is not in the sitemap, so nothing 404s. In the footer the tagline moved up next to
+the name. And every drop shadow is gone from the marketing site, the rule being grey surfaces on
+white: the learn hub cards became grey cards instead of white cards floating on white, the
+article cards on the grey sections simply lost their shadow, the contact inputs use the grey
+input token, and the header's hairline is a border now instead of a 1px shadow. The legacy PWA
+under `app/(app)/` still has shadows and was left alone.

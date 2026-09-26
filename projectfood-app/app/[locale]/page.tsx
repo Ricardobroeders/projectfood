@@ -115,7 +115,7 @@ export default async function MarketingHomePage({
             </Link>
             <Link
               href={`/${locale}/about`}
-              className="inline-block bg-white text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors shadow-sm hover:shadow-md"
+              className="inline-block bg-white text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors hover:text-[#F59A0E]"
             >
               {t('whyWeDoThis')}
             </Link>

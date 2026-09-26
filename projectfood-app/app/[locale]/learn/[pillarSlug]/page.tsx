@@ -137,20 +137,19 @@ export default async function PillarPage({
         </section>
       )}
 
-      {/* Cluster articles */}
+      {/* Related articles: the clusters under this pillar */}
       {clusters.length > 0 && (
         <section className="bg-[#F4EFE8] py-16 px-5">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-2xl font-extrabold text-[#1F1B16] mb-6">
-              {t('articleCount', { count: clusters.length })}
+              {t('relatedArticles')}
             </h2>
             <div className="flex flex-col gap-4">
               {clusters.map((cluster) => (
                 <Link
                   key={cluster.slug}
                   href={`${learnBase}/${pillarSlug}/${cluster.slug}`}
-                  className="group flex items-center justify-between bg-white rounded-[18px] px-6 py-4 transition-shadow hover:shadow-md"
-                  style={{ boxShadow: '0 2px 8px rgba(31,27,22,0.06)' }}
+                  className="group flex items-center justify-between bg-white rounded-[18px] px-6 py-4 transition-colors"
                 >
                   <div>
                     <p className="font-bold text-[#1F1B16] group-hover:text-[#F59A0E] transition-colors">

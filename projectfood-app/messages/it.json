@@ -395,7 +395,6 @@
       "byAuthor": "Di {name}",
       "citations": "Fonti e riferimenti",
       "publishedOn": "Pubblicato il {date}",
-      "articleCount": "{count} articoli in questo cluster",
       "openApp": "Inizia a tracciare"
     }
   },

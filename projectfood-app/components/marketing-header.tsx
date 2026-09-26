@@ -11,7 +11,6 @@ type Props = {
   labels: {
     home: string
     about: string
-    recipes: string
     contact: string
     learn: string
     openApp: string
@@ -24,8 +23,7 @@ export function MarketingHeader({ locale, labels }: Props) {
   return (
     <>
       <header
-        className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm"
-        style={{ boxShadow: '0 1px 0 rgba(31,27,22,0.06)' }}
+        className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-[#F4EFE8]"
       >
         <div className="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between">
           {/* Logo */}
@@ -58,12 +56,6 @@ export function MarketingHeader({ locale, labels }: Props) {
               className="hover:text-[#1F1B16] transition-colors"
             >
               {labels.about}
-            </Link>
-            <Link
-              href={getLocalizedHref('/recipes', locale)}
-              className="hover:text-[#1F1B16] transition-colors"
-            >
-              {labels.recipes}
             </Link>
             <Link
               href={getLocalizedHref('/contact', locale)}
@@ -137,13 +129,6 @@ export function MarketingHeader({ locale, labels }: Props) {
               onClick={() => setOpen(false)}
             >
               {labels.contact}
-            </Link>
-            <Link
-              href={getLocalizedHref('/recipes', locale)}
-              className="text-xl font-semibold text-[#1F1B16] py-4 border-b border-[#F4EFE8]"
-              onClick={() => setOpen(false)}
-            >
-              {labels.recipes}
             </Link>
           </nav>
 
