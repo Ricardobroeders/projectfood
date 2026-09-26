@@ -630,3 +630,21 @@ technique where hiding and tasting do not work against each other.
 The app paragraph makes the same point from the product side: what went into the sauce does not
 count towards a card, and that is deliberate.
 Queue: 8 of 17 done, 9 left. NL has only `voedselneofobie` remaining.
+
+## [2026-09-26] build | learn: voedselneofobie (nl), the Dutch set of pillar 1 is complete
+Seventh and last NL cluster, `food-neophobia`: 1,176 words, 6 FAQ entries, meta_title 49,
+meta_description 147, three citations (Dovey 2008, Wardle 2003, Birch 1982). Zero errors, zero
+warnings. Lowest measured volume of the set at 30 a month, and the most referenced page in it:
+every other Dutch article leans on this term, so it had to be the clearest. The first draft came
+in at 956 words and gained two sections that the keyword map asked for and the draft had
+skipped, what it looks like at the table (refusal on sight, food that must not touch, the same
+plate and the same cut) and whether it can be prevented (the phase no, its length yes).
+The honest answer on "voedselneofobie behandeling" is that there is nothing to treat, because it
+is a developmental phase and not a condition, with the referral line for the situations that are
+something else.
+With this the Dutch pillar links all seven of its clusters and the NL half of pillar 1 is
+finished: pillar plus `peuter-wil-niet-eten`, `hoe-vaak-proeven`, `moeilijke-eter`,
+`peuter-eet-geen-groente`, `welke-groente-vinden-kinderen-lekker`, `groente-verstoppen` and
+`voedselneofobie`. Queue: 9 of 17 done, 8 left, all Italian and English. Next row is the Italian
+`il-bambino-non-mangia`, whose `pillar_mention` was recorded this morning when the Italian
+pillar was written.

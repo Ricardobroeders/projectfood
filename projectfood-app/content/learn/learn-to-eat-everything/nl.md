@@ -51,7 +51,7 @@ Dit is het overzicht: waarom kinderen groente afwijzen, het getal dat alles vera
 
 Drie dingen spelen tegelijk. Ten eerste smaak: veel groente is licht bitter, en kinderen proeven bitter sterker dan volwassenen. Ten tweede nieuwheid: rond het tweede jaar worden kinderen voorzichtig met alles wat ze niet kennen, ook op hun bord. Dat heet voedselneofobie, het is normaal tussen de 2 en 6 jaar en het gaat bij de meeste kinderen vanzelf over (Dovey, 2008). Ten derde autonomie: een peuter ontdekt dat nee zeggen werkt, en het bord is een van de weinige plekken waar dat nee meteen iets doet.
 
-Geen van de drie is een teken dat je iets fout doet. Het is de leeftijd. Wat je wel kunt doen, is het proeven makkelijker maken en de strijd eruit halen. Over de naam en de fase volgt een eigen artikel.
+Geen van de drie is een teken dat je iets fout doet. Het is de leeftijd. Wat je wel kunt doen, is het proeven makkelijker maken en de strijd eruit halen. Over de naam en de fase gaat het artikel over [voedselneofobie](/nl/leer/alles-leren-eten/voedselneofobie).
 
 ## Het getal dat alles verandert: 8 tot 15 keer proeven
 
