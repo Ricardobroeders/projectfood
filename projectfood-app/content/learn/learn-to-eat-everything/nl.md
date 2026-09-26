@@ -59,7 +59,7 @@ Kinderen leren iets lusten door het te proeven, niet door erover te praten. In e
 
 De vuistregel die daaruit volgt: 8 tot 15 keer proeven, soms vaker. Een likje telt. Een hapje dat weer uitgaat telt ook. Het gaat om het contact met de smaak, niet om de hoeveelheid. De meeste ouders stoppen na drie keer, precies op het moment dat het begint te werken.
 
-Hoe je telt zonder dat het een project wordt, en waarom de teller belangrijker is dan de portie, krijgt een eigen artikel, met een proefkaart om op de koelkast te hangen.
+Hoe je telt zonder dat het een project wordt, en waarom de teller belangrijker is dan de portie, lees je in het artikel over [hoe vaak proeven](/nl/leer/alles-leren-eten/hoe-vaak-proeven).
 
 ## Zonder druk: wat werkt aan tafel
 
