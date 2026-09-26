@@ -3,5 +3,26 @@ import type { ImageSourcePropType } from 'react-native';
 
 /** Gold renders (bucket food-images/gold/<file>), 256 px webp; a plant without one keeps its normal render. */
 export const PLANT_GOLD_IMAGES: Record<string, ImageSourcePropType> = {
+  'avocado': require('@/assets/plants-gold/avocado.webp'),
+  'black-pepper': require('@/assets/plants-gold/black-pepper.webp'),
+  'blueberry': require('@/assets/plants-gold/blueberry.webp'),
+  'carrot': require('@/assets/plants-gold/carrot.webp'),
+  'cherry-tomato': require('@/assets/plants-gold/cherry-tomato.webp'),
+  'chia-seed': require('@/assets/plants-gold/chia-seed.webp'),
+  'chilli-flakes': require('@/assets/plants-gold/chilli-flakes.webp'),
+  'corn': require('@/assets/plants-gold/corn.webp'),
+  'courgette': require('@/assets/plants-gold/courgette.webp'),
+  'cucumber': require('@/assets/plants-gold/cucumber.webp'),
+  'flaxseed': require('@/assets/plants-gold/flaxseed.webp'),
+  'iceberg-lettuce': require('@/assets/plants-gold/iceberg-lettuce.webp'),
+  'mango': require('@/assets/plants-gold/mango.webp'),
+  'oats': require('@/assets/plants-gold/oats.webp'),
+  'onion': require('@/assets/plants-gold/onion.webp'),
+  'peach': require('@/assets/plants-gold/peach.webp'),
+  'potato': require('@/assets/plants-gold/potato.webp'),
+  'red-pepper': require('@/assets/plants-gold/red-pepper.webp'),
+  'spring-onion': require('@/assets/plants-gold/spring-onion.webp'),
+  'strawberry': require('@/assets/plants-gold/strawberry.webp'),
+  'tomato': require('@/assets/plants-gold/tomato.webp'),
   'yogurt': require('@/assets/plants-gold/yogurt.webp'),
 };
