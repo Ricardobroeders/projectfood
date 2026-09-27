@@ -56,6 +56,10 @@ export default function SignInScreen() {
       }
     });
 
+  // Google needs the platform's own client id: the web id on Android, the iOS id on iOS (item 1d, not
+  // created yet). Without it the native SDK throws on tap, so the button stays off rather than broken.
+  const googleReady = Platform.OS === 'ios' ? !!ENV.googleIosClientId : !!ENV.googleWebClientId;
+
   const canSubmit = EMAIL_RE.test(email) && busy === null && (!review || password.length > 0);
   const submit = () => canSubmit && (review ? signInReview() : sendCode());
 
@@ -72,7 +76,7 @@ export default function SignInScreen() {
       </View>
 
       <View style={styles.form}>
-        <SecondaryButton label={t('auth.continueWithGoogle')} onPress={() => run('google', signInWithGoogle)} loading={busy === 'google'} disabled={busy !== null} />
+        {googleReady ? <SecondaryButton label={t('auth.continueWithGoogle')} onPress={() => run('google', signInWithGoogle)} loading={busy === 'google'} disabled={busy !== null} /> : null}
         {Platform.OS === 'ios' ? (
           <AppleAuthentication.AppleAuthenticationButton
             buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
