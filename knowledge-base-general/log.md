@@ -698,3 +698,18 @@ and not something to conclude from an article, and "a chi rivolgersi" gets its o
 because it is a real query: the pediatra first, always, and the dietista, logopedista or
 psicologo through them.
 Queue: 11 of 17 done, 6 left. Italian has only `neofobia-alimentare` remaining.
+
+## [2026-09-27] build | learn: neofobia-alimentare (it), the Italian set of pillar 1 is complete
+Last Italian cluster, `food-neophobia`: 1,026 words, 5 FAQ entries, meta_title 52,
+meta_description 144, three citations (Dovey 2008, Birch 1982, Wardle 2003). Zero errors, zero
+warnings. The first draft had a meta_title of 56 characters, one over the limit; "che cos'è"
+became "cos'è", which is also how the query is typed.
+Page 1 in Italy for this term is authority (Fondazione Veronesi, Uppa, Nutripiatto) at KD 12 to
+15, so the page competes on the practical half they skip: how it looks at the table, the order
+of things (the refusal arrives before the food), the demand for predictability down to how the
+bread is cut, and what to do tonight. The honest answer on a therapy is that there is nothing to
+treat, with the pediatra line for the situations that are something else.
+Not a translation of the Dutch page: it carries the Italian distinction between neofobia and
+selettività, which matters there because both terms rank, and links out to both Italian clusters.
+The Italian pillar now links all three of its clusters. Queue: 12 of 17 done, 5 left, all
+English. NL and IT halves of pillar 1 are finished.

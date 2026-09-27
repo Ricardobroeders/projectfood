@@ -44,7 +44,7 @@ Questa pagina raccoglie tutto: perché i bambini rifiutano le verdure, il numero
 
 Tre cose succedono insieme. La prima è il gusto: molte verdure sono leggermente amare e i bambini sentono l'amaro più degli adulti. La seconda è la novità: verso i 2 anni diventano prudenti con tutto quello che non conoscono, piatto compreso. Si chiama neofobia alimentare, è normale tra i 2 e i 6 anni e nella maggior parte dei bambini passa da sola (Dovey, 2008). La terza è l'autonomia: un bambino scopre che dire di no funziona, e il piatto è uno dei pochi posti dove quel no ha un effetto immediato.
 
-Nessuna delle tre è un segnale che stai sbagliando qualcosa. È l'età. Quello che puoi fare è rendere l'assaggio più facile e togliere la battaglia dalla tavola. Il nome di questa fase e come attraversarla avrà un articolo dedicato.
+Nessuna delle tre è un segnale che stai sbagliando qualcosa. È l'età. Quello che puoi fare è rendere l'assaggio più facile e togliere la battaglia dalla tavola. Il nome di questa fase e come attraversarla li trovi nell'articolo sulla [neofobia alimentare](/it/impara/imparare-a-mangiare-tutto/neofobia-alimentare).
 
 ## Il numero che cambia le cose: da 8 a 15 assaggi
 
