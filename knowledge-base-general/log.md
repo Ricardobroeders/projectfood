@@ -661,3 +661,21 @@ new article and re-checked the pillar: zero errors, zero warnings, one internal 
 zero). Queue: 10 of 17 done, 7 left, all Italian and English. Next row is the Italian
 `selettivita-alimentare` (`picky-eater-toddler`), whose `pillar_mention` is already recorded in
 the pillar.
+
+## [2026-09-27] build | The 15th taste celebrates, and the tab underline fits its word
+Two things from Ricardo on the Log screen. The category underline was a fixed 36 px bar centred
+under the active label; it now animates to the label's own x and width, so it sits exactly under
+the word. The active label is bold and so wider than it was when it was measured in medium, which
+is why a re-measure animates rather than snaps.
+The 15th taste of a plant now says what it did. A sheet opens with the gold render on the gold
+ground, the plant's name and who took it there, which is the same thing the family will see on
+every screen from then on: the reward Ricardo drew the gold renders for was happening silently.
+Only gold celebrates. Bronze at 3 and silver at 8 would interrupt the table several times per
+plant, and gold is the rung that changes what the plant looks like.
+Detection sits in the log mutation rather than in the screens, so the row tap and the member menu
+both reach it, and it fires on the write, so a log queued offline celebrates when it lands and a
+failed one never does. Sheets take turns: the gold card waits for the member menu and the card
+window, and the achievement celebration waits for the gold card.
+Written up in [[decision-2026-09-26-card-levels]]. One thing noticed on the way: the existing
+celebration titles ("First bites!", "New achievement!") carry exclamation marks, which
+[[brand-voice]] forbids everywhere. They predate that page. The new string has none.

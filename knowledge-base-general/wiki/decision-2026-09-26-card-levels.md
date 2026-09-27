@@ -49,6 +49,17 @@ plant look like any accent surface; it was picked against the real render at thr
 enough to read as gold next to the pastel category tints and apart from the whole-grain tint, pale
 enough for the gold render to stand on.
 
+**Reaching gold is celebrated once** (Ricardo, 2026-09-27: "celebrating you have met the magic
+number"). The 15th taste opens a sheet with the gold render on the gold ground, the plant's name and
+who took it there, which is the same thing the family will now see on every screen. Only gold
+celebrates: bronze at 3 and silver at 8 would interrupt the table several times per plant, and gold
+is the rung that changes what the plant looks like. Detection sits in the log mutation
+(`useLogMutations`), so a tap on the row and a chip in the member menu both reach it, and it fires
+on the write rather than on the optimistic update, so a log queued offline celebrates when it lands
+and a failed one never does. Sheets take turns: the gold card waits for the member menu and the card
+window, and the achievement celebration waits for the gold card, because the gold card belongs to
+the tap that just happened.
+
 ## Rationale
 The rungs are placed against the PWA's churn curve so that one lands **before** each moment people
 left _(live `plant_logs`, 15 users, queried 2026-09-26)_:
@@ -117,6 +128,10 @@ placed against it for that reason.
 - **A child's curve will be slower** than the two adult accounts this was calibrated on, whose top
   plants include black pepper and chilli flakes. Bronze at 3 survives that; gold at 15 is the real
   long-term goal for the actual user, not the held platinum.
+- **Gold is now an interruption**, one modal sheet per plant that reaches it. At 22% of cards it is
+  rare enough to stay an event; if the closed test shows a household minting several in one meal,
+  the answer is to stack them into one sheet the way the achievement celebration already does, not
+  to move the threshold.
 - **To watch:** whether gold at 15 still feels earned after a month with families, and what a
   child's depth curve looks like before platinum and diamond are switched on.
 
