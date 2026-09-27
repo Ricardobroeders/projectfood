@@ -98,7 +98,7 @@ Quello che aiuta: orari fissi, porzioni piccole, pochi spuntini e poche bevande 
 
 "Selettività alimentare" è un'espressione che si legge ovunque, e copre situazioni molto diverse. La maggior parte dei bambini a cui viene applicata mangia venti o trenta cose diverse, cresce regolarmente e si trova nella fase descritta qui sopra. Ha bisogno di tempo e di ripetizione, non di un'etichetta.
 
-Un confine però esiste. Parlane con il pediatra se il bambino perde peso o non cresce, se mangia meno di una ventina di cose diverse, se mancano interi gruppi (nessuna verdura, nessun frutto), se ha conati o va in panico davanti a un cibo nuovo, o se la preoccupazione sta diventando troppo grande per te. Quella è una situazione diversa da quella che descrive questa pagina, ed esiste un aiuto. Che cosa vuol dire selettività alimentare e dove sta il confine avrà un articolo dedicato.
+Un confine però esiste. Parlane con il pediatra se il bambino perde peso o non cresce, se mangia meno di una ventina di cose diverse, se mancano interi gruppi (nessuna verdura, nessun frutto), se ha conati o va in panico davanti a un cibo nuovo, o se la preoccupazione sta diventando troppo grande per te. Quella è una situazione diversa da quella che descrive questa pagina, ed esiste un aiuto. Che cosa vuol dire selettività alimentare e dove sta il confine lo trovi nell'articolo sulla [selettività alimentare](/it/impara/imparare-a-mangiare-tutto/selettivita-alimentare).
 
 ## Quali verdure funzionano per prime
 

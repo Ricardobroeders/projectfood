@@ -679,3 +679,22 @@ window, and the achievement celebration waits for the gold card.
 Written up in [[decision-2026-09-26-card-levels]]. One thing noticed on the way: the existing
 celebration titles ("First bites!", "New achievement!") carry exclamation marks, which
 [[brand-voice]] forbids everywhere. They predate that page. The new string has none.
+
+## [2026-09-27] build | learn: selettivita-alimentare (it), and the routine's first Italian night
+The nightly routine ran unattended overnight and wrote `il-bambino-non-mangia` (it) on its own:
+935 words, 6 FAQ entries, meta 52 and 141, committed as `9ecf438`, published, and its branch
+merged into main before this session started. First run to complete without a fix afterwards,
+and the first in Italian. It also found its `pillar_mention` verbatim, which is the sentence the
+Italian pillar recorded when it was written on 2026-09-26, so the mechanism works end to end.
+Then by hand: `picky-eater-toddler` (it), slug `selettivita-alimentare`, 1,018 words, 5 FAQ
+entries, meta_title 55, meta_description 142, two citations (Dovey 2008, Wardle 2003). One
+accepted warning, `related` pointing at the Italian `food-neophobia`, which is the next row.
+Its stored `pillar_mention` also matched verbatim.
+The page exists because the Italian term is the largest single query in the market at 1,000 a
+month and covers two different situations under one label. So it draws the line early and
+concretely: count every different food for a week, then look at the number, the growth curve and
+whether a whole group is missing. ARFID is named once, as something a professional recognises
+and not something to conclude from an article, and "a chi rivolgersi" gets its own section
+because it is a real query: the pediatra first, always, and the dietista, logopedista or
+psicologo through them.
+Queue: 11 of 17 done, 6 left. Italian has only `neofobia-alimentare` remaining.
