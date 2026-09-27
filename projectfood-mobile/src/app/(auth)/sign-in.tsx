@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { GoogleG } from '@/components/GoogleG';
 import { ErrorText, PrimaryButton, SecondaryButton } from '@/components/ui';
 import { colors, fonts, radii } from '@/constants/theme';
 import { signInWithApple } from '@/features/auth/apple';
@@ -76,7 +77,7 @@ export default function SignInScreen() {
       </View>
 
       <View style={styles.form}>
-        {googleReady ? <SecondaryButton label={t('auth.continueWithGoogle')} onPress={() => run('google', signInWithGoogle)} loading={busy === 'google'} disabled={busy !== null} /> : null}
+        {googleReady ? <SecondaryButton label={t('auth.continueWithGoogle')} icon={<GoogleG size={20} />} onPress={() => run('google', signInWithGoogle)} loading={busy === 'google'} disabled={busy !== null} /> : null}
         {Platform.OS === 'ios' ? (
           <AppleAuthentication.AppleAuthenticationButton
             buttonType={AppleAuthentication.AppleAuthenticationButtonType.CONTINUE}
