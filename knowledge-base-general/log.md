@@ -730,3 +730,21 @@ database while the pages also serve the UK. The reference to the tasting-count a
 text, not a link, because that English cluster is not written yet; a link to an unwritten page
 is an error at publish time.
 The English pillar now links one of its five clusters. Queue: 13 of 17 done, 4 left, all English.
+
+## [2026-09-27] build | learn: how-many-times-to-try-a-food (en), the number page
+Second English cluster: 1,282 words, 6 FAQ entries, meta_title 46, meta_description 146, five
+citations (Birch 1982, Wardle 2003, Cooke 2011, AAP 2018, CDC 2026). Three accepted warnings:
+`related` target food-neophobia has no English file yet, and "picky eater" appears in one H2 and
+one FAQ question, which is the search phrase and not a label in the body.
+The English demand here is not "how do I make my child eat", it is people checking a number
+they were given: "aap picky eating repeated exposure 10 15 times" and eight spellings of it,
+about 300 a month together at KD 15, plus "how to get a picky eater to try new foods" at about
+140. So the page reconciles the sources out loud instead of picking one: AAP "as many as 10 or
+more times", CDC 8 to 10, the trials 12 to 14 daily tastes, our range 8 to 15 and sometimes
+more. Being the page that admits nobody counted precisely is the differentiator against
+HealthyChildren and the CDC themselves, who each state only their own number.
+Sections the Dutch sibling does not have: what does not count as a taste (hidden vegetables,
+a bite after five minutes of negotiation), the same food in a different form starting its own
+count, and what to change when the count stalls at 15.
+The English pillar now links two of its five clusters. Queue: 14 of 17 done, 3 left, all
+English: food-neophobia, toddler-wont-eat, picky-eater-toddler.

@@ -56,7 +56,7 @@ None of the three means you are doing something wrong. It is the age. What you c
 
 A child learns to like a food by tasting it, not by hearing about it. In a home trial with parents of children aged 2 to 6, parents offered one small taste of a disliked vegetable every day for two weeks. After those two weeks most of the children liked the vegetable more and ate more of it, far more than the children whose parents had been given nutrition advice alone (Wardle, 2003).
 
-The rule of thumb that follows is 8 to 15 tastes, sometimes more. The American Academy of Pediatrics puts it at "as many as 10 or more times". A lick counts. So does a bite that comes straight back out, because the flavour has already made contact. Most parents give up after three tries, right at the point where it starts to work. How to count tastes without turning it into a project gets its own article.
+The rule of thumb that follows is 8 to 15 tastes, sometimes more. The American Academy of Pediatrics puts it at "as many as 10 or more times". A lick counts. So does a bite that comes straight back out, because the flavour has already made contact. Most parents give up after three tries, right at the point where it starts to work. How to count tastes without turning it into a project is in the article on [how many times a child needs to try a new food](/en/learn/learn-to-eat-everything/how-many-times-to-try-a-food).
 
 ## No pressure: what works at the table
 
