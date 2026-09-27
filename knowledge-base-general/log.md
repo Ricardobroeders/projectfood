@@ -713,3 +713,20 @@ Not a translation of the Dutch page: it carries the Italian distinction between 
 selettività, which matters there because both terms rank, and links out to both Italian clusters.
 The Italian pillar now links all three of its clusters. Queue: 12 of 17 done, 5 left, all
 English. NL and IT halves of pillar 1 are finished.
+
+## [2026-09-27] build | learn: vegetables-kids-will-eat (en), English begins
+First English cluster: 1,041 words, 5 FAQ entries, meta_title 49, meta_description 143, two
+citations (Birch 1982, Dovey 2008). Three accepted warnings: the two `related` targets are later
+English rows, and the pre-existing NL slug flag on the same folder.
+The plan puts this page first in English for a reason. English measures about 8,000 a month
+across pillar 1 against 4,800 in NL and IT, but KD runs 30 to 58 on the toddler and picky-eater
+terms, where a new domain does not rank in year one. "Vegetables kids will eat" and "kid
+friendly vegetables" sit at KD 13 to 17 and are the realistic way in, so this is the page that
+has to be good.
+Written natively against the English SERP rather than translated from the Dutch list: British
+spelling in the prose per [[brand-voice]], with the American name in brackets where the two
+differ (courgette or zucchini, aubergine or eggplant), because the volume was sized on the US
+database while the pages also serve the UK. The reference to the tasting-count article is plain
+text, not a link, because that English cluster is not written yet; a link to an unwritten page
+is an error at publish time.
+The English pillar now links one of its five clusters. Queue: 13 of 17 done, 4 left, all English.

@@ -110,7 +110,7 @@ There is a line, though. Talk to your doctor if your child is losing weight or n
 
 Start with the ones most children find easy: sweet, mild, crunchy. Carrot, cucumber, sweetcorn, peas, pepper, cherry tomato, sweet potato. Bitter and soft vegetables (sprouts, spinach, cooked greens) come later, once tasting is already normal.
 
-Raw is often easier than cooked: a piece of raw carrot is crunchy and sweet, while cooked carrot is soft and tastes different. Offer the same vegetable in different shapes as well. A child who refuses boiled cauliflower will sometimes eat raw florets with a dip. The 20 easiest vegetables to start with, and how to serve each one, gets its own article.
+Raw is often easier than cooked: a piece of raw carrot is crunchy and sweet, while cooked carrot is soft and tastes different. Offer the same vegetable in different shapes as well. A child who refuses boiled cauliflower will sometimes eat raw florets with a dip. The 20 easiest vegetables to start with, and how to serve each one, are in the article on [vegetables kids will eat](/en/learn/learn-to-eat-everything/vegetables-kids-will-eat).
 
 ## Hiding vegetables: is it allowed
 
