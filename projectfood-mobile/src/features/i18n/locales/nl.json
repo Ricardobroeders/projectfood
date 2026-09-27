@@ -200,7 +200,8 @@
     "later": "Later",
     "curiousUnlocked": "Prestatie Nieuwsgierig behaald",
     "levelUpTitle": "Level omhoog!",
-    "levelUpBody": "{stamp} is nu {level}"
+    "levelUpBody": "{stamp} is nu {level}",
+    "goldCardBody": "{n} keer geproefd. De kaart is vanaf nu goud."
   },
   "stamps": {
     "explorer": {

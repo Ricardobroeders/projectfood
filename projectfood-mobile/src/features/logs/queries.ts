@@ -1,8 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useSession } from '@/features/auth/useSession';
+import { mintsGold } from '@/features/plants/cardLevel';
 import { supabase } from '@/features/supabase/client';
 import type { Database } from '@/features/supabase/types';
+import { useUi } from '@/state/ui';
 
 import { type LogRow, weekStartOf } from './model';
 
@@ -124,22 +126,30 @@ export function useLogMutations(hid: string | undefined) {
       const prev = qc.getQueryData<LogRow[]>(key) ?? [];
       const now = new Date().toISOString();
       const existing = new Set(prev.filter((r) => r.plant_id === plantId && r.logged_on === day).map((r) => r.member_id));
-      const added: LogRow[] = memberIds
-        .filter((m) => !existing.has(m))
-        .map((member_id) => ({
-          id: `optimistic-${plantId}-${member_id}-${day}`,
-          user_id: userId,
-          household_id: hid ?? '',
-          member_id,
-          plant_id: plantId,
-          logged_on: day,
-          logged_at: now,
-        }));
+      const fresh = memberIds.filter((m) => !existing.has(m));
+      const added: LogRow[] = fresh.map((member_id) => ({
+        id: `optimistic-${plantId}-${member_id}-${day}`,
+        user_id: userId,
+        household_id: hid ?? '',
+        member_id,
+        plant_id: plantId,
+        logged_on: day,
+        logged_at: now,
+      }));
       qc.setQueryData<LogRow[]>(key, [...prev, ...added]);
-      return { prev };
+      // Whose card this taste takes to gold, read before the write from the same counts the gold
+      // ground reads. Every log invalidates that query, so the number here is the one on screen.
+      const counts = qc.getQueryData<TasteCount[]>(tasteCountsKey(hid ?? ''));
+      const gold = counts ? fresh.filter((m) => mintsGold(counts.find((c) => c.member_id === m && c.plant_id === plantId)?.tastes ?? 0)) : [];
+      return { prev, gold };
     },
     onError: (_e, _v, ctx) => {
       if (ctx) qc.setQueryData(key, ctx.prev);
+    },
+    // The celebration waits for the write: a queued offline log celebrates when it lands, never
+    // before. The sheet itself waits for the member menu to close.
+    onSuccess: (_d, { plantId }, ctx) => {
+      if (ctx?.gold.length) useUi.getState().showGoldCard(plantId, ctx.gold);
     },
     onSettled: invalidateDerived,
   });

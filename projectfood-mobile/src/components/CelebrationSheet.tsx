@@ -36,11 +36,14 @@ export function CelebrationSheet() {
   const { catalog } = usePlantCatalog();
   const picker = useUi((s) => s.picker);
   const factCard = useUi((s) => s.factCard);
+  const goldCard = useUi((s) => s.goldCard);
   const showFactCard = useUi((s) => s.showFactCard);
   const markSeen = useMarkUnlocksSeen(hid);
 
   const unseen = unlocks.filter((u) => !u.seen_at);
-  const wanted = ready && unseen.length > 0 && picker === null && factCard === null;
+  // A gold card comes first: it belongs to the tap that just happened. This sheet takes its turn
+  // once that one is closed, which is also how it waits behind the menu and the fact card.
+  const wanted = ready && unseen.length > 0 && picker === null && factCard === null && goldCard === null;
   const [shown, setShown] = useState<UnlockRow[] | null>(null);
   const visible = shown !== null;
 

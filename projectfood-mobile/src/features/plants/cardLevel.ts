@@ -49,6 +49,16 @@ export function nextCardLevel(tastes: number): { level: CardLevel; remaining: nu
   return null;
 }
 
+/**
+ * Whether the taste being logged is the one that mints the gold card, so it can be celebrated
+ * (Ricardo, 2026-09-27: "celebrating you have met the magic number"). Gold only: bronze at 3 and
+ * silver at 8 would interrupt the table several times per plant, and gold is the rung that changes
+ * what the plant looks like. When platinum arrives, decide then whether it celebrates too.
+ */
+export function mintsGold(tastesBefore: number): boolean {
+  return tastesBefore + 1 === CARD_LEVELS.gold;
+}
+
 /** Copy key for "n more tastes to <metal>". */
 export const MORE_TO_KEY = {
   bronze: 'unlocks.moreToBronze',

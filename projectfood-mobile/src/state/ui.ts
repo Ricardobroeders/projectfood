@@ -20,6 +20,9 @@ type UiState = {
   picker: { plantId: string | null; at: Point } | null;
   achievementSheet: { id: AchievementId; memberId: string | null } | null;
   factCard: { plantId: string } | null;
+  /** A card that just reached gold, waiting for its celebration: the plant and who took it there.
+   *  Held until the member menu is out of the way, so the sheet never lands on top of it. */
+  goldCard: { plantId: string; memberIds: string[] } | null;
   /** The in-app pre-prompt before the OS push permission dialog. */
   pushPrompt: boolean;
 
@@ -32,6 +35,8 @@ type UiState = {
   closeAchievement: () => void;
   showFactCard: (plantId: string) => void;
   hideFactCard: () => void;
+  showGoldCard: (plantId: string, memberIds: string[]) => void;
+  hideGoldCard: () => void;
   openPushPrompt: () => void;
   closePushPrompt: () => void;
 };
@@ -45,6 +50,7 @@ export const useUi = create<UiState>()(
       picker: null,
       achievementSheet: null,
       factCard: null,
+      goldCard: null,
       pushPrompt: false,
 
       setDefaultIds: (householdId, ids) => set((s) => ({ defaultIds: { ...s.defaultIds, [householdId]: ids } })),
@@ -56,6 +62,8 @@ export const useUi = create<UiState>()(
       closeAchievement: () => set({ achievementSheet: null }),
       showFactCard: (plantId) => set({ factCard: { plantId } }),
       hideFactCard: () => set({ factCard: null }),
+      showGoldCard: (plantId, memberIds) => set({ goldCard: { plantId, memberIds } }),
+      hideGoldCard: () => set({ goldCard: null }),
       openPushPrompt: () => set({ pushPrompt: true }),
       closePushPrompt: () => set({ pushPrompt: false }),
     }),

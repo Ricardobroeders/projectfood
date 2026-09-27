@@ -200,7 +200,8 @@
     "later": "Più tardi",
     "curiousUnlocked": "Traguardo Curioso sbloccato",
     "levelUpTitle": "Livello su!",
-    "levelUpBody": "{stamp} ora è {level}"
+    "levelUpBody": "{stamp} ora è {level}",
+    "goldCardBody": "{n} assaggi. La carta è d'oro da ora in poi."
   },
   "stamps": {
     "explorer": {

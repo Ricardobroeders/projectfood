@@ -200,7 +200,8 @@
     "later": "Later",
     "curiousUnlocked": "Curious achievement unlocked",
     "levelUpTitle": "Level up!",
-    "levelUpBody": "{stamp} is now {level}"
+    "levelUpBody": "{stamp} is now {level}",
+    "goldCardBody": "{n} tastes. The card is gold from now on."
   },
   "stamps": {
     "explorer": {

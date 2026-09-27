@@ -3,6 +3,7 @@ import { Tabs } from 'expo-router';
 import { AchievementSheet } from '@/components/AchievementSheet';
 import { CelebrationSheet } from '@/components/CelebrationSheet';
 import { FunFactCard } from '@/components/FunFactCard';
+import { GoldCardSheet } from '@/components/GoldCardSheet';
 import { MemberMenu } from '@/components/MemberMenu';
 import { PushPromptSheet } from '@/components/PushPromptSheet';
 import { TabBar } from '@/components/TabBar';
@@ -23,6 +24,7 @@ export default function TabsLayout() {
       </Tabs>
       {/* Sheets and cards mount once here so no tab renders a second copy of the same modal. */}
       <MemberMenu />
+      <GoldCardSheet />
       <CelebrationSheet />
       <FunFactCard />
       <AchievementSheet />
