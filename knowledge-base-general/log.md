@@ -648,3 +648,16 @@ finished: pillar plus `peuter-wil-niet-eten`, `hoe-vaak-proeven`, `moeilijke-ete
 `voedselneofobie`. Queue: 9 of 17 done, 8 left, all Italian and English. Next row is the Italian
 `il-bambino-non-mangia`, whose `pillar_mention` was recorded this morning when the Italian
 pillar was written.
+
+## [2026-09-27] build | learn: il-bambino-non-mangia (it) written and published by the nightly routine
+First Italian cluster of pillar 1, `toddler-wont-eat`: 935 words, 6 FAQ entries, meta_title 52,
+meta_description 141, one citation (Dovey 2008) for the neophobia paragraph. Zero errors; three
+accepted warnings, all expected rather than defects: the public slug `il-bambino-non-mangia`
+trips the hub-slug "bambin" check by design (the slug is fixed by the page plan), and both
+`related` entries (`picky-eater-toddler`, `food-neophobia`) have no Italian file yet since they
+are the next two rows in the same locale.
+Replaced the Italian pillar's `il-bambino-non-mangia` announcement sentence with a link to the
+new article and re-checked the pillar: zero errors, zero warnings, one internal link now (was
+zero). Queue: 10 of 17 done, 7 left, all Italian and English. Next row is the Italian
+`selettivita-alimentare` (`picky-eater-toddler`), whose `pillar_mention` is already recorded in
+the pillar.

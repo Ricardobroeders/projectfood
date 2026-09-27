@@ -92,7 +92,7 @@ Insieme a questo va una domanda, dopo cena o alla fine della giornata: che cosa 
 
 Tra 1 e 2 anni la crescita rallenta e con lei l'appetito. Un bambino che all'improvviso mangia poco, o quasi niente per qualche giorno, di solito sta solo ascoltando il suo corpo. Conta la settimana, non il pasto: su sette giorni di solito i conti tornano.
 
-Quello che aiuta: orari fissi, porzioni piccole, pochi spuntini e poche bevande poco prima di cena, e niente battaglie. Quello che non aiuta: obbligare, distrarre con uno schermo, o lasciare il piatto sul tavolo per un'ora. Perché un bambino smette di mangiare e che cosa aiuta davvero avrà un articolo dedicato.
+Quello che aiuta: orari fissi, porzioni piccole, pochi spuntini e poche bevande poco prima di cena, e niente battaglie. Quello che non aiuta: obbligare, distrarre con uno schermo, o lasciare il piatto sul tavolo per un'ora. Perché un bambino smette di mangiare e che cosa aiuta davvero lo trovi nell'articolo su [il bambino non mangia](/it/impara/imparare-a-mangiare-tutto/il-bambino-non-mangia).
 
 ## Selettività alimentare o semplicemente un bambino
 
