@@ -17,8 +17,10 @@ const GOOGLE_SERVICES =
 // Android CPU architectures to build. Phones are 64-bit ARM (plus 32-bit ARM for old devices); the x86
 // ABIs only serve emulators and would double the APK. The preview profile sets ANDROID_ARCHS=arm64-v8a.
 const ANDROID_ARCHS = (process.env.ANDROID_ARCHS ?? 'arm64-v8a,armeabi-v7a').split(',');
-// iOS reversed client id for Google Sign-In; placeholder until the iOS OAuth client exists.
-const GOOGLE_IOS_URL_SCHEME = process.env.GOOGLE_IOS_URL_SCHEME ?? 'com.googleusercontent.apps.placeholder';
+// iOS reversed client id for Google Sign-In: the iOS OAuth client "Project Food iOS" in the Cloud
+// project projectfood-494514, created 2026-09-27 (a public value, like the web client id in eas.json).
+// fingerprint.config.js keeps it out of the runtime hash; see the note there before changing it.
+const GOOGLE_IOS_URL_SCHEME = process.env.GOOGLE_IOS_URL_SCHEME ?? 'com.googleusercontent.apps.436737851150-vfhq5q5j4fu71gn5p35g9repsconjt27';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
