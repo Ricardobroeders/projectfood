@@ -3,7 +3,7 @@ title: Logging behaviour
 type: concept
 tags: [metrics, product, behaviour]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-09-28
 sources: [source-supabase-metrics.md]
 ---
 
@@ -39,6 +39,19 @@ diet, and clear under-logged categories. Source: [[source-supabase-metrics]].
   product/qualitative check.
 - Are never-logged plants genuinely unpopular, hard to find in search, or just niche? Cross-check
   with the in-app search/catalog before acting.
+
+## Update (2026-09-28, weekly refresh in [[source-supabase-metrics]])
+- **Same-day logging is 100% in local time** (0 of 4,021 logs on a different Europe/Amsterdam
+  day than `logged_at`). The 98.5% of 2026-05-30 was very likely a UTC artefact: in UTC 43 logs
+  (1.1%) cross midnight, which evening logging near 00:00 UTC explains. Treat "21 backfilled" as
+  withdrawn, not as a real behaviour change.
+- **Session depth rose:** median 10 distinct plants per active day (avg 11.0, max 63) over 365
+  user-days; was median 8, avg 10.6 over 131 (2026-05-30). Batch logging holds.
+- **Category mix (all logs):** vegetable 39.6 · fruit 22.9 · nut/seed 15.8 · herb 9.8 ·
+  ferment 5.4 · legume 3.6 · whole grain 3.0. Ferments and whole grains edged up since May
+  (2.6 → 5.4, 2.0 → 3.0); legumes stay the smallest-grown gap (3.5 → 3.6).
+- **Long tail:** 196 of 224 plants ever logged (28 never), was 191 (2026-09-07).
+- Since 2026-09-16 part of these logs come from the family app (adult members only so far).
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-brand-pillars]] · [[concept-stickiness-moat]] ·

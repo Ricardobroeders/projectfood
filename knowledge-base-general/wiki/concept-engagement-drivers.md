@@ -3,7 +3,7 @@ title: Engagement drivers (correlations)
 type: concept
 tags: [metrics, retention, correlations]
 created: 2026-05-30
-updated: 2026-09-07
+updated: 2026-09-28
 sources: [source-supabase-metrics.md]
 ---
 
@@ -38,6 +38,16 @@ social connection stands out. **Correlational, n=13, not causal.** Source:
   the feature lived under Account → Avatar and was used only after in-person explanation.
   Friends (12 of 15) were the one investment people found on their own.
 - Both feed the v1 loop design in [[concept-retention-loop]].
+
+## Update (2026-09-28, weekly refresh in [[source-supabase-metrics]])
+- **Friends:** users with an accepted friend (n=9) average 9.33 active weeks and 5.56 weeks
+  hitting 30, vs 2.29 and 0.86 without (n=7). Was 3.56/1.67 vs 1.75/0.75 (2026-05-30). The gap
+  grew because both long-term power users have friends — this is mostly a survivor effect now.
+- **Notifications on (n=4) vs off:** 12.25 vs 4.25 active weeks (was 5.00 vs 2.11,
+  2026-05-30). Same reverse-causation caveat; this is the old PWA flag.
+- The family app has no friends feature and no child members yet, so neither signal says
+  anything about households. The first family-app driver to watch is the dinner-time nudge
+  (`notification_opened` is now recorded in `app_events`: 3 so far).
 
 ## Contradictions / open questions
 - Direction of causality is unknown for both signals (engaged people may simply add friends and

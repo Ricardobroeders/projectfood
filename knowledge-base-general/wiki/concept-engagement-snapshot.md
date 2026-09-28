@@ -3,7 +3,7 @@ title: Engagement snapshot
 type: concept
 tags: [metrics, kpi, retention]
 created: 2026-05-30
-updated: 2026-09-07
+updated: 2026-09-28
 sources: [source-supabase-metrics.md]
 ---
 
@@ -49,6 +49,21 @@ users, ~5 weeks) that logs actively and is trending up on goal completion. Sourc
 - Goal completion reading 100% from week 29 is a survivor artefact, not improvement.
 - 7 of 13 (not 6) ever hit 30; 5 of them left anyway. Hitting the goal was not retentive.
 - Interpretation and the response: [[concept-retention-loop]], [[decision-2026-09-07-app-v1-scope]].
+
+## Update (2026-09-28, weekly refresh in [[source-supabase-metrics]])
+- **Caveat first:** since 2026-09-16 the Expo family app writes to the same `plant_logs`, so the
+  weekly views mix both apps. No child member exists yet; every tasting so far is an adult's.
+- **WAU 7 in the week of 2026-09-21** (was 2, 2026-08-31; 3, 2026-09-07) — highest since early
+  June. Two power users, three dormant PWA users back after 3–4 months, two new accounts.
+  Rolling 28-day MAU 8 (was 2, 2026-08-31).
+- **Adoption:** 20 registered (was 15), 16 ever logged (was 13), 4,021 logs (was 3,544,
+  2026-09-07). 7 of 20 households onboarded in the family app.
+- **Goal completion** 28.6% (2 of 7) for the week of 2026-09-21, down from the 100% survivor
+  artefact — the returning and new users log well under 30, which is expected and fine for a
+  family app that no longer leads with the weekly 30.
+- **Churn view** reads normally (0% for 2026-09-21); the 100% for 2026-09-28 is a one-day-old week.
+- Open question: what brought three dormant PWA users back in one week — the family-app beta
+  invite, the new website, or a push? `app_events` shows only one of them on the new app.
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-logging-behaviour]] · [[concept-engagement-drivers]] ·

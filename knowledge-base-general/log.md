@@ -748,3 +748,22 @@ a bite after five minutes of negotiation), the same food in a different form sta
 count, and what to change when the count stalls at 15.
 The English pillar now links two of its five clusters. Queue: 14 of 17 done, 3 left, all
 English: food-neophobia, toddler-wont-eat, picky-eater-toddler.
+
+## [2026-09-28] ingest | Weekly metrics refresh
+First successful scheduled refresh (the 2026-09-21 run was blocked). Aggregates written to the
+new "Weekly refresh (2026-09-28)" section of [[source-supabase-metrics]]; dated updates on
+[[concept-engagement-snapshot]], [[concept-logging-behaviour]], [[concept-engagement-drivers]] and
+the Metrics section of [[overview]].
+- **The views now mix two apps.** Since 2026-09-16 the Expo family app writes to `plant_logs`
+  (all historic rows backfilled with member/household ids). No child member exists yet.
+- **WAU 7** for the week of 2026-09-21 (was 2 on 2026-08-31, 3 on 2026-09-07): two power users,
+  three dormant PWA users back after 3–4 months, two new accounts. 28-day MAU 8.
+- Registered 20 (was 15), with logs 16 (was 13), 4,021 logs (was 3,544). 7 of 20 households
+  onboarded; 72 achievement unlocks that week.
+- Same-day logging is 100% in local time; the May "98.5% / 21 backfilled" was a UTC artefact.
+  Median 10 plants per active day (was 8).
+- `analytics_churn_rate` reads normally (week-over-week since 2026-05-30); 100% for 2026-09-28
+  is a one-day-old week. `notification_log` holds 3 rows now (the 294 PWA rows are gone).
+Open questions: what brought three dormant users back in one week? Should the analytics views
+split PWA logs from family-app tastes (e.g. by `app_events` presence or a source column) before
+the first child member arrives? Did anything intentionally clear `notification_log`?

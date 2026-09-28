@@ -3,7 +3,7 @@ title: Overview
 type: overview
 tags: [meta]
 created: 2026-05-30
-updated: 2026-09-24
+updated: 2026-09-28
 sources: [source-family-mode-context.md, source-brand-promise-deck.md, source-app-mockups.md, source-supabase-metrics.md]
 ---
 
@@ -88,6 +88,18 @@ live and its users are the current cohort.
 - **Social vs profile:** 12 friendships among 15 users; 5 of 15 customised an avatar.
 - **Catalog:** 224 plants with images, 62 botanical families, 8 colours, 39 seasonal — the
   metadata albums need already exists; per-plant facts do not.
+
+### Weekly refresh (2026-09-28)
+*Source: [[source-supabase-metrics]] (weekly refresh section). Since 2026-09-16 the family app
+shares `plant_logs`, so the views mix both apps; no child member exists yet.*
+- **WAU 7** in the week of 2026-09-21 (was 2 on 2026-08-31): two power users, three dormant PWA
+  users back, two new accounts. 28-day MAU 8. Goal completion 28.6%.
+- **Adoption:** 20 registered (was 15), 16 with logs (was 13), 4,021 logs; 7 of 20 households
+  onboarded; 72 achievement unlocks in that week.
+- **Behaviour:** same-day logging is 100% in local time (the May 98.5% was a UTC artefact);
+  median 10 plants per active day. See [[concept-logging-behaviour]].
+- **Drivers:** friends 9.3 vs 2.3 active weeks — now mostly the two power users. See
+  [[concept-engagement-drivers]], [[concept-engagement-snapshot]].
 
 ### May 2026 baseline (historic)
 *Source: [[source-supabase-metrics]] (2026-05-30).*
