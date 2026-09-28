@@ -798,3 +798,12 @@ store rule keeps the outcome off the page, so the lines became "Track your plant
 "Eet meer verschillende planten" / "Mangia più piante diverse", pushed with `eas metadata:push`
 and verified by a pull. English keyword "diversity" (now in the subtitle) swapped for "gut
 health" in the hidden field. Updated: seo-app-store-aso, strategy-backlog.
+
+## [2026-09-28] build | iOS 1.0.2 submitted to App Review
+App Store Connect completed and submitted the same day the record was filled: Ricardo did App
+Privacy (eight types, linked, no tracking), pricing free in 175 territories, content rights, the
+regulated-medical-device declaration (no), the demo account, attached build 1.0.2 (1) and pressed
+Add for Review at about 22:05; Claude pushed four screenshot sets through EAS Metadata (Play
+frames → iPhone mockups → iOS status bars → no Android bar), each under new file names because
+EAS matches by name, through Apple server errors on almost every run. App Accessibility left
+empty on purpose. Updated: seo-app-store-aso, strategy-backlog.
