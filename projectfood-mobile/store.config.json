@@ -1,0 +1,130 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.0.2",
+    "copyright": "2026 Project Food",
+    "categories": [
+      "HEALTH_AND_FITNESS",
+      "FOOD_AND_DRINK"
+    ],
+    "release": {
+      "automaticRelease": false,
+      "phasedRelease": false
+    },
+    "info": {
+      "en-US": {
+        "title": "Project Food: 30 plants a week",
+        "subtitle": "Every taste becomes a card",
+        "promoText": "30 different plants a week. Tap what you tasted, collect a card for each. One account on your phone, for the whole table.",
+        "description": "Project Food turns \"what did we eat today?\" into a one-minute ritual at the table. The family tastes, you tap, and every new plant you try becomes a card in the family collection.\n\nHow it works\nAfter dinner, or just once a day, open the app and tap the plants you tasted. Over 200 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each with its own picture. Tap a plant to log it for tonight. Hold it to choose who tasted it. Aim for 30 different plants a week, counted together as a family. Every taste adds to the collection, and nothing ever resets.\n\nCollect all the achievements\nExplorer, Rainbow, Full table, Big dinner and more: achievements for the things a family does at the table, in bronze, silver, gold and platinum. Each one shows how far you are from the next level.\n\nSomething to talk about while you eat\nEvery plant comes with a fact for the table and a tip for the cook.\n\nSee what your family eats, month after month\nThe Unlocks screen shows, per person, the foods tried so far, the cards held and the achievements earned. That list only grows. Even in a home where new things are not tried easily, every taste counts.\n\nOne question, at your dinner time\nTell the app when you usually eat, and half an hour later it asks what the family tasted. That is the only notification you need. Tips and news stay off until you switch them on.\n\nOn your phone, for your family\nOne account, yours. Add family members to collect plants together: a first name and a colour, nothing more. No ads. Delete everything with one tap, whenever you want.\n\nMissing a plant? Suggest it from the search and we add it.\n\nProject Food is available in English, Dutch and Italian. More languages are on the way.",
+        "keywords": [
+          "picky eater",
+          "vegetables",
+          "fruit",
+          "tasting",
+          "cards",
+          "dinner",
+          "healthy eating",
+          "tracker",
+          "kids food",
+          "diversity"
+        ],
+        "privacyPolicyUrl": "https://projectfood.dev/en/privacy",
+        "supportUrl": "https://projectfood.dev/en/contact",
+        "marketingUrl": "https://projectfood.dev"
+      },
+      "en-GB": {
+        "title": "Project Food: 30 plants a week",
+        "subtitle": "Every taste becomes a card",
+        "promoText": "30 different plants a week. Tap what you tasted, collect a card for each. One account on your phone, for the whole table.",
+        "description": "Project Food turns \"what did we eat today?\" into a one-minute ritual at the table. The family tastes, you tap, and every new plant you try becomes a card in the family collection.\n\nHow it works\nAfter dinner, or just once a day, open the app and tap the plants you tasted. Over 200 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each with its own picture. Tap a plant to log it for tonight. Hold it to choose who tasted it. Aim for 30 different plants a week, counted together as a family. Every taste adds to the collection, and nothing ever resets.\n\nCollect all the achievements\nExplorer, Rainbow, Full table, Big dinner and more: achievements for the things a family does at the table, in bronze, silver, gold and platinum. Each one shows how far you are from the next level.\n\nSomething to talk about while you eat\nEvery plant comes with a fact for the table and a tip for the cook.\n\nSee what your family eats, month after month\nThe Unlocks screen shows, per person, the foods tried so far, the cards held and the achievements earned. That list only grows. Even in a home where new things are not tried easily, every taste counts.\n\nOne question, at your dinner time\nTell the app when you usually eat, and half an hour later it asks what the family tasted. That is the only notification you need. Tips and news stay off until you switch them on.\n\nOn your phone, for your family\nOne account, yours. Add family members to collect plants together: a first name and a colour, nothing more. No ads. Delete everything with one tap, whenever you want.\n\nMissing a plant? Suggest it from the search and we add it.\n\nProject Food is available in English, Dutch and Italian. More languages are on the way.",
+        "keywords": [
+          "picky eater",
+          "vegetables",
+          "fruit",
+          "tasting",
+          "cards",
+          "dinner",
+          "healthy eating",
+          "tracker",
+          "kids food",
+          "diversity"
+        ],
+        "privacyPolicyUrl": "https://projectfood.dev/en/privacy",
+        "supportUrl": "https://projectfood.dev/en/contact",
+        "marketingUrl": "https://projectfood.dev"
+      },
+      "nl-NL": {
+        "title": "Project Food: 30 planten",
+        "subtitle": "Elke week minimaal 30 soorten",
+        "promoText": "30 verschillende planten per week. Tik aan wat je proefde en spaar de kaarten. Eén account op jouw telefoon, voor de hele tafel.",
+        "description": "Project Food maakt van \"wat hebben we vandaag gegeten?\" een ritueel van één minuut aan tafel. Het gezin proeft, jij tikt, en elke nieuwe plant die je proeft wordt een kaart in de gezinscollectie.\n\nZo werkt het\nOpen de app na het eten, of gewoon één keer per dag, en tik aan welke planten je hebt geproefd. Meer dan 200 soorten fruit, groente, kruiden, noten, zaden, peulvruchten, volkoren granen en gefermenteerd eten, elk met een eigen plaatje. Tik op een plant om hem voor vanavond te loggen. Houd hem vast om te kiezen wie heeft geproefd. Ga voor 30 verschillende planten per week, samen geteld als gezin. Elke hap telt mee voor de collectie en niets gaat ooit verloren.\n\nSpaar alle prestaties\nOntdekker, Regenboog, Volle tafel, Groot diner en meer: prestaties voor wat een gezin aan tafel doet, in brons, zilver, goud en platina. Elke prestatie laat zien hoe ver je bent tot het volgende level.\n\nIets om over te praten tijdens het eten\nBij elke plant hoort een weetje voor aan tafel en een tip voor de kok.\n\nZie wat jullie eten, maand na maand\nHet scherm Behaald laat per persoon zien wat er al geproefd is, welke kaarten er zijn en welke prestaties. Die lijst wordt alleen maar langer. Ook in een huis waar nieuwe dingen niet makkelijk geproefd worden: elke hap telt.\n\nEén vraag, op jullie etenstijd\nGeef aan wanneer jullie meestal eten en een half uur later vraagt de app wat het gezin heeft geproefd. Meer meldingen heb je niet nodig. Tips en nieuws staan uit tot jij ze aanzet.\n\nOp jouw telefoon, voor jouw gezin\nEén account, van jou. Voeg gezinsleden toe om samen planten te sparen: een voornaam en een kleur, meer niet. Geen advertenties. Alles verwijderen kan met één tik, wanneer je maar wilt.\n\nMis je een plant? Stel hem voor via het zoekveld en we voegen hem toe.\n\nProject Food is beschikbaar in het Nederlands, Engels en Italiaans. Meer talen volgen.",
+        "keywords": [
+          "kind groente",
+          "moeilijke eter",
+          "proeven",
+          "kaarten",
+          "avondeten",
+          "gezond eten",
+          "eetdagboek",
+          "fruit",
+          "uitdaging",
+          "vezels"
+        ],
+        "privacyPolicyUrl": "https://projectfood.dev/nl/privacy",
+        "supportUrl": "https://projectfood.dev/nl/contact",
+        "marketingUrl": "https://projectfood.dev"
+      },
+      "it": {
+        "title": "Project Food: 30 piante",
+        "subtitle": "30 piante diverse a settimana",
+        "promoText": "30 piante diverse a settimana. Tocca cosa hai assaggiato e colleziona le carte. Un solo account sul tuo telefono, per tutta la tavola.",
+        "description": "Project Food trasforma \"cosa abbiamo mangiato oggi?\" in un rituale di un minuto a tavola. La famiglia assaggia, tu tocchi, e ogni nuova pianta che provi diventa una carta nella collezione di famiglia.\n\nCome funziona\nDopo cena, o semplicemente una volta al giorno, apri l'app e tocca le piante che hai assaggiato. Oltre 200 tra frutta, verdura, erbe e spezie, noci, semi, legumi, cereali integrali e fermentati, ognuna con la sua immagine. Tocca una pianta per registrarla per stasera. Tienila premuta per scegliere chi l'ha assaggiata. Punta a 30 piante diverse a settimana, contate insieme come famiglia. Ogni assaggio si aggiunge alla collezione e niente si azzera mai.\n\nColleziona tutti i traguardi\nEsploratore, Arcobaleno, Tavola piena, Grande cena e altri: traguardi per quello che una famiglia fa a tavola, in bronzo, argento, oro e platino. Ogni traguardo mostra quanto manca al livello successivo.\n\nQualcosa di cui parlare mentre si mangia\nOgni pianta ha una curiosità per la tavola e un consiglio per chi cucina.\n\nGuarda cosa mangiate, mese dopo mese\nLa schermata Collezione mostra, per ogni persona, i cibi già provati, le carte ottenute e i traguardi guadagnati. Quella lista può solo crescere. Anche in una casa dove le novità a tavola non passano facilmente: ogni assaggio conta.\n\nUna domanda, all'ora della vostra cena\nIndica a che ora cenate di solito e mezz'ora dopo l'app chiede cosa ha assaggiato la famiglia. Altre notifiche non servono. Consigli e novità restano spenti finché non li attivi tu.\n\nSul tuo telefono, per la tua famiglia\nUn solo account, il tuo. Aggiungi i membri della famiglia per collezionare le piante insieme: un nome e un colore, niente di più. Nessuna pubblicità. Puoi cancellare tutto con un tocco, quando vuoi.\n\nManca una pianta? Suggeriscila dalla ricerca e la aggiungiamo.\n\nProject Food è disponibile in italiano, inglese e olandese. Altre lingue in arrivo.",
+        "keywords": [
+          "bambini verdura",
+          "neofobia",
+          "assaggiare",
+          "carte",
+          "cena",
+          "mangiare sano",
+          "diario alimentare",
+          "frutta",
+          "sfida",
+          "fibre"
+        ],
+        "privacyPolicyUrl": "https://projectfood.dev/it/privacy",
+        "supportUrl": "https://projectfood.dev/it/contact",
+        "marketingUrl": "https://projectfood.dev"
+      }
+    },
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "ageRatingOverrideV2": "NONE",
+      "koreaAgeRatingOverride": "NONE",
+      "kidsAgeBand": null,
+      "developerAgeRatingInfoUrl": null,
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "gunsOrOtherWeapons": "NONE",
+      "advertising": false,
+      "ageAssurance": false,
+      "healthOrWellnessTopics": true,
+      "messagingAndChat": false,
+      "parentalControls": false,
+      "userGeneratedContent": false
+    }
+  }
+}

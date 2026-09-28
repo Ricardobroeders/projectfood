@@ -779,3 +779,15 @@ pricing, the App Privacy labels mapped one-to-one from Play's Data safety, revie
 review account, the 1.0.2 version page (6.9-inch screenshots only, manual release, copyright,
 URLs) and a review-guideline checklist. Backlog: item 20 (Ricardo confirms the names), item 14
 state, lead line. Updated: seo-app-store-aso, strategy-backlog.
+
+## [2026-09-28] build | iOS store name decided, App Store Connect record pushed with EAS Metadata
+Ricardo chose the number over the audience: "Project Food: 30 plants a week" / "30 planten" /
+"30 piante", subtitles without the family word ("Every taste becomes a card", "Elke week minimaal
+30 soorten", "30 piante diverse a settimana"), age rating 9+ (health or wellness topics yes).
+Claude pushed the record from its shell with `eas metadata:push` (App Store Connect API key on
+EAS, no Apple login; `store.config.json` is not a fingerprint source, both runtimes unchanged):
+version 1.0 → 1.0.2 with manual release, four localisations, categories Health & Fitness / Food &
+Drink, names, subtitles, keywords, promo text, descriptions, URLs, age rating, review contact and
+notes. Apple refused the demo account without the password, so that, App Privacy, pricing,
+content rights, screenshots and Submit stay with Ricardo. The `review` block (his phone number)
+is stripped from the committed file. Updated: seo-app-store-aso, strategy-backlog.

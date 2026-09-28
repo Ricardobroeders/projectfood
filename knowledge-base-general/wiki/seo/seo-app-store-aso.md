@@ -43,7 +43,7 @@ plan.
 | Field | EN | NL | IT |
 |---|---|---|---|
 | Name (30) | Play: Project Food. Apple (2026-09-28): Project Food: 30 plants a week | Play: Project Food. Apple: Project Food: 30 planten | Play: Project Food. Apple: Project Food: 30 piante |
-| Subtitle (30) | The family tastes, you tap | Het gezin proeft, jij tikt | La famiglia assaggia insieme |
+| Subtitle (30) | Apple (2026-09-28): Every taste becomes a card. Play tagline stays "The family tastes, you tap" | Apple: Elke week minimaal 30 soorten. Play: Het gezin proeft, jij tikt | Apple: 30 piante diverse a settimana. Play: La famiglia assaggia insieme |
 | Keywords (100, no repeats of name/subtitle) | picky eater,vegetables,kids food,tasting,30 plants,cards,dinner,healthy eating,challenge,class | kind groente,moeilijke eter,proeven,30 planten,gezin,kaarten,avondeten,gezond eten,schoolfruit,klas | bambini verdura,neofobia,assaggiare,30 vegetali,famiglia,carte,cena,mangiare sano,scuola,classe |
 | Category | Health & Fitness (primary), Food & Drink (secondary) | same | same |
 | Age rating | 4+ (not Kids Category) | | |
@@ -404,21 +404,26 @@ to claim it, so the store name takes a suffix; the launcher label under the icon
 Food" (`name` in `app.config.ts`)._
 
 ### Name, subtitle, keywords, promotional text (per locale)
-Ricardo's steer of 2026-09-28: the suffix names the 30 plants goal, not the audience. Apple's name
-is localisable, so each locale gets its own; "per week" does not fit the 30 characters in Dutch or
-Italian, so there the cadence moves to the subtitle and takes the family word with it. In English
-both fit, so the subtitle keeps the tagline. Counts in brackets.
+Decided by Ricardo on 2026-09-28 and **pushed to App Store Connect the same day at 17:42** (see
+"How it was pushed" below). The suffix names the 30 plants goal, not the audience. Apple's name is
+localisable, so each locale gets its own; "per week" does not fit the 30 characters in Dutch or
+Italian, so there the cadence moves to the subtitle. The subtitles deliberately drop the family
+word (Ricardo: focusing on the family "may leave out many others", the solo adult of row 3; the
+family stays in the description and the screenshots), so the name and subtitle together say the
+goal and the mechanic, nothing about who it is for. Counts in brackets.
 
 | Field | en-GB (primary) | nl-NL | it-IT |
 |---|---|---|---|
 | Name (30) | Project Food: 30 plants a week (30) | Project Food: 30 planten (24) | Project Food: 30 piante (23) |
-| Subtitle (30) | The family tastes, you tap (26) | Elke week, met het hele gezin (29) | Ogni settimana, in famiglia (27) |
+| Subtitle (30) | Every taste becomes a card (26) | Elke week minimaal 30 soorten (29) | 30 piante diverse a settimana (29) |
 | Keywords (100) | picky eater,vegetables,fruit,tasting,cards,dinner,healthy eating,tracker,kids food,diversity (92) | kind groente,moeilijke eter,proeven,kaarten,avondeten,gezond eten,eetdagboek,fruit,uitdaging,vezels (99) | bambini verdura,neofobia,assaggiare,carte,cena,mangiare sano,diario alimentare,frutta,sfida,fibre (97) |
 | Promotional text (170) | 30 different plants a week. Tap what you tasted, collect a card for each. One account on your phone, for the whole table. (121) | 30 verschillende planten per week. Tik aan wat je proefde en spaar de kaarten. Eén account op jouw telefoon, voor de hele tafel. (128) | 30 piante diverse a settimana. Tocca cosa hai assaggiato e colleziona le carte. Un solo account sul tuo telefono, per tutta la tavola. (134) |
 | Description (4000) | the Play full description above, unchanged | same | same |
 
-Dutch alternative if "30 planten" on its own reads as houseplants to Ricardo: "Project Food: 30
-planten/week" (29) with the Play tagline "Het gezin proeft, jij tikt" (26) as the subtitle.
+Not chosen: the slash form "Project Food: 30 planten/week", the verb forms ("Taste 30 plants",
+"proef 30 planten", "prova 30 piante") and the family subtitles ("The family tastes, you tap",
+"Elke week, met het hele gezin", "Ogni settimana, in famiglia"). Ricardo's own Dutch line, "Elke
+week minimaal 30 verschillende planten", is 44 characters, hence "soorten".
 Keyword field rules: commas without spaces, no word that is already in the name or subtitle (Apple
 indexes all three together and ignores repeats, so "plants", "family", "gezin", "famiglia" and
 "30" are left out), no category names. The hidden field keeps the parent search phrases that the
@@ -434,9 +439,14 @@ is not indexed; it is the Play short description plus one line.
   browsed, Food & Drink catches the fruit-and-veg searches.
 - Content rights: does not contain, show or access third-party content (facts, tips and renders
   are ours).
-- Age rating: expected **4+**, every answer "None" or "No": violence, sexual content, profanity,
-  horror, mature themes, alcohol/tobacco/drugs, gambling, contests; medical or treatment
-  information "No" (the app logs foods and gives no advice); unrestricted web access "No"
+- Age rating: **9+**, decided 2026-09-28. Apple's 2025 questionnaire asks about "health or
+  wellness topics: content that provides self-care or lifestyle recommendations, such as calorie
+  tracking, dieting advice or exercise recommendations"; a weekly plant goal is calorie tracking's
+  cousin and the Play health declaration says the same, so the answer is yes, which sets 9+.
+  Ricardo: "rather be honest than search for the grey area". Every other answer "None" or "No":
+  violence, sexual content, profanity, horror, mature themes, alcohol/tobacco/drugs, gambling,
+  contests, guns; medical or treatment information "No" (that one would mean 13+ and covers
+  diagnoses and treatment guidance, which the app never gives); unrestricted web access "No"
   (privacy and terms open in an in-app browser at fixed addresses); no user-generated content
   shown to other users (member names, suggestions and survey answers stay inside the household
   or come to us); no messaging, no advertising, no parental controls, no age assurance. Not
@@ -488,8 +498,9 @@ those six groups and no "Data Used to Track You".
   > and then the iOS dialog; declining changes nothing else. There are no purchases and no ads.
   > Account deletion is under Account → Delete account, and at
   > https://projectfood.dev/en/delete-account.
-- Contact: Ricardo Broeders, info@projectfood.dev, and a phone number (Apple requires one, it is
-  not shown publicly and is not recorded here).
+- Contact: Ricardo Broeders, info@projectfood.dev and his phone number, pushed 2026-09-28; the
+  number lives in App Store Connect and Ricardo's password manager only, not in the repo (the
+  `review` block is stripped from the committed `store.config.json`).
 
 ### Version 1.0.2 page
 - Build: TestFlight 1.0.2 (1), EAS build `406788e5`, the one verified on an iPhone 15 Pro Max on
@@ -525,10 +536,33 @@ those six groups and no "Data Used to Track You".
 - 3.1.1: no purchases and no ads; the RevenueCat step re-opens in-app purchase, trader status and
   the privacy labels together.
 
-### Order of work
-1. Ricardo confirms the three names (or the Dutch slash alternative). 2. App Information, pricing,
-age rating, App Privacy and review information, pasted from this sheet. 3. Screenshots in Figma at
-6.9 inch. 4. Attach build 1.0.2 (1) and submit with manual release.
+### How it was pushed (EAS Metadata, 2026-09-28)
+`projectfood-mobile/store.config.json` is the source of the iOS listing; `npx eas-cli
+metadata:push` sends it to App Store Connect through the API key that lives on EAS, so it runs
+from Claude's shell with no Apple login (`metadata:pull` reads the record back). The file is not a
+fingerprint source (both runtimes re-measured unchanged after it was written, Android `d8da0646`,
+iOS `acf2e071`). Pushed and verified by a pull: version renamed 1.0 → 1.0.2 with manual release,
+en-US updated and en-GB, nl-NL and it created (EAS made the record with en-US as the primary
+language, so English goes in twice with the same text; the primary can be switched to en-GB under
+App Information later), categories, names, subtitles, promotional text, descriptions, keyword
+fields, privacy/support/marketing URLs, the age rating declaration, and the review contact and
+notes. Apple refused the demo account without its password, so the "sign-in required" toggle, the
+account name and the password are set by hand in App Store Connect. The first attempt hit an
+Apple internal server error; the retry went through.
+
+Screenshots go through the same file later: `apple.info.<locale>.screenshots.APP_IPHONE_67`
+lists files under `store/apple/screenshot/<locale>/APP_IPHONE_67/`, and a push uploads, reorders
+and deletes to match. Not covered by EAS Metadata, by hand in App Store Connect: App Privacy
+labels, pricing and availability, content rights, the demo password, attaching the build and
+Submit for Review.
+
+### What remains, by owner
+Ricardo in App Store Connect: (1) App Review Information → Sign-in required on, user name
+`review@projectfood.dev`, the password; (2) App Privacy from the table above; (3) Pricing and
+Availability: Free, all territories; (4) App Information → Content rights: no third-party
+content; (5) the 6.9-inch screenshots in Figma, exported per locale, handed to Claude for the
+push; (6) attach build 1.0.2 (1) and Submit for Review, manual release. Claude: the screenshot
+push once the files exist, and the What's New text from the second version on.
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
