@@ -572,9 +572,10 @@ Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy publishe
 no pre-order, Content rights set, and the demo account with its password under App Review
 Information, and the regulated-medical-device declaration (a new required question under App
 Information for the EU, UK and US: "No"). Screenshots pushed by Claude the same evening (next
-paragraph). Left: the copyright wording ("2026 Project Food" was pushed; "2026 Ricardo Broeders"
-is the precise owner until a company exists, Ricardo's pick, then mirrored in the config), attach
-build 1.0.2 (1) and Submit for Review, manual release. Claude: the screenshot push once the files exist, and the
+paragraph). Copyright stays "2026 Project Food" (Ricardo, 2026-09-28; a copyright line needs no registration
+or trademark, only year and owner). Left: a second screenshot export with iPhone mockups (Ricardo
+in Figma, then Claude pushes the same way), attach build 1.0.2 (1) and Submit for Review, manual
+release. Claude: the screenshot push once the files exist, and the
 What's New text from the second version on.
 
 **Screenshots pushed 2026-09-28 20:47 to 20:52.** Ricardo re-exported the four frames per language
