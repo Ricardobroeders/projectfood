@@ -570,9 +570,24 @@ Submit for Review.
 Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy published (eight types,
 "Data Linked to You" only, no tracking), Pricing $0.00 and availability in all 175 territories,
 no pre-order, Content rights set, and the demo account with its password under App Review
-Information. Left: (1) the 6.9-inch screenshots in Figma, exported per locale, handed to Claude
-for the push; (2) attach build 1.0.2 (1) and Submit for Review, manual release. Claude: the
-screenshot push once the files exist, and the What's New text from the second version on.
+Information, and the regulated-medical-device declaration (a new required question under App
+Information for the EU, UK and US: "No"). Left: (1) the screenshots; (2) attach build 1.0.2 (1)
+and Submit for Review, manual release. Claude: the screenshot push once the files exist, and the
+What's New text from the second version on.
+
+**Screenshot state, 2026-09-28 evening.** Ricardo uploaded the Play frames re-exported at the
+6.5-inch size (1242 × 2688, PNG with an alpha channel) through the browser while App Store
+Connect was returning internal server errors (the API saw the same 500s). Result, read back by
+`metadata:pull`: the Italian set of four is stored and healthy; the English (U.K.) set of four is
+stuck as broken entries whose files cannot be fetched; English (U.S.) and Dutch are empty. Three
+fixes before the retry, all in Figma: frame 03's English sub-line still says "stamp" (must be
+"achievement"); the phone is a real Android device (punch-hole camera, Android status bar at
+17:26, 97% battery), which is what guideline 2.3.3 rejections quote, so iPhone bezel and iOS
+status bar at 9:41; and export flattened, no transparency, sRGB, at 1320 × 2868 (6.9-inch) or
+1242 × 2688 (6.5-inch). Then Claude clears the broken English entries and pushes en-US, en-GB,
+nl-NL and it from `projectfood-mobile/store/apple/screenshot/<locale>/<display type>/` (the
+folder is gitignored since 2026-09-28; the Figma file is the source; the pull downloads what the
+store holds into it, so back up and restore `store.config.json` around a pull).
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
