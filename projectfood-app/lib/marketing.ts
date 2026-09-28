@@ -6,7 +6,7 @@ export type Locale = (typeof LOCALES)[number]
 type InternalPage = '/' | '/about' | '/contact' | '/terms' | '/privacy' | '/delete-account' | '/recipes' | '/learn'
 
 const LOCALIZED_PATHS: Record<InternalPage, Record<string, string>> = {
-  '/':        { en: '/en/',         nl: '/nl/',             it: '/it/'          },
+  '/':        { en: '/en',          nl: '/nl',              it: '/it'           },
   '/about':   { en: '/en/about',    nl: '/nl/over',         it: '/it/chi-siamo' },
   '/contact': { en: '/en/contact',  nl: '/nl/contact',      it: '/it/contatto'  },
   '/terms':   { en: '/en/terms',    nl: '/nl/voorwaarden',  it: '/it/termini'   },
@@ -34,7 +34,7 @@ export function getAlternates(page: InternalPage, locale: string) {
 }
 
 export function getLocalizedHref(page: InternalPage, locale: string): string {
-  return LOCALIZED_PATHS[page]?.[locale] ?? `/${locale}/`
+  return LOCALIZED_PATHS[page]?.[locale] ?? `/${locale}`
 }
 
 /** Absolute URL of a learn page in one locale; slugs are that locale's public slugs. */
