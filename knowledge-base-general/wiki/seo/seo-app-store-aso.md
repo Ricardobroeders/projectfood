@@ -43,7 +43,7 @@ plan.
 | Field | EN | NL | IT |
 |---|---|---|---|
 | Name (30) | Play: Project Food. Apple (2026-09-28): Project Food: 30 plants a week | Play: Project Food. Apple: Project Food: 30 planten | Play: Project Food. Apple: Project Food: 30 piante |
-| Subtitle (30) | Apple (2026-09-28): Every taste becomes a card. Play tagline stays "The family tastes, you tap" | Apple: Elke week minimaal 30 soorten. Play: Het gezin proeft, jij tikt | Apple: 30 piante diverse a settimana. Play: La famiglia assaggia insieme |
+| Subtitle (30) | Apple (2026-09-28): Track your plant diversity. Play tagline stays "The family tastes, you tap" | Apple: Eet meer verschillende planten. Play: Het gezin proeft, jij tikt | Apple: Mangia più piante diverse. Play: La famiglia assaggia insieme |
 | Keywords (100, no repeats of name/subtitle) | picky eater,vegetables,kids food,tasting,30 plants,cards,dinner,healthy eating,challenge,class | kind groente,moeilijke eter,proeven,30 planten,gezin,kaarten,avondeten,gezond eten,schoolfruit,klas | bambini verdura,neofobia,assaggiare,30 vegetali,famiglia,carte,cena,mangiare sano,scuola,classe |
 | Category | Health & Fitness (primary), Food & Drink (secondary) | same | same |
 | Age rating | 4+ (not Kids Category) | | |
@@ -410,19 +410,29 @@ localisable, so each locale gets its own; "per week" does not fit the 30 charact
 Italian, so there the cadence moves to the subtitle. The subtitles deliberately drop the family
 word (Ricardo: focusing on the family "may leave out many others", the solo adult of row 3; the
 family stays in the description and the screenshots), so the name and subtitle together say the
-goal and the mechanic, nothing about who it is for. Counts in brackets.
+goal and the mechanic, nothing about who it is for. Second pass the same evening: Ricardo wanted
+the subtitle to point at variety ("try different plants, bigger variety", the gut idea), and the
+store rule allows the variety without the outcome, so the subtitles became the instruction and
+the search word: "Track your plant diversity" / "Eet meer verschillende planten" / "Mangia più
+piante diverse" (pushed 2026-09-28 evening). "Diversity" left the English keyword field because
+the subtitle now carries it, and "gut health" took its place: a search term in the hidden field,
+not a claim on the page. Counts in brackets.
 
 | Field | en-GB (primary) | nl-NL | it-IT |
 |---|---|---|---|
 | Name (30) | Project Food: 30 plants a week (30) | Project Food: 30 planten (24) | Project Food: 30 piante (23) |
-| Subtitle (30) | Every taste becomes a card (26) | Elke week minimaal 30 soorten (29) | 30 piante diverse a settimana (29) |
-| Keywords (100) | picky eater,vegetables,fruit,tasting,cards,dinner,healthy eating,tracker,kids food,diversity (92) | kind groente,moeilijke eter,proeven,kaarten,avondeten,gezond eten,eetdagboek,fruit,uitdaging,vezels (99) | bambini verdura,neofobia,assaggiare,carte,cena,mangiare sano,diario alimentare,frutta,sfida,fibre (97) |
+| Subtitle (30) | Track your plant diversity (26) | Eet meer verschillende planten (30) | Mangia più piante diverse (25) |
+| Keywords (100) | picky eater,vegetables,fruit,tasting,cards,dinner,healthy eating,tracker,kids food,gut health (93) | kind groente,moeilijke eter,proeven,kaarten,avondeten,gezond eten,eetdagboek,fruit,uitdaging,vezels (99) | bambini verdura,neofobia,assaggiare,carte,cena,mangiare sano,diario alimentare,frutta,sfida,fibre (97) |
 | Promotional text (170) | 30 different plants a week. Tap what you tasted, collect a card for each. One account on your phone, for the whole table. (121) | 30 verschillende planten per week. Tik aan wat je proefde en spaar de kaarten. Eén account op jouw telefoon, voor de hele tafel. (128) | 30 piante diverse a settimana. Tocca cosa hai assaggiato e colleziona le carte. Un solo account sul tuo telefono, per tutta la tavola. (134) |
 | Description (4000) | the Play full description above, unchanged | same | same |
 
 Not chosen: the slash form "Project Food: 30 planten/week", the verb forms ("Taste 30 plants",
-"proef 30 planten", "prova 30 piante") and the family subtitles ("The family tastes, you tap",
-"Elke week, met het hele gezin", "Ogni settimana, in famiglia"). Ricardo's own Dutch line, "Elke
+"proef 30 planten", "prova 30 piante"), the family subtitles ("The family tastes, you tap",
+"Elke week, met het hele gezin", "Ogni settimana, in famiglia"), the first pushed set ("Every
+taste becomes a card", "Elke week minimaal 30 soorten", "30 piante diverse a settimana") and the
+variety alternatives ("More variety on your plate", "Meer variatie op je bord", "Più varietà nel
+piatto"). Any wording with "gut health" on the page itself is out: a health claim on a store
+surface. Ricardo's own Dutch line, "Elke
 week minimaal 30 verschillende planten", is 44 characters, hence "soorten".
 Keyword field rules: commas without spaces, no word that is already in the name or subtitle (Apple
 indexes all three together and ignores repeats, so "plants", "family", "gezin", "famiglia" and

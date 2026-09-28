@@ -791,3 +791,10 @@ Drink, names, subtitles, keywords, promo text, descriptions, URLs, age rating, r
 notes. Apple refused the demo account without the password, so that, App Privacy, pricing,
 content rights, screenshots and Submit stay with Ricardo. The `review` block (his phone number)
 is stripped from the committed file. Updated: seo-app-store-aso, strategy-backlog.
+
+## [2026-09-28] build | iOS subtitles second pass, pushed
+Ricardo wanted the subtitle to point at variety (the gut idea) rather than the card mechanic; the
+store rule keeps the outcome off the page, so the lines became "Track your plant diversity" /
+"Eet meer verschillende planten" / "Mangia più piante diverse", pushed with `eas metadata:push`
+and verified by a pull. English keyword "diversity" (now in the subtitle) swapped for "gut
+health" in the hidden field. Updated: seo-app-store-aso, strategy-backlog.
