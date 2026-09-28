@@ -31,7 +31,15 @@
         ],
         "privacyPolicyUrl": "https://projectfood.dev/en/privacy",
         "supportUrl": "https://projectfood.dev/en/contact",
-        "marketingUrl": "https://projectfood.dev"
+        "marketingUrl": "https://projectfood.dev",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/screenshot/en-US/APP_IPHONE_65/iphone-en-1.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_65/iphone-en-2.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_65/iphone-en-3.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_65/iphone-en-4.png"
+          ]
+        }
       },
       "en-GB": {
         "title": "Project Food: 30 plants a week",
@@ -52,7 +60,15 @@
         ],
         "privacyPolicyUrl": "https://projectfood.dev/en/privacy",
         "supportUrl": "https://projectfood.dev/en/contact",
-        "marketingUrl": "https://projectfood.dev"
+        "marketingUrl": "https://projectfood.dev",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/screenshot/en-GB/APP_IPHONE_65/iphone-en-1.png",
+            "store/apple/screenshot/en-GB/APP_IPHONE_65/iphone-en-2.png",
+            "store/apple/screenshot/en-GB/APP_IPHONE_65/iphone-en-3.png",
+            "store/apple/screenshot/en-GB/APP_IPHONE_65/iphone-en-4.png"
+          ]
+        }
       },
       "nl-NL": {
         "title": "Project Food: 30 planten",
@@ -73,7 +89,15 @@
         ],
         "privacyPolicyUrl": "https://projectfood.dev/nl/privacy",
         "supportUrl": "https://projectfood.dev/nl/contact",
-        "marketingUrl": "https://projectfood.dev"
+        "marketingUrl": "https://projectfood.dev",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/screenshot/nl-NL/APP_IPHONE_65/iphone-nl-1.png",
+            "store/apple/screenshot/nl-NL/APP_IPHONE_65/iphone-nl-2.png",
+            "store/apple/screenshot/nl-NL/APP_IPHONE_65/iphone-nl-3.png",
+            "store/apple/screenshot/nl-NL/APP_IPHONE_65/iphone-nl-4.png"
+          ]
+        }
       },
       "it": {
         "title": "Project Food: 30 piante",
@@ -94,7 +118,15 @@
         ],
         "privacyPolicyUrl": "https://projectfood.dev/it/privacy",
         "supportUrl": "https://projectfood.dev/it/contact",
-        "marketingUrl": "https://projectfood.dev"
+        "marketingUrl": "https://projectfood.dev",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/screenshot/it/APP_IPHONE_65/iphone-it-1.png",
+            "store/apple/screenshot/it/APP_IPHONE_65/iphone-it-2.png",
+            "store/apple/screenshot/it/APP_IPHONE_65/iphone-it-3.png",
+            "store/apple/screenshot/it/APP_IPHONE_65/iphone-it-4.png"
+          ]
+        }
       }
     },
     "advisory": {

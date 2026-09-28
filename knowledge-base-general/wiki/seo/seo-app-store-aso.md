@@ -571,11 +571,26 @@ Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy publishe
 "Data Linked to You" only, no tracking), Pricing $0.00 and availability in all 175 territories,
 no pre-order, Content rights set, and the demo account with its password under App Review
 Information, and the regulated-medical-device declaration (a new required question under App
-Information for the EU, UK and US: "No"). Left: (1) the screenshots; (2) attach build 1.0.2 (1)
-and Submit for Review, manual release. Claude: the screenshot push once the files exist, and the
+Information for the EU, UK and US: "No"). Screenshots pushed by Claude the same evening (next
+paragraph). Left: the copyright wording ("2026 Project Food" was pushed; "2026 Ricardo Broeders"
+is the precise owner until a company exists, Ricardo's pick, then mirrored in the config), attach
+build 1.0.2 (1) and Submit for Review, manual release. Claude: the screenshot push once the files exist, and the
 What's New text from the second version on.
 
-**Screenshot state, 2026-09-28 evening.** Ricardo uploaded the Play frames re-exported at the
+**Screenshots pushed 2026-09-28 20:47 to 20:52.** Ricardo re-exported the four frames per language
+at the 6.5-inch size (1242 × 2688) into `~/Desktop/1x/` (`iphone-<en|nl|it>-<1..4>.png`; the
+English frame 03 now says "achievement"); Claude flattened the soft transparency around the
+phone onto the frame's own background (222, 234, 203) with Pillow, laid them out under
+`store/apple/screenshot/<en-US|en-GB|nl-NL|it>/APP_IPHONE_65/` (the English set serves both
+English localisations), listed them in `store.config.json` and pushed. Apple's servers threw
+internal errors twice that evening, so it took three runs; the push is idempotent (it uploads
+what is missing, deletes what the config no longer lists), and the final pull showed four healthy
+files in every localisation and the broken entries gone. Still open at submit time: the frames
+show an Android phone (punch-hole camera, Android status bar), the guideline 2.3.3 risk noted
+below; Ricardo's call whether to redo them before or after the first review. The paragraph below
+is the state before the push, kept for the reasoning.
+
+**Screenshot state, 2026-09-28 evening (before the push).** Ricardo uploaded the Play frames re-exported at the
 6.5-inch size (1242 × 2688, PNG with an alpha channel) through the browser while App Store
 Connect was returning internal server errors (the API saw the same 500s). Result, read back by
 `metadata:pull`: the Italian set of four is stored and healthy; the English (U.K.) set of four is
