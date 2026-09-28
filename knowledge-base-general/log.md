@@ -767,3 +767,15 @@ the Metrics section of [[overview]].
 Open questions: what brought three dormant users back in one week? Should the analytics views
 split PWA logs from family-app tastes (e.g. by `app_events` presence or a source column) before
 the first child member arrives? Did anything intentionally clear `notification_log`?
+
+## [2026-09-28] build | App Store Connect listing sheet drafted (seo-app-store-aso)
+Ricardo asked what to set up first in App Store Connect. The Mac App Store search showed no live
+app named "Project Food", so the taken name is a dead reservation and the iOS name takes a suffix;
+his steer: the 30 plants goal, not the audience. Added to [[seo-app-store-aso]] an "App Store
+listing" section: names, subtitles, keyword fields and promotional text per locale with counts
+(en-GB "Project Food: 30 plants a week", nl "Project Food: 30 planten", it "Project Food: 30
+piante"), App Information (Health & Fitness / Food & Drink, 4+, standard EULA, privacy URLs),
+pricing, the App Privacy labels mapped one-to-one from Play's Data safety, reviewer notes for the
+review account, the 1.0.2 version page (6.9-inch screenshots only, manual release, copyright,
+URLs) and a review-guideline checklist. Backlog: item 20 (Ricardo confirms the names), item 14
+state, lead line. Updated: seo-app-store-aso, strategy-backlog.

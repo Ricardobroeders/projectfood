@@ -3,7 +3,7 @@ title: SEO — App Store & Google Play (ASO) for the native launch
 type: seo
 tags: [seo, aso, app-store, family-mode]
 created: 2026-09-06
-updated: 2026-09-22
+updated: 2026-09-28
 sources: [source-family-mode-context.md, seo-serp-landscape.md]
 ---
 
@@ -42,7 +42,7 @@ plan.
 ## Metadata plan (draft, validate with a store keyword tool before submission)
 | Field | EN | NL | IT |
 |---|---|---|---|
-| Name (30) | Project Food | Project Food | Project Food |
+| Name (30) | Play: Project Food. Apple (2026-09-28): Project Food: 30 plants a week | Play: Project Food. Apple: Project Food: 30 planten | Play: Project Food. Apple: Project Food: 30 piante |
 | Subtitle (30) | The family tastes, you tap | Het gezin proeft, jij tikt | La famiglia assaggia insieme |
 | Keywords (100, no repeats of name/subtitle) | picky eater,vegetables,kids food,tasting,30 plants,cards,dinner,healthy eating,challenge,class | kind groente,moeilijke eter,proeven,30 planten,gezin,kaarten,avondeten,gezond eten,schoolfruit,klas | bambini verdura,neofobia,assaggiare,30 vegetali,famiglia,carte,cena,mangiare sano,scuola,classe |
 | Category | Health & Fitness (primary), Food & Drink (secondary) | same | same |
@@ -59,7 +59,9 @@ phrases ("kids food", "kind groente", "bambini verdura"); every visible field fo
 family wording (policy rule above). Subtitle changed from "Kids taste, family collects" on
 2026-09-20 for the same reason.
 Name decided 2026-09-21 (Ricardo): plain "Project Food" on both stores, cleaner and easier to
-recognise; the earlier "Project Food: Family Plants" is dropped. The family and plant words live
+recognise. **Apple update 2026-09-28:** the plain name is taken on the App Store (Play allows
+duplicates, Apple does not), so the iOS name carries a suffix that names the 30 plants goal; see
+"App Store listing" below. The 2026-09-21 reasoning stands for Play: the earlier "Project Food: Family Plants" is dropped. The family and plant words live
 in the subtitle (Apple) and the short description (Play), both indexed, and in the full
 description. The launcher label is "Project Food" as well.
 
@@ -390,6 +392,143 @@ a DPA, which is Play's service-provider exemption, so nothing counts as "shared"
   financial info, web browsing, installed apps, in-app search history (plant search runs on the
   phone against the bundled catalogue), crash logs, diagnostics, advertising ID.
 
+
+## App Store listing (App Store Connect), sheet drafted 2026-09-28
+
+_Field-by-field sheet for App Store Connect; Ricardo pastes, the way the Play listing went in on
+2026-09-22. Record: ASC App ID 6816725826, bundle `dev.projectfood.app`, named "Project Food
+(96bd5e)" by EAS because the plain name is taken. Checked on the Mac App Store on 2026-09-28: no
+live iPhone app is called "Project Food" (the search returns Matcha AI, Street Food Simulator,
+Habit Tracker and the like), so the name sits on someone's unsubmitted record. Apple offers no way
+to claim it, so the store name takes a suffix; the launcher label under the icon stays "Project
+Food" (`name` in `app.config.ts`)._
+
+### Name, subtitle, keywords, promotional text (per locale)
+Ricardo's steer of 2026-09-28: the suffix names the 30 plants goal, not the audience. Apple's name
+is localisable, so each locale gets its own; "per week" does not fit the 30 characters in Dutch or
+Italian, so there the cadence moves to the subtitle and takes the family word with it. In English
+both fit, so the subtitle keeps the tagline. Counts in brackets.
+
+| Field | en-GB (primary) | nl-NL | it-IT |
+|---|---|---|---|
+| Name (30) | Project Food: 30 plants a week (30) | Project Food: 30 planten (24) | Project Food: 30 piante (23) |
+| Subtitle (30) | The family tastes, you tap (26) | Elke week, met het hele gezin (29) | Ogni settimana, in famiglia (27) |
+| Keywords (100) | picky eater,vegetables,fruit,tasting,cards,dinner,healthy eating,tracker,kids food,diversity (92) | kind groente,moeilijke eter,proeven,kaarten,avondeten,gezond eten,eetdagboek,fruit,uitdaging,vezels (99) | bambini verdura,neofobia,assaggiare,carte,cena,mangiare sano,diario alimentare,frutta,sfida,fibre (97) |
+| Promotional text (170) | 30 different plants a week. Tap what you tasted, collect a card for each. One account on your phone, for the whole table. (121) | 30 verschillende planten per week. Tik aan wat je proefde en spaar de kaarten. Eén account op jouw telefoon, voor de hele tafel. (128) | 30 piante diverse a settimana. Tocca cosa hai assaggiato e colleziona le carte. Un solo account sul tuo telefono, per tutta la tavola. (134) |
+| Description (4000) | the Play full description above, unchanged | same | same |
+
+Dutch alternative if "30 planten" on its own reads as houseplants to Ricardo: "Project Food: 30
+planten/week" (29) with the Play tagline "Het gezin proeft, jij tikt" (26) as the subtitle.
+Keyword field rules: commas without spaces, no word that is already in the name or subtitle (Apple
+indexes all three together and ignores repeats, so "plants", "family", "gezin", "famiglia" and
+"30" are left out), no category names. The hidden field keeps the parent search phrases that the
+visible fields avoid ("kids food", "kind groente", "bambini verdura"), per the rule at the top of
+this page. The promotional text sits above the description, can change without a new build, and
+is not indexed; it is the Play short description plus one line.
+
+### App Information (once per record)
+- Primary language English (U.K.); localisations Dutch and Italian. Any other device language
+  sees the primary.
+- Category: primary **Health & Fitness**, secondary **Food & Drink**. Apple has no Parenting
+  category, so the Play choice does not carry over; Health & Fitness is where diet trackers are
+  browsed, Food & Drink catches the fruit-and-veg searches.
+- Content rights: does not contain, show or access third-party content (facts, tips and renders
+  are ours).
+- Age rating: expected **4+**, every answer "None" or "No": violence, sexual content, profanity,
+  horror, mature themes, alcohol/tobacco/drugs, gambling, contests; medical or treatment
+  information "No" (the app logs foods and gives no advice); unrestricted web access "No"
+  (privacy and terms open in an in-app browser at fixed addresses); no user-generated content
+  shown to other users (member names, suggestions and survey answers stay inside the household
+  or come to us); no messaging, no advertising, no parental controls, no age assurance. Not
+  "Made for Kids", not in the Kids category (rule under "What the listing has to do").
+- License agreement: Apple's standard EULA, no custom one.
+- Privacy policy URL: https://projectfood.dev/en/privacy, and per localisation /nl/privacy and
+  /it/privacy. The same link is inside the app on the sign-in screen and under Account, which
+  guideline 5.1.1 asks for.
+- EU Digital Services Act: non-trader, declared 2026-09-27 (see [[strategy-backlog]] item 14).
+
+### Pricing and availability
+Free, all territories, no pre-order. iPhone only: `supportsTablet` is false in the config, so no
+iPad screenshots and no iPad availability. Nothing for Mac or Apple Watch.
+
+### App Privacy (the nutrition labels)
+Same facts as the Play Data safety table above (2026-09-22): no ad, analytics or crash SDK, no
+tracking, every processor under a DPA. Answers: data is collected, yes; nothing is used for
+tracking, so no App Tracking Transparency prompt and "tracking" is no throughout; every type is
+linked to the user's identity because it belongs to the account. Re-answer when the subscription
+ships (Purchases → Purchase History through RevenueCat) and when the social layer ships (row 17).
+
+| Apple data type | Linked to user | Purposes | What it is |
+|---|---|---|---|
+| Contact Info → Name | yes | App Functionality | member first names, the parent's Google or Apple name |
+| Contact Info → Email Address | yes | App Functionality | sign-in (an Apple relay address when the user hides theirs) |
+| Health & Fitness → Health | yes | App Functionality | the plant tastes (Play: Health info) |
+| Identifiers → User ID | yes | App Functionality | the account id |
+| Identifiers → Device ID | yes | App Functionality | the Expo push token, only after permission |
+| Usage Data → Product Interaction | yes | App Functionality, Analytics | `app_events` |
+| User Content → Other User Content | yes | App Functionality, Analytics | survey answers, plant suggestions |
+| Other Data | yes | App Functionality | household name, dinner time, language, time zone, member kind and colour |
+
+Not collected: location, contacts, photos or videos, audio, financial info, purchase history,
+browsing or search history (plant search runs on the phone against the bundled catalogue),
+diagnostics or crash data, sensitive info. The product page then shows "Data Linked to You" with
+those six groups and no "Data Used to Track You".
+
+### App Review Information
+- Sign-in required: yes. User name `review@projectfood.dev`; the password comes from Ricardo's
+  password manager and is typed into this form only (it is also in the Play App access form,
+  never in the repo or in this wiki).
+- Notes for the reviewer, paste as is:
+  > Sign in: type review@projectfood.dev in the email field. A password field then replaces the
+  > code button (everyone else signs in with an emailed one-time code, or with Apple or Google).
+  > The account already holds a household with one family member, Anna, and a few plants logged,
+  > so Home, Log and Unlocks are populated. What the app does: after dinner the parent taps the
+  > plants the family tasted; each plant becomes a card and the count runs toward 30 different
+  > plants a week. Notifications: after onboarding the app asks once, with its own screen first
+  > and then the iOS dialog; declining changes nothing else. There are no purchases and no ads.
+  > Account deletion is under Account → Delete account, and at
+  > https://projectfood.dev/en/delete-account.
+- Contact: Ricardo Broeders, info@projectfood.dev, and a phone number (Apple requires one, it is
+  not shown publicly and is not recorded here).
+
+### Version 1.0.2 page
+- Build: TestFlight 1.0.2 (1), EAS build `406788e5`, the one verified on an iPhone 15 Pro Max on
+  2026-09-27. The App Store version string must equal the build's, so the store says 1.0.2 even
+  after the over-the-air 1.0.3 lands; only a new iOS build changes it. Reviewers see the binary's
+  bundle and then whatever update the channel serves, which is fine for JS-only changes.
+- Screenshots: the **6.9-inch iPhone set only** (1320 × 2868 px portrait; 1290 × 2796 is also
+  accepted in that slot), 3 to 10 frames, the first three show in search results. Remade in Figma
+  from Play frames 02 to 05 with the same copy table, at the taller ratio: an iPhone bezel, the
+  iOS status bar at 9:41, no Android navigation bar, because Apple wants screenshots that show the
+  app as it runs on iPhone. The title artboard 01 is optional. One set per locale with the UI in
+  that language. No app preview video.
+- Promotional text, description, keywords: the table above.
+- Support URL https://projectfood.dev/en/contact (nl: /nl/contact, it: /it/contact). Marketing
+  URL https://projectfood.dev.
+- Copyright: "2026 Project Food". The seller name on the page is the enrolled Individual, so
+  Ricardo's legal name shows there regardless; only an Organization enrolment changes it.
+- Version release: **manually release this version**, so App Review runs during the Play closed
+  test and the release day stays Ricardo's. Phased release only exists for updates.
+- Export compliance asks nothing (`ITSAppUsesNonExemptEncryption` is false in the build).
+  Advertising identifier (IDFA): no. "What's new" is not asked for a first version.
+
+### What App Review will look at, all in place
+- 4.8 login services: Sign in with Apple next to Google, verified 2026-09-27.
+- 5.1.1(v) account deletion inside the app (Account → Delete account) plus the web page.
+- 2.1 demo account: the review household exists since 2026-09-22 (member "Anna", plants logged).
+- 5.1.1 privacy policy link inside the app and in the metadata.
+- 5.1.1(ii) permission: the push pre-prompt precedes the system dialog; declining leaves the app
+  whole.
+- 1.3 and the Kids category: rated 4+, not in Kids, nothing "for kids" in any visible field.
+- 2.3.8 name: "Name: descriptor" is the accepted form; the descriptor names the goal, not a
+  competitor, a price or a platform.
+- 3.1.1: no purchases and no ads; the RevenueCat step re-opens in-app purchase, trader status and
+  the privacy labels together.
+
+### Order of work
+1. Ricardo confirms the three names (or the Dutch slash alternative). 2. App Information, pricing,
+age rating, App Privacy and review information, pasted from this sheet. 3. Screenshots in Figma at
+6.9 inch. 4. Attach build 1.0.2 (1) and submit with manual release.
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
