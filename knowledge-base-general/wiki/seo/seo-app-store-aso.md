@@ -586,9 +586,11 @@ phone onto the frame's own background (222, 234, 203) with Pillow, laid them out
 English localisations), listed them in `store.config.json` and pushed. Apple's servers threw
 internal errors twice that evening, so it took three runs; the push is idempotent (it uploads
 what is missing, deletes what the config no longer lists), and the final pull showed four healthy
-files in every localisation and the broken entries gone. Still open at submit time: the frames
-show an Android phone (punch-hole camera, Android status bar), the guideline 2.3.3 risk noted
-below; Ricardo's call whether to redo them before or after the first review. The paragraph below
+files in every localisation and the broken entries gone. Second set pushed 21:34 the same evening (iPhone bezel mockups, files named `-v2`: EAS matches
+screenshots by file name, so a replaced file needs a new name or Apple keeps the old one).
+Still open: the Android status bar inside frames 01 and 03 and the Android navigation bar at the
+foot of frame 04 (Ricardo has no iPhone to shoot on); agreed 2026-09-28: hide the status bar and
+navigation bar entirely rather than fake an iOS one, then a third push. The paragraph below
 is the state before the push, kept for the reasoning.
 
 **Screenshot state, 2026-09-28 evening (before the push).** Ricardo uploaded the Play frames re-exported at the
