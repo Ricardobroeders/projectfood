@@ -567,12 +567,12 @@ labels, pricing and availability, content rights, the demo password, attaching t
 Submit for Review.
 
 ### What remains, by owner
-Ricardo in App Store Connect: (1) App Review Information → Sign-in required on, user name
-`review@projectfood.dev`, the password; (2) App Privacy from the table above; (3) Pricing and
-Availability: Free, all territories; (4) App Information → Content rights: no third-party
-content; (5) the 6.9-inch screenshots in Figma, exported per locale, handed to Claude for the
-push; (6) attach build 1.0.2 (1) and Submit for Review, manual release. Claude: the screenshot
-push once the files exist, and the What's New text from the second version on.
+Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy published (eight types,
+"Data Linked to You" only, no tracking), Pricing $0.00 and availability in all 175 territories,
+no pre-order, Content rights set, and the demo account with its password under App Review
+Information. Left: (1) the 6.9-inch screenshots in Figma, exported per locale, handed to Claude
+for the push; (2) attach build 1.0.2 (1) and Submit for Review, manual release. Claude: the
+screenshot push once the files exist, and the What's New text from the second version on.
 
 ## Ratings & reviews
 - Ask for a rating only after a **card unlock** or a **family 30**, never at onboarding and
