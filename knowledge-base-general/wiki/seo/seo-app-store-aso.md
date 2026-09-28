@@ -573,9 +573,10 @@ no pre-order, Content rights set, and the demo account with its password under A
 Information, and the regulated-medical-device declaration (a new required question under App
 Information for the EU, UK and US: "No"). Screenshots pushed by Claude the same evening (next
 paragraph). Copyright stays "2026 Project Food" (Ricardo, 2026-09-28; a copyright line needs no registration
-or trademark, only year and owner). Left: a second screenshot export with iPhone mockups (Ricardo
-in Figma, then Claude pushes the same way), attach build 1.0.2 (1) and Submit for Review, manual
-release. Claude: the screenshot push once the files exist, and the
+or trademark, only year and owner). **Build 1.0.2 (1) attached and submitted to App Review by
+Ricardo at about 22:05 on 2026-09-28** ("1 Item Submitted", up to 48 hours), manual release. App
+Accessibility (the optional accessibility labels) left empty on purpose until an accessibility
+pass, because each label is a claim that the feature works throughout the app. Claude: the
 What's New text from the second version on.
 
 **Screenshots pushed 2026-09-28 20:47 to 20:52.** Ricardo re-exported the four frames per language
@@ -586,11 +587,11 @@ phone onto the frame's own background (222, 234, 203) with Pillow, laid them out
 English localisations), listed them in `store.config.json` and pushed. Apple's servers threw
 internal errors twice that evening, so it took three runs; the push is idempotent (it uploads
 what is missing, deletes what the config no longer lists), and the final pull showed four healthy
-files in every localisation and the broken entries gone. Second set pushed 21:34 the same evening (iPhone bezel mockups, files named `-v2`: EAS matches
-screenshots by file name, so a replaced file needs a new name or Apple keeps the old one).
-Still open: the Android status bar inside frames 01 and 03 and the Android navigation bar at the
-foot of frame 04 (Ricardo has no iPhone to shoot on); agreed 2026-09-28: hide the status bar and
-navigation bar entirely rather than fake an iOS one, then a third push. The paragraph below
+files in every localisation and the broken entries gone. Four sets went up that evening, each under a new version suffix because EAS matches screenshots
+by file name and keeps a same-named file: v1 the Play frames flattened, v2 iPhone bezel mockups,
+v3 iOS status bars drawn in Figma for frames 01 and 03 (Ricardo has no iPhone to shoot on), v4 at
+22:00 with frame 04's Android navigation bar replaced by the iOS home indicator and frame 02's
+grey bar turned white. The live set is v4; no Android tell remains. The paragraph below
 is the state before the push, kept for the reasoning.
 
 **Screenshot state, 2026-09-28 evening (before the push).** Ricardo uploaded the Play frames re-exported at the
