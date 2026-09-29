@@ -807,3 +807,13 @@ Add for Review at about 22:05; Claude pushed four screenshot sets through EAS Me
 frames → iPhone mockups → iOS status bars → no Android bar), each under new file names because
 EAS matches by name, through Apple server errors on almost every run. App Accessibility left
 empty on purpose. Updated: seo-app-store-aso, strategy-backlog.
+
+## [2026-09-29] build | Apple asks for Guideline 2.1 information on iOS 1.0.2
+Apple's first answer, about twelve hours after submission, is the standard questionnaire for a
+developer account with little review history (not a rejection of the app): a screen recording on a
+physical iPhone from launch through account creation and deletion, plus written answers on purpose
+and audience, setup and credentials, external services, regional differences and regulated
+material, to be repeated in the Notes field. Claude checked the facts against the code and drafted
+the reply and a 2,961-character Notes text; Ricardo records on Alissa's iPhone (a fresh account, not
+the demo account, is deleted on camera) and replies in App Store Connect. Updated:
+seo-app-store-aso, strategy-backlog.

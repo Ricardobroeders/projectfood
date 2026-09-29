@@ -498,16 +498,24 @@ those six groups and no "Data Used to Track You".
 - Sign-in required: yes. User name `review@projectfood.dev`; the password comes from Ricardo's
   password manager and is typed into this form only (it is also in the Play App access form,
   never in the repo or in this wiki).
-- Notes for the reviewer, paste as is:
-  > Sign in: type review@projectfood.dev in the email field. A password field then replaces the
-  > code button (everyone else signs in with an emailed one-time code, or with Apple or Google).
-  > The account already holds a household with one family member, Anna, and a few plants logged,
-  > so Home, Log and Unlocks are populated. What the app does: after dinner the parent taps the
-  > plants the family tasted; each plant becomes a card and the count runs toward 30 different
-  > plants a week. Notifications: after onboarding the app asks once, with its own screen first
-  > and then the iOS dialog; declining changes nothing else. There are no purchases and no ads.
-  > Account deletion is under Account → Delete account, and at
-  > https://projectfood.dev/en/delete-account.
+- Notes for the reviewer (the App Review Information → Notes field, limit 4,000 characters; this
+  version replaces the short one of 2026-09-28 because Apple asked on 2026-09-29 that the answers to
+  its Guideline 2.1 questionnaire live here for future submissions), paste as is:
+  > SIGN IN: type review@projectfood.dev in the email field. A password field then replaces the "Send code" button (everyone else signs in with an emailed one-time code, Sign in with Apple or Google). The password is under Sign-in information. The account already holds a household with one other member, Anna, and a few logged plants, so Home, Log and Unlocks are populated.
+  >
+  > PURPOSE AND AUDIENCE: a tracker for eating a wider variety of plants, with 30 different plant foods a week as the goal. After a meal the person holding the phone taps the plants that were tasted; every plant becomes a card and the count runs toward 30 for the week. One account holds a household: the adult account holder adds the people at their table as profiles on their own device. Audience: adults who want more variety in what they and their household eat. The account holder is always an adult; children only appear as profiles created by the adult. No medical purpose, no health claims.
+  >
+  > MAIN FEATURES: Home shows the week's count toward 30 and the goal bars per category. Log lists the plants by category: tap a plant to log it for yourself, tap and hold to choose who tasted it. Unlocks shows the cards and achievements. Account holds the household members, dinner time, notifications, language and Delete account. Notifications: after onboarding the app asks once, with its own screen first and then the iOS dialog; declining changes nothing else. No purchases, no ads, no user-generated content visible to other users. Account deletion: Account > Delete account (removes the user, their household and its data), also at https://projectfood.dev/en/delete-account.
+  >
+  > EXTERNAL SERVICES: Supabase (EU, Ireland) for authentication, database and server functions (account deletion, scheduled notifications); Sign in with Apple and Google Sign-In as optional sign-in methods; the email one-time code is sent by Supabase Auth through Resend; Expo for JavaScript-only updates within guideline 3.3.2 and the Expo push service, which relays to APNs; Vercel hosts the website. No payment processor, no advertising SDK, no third-party analytics SDK (usage events go to our own database), no AI service called by the app.
+  >
+  > REGIONAL DIFFERENCES: none. The interface follows the device language for English, Dutch, Italian, German and French; content is identical in every territory.
+  >
+  > REGULATED INDUSTRY OR PROTECTED MATERIAL: not applicable. Not a medical device, no medical or treatment information, no payments. Plant renders, card designs and texts are our own; the font (Plus Jakarta Sans) and icon set (Lucide) are open-licensed; the Google "G" and the Sign in with Apple button follow those providers' branding guidelines.
+  >
+  > A screen recording of the full flow (launch, account creation, onboarding, logging, card unlock, account deletion) was attached to the reply of 29 September 2026 for the 1.0.2 review.
+  >
+  > Developer: Ricardo Broeders (individual), Netherlands, info@projectfood.dev.
 - Contact: Ricardo Broeders, info@projectfood.dev and his phone number, pushed 2026-09-28; the
   number lives in App Store Connect and Ricardo's password manager only, not in the repo (the
   `review` block is stripped from the committed `store.config.json`).
@@ -578,6 +586,20 @@ Ricardo at about 22:05 on 2026-09-28** ("1 Item Submitted", up to 48 hours), man
 Accessibility (the optional accessibility labels) left empty on purpose until an accessibility
 pass, because each label is a claim that the feature works throughout the app. Claude: the
 What's New text from the second version on.
+
+**2026-09-29, Apple's first answer: Guideline 2.1, Information Needed.** The standard
+questionnaire for a developer account with little review history, not a rejection of the app:
+(1) a screen recording made on a physical iPhone on the current iOS, from launch through account
+creation, login and account deletion; (2) purpose and audience; (3) setup instructions and
+credentials; (4) the external services; (5) regional differences; (6) regulated industry or
+protected material. Claude drafted the reply and the Notes text above (facts checked against the
+code: Supabase, Sign in with Apple, Google Sign-In, Resend for the code email, Expo for updates and
+push relay, Vercel for the site; no payments, ads, third-party analytics or AI calls). Ricardo
+records the flow on Alissa's iPhone with the TestFlight build 1.0.2 (1): a fresh account of his
+own is created and deleted in the recording, never the demo account, and the recording ends with
+a sign-in on review@projectfood.dev so Apple sees the demo path works. Then he pastes the reply
+with the video attached under App Review in App Store Connect and the Notes text into App Review
+Information, and saves. Apple usually answers such a reply within one or two days.
 
 **Screenshots pushed 2026-09-28 20:47 to 20:52.** Ricardo re-exported the four frames per language
 at the 6.5-inch size (1242 × 2688) into `~/Desktop/1x/` (`iphone-<en|nl|it>-<1..4>.png`; the
