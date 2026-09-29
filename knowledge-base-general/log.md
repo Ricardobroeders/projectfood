@@ -925,3 +925,6 @@ since the English picky-eater-toddler page does not exist yet), what helps, what
 whether it can be prevented, and the doctor referral.
 The English pillar now links three of its five clusters. Queue: 15 of 17 done, 2 left, both
 English: toddler-wont-eat, picky-eater-toddler.
+## [2026-09-29] build | learn: toddler-wont-eat (en) written and published by the nightly routine
+945 words, 6 FAQ entries, meta title 48 and description 150 characters. The pillar `learn-to-eat-everything` (en) now links the article.
+One warning accepted: related `picky-eater-toddler` has no English file yet (the page shows published related articles only).
