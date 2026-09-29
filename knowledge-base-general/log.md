@@ -901,3 +901,10 @@ also signing up. Options brainstormed; he chose a heading between the tagline an
 account" (it). Built the same day, ships with the pending update (one thing, line 3). Parked: the
 tagline still says "je gezin" while the store copy dropped the family word on 2026-09-28. Updated:
 strategy-backlog.
+
+## [2026-09-29] research | closed-test feedback page started
+A tester told Ricardo that on first open it is unclear why 30 different plants a week is the goal.
+Checked: the number appears on Home, in an achievement and in a notification and is explained
+nowhere in the app; onboarding never mentions the goal. Created `interview-closed-test-2026-09` as
+the running record for Google's production-access application (recruitment, feedback, changes);
+options for the "why 30" put to Ricardo. Updated: index, strategy-backlog.

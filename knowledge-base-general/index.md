@@ -69,7 +69,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[brand-stats-and-claims]] — the only numbers allowed in public copy with verified sources (8 to 15 tastes, Wardle 2003, Cooke 2011, Dovey 2008, Food Dudes, American Gut, AAP, CDC, Voedingscentrum), the claims we never make, how to cite, the contradictions handled honestly.
 
 ## Interviews
-_(none yet)_
+- [[interview-closed-test-2026-09]] — running log of what the Play closed testers say (from 2026-09-27), how they were recruited and what changed; the record for Google's production-access application. First point 2026-09-29: the app never explains why 30 plants a week.
 
 ## Decisions
 - [[decision-2026-09-16-store-poc-scope]] — store POC first: the PWA's features plus multi-member logging on the household model; social, XP and AI advice deferred or dropped; migrations 0001–0009 live; prerequisites for testers.
