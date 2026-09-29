@@ -823,3 +823,11 @@ Play Console: "Have at least 12 testers opted-in to your closed test, 6 testers 
 in", so the fourteen-day clock has not started two days after the release went live. Ricardo makes
 chasing the invited testers priority 1 (before the Apple reply, which waits for tonight's
 recording). Updated: strategy-backlog.
+
+## [2026-09-29] decision | The One Thing as the way of working
+Ricardo asked to run the project the way Keller and Papasan describe: always a top 1, 2, 3, the
+rest comes after, because he "tends to deviate from the plan and start many other things". Decision
+page written and accepted; "Next to pick up" now opens with a three-line block (today: twelve Play
+opt-ins, Apple's 2.1 reply, the fourteen days used well) and a month/week/today ladder; the KB
+schema rule 5 and the root repo guide's "what's next" protocol describe the block and the
+one-sentence check when a new idea arrives. Updated: strategy-backlog, index, CLAUDE.md (both).

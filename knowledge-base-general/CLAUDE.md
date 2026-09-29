@@ -151,6 +151,9 @@ voice, business model, market, KPIs, …). Rules:
 5. "Next to pick up" at the top is the one to-do list, in three parts: Ricardo's decisions and
    accounts, Claude's next build steps (ordered), brainstorms to hold. Every line has a known
    next action. Keep it to one screen; renumber when inserting.
+   It opens with a block called \"The one thing\": at most three lines, each the lead domino, what
+   it unlocks and who moves it, re-asked with the focusing question every session
+   ([[decision-2026-09-29-one-thing-way-of-working]]); everything below the block waits.
 6. "Parking lot: ideas, not to-dos" holds raw ideas with their date, the rows they touch and the
    brainstorm item that will challenge them. Nothing there is a task. A brainstorm turns an idea
    into a `decision-` page plus build steps on the list, and the idea leaves the parking lot.

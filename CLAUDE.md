@@ -21,18 +21,24 @@ then the memory index; open the knowledge base when the work touches product or 
 ## "What's next?" protocol
 When Ricardo asks what to pick up next (any phrasing: what's next, to-do list, where were we,
 what's open):
-1. Read `knowledge-base-general/wiki/strategy-backlog.md`: first the "Next to pick up" section,
-   then the Summary table.
-2. Answer in one screen: Ricardo's open decisions first, then Claude's next build step, then
-   the brainstorms to hold, then blocked items and why.
-3. After any session that changes priorities, update "Next to pick up" in the backlog before
-   ending.
+1. Read `knowledge-base-general/wiki/strategy-backlog.md`: first "The one thing" block at the top
+of "Next to pick up", then the rest of that section, then the Summary table.
+2. Answer in one screen: the one thing first (its three lines and what each unlocks), then
+Ricardo's open decisions, then Claude's next build step, then the brainstorms to hold, then
+blocked items and why.
+3. After any session that changes priorities, update the block and "Next to pick up" before
+ending; renumber the block as soon as its line 1 falls.
+4. The One Thing discipline (Ricardo's ask, 2026-09-29, the KB page
+`wiki/decision-2026-09-29-one-thing-way-of-working.md`): when Ricardo drops an idea or starts other
+work mid-session, park the idea and say in one sentence whether it beats line 1, then do what he
+decides. One sentence, never a lecture. Every session opens by naming the one thing.
 
 There is no external tracker: Linear was dropped on 2026-09-20. The backlog's "Next to pick up"
 is the only to-do list; do not look for or reference Linear issues.
 
 How the backlog is organised (since 2026-09-20), so every session reads it the same way:
-- "Next to pick up" is the one to-do list, in three parts: **Ricardo's decisions and accounts**
+- "Next to pick up" opens with **The one thing** (at most three lines: the lead domino, what it
+  unlocks, who moves it; everything else waits) and then has three parts: **Ricardo's decisions and accounts**
   (only he can do these), **Claude's next build steps** (ordered), **Brainstorms to hold**
   (topics to think through together; each names the ideas it will take and its outcome).
 - "Parking lot: ideas, not to-dos" holds raw ideas Ricardo drops (e.g. Golden Sprouts, a fact
