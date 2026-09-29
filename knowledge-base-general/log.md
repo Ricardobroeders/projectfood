@@ -914,3 +914,14 @@ Ricardo chose not to fix the unexplained goal yet; he wants to think, possibly a
 tutorial after onboarding. Parking-lot entry and brainstorm item 21 (the first minute) added; the
 drafted copy stays on the closed-test feedback page. Updated: strategy-backlog,
 interview-closed-test-2026-09.
+## [2026-09-28] build | learn: food-neophobia (en), the name for the phase, written by the nightly routine
+Third English cluster: 1,163 words, 6 FAQ entries, meta_title 50, meta_description 144, three
+citations (Dovey 2008, Birch 1982, Wardle 2003), written natively alongside the existing nl and
+it versions of the same page. One accepted warning: `related` target picky-eater-toddler has no
+English file yet.
+Structure mirrors the nl/it siblings: what the term means, how it looks at the table, the 2 to 6
+age window, why it evolved, how it differs from picky eating (described in prose, not linked,
+since the English picky-eater-toddler page does not exist yet), what helps, what makes it worse,
+whether it can be prevented, and the doctor referral.
+The English pillar now links three of its five clusters. Queue: 15 of 17 done, 2 left, both
+English: toddler-wont-eat, picky-eater-toddler.

@@ -50,7 +50,7 @@ This page is the whole picture: why children refuse vegetables, the number that 
 
 Three things happen at once. The first is taste: many vegetables are slightly bitter, and children taste bitter more strongly than adults do. The second is novelty: around the age of 2, children become cautious about anything they do not recognise, plate included. This is called food neophobia, it is normal between 2 and 6, and for most children it fades on its own (Dovey, 2008). The third is autonomy: a toddler discovers that saying no works, and the plate is one of the few places where that no has an immediate effect.
 
-None of the three means you are doing something wrong. It is the age. What you can do is make tasting easier and take the fight out of it. The name for this phase and how to get through it gets its own article.
+None of the three means you are doing something wrong. It is the age. What you can do is make tasting easier and take the fight out of it. The name for this phase and how to get through it is in the article on [food neophobia](/en/learn/learn-to-eat-everything/food-neophobia).
 
 ## The number that changes things: 8 to 15 tastes
 
