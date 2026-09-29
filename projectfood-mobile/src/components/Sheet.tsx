@@ -48,7 +48,9 @@ export function Sheet({ visible, onRequestClose, children }: Props) {
     <Modal visible={mounted} transparent statusBarTranslucent animationType="none" onRequestClose={onRequestClose}>
       {/* A Modal is its own native window on Android: gestures inside need their own root. */}
       <GestureHandlerRootView style={styles.root}>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.root}>
+        {/* Top inset: with the keyboard up, a tall sheet used to be pushed under the status bar (Ricardo, 2026-09-29);
+            the sheet shrinks instead and its scrolling content scrolls. */}
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={[styles.root, { paddingTop: insets.top + 12 }]}>
           <Animated.View style={[styles.backdrop, backdropStyle]}>
             <Pressable style={StyleSheet.absoluteFill} onPress={onRequestClose} />
           </Animated.View>
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 12,
     gap: 8,
+    flexShrink: 1,
   },
   handle: { width: 40, height: 4, borderRadius: radii.full, backgroundColor: colors.hairline, alignSelf: 'center', marginBottom: 6 },
 });

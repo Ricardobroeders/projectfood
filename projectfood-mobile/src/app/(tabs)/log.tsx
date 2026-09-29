@@ -198,20 +198,29 @@ export default function LogScreen() {
 
       <View style={styles.searchWrap}>
         <Search size={18} color={colors.ink3} />
-        <TextInput
-          style={styles.search}
-          value={query}
-          onChangeText={(v) => {
-            setQuery(v);
-            setSubmitted(null);
-            if (v && filter !== 'all') setFilter('all');
-          }}
-          placeholder={t('log.searchPlaceholder')}
-          placeholderTextColor={colors.ink3}
-          autoCorrect={false}
-          returnKeyType="search"
-          clearButtonMode="never"
-        />
+        {/* The placeholder is our own Text: iOS 26 rendered the native one letter-spaced (Ricardo, 2026-09-29). */}
+        <View style={styles.searchField}>
+          <TextInput
+            style={styles.search}
+            value={query}
+            onChangeText={(v) => {
+              setQuery(v);
+              setSubmitted(null);
+              if (v && filter !== 'all') setFilter('all');
+            }}
+            autoCorrect={false}
+            returnKeyType="search"
+            clearButtonMode="never"
+            accessibilityLabel={t('log.searchPlaceholder')}
+          />
+          {query ? null : (
+            <View pointerEvents="none" style={styles.searchPlaceholder}>
+              <Text style={styles.searchPlaceholderText} numberOfLines={1}>
+                {t('log.searchPlaceholder')}
+              </Text>
+            </View>
+          )}
+        </View>
         {query ? (
           <Pressable onPress={() => setQuery('')} hitSlop={8} accessibilityRole="button">
             <X size={18} color={colors.ink3} />
@@ -284,7 +293,10 @@ const styles = StyleSheet.create({
   forLabel: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3 },
   forNames: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
   searchWrap: { flexDirection: 'row', alignItems: 'center', gap: 10, marginHorizontal: 20, marginTop: 10, height: 48, paddingHorizontal: 14, borderRadius: radii.md, backgroundColor: colors.bgSoft },
-  search: { flex: 1, height: 48, fontFamily: fonts.semibold, fontSize: 16, color: colors.ink },
+  searchField: { flex: 1, alignSelf: 'stretch', justifyContent: 'center' },
+  search: { fontFamily: fonts.semibold, fontSize: 16, color: colors.ink, paddingVertical: 0, paddingHorizontal: 0, textAlignVertical: 'center' },
+  searchPlaceholder: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, justifyContent: 'center' },
+  searchPlaceholderText: { fontFamily: fonts.semibold, fontSize: 16, color: colors.ink3 },
   hint: { flexDirection: 'row', alignItems: 'center', gap: 8, marginHorizontal: 20, marginTop: 8, height: 36, paddingHorizontal: 12, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   hintText: { flex: 1, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   tabs: { marginTop: 8 },

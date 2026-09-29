@@ -47,6 +47,3 @@ google-services.json
 # generated assets input cache
 scripts/.cache/
 scripts/.*.log
-
-# App Store screenshots pulled/pushed by EAS Metadata (source of truth is the Figma file)
-store/

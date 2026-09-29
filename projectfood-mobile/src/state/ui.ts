@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+export type FactCardHost = 'root' | 'plant';
+
 import type { AchievementId } from '@/features/achievements/definitions';
 
 /** A point in window coordinates (pageX / pageY of a touch). */
@@ -19,7 +21,10 @@ type UiState = {
   /** Member menu: closed (null), for the default set (plantId null), or for one plant; `at` is where the finger was, the menu grows from there. */
   picker: { plantId: string | null; at: Point } | null;
   achievementSheet: { id: AchievementId; memberId: string | null } | null;
-  factCard: { plantId: string } | null;
+  /** `host` says which FunFactCard instance shows it: the root one in the tabs, or the one inside the plant
+   *  screen. On iOS the plant screen is a native modal, and a Modal owned by the tabs cannot present on top
+   *  of it (it appeared underneath and the app hung, Ricardo 2026-09-29), so the plant screen hosts its own. */
+  factCard: { plantId: string; host: FactCardHost } | null;
   /** A card that just reached gold, waiting for its celebration: the plant and who took it there.
    *  Held until the member menu is out of the way, so the sheet never lands on top of it. */
   goldCard: { plantId: string; memberIds: string[] } | null;
@@ -33,7 +38,7 @@ type UiState = {
   closePicker: () => void;
   openAchievement: (id: AchievementId, memberId: string | null) => void;
   closeAchievement: () => void;
-  showFactCard: (plantId: string) => void;
+  showFactCard: (plantId: string, host?: FactCardHost) => void;
   hideFactCard: () => void;
   showGoldCard: (plantId: string, memberIds: string[]) => void;
   hideGoldCard: () => void;
@@ -60,7 +65,7 @@ export const useUi = create<UiState>()(
       closePicker: () => set({ picker: null }),
       openAchievement: (id, memberId) => set({ achievementSheet: { id, memberId } }),
       closeAchievement: () => set({ achievementSheet: null }),
-      showFactCard: (plantId) => set({ factCard: { plantId } }),
+      showFactCard: (plantId, host = 'root') => set({ factCard: { plantId, host } }),
       hideFactCard: () => set({ factCard: null }),
       showGoldCard: (plantId, memberIds) => set({ goldCard: { plantId, memberIds } }),
       hideGoldCard: () => set({ goldCard: null }),

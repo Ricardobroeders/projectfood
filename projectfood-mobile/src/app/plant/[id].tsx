@@ -8,6 +8,7 @@ import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Cup } from '@/components/Cup';
+import { FunFactCard } from '@/components/FunFactCard';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { SwipeDown } from '@/components/SwipeDown';
 import { Loading, PrimaryButton, SecondaryButton, SectionTitle } from '@/components/ui';
@@ -104,7 +105,7 @@ export default function PlantDetailScreen() {
             <SectionTitle>{t('plant.didYouKnow')}</SectionTitle>
             <View style={styles.card}>
               <Text style={styles.kidFact}>{fact.kid_fact}</Text>
-              <SecondaryButton label={t('plant.tapToFlip')} onPress={() => showFactCard(plant.id)} icon={<BookOpen size={18} color={colors.ink} />} style={{ marginTop: 12 }} />
+              <SecondaryButton label={t('plant.tapToFlip')} onPress={() => showFactCard(plant.id, 'plant')} icon={<BookOpen size={18} color={colors.ink} />} style={{ marginTop: 12 }} />
             </View>
             <SectionTitle>{t('plant.parentTip')}</SectionTitle>
             <View style={styles.card}>
@@ -144,6 +145,8 @@ export default function PlantDetailScreen() {
         <PrimaryButton label={t('plant.logTonight')} onPress={(e) => openPicker(plant.id, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} style={{ marginHorizontal: 20, marginTop: 24 }} />
         </Animated.ScrollView>
       </GestureDetector>
+      {/* Hosted here so the card presents on top of this native modal screen on iOS (see FactCardHost). */}
+      <FunFactCard host="plant" />
     </SwipeDown>
   );
 }

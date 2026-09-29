@@ -33,7 +33,9 @@ export default function HouseholdScreen() {
       <BackHeader title={t('account.household')} />
       <View style={styles.body}>
         <Text style={styles.label}>{t('account.householdName')}</Text>
-        <TextInput style={styles.input} value={name} onChangeText={setName} maxLength={40} placeholderTextColor={colors.ink3} />
+        <View style={styles.inputWrap}>
+          <TextInput style={styles.input} value={name} onChangeText={setName} maxLength={40} placeholderTextColor={colors.ink3} />
+        </View>
         <Text style={styles.label}>{t('account.dinnerTime')}</Text>
         <Text style={styles.sub}>{t('onboarding.dinnerSub')}</Text>
         <DinnerTimePicker value={time} onChange={setTime} />
@@ -48,5 +50,6 @@ const styles = StyleSheet.create({
   body: { paddingHorizontal: 20, paddingTop: 12, gap: 8 },
   label: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink, marginTop: 16 },
   sub: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2, marginBottom: 4 },
-  input: { height: 54, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, fontFamily: fonts.semibold, fontSize: 17, color: colors.ink },
+  inputWrap: { height: 54, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, justifyContent: 'center' },
+  input: { fontFamily: fonts.semibold, fontSize: 17, color: colors.ink, paddingVertical: 0, paddingHorizontal: 0, textAlignVertical: 'center' },
 });

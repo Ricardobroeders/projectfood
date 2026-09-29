@@ -13,16 +13,18 @@ import { useAchievements, useUnlockCurious } from '@/features/achievements/useAc
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { usePlantFact } from '@/features/plants/facts';
 import { PlantImage } from '@/features/plants/PlantImage';
-import { useUi } from '@/state/ui';
+import { type FactCardHost, useUi } from '@/state/ui';
 import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
 const CARD_W = 300;
 const CARD_H = 420;
 
 /** The flip card: clay render on the front, the kid fact on the back. Opening the back is the Curious stamp. */
-export function FunFactCard() {
+export function FunFactCard({ host = 'root' }: { host?: FactCardHost }) {
   const { t } = useTranslation();
-  const factCard = useUi((s) => s.factCard);
+  const stored = useUi((s) => s.factCard);
+  // Only the instance the opener named shows it; the other stays an empty Modal.
+  const factCard = stored && stored.host === host ? stored : null;
   const hide = useUi((s) => s.hideFactCard);
   const { catalog } = usePlantCatalog();
   const { hid, levels } = useAchievements();

@@ -64,7 +64,7 @@ function EditorBody({ householdId, initial, sortOrder, canRemove, onClose }: Bod
   };
 
   return (
-    <ScrollView style={{ maxHeight: 560 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+    <ScrollView style={{ maxHeight: 560, flexShrink: 1 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
       <MemberEditorForm draft={d} onChange={setD} autoFocus={!d.id} />
       <ErrorText>{save.error || archive.error ? t('common.error') : null}</ErrorText>
       <PrimaryButton label={t('common.save')} onPress={onSave} disabled={!d.name.trim()} loading={save.isPending} style={{ marginTop: 16 }} />

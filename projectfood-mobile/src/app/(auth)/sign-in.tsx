@@ -168,7 +168,9 @@ const styles = StyleSheet.create({
   line: { flex: 1, height: 1, backgroundColor: colors.hairline },
   or: { fontFamily: fonts.medium, fontSize: 13, color: colors.ink3 },
   inputWrap: { flexDirection: 'row', alignItems: 'center', gap: 10, height: 54, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16 },
-  input: { flex: 1, fontFamily: fonts.semibold, fontSize: 16, color: colors.ink, height: 54 },
+  // No height on the input itself: iOS 26 draws a TextInput's text at the bottom of a tall box, so the
+  // wrapper carries the 54 and centres a text-high input (Ricardo, 2026-09-29).
+  input: { flex: 1, fontFamily: fonts.semibold, fontSize: 16, color: colors.ink, paddingVertical: 0, textAlignVertical: 'center' },
   legal: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 18, color: colors.ink3, textAlign: 'center' },
   link: { color: colors.ink2, textDecorationLine: 'underline' },
 });

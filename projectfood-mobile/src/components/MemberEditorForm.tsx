@@ -34,17 +34,19 @@ export function MemberEditorForm({ draft: d, onChange, showKind = true, autoFocu
     <View>
       <View style={styles.header}>
         <MemberAvatar member={preview} size={56} />
-        <TextInput
-          style={styles.input}
-          value={d.name}
-          onChangeText={(name) => onChange({ ...d, name })}
-          placeholder={namePlaceholder ?? t('family.namePlaceholder')}
-          placeholderTextColor={colors.ink3}
-          autoFocus={autoFocus}
-          autoCapitalize="words"
-          returnKeyType="done"
-          maxLength={20}
-        />
+        <View style={styles.inputWrap}>
+          <TextInput
+            style={styles.input}
+            value={d.name}
+            onChangeText={(name) => onChange({ ...d, name })}
+            placeholder={namePlaceholder ?? t('family.namePlaceholder')}
+            placeholderTextColor={colors.ink3}
+            autoFocus={autoFocus}
+            autoCapitalize="words"
+            returnKeyType="done"
+            maxLength={20}
+          />
+        </View>
       </View>
 
       {showKind ? (
@@ -95,7 +97,9 @@ export function MemberEditorForm({ draft: d, onChange, showKind = true, autoFocu
 
 const styles = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  input: { flex: 1, height: 54, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, fontFamily: fonts.semibold, fontSize: 18, color: colors.ink },
+  // The box is the wrapper; the input is only as high as its text, so iOS 26 cannot draw it low (2026-09-29).
+  inputWrap: { flex: 1, height: 54, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, justifyContent: 'center' },
+  input: { fontFamily: fonts.semibold, fontSize: 18, color: colors.ink, paddingVertical: 0, paddingHorizontal: 0, textAlignVertical: 'center' },
   chips: { flexDirection: 'row', gap: 8, marginTop: 12 },
   label: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink3, marginTop: 14, marginBottom: 6 },
   colors: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },

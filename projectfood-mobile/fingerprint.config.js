@@ -27,4 +27,9 @@ function fileHookTransform(source, chunk, _isEndOfFile, _encoding) {
   return String(chunk).replace(/("iosUrlScheme"\s*:\s*")com\.googleusercontent\.apps\.[^"]+"/, `$1${IOS_URL_SCHEME_IN_HASH}"`);
 }
 
+/**
+ * `.gitignore` in this folder is itself a hashed source (reason `bareGitIgnore`): three comment/ignore lines
+ * added on 2026-09-28 moved both runtimes (d8da0646 → c815cc88, acf2e071 → e95fd30d) and were reverted on
+ * 2026-09-29. Local-only ignores go into the repo's `.git/info/exclude`, never into this file's neighbour.
+ */
 module.exports = { sourceSkips: SourceSkips.ExpoConfigVersions, fileHookTransform };

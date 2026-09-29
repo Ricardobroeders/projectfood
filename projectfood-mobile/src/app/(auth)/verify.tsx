@@ -46,6 +46,7 @@ export default function VerifyScreen() {
       <BackHeader />
       <View style={styles.body}>
         <Text style={styles.title}>{t('auth.codeSentBody', { email })}</Text>
+        <View style={styles.codeWrap}>
         <TextInput
           style={styles.code}
           value={code}
@@ -59,6 +60,7 @@ export default function VerifyScreen() {
           maxLength={8}
           onSubmitEditing={() => code.length >= 6 && verify()}
         />
+        </View>
         <PrimaryButton label={t('auth.verifyCode')} onPress={verify} disabled={code.length < 6} loading={busy} />
         <ErrorText>{error}</ErrorText>
         <TextButton label={resent ? t('common.saved') : t('auth.resendCode')} onPress={resend} disabled={resent} />
@@ -72,5 +74,6 @@ const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bg },
   body: { paddingHorizontal: 24, paddingTop: 24, gap: 12 },
   title: { fontFamily: fonts.semibold, fontSize: 18, lineHeight: 26, color: colors.ink, marginBottom: 8 },
-  code: { height: 64, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, fontFamily: fonts.extrabold, fontSize: 28, letterSpacing: 6, color: colors.ink, textAlign: 'center' },
+  codeWrap: { height: 64, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, justifyContent: 'center' },
+  code: { fontFamily: fonts.extrabold, fontSize: 28, letterSpacing: 6, color: colors.ink, textAlign: 'center', paddingVertical: 0, textAlignVertical: 'center' },
 });
