@@ -952,3 +952,18 @@ screenshot folder are a hashed source (`bareGitIgnore`); reverted, folder exclud
 `.git/info/exclude`, hashes back to d8da0646 / acf2e071. Published per platform (`--platform all`
 exports web and fails): Android group 3aff760d, iOS group ac8afdc3. Recording redone 2026-09-30.
 Updated: strategy-backlog, interview-closed-test-2026-09, seo-app-store-aso.
+
+## [2026-09-29] build | Batch 1 shipped: home and About as the family app, health claim gone
+Ricardo approved batch 1 of [[seo-roadmap]] without a wording round. Home ×3 rewritten through
+`pf-voice`: title "Project Food: the family app where kids taste 30 plants a week" (NL, IT
+natively), hero "The family app where kids taste" / "Every taste becomes a card", body with the
+one dry line ("no clean plate required"), three steps on the plant renders, the two cited
+sentences (8 to 15 tastes; Wardle 2003), links to the pillar and two clusters per locale, six
+visible FAQ (kids app, age, a lick, what counts, where, privacy) mirrored in FAQPage JSON-LD,
+the Play closed-test opt-in as the CTA with "iPhone follows". About: "backed by science" callout
+and the adult tracking paragraph replaced by the cited American Gut line and the family pivot in
+two paragraphs, "Joy, not guilt" as the closing section, Play CTA. `lib/seo.ts` gained `STORE`
+and `softwareApplicationNode()` (emits once `playPublic`). Manifest description and
+`theme_color` `#F5C518`. The header's "Open the app" still opens the PWA login for the adult
+accounts. Updated: seo-roadmap, strategy-backlog (item 15, row 6), brand-voice and
+brand-stats-and-claims (the claim is gone), messages ×3, home and About pages, manifest.

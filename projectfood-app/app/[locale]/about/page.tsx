@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
-import Link from 'next/link'
 import { getAlternates } from '@/lib/marketing'
+import { STORE } from '@/lib/seo'
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
@@ -76,7 +76,8 @@ export default async function AboutPage({
       <section className="py-20 px-5">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-extrabold text-[#1F1B16] mb-6">{t('appTitle')}</h2>
-          <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('app1')}</p>
+          <p className="text-[17px] text-[#6B645C] leading-relaxed mb-5">{t('app1')}</p>
+          <p className="text-[17px] text-[#6B645C] leading-relaxed">{t('app2')}</p>
         </div>
       </section>
 
@@ -84,13 +85,14 @@ export default async function AboutPage({
       <section className="bg-[#1F1B16] py-20 px-5 text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-extrabold text-white mb-4">{t('visionTitle')}</h2>
-          <p className="text-[#6B645C] leading-relaxed mb-8">{t('vision1')}</p>
-          <Link
-            href="/login"
+          <p className="text-[#A39B91] leading-relaxed mb-8">{t('vision1')}</p>
+          <a
+            href={STORE.playUrl}
+            rel="noopener"
             className="inline-block bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors"
           >
-            {t('openApp')}
-          </Link>
+            {t('ctaPlay')}
+          </a>
         </div>
       </section>
     </>

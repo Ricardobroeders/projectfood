@@ -51,9 +51,17 @@ _Shipped 2026-09-29 (code commit on `main`, content republished the same day). E
 | IndexNow ping in `learn-publish.mjs`; Atom feed at `/[locale]/learn/feed` | S | Bing shows the ping; feed validates |
 
 ## Batch 1 — the brand query and the front door (Claude drafts, Ricardo approves)
+_Approved by Ricardo and shipped 2026-09-29 (evening): home ×3 as the family app page (hero
+"The family app where kids taste" / "Every taste becomes a card", three steps with the plant
+renders, two cited sentences, six visible FAQ mirrored in FAQPage JSON-LD, the pillar and two
+clusters linked, Play closed-test CTA with an "iPhone follows" note); About with the family pivot
+in two paragraphs and the cited 30 line instead of "backed by science"; manifest description and
+`theme_color` `#F5C518`. `SoftwareApplication` JSON-LD is wired in `lib/seo.ts` (`STORE`) and
+emits once `playPublic` is true; the header "Open the app" still goes to the PWA login for the
+existing adult accounts. Open on this batch: Person `sameAs`, Bing and Ahrefs verification._
 | Task | Owner | Effort | Done when |
 |---|---|---|---|
-| Home page ×3 as the family app page: hero, three steps, listing screenshots, two cited sentences of tasting science (no claim), FAQ, one paragraph linking the pillar and two clusters, store CTA (closed-test link now, badge after), title without the em dash | Claude, Ricardo approves wording | M | No "boosts gut diversity" anywhere; "app" and the family in title and H1 in three locales |
+| Home page ×3 as the family app page: hero, three steps (plant renders until the listing screenshots are exported from Figma), two cited sentences of tasting science (no claim), FAQ, one paragraph linking the pillar and two clusters, store CTA (closed-test link now, badge after), title without the em dash | Claude, Ricardo approves wording | M | No "boosts gut diversity" anywhere; "app" and the family in title and H1 in three locales |
 | About page: greengrocer story kept, "backed by science" and the adult tracking paragraph replaced by the family pivot; Person `sameAs` | Claude, Ricardo approves | S | |
 | `SoftwareApplication` JSON-LD with the store URL; manifest description and `theme_color` (`#16a34a`) aligned | Claude | S | Public Play URL exists |
 | Search Console baseline exported to `raw/`; Bing Webmaster Tools and Ahrefs Webmaster Tools verified | Ricardo | S | Baseline row filled below |

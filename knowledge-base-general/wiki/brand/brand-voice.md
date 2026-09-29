@@ -195,7 +195,7 @@ the locale's referral word.
 - What a Rive character says, if anything (backlog row 8).
 - "kids" is allowed in article titles on the site and forbidden in the store name, short
   description and frames. Recorded here so the two rule sets stop contradicting each other.
-- The live home page still says "boosts gut diversity", a health claim; fixed under item 14.
+- The home page said "boosts gut diversity" until 2026-09-29; the family rewrite (roadmap batch 1) replaced it with the tasting line and the cited guideline on About.
 
 ## Related pages
 - [[brand-humour]] · [[brand-stats-and-claims]] · [[concept-brand-pillars]] ·

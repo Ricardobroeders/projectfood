@@ -56,8 +56,8 @@ and the sentence we use it in; the numbers and claims we never publish; how to c
 - "Proven", "scientifically proven", "guaranteed", "100%". Say "in the studies", cited.
 - "Superfood" as a benefit. The app's Superfood pill is a category label and never comes with a
   benefit sentence.
-- "Good gut, good life" is a brand line and stays. "Boosts gut diversity" is a claim and goes
-  (the live home page still carries it; item 14).
+- "Good gut, good life" is a brand line and stays. "Boosts gut diversity" is a claim and went
+  (removed from the home page on 2026-09-29 with the family rewrite).
 
 ---
 

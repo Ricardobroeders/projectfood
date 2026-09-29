@@ -50,7 +50,7 @@ export async function generateMetadata({
       default: 'Project Food',
       template: '%s | Project Food',
     },
-    description: t('heroBody'),
+    description: t('metaDescription'),
     manifest: '/manifest.json',
   }
 }
