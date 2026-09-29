@@ -28,7 +28,7 @@ export async function LearnByline({ locale, readingTimeMin, publishedAt }: Props
     )
   }
   return (
-    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-4 text-sm text-[#A39B91]">
+    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-4 text-sm text-[#6B645C]">
       {parts}
     </div>
   )

@@ -77,6 +77,8 @@ type ArticleJsonLdBase = {
   /** Only pass the FAQ that is rendered on the page; the markup must match visible content. */
   faq?: FaqItem[] | null
   hubTitle: string
+  /** The share card (`…/og`), also the image Google wants on an Article. */
+  image?: string
 }
 
 function articleNode(url: string, p: ArticleJsonLdBase, extra: object) {
@@ -88,6 +90,7 @@ function articleNode(url: string, p: ArticleJsonLdBase, extra: object) {
     headline: p.title,
     description: p.description,
     inLanguage: BCP47[p.locale] ?? p.locale,
+    ...(p.image ? { image: [p.image] } : {}),
     keywords: p.keywords,
     wordCount: p.wordCount,
     datePublished: p.publishedAt ?? p.updatedAt,

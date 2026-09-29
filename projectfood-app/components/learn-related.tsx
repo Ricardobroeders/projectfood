@@ -27,7 +27,7 @@ export function LearnRelated({ title, items, learnBase, readingTimeLabel }: Prop
                   {item.title}
                 </p>
                 {item.reading_time_min && (
-                  <p className="text-xs text-[#A39B91] mt-0.5">{readingTimeLabel(item.reading_time_min)}</p>
+                  <p className="text-xs text-[#6B645C] mt-0.5">{readingTimeLabel(item.reading_time_min)}</p>
                 )}
               </div>
               <svg
