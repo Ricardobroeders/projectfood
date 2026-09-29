@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { canonical, languages } = getAlternates('/contact', locale)
   return {
     title: t('title'),
-    description: t('subtitle'),
+    description: t('metaDescription'),
     alternates: { canonical, languages },
   }
 }

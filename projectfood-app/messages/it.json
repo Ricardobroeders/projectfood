@@ -154,7 +154,6 @@
     "nav": {
       "home": "Home",
       "about": "Chi siamo",
-      "recipes": "Ricette",
       "contact": "Contatto",
       "learn": "Scopri",
       "openApp": "Apri l'app"
@@ -213,7 +212,8 @@
         "sending": "Invio in corso…",
         "success": "Messaggio inviato! Ti risponderemo presto.",
         "error": "Qualcosa è andato storto. Riprova."
-      }
+      },
+      "metaDescription": "Domande su Project Food, l'app per famiglie in cui i bambini toccano quello che hanno assaggiato a cena. Scrivici, risponde Ricardo in persona."
     },
     "terms": {
       "title": "Termini di servizio",
@@ -242,12 +242,13 @@
       "s9Title": "9. Legge applicabile",
       "s9Body": "Questi termini sono regolati dalla legge olandese. Qualsiasi controversia derivante da questi termini sarà soggetta alla giurisdizione esclusiva dei tribunali dei Paesi Bassi. In caso di discrepanza, prevale la versione in lingua olandese.",
       "s10Title": "10. Contatti",
-      "s10Body": "Domande su questi termini? Unisciti alla nostra community su Discord."
+      "s10Body": "Domande su questi termini? Unisciti alla nostra community su Discord.",
+      "metaDescription": "I termini di servizio di Project Food, l'app per famiglie: il tuo account, la famiglia che crei, cosa possiamo cambiare e come chiudere."
     },
     "privacy": {
       "title": "Informativa sulla privacy",
       "effectiveDate": "Data di entrata in vigore: 22 settembre 2026",
-      "intro": "Project Food è un'app per famiglie. Un genitore registra quali piante la famiglia ha assaggiato a cena, e i bambini collezionano carte e timbri. Questa informativa spiega cosa conserviamo, perché, chi ci aiuta a far funzionare il servizio e come cancellare tutto. Vale per l'app Project Food e per projectfood.dev.",
+      "intro": "Project Food è un'app per famiglie. Un genitore registra quali piante la famiglia ha assaggiato a cena, e i bambini collezionano carte e traguardi. Questa informativa spiega cosa conserviamo, perché, chi ci aiuta a far funzionare il servizio e come cancellare tutto. Vale per l'app Project Food e per projectfood.dev.",
       "sections": [
         {
           "title": "1. Chi siamo",
@@ -269,7 +270,7 @@
             "Account: il tuo indirizzo email e, se accedi con Google o Apple, il tuo nome e la tua immagine del profilo. I codici di accesso arrivano via email.",
             "Famiglia: il nome della famiglia, l'ora di cena, il fuso orario e la lingua.",
             "Membri della famiglia: nome o soprannome, bambino o adulto, un colore e un avatar scelto dal nostro set.",
-            "Assaggi: quali piante ogni membro ha assaggiato in quale giorno, e cosa sblocca (carte, timbri, la serie di famiglia).",
+            "Assaggi: quali piante ogni membro ha assaggiato in quale giorno, e cosa sblocca (carte, traguardi, la serie di famiglia).",
             "Notifiche: se hai consentito le notifiche push, le tue preferenze, un token push del dispositivo e, per ogni messaggio, se è stato consegnato, aperto e seguito da una registrazione entro tre ore. Ci serve per smettere di insistere con una famiglia che ci ignora.",
             "Eventi di prodotto: un piccolo insieme di eventi nell'app, come una pianta registrata, l'onboarding completato o un sondaggio inviato, collegati al tuo account. Nessun identificatore pubblicitario, nessun tracciamento tra app.",
             "Facoltativo: risposte al sondaggio e suggerimenti di piante, se li invii.",
@@ -300,7 +301,7 @@
           "intro": "L'app chiede il permesso per le notifiche push durante la configurazione, proprio dove scegli l'ora della cena, e puoi dire di no. Se lo salti, lo chiediamo un'altra volta dopo la tua prima registrazione e poi solo se lo attivi tu in Account → Notifiche.",
           "items": [
             "Essenziali: la domanda della cena e il guardiano della serie. Attive di default una volta consentite le notifiche.",
-            "Consigli e novità: anteprime di carte e timbri e il promemoria della domenica. Disattive di default.",
+            "Consigli e novità: anteprime di carte e traguardi e il promemoria della domenica. Disattive di default.",
             "Disattiva ogni tipo in Account → Notifiche, o tutte nelle impostazioni del telefono. Se tre messaggi di fila vengono ignorati, restiamo in silenzio per una settimana."
           ],
           "outro": "I messaggi passano dal servizio push di Expo e dai servizi di notifica di Apple o Google, che ricevono il token del dispositivo e il testo del messaggio."
@@ -324,7 +325,7 @@
             "Nell'app: Account → Elimina account.",
             "Sul web: dalla pagina linkata qui sotto, con un codice inviato alla tua email."
           ],
-          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, carte e timbri, la cronologia delle notifiche e i token push. Gli assaggi restano come statistiche anonime: quale pianta in quale giorno, sotto id casuali che non rimandano più a nessuna persona o famiglia. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
+          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, carte e traguardi, la cronologia delle notifiche e i token push. Gli assaggi restano come statistiche anonime: quale pianta in quale giorno, sotto id casuali che non rimandano più a nessuna persona o famiglia. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
           "link": "deleteAccount",
           "linkLabel": "Elimina il tuo account dal web"
         },
@@ -361,7 +362,7 @@
     },
     "deleteAccount": {
       "title": "Elimina il tuo account",
-      "intro": "L'eliminazione rimuove il tuo account, la famiglia che hai creato con i suoi profili, carte e timbri, la cronologia delle notifiche e i token push. I tuoi assaggi restano solo come statistiche anonime: quale pianta in quale giorno, senza alcun collegamento a nessuno. Non si può annullare.",
+      "intro": "L'eliminazione rimuove il tuo account, la famiglia che hai creato con i suoi profili, carte e traguardi, la cronologia delle notifiche e i token push. I tuoi assaggi restano solo come statistiche anonime: quale pianta in quale giorno, senza alcun collegamento a nessuno. Non si può annullare.",
       "inAppTitle": "Nell'app",
       "inAppBody": "Apri Account → Elimina account. È la via più rapida.",
       "webTitle": "Da questa pagina",

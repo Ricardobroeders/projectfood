@@ -1,14 +1,19 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { MarketingHeader } from '@/components/marketing-header'
 import { MarketingLanguageSwitcher } from '@/components/marketing-language-switcher'
-import { getLocalizedHref } from '@/lib/marketing'
+import { LOCALES, getLocalizedHref, type Locale } from '@/lib/marketing'
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
 }
+
+// Only the three locales exist. Without this, any unknown first segment that the middleware does
+// not catch (`/foo.txt`, which the matcher skips) rendered the English home page with a 200.
+export const dynamicParams = false
 
 export async function generateMetadata({
   params,
@@ -34,6 +39,8 @@ export default async function MarketingLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  // dynamicParams alone did not stop `/foo.txt` from rendering the English home page with a 200.
+  if (!LOCALES.includes(locale as Locale)) notFound()
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'marketing' })
 
@@ -79,7 +86,7 @@ export default async function MarketingLayout({
             </nav>
           </div>
           <div className="mt-8 pt-6 border-t border-[#E8E0D5] flex items-center justify-between gap-4">
-            <span className="text-xs text-[#A39B91]">© {new Date().getFullYear()} Project Food</span>
+            <span className="text-xs text-[#6B645C]">© {new Date().getFullYear()} Project Food</span>
             <MarketingLanguageSwitcher currentLocale={locale} />
           </div>
         </div>

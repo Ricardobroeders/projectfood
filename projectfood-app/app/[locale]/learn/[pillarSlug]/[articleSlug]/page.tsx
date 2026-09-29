@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getLearnAlternates, getLocalizedHref } from '@/lib/marketing'
+import { getLearnAlternates, getLocalizedHref, learnUrl } from '@/lib/marketing'
 import {
   getAllPublishedClusterParams, getArticlesBySlugs, getClusterPage, getSiblingSlugs, lastModified,
 } from '@/lib/learn'
@@ -30,11 +30,16 @@ export async function generateMetadata({
   if (!data) return {}
   const { article } = data
   const { canonical, languages } = getLearnAlternates(await getSiblingSlugs(article.id), locale)
+  const title = article.meta_title ?? article.title
+  const description = article.meta_description ?? article.subtitle ?? undefined
+  const image = `${learnUrl(locale, pillarSlug, articleSlug)}/og`
   return {
-    title: article.meta_title ?? article.title,
-    description: article.meta_description ?? article.subtitle ?? undefined,
+    title,
+    description,
     alternates: { canonical, languages },
     keywords: article.sd_keywords,
+    openGraph: { type: 'article', url: canonical, title, description, siteName: 'Project Food', images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   }
 }
 
@@ -69,12 +74,13 @@ export default async function ClusterArticlePage({
         updatedAt={lastModified(article)}
         faq={faq}
         hubTitle={t('hubTitle')}
+        image={`${learnUrl(locale, pillarSlug, articleSlug)}/og`}
       />
 
       {/* Breadcrumb */}
       <div className="px-5 pt-6 pb-0">
         <div className="max-w-2xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-[#A39B91] flex-wrap" aria-label="Breadcrumb">
+          <nav className="flex items-center gap-2 text-sm text-[#6B645C] flex-wrap" aria-label="Breadcrumb">
             <Link href={learnBase} className="hover:text-[#6B645C] transition-colors">
               {t('backToLearn')}
             </Link>
@@ -119,7 +125,7 @@ export default async function ClusterArticlePage({
       {article.sd_citations && article.sd_citations.length > 0 && (
         <section className="px-5 pb-10">
           <div className="max-w-2xl mx-auto border-t border-[#E8E0D5] pt-8">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-[#A39B91] mb-4">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-[#6B645C] mb-4">
               {t('citations')}
             </h2>
             <ol className="flex flex-col gap-2">

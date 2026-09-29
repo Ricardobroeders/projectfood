@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import { createClient } from '@supabase/supabase-js'
-import type { LearnAlternateMap, Locale } from '@/lib/marketing'
+import { learnUrl, type LearnAlternateMap, type Locale } from '@/lib/marketing'
 
 // Cookie-free client. Public RLS allows anon reads on published learn content only, which is
 // exactly what the pages show, so the learn tree renders statically (ISR) without a session.
@@ -260,4 +260,31 @@ export async function getArticlesBySlugs(internalSlugs: string[], locale: string
     found.set(internal, { internal_slug: internal, slug: content.slug, pillarSlug, articleSlug: content.slug, title: content.title, reading_time_min: content.reading_time_min })
   }
   return internalSlugs.map((s) => found.get(s)).filter((x): x is RelatedArticle => Boolean(x))
+}
+
+export type FeedEntry = { title: string; url: string; summary: string | null; published: string; updated: string }
+
+/** Every published article of one locale, newest first, for the Atom feed. */
+export async function getFeedEntries(locale: string): Promise<FeedEntry[]> {
+  const { data } = await anon()
+    .from('learn_articles')
+    .select(`type, published_at, updated_at, learn_article_content!inner(slug, title, subtitle, updated_at), pillar:pillar_id(${SLUGS})`)
+    .eq('is_published', true)
+    .eq('learn_article_content.locale', locale)
+  const out: FeedEntry[] = []
+  for (const r of (data ?? []) as Row[]) {
+    const c = one(r.learn_article_content as Array<{ slug: string; title: string; subtitle: string | null; updated_at: string }>)
+    if (!c) continue
+    let url: string
+    if (r.type === 'pillar') url = learnUrl(locale, c.slug)
+    else {
+      const pillar = one(r.pillar as Row | Row[] | null)
+      const pillarSlug = slugIn((pillar?.learn_article_content as SlugRow[] | null) ?? [], locale)
+      if (!pillarSlug) continue
+      url = learnUrl(locale, pillarSlug, c.slug)
+    }
+    const published = (r.published_at as string | null) ?? (r.updated_at as string)
+    out.push({ title: c.title, url, summary: c.subtitle, published, updated: lastModified({ updated_at: r.updated_at as string, content_updated_at: c.updated_at }) })
+  }
+  return out.sort((a, b) => (a.published < b.published ? 1 : -1))
 }

@@ -6,6 +6,7 @@
 //   (no flag)   upsert the rows; publish state untouched (a new article stays unpublished)
 //   --publish   also set is_published = true and published_at (once; a later run keeps the date)
 //   --dry       run the checks and print what would be written; needs no keys
+//   --no-indexnow  skip the IndexNow ping that follows a real write
 //   --sql       print the exact SQL (upserts + a verification select) instead of writing; needs no
 //               keys. The nightly routine runs it through the Supabase MCP connector's execute_sql.
 //
@@ -159,6 +160,7 @@ if (sqlMode) {
 
 // ── Publish ──────────────────────────────────────────────────────────────────
 let written = 0;
+const publishedUrls = [];
 for (const a of todo) {
   const { internal, meta } = a;
   const locales = Object.entries(a.locales).filter(([, l]) => !l.fm.draft);
@@ -235,7 +237,9 @@ for (const a of todo) {
         continue;
       }
     }
-    console.error(`     ${state}  ${SITE}${publicPath(c.locale, pillarSlug, meta.type === 'cluster' ? c.slug : null)}  (${c.reading_time_min} min)`);
+    const url = `${SITE}${publicPath(c.locale, pillarSlug, meta.type === 'cluster' ? c.slug : null)}`;
+    if (state === 'published') publishedUrls.push(url);
+    console.error(`     ${state}  ${url}  (${c.reading_time_min} min)`);
   }
 }
 
@@ -255,5 +259,21 @@ if (written === 0) {
   console.error(res.ok ? `revalidated ${site}` : `revalidate failed: ${res.status} ${await res.text()}`);
 } else {
   console.error('REVALIDATE_SECRET not set; pages refresh within the hour');
+}
+// ── IndexNow ─────────────────────────────────────────────────────────────────
+// Tells Bing (and the engines that share the protocol) which URLs changed. The key is public by
+// design: the same value sits in public/<key>.txt, which is how the endpoint verifies the host.
+const INDEXNOW_KEY = '21f27796401862cd94b45e1ae1b2a16e';
+if (written > 0 && publishedUrls.length && !has('--no-indexnow')) {
+  try {
+    const res = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ host: 'projectfood.dev', key: INDEXNOW_KEY, keyLocation: `${SITE}/${INDEXNOW_KEY}.txt`, urlList: publishedUrls }),
+    });
+    console.error(`indexnow ${res.status} for ${publishedUrls.length} url(s)`);
+  } catch (e) {
+    console.error(`indexnow failed: ${e.message}`);
+  }
 }
 console.error(`done: ${written} content row(s) written`);

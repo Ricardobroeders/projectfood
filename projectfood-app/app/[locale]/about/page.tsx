@@ -84,7 +84,7 @@ export default async function AboutPage({
       <section className="bg-[#1F1B16] py-20 px-5 text-center">
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-extrabold text-white mb-4">{t('visionTitle')}</h2>
-          <p className="text-[#A39B91] leading-relaxed mb-8">{t('vision1')}</p>
+          <p className="text-[#6B645C] leading-relaxed mb-8">{t('vision1')}</p>
           <Link
             href="/login"
             className="inline-block bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors"

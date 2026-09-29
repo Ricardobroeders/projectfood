@@ -154,7 +154,6 @@
     "nav": {
       "home": "Home",
       "about": "About",
-      "recipes": "Recipes",
       "contact": "Contact",
       "learn": "Learn",
       "openApp": "Open the app"
@@ -213,7 +212,8 @@
         "sending": "Sending…",
         "success": "Message sent! We'll get back to you soon.",
         "error": "Something went wrong. Please try again."
-      }
+      },
+      "metaDescription": "Questions about Project Food, the family app where kids tap what they tasted at dinner. Send a message and Ricardo answers himself."
     },
     "terms": {
       "title": "Terms of Service",
@@ -242,12 +242,13 @@
       "s9Title": "9. Governing Law",
       "s9Body": "These Terms are governed by Dutch law. Any disputes arising from these Terms will be subject to the exclusive jurisdiction of the courts of the Netherlands. The Dutch language version of these Terms prevails in case of discrepancy.",
       "s10Title": "10. Contact",
-      "s10Body": "Questions about these Terms? Join us on our Discord community."
+      "s10Body": "Questions about these Terms? Join us on our Discord community.",
+      "metaDescription": "The terms of service for Project Food, the family app: your account, the household you create, what we may change and how you end it."
     },
     "privacy": {
       "title": "Privacy Policy",
       "effectiveDate": "Effective date: 22 September 2026",
-      "intro": "Project Food is a family app. A parent logs which plants the family tasted at dinner, and the kids collect cards and stamps. This policy explains what we store, why, who helps us run the service and how you delete everything. It applies to the Project Food app and to projectfood.dev.",
+      "intro": "Project Food is a family app. A parent logs which plants the family tasted at dinner, and the kids collect cards and achievements. This policy explains what we store, why, who helps us run the service and how you delete everything. It applies to the Project Food app and to projectfood.dev.",
       "sections": [
         {
           "title": "1. Who we are",
@@ -269,7 +270,7 @@
             "Account: your email address, and your name and profile picture if you sign in with Google or Apple. Sign-in codes go to your email.",
             "Household: the family name, dinner time, time zone and language.",
             "Family members: first name or nickname, child or adult, a colour, and an avatar chosen from our set.",
-            "Tastes: which plants each member tasted on which day, and what that unlocks (cards, stamps, the family streak).",
+            "Tastes: which plants each member tasted on which day, and what that unlocks (cards, achievements, the family streak).",
             "Notifications: whether you allowed push notifications, your preferences, a device push token, and per message whether it was delivered, opened and followed by a log within three hours. We use this to stop nudging a family that ignores us.",
             "Product events: a small set of in-app events such as a plant logged, onboarding completed or a survey submitted, tied to your account. No advertising identifiers, no tracking across apps.",
             "Optional: survey answers and plant suggestions, if you submit them.",
@@ -300,7 +301,7 @@
           "intro": "The app asks for push permission while you set up your family, right where you choose the dinner time, and you can say no. If you skip it, we ask once more after your first log, and after that only when you turn it on in Account → Notifications.",
           "items": [
             "Essential: the dinner question and the streak keeper. On by default once you allow notifications.",
-            "Tips & news: card and stamp teasers and the Sunday nudge. Off by default.",
+            "Tips & news: card and achievement teasers and the Sunday nudge. Off by default.",
             "Turn each kind off in Account → Notifications, or all of them in your phone settings. If three messages in a row are ignored, we stay quiet for a week."
           ],
           "outro": "Messages travel through Expo's push service and Apple's or Google's notification services, which receive the device token and the message text."
@@ -324,7 +325,7 @@
             "In the app: Account → Delete account.",
             "On the web: the delete-account page linked below, with a code sent to your email."
           ],
-          "outro": "Deleting removes your account, the household you created with its member profiles, cards and stamps, notification history and push tokens, immediately. The tastes themselves stay as anonymous statistics: which plant on which day, under random ids that no longer link to any person or family. Database backups expire within 30 days. If you joined a household created by another parent, that household and its tastes stay with them; only your account and sign-in go.",
+          "outro": "Deleting removes your account, the household you created with its member profiles, cards and achievements, notification history and push tokens, immediately. The tastes themselves stay as anonymous statistics: which plant on which day, under random ids that no longer link to any person or family. Database backups expire within 30 days. If you joined a household created by another parent, that household and its tastes stay with them; only your account and sign-in go.",
           "link": "deleteAccount",
           "linkLabel": "Delete your account on the web"
         },
@@ -361,7 +362,7 @@
     },
     "deleteAccount": {
       "title": "Delete your account",
-      "intro": "Deleting removes your account, the household you created with its member profiles, cards and stamps, notification history and push tokens. Your tastes stay only as anonymous statistics: which plant on which day, linked to no one. It cannot be undone.",
+      "intro": "Deleting removes your account, the household you created with its member profiles, cards and achievements, notification history and push tokens. Your tastes stay only as anonymous statistics: which plant on which day, linked to no one. It cannot be undone.",
       "inAppTitle": "In the app",
       "inAppBody": "Open Account → Delete account. That is the quickest way.",
       "webTitle": "On this page",

@@ -44,6 +44,10 @@ export function check(articles, all, { publishing = false } = {}) {
 
     for (const [locale, l] of Object.entries(a.locales)) {
       const { fm, body, file, words } = l;
+      // legacy: true marks a page written before the family pivot that awaits its rewrite; the
+      // length, FAQ and link rules become warnings for it so its metadata can still be fixed.
+      const strict = fm.legacy ? warn : err;
+      const strictSoft = fm.legacy ? warn : soft;
 
       // Slug
       if (!RULES.slug.test(text(fm.slug))) err(file, `slug missing or malformed: "${fm.slug ?? ''}"`);
@@ -62,7 +66,7 @@ export function check(articles, all, { publishing = false } = {}) {
 
       // FAQ
       const faq = Array.isArray(fm.faq) ? fm.faq : [];
-      if (faq.length < RULES.faqMin || faq.length > RULES.faqMax) err(file, `faq has ${faq.length} items, want ${RULES.faqMin} to ${RULES.faqMax}`);
+      if (faq.length < RULES.faqMin || faq.length > RULES.faqMax) strict(file, `faq has ${faq.length} items, want ${RULES.faqMin} to ${RULES.faqMax}`);
       faq.forEach((f, i) => {
         if (!text(f?.q).trim() || !text(f?.a).trim()) err(file, `faq[${i}] needs "q" and "a"`);
         else if (/[*_[#]/.test(f.a)) warn(file, `faq[${i}] answer contains markdown; answers render as plain text`);
@@ -70,7 +74,7 @@ export function check(articles, all, { publishing = false } = {}) {
 
       // Length
       const [min, max] = RULES.words[meta.type] ?? [0, Infinity];
-      if (words < min) err(file, `${words} words, a ${meta.type} needs at least ${min}`);
+      if (words < min) strict(file, `${words} words, a ${meta.type} needs at least ${min}`);
       else if (words > max) warn(file, `${words} words, above the ${max} guideline`);
 
       // Related (internal slugs)
@@ -99,13 +103,13 @@ export function check(articles, all, { publishing = false } = {}) {
         if (!paths.has(link)) soft(file, `link ${link} does not resolve to a page in content/learn (still planned?)`);
       }
       if (meta.type === 'cluster' && pillarPath && !internalLinks(firstParagraph(body)).includes(pillarPath)) {
-        err(file, `the first paragraph must link the pillar (${pillarPath})`);
+        strict(file, `the first paragraph must link the pillar (${pillarPath})`);
       }
       if (meta.type === 'pillar' && fm.slug) {
         for (const c of all) {
           if (c.meta.type !== 'cluster' || c.meta.pillar !== internal || !c.locales[locale]) continue;
           const clusterPath = publicPath(locale, fm.slug, c.locales[locale].fm.slug);
-          if (!links.includes(clusterPath)) soft(file, `pillar body does not link cluster ${c.internal} (${clusterPath})`);
+          if (!links.includes(clusterPath)) strictSoft(file, `pillar body does not link cluster ${c.internal} (${clusterPath})`);
         }
       }
 
@@ -131,6 +135,7 @@ export function check(articles, all, { publishing = false } = {}) {
       }
 
       if (fm.draft) warn(file, 'draft: true, this locale is not uploaded');
+      if (fm.legacy) warn(file, 'legacy: true, length, FAQ and link rules relaxed until the rewrite');
     }
   }
   return { errors, warnings };

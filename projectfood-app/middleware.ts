@@ -7,9 +7,9 @@ const LOCALE_COOKIE = 'pf_locale'
 
 // External localized slug → internal page segment, keyed by locale
 const SLUG_TO_INTERNAL: Record<Locale, Record<string, string>> = {
-  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', recipes: 'recipes', learn: 'learn', 'delete-account': 'delete-account' },
-  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', recepten: 'recipes', leer: 'learn', 'account-verwijderen': 'delete-account' },
-  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', ricette: 'recipes', impara: 'learn', 'elimina-account': 'delete-account' },
+  en: { about: 'about', contact: 'contact', terms: 'terms', privacy: 'privacy', learn: 'learn', 'delete-account': 'delete-account' },
+  nl: { over: 'about', contact: 'contact', voorwaarden: 'terms', privacy: 'privacy', leer: 'learn', 'account-verwijderen': 'delete-account' },
+  it: { 'chi-siamo': 'about', contatto: 'contact', termini: 'terms', privacy: 'privacy', impara: 'learn', 'elimina-account': 'delete-account' },
 }
 
 // Internal page segment → external localized slug, the inverse of the table above.
@@ -26,7 +26,10 @@ function detectLocale(request: NextRequest): Locale {
   return (SUPPORTED_LOCALES.includes(preferred as Locale) ? preferred : 'en') as Locale
 }
 
-function setLocaleCookie(response: NextResponse, locale: string) {
+// Written only when it changes: a Set-Cookie on every marketing response made every page
+// uncacheable at the edge (cache-control: no-store, x-vercel-cache: MISS) although they are static.
+function setLocaleCookie(response: NextResponse, locale: string, request?: NextRequest) {
+  if (request && request.cookies.get(LOCALE_COOKIE)?.value === locale) return
   response.cookies.set(LOCALE_COOKIE, locale, {
     path: '/',
     maxAge: 60 * 60 * 24 * 365,
@@ -76,13 +79,13 @@ export async function middleware(request: NextRequest) {
           ? `/${locale}/${internalSlug}/${subSegments.join('/')}`
           : `/${locale}/${internalSlug}`
         const response = NextResponse.rewrite(url)
-        setLocaleCookie(response, locale)
+        setLocaleCookie(response, locale, request)
         return response
       }
     }
 
     const response = NextResponse.next()
-    setLocaleCookie(response, locale)
+    setLocaleCookie(response, locale, request)
     return response
   }
 

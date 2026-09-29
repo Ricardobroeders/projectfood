@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
-import { getAlternates, getLocalizedHref } from '@/lib/marketing'
+import { getAlternates, getLocalizedHref, learnUrl } from '@/lib/marketing'
 import { getLearnHub } from '@/lib/learn'
 import { HubJsonLd } from '@/components/learn-json-ld'
 
@@ -20,10 +20,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'marketing.learn' })
   const { canonical, languages } = getAlternates('/learn', locale)
+  const image = `${learnUrl(locale)}/og`
   return {
     title: t('hubTitle'),
     description: t('hubSubtitle'),
-    alternates: { canonical, languages },
+    alternates: { canonical, languages, types: { 'application/atom+xml': `${learnUrl(locale)}/feed` } },
+    openGraph: { type: 'website', url: canonical, title: t('hubTitle'), description: t('hubSubtitle'), siteName: 'Project Food', images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title: t('hubTitle'), description: t('hubSubtitle'), images: [image] },
   }
 }
 
@@ -69,7 +72,7 @@ export default async function LearnHubPage({
       <section className="py-20 px-5">
         <div className="max-w-3xl mx-auto">
           {pillars.length === 0 ? (
-            <p className="text-center text-[#A39B91]">Coming soon.</p>
+            <p className="text-center text-[#6B645C]">Coming soon.</p>
           ) : (
             <div className="flex flex-col gap-6">
               {pillars.map((pillar) => (
@@ -89,7 +92,7 @@ export default async function LearnHubPage({
                       <p className="text-[#6B645C] text-sm leading-relaxed">{pillar.subtitle}</p>
                     )}
                     {pillar.reading_time_min && (
-                      <p className="text-xs text-[#A39B91] mt-2">
+                      <p className="text-xs text-[#6B645C] mt-2">
                         {t('readingTime', { min: pillar.reading_time_min })}
                       </p>
                     )}
@@ -114,7 +117,7 @@ export default async function LearnHubPage({
           <h2 className="text-3xl font-extrabold text-white mb-4">
             {t('hubTitle')}
           </h2>
-          <p className="text-[#A39B91] leading-relaxed mb-8">{t('hubSubtitle')}</p>
+          <p className="text-[#6B645C] leading-relaxed mb-8">{t('hubSubtitle')}</p>
           <Link
             href="/login"
             className="inline-block bg-[#F5C518] hover:bg-[#F59A0E] active:bg-[#F59A0E] text-[#1F1B16] font-bold text-base px-8 py-4 rounded-full transition-colors"

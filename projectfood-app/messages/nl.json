@@ -154,7 +154,6 @@
     "nav": {
       "home": "Home",
       "about": "Over",
-      "recipes": "Recepten",
       "contact": "Contact",
       "learn": "Ontdekken",
       "openApp": "Open de app"
@@ -213,7 +212,8 @@
         "sending": "Bezig met verzenden…",
         "success": "Bericht verzonden! We nemen snel contact op.",
         "error": "Er is iets misgegaan. Probeer het opnieuw."
-      }
+      },
+      "metaDescription": "Vragen over Project Food, de gezinsapp waarin kinderen aantikken wat ze bij het eten hebben geproefd. Stuur een bericht, Ricardo antwoordt zelf."
     },
     "terms": {
       "title": "Gebruiksvoorwaarden",
@@ -242,12 +242,13 @@
       "s9Title": "9. Toepasselijk recht",
       "s9Body": "Deze voorwaarden zijn onderworpen aan Nederlands recht. Eventuele geschillen voortvloeiend uit deze voorwaarden vallen onder de exclusieve bevoegdheid van de Nederlandse rechtbanken. De Nederlandstalige versie van deze voorwaarden prevaleert bij tegenstrijdigheden.",
       "s10Title": "10. Contact",
-      "s10Body": "Vragen over deze voorwaarden? Word lid van onze Discord-community."
+      "s10Body": "Vragen over deze voorwaarden? Word lid van onze Discord-community.",
+      "metaDescription": "De gebruiksvoorwaarden van Project Food, de gezinsapp: je account, het huishouden dat je aanmaakt, wat wij mogen wijzigen en hoe je stopt."
     },
     "privacy": {
       "title": "Privacybeleid",
       "effectiveDate": "Ingangsdatum: 22 september 2026",
-      "intro": "Project Food is een gezinsapp. Een ouder logt welke planten het gezin bij het eten heeft geproefd, en de kinderen sparen kaarten en stempels. Dit beleid legt uit wat we opslaan, waarom, wie ons helpt de dienst te draaien en hoe je alles verwijdert. Het geldt voor de Project Food-app en voor projectfood.dev.",
+      "intro": "Project Food is een gezinsapp. Een ouder logt welke planten het gezin bij het eten heeft geproefd, en de kinderen sparen kaarten en prestaties. Dit beleid legt uit wat we opslaan, waarom, wie ons helpt de dienst te draaien en hoe je alles verwijdert. Het geldt voor de Project Food-app en voor projectfood.dev.",
       "sections": [
         {
           "title": "1. Wie we zijn",
@@ -269,7 +270,7 @@
             "Account: je e-mailadres, en je naam en profielfoto als je inlogt met Google of Apple. Inlogcodes gaan naar je e-mail.",
             "Huishouden: de gezinsnaam, etenstijd, tijdzone en taal.",
             "Gezinsleden: voornaam of bijnaam, kind of volwassene, een kleur, en een avatar uit onze set.",
-            "Hapjes: welke planten elk gezinslid op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, stempels, de gezinsreeks).",
+            "Hapjes: welke planten elk gezinslid op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, prestaties, de gezinsreeks).",
             "Meldingen: of je pushmeldingen hebt toegestaan, je voorkeuren, een push-token van je telefoon, en per bericht of het is afgeleverd, geopend en binnen drie uur gevolgd door een log. Zo stoppen we met porren als een gezin ons negeert.",
             "Productgebeurtenissen: een klein aantal gebeurtenissen in de app, zoals een gelogde plant, een afgeronde onboarding of een ingevulde enquête, gekoppeld aan je account. Geen advertentie-id's, geen tracking over apps heen.",
             "Optioneel: enquête-antwoorden en plantsuggesties, als je die instuurt.",
@@ -300,7 +301,7 @@
           "intro": "De app vraagt om toestemming voor pushmeldingen tijdens het instellen, precies waar je de etenstijd kiest, en je mag nee zeggen. Sla je het over, dan vragen we het nog één keer na je eerste log en daarna alleen als je het zelf aanzet in Account → Meldingen.",
           "items": [
             "Essentieel: de etensvraag en de reeksbewaker. Standaard aan zodra je meldingen toestaat.",
-            "Tips & nieuws: kaart- en stempel-teasers en de zondagse herinnering. Standaard uit.",
+            "Tips & nieuws: kaart- en prestatie-teasers en de zondagse herinnering. Standaard uit.",
             "Zet elke soort uit via Account → Meldingen, of allemaal in de instellingen van je telefoon. Worden drie berichten op rij genegeerd, dan zijn we een week stil."
           ],
           "outro": "Berichten lopen via de pushdienst van Expo en de meldingsdiensten van Apple of Google, die het apparaat-token en de tekst van het bericht ontvangen."
@@ -324,7 +325,7 @@
             "In de app: Account → Account verwijderen.",
             "Op het web: via de pagina hieronder, met een code die naar je e-mail wordt gestuurd."
           ],
-          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. De hapjes zelf blijven als anonieme statistiek bewaard: welke plant op welke dag, onder willekeurige id's die aan geen persoon of gezin meer te koppelen zijn. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
+          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en prestaties, de meldingsgeschiedenis en de push-tokens. De hapjes zelf blijven als anonieme statistiek bewaard: welke plant op welke dag, onder willekeurige id's die aan geen persoon of gezin meer te koppelen zijn. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
           "link": "deleteAccount",
           "linkLabel": "Je account verwijderen via het web"
         },
@@ -361,7 +362,7 @@
     },
     "deleteAccount": {
       "title": "Je account verwijderen",
-      "intro": "Verwijderen wist je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en stempels, de meldingsgeschiedenis en de push-tokens. Je hapjes blijven alleen als anonieme statistiek bewaard: welke plant op welke dag, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
+      "intro": "Verwijderen wist je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en prestaties, de meldingsgeschiedenis en de push-tokens. Je hapjes blijven alleen als anonieme statistiek bewaard: welke plant op welke dag, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
       "inAppTitle": "In de app",
       "inAppBody": "Open Account → Account verwijderen. Dat is de snelste weg.",
       "webTitle": "Op deze pagina",

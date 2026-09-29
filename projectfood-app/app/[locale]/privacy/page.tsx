@@ -52,7 +52,7 @@ export default async function PrivacyPage({
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1F1B16] leading-tight mb-3">
             {t('title')}
           </h1>
-          <p className="text-sm text-[#A39B91]">{t('effectiveDate')}</p>
+          <p className="text-sm text-[#6B645C]">{t('effectiveDate')}</p>
         </div>
       </section>
 

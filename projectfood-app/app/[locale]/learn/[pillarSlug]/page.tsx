@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getLearnAlternates, getLocalizedHref } from '@/lib/marketing'
+import { getLearnAlternates, getLocalizedHref, learnUrl } from '@/lib/marketing'
 import { getAllPublishedPillarParams, getPillarPage, getSiblingSlugs, lastModified } from '@/lib/learn'
 import { countWords } from '@/lib/seo'
 import { PillarJsonLd } from '@/components/learn-json-ld'
@@ -27,11 +27,16 @@ export async function generateMetadata({
   if (!data) return {}
   const { pillar } = data
   const { canonical, languages } = getLearnAlternates(await getSiblingSlugs(pillar.id), locale)
+  const title = pillar.meta_title ?? pillar.title
+  const description = pillar.meta_description ?? pillar.subtitle ?? undefined
+  const image = `${learnUrl(locale, pillarSlug)}/og`
   return {
-    title: pillar.meta_title ?? pillar.title,
-    description: pillar.meta_description ?? pillar.subtitle ?? undefined,
+    title,
+    description,
     alternates: { canonical, languages },
     keywords: pillar.sd_keywords,
+    openGraph: { type: 'article', url: canonical, title, description, siteName: 'Project Food', images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
   }
 }
 
@@ -63,13 +68,14 @@ export default async function PillarPage({
         updatedAt={lastModified(pillar)}
         faq={faq}
         hubTitle={t('hubTitle')}
+        image={`${learnUrl(locale, pillarSlug)}/og`}
         clusters={clusters.map((c) => ({ slug: c.slug, title: c.title }))}
       />
 
       {/* Breadcrumb */}
       <div className="px-5 pt-6 pb-0">
         <div className="max-w-2xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-[#A39B91]" aria-label="Breadcrumb">
+          <nav className="flex items-center gap-2 text-sm text-[#6B645C]" aria-label="Breadcrumb">
             <Link href={learnBase} className="hover:text-[#6B645C] transition-colors">
               {t('backToLearn')}
             </Link>
@@ -113,7 +119,7 @@ export default async function PillarPage({
       {pillar.sd_citations && pillar.sd_citations.length > 0 && (
         <section className="px-5 pb-10">
           <div className="max-w-2xl mx-auto border-t border-[#E8E0D5] pt-8">
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-[#A39B91] mb-4">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-[#6B645C] mb-4">
               {t('citations')}
             </h2>
             <ol className="flex flex-col gap-2">
@@ -156,7 +162,7 @@ export default async function PillarPage({
                       {cluster.title}
                     </p>
                     {cluster.reading_time_min && (
-                      <p className="text-xs text-[#A39B91] mt-0.5">
+                      <p className="text-xs text-[#6B645C] mt-0.5">
                         {t('readingTime', { min: cluster.reading_time_min })}
                       </p>
                     )}
