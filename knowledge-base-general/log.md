@@ -892,3 +892,12 @@ Console → Manual actions; no disavow unless one appears. Recorded in [[seo-aud
 Checkpoint (403, `x-vercel-mitigated: challenge`) in front of the whole site after the day's
 crawl, Lighthouse runs, republish and a polling loop; not a project setting, lifts on its own,
 Ricardo checks the Firewall tab.
+
+## [2026-09-29] build | sign-in heading names both readings
+Ricardo noticed on the closed-test build that the Google button has no G yet (it is in commit
+10f1ad3, waiting for the over-the-air update) and that the sign-in screen never says a newcomer is
+also signing up. Options brainstormed; he chose a heading between the tagline and the buttons:
+"Sign in or create an account" (en), "Inloggen of een account maken" (nl), "Accedi o crea un
+account" (it). Built the same day, ships with the pending update (one thing, line 3). Parked: the
+tagline still says "je gezin" while the store copy dropped the family word on 2026-09-28. Updated:
+strategy-backlog.

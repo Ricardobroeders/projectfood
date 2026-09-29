@@ -77,6 +77,8 @@ export default function SignInScreen() {
       </View>
 
       <View style={styles.form}>
+        {/* Names both readings before the buttons: every path below signs in or creates the account (Ricardo, 2026-09-29). */}
+        <Text style={styles.heading}>{t('auth.heading')}</Text>
         {googleReady ? <SecondaryButton label={t('auth.continueWithGoogle')} icon={<GoogleG size={20} />} onPress={() => run('google', signInWithGoogle)} loading={busy === 'google'} disabled={busy !== null} /> : null}
         {Platform.OS === 'ios' ? (
           <AppleAuthentication.AppleAuthenticationButton
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
   wordmark: { fontFamily: fonts.extrabold, fontSize: 34, lineHeight: 40, color: colors.ink, letterSpacing: -0.8 },
   tagline: { fontFamily: fonts.medium, fontSize: 17, lineHeight: 24, color: colors.ink2 },
   form: { gap: 12 },
+  heading: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink2, marginBottom: 2 },
   apple: { height: 54, alignSelf: 'stretch' },
   divider: { flexDirection: 'row', alignItems: 'center', gap: 12, marginVertical: 4 },
   line: { flex: 1, height: 1, backgroundColor: colors.hairline },

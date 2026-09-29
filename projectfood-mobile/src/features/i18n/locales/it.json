@@ -64,6 +64,7 @@
   },
   "auth": {
     "tagline": "Ogni pianta che la tua famiglia assaggia, collezionata.",
+    "heading": "Accedi o crea un account",
     "continueWithGoogle": "Continua con Google",
     "continueWithApple": "Continua con Apple",
     "or": "oppure",

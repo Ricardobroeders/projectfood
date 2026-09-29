@@ -64,6 +64,7 @@
   },
   "auth": {
     "tagline": "Every plant your family tastes, collected.",
+    "heading": "Sign in or create an account",
     "continueWithGoogle": "Continue with Google",
     "continueWithApple": "Continue with Apple",
     "or": "or",

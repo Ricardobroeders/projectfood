@@ -64,6 +64,7 @@
   },
   "auth": {
     "tagline": "Elke plant die je gezin proeft, verzameld.",
+    "heading": "Inloggen of een account maken",
     "continueWithGoogle": "Doorgaan met Google",
     "continueWithApple": "Doorgaan met Apple",
     "or": "of",
