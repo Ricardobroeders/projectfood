@@ -1,5 +1,5 @@
 {
-  "_readme": "The nightly routine (pf-seo-article, unattended run) takes the first row without `done`, writes that article in that locale, commits, publishes, and marks the row done. Order: Dutch clusters first, then Italian (pillar first), then English (pillar first). Pillar mentions are the exact sentence in the live pillar that announces the cluster; the run turns it into a link. Edit freely; keep the field names.",
+  "_readme": "The nightly routine (pf-seo-article, unattended run) takes the first row without `done`, writes that article in that locale, commits, publishes, and marks the row done. Order (refilled 2026-09-29, roadmap batch 2): the last pillar-1 row, then pillar 2 rewritten for the family per locale (pillar, as-a-family, what-counts; nl, it, en), then the Italian pages the numbers justify, the English list and tool pages, two locale siblings, and the Dutch table page. `rewrite: true` marks a live legacy page that is written fresh (slug kept; the live check does not skip it). `pillar_mention` is the exact sentence in the live pillar that the run turns into a link; `null` means the run adds one where the topic says. `emoji` and `cover_image` are for a new folder's article.json. Edit freely; keep the field names.",
   "rows": [
     {
       "internal": "toddler-wont-eat",
@@ -378,6 +378,415 @@
         "food-neophobia"
       ],
       "pillar_mention": "What counts as ordinary fussiness and what does not gets its own article."
+    },
+    {
+      "internal": "plant-diversity",
+      "type": "pillar",
+      "pillar": null,
+      "locale": "nl",
+      "slug": "plant-diversity",
+      "display_order": 2,
+      "title_hint": "30 planten per week als gezin: zo werkt het tellen",
+      "keywords": [
+        "30 planten per week",
+        "30 verschillende planten per week",
+        "30 planten per week lijst",
+        "hoeveel planten per week",
+        "30 planten per week kinderen"
+      ],
+      "topic": "The family version of the 30 plants page, replacing the 2026-05 adult gut-science article (rewrite: the file is written fresh, legacy: true goes, slug stays). The guideline in one honest paragraph: the American Gut Project found that adults who ate 30 or more plant types a week had a more diverse gut microbiome (McDonald 2018); an observation in adults, never a promise for a child (brand-stats-and-claims). Then the part a family uses: what a plant is (fruit, groente, peulvruchten, volkoren granen, noten, zaden, kruiden, specerijen), why variety beats quantity, how one week of family meals adds up (a pasta night is 4 or 5 plants), how to count as a household without it becoming a project, the tasting count as the child's side of the same game, the groceries moment (what has the family not had in three weeks). Sections: what the 30 means, what counts (short, links the live cluster /nl/leer/plant-diversity/what-counts-as-a-plant), counting as a family (short, announces the planned cluster with one sentence copied verbatim into that row's pillar_mention), the first week, what backfires (the count as a chore, a child's plate as a score, comparing siblings). No microbiome claim for children, no 'gezond' as judgment.",
+      "related": [],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "as-a-family",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "nl",
+      "slug": "30-planten-als-gezin",
+      "display_order": 2,
+      "title_hint": "30 planten per week met kinderen: één teller voor het hele gezin",
+      "keywords": [
+        "30 planten per week gezin",
+        "30 planten per week kinderen",
+        "hoeveel planten per week kind",
+        "planten tellen met kinderen"
+      ],
+      "topic": "How the 30 count works when four people eat: the household shares one count, every member's taste counts, a plant counts once a week for the family, a child's lick counts as a taste. The parent's plate versus the child's plate: the child is never measured against 30, the tasting count is the child's game and the family count is the grown-ups' (link the tasting article). A week in a real family, Monday to Sunday, that reaches 30 without cooking twice. The shopping trick: one new plant per shop, the plant the family has not had in three weeks. What backfires: the count as a score for a child, comparing siblings, cooking twice. One plain paragraph on the app as the shared counter (one card per plant, the family ring), no promise. First paragraph links the pillar; related: what-counts-as-a-plant and a pillar-1 cluster. Cites nothing about children's health.",
+      "related": [
+        "what-counts-as-a-plant",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
+    },
+    {
+      "internal": "what-counts-as-a-plant",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "nl",
+      "slug": "what-counts-as-a-plant",
+      "display_order": 1,
+      "title_hint": "Wat telt als plant? Koffie, aardappel, ketchup en 17 andere vragen",
+      "keywords": [
+        "wat telt als plant",
+        "telt koffie mee 30 planten",
+        "tellen kruiden mee 30 planten",
+        "telt aardappel mee als groente",
+        "telt ketchup als groente"
+      ],
+      "topic": "The does-it-count hub, rewritten for the family and grown from about 270 words to a full cluster (rewrite: fresh file, legacy: true goes, slug stays). The rule first: a plant is a plant food you can name (fruit, vegetable, legume, whole grain, nut, seed, herb, spice) and each type counts once a week. Then the questions parents actually ask, each answered in one line and then explained: coffee (yes, once), tea, chocolate (cacao, yes), potato (yes, once), chips (the potato yes, the oil no), bread (the grain; wholegrain is the useful one), ketchup and pasta sauce (tomato, once; the sugar is not a plant), fruit juice (the fruit, borderline; a piece is better for the tasting count), mixed beans (each kind counts), herbs and spices (yes; we count them as a plant each), popcorn (corn), rice, frozen and tinned (yes), a pea and a chickpea (two), the same apple twice (once). A table of about 20 rows. Then: why the rule is generous on purpose (the point is variety, not accounting), and how the app counts (one card per plant, herbs and spices included). First paragraph links the pillar; related: as-a-family and vegetables-kids-will-eat (nl, en) or toddler-wont-eat (it). No health claim.",
+      "related": [
+        "as-a-family",
+        "vegetables-kids-will-eat"
+      ],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "plant-diversity",
+      "type": "pillar",
+      "pillar": null,
+      "locale": "it",
+      "slug": "plant-diversity",
+      "display_order": 2,
+      "title_hint": "30 piante a settimana in famiglia: come si contano davvero",
+      "keywords": [
+        "30 piante a settimana",
+        "30 vegetali a settimana",
+        "30 piante diverse a settimana",
+        "quante piante a settimana",
+        "30 piante a settimana bambini"
+      ],
+      "topic": "The family version of the 30 plants page, replacing the 2026-05 adult gut-science article (rewrite: the file is written fresh, legacy: true goes, slug stays). The guideline in one honest paragraph: the American Gut Project found that adults who ate 30 or more plant types a week had a more diverse gut microbiome (McDonald 2018); an observation in adults, never a promise for a child (brand-stats-and-claims). Then the part a family uses: what a plant is (frutta, verdura, legumi, cereali integrali, frutta secca, semi, erbe, spezie), why variety beats quantity, how one week of family meals adds up (una pasta al sugo is 4 or 5 plants), how to count as a household without it becoming a project, the tasting count as the child's side of the same game, the groceries moment. Sections: what the 30 means, what counts (short, links the live cluster /it/impara/plant-diversity/what-counts-as-a-plant), counting as a family (short, announces the planned cluster with one sentence copied verbatim into that row's pillar_mention), the first week, what backfires. No microbiome claim for children, no 'sano' as judgment.",
+      "related": [],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "as-a-family",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "it",
+      "slug": "30-piante-in-famiglia",
+      "display_order": 2,
+      "title_hint": "30 piante a settimana con i bambini: un solo conteggio per tutta la famiglia",
+      "keywords": [
+        "30 piante a settimana famiglia",
+        "30 vegetali a settimana bambini",
+        "quante piante a settimana bambini",
+        "contare le piante con i bambini"
+      ],
+      "topic": "How the 30 count works when four people eat: the household shares one count, every member's taste counts, a plant counts once a week for the family, a child's lick counts as a taste. The parent's plate versus the child's plate: the child is never measured against 30, the tasting count is the child's game and the family count is the grown-ups' (link the tasting article). A week in a real family, Monday to Sunday, that reaches 30 without cooking twice. The shopping trick: one new plant per shop, the plant the family has not had in three weeks. What backfires: the count as a score for a child, comparing siblings, cooking twice. One plain paragraph on the app as the shared counter (one card per plant, the family ring), no promise. First paragraph links the pillar; related: what-counts-as-a-plant and a pillar-1 cluster. Cites nothing about children's health.",
+      "related": [
+        "what-counts-as-a-plant",
+        "toddler-wont-eat"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
+    },
+    {
+      "internal": "what-counts-as-a-plant",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "it",
+      "slug": "what-counts-as-a-plant",
+      "display_order": 1,
+      "title_hint": "Cosa conta come pianta? Caffè, patate, sugo e altre 17 domande",
+      "keywords": [
+        "cosa conta come pianta",
+        "il caffè conta come pianta",
+        "le spezie contano 30 piante",
+        "la patata conta come verdura",
+        "30 piante cosa conta"
+      ],
+      "topic": "The does-it-count hub, rewritten for the family and grown from about 270 words to a full cluster (rewrite: fresh file, legacy: true goes, slug stays). The rule first: a plant is a plant food you can name (fruit, vegetable, legume, whole grain, nut, seed, herb, spice) and each type counts once a week. Then the questions parents actually ask, each answered in one line and then explained: coffee (yes, once), tea, chocolate (cacao, yes), potato (yes, once), chips (the potato yes, the oil no), bread (the grain; wholegrain is the useful one), ketchup and pasta sauce (tomato, once; the sugar is not a plant), fruit juice (the fruit, borderline; a piece is better for the tasting count), mixed beans (each kind counts), herbs and spices (yes; we count them as a plant each), popcorn (corn), rice, frozen and tinned (yes), a pea and a chickpea (two), the same apple twice (once). A table of about 20 rows. Then: why the rule is generous on purpose (the point is variety, not accounting), and how the app counts (one card per plant, herbs and spices included). First paragraph links the pillar; related: as-a-family and vegetables-kids-will-eat (nl, en) or toddler-wont-eat (it). No health claim.",
+      "related": [
+        "as-a-family",
+        "toddler-wont-eat"
+      ],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "plant-diversity",
+      "type": "pillar",
+      "pillar": null,
+      "locale": "en",
+      "slug": "plant-diversity",
+      "display_order": 2,
+      "title_hint": "30 plants a week as a family: how the count really works",
+      "keywords": [
+        "30 plants a week",
+        "30 different plants a week",
+        "30 plants a week list",
+        "how many plants a week",
+        "30 plants a week for kids"
+      ],
+      "topic": "The family version of the 30 plants page, replacing the 2026-05 adult gut-science article (rewrite: the file is written fresh, legacy: true goes, slug stays). The guideline in one honest paragraph: the American Gut Project found that adults who ate 30 or more plant types a week had a more diverse gut microbiome (McDonald 2018); an observation in adults, never a promise for a child (brand-stats-and-claims). Then the part a family uses: what a plant is (fruit, vegetables, legumes, whole grains, nuts, seeds, herbs, spices), why variety beats quantity, how one week of family meals adds up (a pasta night is 4 or 5 plants), how to count as a household without it becoming a project, the tasting count as the child's side of the same game, the groceries moment. Sections: what the 30 means, what counts (short, links the live cluster /en/learn/plant-diversity/what-counts-as-a-plant), counting as a family (short, announces the planned cluster with one sentence copied verbatim into that row's pillar_mention), the first week, what backfires. British spelling. No microbiome claim for children, no 'healthy' as judgment.",
+      "related": [],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "as-a-family",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "en",
+      "slug": "30-plants-a-week-as-a-family",
+      "display_order": 2,
+      "title_hint": "30 plants a week with kids: one count for the whole family",
+      "keywords": [
+        "30 plants a week as a family",
+        "30 plants a week for kids",
+        "30 plants a week with children",
+        "30 plants challenge family"
+      ],
+      "topic": "How the 30 count works when four people eat: the household shares one count, every member's taste counts, a plant counts once a week for the family, a child's lick counts as a taste. The parent's plate versus the child's plate: the child is never measured against 30, the tasting count is the child's game and the family count is the grown-ups' (link the tasting article). A week in a real family, Monday to Sunday, that reaches 30 without cooking twice. The shopping trick: one new plant per shop, the plant the family has not had in three weeks. What backfires: the count as a score for a child, comparing siblings, cooking twice. One plain paragraph on the app as the shared counter (one card per plant, the family ring), no promise. First paragraph links the pillar; related: what-counts-as-a-plant and a pillar-1 cluster. Cites nothing about children's health.",
+      "related": [
+        "what-counts-as-a-plant",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
+    },
+    {
+      "internal": "what-counts-as-a-plant",
+      "type": "cluster",
+      "pillar": "plant-diversity",
+      "locale": "en",
+      "slug": "what-counts-as-a-plant",
+      "display_order": 1,
+      "title_hint": "What counts as a plant? Coffee, potato, ketchup and 17 other questions",
+      "keywords": [
+        "what counts as a plant",
+        "does coffee count as a plant",
+        "do herbs and spices count as plants",
+        "does potato count as a plant",
+        "30 plants a week rules"
+      ],
+      "topic": "The does-it-count hub, rewritten for the family and grown from about 270 words to a full cluster (rewrite: fresh file, legacy: true goes, slug stays). The rule first: a plant is a plant food you can name (fruit, vegetable, legume, whole grain, nut, seed, herb, spice) and each type counts once a week. Then the questions parents actually ask, each answered in one line and then explained: coffee (yes, once), tea, chocolate (cacao, yes), potato (yes, once), chips (the potato yes, the oil no), bread (the grain; wholegrain is the useful one), ketchup and pasta sauce (tomato, once; the sugar is not a plant), fruit juice (the fruit, borderline; a piece is better for the tasting count), mixed beans (each kind counts), herbs and spices (yes; we count them as a plant each), popcorn (corn), rice, frozen and tinned (yes), a pea and a chickpea (two), the same apple twice (once). A table of about 20 rows. Then: why the rule is generous on purpose (the point is variety, not accounting), and how the app counts (one card per plant, herbs and spices included). First paragraph links the pillar; related: as-a-family and vegetables-kids-will-eat (nl, en) or toddler-wont-eat (it). No health claim.",
+      "related": [
+        "as-a-family",
+        "vegetables-kids-will-eat"
+      ],
+      "pillar_mention": null,
+      "rewrite": true
+    },
+    {
+      "internal": "why-children-refuse-food",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "it",
+      "slug": "bambino-non-mangia-psicologia",
+      "display_order": 8,
+      "title_hint": "Bambino che non mangia: la psicologia dietro il rifiuto, spiegata a un genitore",
+      "keywords": [
+        "bambino non mangia psicologia",
+        "bambino che non mangia psicologia",
+        "bambino non vuole mangiare psicologia",
+        "rifiuto del cibo bambini psicologia"
+      ],
+      "topic": "The psychology behind a child who refuses food, in parent words and without a diagnosis: autonomy at 2 to 3 (no is the first power a child has), control (the table is the one place a child decides what goes in), attention (a refused plate gets more of it than a finished one), the parent's own worry arriving at the table, fear of the new (neofobia in one line, link food-neophobia), the sensory side (texture, temperature, mixed foods) said plainly. Then what it means at the table: give the choice back in small ways (which of two vegetables, which plate), take the attention off the plate, eat together, one calm sentence and then let it be. What backfires (pressure, bribes, negotiating). The live page il-bambino-non-mangia covers the practical side and the red flags; this page is the why and links it in the first section. When to talk to the pediatra: one paragraph, no humour. Cites Dovey 2008 for the phase. Pillar: no announcement sentence exists; add the link sentence in the section 'Perché i bambini non mangiano le verdure'.",
+      "related": [
+        "toddler-wont-eat",
+        "picky-eater-toddler"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/aubergine.png"
+    },
+    {
+      "internal": "two-year-old-stopped-eating",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "it",
+      "slug": "bambino-2-anni-non-mangia-piu",
+      "display_order": 9,
+      "title_hint": "Bambino di 2 anni che non mangia più: il calo dei due anni e cosa fare",
+      "keywords": [
+        "bambino 2 anni non mangia più",
+        "bambino di 2 anni non mangia",
+        "bambino 2 anni non mangia forum",
+        "bambino 2 anni non mangia da solo",
+        "bambino 2 anni non mangia a pezzi"
+      ],
+      "topic": "The two-year dip as its own page: a child who ate everything and, around 2, eats much less or refuses whole meals. Why (growth slows after the first year and appetite follows; autonomy; neofobia starts), what a normal week looks like (some days almost nothing, some days a lot; count the week, not the meal), what helps at 2 (small portions, fixed meal moments, no milk or juice right before, eat together, the same food many times). The two searches parents add: 'non mangia da solo' (a 2-year-old who wants to be fed or refuses the spoon: normal, offer both, no fight) and 'non mangia a pezzi' (still on purées or refusing pieces: move to pieces one texture at a time, soft first, next to a safe food; if gagging or panic persists, the pediatra). What backfires. The forum question answered calmly: most 2-year-olds who stop eating start again, the phase passes for most (Dovey 2008). When to talk to the pediatra (weight, fewer than about 20 foods, distress). Pillar: no announcement sentence exists; add the link sentence in the section 'Quando il bambino non mangia quasi niente'.",
+      "related": [
+        "toddler-wont-eat",
+        "food-neophobia"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/banana.png"
+    },
+    {
+      "internal": "selective-eating-causes",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "it",
+      "slug": "alimentazione-selettiva-cause",
+      "display_order": 10,
+      "title_hint": "Alimentazione selettiva: le cause, una per una, e cosa cambia a tavola",
+      "keywords": [
+        "alimentazione selettiva cause",
+        "selettività alimentare cause",
+        "selettività alimentare 2 anni",
+        "alimentazione selettiva bambini cause"
+      ],
+      "topic": "The causes of selective eating, one per section, each in parent words and each with what it means at the table: age (2 to 6, neofobia), taste (bitter sensitivity, sweet preference), texture and the senses (mixed foods, slimy, lumps), temperament (cautious children stay cautious longer), pressure at the table (the one cause a parent can change), early feeding history (pieces introduced late), illness or reflux (a doctor's question), imitation (siblings and parents who do not eat vegetables). Then the line that matters: most of these are a phase; ARFID named once and referred to the pediatra, not described. The live page selettivita-alimentare covers what the term means and how to widen the plate; this page is the why. When to ask the pediatra. Cites Dovey 2008. Pillar: no announcement sentence exists; add the link sentence in the section 'Selettività alimentare o semplicemente un bambino'.",
+      "related": [
+        "picky-eater-toddler",
+        "food-neophobia"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/blueberry.png"
+    },
+    {
+      "internal": "picky-eater-food-list",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "en",
+      "slug": "picky-eater-food-list",
+      "display_order": 11,
+      "title_hint": "Picky eater food list: the 30 plants that are easiest to start with",
+      "keywords": [
+        "picky eater food list",
+        "picky eater list",
+        "picky eater list of foods",
+        "food list for picky eaters",
+        "picky eater grocery list"
+      ],
+      "topic": "A real list, not advice: the 30 plants that are easiest to start with, grouped the way a parent shops (sweet fruit, mild vegetables, crunchy raw, soft cooked, beans and grains, nuts and seeds where age allows), each with one line on how to serve it the first time. From the catalogue of 224 plants now, from tasting data later (say so, no numbers). Then how to use the list: one new plant a week next to a safe food, the tasting count (link), and the grocery version (one new plant per shop). Short paragraph on what is not on the list and why (bitter and soft come later). The search phrase in the title; the body says 'a child who eats few foods', never labels the child. No health claim, no 'healthy' as judgment. The printable list is mentioned only once it exists. One sentence on when to talk to your doctor (fewer than about 20 foods). British spelling. Pillar: no announcement sentence exists; add the link sentence in the section 'Which vegetables work first' or the one about the 20 easiest vegetables.",
+      "related": [
+        "vegetables-kids-will-eat",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/corn.png"
+    },
+    {
+      "internal": "picky-eater-chart",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "en",
+      "slug": "picky-eater-chart",
+      "display_order": 12,
+      "title_hint": "Picky eater chart: the tasting chart that works, and how to draw one tonight",
+      "keywords": [
+        "picky eater chart",
+        "picky eater food chart",
+        "picky eater reward chart",
+        "tasting chart for kids",
+        "new food chart for picky eaters"
+      ],
+      "topic": "The tasting chart explained and how to draw one tonight: one food per row, 10 to 15 boxes, a tick or a sticker per taste (a lick counts), never for a clean plate, a new row when a food is accepted. Why a chart works (the count is visible to the child and the parent, and the reward is for the behaviour: Cooke 2011), the difference between a tasting chart and a reward chart (a reward chart trades food for a prize; a tasting chart records tastes), how to fill it in as a family (siblings each get a row, parents too), what to do when the count stalls, the app as the chart that lives on the phone (one card per plant, no promise). The printable PDF does not exist yet: describe the paper version (a sheet, 12 boxes, a pen) and never promise a download; when the printables hub ships, this page becomes its landing page and links it. British spelling. Pillar: no announcement sentence exists; add the link sentence in the rewards section, next to 'A tick on a chart, a sticker, a card in an app'.",
+      "related": [
+        "how-many-times-to-try-a-food",
+        "vegetables-kids-will-eat"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/red-pepper.png"
+    },
+    {
+      "internal": "picky-eater-checklist",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "en",
+      "slug": "picky-eater-checklist",
+      "display_order": 13,
+      "title_hint": "Picky eater checklist: 10 things to try first, and 6 signs to take to your doctor",
+      "keywords": [
+        "picky eater checklist",
+        "checklist picky eater",
+        "picky eater signs",
+        "when to worry about picky eating",
+        "is my child a picky eater"
+      ],
+      "topic": "Two checklists on one page, each a real list a parent can tick tonight. Checklist 1, before you worry: 10 things to try for two weeks (fixed meal moments, small portions, one taste next to a safe food, eat together, no drinks or snacks in the hour before, no screens, reward the taste not the plate, the same food many times, count the week, one question after dinner). Checklist 2, take this to your doctor: 6 signs (losing weight or not growing, fewer than about 20 different foods, whole food groups missing, gagging or panic at new food, dropping accepted foods without replacing them, the worry is too big for you). Between them, one paragraph on what is normal at 2 to 6 (Dovey 2008) so a parent knows which list they are on. The search phrase in the title; the body never labels the child. No diagnosis; ARFID named once and referred out; referral word 'your doctor'. British spelling. Pillar: no announcement sentence exists; add the link sentence in the section 'Picky eater or just a child' next to the doctor paragraph.",
+      "related": [
+        "picky-eater-toddler",
+        "toddler-wont-eat"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/green-bean.png"
+    },
+    {
+      "internal": "hiding-vegetables",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "en",
+      "slug": "hiding-vegetables",
+      "display_order": 6,
+      "title_hint": "Hiding vegetables for kids: five ways to do it, and the one rule that keeps the tasting alive",
+      "keywords": [
+        "how to hide vegetables for kids",
+        "hiding vegetables in food for kids",
+        "sneaky vegetables for kids",
+        "hidden vegetables for kids",
+        "best way to hide vegetables for kids"
+      ],
+      "topic": "Hiding feeds the belly, tasting teaches the tongue: do both. Five ways to hide (in the sauce, in the soup, blended, grated into mince, in a smoothie) and the one rule to keep: always one visible piece next to the plate, the tasting piece. Why hiding alone does not teach a child to eat vegetables (a child only learns to like what they can see and taste), how to combine it with the tasting count (link), and the honest line on 'sneaky': it is not a trick to feel bad about, it is dinner. No recipes. British spelling. The pillar_mention sentence is not an announcement: replace it with a sentence that keeps its meaning and links the article.",
+      "related": [
+        "vegetables-kids-will-eat",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": "Dinner works tonight and the learning carries on anyway."
+    },
+    {
+      "internal": "toddler-wont-eat-vegetables",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "it",
+      "slug": "bambino-non-mangia-verdure",
+      "display_order": 4,
+      "title_hint": "Il bambino non mangia le verdure: porzioni, consistenze e il calo dei due anni",
+      "keywords": [
+        "bambino non mangia verdure",
+        "bambino 2 anni non mangia verdure",
+        "bambini che non mangiano verdure conseguenze",
+        "contorni per bambini che non mangiano verdure",
+        "verdure per bambini 2 anni"
+      ],
+      "topic": "Toddler and vegetables: portions (a piece, not a scoop), textures (raw versus cooked, crunchy versus soft), the dip around two years (a child who ate everything and stops), which vegetables to start with (carota, cetriolo, piselli, mais, peperone, pomodorino, patata dolce), 'conseguenze' answered honestly and without a health claim (a period without vegetables is a phase; look at the week and at the fruit; the pediatra decides the rest), 'contorni' answered as a serving question (one visible piece next to the plate, the same vegetable in another shape), not a recipe list, what works at the table, when to ask the pediatra. The pillar_mention sentence is not an announcement: replace it with a sentence that keeps its meaning and links the article.",
+      "related": [
+        "toddler-wont-eat",
+        "food-neophobia"
+      ],
+      "pillar_mention": "Un bambino che rifiuta il cavolfiore lesso a volte mangia le cimette crude con una salsa in cui intingerle."
+    },
+    {
+      "internal": "no-fight-at-the-table",
+      "type": "cluster",
+      "pillar": "learn-to-eat-everything",
+      "locale": "nl",
+      "slug": "geen-strijd-aan-tafel",
+      "display_order": 14,
+      "title_hint": "Geen strijd aan tafel: zo stopt het gevecht met je peuter over eten",
+      "keywords": [
+        "geen strijd aan tafel",
+        "peuter weigert te eten",
+        "peuter wil niet aan tafel eten",
+        "peuter zonder eten naar bed",
+        "elke dag strijd met peuter met eten",
+        "peuter drama eten"
+      ],
+      "topic": "The table dynamic as its own page: why dinner turns into a fight (the parent decides the child must eat, the child discovers that no is a power, both dig in), the division that ends it (the parent decides what, when and where; the child decides whether and how much; in plain words, no author name), how a dinner without a fight goes in practice (one sentence about the taste, then talk about the day; the plate stays 20 minutes and goes; no cooking twice; no negotiating). The questions in the search: 'peuter weigert te eten' (the week counts, not the meal), 'wil niet aan tafel eten' (a chair with feet on a step, short meals, the child comes when dinner starts and may leave when done), 'zonder eten naar bed' (a toddler who skips dinner usually catches up tomorrow; no punishment, no second dinner, the same calm breakfast; if it happens every night, look at the day: drinks, snacks, sleep), 'elke dag strijd' (two weeks of the tasting count instead of the plate, link). What backfires. When to ask the consultatiebureau (weight, distress, fewer than about 20 foods). Cites Cooke 2011 for rewarding the taste; no health claim. The pillar_mention sentence is not an announcement: replace it with a sentence that keeps its meaning and links the article.",
+      "related": [
+        "toddler-wont-eat",
+        "how-many-times-to-try-a-food"
+      ],
+      "pillar_mention": "Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd.",
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pear.png"
     }
   ]
 }

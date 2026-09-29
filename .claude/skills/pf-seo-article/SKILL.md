@@ -168,11 +168,17 @@ at the end is the only trace. One article per run.
    ```
 
    Take the first row whose `internal` and `locale` are not in that result and not marked `done`.
+   The one exception is a row with `"rewrite": true`: that page is live on purpose (a legacy
+   article awaiting its family rewrite) and the live check does not skip it; only `done` does.
    If there is none, stop and report "queue empty" and do nothing else. The row gives `internal`,
    `type`, `pillar`, `locale`, `slug`, `display_order`, `title_hint`, `keywords`, `topic`,
-   `related`, `pillar_mention`.
+   `related`, `pillar_mention`, and for a new folder `emoji` and `cover_image`.
 2. **Write the article** with steps 1 to 9 above, in that locale, natively. `article.json`
-   exists for every folder of pillar 1; create it only for a new folder. A pillar row also writes
+   exists for every folder of pillar 1 and 2; create it only for a new folder, with `type`,
+   `pillar`, `display_order`, `emoji` and `cover_image_url` (the row's `cover_image`, a plant
+   render from the `food-images` bucket; it becomes the share card and `Article.image`). A
+   rewrite row replaces the whole `<locale>.md`: the slug stays (the page is indexed), the
+   `legacy: true` flag goes, and nothing of the old body survives unless it passes the gates. A pillar row also writes
    one announcement sentence per planned cluster of that locale (queue rows with the same
    `pillar` and `locale`), each its own sentence ending in that language's "gets its own article",
    so a later run can turn it into a link. Copy each of those sentences verbatim into that
@@ -187,7 +193,8 @@ at the end is the only trace. One article per run.
    its own sentence. If the row has no `pillar_mention`, or that sentence is no longer in the
    file, find the sentence in the pillar that announces this cluster's topic and replace that
    one instead; if the pillar does not mention the topic at all, add a sentence with the link in
-   the section it belongs to. This step is not optional: at publish time a pillar that does not
+   the section it belongs to. If the pillar already links this cluster (a rewrite of a live
+   page), the step is done. This step is not optional: at publish time a pillar that does not
    link every cluster of its locale is an error, not a warning. Then
    `npm run learn:check -- --only <pillar internal>`.
 5. **Bookkeeping.** Set `"done": "<YYYY-MM-DD>"` on the queue row. Append to

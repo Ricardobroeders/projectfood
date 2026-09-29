@@ -928,3 +928,15 @@ English: toddler-wont-eat, picky-eater-toddler.
 ## [2026-09-29] build | learn: toddler-wont-eat (en) written and published by the nightly routine
 945 words, 6 FAQ entries, meta title 48 and description 150 characters. The pillar `learn-to-eat-everything` (en) now links the article.
 One warning accepted: related `picky-eater-toddler` has no English file yet (the page shows published related articles only).
+
+## [2026-09-29] build | Learn queue refilled: batch 2 rows 2.1 to 2.6, routine branches merged
+The two unmerged routine branches (EN food-neophobia of 2026-09-28, EN toddler-wont-eat of
+2026-09-29, both already live) were merged into `main`; the queue now shows 16 of 17 pillar-1
+rows done. Then 18 rows were added from [[seo-roadmap]] batch 2: pillar 2 rewritten for the
+family per locale (pillar, `as-a-family`, `what-counts-as-a-plant`; nl, it, en; `rewrite: true`
+so the live check does not skip them, slugs kept), the three Italian pages the Semrush numbers
+justify, the three English list and tool pages, the two locale siblings and the Dutch
+`geen-strijd-aan-tafel`. 19 open rows, one a night, to about 2026-10-18. The `pf-seo-article`
+skill learned the `rewrite` flag, `cover_image` for a new folder's `article.json`, and that a
+pillar which already links the cluster ends step 4. Updated: seo-roadmap, strategy-backlog,
+projectfood-app/CLAUDE.md, queue.json, the skill.

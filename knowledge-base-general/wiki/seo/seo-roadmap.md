@@ -59,17 +59,19 @@ _Shipped 2026-09-29 (code commit on `main`, content republished the same day). E
 | Search Console baseline exported to `raw/`; Bing Webmaster Tools and Ahrefs Webmaster Tools verified | Ricardo | S | Baseline row filled below |
 
 ## Batch 2 — the queue (the scaling model)
-One row left on 2026-09-29; the engine idles from about 2026-10-01. Refill in this order (rows
-2.1 to 2.6 are about 30 nights); 2.7 to 2.9 need a template or an asset first.
+_Refilled 2026-09-29: 19 open rows in `queue.json` (2.1 to 2.6, one a night, to about
+2026-10-18), after the two routine branches of 2026-09-28 and 09-29 were merged into `main`.
+Rows 2.2 carry `rewrite: true` (live legacy pages written fresh, slugs kept); 2.7 to 2.9 need a
+template or an asset first and are Claude's build steps, not queue rows._
 
 | Order | Rows | Locales | Owner | Effort |
 |---|---|---|---|---|
 | 2.1 | `picky-eater-toddler` | en | routine | 1 night |
-| 2.2 | Pillar 2 for the family: `plant-diversity`, `what-counts-as-a-plant`, new `as-a-family`; slugs kept | nl, it, en | Claude writes the rows, routine writes the pages | 9 nights |
-| 2.3 | IT: non mangia psicologia · 2 anni non mangia più · selettività cause | it | routine | 3 nights |
+| 2.2 | Pillar 2 for the family: `plant-diversity`, `what-counts-as-a-plant`, new `as-a-family` (`30-planten-als-gezin` / `30-piante-in-famiglia` / `30-plants-a-week-as-a-family`); slugs kept | nl, it, en | rows written 2026-09-29, routine writes the pages | 9 nights |
+| 2.3 | IT: `bambino-non-mangia-psicologia` · `bambino-2-anni-non-mangia-piu` · `alimentazione-selettiva-cause` | it | rows written 2026-09-29, routine | 3 nights |
 | 2.4 | EN lists and tools: picky eater food list · picky eater chart (printable landing) · picky eater checklist | en | routine | 3 nights |
 | 2.5 | Siblings: `hiding-vegetables` (en), `toddler-wont-eat-vegetables` (it) | en, it | routine | 2 nights |
-| 2.6 | NL "geen strijd aan tafel" | nl | routine | 1 night |
+| 2.6 | NL `geen-strijd-aan-tafel` | nl | rows written 2026-09-29, routine | 1 night |
 | 2.7 | Printables hub + tasting chart, plant cards, veg bingo landing pages | nl, it, en | PDFs Ricardo (Figma, existing renders); pages Claude | M + M |
 | 2.8 | Plant pages `/[locale]/plants/[slug]` from the database; 40 most-tasted indexed, 184 `noindex` until reviewed (item 5) | nl, it, en | Claude | L |
 | 2.9 | Honest app comparison ("game, not therapy") | en, then nl, it | Ricardo tests the apps, Claude writes | M |

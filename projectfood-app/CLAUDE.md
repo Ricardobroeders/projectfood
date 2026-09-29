@@ -53,7 +53,10 @@ Articles are files, the database is the render source. Never edit `learn_article
   = hoe-vaak-proeven; `picky-eater-toddler` = moeilijke-eter / selettivita-alimentare;
   `toddler-wont-eat-vegetables` = peuter-eet-geen-groente (nl only); `vegetables-kids-will-eat` =
   welke-groente-vinden-kinderen-lekker; `hiding-vegetables` = groente-verstoppen (nl only);
-  `food-neophobia` = voedselneofobie / neofobia-alimentare.
+  `food-neophobia` = voedselneofobie / neofobia-alimentare. Pillar 2 keeps its indexed slugs in
+  every locale (`plant-diversity`, `what-counts-as-a-plant`); its new cluster `as-a-family` =
+  30-planten-als-gezin / 30-piante-in-famiglia / 30-plants-a-week-as-a-family. Batch-2 folders
+  and slugs are in `content/learn/queue.json`.
 - `npm run learn:check -- --only <internal>` lints (lengths, FAQ, links, banned words);
   `npm run learn:publish -- --only <internal> [--dry] [--publish]` upserts through PostgREST with
   the service role key and calls `/api/revalidate` when `REVALIDATE_SECRET` is set (Vercel +
