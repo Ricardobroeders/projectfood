@@ -35,6 +35,8 @@ L = a week+.
 The hub, pillar 2, the printables, the plant pages and the comparison page do not wait for a gate.
 
 ## Batch 0 — hygiene (Claude, about one working day, no decision needed)
+_Shipped 2026-09-29 (code commit on `main`, content republished the same day). Every row below is done; the a11y and cache rows are measured on the next Lighthouse run._
+
 | Task | Effort | Done when |
 |---|---|---|
 | `dynamicParams = false` on the locale layout: `/foo.txt` returns 404, not the English home page | S | `curl -I https://projectfood.dev/foo.txt` is 404 |
@@ -92,12 +94,12 @@ One row left on 2026-09-29; the engine idles from about 2026-10-01. Refill in th
 ## KPIs
 | KPI | Baseline 2026-09-29 | Dec 2026 | Apr 2027 | Sep 2027 |
 |---|---|---|---|---|
-| Sitemap URLs / indexed pages | 44 / unknown (export pending) | 80 | 200 | 300 |
+| Sitemap URLs / pages with impressions | 44 / 3 | 80 | 200 | 300 |
 | NL shortlist terms in top 10 | 0 (unmeasured) | 3 | 6 | 8 |
 | IT shortlist terms in top 10 | 0 (unmeasured) | 2 | 5 | 6 |
 | EN list and chart terms in top 10 | 0 | 1 | 3 | 5 |
 | Brand query "project food app" | lost to namesakes | won | won | won |
-| Search Console clicks / month | unknown | 150 | 800 | 3,000 |
+| Search Console clicks / month | 0 (1 click in 3 months) | 150 | 800 | 3,000 |
 | Referring domains | 1 known (own GitHub) | 10 | 30 | 60 |
 | Printable downloads / month | 0 | 50 | 300 | 1,000 |
 | Lighthouse mobile home (perf / a11y) | 91 / 88 | ≥ 95 / ≥ 95 | | |
@@ -105,9 +107,14 @@ One row left on 2026-09-29; the engine idles from about 2026-10-01. Refill in th
 | Organic (non-class) household signups / month | 0 | 5 | 30 | 100 |
 
 ## Baseline
-_Search Console export pending (Ricardo, batch 1). On 2026-09-29: 44 sitemap URLs, 15 family
-articles, 6 legacy adult pages, home Lighthouse 91 / 88 / 96 / 92, article 100 / 90 / 100 / 92,
-0 Open Graph images, 1 known referring domain._
+Search Console, web search, 2026-06-27 to 2026-09-29 (export in `raw/gsc-export-2026-09-29/`,
+Ricardo, 2026-09-29): **1 click, 28 impressions in three months.** Netherlands 15 impressions,
+Italy 3, Belgium 2; desktop 23, mobile 5. Queries: "project food" 4 impressions at position 2.5
+(the one click), "plant food" 9 at position 44, "foodproject" 2, "projectfood.it" 1. Pages with
+impressions: `/nl` 19, `/` 6, `/it` 5; no learn page had an impression yet (the family pages are
+12 days old). Sitemap 44 URLs; home Lighthouse 91 / 88 / 96 / 92, article 100 / 90 / 100 / 92;
+0 Open Graph images; 1 known referring domain. This is the zero line every KPI above is measured
+against.
 
 ## Review cadence
 - Weekly while batch 2 runs: queue rows written, pages indexed (Search Console), one article

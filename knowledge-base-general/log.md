@@ -852,3 +852,20 @@ wording, batch 2 a queue of about sixty rows so the routine, one row from empty,
 (pillar 2 in three locales, IT and EN long tail, printables, 40 indexed plant pages, the
 comparison), batch 3 authority. Seven items for Ricardo, led by the Search Console export and
 merging the two unmerged routine branches. Backlog row 6 and items 9 and 15 updated.
+
+## [2026-09-29] build | SEO batch 0 shipped: hygiene from the live audit
+The ten batch-0 rows of [[seo-roadmap]] are live. Code: unknown first segments now 404 (the
+locale layout guards en/nl/it; `dynamicParams = false` alone did not stop `/foo.txt` rendering
+the English home page), the recipes route and its keys are gone, the locale cookie is written
+only when it changes so the edge can cache the static pages, one Organization node on the home
+page, hero and feature images through `next/image`, zoom re-enabled and the meta text moved to
+the readable grey, "stamps" replaced by achievements in the privacy and delete-account copy,
+terms and contact with their own descriptions. New: `/og` route handlers (home, hub, pillar,
+cluster) that render the plant cover on the cream surface with the title, referenced from
+openGraph, twitter (`summary_large_image`) and `Article.image`; an Atom feed per locale at
+`/learn/feed`; an IndexNow ping after every real publish. Content: the six pre-pivot pages
+(`plant-diversity`, `what-counts-as-a-plant`) exported from the database into content files
+with `legacy: true`, titles without the doubled suffix and descriptions without the claim; every
+article.json carries a `cover_image_url` from the render bucket. Search Console baseline filed in
+`raw/gsc-export-2026-09-29/`: 1 click and 28 impressions in three months. Next: refill the queue
+(batch 2), then the home page draft for Ricardo (batch 1).
