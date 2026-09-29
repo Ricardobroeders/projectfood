@@ -47,7 +47,8 @@ live and its users are the current cohort.
   marketing**.
 - **Growth:** [[concept-word-of-mouth]] — talkable moments, never nagging; now concretely:
   card unlocks, collective class milestones, the class WhatsApp group as the unit of spread.
-  SEO is a background asset, not the launch channel ([[seo-overview]]).
+  SEO is a compounding asset run as an active track since 2026-09-29 ([[seo-audit-2026-09-29]]);
+  the store stays the launch front door ([[seo-overview]]).
 - **Retention/moat:** [[concept-stickiness-moat]] — the dinner-table question (daily) and the
   household shopper's Sunday advice (weekly); measured as dinners logged per household per week.
 - **Origin of the mechanic:** [[concept-30-plants-origin]] — public-health guidance, not

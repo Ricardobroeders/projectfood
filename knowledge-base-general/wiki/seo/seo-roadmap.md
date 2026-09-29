@@ -3,95 +3,121 @@ title: SEO — roadmap & KPIs (family mode)
 type: seo
 tags: [seo, plan, roadmap, family-mode]
 created: 2026-09-06
-updated: 2026-09-22
-sources: [source-family-mode-context.md, seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-app-store-aso.md]
+updated: 2026-09-29
+sources: [seo-audit-2026-09-29.md, source-family-mode-context.md, seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-app-store-aso.md]
 ---
 
 # SEO — roadmap & KPIs (family mode)
 
-**In one line:** Small and sequenced to real moments. Phase 0 clears health claims and pulls
-volumes; Phase 1 ships only what the November class pilot and the EU-Schoolfruit weeks need;
-content grows in Phase 2 only if the dinner habit holds past week 4 and a class replicates.
-Budget: about half a day a week until then. Effort: S = hours, M = a day or two, L = a week+.
+**In one line:** Since 2026-09-29 SEO is an active track, not a half-day-a-week background job:
+one day of hygiene, one home-page decision, then a queue that keeps the nightly routine writing
+until the end of the year, then authority. The store stays the front door and the class gates
+(G1 to G3) still decide the class and schoolfruit content. Effort: S = hours, M = a day or two,
+L = a week+.
 
-> **Operating model:** Claude writes and ships on `main`; Ricardo decides, reviews the copy that
-> speaks to parents, tests, and does the human outreach (sister, party parents, the class,
-> Tommy Tomato / Spoony). Track in the strategy backlog (row 6).
+> **Rewritten 2026-09-29** from the live audit in [[seo-audit-2026-09-29]]. The 2026-09-06
+> version ran SEO at "about half a day a week until the class channel is proven"; Ricardo asked
+> on 2026-09-29 to grow search value quickly and has the time, so the phases below are batches
+> with owners, not quarters. The order respects the one thing
+> ([[decision-2026-09-29-one-thing-way-of-working]]): none of batch 0 to 2 touches the app or the
+> tester clock; it is the fourteen-day window used well.
 
-## Gates (from the validation plan, file §7 and §6)
-- **G1 — Dinner habit holds** for the five families past week 4 (dinners logged per household
-  per week). Unlocks Phase 2 content investment.
+> **Operating model:** Claude writes and ships on `main` (batch 0, the queue, the templates);
+> Ricardo decides the wording that says what the site is (batch 1), supplies accounts and links,
+> makes the PDFs in Figma, and does the human outreach (batch 3). The nightly routine
+> (`PF - Learn Article`, 03:05) is the content engine; its queue is `content/learn/queue.json`.
+
+## Gates (unchanged, scoped to class content)
+- **G1 — Dinner habit holds** for the five families past week 4. Unlocks the class kit copy.
 - **G2 — One class runs** in November and produces the playbook. Unlocks the schoolfruit and
-  class content at scale.
-- **G3 — A second class replicates** without founder seeding. Unlocks IT/EN expansion and
-  programmatic plant cards.
+  class pages (formats 2 and 5).
+- **G3 — A second class replicates** without founder seeding. Unlocks the aggregate-data content.
+The hub, pillar 2, the printables, the plant pages and the comparison page do not wait for a gate.
 
-## Phase 0 — clean-up & validation (Sep – Oct 2026)
-_Status 2026-09-22: nothing in Phase 0 has shipped yet (hero and meta still carry the health claim, no OG image, Search Console unverified, DataForSEO unauthorised, `/recipes` live). Ricardo asked to start now. Order, per the brand-SERP finding in [[seo-serp-landscape]]: the brand query and the family home page first, then the printable cards (Phase 1 format 3), then the NL cornerstone once volumes are in. The class kit and schoolfruit pages hold until row 12 decides the class channel._
+## Batch 0 — hygiene (Claude, about one working day, no decision needed)
+| Task | Effort | Done when |
+|---|---|---|
+| `dynamicParams = false` on the locale layout: `/foo.txt` returns 404, not the English home page | S | `curl -I https://projectfood.dev/foo.txt` is 404 |
+| Remove the `recipes` route and its messages keys | S | `/en/recipes` is 404 |
+| Legacy learn pages: `meta_title` without the doubled "\| Project Food", descriptions without the health claim (content files; the rewrite itself is batch 2.2) | S | Titles ≤ 60 characters |
+| "stamps" → achievements in privacy and delete-account copy ×3; own descriptions for terms and contact | S | `learn:check`-style grep finds no "stamp" in `messages/*.json` marketing copy |
+| One `Organization` node (`organizationNode()`) on the home page; `sameAs` on Organization and Person when the links arrive | S | One logo URL in every graph |
+| `Article.image` + `opengraph-image.tsx` for hub, pillar and cluster routes from the plant renders, `summary_large_image` | M | A WhatsApp share of an article shows the card; Rich Results Test lists the image |
+| Hero and feature images through `next/image` (no `unoptimized`), sized | S | Home LCP < 2.5 s mobile in Lighthouse |
+| Viewport zoom re-enabled; `#A39B91` meta text to a readable token; hero line kept as decoration | S | Lighthouse a11y ≥ 95 |
+| Locale cookie set only on change, so the CDN caches the static pages | S | `x-vercel-cache: HIT` on a second request to `/nl` |
+| IndexNow ping in `learn-publish.mjs`; Atom feed at `/[locale]/learn/feed` | S | Bing shows the ping; feed validates |
 
+## Batch 1 — the brand query and the front door (Claude drafts, Ricardo approves)
 | Task | Owner | Effort | Done when |
 |---|---|---|---|
-| Rewrite hero, meta, manifest to the family promise; remove health claims (#1, #9) | Claude, Ricardo approves wording | S | Deployed, no "boosts gut diversity" anywhere |
-| OG image per locale + `summary_large_image` (#2) | Claude | S | WhatsApp unfurl shows the card |
-| Search Console + Bing + IndexNow (#3) | Ricardo verifies, Claude submits | S | Indexed pages baseline recorded below |
-| Authorise DataForSEO; pull volumes for the 30-term shortlist; rewrite tiers in [[seo-keyword-strategy]] | Ricardo → Claude | S | Tables carry dated numbers |
-| Remove `/recipes`, disallow `/u/`, freeze adult learn hub with a dated note (#5, #6, #10) | Claude | S | |
-| Privacy page for parents (#14), `llms.txt` (#11) | Claude | S | |
-| Pull behavioural numbers from Supabase (file §7) to a `source-` page | Claude | S | Feeds G1 |
+| Home page ×3 as the family app page: hero, three steps, listing screenshots, two cited sentences of tasting science (no claim), FAQ, one paragraph linking the pillar and two clusters, store CTA (closed-test link now, badge after), title without the em dash | Claude, Ricardo approves wording | M | No "boosts gut diversity" anywhere; "app" and the family in title and H1 in three locales |
+| About page: greengrocer story kept, "backed by science" and the adult tracking paragraph replaced by the family pivot; Person `sameAs` | Claude, Ricardo approves | S | |
+| `SoftwareApplication` JSON-LD with the store URL; manifest description and `theme_color` (`#16a34a`) aligned | Claude | S | Public Play URL exists |
+| Search Console baseline exported to `raw/`; Bing Webmaster Tools and Ahrefs Webmaster Tools verified | Ricardo | S | Baseline row filled below |
 
-## Phase 1 — the November pilot needs these (Oct – Dec 2026)
-| Task | Owner | Effort | Notes |
-|---|---|---|---|
-| Parent landing page (NL first, then IT/EN) with "coming to the App Store" until native ships | Claude | M | Format 1 |
-| `/klas` class challenge page + printable poster + WhatsApp template + milestone share card | Claude, Ricardo tests with the class parent | M | Format 2; live before the class starts |
-| Printable plant cards (40) + proefkaart + groentebingo PDFs, NL | Claude (uses existing renders) | M | Format 3; the link magnet |
-| "EU-Schoolfruit: thuis meedoen" companion page, NL | Claude | S | Format 5; deliveries start 9 Nov |
-| NL cornerstone: "Kind lust geen groente? Zo leert een kind alles eten" + 2 method articles | Claude, Ricardo reviews tone | L | Format 4; only after DataForSEO confirms demand |
-| App Store / Play listing drafts in 3 locales, screenshots plan | Claude drafts, Ricardo submits | M | [[seo-app-store-aso]]; ready before TestFlight |
-| Universal Links / App Links handler for `/klas/<code>` | Claude (Expo + Next) | M | Class plumbing |
+## Batch 2 — the queue (the scaling model)
+One row left on 2026-09-29; the engine idles from about 2026-10-01. Refill in this order (rows
+2.1 to 2.6 are about 30 nights); 2.7 to 2.9 need a template or an asset first.
 
-## Phase 2 — after G1 and G2 (Jan – Apr 2027)
-| Task | Owner | Effort | Notes |
-|---|---|---|---|
-| Remaining NL method articles (rewards, neophobia, the dinner question, schoolfruit at home) | Claude | M each | |
-| IT cornerstone + neofobia method article + IT printables | Claude | L | "Frutta e verdura nelle scuole" companion |
-| Honest app comparison (test Teach Your Monster, Yummi, EatPal first) | Ricardo tests, Claude writes | M | Format 6 |
-| Family 30 + "what counts" hub, 3 locales | Claude | M | Format 8, legacy asset |
-| Directory listings (nobigapps, AlternativeTo), Product Hunt at native launch | Ricardo | S | |
-| Outreach: Tommy Tomato, Spoony, Gezonde School newsletters, parent communities | Ricardo | S ongoing | |
-
-## Phase 3 — after G3 (May – Aug 2027)
-| Task | Owner | Effort | Notes |
-|---|---|---|---|
-| Plant card pages, gated, 40 first | Claude | L | Format 7 |
-| EN cornerstone + comparison localisation | Claude | L | |
-| Aggregate-data content ("what 1,000 Dutch kids tasted this year"), privacy-gated | Claude | M | The proprietary-data moat, made visible |
-| Second school year prep: schoolfruit pages refreshed for 2027/28, class kit v2 | Claude | S | |
-
-## KPIs (revised targets after Phase 0 volumes)
-| KPI | Baseline 2026-09 | Dec 2026 | Apr 2027 | Sep 2027 |
+| Order | Rows | Locales | Owner | Effort |
 |---|---|---|---|---|
-| Direct-link → install conversion (class links) | n/a | measured | ≥ 30% | ≥ 40% |
-| Classes started / replicated without seeding | 0 / 0 | 1 / 0 | 3 / 1 | 10 / 5 |
-| Indexed pages (all locales) | ~24 | 40 | 80 | 150 |
-| NL shortlist terms in top 10 | 0 | 2 | 5 | 8 |
-| IT shortlist terms in top 10 | 0 | 0 | 2 | 5 |
-| Search Console clicks / month | unknown | 150 | 800 | 3,000 |
-| Printable downloads / month | 0 | 50 | 300 | 1,000 |
-| Organic (non-class) household signups / month | 0 | 5 | 30 | 100 |
-| AI-search citations (monthly probe, 3 languages) | 0 of 9 | 1 | 3 | 6 |
+| 2.1 | `picky-eater-toddler` | en | routine | 1 night |
+| 2.2 | Pillar 2 for the family: `plant-diversity`, `what-counts-as-a-plant`, new `as-a-family`; slugs kept | nl, it, en | Claude writes the rows, routine writes the pages | 9 nights |
+| 2.3 | IT: non mangia psicologia · 2 anni non mangia più · selettività cause | it | routine | 3 nights |
+| 2.4 | EN lists and tools: picky eater food list · picky eater chart (printable landing) · picky eater checklist | en | routine | 3 nights |
+| 2.5 | Siblings: `hiding-vegetables` (en), `toddler-wont-eat-vegetables` (it) | en, it | routine | 2 nights |
+| 2.6 | NL "geen strijd aan tafel" | nl | routine | 1 night |
+| 2.7 | Printables hub + tasting chart, plant cards, veg bingo landing pages | nl, it, en | PDFs Ricardo (Figma, existing renders); pages Claude | M + M |
+| 2.8 | Plant pages `/[locale]/plants/[slug]` from the database; 40 most-tasted indexed, 184 `noindex` until reviewed (item 5) | nl, it, en | Claude | L |
+| 2.9 | Honest app comparison ("game, not therapy") | en, then nl, it | Ricardo tests the apps, Claude writes | M |
+| 2.10 | Second daily trigger if quality holds after two weeks; routine model decision (Opus 5) | | Ricardo decides | S |
 
-The first two rows are the ones that matter; the rest is the background asset compounding.
+## Batch 3 — authority (Ricardo's outreach, Claude's assets)
+| Task | Owner | Effort |
+|---|---|---|
+| `sameAs`: Play, App Store, LinkedIn, GitHub (README links the site), ricardobroeders.nl after the certificate fix | Ricardo supplies, Claude wires | S |
+| Launch listings: Product Hunt, AlternativeTo, nobigapps, directories in [[seo-serp-landscape]] | Ricardo | S |
+| Printables offered to the sites ranking for "groente proefkaart" / "picky eater chart", JGZ practices, Tommy Tomato, Spoony; forum answers, never posts | Ricardo, Claude drafts | S ongoing |
+| The greengrocer-to-family-app story to Eindhoven and Brabant press and founder podcasts | Ricardo | S |
+| After G3: "what 1,000 Dutch kids tasted this year", privacy-gated | Claude | M |
+
+## Class channel content (gated, unchanged)
+| Task | Gate | Effort |
+|---|---|---|
+| `/klas` class challenge page + poster + WhatsApp template + milestone card | G2 (row 12 decides the channel) | M |
+| "EU-Schoolfruit: thuis meedoen" (NL), "Frutta e verdura nelle scuole: a casa" (IT) | G2 | S |
+| Universal Links / App Links for `/klas/<code>` | G2 | M |
+
+## KPIs
+| KPI | Baseline 2026-09-29 | Dec 2026 | Apr 2027 | Sep 2027 |
+|---|---|---|---|---|
+| Sitemap URLs / indexed pages | 44 / unknown (export pending) | 80 | 200 | 300 |
+| NL shortlist terms in top 10 | 0 (unmeasured) | 3 | 6 | 8 |
+| IT shortlist terms in top 10 | 0 (unmeasured) | 2 | 5 | 6 |
+| EN list and chart terms in top 10 | 0 | 1 | 3 | 5 |
+| Brand query "project food app" | lost to namesakes | won | won | won |
+| Search Console clicks / month | unknown | 150 | 800 | 3,000 |
+| Referring domains | 1 known (own GitHub) | 10 | 30 | 60 |
+| Printable downloads / month | 0 | 50 | 300 | 1,000 |
+| Lighthouse mobile home (perf / a11y) | 91 / 88 | ≥ 95 / ≥ 95 | | |
+| Direct-link → install conversion (class links) | n/a | measured | ≥ 30% | ≥ 40% |
+| Organic (non-class) household signups / month | 0 | 5 | 30 | 100 |
 
 ## Baseline
-_To be filled in Phase 0: indexed pages, impressions, clicks per locale; store metrics once
-live._
+_Search Console export pending (Ricardo, batch 1). On 2026-09-29: 44 sitemap URLs, 15 family
+articles, 6 legacy adult pages, home Lighthouse 91 / 88 / 96 / 92, article 100 / 90 / 100 / 92,
+0 Open Graph images, 1 known referring domain._
 
 ## Review cadence
-- Monthly: Search Console + store funnels into this page; shortlist ranks; AI probe.
-- At each gate (G1/G2/G3): decide whether the next phase's content is funded at all.
+- Weekly while batch 2 runs: queue rows written, pages indexed (Search Console), one article
+  read against the brand gates.
+- Monthly: Search Console and store funnels into this page; shortlist ranks; the AI-search probe
+  in three languages; the KPI table.
+- At each gate (G1 to G3): whether the class content is funded.
 
 ## Related pages
-- [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-content-types]] · [[seo-app-store-aso]] ·
-  [[seo-technical-audit]] · [[source-family-mode-context]] ·
-  [[decision-2026-09-06-family-mode-pivot]] · [[research-survey-plan]]
+- [[seo-audit-2026-09-29]] · [[seo-overview]] · [[seo-keyword-strategy]] · [[seo-content-types]] ·
+  [[seo-app-store-aso]] · [[seo-technical-audit]] · [[seo-site-architecture]] ·
+  [[source-family-mode-context]] · [[decision-2026-09-06-family-mode-pivot]] ·
+  [[decision-2026-09-29-one-thing-way-of-working]]

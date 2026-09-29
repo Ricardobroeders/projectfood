@@ -3,7 +3,7 @@ title: SEO — technical audit of projectfood.dev (family mode)
 type: seo
 tags: [seo, technical, audit, family-mode]
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-29
 sources: [seo-content-types.md, seo-app-store-aso.md, source-family-mode-context.md]
 ---
 
@@ -13,6 +13,11 @@ sources: [seo-content-types.md, seo-app-store-aso.md, source-family-mode-context
 things change with family mode: **health-claim copy has to go**, the site needs **app-link
 plumbing** for the native apps and class invites, and the adult learn hub gets frozen rather
 than grown. Audited from the codebase on 2026-09-06, not from a live crawl.
+
+> **Superseded on 2026-09-29** by [[seo-audit-2026-09-29]], a live crawl with Lighthouse and
+> the demand numbers. This page stays for the family-mode fixes list and its numbering (#1 to
+> #14): #6, #8 and #12 are done; #1, #2, #3, #5, #9, #11 and #13 are batches 0 and 1 of
+> [[seo-roadmap]]; #4 and #10 wait for the store listing and the household share page.
 
 ## What is already right _(as of 2026-09-06)_
 | Item | Where | Note |

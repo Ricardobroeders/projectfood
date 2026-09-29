@@ -831,3 +831,24 @@ page written and accepted; "Next to pick up" now opens with a three-line block (
 opt-ins, Apple's 2.1 reply, the fourteen days used well) and a month/week/today ladder; the KB
 schema rule 5 and the root repo guide's "what's next" protocol describe the block and the
 one-sentence check when a new idea arrives. Updated: strategy-backlog, index, CLAUDE.md (both).
+
+## [2026-09-29] query | SEO: live audit of projectfood.dev and the growth plan
+Ricardo asked for an extensive audit and a plan to grow search value quickly. Filed as
+[[seo-audit-2026-09-29]]: a Googlebot-smartphone crawl of all 44 sitemap URLs, Lighthouse 12
+mobile on the home page (91 / 88 / 96 / 92, LCP 3.4 s from the unoptimised PNG strip) and an
+article (100 / 90 / 100 / 92), a read of every file that produces search output, the database
+inventory and the pillar-1 Semrush numbers per locale. Found and fixed the same day: the three
+home pages declared trailing-slash URLs as canonical, hreflang and sitemap entries while the
+server 308-redirects them (commit `caf3928`). Found and left for batch 0: a soft-404 wildcard
+(`/foo.txt` renders the English home page at 200), the locale cookie that disables the CDN on
+every marketing response, three live `recipes` placeholders, doubled "| Project Food" on the six
+legacy titles, "stamps" in the privacy and delete-account copy, no `Article.image` and no Open
+Graph image anywhere, two logo URLs for one Organization, zoom disabled and two contrast failures
+on every page. The home page and About still sell the adult tracker with the health claim.
+Demand: NL 4,450 and IT 5,000 searches a month at KD 6 to 23; EN 40,650 of which the winnable part
+is lists and tools ("picky eater food list", "picky eater chart") at KD 15 to 20. The plan
+([[seo-roadmap]] rewritten): batch 0 hygiene in a day, batch 1 the home page with Ricardo's
+wording, batch 2 a queue of about sixty rows so the routine, one row from empty, keeps writing
+(pillar 2 in three locales, IT and EN long tail, printables, 40 indexed plant pages, the
+comparison), batch 3 authority. Seven items for Ricardo, led by the Search Console export and
+merging the two unmerged routine branches. Backlog row 6 and items 9 and 15 updated.

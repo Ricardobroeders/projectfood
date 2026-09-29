@@ -57,10 +57,11 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[seo-serp-landscape]] — who ranks for parent queries per language; the picky-eater app field (Yummi, EatPal, Teach Your Monster, Spoony…); institutions and partners (Voedingscentrum, EU-Schoolfruit, Frutta e verdura nelle scuole, Tommy Tomato); adult 30-plants landscape kept as secondary.
 - [[seo-content-types]] — 9 formats tied to dinner/groceries/class moments; link magnets = printable plant cards and the class challenge kit; what we won't build.
 - [[seo-app-store-aso]] — App Store / Play listing plan in 3 locales, screenshots, ratings, Universal Links for class invites, store funnel KPIs.
-- [[seo-technical-audit]] — site state; 14 gaps led by removing health-claim copy and adding app-link plumbing; 4 decisions for Ricardo.
+- [[seo-audit-2026-09-29]] — the live audit: crawl of all 44 URLs, Lighthouse, code paths, database inventory, demand per locale; scorecard, findings with evidence, the plan in four batches (hygiene, the home page, the queue, authority) and seven decisions for Ricardo.
+- [[seo-technical-audit]] — the 2026-09-06 codebase audit, superseded by the live audit; kept for its 14-gap list and numbering.
 - [[seo-site-architecture]] — sitemap in en/nl/it (home, two learn pillars with clusters, printables hub, gated plant pages), structured data per page type, the manual keyword-research brief and thresholds, the de/fr gate (2026-09-23).
 - [[seo-pillar-alles-leren-eten]] — pillar 1 keyword map: nine clusters with the reason for each, page-1 competitors per language (2026-09-23), primary/secondary/question keywords in NL/EN/IT, Semrush export files.
-- [[seo-roadmap]] — Phase 0–3 gated on G1 (dinner habit holds), G2 (one class runs), G3 (a second class replicates); ~half a day a week; KPIs led by class-link install conversion.
+- [[seo-roadmap]] — rewritten 2026-09-29 as an active track: batch 0 hygiene, batch 1 the home page and brand query, batch 2 the queue that feeds the nightly routine (pillar 2, IT and EN long tail, printables, plant pages, comparison), batch 3 authority; class content still gated on G1–G3; KPIs with the 2026-09-29 baseline.
 
 ## Brand & voice (folder `wiki/brand/`, the writing kit, first drafts 2026-09-24)
 - [[brand-voice]] — the tone of voice: who speaks to whom, the four NN/g dials for the parent and the kid-visible register, rules per surface, sentence rules, vocabulary per locale (en/nl/it), examples, the three gates. Read by the `pf-voice` skill before any copy.
