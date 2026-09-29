@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import '../globals.css'
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -25,6 +25,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+// Root layout of the PWA and the auth pages. The marketing site has its own root layout in
+// app/[locale]/layout.tsx: this one reads the locale from the request (cookie or header), which
+// makes everything under it dynamic, and that must not apply to the static marketing pages.
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale()
   const messages = await getMessages()

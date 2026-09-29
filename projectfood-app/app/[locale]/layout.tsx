@@ -1,11 +1,33 @@
-import type { Metadata } from 'next'
-import { setRequestLocale, getTranslations } from 'next-intl/server'
+import type { Metadata, Viewport } from 'next'
+import { Plus_Jakarta_Sans } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { setRequestLocale, getTranslations, getMessages } from 'next-intl/server'
+import { Analytics } from '@vercel/analytics/next'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import { MarketingHeader } from '@/components/marketing-header'
 import { MarketingLanguageSwitcher } from '@/components/marketing-language-switcher'
 import { LOCALES, getLocalizedHref, type Locale } from '@/lib/marketing'
+import '../globals.css'
+
+// Root layout of the marketing site (one of two root layouts; the PWA's is app/(pwa)/layout.tsx).
+// It lives inside [locale] on purpose: next-intl's getLocale() in a layout above the locale
+// segment reads request headers, which turned every marketing page into a dynamic render
+// (cache-control: no-store on all of them, revalidate = 3600 never applied). Here the locale is
+// a route param, setRequestLocale() pins it, and the pages prerender.
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700', '800'],
+})
+
+export const viewport: Viewport = {
+  themeColor: '#F5C518',
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'nl' }, { locale: 'it' }]
@@ -23,11 +45,13 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'marketing.home' })
   return {
+    metadataBase: new URL('https://projectfood.dev'),
     title: {
       default: 'Project Food',
       template: '%s | Project Food',
     },
     description: t('heroBody'),
+    manifest: '/manifest.json',
   }
 }
 
@@ -43,8 +67,12 @@ export default async function MarketingLayout({
   if (!LOCALES.includes(locale as Locale)) notFound()
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'marketing' })
+  const messages = await getMessages()
 
   return (
+    <html lang={locale} className={`${jakarta.variable} h-full`}>
+      <body className="min-h-full font-sans antialiased">
+        <NextIntlClientProvider messages={messages}>
     <div className="flex flex-col min-h-screen bg-white font-sans antialiased">
       {/* Header */}
       <MarketingHeader
@@ -92,5 +120,9 @@ export default async function MarketingLayout({
         </div>
       </footer>
     </div>
+          <Analytics />
+        </NextIntlClientProvider>
+      </body>
+    </html>
   )
 }
