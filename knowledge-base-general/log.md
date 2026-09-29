@@ -908,3 +908,9 @@ Checked: the number appears on Home, in an achievement and in a notification and
 nowhere in the app; onboarding never mentions the goal. Created `interview-closed-test-2026-09` as
 the running record for Google's production-access application (recruitment, feedback, changes);
 options for the "why 30" put to Ricardo. Updated: index, strategy-backlog.
+
+## [2026-09-29] backlog | "why 30" parked
+Ricardo chose not to fix the unexplained goal yet; he wants to think, possibly a three-step
+tutorial after onboarding. Parking-lot entry and brainstorm item 21 (the first minute) added; the
+drafted copy stays on the closed-test feedback page. Updated: strategy-backlog,
+interview-closed-test-2026-09.

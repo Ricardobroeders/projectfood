@@ -52,7 +52,7 @@ date, who (first name or role, never more), the words, what we did.
 
 ## Changes shipped in response
 - 2026-09-29: sign-in heading (commit 9f22586), waiting for the over-the-air update.
-- "Why 30" explanation: awaiting Ricardo's pick between the options above.
+- "Why 30" explanation: parked by Ricardo on 2026-09-29 ("let's wait a bit longer before solving this problem"), maybe combined with a 3-step tutorial later; parking-lot entry and brainstorm 21 in [[strategy-backlog]]. The two drafted options above stay here for that brainstorm.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
