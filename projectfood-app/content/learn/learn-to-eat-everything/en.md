@@ -98,7 +98,7 @@ One question goes with it, after dinner or at the end of the day: what did you t
 
 Between the ages of 1 and 2, growth slows down and appetite goes with it. A toddler who suddenly eats very little, or almost nothing for a few days, is usually just listening to their body. Count the week, not the meal: across seven days it usually adds up.
 
-What helps: fixed meal times, small portions, few snacks and drinks shortly before dinner, and no fight. What does not help: forcing, distracting with a screen, or leaving the plate on the table for an hour. Why a toddler stops eating and what actually helps gets its own article.
+What helps: fixed meal times, small portions, few snacks and drinks shortly before dinner, and no fight. What does not help: forcing, distracting with a screen, or leaving the plate on the table for an hour. Why a toddler stops eating and what actually helps is in the article on [why a toddler won't eat](/en/learn/learn-to-eat-everything/toddler-wont-eat).
 
 ## A fussy eater, or just a child
 

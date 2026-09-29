@@ -807,3 +807,7 @@ Add for Review at about 22:05; Claude pushed four screenshot sets through EAS Me
 frames → iPhone mockups → iOS status bars → no Android bar), each under new file names because
 EAS matches by name, through Apple server errors on almost every run. App Accessibility left
 empty on purpose. Updated: seo-app-store-aso, strategy-backlog.
+
+## [2026-09-29] build | learn: toddler-wont-eat (en) written and published by the nightly routine
+945 words, 6 FAQ entries, meta title 48 and description 150 characters. The pillar `learn-to-eat-everything` (en) now links the article.
+One warning accepted: related `picky-eater-toddler` has no English file yet (the page shows published related articles only).
