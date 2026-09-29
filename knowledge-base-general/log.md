@@ -817,3 +817,9 @@ material, to be repeated in the Notes field. Claude checked the facts against th
 the reply and a 2,961-character Notes text; Ricardo records on Alissa's iPhone (a fresh account, not
 the demo account, is deleted on camera) and replies in App Store Connect. Updated:
 seo-app-store-aso, strategy-backlog.
+
+## [2026-09-29] build | Play closed test at 6 of 12 opt-ins
+Play Console: "Have at least 12 testers opted-in to your closed test, 6 testers currently opted
+in", so the fourteen-day clock has not started two days after the release went live. Ricardo makes
+chasing the invited testers priority 1 (before the Apple reply, which waits for tonight's
+recording). Updated: strategy-backlog.
