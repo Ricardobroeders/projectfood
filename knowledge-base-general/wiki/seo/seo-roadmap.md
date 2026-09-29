@@ -100,7 +100,7 @@ One row left on 2026-09-29; the engine idles from about 2026-10-01. Refill in th
 | EN list and chart terms in top 10 | 0 | 1 | 3 | 5 |
 | Brand query "project food app" | lost to namesakes | won | won | won |
 | Search Console clicks / month | 0 (1 click in 3 months) | 150 | 800 | 3,000 |
-| Referring domains | 1 known (own GitHub) | 10 | 30 | 60 |
+| Referring domains (real; Ahrefs counts 762 spam-farm domains at DR 0) | 1 (own GitHub) | 10 | 30 | 60 |
 | Printable downloads / month | 0 | 50 | 300 | 1,000 |
 | Lighthouse mobile home (perf / a11y) | 91 / 88 | ≥ 95 / ≥ 95 | | |
 | Direct-link → install conversion (class links) | n/a | measured | ≥ 30% | ≥ 40% |

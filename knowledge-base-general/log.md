@@ -881,3 +881,14 @@ param, `setRequestLocale`, fonts, provider, Analytics) and the PWA, login and au
 under `app/(pwa)` with the old root layout, which keeps reading the cookie. Local build: 50
 prerendered routes, home and about static, learn pages ISR at 3,600 s; `/login`, `/home` and
 `/auth` behave as before. The audit page and the roadmap row carry the correction.
+
+## [2026-09-29] query | Backlinks: 762 referring domains in Ahrefs, all spam link farms
+Ricardo's Ahrefs export of the top 100 referring domains for projectfood.dev: every one an SEO
+link-farm domain (`seoexpress-*`, `link-baron-*`, `outrank-hq-*`, `*seo*.shop`), DR 48 to 68,
+flagged SPAM, first seen 2026-05-13. That is the scraper network that links every new domain to
+sell backlinks and explains DR 0 beside 762 domains. No action beyond a monthly look at Search
+Console → Manual actions; no disavow unless one appears. Recorded in [[seo-audit-2026-09-29]]
+§4.4 and the roadmap baseline. Same afternoon: Vercel's automatic mitigation put a Security
+Checkpoint (403, `x-vercel-mitigated: challenge`) in front of the whole site after the day's
+crawl, Lighthouse runs, republish and a polling loop; not a project setting, lifts on its own,
+Ricardo checks the Firewall tab.
