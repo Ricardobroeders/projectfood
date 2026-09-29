@@ -869,3 +869,15 @@ with `legacy: true`, titles without the doubled suffix and descriptions without 
 article.json carries a `cover_image_url` from the render bucket. Search Console baseline filed in
 `raw/gsc-export-2026-09-29/`: 1 click and 28 impressions in three months. Next: refill the queue
 (batch 2), then the home page draft for Ricardo (batch 1).
+
+## [2026-09-29] fix | web: the marketing site never prerendered; two root layouts now
+While closing the cache row of batch 0 the real cause surfaced: the prerender manifest held five
+routes (icons, robots, sitemap) and none of the `[locale]` pages. The single root layout called
+next-intl's `getLocale()` and `getMessages()` above the locale segment, which reads request
+headers and turns the whole tree dynamic, so every marketing page was a function render with
+`cache-control: no-store`, the `●` in the build summary was never true and `revalidate = 3600`
+never applied. Fix: `app/[locale]/layout.tsx` is the site's root layout (lang from the route
+param, `setRequestLocale`, fonts, provider, Analytics) and the PWA, login and auth routes moved
+under `app/(pwa)` with the old root layout, which keeps reading the cookie. Local build: 50
+prerendered routes, home and about static, learn pages ISR at 3,600 s; `/login`, `/home` and
+`/auth` behave as before. The audit page and the roadmap row carry the correction.

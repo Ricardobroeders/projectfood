@@ -47,7 +47,7 @@ _Shipped 2026-09-29 (code commit on `main`, content republished the same day). E
 | `Article.image` + `opengraph-image.tsx` for hub, pillar and cluster routes from the plant renders, `summary_large_image` | M | A WhatsApp share of an article shows the card; Rich Results Test lists the image |
 | Hero and feature images through `next/image` (no `unoptimized`), sized | S | Home LCP < 2.5 s mobile in Lighthouse |
 | Viewport zoom re-enabled; `#A39B91` meta text to a readable token; hero line kept as decoration | S | Lighthouse a11y ≥ 95 |
-| Locale cookie set only on change, so the CDN caches the static pages | S | `x-vercel-cache: HIT` on a second request to `/nl` |
+| Locale cookie set only on change, so the CDN caches the static pages. **Found deeper on 2026-09-29:** the cookie was not the cause; the single root layout called next-intl's `getLocale()` above the `[locale]` segment, which made every marketing page a dynamic render (five prerendered routes in the manifest). Fixed with two root layouts: `app/[locale]/layout.tsx` for the site, `app/(pwa)/layout.tsx` for the app | S → M | `x-vercel-cache: HIT` on a second request to `/nl` |
 | IndexNow ping in `learn-publish.mjs`; Atom feed at `/[locale]/learn/feed` | S | Bing shows the ping; feed validates |
 
 ## Batch 1 — the brand query and the front door (Claude drafts, Ricardo approves)
