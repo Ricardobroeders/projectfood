@@ -940,3 +940,15 @@ justify, the three English list and tool pages, the two locale siblings and the 
 skill learned the `rewrite` flag, `cover_image` for a new folder's `article.json`, and that a
 pillar which already links the cluster ends step 4. Updated: seo-roadmap, strategy-backlog,
 projectfood-app/CLAUDE.md, queue.json, the skill.
+
+## [2026-09-29] build | 1.0.3 over the air on both runtimes; six iOS fixes; .gitignore is a fingerprint source
+Ricardo's recording run for Apple on Alissa's iPhone (iOS 26) turned up six points; five were bugs
+and are fixed (search placeholder drawn by our own Text, AnimatedNumber back to a plain Text so the
+week chip aligns, text-high inputs inside their boxes, sheets that keep the top inset and shrink
+under the keyboard, the flip card hosted by the plant screen so it presents on top of that native
+modal), the sixth is iOS asking for notification permission once per install. Before publishing,
+both runtime fingerprints had moved: the three `.gitignore` lines added on 2026-09-28 for the
+screenshot folder are a hashed source (`bareGitIgnore`); reverted, folder excluded through
+`.git/info/exclude`, hashes back to d8da0646 / acf2e071. Published per platform (`--platform all`
+exports web and fails): Android group 3aff760d, iOS group ac8afdc3. Recording redone 2026-09-30.
+Updated: strategy-backlog, interview-closed-test-2026-09, seo-app-store-aso.

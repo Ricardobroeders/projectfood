@@ -599,7 +599,7 @@ records the flow on Alissa's iPhone with the TestFlight build 1.0.2 (1): a fresh
 own is created and deleted in the recording, never the demo account, and the recording ends with
 a sign-in on review@projectfood.dev so Apple sees the demo path works. Then he pastes the reply
 with the video attached under App Review in App Store Connect and the Notes text into App Review
-Information, and saves. Apple usually answers such a reply within one or two days.
+Information, and saves. Apple usually answers such a reply within one or two days. Ricardo's first recording run on 2026-09-29 found six iOS bugs; they were fixed and published over the air the same night (1.0.3, iOS runtime acf2e071, so both the TestFlight install and the binary under review pick it up on their next launch), and the recording is redone on 2026-09-30 after deleting and reinstalling the app from TestFlight so the notification dialog shows.
 
 **Screenshots pushed 2026-09-28 20:47 to 20:52.** Ricardo re-exported the four frames per language
 at the 6.5-inch size (1242 × 2688) into `~/Desktop/1x/` (`iphone-<en|nl|it>-<1..4>.png`; the

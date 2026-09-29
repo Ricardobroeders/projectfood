@@ -53,7 +53,7 @@ date, who (first name or role, never more), the words, what we did.
   same runtime and the count of testers is never disturbed by a new binary.
 
 ## Changes shipped in response
-- 2026-09-29: sign-in heading (commit 9f22586), waiting for the over-the-air update.
+- 2026-09-29, 1.0.3 over the air on both runtimes (commits 9f22586 and fab9ac3): the sign-in heading, the Google G, and six iOS points from Ricardo's own recording run on Alissa's iPhone (iOS 26): the Log search placeholder letter-spaced (now drawn by our own Text), the week chip's "0" below the "/30" (AnimatedNumber is a plain Text again), text sitting low in every input (inputs are text-high inside their boxes), the add-a-person sheet pushed under the status bar by the keyboard (sheets keep the top inset and shrink), the flip card opening behind the plant screen and hanging the app (the plant screen hosts its own card). Not a bug: no iOS permission dialog on a second account on the same phone, iOS asks once per install; delete and reinstall from TestFlight to see it again.
 - "Why 30" explanation: parked by Ricardo on 2026-09-29 ("let's wait a bit longer before solving this problem"), maybe combined with a 3-step tutorial later; parking-lot entry and brainstorm 21 in [[strategy-backlog]]. The two drafted options above stay here for that brainstorm.
 
 ## Feeds into
