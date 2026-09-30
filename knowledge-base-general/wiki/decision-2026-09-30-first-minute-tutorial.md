@@ -93,7 +93,18 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
    react-native-svg was already a dependency (the gauge), so still no native change. An anchor
    can carry an inset for edges that are not the control (the plant row's 10 px bottom margin,
    1.0.10), so the hole's air is the same above and below the card. `tutorial` events also carry
-   `link` when the article is opened.
+   `link` when the article is opened, and `lost` when a control never reported its position and
+   the tutorial ended itself after 2.5 s rather than hold the screen.
+5. **Motion, the `guide` class** (1.0.11; Ricardo: "everything shows instantly", asked for the
+   open and close and the step change as motions). One dim layer stays for the whole tutorial.
+   The hole starts as the whole screen (no dim visible) and irises onto the first control in
+   460 ms ease-out; on Next the balloon fades out (`swap`, 200 ms) while the hole glides to the
+   next control in 380 ms ease-in-out, across the tab switch if there is one, and the next balloon
+   rises in (`modal` spring: fade, a 10 px rise, a 3 % scale) as the hole lands; on Done or X the
+   hole opens back out in 300 ms ease-in and the dim fades after it. The hole is an animated SVG
+   mask rectangle driven on the UI thread (Reanimated `useAnimatedProps` on react-native-svg).
+   Never a bounce: a light being moved, not a reward. The wait after onboarding dropped from 700
+   to 350 ms; the iris covers the first paint.
 4. **The hold hint on Log** stays for households with more than one member; balloon 2 says the
    same in passing, and the hint disappears on the first hold as today.
 

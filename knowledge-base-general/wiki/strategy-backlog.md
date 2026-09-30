@@ -106,8 +106,10 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     329bdd9b): the seen flag keyed by household, after Ricardo's recreated account got no
     tutorial. 1.0.10 (commit 5138598; Android group 41704aaa, iOS group 432d0005): balloon 1
     "After you've eaten" without "A lick counts", balloon 3 links to the plant-diversity article,
-    the row hole without the margin. iOS still unseen. Next: read the `tutorial` events after a
-    week for where people skip and whether the article link is used.
+    the row hole without the margin. 1.0.11 (commit 4e07d2f; Android group 094a0a5d, iOS group
+    b2c067ea): the `guide` motion class, the hole irises in, glides between controls and opens
+    back out, balloons swap. iOS still unseen. Next: read the `tutorial` events after a week for
+    where people skip and whether the article link is used.
 16. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**

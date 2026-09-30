@@ -1034,3 +1034,13 @@ plant-diversity ("Read the article", in-app browser, en for de/fr); the hole aro
 plant row stops above the row's 10 px margin (anchors can carry an inset). Commit 5138598,
 Android group 41704aaa on d8da0646, iOS group 432d0005 on acf2e071. Updated: decision page,
 interview page, backlog item 24.
+
+## [2026-09-30] build | 1.0.11: the tutorial in motion (guide class)
+Ricardo: content right, but the overlay popped in at once after a second's wait, and popped
+again after each tab switch. Added the `guide` motion class in `src/constants/motion.ts` (iris
+in 460 ms ease-out, glide 380 ms ease-in-out, release 300 ms ease-in, never a bounce) and
+rebuilt `TutorialOverlay`: one dim layer for the whole tutorial, the hole an animated SVG mask
+rectangle on the UI thread, balloons `swap` out and `modal` in as the hole lands, a 2.5 s
+fail-safe that ends a tutorial whose control never reports in. Start wait 700 → 350 ms.
+Commit 4e07d2f; Android group 094a0a5d on d8da0646, iOS group b2c067ea on acf2e071. Updated:
+decision page (item 5, motion), interview page, backlog item 24.

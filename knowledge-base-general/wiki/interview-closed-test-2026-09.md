@@ -81,6 +81,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   counts) and "A lick counts" unnecessary; the hole around the plant row a little too tall; the
   30 balloon should link to the plant-diversity article. 1.0.10 the same hour.
 
+- **2026-09-30, 1.0.10 (Play 7), Ricardo: "Great content now", but everything shows instantly:**
+  a second's wait after onboarding, then the overlay pops; Next switches the tab and then the
+  overlay pops again. Asked for the open, close and step change as motions. 1.0.11: the `guide`
+  motion class (iris in, glide between controls, release out; balloon swap).
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -121,6 +126,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   balloon 1 "After you've eaten, tap Log and tick the plants you tasted.", balloon 3 with a
   "Read the article" link to /learn/plant-diversity in the reader's language, the row hole
   without the row's bottom margin.
+- 2026-09-30, 1.0.11 over the air (commit 4e07d2f; Android group 094a0a5d, iOS group b2c067ea):
+  the tutorial in motion, see the decision page's "Motion" item; the start wait halved.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
