@@ -21,6 +21,11 @@ import { Easing, FadeIn, type WithSpringConfig, type WithTimingConfig } from 're
  *           M3 expressive spatial: a spring at damping ratio ~0.65 (about 7% overshoot), each
  *           item leaving the origin 40 ms after the one before it. Exits are timing, faster, and
  *           never bounce: the menu is put away, not thrown.
+ * - guide:   the tutorial's spotlight (2026-09-30). One dim layer that stays; the hole in it irises
+ *           from the whole screen onto the first control, glides from control to control on Next,
+ *           and opens back out to the whole screen on Done. Ease-in-out for travel, ease-out to
+ *           arrive, ease-in to leave, never a bounce: it is a light being moved, not a reward.
+ *           The balloon is `modal` in (fade, a 10 px rise, a 3% scale) and `swap` out.
  *
  * Amplitude rule (device test round 2): a spring's overshoot grows with the distance it travels,
  * so reward pops start close to their target (0.7 → 1, not 0.4 → 1) and scale peaks stay ≤ 1.12.
@@ -46,6 +51,9 @@ export const motion = {
   // damping = 2 · ζ · √(stiffness · mass) with ζ = 0.65
   expressive: { damping: 26.6, stiffness: 420, mass: 1 } satisfies WithSpringConfig,
   expressiveOut: { duration: 160, easing: Easing.in(Easing.cubic) } satisfies WithTimingConfig,
+  guideIn: { duration: 460, easing: Easing.out(Easing.cubic) } satisfies WithTimingConfig,
+  guide: { duration: 380, easing: Easing.inOut(Easing.cubic) } satisfies WithTimingConfig,
+  guideOut: { duration: 300, easing: Easing.in(Easing.cubic) } satisfies WithTimingConfig,
 } as const;
 
 /** Delay between items leaving the origin of an expressive menu. */

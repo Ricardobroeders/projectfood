@@ -21,7 +21,8 @@ export function useTutorialStart() {
 
   useEffect(() => {
     if (!hydrated || !hid || seen || step !== null) return;
-    const t = setTimeout(start, 700);
+    // Short: the dim fades in and the hole irises onto the control, which covers the first paint.
+    const t = setTimeout(start, 350);
     return () => clearTimeout(t);
   }, [hydrated, hid, seen, step, start]);
 }
