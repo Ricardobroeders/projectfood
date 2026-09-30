@@ -17,13 +17,12 @@ import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { levelLabel } from '@/features/achievements/copy';
 import { ACHIEVEMENT_BY_ID, nearestGoals } from '@/features/achievements/definitions';
 import { useAchievements } from '@/features/achievements/useAchievements';
-import { useHousehold, useSettings, useUpdateSettings } from '@/features/household/queries';
+import { useHousehold } from '@/features/household/queries';
 import { dateKey, daysLeftInWeek, distinctPlants, tasteMapFor } from '@/features/logs/model';
 import { useStreak, useWeekLogs } from '@/features/logs/queries';
 import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
-import { useSurveyProgress } from '@/features/survey/queries';
 import { useUi } from '@/state/ui';
 import { useGoldPlants } from '@/features/plants/useGoldPlants';
 
@@ -42,9 +41,6 @@ export default function HomeScreen() {
   const { data: streak } = useStreak(hid);
   const { progress, levels, ready } = useAchievements();
   const openAchievement = useUi((s) => s.openAchievement);
-  const survey = useSurveyProgress();
-  const settings = useSettings();
-  const updateSettings = useUpdateSettings();
   const scrollRef = useRef<ScrollView>(null);
   useScrollToTopOnTab(scrollRef);
 
@@ -58,7 +54,6 @@ export default function HomeScreen() {
   const byCat = CAT_ORDER.map((c) => ({ c, plants: weekPlantIds.map((id) => catalog.byId[id]).filter((p) => p && p.category === c) })).filter((x) => x.plants.length > 0);
   const toGo = Math.max(0, GOAL - weekCount);
   const daysLeft = daysLeftInWeek();
-  const showSurvey = survey.pending && !!settings.data;
   // By the hour (Ricardo, 2026-09-30: testers open the app in the morning and were greeted with "Good evening").
   const hour = new Date().getHours();
   const greeting = hour < 12 ? t('home.greetingMorning') : hour < 18 ? t('home.greetingAfternoon') : t('home.greeting');
@@ -116,19 +111,7 @@ export default function HomeScreen() {
           <PrimaryButton label={t('home.cta')} onPress={() => router.push('/log')} icon={<Plus size={18} color={colors.onAccent} />} style={{ marginTop: 16 }} />
         </View>
 
-        {showSurvey ? (
-          <View style={styles.banner}>
-            <Text style={styles.bannerText}>{t('survey.prompt_banner')}</Text>
-            <View style={styles.bannerActions}>
-              <Pressable onPress={() => updateSettings.mutate({ survey_dismissed_at: new Date().toISOString() })} style={styles.bannerGhost}>
-                <Text style={styles.bannerGhostText}>{t('survey.prompt_dismiss')}</Text>
-              </Pressable>
-              <Pressable onPress={() => router.push('/account/survey')} style={styles.bannerCta}>
-                <Text style={styles.bannerCtaText}>{t('survey.prompt_cta')}</Text>
-              </Pressable>
-            </View>
-          </View>
-        ) : null}
+        {/* The survey banner that stood here was removed on 2026-09-30 (Ricardo: testers tapped it on their first open, before using the app; the survey stays reachable from Account). */}
 
         {goals.length > 0 ? (
           <>
@@ -227,13 +210,6 @@ const styles = StyleSheet.create({
   members: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 12 },
   member: { flexDirection: 'row', alignItems: 'center', gap: 6, height: 36, paddingLeft: 4, paddingRight: 12, borderRadius: radii.sm, backgroundColor: colors.surface },
   memberCount: { fontFamily: fonts.bold, fontSize: 15, lineHeight: 20, color: colors.ink },
-  banner: { marginHorizontal: 20, marginTop: -8, marginBottom: 8, padding: 16, borderRadius: radii.lg, backgroundColor: colors.accentSoft, gap: 10 },
-  bannerText: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
-  bannerActions: { flexDirection: 'row', justifyContent: 'flex-end', gap: 8 },
-  bannerGhost: { height: 36, paddingHorizontal: 12, justifyContent: 'center' },
-  bannerGhostText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.ink2 },
-  bannerCta: { height: 36, paddingHorizontal: 14, borderRadius: radii.sm, backgroundColor: colors.ink, justifyContent: 'center' },
-  bannerCtaText: { fontFamily: fonts.semibold, fontSize: 14, color: '#FFFFFF' },
   rail: { paddingHorizontal: 20, gap: 10 },
   goal: { width: 250, flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, borderRadius: radii.lg, backgroundColor: colors.bgSoft },
   goalTitle: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink },
