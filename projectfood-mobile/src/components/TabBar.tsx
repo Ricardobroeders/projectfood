@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { perfStart } from '@/features/dev/perf';
+import { useTutorialAnchor } from '@/features/tutorial/useTutorialAnchor';
 import { colors, fonts } from '@/constants/theme';
 
 /** The slice of React Navigation's BottomTabBarProps this bar uses (the package is nested under expo-router). */
@@ -29,6 +30,8 @@ export function TabBar({ state, navigation }: TabBarProps) {
   const insets = useSafeAreaInsets();
   const { t } = useTranslation();
   const labels: Record<string, string> = { index: t('nav.home'), log: t('nav.log'), unlocks: t('nav.unlocks'), account: t('nav.account') };
+  // The tutorial's first balloon points at the Log tab.
+  const logAnchor = useTutorialAnchor('logTab');
 
   // The labels sat on the Android nav bar (Ricardo, 2026-09-24): air below them on top of the inset.
   return (
@@ -39,6 +42,8 @@ export function TabBar({ state, navigation }: TabBarProps) {
         return (
           <Pressable
             key={route.key}
+            ref={route.name === 'log' ? logAnchor.ref : undefined}
+            onLayout={route.name === 'log' ? logAnchor.onLayout : undefined}
             style={styles.tab}
             accessibilityRole="tab"
             accessibilityState={{ selected: active }}

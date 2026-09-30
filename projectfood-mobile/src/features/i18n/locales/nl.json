@@ -97,7 +97,33 @@
     "pingSub": "Eén vraag rond {time}: wat heeft iedereen geproefd? Verder niets, tenzij je erom vraagt.",
     "finish": "Beginnen met proeven"
   },
+  "tutorial": {
+    "next": "Volgende",
+    "done": "Klaar",
+    "skip": "Uitleg overslaan",
+    "counter": "{n}/{total}",
+    "steps": {
+      "logTab": {
+        "title": "Log wat je hebt geproefd",
+        "body": "Tik na het avondeten op Loggen en vink de planten aan die je hebt geproefd. Een hap telt."
+      },
+      "plantRow": {
+        "title": "Tik op een plant om hem voor vandaag te loggen",
+        "body": "Elke nieuwe plant wordt een kaart bij Behaald, en die gaat een level omhoog als je hem vaker proeft."
+      },
+      "weekChip": {
+        "title": "30 verschillende planten per week",
+        "body": "De richtlijn komt uit het American Gut Project (2018): volwassenen die meer dan 30 verschillende planten per week aten, hadden een gevarieerdere darmflora. Variatie telt, niet de hoeveelheid."
+      },
+      "family": {
+        "title": "Log voor het hele gezin",
+        "body": "Voeg hier gezinsleden toe en kies voor wie een tik logt. Houd een plant vast om te zeggen wie hem heeft geproefd."
+      }
+    }
+  },
   "home": {
+    "greetingMorning": "Goedemorgen",
+    "greetingAfternoon": "Goedemiddag",
     "greeting": "Goedenavond",
     "thisWeek": "Deze week",
     "plantsOfGoal": "{count} van {goal} planten",

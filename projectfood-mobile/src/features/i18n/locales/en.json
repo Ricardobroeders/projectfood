@@ -97,7 +97,33 @@
     "pingSub": "One question around {time}: what did everyone taste? Nothing else unless you ask for it.",
     "finish": "Start tasting"
   },
+  "tutorial": {
+    "next": "Next",
+    "done": "Done",
+    "skip": "Skip the tutorial",
+    "counter": "{n}/{total}",
+    "steps": {
+      "logTab": {
+        "title": "Log what you tasted",
+        "body": "After dinner, tap Log and tick the plants you tasted. A lick counts."
+      },
+      "plantRow": {
+        "title": "Tap a plant to log it for today",
+        "body": "Every new plant becomes a card in Unlocks, and it levels up as you taste it again."
+      },
+      "weekChip": {
+        "title": "30 different plants a week",
+        "body": "The guideline comes from the American Gut Project (2018): adults eating more than 30 different plants a week had a more varied gut flora. Variety counts, not amounts."
+      },
+      "family": {
+        "title": "Log for the whole family",
+        "body": "Add family members here and choose who a tap logs for. Hold a plant to say who tasted it."
+      }
+    }
+  },
   "home": {
+    "greetingMorning": "Good morning",
+    "greetingAfternoon": "Good afternoon",
     "greeting": "Good evening",
     "thisWeek": "This week",
     "plantsOfGoal": "{count} of {goal} plants",

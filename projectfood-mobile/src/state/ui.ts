@@ -8,6 +8,10 @@ import type { AchievementId } from '@/features/achievements/definitions';
 
 /** A point in window coordinates (pageX / pageY of a touch). */
 export type Point = { x: number; y: number };
+/** Where a control sits, in window coordinates: the tutorial cuts its hole here. */
+export type Rect = { x: number; y: number; width: number; height: number };
+/** The controls the tutorial's four balloons point at. */
+export type TutorialAnchor = 'logTab' | 'plantRow' | 'weekChip' | 'forBar';
 
 /**
  * Local-only UI state. What is persisted is the phone's own convenience (who a plain tap logs for,
@@ -30,6 +34,11 @@ type UiState = {
   goldCard: { plantId: string; memberIds: string[] } | null;
   /** The in-app pre-prompt before the OS push permission dialog. */
   pushPrompt: boolean;
+  /** The first-minute tutorial: the step on screen (1-based) or none; when it was finished or
+   *  skipped (persisted, once per phone); where its four controls are while it runs. */
+  tutorialStep: number | null;
+  tutorialSeenAt: string | null;
+  tutorialAnchors: Partial<Record<TutorialAnchor, Rect>>;
 
   setDefaultIds: (householdId: string, ids: string[]) => void;
   dismissHoldHint: () => void;
@@ -44,6 +53,10 @@ type UiState = {
   hideGoldCard: () => void;
   openPushPrompt: () => void;
   closePushPrompt: () => void;
+  startTutorial: () => void;
+  setTutorialStep: (step: number) => void;
+  endTutorial: () => void;
+  setTutorialAnchor: (name: TutorialAnchor, rect: Rect) => void;
 };
 
 export const useUi = create<UiState>()(
@@ -57,6 +70,9 @@ export const useUi = create<UiState>()(
       factCard: null,
       goldCard: null,
       pushPrompt: false,
+      tutorialStep: null,
+      tutorialSeenAt: null,
+      tutorialAnchors: {},
 
       setDefaultIds: (householdId, ids) => set((s) => ({ defaultIds: { ...s.defaultIds, [householdId]: ids } })),
       dismissHoldHint: () => set({ holdHintSeen: true }),
@@ -71,11 +87,21 @@ export const useUi = create<UiState>()(
       hideGoldCard: () => set({ goldCard: null }),
       openPushPrompt: () => set({ pushPrompt: true }),
       closePushPrompt: () => set({ pushPrompt: false }),
+      startTutorial: () => set({ tutorialStep: 1 }),
+      setTutorialStep: (step) => set({ tutorialStep: step }),
+      endTutorial: () => set({ tutorialStep: null, tutorialSeenAt: new Date().toISOString(), tutorialAnchors: {} }),
+      // Same rectangle again is not a change; the anchors re-measure on every layout.
+      setTutorialAnchor: (name, rect) =>
+        set((s) => {
+          const p = s.tutorialAnchors[name];
+          if (p && p.x === rect.x && p.y === rect.y && p.width === rect.width && p.height === rect.height) return s;
+          return { tutorialAnchors: { ...s.tutorialAnchors, [name]: rect } };
+        }),
     }),
     {
       name: 'pf-ui',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: (s) => ({ defaultIds: s.defaultIds, holdHintSeen: s.holdHintSeen, pushPromptDeclinedAt: s.pushPromptDeclinedAt }),
+      partialize: (s) => ({ defaultIds: s.defaultIds, holdHintSeen: s.holdHintSeen, pushPromptDeclinedAt: s.pushPromptDeclinedAt, tutorialSeenAt: s.tutorialSeenAt }),
     },
   ),
 );

@@ -97,7 +97,33 @@
     "pingSub": "Una domanda verso le {time}: cosa ha assaggiato ognuno? Nient'altro, a meno che tu non lo chieda.",
     "finish": "Iniziamo ad assaggiare"
   },
+  "tutorial": {
+    "next": "Avanti",
+    "done": "Fatto",
+    "skip": "Salta la spiegazione",
+    "counter": "{n}/{total}",
+    "steps": {
+      "logTab": {
+        "title": "Registra cosa hai assaggiato",
+        "body": "Dopo cena tocca Registra e segna le piante che hai assaggiato. Un assaggio conta."
+      },
+      "plantRow": {
+        "title": "Tocca una pianta per registrarla per oggi",
+        "body": "Ogni pianta nuova diventa una carta nella Collezione e sale di livello quando la assaggi di nuovo."
+      },
+      "weekChip": {
+        "title": "30 piante diverse a settimana",
+        "body": "La linea guida viene dall'American Gut Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una flora intestinale più varia. Conta la varietà, non la quantità."
+      },
+      "family": {
+        "title": "Registra per tutta la famiglia",
+        "body": "Aggiungi qui i familiari e scegli per chi registra un tocco. Tieni premuta una pianta per dire chi l'ha assaggiata."
+      }
+    }
+  },
   "home": {
+    "greetingMorning": "Buongiorno",
+    "greetingAfternoon": "Buon pomeriggio",
     "greeting": "Buonasera",
     "thisWeek": "Questa settimana",
     "plantsOfGoal": "{count} di {goal} piante",

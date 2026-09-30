@@ -59,6 +59,9 @@ export default function HomeScreen() {
   const toGo = Math.max(0, GOAL - weekCount);
   const daysLeft = daysLeftInWeek();
   const showSurvey = survey.pending && !!settings.data;
+  // By the hour (Ricardo, 2026-09-30: testers open the app in the morning and were greeted with "Good evening").
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? t('home.greetingMorning') : hour < 18 ? t('home.greetingAfternoon') : t('home.greeting');
   // The gauge fills the hero's inner width, capped so the segments keep their spacing on tablets.
   const gaugeSize = Math.min(280, width - 40 - 48);
 
@@ -66,7 +69,7 @@ export default function HomeScreen() {
     <Screen>
       <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={styles.title}>{t('home.greeting')}</Text>
+          <Text style={styles.title}>{greeting}</Text>
           {/* The door to the stats screen in both states: with a streak it reads the streak, without one the
               page name, so the page is always one tap away (Ricardo, 2026-09-30). */}
           <Pressable onPress={() => router.push('/stats')} accessibilityRole="button" style={({ pressed }) => [styles.streak, pressed && { opacity: 0.8 }]}>

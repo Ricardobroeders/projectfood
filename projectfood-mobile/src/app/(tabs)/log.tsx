@@ -9,6 +9,7 @@ import { PlantRow } from '@/components/PlantRow';
 import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { WeekMeter } from '@/components/WeekMeter';
+import { TutorialAnchorView, useTutorialAnchor } from '@/features/tutorial/useTutorialAnchor';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
 import { revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
@@ -145,13 +146,20 @@ export default function LogScreen() {
   const onHold = useCallback((plantId: string, at: Point) => openPicker(plantId, at), [openPicker]);
 
   const renderItem = useCallback(
-    ({ item, index }: { item: Plant; index: number }) => (
-      <Animated.View entering={revealFor(index)}>
-        <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} gold={goldIds.has(item.id)} onTap={onTap} onHold={onHold} />
-      </Animated.View>
-    ),
+    ({ item, index }: { item: Plant; index: number }) => {
+      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} gold={goldIds.has(item.id)} onTap={onTap} onHold={onHold} />;
+      // The tutorial's second balloon points at the first row.
+      return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow">{row}</TutorialAnchorView> : row}</Animated.View>;
+    },
     [tastes, members, defaultIds, t, onTap, onHold],
   );
+
+  // The tutorial reads the first row and the week chip: bring the list to the top when it arrives here.
+  const tutorialStep = useUi((s) => s.tutorialStep);
+  const forBarAnchor = useTutorialAnchor('forBar');
+  useEffect(() => {
+    if (tutorialStep === 2) listRef.current?.scrollToOffset({ offset: 0, animated: false });
+  }, [tutorialStep]);
 
   const submitMissing = async () => {
     if (!session || !debounced.trim()) return;
@@ -177,11 +185,13 @@ export default function LogScreen() {
           <Text style={styles.subtitle}>{t('log.subtitle')}</Text>
         </View>
         {/* The week's count where the taps happen; Home's gauge is one screen away. */}
-        <WeekMeter value={weekCount} max={GOAL} label={t('home.thisWeek')} />
+        <TutorialAnchorView name="weekChip">
+          <WeekMeter value={weekCount} max={GOAL} label={t('home.thisWeek')} />
+        </TutorialAnchorView>
       </View>
 
       {/* Who a plain tap logs for. Tapping opens the same member menu as holding a plant, from the finger. */}
-      <Pressable style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
+      <Pressable ref={forBarAnchor.ref} onLayout={forBarAnchor.onLayout} style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
         <View style={styles.forAvatars}>
           {members.slice(0, 5).map((m) => (
             <MemberAvatar key={m.id} member={m} size={32} muted={!defaultIds.includes(m.id)} />
