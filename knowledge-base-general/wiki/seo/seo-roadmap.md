@@ -82,8 +82,10 @@ and no device frame (the page masks the screen with a 24 px radius on the cream 
 the mock family and the rules of the store frames apply (no child faces, no character avatars,
 "achievements" never "stamps"); app language per locale if it is one click, otherwise English
 for all three. Files go to `projectfood-app/public/images/screens/<locale>/step-1.png` (2, 3);
-Claude swaps them in with `next/image` and sizes them at 260 px wide in the step cards. A fourth
-optional export, the Home screen for the hero on cream, can come later.
+Claude swaps them in with `next/image` and sizes them at 260 px wide in the step cards, inside a
+CSS phone mask (rounded corners, thin dark bezel, no shadow). A fourth optional export, the Home
+screen as one flat mockup for the hero on cream, can come later. Decided 2026-09-30: bare screens
+for the three steps first, the page draws the frame; Ricardo exports tonight; iterate from there.
 
 ## Batch 2 — the queue (the scaling model)
 _Refilled 2026-09-29: 19 open rows in `queue.json` (2.1 to 2.6, one a night, to about
