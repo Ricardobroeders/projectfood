@@ -1019,3 +1019,10 @@ nothing. All shipped as 1.0.8 (commit 21893b6; Android group 52b0bc3d on d8da064
 balloon anchored by its bottom edge above the hole, titles wrap, the suggestion block under
 results, "Suggestion sent" without "!". Updated: decision page, interview page (both points with
 versions), backlog item 24.
+
+## [2026-09-30] build | 1.0.9: tutorial once per household, not once per phone
+Ricardo deleted his account, signed up again and saw no tutorial: the phone-wide seen flag from
+his 1.0.7 run still held. `tutorialSeen` in the ui store is now a map by household id (commit
+11a6847; Android group 26e3b2e4 on d8da0646, iOS group 329bdd9b on acf2e071). Every tester who
+saw the 1.0.7 version sees the fixed three-balloon one once. Updated: decision page, interview
+page, backlog item 24.

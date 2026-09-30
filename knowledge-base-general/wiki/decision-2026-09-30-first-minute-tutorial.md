@@ -34,11 +34,13 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
 [[strategy-backlog]] and the parking-lot entry "Why 30, and a 3-step tutorial" are answered here.
 
 ## Decision
-1. **Three coach marks (four until 1.0.8), once per phone, right after onboarding.** They start on the first Home
-   render after `onboarded_at` is set, and once on the next launch for the households that were
-   onboarded before the update (so every current tester sees it once). A local persisted flag
-   (`tutorialSeenAt` in the ui store, like `holdHintSeen`) ends it; a reinstall shows it again,
-   which suits testers.
+1. **Three coach marks (four until 1.0.8), once per household on this phone, right after
+   onboarding.** They start on the first Home render after `onboarded_at` is set, and once on the
+   next launch for the households that were onboarded before the update (so every current tester
+   sees it once). A local persisted flag keyed by household id (`tutorialSeen` in the ui store)
+   ends it: a reinstall shows it again, which suits testers, and so does a new account on the
+   same phone (1.0.9; until then the flag was phone-wide and Ricardo's deleted-and-recreated
+   account got no tutorial).
 2. **The balloons** (parent register, [[brand-voice]], second person to the one holding the
    phone; the 30 line is [[brand-stats-and-claims]] row 7, adults, variety not amounts, never a
    promise for a child). Each balloon: title, one or two sentences, a counter "1/4", "Next" (last

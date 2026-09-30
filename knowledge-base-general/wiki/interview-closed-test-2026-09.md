@@ -72,6 +72,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   fuzzy search nearly always returns something, just the wrong plant. 1.0.8: the block also sits
   under the results whenever there is a search term.
 
+- **2026-09-30, 1.0.8 (Play 7), Ricardo:** onboarding's "Step 3" fixed; but after deleting his
+  account and signing up again on the same phone, no tutorial at all. Cause: the seen flag was
+  per phone, and his 1.0.7 run had set it. 1.0.9 keys the flag by household, so a new account on
+  the same phone starts fresh; every tester who saw the 1.0.7 version sees the fixed one once.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -106,6 +111,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   tutorial down to three balloons, the first one visible, a rounded hole and a lighter dim;
   onboarding titles wrap so "Step 3" stays on screen; the suggest-a-plant block under the search
   results too (Bram); "Suggestion sent" without its exclamation mark.
+- 2026-09-30, 1.0.9 over the air (commit 11a6847; Android group 26e3b2e4, iOS group 329bdd9b):
+  the tutorial's seen flag keyed by household on the phone instead of phone-wide.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
