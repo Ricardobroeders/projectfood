@@ -1086,3 +1086,13 @@ text; the recording's Account screen reads 1.0.12 while the binary stays 1.0.2 (
 point 1. Block now: (1) twelve stay twelve until 2026-10-14, (2) Apple's answer, waiting, with
 the manual-release timing decision behind it, (3) the fourteen days used well. Updated: the ASO
 page "App Review Information", backlog.
+
+## [2026-09-30] research | Play production-access application drafted
+Ricardo pasted Google's guide to the application and asked whether it is the next step. Yes: the
+form (about the closed test, about the app, production readiness) is drafted on the ASO page with
+the first four days' numbers in brackets (14 households created, 19 logging, 4 to 14 logging per
+day, 12 of 14 notifications granted, 141 unlocks in 13 households, 2 at 30 plants in week one,
+304 taps and 12 menu logs, tutorial 3 done and 3 skipped) and the read-only queries to refresh
+them on 2026-10-14. Two findings: Google can extend the test for low engagement, so the window is
+about use; and most test households use the app alone (2 of 14 have a second member), which
+speaks to the solo-adult audience of row 3. Ricardo's picks: ease of recruiting, install range.

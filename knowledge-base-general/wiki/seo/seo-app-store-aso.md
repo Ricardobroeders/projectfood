@@ -3,7 +3,7 @@ title: SEO — App Store & Google Play (ASO) for the native launch
 type: seo
 tags: [seo, aso, app-store, family-mode]
 created: 2026-09-06
-updated: 2026-09-28
+updated: 2026-09-30
 sources: [source-family-mode-context.md, seo-serp-landscape.md]
 ---
 
@@ -392,6 +392,81 @@ a DPA, which is Play's service-provider exemption, so nothing counts as "shared"
   financial info, web browsing, installed apps, in-app search history (plant search runs on the
   phone against the bundled catalogue), crash logs, diagnostics, advertising ID.
 
+
+### Production-access application (drafted 2026-09-30, to send on 2026-10-14)
+Google's form has three parts (Dashboard → Apply for production; the button turns active once
+twelve testers have been opted in for fourteen days, from 2026-09-30 that is 2026-10-14). Google
+can extend the test for "insufficient tester engagement", not only for a count below twelve, so
+the window is also about use, not only opt-ins. Review takes up to seven days. Numbers below are
+the first four days (2026-09-27 to 30, all households on the server, so Ricardo's own, the review
+household and the one iPhone are in them); refresh them on the day with the queries at the end
+and replace every bracketed figure. Ricardo's picks are marked.
+
+**Part 1, about the closed test.**
+- How easy it was to recruit testers: _Ricardo's pick_ (13 people invited personally over
+  WhatsApp on 2026-09-27; 12 opted in within three days, after two reminders; suggested answer:
+  easy).
+- Tester engagement: "Testers used the app the way production users will: after a meal they open
+  it and tick the plants they tasted. In the first [4] days [14 of 15] households logged plants,
+  the number logging per day rose from [4] to [14], [12 of 14] accepted notifications, [13]
+  households unlocked achievements ([141] unlocks), [2] reached the weekly goal of 30 different
+  plants in the first week, [2] suggested plants missing from the list, [3] finished the in-app
+  tour and [3] skipped it, [2] opened the stats screen on its first day, one tester deleted and
+  recreated the account. All features were exercised: sign-in by email code and Google, the
+  three-step onboarding, logging by tap and by hold-to-choose-who ([304] taps, [12] via the
+  menu), cards and achievements, the stats screen, plant suggestions, notifications, language,
+  account deletion. Differences from expected production use: the testers are friends and family
+  who were asked to test, so several logged a whole day at once rather than after dinner, and
+  most households ([12 of 14]) use the app alone rather than with family members, while the app
+  is designed for both; that matches one of our two audiences and confirmed that solo use has to
+  stay first-class."
+- Feedback and how it was collected: "Collected over WhatsApp and in person, written down the
+  same day with the app version it came from. Main points: the goal of 30 plants a week was not
+  explained in the app; there was no onboarding tour; the greeting said good evening in the
+  morning; testers from an earlier web version missed a history view; a plant missing from the
+  list could not be suggested because the search always returns a near match; six layout bugs on
+  iOS found while recording the iPhone flow; a survey banner appeared on first open. Every point
+  was fixed and shipped within a day, see part 3."
+
+**Part 2, about the app.**
+- Target audience: "Adults 25 to 45 in the Netherlands and Italy first, then English-speaking
+  markets. Two groups: parents of children aged 1 to 8 who want their children to taste more
+  vegetables without a fight, and adults who want more variety in their own diet. The account
+  holder is always an adult; children only appear as profiles on the parent's phone. Play target
+  age group 18+, not designed for families." (Ricardo to confirm the wording.)
+- Value proposition: "Project Food turns the 30-different-plants-a-week guideline into a
+  one-minute habit after dinner. Tap what was tasted; every new plant becomes a collectible card
+  and the household's count runs toward 30 for the week, with achievements marking milestones.
+  For families a taste counts even when the plate is not finished, which takes the battle out of
+  the meal; for one person it is the simplest variety tracker there is. No calories, no diets, no
+  health claims: it counts variety."
+- Estimated installs in the first year: _Ricardo's pick_ (suggested: 1,000 to 10,000; two small
+  launch markets, no paid acquisition planned).
+
+**Part 3, production readiness.**
+- Changes made from the closed test: "Sign-in screen now says it also creates the account and
+  shows the Google logo; six iOS layout fixes; a stats screen (plants per week against 30, plants
+  per day, records); a three-step in-app tour after onboarding that also explains the 30; the
+  greeting follows the time of day; the goal gauge shows whole steps only; plant suggestions are
+  offered under search results too; the survey banner was removed from Home. Each went to the
+  testers as an update on the same track within a day, and the reporter confirmed the fix on their
+  device. Every fix is in build [8], the current closed-test release."
+- How readiness was determined: "[12+] testers on their own Android phones for [14] days, with
+  the count of households logging rising through the window and [no] crashes or ANRs in Play
+  vitals [check on the day]. Every reported issue was fixed and re-verified by the person who
+  reported it. Policy checks done before applying: content rating, target audience 18+, data
+  safety with the account-deletion page, working review credentials in App access verified by
+  signing in with them. The same code runs on iOS under Apple's review. Usage and update state
+  are reported server-side, so a broken update would show within a day."
+
+**Queries for the day** (Supabase, read-only; all since 2026-09-27; exclude nothing, the numbers
+are small enough to read): households logging and rows per day from `plant_logs` grouped by
+`logged_on`; per-household days and distinct plants from `plant_logs`; event counts and
+distinct households from `app_events` by `name`; `push_permission` granted split,
+`plant_logged` by `via` and by `members > 1`, `tutorial` by `action`; achievement unlocks and
+households from `achievement_unlocks`; households and members created from `households` and
+`household_members`. Play vitals (crashes, ANRs) from the console. Tester names never go into
+the answers or the wiki.
 
 ## App Store listing (App Store Connect), sheet drafted 2026-09-28
 
