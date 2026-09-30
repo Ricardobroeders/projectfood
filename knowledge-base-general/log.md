@@ -973,3 +973,12 @@ Ricardo parked roadmap row 2.7 (printables hub and the three landing pages): he 
 through how to do the printables before anything is built. Recorded on [[seo-roadmap]] and in
 the backlog (item 15, row 6). Batch 2 continues from the queue; the next Claude build steps are
 the plant-page template and the comparison page.
+
+## [2026-09-30] build | Stats screen behind the streak chip
+Ricardo asked for the PWA's "Weekly history" in the app, reached from the Home streak chip, for
+the testers who build up history. Built and pushed the same day (commit 6bad6d1, JavaScript
+only, no migration): four tiles, plants per week against the 30 line in the gauge's band
+colours, plants per day for the last four weeks, copy in en/nl/it. The chip is now a button in
+both states ("Your stats" when there is no streak). Not yet published over the air: Ricardo reads
+the copy first. One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
+(one thing line 3, new item 22), [[interview-closed-test-2026-09]].
