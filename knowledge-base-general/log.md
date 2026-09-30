@@ -1061,3 +1061,11 @@ eeb0ab48 (production profile, remote versionCode 8, version 1.0.12, commit f67ae
 Ricardo uploads the AAB to the closed testing track by hand (eas.json's submit profile points at
 the internal track and has no service-account key; eas.json stays untouched during the test).
 Release notes in en-GB, nl-NL and it-IT drafted in chat. iOS: nothing until Apple approves 1.0.2.
+
+## [2026-09-30] ops | versionCode 8 submitted to the closed track
+Ricardo uploaded the 1.0.12 AAB (versionCode 8) to Closed testing, Alpha, release "Onboarding
+and Tutorial", with the en-GB/nl-NL/it-IT notes, and submitted it for review in the evening.
+Size for new installs 24.5 MB, 14.7 KB more than versionCode 7 (checked against both files:
+17 KB before compression; per device about 23 MB native libraries, 17 MB Java, 8 MB resources,
+6 MB JavaScript). Managed publishing off, so it goes live on the track by itself after review.
+Watch: the opted-in count must not move.

@@ -105,9 +105,10 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     under the search results (Bram). 1.0.9 (commit 11a6847; Android group 26e3b2e4, iOS group
     329bdd9b): the seen flag keyed by household, after Ricardo's recreated account got no
     tutorial. **Play build versionCode 8 / 1.0.12 built 2026-09-30 17:00** (EAS build eeb0ab48, runtime
-    d8da0646 unchanged, all of 1.0.3 to 1.0.12 baked in) for Ricardo to upload to the closed
-    testing track: opt-ins belong to the track, so the fourteen days run on; new installs then
-    start on the current app instead of catching up on their second launch. 1.0.10 (commit 5138598; Android group 41704aaa, iOS group 432d0005): balloon 1
+    d8da0646 unchanged, all of 1.0.3 to 1.0.12 baked in) uploaded by Ricardo to the closed
+    testing track (Alpha) and submitted for Google's review the same evening, release name
+    "Onboarding and Tutorial": opt-ins belong to the track, so the fourteen days run on; new
+    installs then start on the current app instead of catching up on their second launch. 1.0.10 (commit 5138598; Android group 41704aaa, iOS group 432d0005): balloon 1
     "After you've eaten" without "A lick counts", balloon 3 links to the plant-diversity article,
     the row hole without the margin. 1.0.11 (commit 4e07d2f; Android group 094a0a5d, iOS group
     b2c067ea): the `guide` motion class, the hole irises in, glides between controls and opens
