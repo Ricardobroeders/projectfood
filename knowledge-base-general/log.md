@@ -1051,3 +1051,13 @@ the app. Banner removed (commit 0485896; Android group 7b73bf4a on d8da0646, iOS
 on acf2e071); the survey stays under Account and the moment to ask is still open on
 [[research-survey-plan]]. Also answered: the tutorial's seen flag lives on the phone (AsyncStorage,
 keyed by household), not on the server; the `tutorial` events in `app_events` are the record.
+
+## [2026-09-30] build | Play build versionCode 8 (1.0.12) for the closed track
+Ricardo asked whether to send the day's changes to Play Console or wait for the closed test to
+end. Answer: send now; opt-ins belong to the track and the fourteen days run on, while every new
+install otherwise starts on the old bundle of versionCode 7 until its second launch. EAS build
+eeb0ab48 (production profile, remote versionCode 8, version 1.0.12, commit f67ae23) finished at
+17:00 on runtime d8da0646, the same as the testers', so the over-the-air channel serves both.
+Ricardo uploads the AAB to the closed testing track by hand (eas.json's submit profile points at
+the internal track and has no service-account key; eas.json stays untouched during the test).
+Release notes in en-GB, nl-NL and it-IT drafted in chat. iOS: nothing until Apple approves 1.0.2.
