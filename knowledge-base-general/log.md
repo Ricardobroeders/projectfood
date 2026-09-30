@@ -1026,3 +1026,11 @@ his 1.0.7 run still held. `tutorialSeen` in the ui store is now a map by househo
 11a6847; Android group 26e3b2e4 on d8da0646, iOS group 329bdd9b on acf2e071). Every tester who
 saw the 1.0.7 version sees the fixed three-balloon one once. Updated: decision page, interview
 page, backlog item 24.
+
+## [2026-09-30] build | 1.0.10: tutorial copy revised, article link, row hole
+Ricardo's read of the three balloons: any meal counts, so balloon 1 says "After you've eaten"
+and drops "A lick counts"; the 30 balloon links to https://projectfood.dev/{locale}/learn/
+plant-diversity ("Read the article", in-app browser, en for de/fr); the hole around the first
+plant row stops above the row's 10 px margin (anchors can carry an inset). Commit 5138598,
+Android group 41704aaa on d8da0646, iOS group 432d0005 on acf2e071. Updated: decision page,
+interview page, backlog item 24.

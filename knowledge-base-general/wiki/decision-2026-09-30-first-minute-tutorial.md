@@ -45,11 +45,12 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
    phone; the 30 line is [[brand-stats-and-claims]] row 7, adults, variety not amounts, never a
    promise for a child). Each balloon: title, one or two sentences, a counter "1/4", "Next" (last
    one "Done"), an X in the corner that ends the tutorial. Shipped copy, en / nl / it:
-   1. Home, the **Log tab** lit: "Log what you tasted" / "After dinner, tap Log and tick the
-      plants you tasted. A lick counts." · "Log wat je hebt geproefd" / "Tik na het avondeten op
-      Loggen en vink de planten aan die je hebt geproefd. Een hap telt." · "Registra cosa hai
-      assaggiato" / "Dopo cena tocca Registra e segna le piante che hai assaggiato. Un assaggio
-      conta." Next opens Log; tapping the lit tab counts too.
+   1. Home, the **Log tab** lit: "Log what you tasted" / "After you've eaten, tap Log and tick
+      the plants you tasted." · "Log wat je hebt geproefd" / "Tik na het eten op Loggen en vink
+      de planten aan die je hebt geproefd." · "Registra cosa hai assaggiato" / "Dopo aver
+      mangiato, tocca Registra e segna le piante che hai assaggiato." (1.0.10, Ricardo: any meal
+      counts, not only dinner, and "A lick counts" dropped.) Next opens Log; tapping the lit tab
+      counts too.
    2. Log, the **first plant row** lit: "Tap a plant to log it for today" / "Every new plant
       becomes a card in Unlocks, and it levels up as you taste it again." · "Tik op een plant om
       hem voor vandaag te loggen" / "Elke nieuwe plant wordt een kaart bij Behaald, en die gaat
@@ -63,7 +64,10 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
       planten per week aten, hadden een gevarieerdere darmflora. Variatie telt, niet de
       hoeveelheid." · "30 piante diverse a settimana" / "La linea guida viene dall'American Gut
       Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una
-      flora intestinale più varia. Conta la varietà, non la quantità."
+      flora intestinale più varia. Conta la varietà, non la quantità." Under the body a text link
+      "Read the article" / "Lees het artikel" / "Leggi l'articolo" opens
+      https://projectfood.dev/{locale}/learn/plant-diversity in the in-app browser (en for de and
+      fr), 1.0.10.
    Done on balloon 3 ends the tutorial on Log, ready to tap. A fourth balloon on the who-logs bar
    ("Log for the whole family" / "Add family members here and choose who a tap logs for. Hold a
    plant to say who tasted it.") shipped in 1.0.7 and was dropped in 1.0.8 the same day (Ricardo:
@@ -86,7 +90,10 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
    measured (1.0.7 gated its opacity on a measured height and the entering animation froze the
    first balloon at 0: it never showed). Step 1 advances when the path becomes `/log`, however
    the person got there. Events: `tutorial` with `step` and `action` (next, done, skip).
-   react-native-svg was already a dependency (the gauge), so still no native change.
+   react-native-svg was already a dependency (the gauge), so still no native change. An anchor
+   can carry an inset for edges that are not the control (the plant row's 10 px bottom margin,
+   1.0.10), so the hole's air is the same above and below the card. `tutorial` events also carry
+   `link` when the article is opened.
 4. **The hold hint on Log** stays for households with more than one member; balloon 2 says the
    same in passing, and the hint disappears on the first hold as today.
 

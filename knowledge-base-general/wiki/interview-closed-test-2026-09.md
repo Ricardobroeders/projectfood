@@ -77,6 +77,10 @@ screen shows which one), who (first name or role, never more), the words, what w
   per phone, and his 1.0.7 run had set it. 1.0.9 keys the flag by household, so a new account on
   the same phone starts fresh; every tester who saw the 1.0.7 version sees the fixed one once.
 
+- **2026-09-30, 1.0.9 (Play 7), Ricardo's read of the balloons:** "dinner" too narrow (any meal
+  counts) and "A lick counts" unnecessary; the hole around the plant row a little too tall; the
+  30 balloon should link to the plant-diversity article. 1.0.10 the same hour.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -113,6 +117,10 @@ screen shows which one), who (first name or role, never more), the words, what w
   results too (Bram); "Suggestion sent" without its exclamation mark.
 - 2026-09-30, 1.0.9 over the air (commit 11a6847; Android group 26e3b2e4, iOS group 329bdd9b):
   the tutorial's seen flag keyed by household on the phone instead of phone-wide.
+- 2026-09-30, 1.0.10 over the air (commit 5138598; Android group 41704aaa, iOS group 432d0005):
+  balloon 1 "After you've eaten, tap Log and tick the plants you tasted.", balloon 3 with a
+  "Read the article" link to /learn/plant-diversity in the reader's language, the row hole
+  without the row's bottom margin.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

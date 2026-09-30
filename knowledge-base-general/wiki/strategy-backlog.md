@@ -104,8 +104,10 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     placement. Same update: "Step 3" back on screen in onboarding, the suggest-a-plant block
     under the search results (Bram). 1.0.9 (commit 11a6847; Android group 26e3b2e4, iOS group
     329bdd9b): the seen flag keyed by household, after Ricardo's recreated account got no
-    tutorial. iOS still unseen. Next: read the `tutorial` events after a week for where people
-    skip.
+    tutorial. 1.0.10 (commit 5138598; Android group 41704aaa, iOS group 432d0005): balloon 1
+    "After you've eaten" without "A lick counts", balloon 3 links to the plant-diversity article,
+    the row hole without the margin. iOS still unseen. Next: read the `tutorial` events after a
+    week for where people skip and whether the article link is used.
 16. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**
