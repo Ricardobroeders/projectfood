@@ -967,3 +967,7 @@ and `softwareApplicationNode()` (emits once `playPublic`). Manifest description 
 `theme_color` `#F5C518`. The header's "Open the app" still opens the PWA login for the adult
 accounts. Updated: seo-roadmap, strategy-backlog (item 15, row 6), brand-voice and
 brand-stats-and-claims (the claim is gone), messages ×3, home and About pages, manifest.
+
+## [2026-09-30] build | learn: picky-eater-toddler (en) written and published by the nightly routine
+1,066 words, 5 FAQ entries, meta title 50 and description 153 characters. The pillar `learn-to-eat-everything` (en) now links the article in place of its announcement sentence.
+Accepted warnings: the "picky eater" search-phrase notices (title, subtitle, meta, body, FAQ), which are the query and not a label for a child.

@@ -104,7 +104,7 @@ What helps: fixed meal times, small portions, few snacks and drinks shortly befo
 
 Most children who get called fussy eat twenty to thirty different things, grow normally and are in the phase described above. They need time and repetition, not a label.
 
-There is a line, though. Talk to your doctor if your child is losing weight or not growing, if they eat fewer than about twenty different foods, if whole groups are missing (no vegetables at all, no fruit at all), if they gag or panic at new food, or if the worry is getting too big for you as a parent. That is a different situation from the one this page describes, and there is help for it. What counts as ordinary fussiness and what does not gets its own article.
+There is a line, though. Talk to your doctor if your child is losing weight or not growing, if they eat fewer than about twenty different foods, if whole groups are missing (no vegetables at all, no fruit at all), if they gag or panic at new food, or if the worry is getting too big for you as a parent. That is a different situation from the one this page describes, and there is help for it. What counts as ordinary fussiness and what does not is in the article on [picky eater toddler](/en/learn/learn-to-eat-everything/picky-eater-toddler).
 
 ## Which vegetables work first
 
