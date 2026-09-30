@@ -986,3 +986,13 @@ the hour: icons on the tiles, "Most dinners in a row" instead of "Longest run", 
 ending today (Android group e2dea66f, iOS group 52fe7e63). Then 1.0.6 (Android 7e3346f6, iOS f16d2b6c): the Home gauge's wedges
 are full colour or grey, the half-lit partial wedge is gone (commit 8dd876c). One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
 (one thing line 3, new item 22), [[interview-closed-test-2026-09]].
+
+## [2026-09-30] research | Tester points logged with versions; tutorial proposed
+Ricardo brought the morning's closed-test points and asked that feedback be logged with the app
+version from now on: "Good evening" in the morning (greeting options put to him, by the hour
+recommended), "no introduction on why 30" and "no onboarding" (his direction: three or four
+coach-mark balloons after onboarding, always skippable). Drafted
+[[decision-2026-09-30-first-minute-tutorial]] (proposed) with four balloons and their copy, the
+why-30 line on the week chip within stats row 7, and the build mechanics; backlog brainstorm 21
+progressed, items 23 (his two picks) and 24 (the build) added, the "why 30" parking-lot entry
+marked taken up. Updated: interview page (version tags on every entry), backlog, index.
