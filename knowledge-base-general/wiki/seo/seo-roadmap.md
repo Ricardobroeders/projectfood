@@ -66,6 +66,25 @@ existing adult accounts. Open on this batch: Person `sameAs`, Bing and Ahrefs ve
 | `SoftwareApplication` JSON-LD with the store URL; manifest description and `theme_color` (`#16a34a`) aligned | Claude | S | Public Play URL exists |
 | Search Console baseline exported to `raw/`; Bing Webmaster Tools and Ahrefs Webmaster Tools verified | Ricardo | S | Baseline row filled below |
 
+### Home page screen renders (brief, 2026-09-30; Ricardo builds in Figma, Claude wires)
+Ricardo offered the screen renders on 2026-09-30. Three bare app screens, one per step of the
+"How it works" section, replacing the carrot, strawberry and broccoli renders there. The page
+supplies the copy, so the exports carry no headline and no phone frame.
+
+| Step on the page | Screen and state (same states as the store frames) |
+|---|---|
+| 1 Tap what you tasted | Log: "Logging for Everyone", search, category tabs, Avocado checked on the accent, Black pepper and Cherry tomato unchecked (store frame 05) |
+| 2 Collect the cards | Unlocks: cards row with a card just levelled (silver or gold), Foods tried 166 of 224 (store frame 03 state, cards in front) |
+| 3 Count as a family | Home: gauge 18 of 30, "12 to go", streak chip, Next goals rail (store frame 02 state) |
+
+Specs: 390 × 844 logical, exported at 2x (780 × 1688 px) as PNG, WebP welcome; no drop shadow
+and no device frame (the page masks the screen with a 24 px radius on the cream surface);
+the mock family and the rules of the store frames apply (no child faces, no character avatars,
+"achievements" never "stamps"); app language per locale if it is one click, otherwise English
+for all three. Files go to `projectfood-app/public/images/screens/<locale>/step-1.png` (2, 3);
+Claude swaps them in with `next/image` and sizes them at 260 px wide in the step cards. A fourth
+optional export, the Home screen for the hero on cream, can come later.
+
 ## Batch 2 — the queue (the scaling model)
 _Refilled 2026-09-29: 19 open rows in `queue.json` (2.1 to 2.6, one a night, to about
 2026-10-18), after the two routine branches of 2026-09-28 and 09-29 were merged into `main`.
