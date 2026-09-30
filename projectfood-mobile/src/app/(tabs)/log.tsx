@@ -32,6 +32,9 @@ const NONE: string[] = [];
 const NO_PLANTS: Plant[] = [];
 /** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
 const ROW_H = 94;
+/** The row's own bottom margin (PlantRow), not part of the card: the tutorial's hole stops above it. */
+const ROW_GAP = 10;
+const ROW_INSET = { bottom: ROW_GAP };
 const LIST_TOP = 12;
 /** Distinct plants in a week, the same goal the Home gauge counts to. */
 const GOAL = 30;
@@ -149,7 +152,7 @@ export default function LogScreen() {
     ({ item, index }: { item: Plant; index: number }) => {
       const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} gold={goldIds.has(item.id)} onTap={onTap} onHold={onHold} />;
       // The tutorial's second balloon points at the first row.
-      return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow">{row}</TutorialAnchorView> : row}</Animated.View>;
+      return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow" inset={ROW_INSET}>{row}</TutorialAnchorView> : row}</Animated.View>;
     },
     [tastes, members, defaultIds, t, onTap, onHold],
   );

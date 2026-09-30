@@ -101,11 +101,12 @@
     "next": "Volgende",
     "done": "Klaar",
     "skip": "Uitleg overslaan",
+    "readArticle": "Lees het artikel",
     "counter": "{n}/{total}",
     "steps": {
       "logTab": {
         "title": "Log wat je hebt geproefd",
-        "body": "Tik na het avondeten op Loggen en vink de planten aan die je hebt geproefd. Een hap telt."
+        "body": "Tik na het eten op Loggen en vink de planten aan die je hebt geproefd."
       },
       "plantRow": {
         "title": "Tik op een plant om hem voor vandaag te loggen",

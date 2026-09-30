@@ -1,4 +1,5 @@
 import { usePathname, useRouter } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
 import { X } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +10,7 @@ import Svg, { Defs, Mask, Rect } from 'react-native-svg';
 import { colors, fonts, radii } from '@/constants/theme';
 import { track } from '@/features/events/track';
 import { useHousehold } from '@/features/household/queries';
+import { currentLocale } from '@/features/i18n';
 import { TUTORIAL_STEPS } from '@/features/tutorial/steps';
 import { useUi } from '@/state/ui';
 
@@ -67,6 +69,12 @@ export function TutorialOverlay() {
     track('tutorial', { step, action: 'skip' }, hid);
     endTutorial(hid);
   };
+  // The site speaks en, nl and it; de and fr read the English page, as the legal links do.
+  const openLink = (url: string) => {
+    track('tutorial', { step, action: 'link' }, hid);
+    const l = currentLocale();
+    void WebBrowser.openBrowserAsync(url.replace('{locale}', l === 'nl' || l === 'it' ? l : 'en'));
+  };
 
   const rect = anchors[def.anchor];
   const hole = rect ? { x: rect.x - HOLE_PAD, y: rect.y - HOLE_PAD, w: rect.width + 2 * HOLE_PAD, h: rect.height + 2 * HOLE_PAD } : null;
@@ -124,6 +132,11 @@ export function TutorialOverlay() {
             </Pressable>
           </View>
           <Text style={styles.body}>{t(`tutorial.steps.${def.key}.body`)}</Text>
+          {def.link ? (
+            <Pressable onPress={() => openLink(def.link!)} hitSlop={6} accessibilityRole="link" style={{ alignSelf: 'flex-start' }}>
+              <Text style={styles.link}>{t('tutorial.readArticle')}</Text>
+            </Pressable>
+          ) : null}
           <View style={styles.foot}>
             <Text style={styles.counter}>{t('tutorial.counter', { n: step, total })}</Text>
             <Pressable onPress={next} style={({ pressed }) => [styles.next, pressed && { opacity: 0.85 }]} accessibilityRole="button">
@@ -149,6 +162,7 @@ const styles = StyleSheet.create({
   title: { flex: 1, fontFamily: fonts.bold, fontSize: 17, lineHeight: 22, color: colors.ink },
   close: { marginTop: 1, marginRight: -4 },
   body: { fontFamily: fonts.medium, fontSize: 14, lineHeight: 20, color: colors.ink2 },
+  link: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 20, color: colors.ink, textDecorationLine: 'underline' },
   foot: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6 },
   counter: { fontFamily: fonts.medium, fontSize: 13, color: colors.ink3 },
   next: { height: 40, paddingHorizontal: 18, borderRadius: radii.sm, backgroundColor: colors.ink, justifyContent: 'center' },

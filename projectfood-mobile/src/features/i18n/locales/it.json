@@ -101,11 +101,12 @@
     "next": "Avanti",
     "done": "Fatto",
     "skip": "Salta la spiegazione",
+    "readArticle": "Leggi l'articolo",
     "counter": "{n}/{total}",
     "steps": {
       "logTab": {
         "title": "Registra cosa hai assaggiato",
-        "body": "Dopo cena tocca Registra e segna le piante che hai assaggiato. Un assaggio conta."
+        "body": "Dopo aver mangiato, tocca Registra e segna le piante che hai assaggiato."
       },
       "plantRow": {
         "title": "Tocca una pianta per registrarla per oggi",

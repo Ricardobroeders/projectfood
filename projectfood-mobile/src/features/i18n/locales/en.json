@@ -101,11 +101,12 @@
     "next": "Next",
     "done": "Done",
     "skip": "Skip the tutorial",
+    "readArticle": "Read the article",
     "counter": "{n}/{total}",
     "steps": {
       "logTab": {
         "title": "Log what you tasted",
-        "body": "After dinner, tap Log and tick the plants you tasted. A lick counts."
+        "body": "After you've eaten, tap Log and tick the plants you tasted."
       },
       "plantRow": {
         "title": "Tap a plant to log it for today",

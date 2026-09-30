@@ -9,6 +9,8 @@ export type TutorialStep = {
   key: TutorialStepKey;
   /** Corner radius of the hole: the control's own radius plus the hole's padding. */
   radius: number;
+  /** A page on the site under the body, `{locale}` filled in (en for the locales the site lacks). */
+  link?: string;
 };
 export type TutorialStepKey = 'logTab' | 'plantRow' | 'weekChip';
 
@@ -21,5 +23,5 @@ export type TutorialStepKey = 'logTab' | 'plantRow' | 'weekChip';
 export const TUTORIAL_STEPS: TutorialStep[] = [
   { anchor: 'logTab', tab: '/', key: 'logTab', radius: 16 },
   { anchor: 'plantRow', tab: '/log', key: 'plantRow', radius: 30 },
-  { anchor: 'weekChip', tab: '/log', key: 'weekChip', radius: 18 },
+  { anchor: 'weekChip', tab: '/log', key: 'weekChip', radius: 18, link: 'https://projectfood.dev/{locale}/learn/plant-diversity' },
 ];
