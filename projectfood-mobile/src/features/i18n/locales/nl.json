@@ -114,10 +114,6 @@
       "weekChip": {
         "title": "30 verschillende planten per week",
         "body": "De richtlijn komt uit het American Gut Project (2018): volwassenen die meer dan 30 verschillende planten per week aten, hadden een gevarieerdere darmflora. Variatie telt, niet de hoeveelheid."
-      },
-      "family": {
-        "title": "Log voor het hele gezin",
-        "body": "Voeg hier gezinsleden toe en kies voor wie een tik logt. Houd een plant vast om te zeggen wie hem heeft geproefd."
       }
     }
   },
@@ -155,7 +151,7 @@
     "missingBody": "Stel \"{query}\" voor en we voegen hem toe als hij in aanmerking komt.",
     "submitSuggestion": "Suggestie versturen",
     "sending": "Versturen…",
-    "suggestionSent": "Suggestie verzonden!",
+    "suggestionSent": "Suggestie verzonden",
     "suggestionSentSub": "We beoordelen het en voegen het snel toe.",
     "logged": "Gelogd: {name}",
     "loggingFor": "Loggen voor",

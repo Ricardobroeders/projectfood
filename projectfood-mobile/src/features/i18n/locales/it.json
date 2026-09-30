@@ -114,10 +114,6 @@
       "weekChip": {
         "title": "30 piante diverse a settimana",
         "body": "La linea guida viene dall'American Gut Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una flora intestinale più varia. Conta la varietà, non la quantità."
-      },
-      "family": {
-        "title": "Registra per tutta la famiglia",
-        "body": "Aggiungi qui i familiari e scegli per chi registra un tocco. Tieni premuta una pianta per dire chi l'ha assaggiata."
       }
     }
   },
@@ -155,7 +151,7 @@
     "missingBody": "Suggerisci \"{query}\" e la aggiungeremo se qualificata.",
     "submitSuggestion": "Invia suggerimento",
     "sending": "Invio…",
-    "suggestionSent": "Suggerimento inviato!",
+    "suggestionSent": "Suggerimento inviato",
     "suggestionSentSub": "Lo esamineremo e lo aggiungeremo presto.",
     "logged": "Registrato: {name}",
     "loggingFor": "Registro per",

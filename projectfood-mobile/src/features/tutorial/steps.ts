@@ -7,17 +7,19 @@ export type TutorialStep = {
   tab: '/' | '/log';
   /** Key under `tutorial.steps` in the locale files (a union, so the typed i18n keys accept it). */
   key: TutorialStepKey;
+  /** Corner radius of the hole: the control's own radius plus the hole's padding. */
+  radius: number;
 };
-export type TutorialStepKey = 'logTab' | 'plantRow' | 'weekChip' | 'family';
+export type TutorialStepKey = 'logTab' | 'plantRow' | 'weekChip';
 
 /**
- * The first minute: four balloons after onboarding, once per phone (Ricardo, 2026-09-30, from the
+ * The first minute: three balloons after onboarding, once per phone (Ricardo, 2026-09-30, from the
  * closed-test points "no onboarding" and "why 30"; [[decision-2026-09-30-first-minute-tutorial]]).
- * They speak to the person holding the phone; the last one opens the family up.
+ * They speak to the person holding the phone. A fourth, on logging for the family, was dropped
+ * the same day: onboarding step 2 already adds the family.
  */
 export const TUTORIAL_STEPS: TutorialStep[] = [
-  { anchor: 'logTab', tab: '/', key: 'logTab' },
-  { anchor: 'plantRow', tab: '/log', key: 'plantRow' },
-  { anchor: 'weekChip', tab: '/log', key: 'weekChip' },
-  { anchor: 'forBar', tab: '/log', key: 'family' },
+  { anchor: 'logTab', tab: '/', key: 'logTab', radius: 16 },
+  { anchor: 'plantRow', tab: '/log', key: 'plantRow', radius: 30 },
+  { anchor: 'weekChip', tab: '/log', key: 'weekChip', radius: 18 },
 ];

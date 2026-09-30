@@ -114,10 +114,6 @@
       "weekChip": {
         "title": "30 different plants a week",
         "body": "The guideline comes from the American Gut Project (2018): adults eating more than 30 different plants a week had a more varied gut flora. Variety counts, not amounts."
-      },
-      "family": {
-        "title": "Log for the whole family",
-        "body": "Add family members here and choose who a tap logs for. Hold a plant to say who tasted it."
       }
     }
   },
@@ -155,7 +151,7 @@
     "missingBody": "Suggest \"{query}\" and we'll add it if it qualifies.",
     "submitSuggestion": "Submit suggestion",
     "sending": "Sending…",
-    "suggestionSent": "Suggestion sent!",
+    "suggestionSent": "Suggestion sent",
     "suggestionSentSub": "We'll review and add it soon.",
     "logged": "Logged: {name}",
     "loggingFor": "Logging for",

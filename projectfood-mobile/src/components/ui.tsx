@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
   textBtn: { paddingVertical: 12, alignItems: 'center' },
   textBtnLabel: { fontFamily: fonts.semibold, fontSize: 15, lineHeight: 20, color: colors.ink2 },
   titleRow: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', paddingHorizontal: 20 },
-  title: { fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, letterSpacing: -0.4 },
+  // flexShrink so a long title wraps and the step label stays on screen (onboarding step 3, Ricardo 2026-09-30).
+  title: { flexShrink: 1, fontFamily: fonts.extrabold, fontSize: 26, lineHeight: 32, color: colors.ink, letterSpacing: -0.4 },
   titleMeta: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink3 },
   backHeader: { flexDirection: 'row', alignItems: 'center', height: 44, paddingHorizontal: 12 },
   backBtn: { width: 40, height: 40, borderRadius: radii.full, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bgSoft },

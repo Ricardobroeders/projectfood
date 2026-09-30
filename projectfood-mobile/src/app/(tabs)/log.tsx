@@ -9,7 +9,7 @@ import { PlantRow } from '@/components/PlantRow';
 import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { WeekMeter } from '@/components/WeekMeter';
-import { TutorialAnchorView, useTutorialAnchor } from '@/features/tutorial/useTutorialAnchor';
+import { TutorialAnchorView } from '@/features/tutorial/useTutorialAnchor';
 import { Loading, PrimaryButton, Screen } from '@/components/ui';
 import { revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
@@ -156,7 +156,6 @@ export default function LogScreen() {
 
   // The tutorial reads the first row and the week chip: bring the list to the top when it arrives here.
   const tutorialStep = useUi((s) => s.tutorialStep);
-  const forBarAnchor = useTutorialAnchor('forBar');
   useEffect(() => {
     if (tutorialStep === 2) listRef.current?.scrollToOffset({ offset: 0, animated: false });
   }, [tutorialStep]);
@@ -175,6 +174,15 @@ export default function LogScreen() {
   const defaults = members.filter((m) => defaultIds.includes(m.id));
   const forLabel = defaults.length === 0 ? t('log.nobody') : defaults.length === members.length ? t('log.everyone') : defaults.map((m) => m.name).join(', ');
 
+  // The suggestion block: alone when nothing matches, under the results when something does.
+  const missingBlock = (
+    <View style={styles.missing}>
+      <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
+      <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
+      {!submitted ? <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} /> : null}
+    </View>
+  );
+
   if (!hh || isLoading) return <Loading />;
 
   return (
@@ -191,7 +199,7 @@ export default function LogScreen() {
       </View>
 
       {/* Who a plain tap logs for. Tapping opens the same member menu as holding a plant, from the finger. */}
-      <Pressable ref={forBarAnchor.ref} onLayout={forBarAnchor.onLayout} style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
+      <Pressable style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
         <View style={styles.forAvatars}>
           {members.slice(0, 5).map((m) => (
             <MemberAvatar key={m.id} member={m} size={32} muted={!defaultIds.includes(m.id)} />
@@ -276,17 +284,10 @@ export default function LogScreen() {
           updateCellsBatchingPeriod={40}
           windowSize={5}
           keyboardShouldPersistTaps="handled"
-          ListEmptyComponent={
-            !mounted ? null : debounced.trim() ? (
-              <View style={styles.missing}>
-                <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
-                <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
-                {!submitted ? <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} /> : null}
-              </View>
-            ) : (
-              <Text style={styles.prompt}>{t('log.searchPrompt')}</Text>
-            )
-          }
+          ListEmptyComponent={!mounted ? null : debounced.trim() ? missingBlock : <Text style={styles.prompt}>{t('log.searchPrompt')}</Text>}
+          // Under the results too: the search is fuzzy, so a plant that is not in the list still gets
+          // a wrong match instead of an empty list (Bram, 2026-09-30).
+          ListFooterComponent={mounted && debounced.trim() && plants.length > 0 ? missingBlock : null}
         />
         {pending ? <SkeletonRows count={8} height={84} tile={84} gap={10} style={styles.skeletonOverlay} /> : null}
       </View>

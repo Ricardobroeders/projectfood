@@ -11,7 +11,7 @@ export type Point = { x: number; y: number };
 /** Where a control sits, in window coordinates: the tutorial cuts its hole here. */
 export type Rect = { x: number; y: number; width: number; height: number };
 /** The controls the tutorial's four balloons point at. */
-export type TutorialAnchor = 'logTab' | 'plantRow' | 'weekChip' | 'forBar';
+export type TutorialAnchor = 'logTab' | 'plantRow' | 'weekChip';
 
 /**
  * Local-only UI state. What is persisted is the phone's own convenience (who a plain tap logs for,
@@ -35,7 +35,7 @@ type UiState = {
   /** The in-app pre-prompt before the OS push permission dialog. */
   pushPrompt: boolean;
   /** The first-minute tutorial: the step on screen (1-based) or none; when it was finished or
-   *  skipped (persisted, once per phone); where its four controls are while it runs. */
+   *  skipped (persisted, once per phone); where its three controls are while it runs. */
   tutorialStep: number | null;
   tutorialSeenAt: string | null;
   tutorialAnchors: Partial<Record<TutorialAnchor, Rect>>;
