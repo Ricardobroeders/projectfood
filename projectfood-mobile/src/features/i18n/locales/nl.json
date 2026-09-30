@@ -177,7 +177,7 @@
   "stats": {
     "title": "Jouw statistieken",
     "dinnersInARow": "Avondmalen op rij",
-    "longestRun": "Langste reeks",
+    "mostInARow": "Meeste avondmalen op rij",
     "weeksAtGoal": "Weken op {n}",
     "bestWeek": "Beste week",
     "perWeekTitle": "Planten per week",

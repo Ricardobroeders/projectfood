@@ -177,7 +177,7 @@
   "stats": {
     "title": "Your stats",
     "dinnersInARow": "Dinners in a row",
-    "longestRun": "Longest run",
+    "mostInARow": "Most dinners in a row",
     "weeksAtGoal": "Weeks at {n}",
     "bestWeek": "Best week",
     "perWeekTitle": "Plants per week",

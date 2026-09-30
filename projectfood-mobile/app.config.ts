@@ -26,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: IS_DEV ? 'Project Food (dev)' : 'Project Food',
   slug: 'projectfood',
-  version: '1.0.4',
+  version: '1.0.5',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'projectfood',

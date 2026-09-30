@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Plus } from 'lucide-react-native';
+import { Flame, type LucideIcon, Plus, Star, Target, Trophy } from 'lucide-react-native';
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -16,7 +16,8 @@ import { useDailyActivity, useStreak, useWeeklyHistory } from '@/features/logs/q
 
 const GOAL = 30;
 const WEEKS_SHOWN = 12;
-/** Four Monday-to-Sunday rows, so the day bars line up with the weeks above them. */
+/** Four weeks of days ending today; the Mondays are labelled wherever they fall (Ricardo, 2026-09-30:
+ *  the earlier Monday-to-Sunday rows left the days still to come as a gap at the right). */
 const DAYS_SHOWN = 28;
 
 /**
@@ -43,6 +44,10 @@ export default function StatsScreen() {
     const [y, m, d] = key.split('-').map(Number);
     return fmt.format(new Date(y, m - 1, d));
   };
+  const isMonday = (key: string) => {
+    const [y, m, d] = key.split('-').map(Number);
+    return new Date(y, m - 1, d).getDay() === 1;
+  };
 
   const today = dateKey();
   const thisWeek = weekStartOf();
@@ -67,19 +72,18 @@ export default function StatsScreen() {
   const dayBars: Bar[] = useMemo(() => {
     const byDay: Record<string, number> = {};
     for (const r of daily.data ?? []) if (r.member_id === null) byDay[r.day] = r.distinct_plants;
-    const start = addDays(thisWeek, -(DAYS_SHOWN - 7));
+    const start = addDays(today, -(DAYS_SHOWN - 1));
     return Array.from({ length: DAYS_SHOWN }, (_, i) => {
       const day = addDays(start, i);
       return {
         key: day,
         value: byDay[day] ?? 0,
         color: day === today ? colors.accentPressed : colors.accent,
-        future: day > today,
-        label: i % 7 === 0 ? fmtKey(day) : undefined,
+        label: isMonday(day) ? fmtKey(day) : undefined,
       };
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [daily.data, thisWeek, today, locale]);
+  }, [daily.data, today, locale]);
 
   const hasHistory = allWeeks.some((w) => w.variety > 0);
   const weeksAtGoal = allWeeks.filter((w) => w.hit_goal).length;
@@ -93,12 +97,12 @@ export default function StatsScreen() {
       ) : (
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.tileRow}>
-            <Tile label={t('stats.dinnersInARow')} value={streak?.current_streak ?? 0} />
-            <Tile label={t('stats.longestRun')} value={streak?.longest_streak ?? 0} />
+            <Tile icon={Flame} label={t('stats.dinnersInARow')} value={streak?.current_streak ?? 0} />
+            <Tile icon={Trophy} label={t('stats.mostInARow')} value={streak?.longest_streak ?? 0} />
           </View>
           <View style={styles.tileRow}>
-            <Tile label={t('stats.weeksAtGoal', { n: GOAL })} value={weeksAtGoal} />
-            <Tile label={t('stats.bestWeek')} value={bestWeek} />
+            <Tile icon={Target} label={t('stats.weeksAtGoal', { n: GOAL })} value={weeksAtGoal} />
+            <Tile icon={Star} label={t('stats.bestWeek')} value={bestWeek} />
           </View>
 
           {hasHistory ? (
@@ -127,10 +131,14 @@ export default function StatsScreen() {
   );
 }
 
-function Tile({ label, value }: { label: string; value: number }) {
+/** The household's records. An icon in a white disc tells the four apart at a glance (Ricardo, 2026-09-30). */
+function Tile({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: number }) {
   return (
     <View style={styles.tile}>
-      <Text style={styles.tileLabel} numberOfLines={1}>
+      <View style={styles.tileDisc}>
+        <Icon size={16} color={colors.ink} />
+      </View>
+      <Text style={styles.tileLabel} numberOfLines={2}>
         {label}
       </Text>
       <Text style={styles.tileValue}>{value}</Text>
@@ -142,7 +150,9 @@ const styles = StyleSheet.create({
   content: { paddingTop: 8, paddingBottom: 32, gap: 10 },
   tileRow: { flexDirection: 'row', gap: 10, paddingHorizontal: 20 },
   tile: { flex: 1, padding: 14, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 2 },
-  tileLabel: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
+  tileDisc: { width: 32, height: 32, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 8 },
+  // Two lines so "Most dinners in a row" fits a half-width tile; the height is fixed so the numbers line up.
+  tileLabel: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, minHeight: 36, color: colors.ink2 },
   tileValue: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, letterSpacing: -0.6 },
   card: { marginHorizontal: 20, padding: 16, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 12 },
   body: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },

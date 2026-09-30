@@ -177,7 +177,7 @@
   "stats": {
     "title": "Le tue statistiche",
     "dinnersInARow": "Cene di fila",
-    "longestRun": "Serie più lunga",
+    "mostInARow": "Più cene di fila",
     "weeksAtGoal": "Settimane a {n}",
     "bestWeek": "Settimana migliore",
     "perWeekTitle": "Piante per settimana",
