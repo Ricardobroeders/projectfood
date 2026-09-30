@@ -13,10 +13,12 @@ const SWEEP = 200;
 /** Wedges on the arc (Ricardo, 2026-09-25: 30 was too many, 15 too chunky, 18 with the wider gaps). 30 plants make 1⅔ per wedge. */
 const WEDGES = 18;
 /**
- * Opacity of a wedge that is partly earned: its colour, softened. A wedge goes half at a quarter of
- * its span and full at three quarters, so with 0.6 wedge per plant every plant changes something.
+ * A wedge is either its full colour or grey, nothing in between (Ricardo, 2026-09-30: the half-lit
+ * wedge read as a bug). It lights once half of its span is earned, so the first plant lights the
+ * first wedge, 29 leaves one grey and 30 lights the last; with 0.6 wedge per plant some single
+ * plants change nothing on the arc, and the number in the middle carries those.
  */
-const HALF_LIT = 0.45;
+const LIT_AT = 0.5;
 /**
  * A stroke in the wedge's own colour rounds its corners; the corner radius is half of it (the SVG
  * Ricardo drew, 2026-09-25; 3 → 8 the same day, "slightly bigger, more playful"). The stroke grows
@@ -116,10 +118,8 @@ export function GoalGauge({ value, max, size = 280, children }: Props) {
 
 function Wedge({ index, d, color, fill }: { index: number; d: string; color: string; fill: SharedValue<number> }) {
   const animatedProps = useAnimatedProps(() => {
-    // full past three quarters of the wedge, half past a quarter, grey before
-    const lit = fill.value >= index + 0.75 ? 1 : fill.value >= index + 0.25 ? HALF_LIT : 0;
-    const on = lit > 0 ? color : colors.hairline;
-    return { fill: on, stroke: on, fillOpacity: lit > 0 ? lit : 1, strokeOpacity: lit > 0 ? lit : 1 };
+    const on = fill.value >= index + LIT_AT ? color : colors.hairline;
+    return { fill: on, stroke: on };
   });
   return <AnimatedPath d={d} animatedProps={animatedProps} strokeWidth={ROUND} strokeLinejoin="round" />;
 }
