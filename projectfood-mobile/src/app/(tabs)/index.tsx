@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { Flame, Plus, Snowflake } from 'lucide-react-native';
+import { ChartNoAxesColumn, Flame, Plus, Snowflake } from 'lucide-react-native';
 import { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
@@ -67,13 +67,22 @@ export default function HomeScreen() {
       <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.title}>{t('home.greeting')}</Text>
-          {streak && streak.current_streak > 0 ? (
-            <View style={styles.streak}>
-              <Flame size={16} color={colors.accentPressed} />
-              <Text style={styles.streakText}>{streak.current_streak === 1 ? t('home.streakOne') : t('home.streak', { n: streak.current_streak })}</Text>
-              {streak.freeze_used_on ? <Snowflake size={14} color={colors.ink3} /> : null}
-            </View>
-          ) : null}
+          {/* The door to the stats screen in both states: with a streak it reads the streak, without one the
+              page name, so the page is always one tap away (Ricardo, 2026-09-30). */}
+          <Pressable onPress={() => router.push('/stats')} accessibilityRole="button" style={({ pressed }) => [styles.streak, pressed && { opacity: 0.8 }]}>
+            {streak && streak.current_streak > 0 ? (
+              <>
+                <Flame size={16} color={colors.accentPressed} />
+                <Text style={styles.streakText}>{streak.current_streak === 1 ? t('home.streakOne') : t('home.streak', { n: streak.current_streak })}</Text>
+                {streak.freeze_used_on ? <Snowflake size={14} color={colors.ink3} /> : null}
+              </>
+            ) : (
+              <>
+                <ChartNoAxesColumn size={16} color={colors.accentPressed} />
+                <Text style={styles.streakText}>{t('home.statsChip')}</Text>
+              </>
+            )}
+          </Pressable>
         </View>
 
         {/* Grey surface on white, no shadow: the distinction rule from the first device test. */}

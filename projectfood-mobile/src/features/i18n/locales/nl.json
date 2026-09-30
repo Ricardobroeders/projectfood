@@ -112,6 +112,7 @@
     "nextGoals": "Volgende doelen",
     "streak": "{n} avondmalen op rij",
     "streakOne": "1 avondmaal gelogd",
+    "statsChip": "Jouw statistieken",
     "freezeUsed": "Joker gebruikt",
     "cta": "Eten van vandaag loggen",
     "tastedBy": "{name}: {n}"
@@ -172,6 +173,18 @@
     "done": "Klaar",
     "next": "Volgende",
     "levelOf": "Level {n} van {m}"
+  },
+  "stats": {
+    "title": "Jouw statistieken",
+    "dinnersInARow": "Avondmalen op rij",
+    "longestRun": "Langste reeks",
+    "weeksAtGoal": "Weken op {n}",
+    "bestWeek": "Beste week",
+    "perWeekTitle": "Planten per week",
+    "perWeekBody": "Verschillende planten die het gezin proefde, van maandag tot zondag. De lijn is {n}, de lichtere balk is deze week.",
+    "perDayTitle": "Planten per dag",
+    "perDayBody": "Verschillende planten op tafel per dag, de laatste 4 weken.",
+    "empty": "Log de eerste plant en de weken vullen zich hier."
   },
   "plant": {
     "family": "Familie",

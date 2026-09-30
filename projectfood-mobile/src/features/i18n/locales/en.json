@@ -112,6 +112,7 @@
     "nextGoals": "Next goals",
     "streak": "{n} dinners in a row",
     "streakOne": "1 dinner logged",
+    "statsChip": "Your stats",
     "freezeUsed": "Freeze used",
     "cta": "Log today's food",
     "tastedBy": "{name}: {n}"
@@ -172,6 +173,18 @@
     "done": "Done",
     "next": "Next",
     "levelOf": "Level {n} of {m}"
+  },
+  "stats": {
+    "title": "Your stats",
+    "dinnersInARow": "Dinners in a row",
+    "longestRun": "Longest run",
+    "weeksAtGoal": "Weeks at {n}",
+    "bestWeek": "Best week",
+    "perWeekTitle": "Plants per week",
+    "perWeekBody": "Different plants the family tasted, Monday to Sunday. The line is {n}, the lighter bar is this week.",
+    "perDayTitle": "Plants per day",
+    "perDayBody": "Different plants on the table each day, the last 4 weeks.",
+    "empty": "Log the first plant and the weeks start filling up here."
   },
   "plant": {
     "family": "Family",

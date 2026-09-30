@@ -112,6 +112,7 @@
     "nextGoals": "Prossimi traguardi",
     "streak": "{n} cene di fila",
     "streakOne": "1 cena registrata",
+    "statsChip": "Le tue statistiche",
     "freezeUsed": "Jolly usato",
     "cta": "Registra il cibo di oggi",
     "tastedBy": "{name}: {n}"
@@ -172,6 +173,18 @@
     "done": "Fatto",
     "next": "Prossimo",
     "levelOf": "Livello {n} di {m}"
+  },
+  "stats": {
+    "title": "Le tue statistiche",
+    "dinnersInARow": "Cene di fila",
+    "longestRun": "Serie più lunga",
+    "weeksAtGoal": "Settimane a {n}",
+    "bestWeek": "Settimana migliore",
+    "perWeekTitle": "Piante per settimana",
+    "perWeekBody": "Piante diverse assaggiate dalla famiglia, da lunedì a domenica. La linea è {n}, la barra più chiara è questa settimana.",
+    "perDayTitle": "Piante per giorno",
+    "perDayBody": "Piante diverse a tavola ogni giorno, le ultime 4 settimane.",
+    "empty": "Registra la prima pianta e le settimane si riempiono qui."
   },
   "plant": {
     "family": "Famiglia",

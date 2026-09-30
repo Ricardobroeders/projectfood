@@ -124,6 +124,7 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
         <Stack.Screen name="(tabs)" options={{ animation: 'fade' }} />
         <Stack.Screen name="plant/[id]" options={{ presentation: 'modal', animation: 'slide_from_bottom' }} />
         <Stack.Screen name="unlocks/[category]" />
+        <Stack.Screen name="stats" />
         <Stack.Screen name="account/members" />
         <Stack.Screen name="account/household" />
         <Stack.Screen name="account/language" />
