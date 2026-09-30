@@ -80,7 +80,7 @@ template or an asset first and are Claude's build steps, not queue rows._
 | 2.4 | EN lists and tools: picky eater food list · picky eater chart (printable landing) · picky eater checklist | en | routine | 3 nights |
 | 2.5 | Siblings: `hiding-vegetables` (en), `toddler-wont-eat-vegetables` (it) | en, it | routine | 2 nights |
 | 2.6 | NL `geen-strijd-aan-tafel` | nl | rows written 2026-09-29, routine | 1 night |
-| 2.7 | Printables hub + tasting chart, plant cards, veg bingo landing pages | nl, it, en | PDFs Ricardo (Figma, existing renders); pages Claude | M + M |
+| 2.7 | Printables hub + tasting chart, plant cards, veg bingo landing pages. **Parked 2026-09-30 by Ricardo:** he wants to think through how to do the printables first; nothing is built until he comes back to it | nl, it, en | Ricardo decides the approach, then PDFs (Figma); pages Claude | M + M |
 | 2.8 | Plant pages `/[locale]/plants/[slug]` from the database; 40 most-tasted indexed, 184 `noindex` until reviewed (item 5) | nl, it, en | Claude | L |
 | 2.9 | Honest app comparison ("game, not therapy") | en, then nl, it | Ricardo tests the apps, Claude writes | M |
 | 2.10 | Second daily trigger if quality holds after two weeks; routine model decision (Opus 5) | | Ricardo decides | S |

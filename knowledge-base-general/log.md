@@ -967,3 +967,9 @@ and `softwareApplicationNode()` (emits once `playPublic`). Manifest description 
 `theme_color` `#F5C518`. The header's "Open the app" still opens the PWA login for the adult
 accounts. Updated: seo-roadmap, strategy-backlog (item 15, row 6), brand-voice and
 brand-stats-and-claims (the claim is gone), messages ×3, home and About pages, manifest.
+
+## [2026-09-30] build | Printables hub parked
+Ricardo parked roadmap row 2.7 (printables hub and the three landing pages): he wants to think
+through how to do the printables before anything is built. Recorded on [[seo-roadmap]] and in
+the backlog (item 15, row 6). Batch 2 continues from the queue; the next Claude build steps are
+the plant-page template and the comparison page.
