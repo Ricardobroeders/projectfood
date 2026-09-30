@@ -18,7 +18,8 @@ the same day.
 ## Context
 The Play closed test went live on 2026-09-27 with versionCode 7 / 1.0.2 (runtime `d8da0646`).
 Testers are friends and family recruited by Ricardo over WhatsApp; 13 invited, 6 opted in by
-2026-09-29 according to Google; Supabase the same evening showed 12 accounts (Ricardo's included) that
+2026-09-29 according to Google, **12 on the morning of 2026-09-30**, which started the fourteen days
+(apply for production from 2026-10-14); Supabase the same evening showed 12 accounts (Ricardo's included) that
 had signed in on the Play build since 2026-09-27, 9 of them logging plants, two invitees not yet
 installed, and two people signed in with a different Google address than the one on the list (twelve are needed for fourteen continuous days, see [[strategy-backlog]] item 14 and
 "The one thing"). This page is the single record for Google's production-access application,

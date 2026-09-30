@@ -1069,3 +1069,12 @@ Size for new installs 24.5 MB, 14.7 KB more than versionCode 7 (checked against 
 17 KB before compression; per device about 23 MB native libraries, 17 MB Java, 8 MB resources,
 6 MB JavaScript). Managed publishing off, so it goes live on the track by itself after review.
 Watch: the opted-in count must not move.
+
+## [2026-09-30] ops | Twelve opted in: the fourteen-day clock runs, the one-thing block renumbered
+Google's dashboard showed the twelve-tester box ticked on the morning of 2026-09-30 (the two
+remaining invitees installed), so the closed test's fourteen days count from today and the
+"Apply for production" button should turn active on 2026-10-14, provided the count never dips
+below twelve. Line 1 of the one thing fell: the block now reads (1) Apple's 2.1 reply, (2) twelve
+stay twelve until 2026-10-14 with the application answered from the feedback page, (3) the
+fourteen days used well. Ladder redone for 2026-09-30. Item 14 and the interview page carry the
+date; tester names stay out of the wiki.
