@@ -1044,3 +1044,10 @@ rectangle on the UI thread, balloons `swap` out and `modal` in as the hole lands
 fail-safe that ends a tutorial whose control never reports in. Start wait 700 → 350 ms.
 Commit 4e07d2f; Android group 094a0a5d on d8da0646, iOS group b2c067ea on acf2e071. Updated:
 decision page (item 5, motion), interview page, backlog item 24.
+
+## [2026-09-30] build | 1.0.12: survey banner off Home
+Ricardo saw testers open the survey on their first launch, from the Home banner, before using
+the app. Banner removed (commit 0485896; Android group 7b73bf4a on d8da0646, iOS group d94dd0c3
+on acf2e071); the survey stays under Account and the moment to ask is still open on
+[[research-survey-plan]]. Also answered: the tutorial's seen flag lives on the phone (AsyncStorage,
+keyed by household), not on the server; the `tutorial` events in `app_events` are the record.

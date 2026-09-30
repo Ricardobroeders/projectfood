@@ -3,7 +3,7 @@ title: User survey plan (target ~2026-06)
 type: plan
 tags: [user-research, survey, pricing, ux]
 created: 2026-05-30
-updated: 2026-09-06
+updated: 2026-09-30
 sources: []
 status: deprioritised
 target_send: 2026-06-30
@@ -50,6 +50,7 @@ than an external tool. Decided 2026-05-30.
   completing it in one sitting.)
 - **Evolvable / "alive".** Questions live in the DB. Add new ones over time and returning users
   see the new ones they haven't answered yet — an ongoing feedback channel, not a one-shot.
+- _2026-09-30: the Home banner that pointed at the survey was removed in 1.0.12 (Ricardo: closed testers tapped it on their first open, before using the app). The survey stays under Account; the moment to ask is still to be chosen, after real use._
 - **Native prompting.** Nudge via in-app notification on next login (re-use the existing
   notification system) instead of email.
 - **Simple field types.** Mostly radio, checkbox, short text, number — cheap to build.

@@ -86,6 +86,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   overlay pops again. Asked for the open, close and step change as motions. 1.0.11: the `guide`
   motion class (iris in, glide between controls, release out; balloon swap).
 
+- **2026-09-30, 1.0.2 to 1.0.11 (Play 7), Ricardo from the data: several testers opened the
+  survey on their first open,** from the yellow banner on Home, before they had used the app.
+  1.0.12 removes the banner; the survey stays under Account, and the moment to ask comes later
+  ([[research-survey-plan]]).
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -128,6 +133,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   without the row's bottom margin.
 - 2026-09-30, 1.0.11 over the air (commit 4e07d2f; Android group 094a0a5d, iOS group b2c067ea):
   the tutorial in motion, see the decision page's "Motion" item; the start wait halved.
+- 2026-09-30, 1.0.12 over the air (commit 0485896; Android group 7b73bf4a, iOS group d94dd0c3):
+  no survey banner on Home.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
