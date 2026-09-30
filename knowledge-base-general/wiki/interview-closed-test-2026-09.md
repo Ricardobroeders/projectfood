@@ -61,11 +61,11 @@ date, who (first name or role, never more), the words, what we did.
 - 2026-09-29, 1.0.3 over the air on both runtimes (commits 9f22586 and fab9ac3): the sign-in heading, the Google G, and six iOS points from Ricardo's own recording run on Alissa's iPhone (iOS 26): the Log search placeholder letter-spaced (now drawn by our own Text), the week chip's "0" below the "/30" (AnimatedNumber is a plain Text again), text sitting low in every input (inputs are text-high inside their boxes), the add-a-person sheet pushed under the status bar by the keyboard (sheets keep the top inset and shrink), the flip card opening behind the plant screen and hanging the app (the plant screen hosts its own card). Not a bug: no iOS permission dialog on a second account on the same phone, iOS asks once per install; delete and reinstall from TestFlight to see it again.
 - "Why 30" explanation: parked by Ricardo on 2026-09-29 ("let's wait a bit longer before solving this problem"), maybe combined with a 3-step tutorial later; parking-lot entry and brainstorm 21 in [[strategy-backlog]]. The two drafted options above stay here for that brainstorm.
 
-- 2026-09-30, built and pushed (commit 6bad6d1), not yet over the air: the stats screen ("Your
+- 2026-09-30, 1.0.4 over the air on both runtimes (commit 6bad6d1; Android group 136895c6, iOS group ee8ae253): the stats screen ("Your
   stats", reached from the streak chip on Home, which now shows in both states so the page is
   always one tap away): dinners in a row, longest run, weeks at 30, best week, plants per week as
   bars against the 30 line, plants per day for the last four weeks, one sentence under each
-  chart. Ships over the air once Ricardo has read the copy ([[strategy-backlog]] item 22).
+  chart. Copy read and approved by Ricardo before the publish ([[strategy-backlog]] item 22).
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

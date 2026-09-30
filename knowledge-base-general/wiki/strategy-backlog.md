@@ -27,7 +27,7 @@ _Maintained by Claude after every session; this is the answer to "what's next?".
 **The one thing** (Keller and Papasan, [[decision-2026-09-29-one-thing-way-of-working]], 2026-09-29). The focusing question, asked every session: what is the one thing we can do such that by doing it everything else becomes easier or unnecessary? At most three lines. Everything below waits unless it is on the way to these.
 1. **Twelve opt-ins in the Play closed test** (Google showed 6 on 2026-09-29; Supabase that evening showed 12 accounts, Ricardo's included, signed in on the Play build since 2026-09-27, so Google's count lags and two invitees still have to install). It starts the fourteen-day clock that gates Play production access, the first release and every marketing step after; nothing else can start it. Ricardo chases the invited testers (join link on the Testers tab, the Google account the phone uses, Android only) and adds spare addresses so one dropout does not break the streak.
 2. **Apple's Guideline 2.1 reply** (Claude's reply and Notes text ready in [[seo-app-store-aso]]; Ricardo records on Alissa's iPhone on 2026-09-30, after the first recording run on 2026-09-29 turned up six iOS bugs, fixed and shipped over the air the same night as 1.0.3, see item 14). It keeps the iOS review moving while the Play clock runs; until the reply, 1.0.2 sits still.
-3. **The fourteen days used well.** The pending fixes went out over the air on 2026-09-29 as 1.0.3 (Android group 3aff760d on runtime d8da0646, iOS group ac8afdc3 on acf2e071); now collect what the testers say and what changed: Google's production-access application asks for recruitment, feedback and changes. Every point goes into [[interview-closed-test-2026-09]] the day it arrives (first one 2026-09-29: the app never says why 30 plants a week). Second point acted on 2026-09-30: a stats screen behind the Home streak chip (the PWA's weekly history, per household), built the same day, waits for Ricardo's copy check and then ships over the air (item 22).
+3. **The fourteen days used well.** The pending fixes went out over the air on 2026-09-29 as 1.0.3 (Android group 3aff760d on runtime d8da0646, iOS group ac8afdc3 on acf2e071); now collect what the testers say and what changed: Google's production-access application asks for recruitment, feedback and changes. Every point goes into [[interview-closed-test-2026-09]] the day it arrives (first one 2026-09-29: the app never says why 30 plants a week). Second point acted on 2026-09-30: a stats screen behind the Home streak chip (the PWA's weekly history, per household), built and published over the air the same day as 1.0.4 (Android group 136895c6 on d8da0646, iOS group ee8ae253 on acf2e071; item 22).
 
 Ladder on 2026-09-29: this month both stores live; this week twelve testers in and Apple answered; today chase the testers. Waiting on purpose: accent, website languages, agent-device, the Figma library, gold and cup renders. SEO left the waiting list on 2026-09-29 (Ricardo: grow search value quickly, there is time); its batch 0 and the queue refill run in the tester window and touch nothing the clock depends on ([[seo-audit-2026-09-29]]).
 
@@ -78,9 +78,10 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     the gauge's band colours against the 30 line, plants per day for the last four Monday-to-Sunday
     rows; `BarChart.tsx` is plain views, no SVG text. Reads `household_weekly_history` and
     `household_daily_activity`, which the achievements already keep warm, so no migration and
-    JavaScript only. Next: Ricardo reads the copy, then publish per platform (item 14 rules) and
-    check both runtimes in `update:list`; later, once families have more than twelve weeks, the
-    range grows back to the first log.
+    JavaScript only. Copy approved and published the same evening as 1.0.4 (fingerprints measured first, both
+    unchanged): Android group 136895c6 on d8da0646, iOS group ee8ae253 on acf2e071. Next: Ricardo
+    checks it on the OnePlus and Alissa's iPhone; later, once families have more than twelve
+    weeks, the range grows back to the first log.
 16. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**

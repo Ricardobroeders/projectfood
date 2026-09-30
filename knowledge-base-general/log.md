@@ -979,6 +979,7 @@ Ricardo asked for the PWA's "Weekly history" in the app, reached from the Home s
 the testers who build up history. Built and pushed the same day (commit 6bad6d1, JavaScript
 only, no migration): four tiles, plants per week against the 30 line in the gauge's band
 colours, plants per day for the last four weeks, copy in en/nl/it. The chip is now a button in
-both states ("Your stats" when there is no streak). Not yet published over the air: Ricardo reads
-the copy first. One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
+both states ("Your stats" when there is no streak). Ricardo approved the copy and it went over
+the air the same evening as 1.0.4 (fingerprints checked first: Android group 136895c6 on
+d8da0646, iOS group ee8ae253 on acf2e071). One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
 (one thing line 3, new item 22), [[interview-closed-test-2026-09]].
