@@ -62,6 +62,16 @@ screen shows which one), who (first name or role, never more), the words, what w
   the same day, [[decision-2026-09-30-first-minute-tutorial]] (four balloons, the copy to the
   person holding the phone, the last one on logging for the whole family), 1.0.7.
 
+- **2026-09-30, 1.0.7 (Play 7), Ricardo's run of the tutorial on the OnePlus:** the holes sat
+  exactly on the tab, the row and the chip; the first balloon never showed; the hole wanted the
+  control's corner radius and a slightly lighter dim; the family balloon was redundant with
+  onboarding step 2 and pointed at a bar that cannot add anyone; on onboarding step 3 the label
+  "Step 3" ran off the screen next to the long title. All in 1.0.8 the same hour.
+- **2026-09-30, 1.0.2 to 1.0.7 (Play 7), Bram: a plant that is not in the list cannot be
+  suggested,** because the "Missing from our list?" block only appears with zero results and the
+  fuzzy search nearly always returns something, just the wrong plant. 1.0.8: the block also sits
+  under the results whenever there is a search term.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -92,6 +102,10 @@ screen shows which one), who (first name or role, never more), the words, what w
   the first-minute tutorial, four balloons once per phone (every tester sees it once on the next
   launch), and the greeting by the hour. Answers "no onboarding", "why 30" and "Good evening in
   the morning" above.
+- 2026-09-30, 1.0.8 over the air (commit 21893b6; Android group 52b0bc3d, iOS group 35c3a31a):
+  tutorial down to three balloons, the first one visible, a rounded hole and a lighter dim;
+  onboarding titles wrap so "Step 3" stays on screen; the suggest-a-plant block under the search
+  results too (Bram); "Suggestion sent" without its exclamation mark.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

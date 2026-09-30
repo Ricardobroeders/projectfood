@@ -1008,3 +1008,14 @@ the fingerprint check as 1.0.7: Android group eb5a3aec on d8da0646, iOS group 42
 acf2e071. Every tester sees the tutorial once on the next launch. Built blind; Ricardo checks the
 positions on the OnePlus. Updated: the decision page (accepted, shipped copy), backlog (items 23
 and 24 done, brainstorm 21 closed, parking-lot entry out), interview page, index.
+
+## [2026-09-30] build | 1.0.8: tutorial fixes from the first run, suggest a plant under results
+Ricardo ran 1.0.7 on the OnePlus: holes placed right, first balloon never shown (opacity gated on
+a measured height, frozen at 0 by the entering animation), hole corners square, dim a touch heavy,
+the family balloon redundant with onboarding step 2, "Step 3" off screen on the long onboarding
+title. Bram: a plant not in the list cannot be suggested because the fuzzy search never returns
+nothing. All shipped as 1.0.8 (commit 21893b6; Android group 52b0bc3d on d8da0646, iOS group
+35c3a31a on acf2e071): three balloons, SVG-masked rounded hole at 0.45 with a white ring,
+balloon anchored by its bottom edge above the hole, titles wrap, the suggestion block under
+results, "Suggestion sent" without "!". Updated: decision page, interview page (both points with
+versions), backlog item 24.

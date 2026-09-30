@@ -15,7 +15,10 @@ sources: []
 copy speaks to the person holding the phone, not "the family", and the last balloon is about adding
 family members and logging for everyone, so nobody using the app alone feels excluded). Built and
 over the air the same day as 1.0.7 (commit 92a8253; Android group eb5a3aec on d8da0646, iOS group
-42c3a8da on acf2e071).
+42c3a8da on acf2e071). Ricardo's first run on the OnePlus led to 1.0.8 an hour later (commit
+21893b6; Android group 52b0bc3d, iOS group 35c3a31a): **three balloons**, the family one dropped
+because onboarding step 2 already adds the family and the who-logs bar cannot add anyone; the
+first balloon had never shown; the hole got the control's corner radius and a lighter dim.
 
 ## Context
 Two closed-test points on 1.0.2 and 1.0.3 (Play build 7, [[interview-closed-test-2026-09]]): "no
@@ -31,7 +34,7 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
 [[strategy-backlog]] and the parking-lot entry "Why 30, and a 3-step tutorial" are answered here.
 
 ## Decision
-1. **Four coach marks, once per phone, right after onboarding.** They start on the first Home
+1. **Three coach marks (four until 1.0.8), once per phone, right after onboarding.** They start on the first Home
    render after `onboarded_at` is set, and once on the next launch for the households that were
    onboarded before the update (so every current tester sees it once). A local persisted flag
    (`tutorialSeenAt` in the ui store, like `holdHintSeen`) ends it; a reinstall shows it again,
@@ -59,26 +62,29 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
       hoeveelheid." · "30 piante diverse a settimana" / "La linea guida viene dall'American Gut
       Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una
       flora intestinale più varia. Conta la varietà, non la quantità."
-   4. Log, the **who-logs bar** lit: "Log for the whole family" / "Add family members here and
-      choose who a tap logs for. Hold a plant to say who tasted it." · "Log voor het hele gezin" /
-      "Voeg hier gezinsleden toe en kies voor wie een tik logt. Houd een plant vast om te zeggen
-      wie hem heeft geproefd." · "Registra per tutta la famiglia" / "Aggiungi qui i familiari e
-      scegli per chi registra un tocco. Tieni premuta una pianta per dire chi l'ha assaggiata."
-      Done ends the tutorial on Log, ready to tap; opening the bar during this step ends it too.
+   Done on balloon 3 ends the tutorial on Log, ready to tap. A fourth balloon on the who-logs bar
+   ("Log for the whole family" / "Add family members here and choose who a tap logs for. Hold a
+   plant to say who tasted it.") shipped in 1.0.7 and was dropped in 1.0.8 the same day (Ricardo:
+   onboarding step 2 already adds the family, and the bar cannot add anyone; the copy is kept
+   here in case a later "add someone" balloon is wanted from the member menu).
    Buttons: Next / Volgende / Avanti, Done / Klaar / Fatto; the X is "Skip the tutorial" /
    "Uitleg overslaan" / "Salta la spiegazione" for screen readers. The Unlocks tab balloon of the
-   draft was dropped: balloon 2 names the cards and where they live.
+   draft was dropped too: balloon 2 names the cards and where they live.
 3. **Mechanics** (as built): `tutorialStep`, `tutorialSeenAt` (persisted) and `tutorialAnchors`
    in the ui store (`src/state/ui.ts`); `useTutorialAnchor` / `TutorialAnchorView`
    (`src/features/tutorial/`) report a control's window rectangle while a tutorial runs, on
    layout and again 250 ms after a step change; the steps in `steps.ts`; `useTutorialStart` waits
    for the persisted store to hydrate and starts 700 ms after the tabs mount when `tutorialSeenAt`
    is null. `TutorialOverlay` sits in the tabs layout in the same box as the tabs and the tab bar
-   (so window coordinates are its coordinates) and draws four dim rectangles around a rounded
-   hole with a white ring, and the balloon under the hole when there is room, above it otherwise;
-   the hole is empty, so the control underneath stays live. Step 1 advances when the path becomes
-   `/log`, however the person got there; the last step ends when the member menu opens. Events:
-   `tutorial` with `step` and `action` (next, done, skip, tapped). Plain views, no native module.
+   (so window coordinates are its coordinates). Since 1.0.8 the dim is one SVG rectangle with a
+   mask that cuts a hole with the control's own corner radius (16 tab, 30 row, 18 chip, set per
+   step) and a white ring, at 0.45 opacity (0.55 was heavy); four transparent pressables around
+   the hole swallow taps so the control stays live. The balloon goes under the hole when there is
+   about 260 px of room, else above it anchored by its bottom edge, so its height is never
+   measured (1.0.7 gated its opacity on a measured height and the entering animation froze the
+   first balloon at 0: it never showed). Step 1 advances when the path becomes `/log`, however
+   the person got there. Events: `tutorial` with `step` and `action` (next, done, skip).
+   react-native-svg was already a dependency (the gauge), so still no native change.
 4. **The hold hint on Log** stays for households with more than one member; balloon 2 says the
    same in passing, and the hint disappears on the first hold as today.
 
@@ -101,8 +107,8 @@ and where the reward lives, which is Ricardo's list of 2026-09-30.
   for where people skip.
 - The app finally names the source of the 30 in the product, within the claims rule.
 - Follow-ups: the greeting by the hour shipped in the same update (Ricardo's pick, 2026-09-30);
-  later a "Why 30?" sheet from the gauge if testers still ask; the balloons were built without a
-  device, so Ricardo's first run on the OnePlus checks the hole and caret positions.
+  later a "Why 30?" sheet from the gauge if testers still ask. Ricardo's first run on the OnePlus
+  (1.0.7) found the holes placed right on Android; iOS still unseen.
 
 ## Related pages
 - [[interview-closed-test-2026-09]] · [[strategy-backlog]] (brainstorm 21, items 23 and 24)

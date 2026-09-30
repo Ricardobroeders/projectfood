@@ -97,9 +97,13 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     per phone, X to skip: the Log tab on Home, the first plant row and the week chip on Log (the
     30 line, stats row 7), the who-logs bar for the family. `tutorialSeenAt` in the ui store,
     `useTutorialAnchor` on the four controls, `TutorialOverlay` in the tabs layout, `tutorial`
-    events (next, done, skip, tapped). Built without a device: Ricardo's first run on the OnePlus
-    checks the hole and caret positions; the X ends it in any case. Next: read the `tutorial`
-    events after a week for where people skip.
+    events (next, done, skip). Ricardo's first run on the OnePlus the same hour: holes placed
+    right; the first balloon never showed, the hole wanted round corners, the family balloon was
+    redundant with onboarding step 2. Fixed as 1.0.8 (commit 21893b6; Android group 52b0bc3d, iOS
+    group 35c3a31a): three balloons, SVG-masked rounded hole at 0.45, height-free balloon
+    placement. Same update: "Step 3" back on screen in onboarding, the suggest-a-plant block
+    under the search results (Bram). iOS still unseen. Next: read the `tutorial` events after a
+    week for where people skip.
 16. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**
