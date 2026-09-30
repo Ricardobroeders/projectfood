@@ -996,3 +996,15 @@ coach-mark balloons after onboarding, always skippable). Drafted
 why-30 line on the week chip within stats row 7, and the build mechanics; backlog brainstorm 21
 progressed, items 23 (his two picks) and 24 (the build) added, the "why 30" parking-lot entry
 marked taken up. Updated: interview page (version tags on every entry), backlog, index.
+
+## [2026-09-30] build | First-minute tutorial and greeting by the hour, 1.0.7 over the air
+Ricardo picked the greeting by the hour and approved the four balloons with two changes (the
+copy to the person holding the phone; the last balloon on adding family members and logging for
+everyone). Built the same afternoon (commit 92a8253): `tutorialStep` / `tutorialSeenAt` /
+`tutorialAnchors` in the ui store, `useTutorialAnchor` on the Log tab, the first plant row, the
+week chip and the who-logs bar, `TutorialOverlay` in the tabs layout (dim with a live hole,
+balloon with caret, counter, Next / Done, X), `tutorial` events; en/nl/it copy. Published after
+the fingerprint check as 1.0.7: Android group eb5a3aec on d8da0646, iOS group 42c3a8da on
+acf2e071. Every tester sees the tutorial once on the next launch. Built blind; Ricardo checks the
+positions on the OnePlus. Updated: the decision page (accepted, shipped copy), backlog (items 23
+and 24 done, brainstorm 21 closed, parking-lot entry out), interview page, index.

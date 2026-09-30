@@ -5,14 +5,17 @@ tags: [decision, onboarding, first-minute, closed-test, why-30]
 created: 2026-09-30
 updated: 2026-09-30
 date: 2026-09-30
-status: proposed
+status: accepted
 sources: []
 ---
 
 # The first minute, a four-step tutorial after onboarding
 
-**Date:** 2026-09-30  **Status:** proposed (Claude's draft on Ricardo's direction; accepted once he
-has read the four balloons)
+**Date:** 2026-09-30  **Status:** accepted (Ricardo, 2026-09-30, with two changes to the draft: the
+copy speaks to the person holding the phone, not "the family", and the last balloon is about adding
+family members and logging for everyone, so nobody using the app alone feels excluded). Built and
+over the air the same day as 1.0.7 (commit 92a8253; Android group eb5a3aec on d8da0646, iOS group
+42c3a8da on acf2e071).
 
 ## Context
 Two closed-test points on 1.0.2 and 1.0.3 (Play build 7, [[interview-closed-test-2026-09]]): "no
@@ -33,28 +36,49 @@ caret at the highlighted element, a step counter, "Next", an X). Brainstorm 21 i
    onboarded before the update (so every current tester sees it once). A local persisted flag
    (`tutorialSeenAt` in the ui store, like `holdHintSeen`) ends it; a reinstall shows it again,
    which suits testers.
-2. **The balloons** (parent register, [[brand-voice]]; the 30 line is [[brand-stats-and-claims]]
-   row 7, adults, variety not amounts, never a promise for a child). Each balloon: title, one or
-   two sentences, a counter "1/4", "Next" (last one "Done"), an X in the corner that ends the
-   tutorial. English draft; nl and it are written natively with the build.
-   1. Home, the **Log tab** lit: "Log what the family tasted" / "After dinner, tap Log and tick the
-      plants that were on the table. A lick counts." Next opens Log.
-   2. Log, the **first plant row** lit: "Tap a plant to log it for today" / "Hold it to say who
-      tasted it. Every new plant becomes a card."
-   3. Log, the **week chip** lit: "The family counts to 30 a week" / "The 30 plants a week
-      guideline comes from the American Gut Project (2018): adults eating more than 30 different
-      plants a week had a more varied gut flora. Variety counts, not amounts."
-   4. Log, the **Unlocks tab** lit: "Cards and achievements live here" / "Every plant has a card
-      that levels up as it is tasted again, and achievements mark what the family did at the
-      table." Done ends the tutorial where the person stands, on Log, ready to tap.
-3. **Mechanics.** A `tutorial` slice in the ui store (step, start, next, end); the four anchors
-   register their window rectangle through a small hook (`useTutorialAnchor('logTab')` in the
-   tab bar, on the first `PlantRow`, on `WeekMeter`); one overlay mounted in the tabs layout
-   above the tab bar draws four dim rectangles around a rounded hole at the anchor and the
-   balloon below or above it with a caret. The hole passes taps to the real control, so tapping
-   the lit tab works as well as Next. Next on step 1 navigates to Log itself and waits for the
-   row and chip to report their position. Plain views, no native module, so it ships over the air
-   on both runtimes. Events: `tutorial` with step and action (next, skip, done).
+2. **The balloons** (parent register, [[brand-voice]], second person to the one holding the
+   phone; the 30 line is [[brand-stats-and-claims]] row 7, adults, variety not amounts, never a
+   promise for a child). Each balloon: title, one or two sentences, a counter "1/4", "Next" (last
+   one "Done"), an X in the corner that ends the tutorial. Shipped copy, en / nl / it:
+   1. Home, the **Log tab** lit: "Log what you tasted" / "After dinner, tap Log and tick the
+      plants you tasted. A lick counts." · "Log wat je hebt geproefd" / "Tik na het avondeten op
+      Loggen en vink de planten aan die je hebt geproefd. Een hap telt." · "Registra cosa hai
+      assaggiato" / "Dopo cena tocca Registra e segna le piante che hai assaggiato. Un assaggio
+      conta." Next opens Log; tapping the lit tab counts too.
+   2. Log, the **first plant row** lit: "Tap a plant to log it for today" / "Every new plant
+      becomes a card in Unlocks, and it levels up as you taste it again." · "Tik op een plant om
+      hem voor vandaag te loggen" / "Elke nieuwe plant wordt een kaart bij Behaald, en die gaat
+      een level omhoog als je hem vaker proeft." · "Tocca una pianta per registrarla per oggi" /
+      "Ogni pianta nuova diventa una carta nella Collezione e sale di livello quando la assaggi
+      di nuovo."
+   3. Log, the **week chip** lit: "30 different plants a week" / "The guideline comes from the
+      American Gut Project (2018): adults eating more than 30 different plants a week had a more
+      varied gut flora. Variety counts, not amounts." · "30 verschillende planten per week" / "De
+      richtlijn komt uit het American Gut Project (2018): volwassenen die meer dan 30 verschillende
+      planten per week aten, hadden een gevarieerdere darmflora. Variatie telt, niet de
+      hoeveelheid." · "30 piante diverse a settimana" / "La linea guida viene dall'American Gut
+      Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una
+      flora intestinale più varia. Conta la varietà, non la quantità."
+   4. Log, the **who-logs bar** lit: "Log for the whole family" / "Add family members here and
+      choose who a tap logs for. Hold a plant to say who tasted it." · "Log voor het hele gezin" /
+      "Voeg hier gezinsleden toe en kies voor wie een tik logt. Houd een plant vast om te zeggen
+      wie hem heeft geproefd." · "Registra per tutta la famiglia" / "Aggiungi qui i familiari e
+      scegli per chi registra un tocco. Tieni premuta una pianta per dire chi l'ha assaggiata."
+      Done ends the tutorial on Log, ready to tap; opening the bar during this step ends it too.
+   Buttons: Next / Volgende / Avanti, Done / Klaar / Fatto; the X is "Skip the tutorial" /
+   "Uitleg overslaan" / "Salta la spiegazione" for screen readers. The Unlocks tab balloon of the
+   draft was dropped: balloon 2 names the cards and where they live.
+3. **Mechanics** (as built): `tutorialStep`, `tutorialSeenAt` (persisted) and `tutorialAnchors`
+   in the ui store (`src/state/ui.ts`); `useTutorialAnchor` / `TutorialAnchorView`
+   (`src/features/tutorial/`) report a control's window rectangle while a tutorial runs, on
+   layout and again 250 ms after a step change; the steps in `steps.ts`; `useTutorialStart` waits
+   for the persisted store to hydrate and starts 700 ms after the tabs mount when `tutorialSeenAt`
+   is null. `TutorialOverlay` sits in the tabs layout in the same box as the tabs and the tab bar
+   (so window coordinates are its coordinates) and draws four dim rectangles around a rounded
+   hole with a white ring, and the balloon under the hole when there is room, above it otherwise;
+   the hole is empty, so the control underneath stays live. Step 1 advances when the path becomes
+   `/log`, however the person got there; the last step ends when the member menu opens. Events:
+   `tutorial` with `step` and `action` (next, done, skip, tapped). Plain views, no native module.
 4. **The hold hint on Log** stays for households with more than one member; balloon 2 says the
    same in passing, and the hint disappears on the first hold as today.
 
@@ -76,8 +100,9 @@ and where the reward lives, which is Ricardo's list of 2026-09-30.
 - Every closed tester sees the four balloons once after the update; watch the `tutorial` events
   for where people skip.
 - The app finally names the source of the 30 in the product, within the claims rule.
-- Follow-ups: nl and it copy with the build; the greeting by time of day (decided separately);
-  later a "Why 30?" sheet from the gauge if testers still ask.
+- Follow-ups: the greeting by the hour shipped in the same update (Ricardo's pick, 2026-09-30);
+  later a "Why 30?" sheet from the gauge if testers still ask; the balloons were built without a
+  device, so Ricardo's first run on the OnePlus checks the hole and caret positions.
 
 ## Related pages
 - [[interview-closed-test-2026-09]] · [[strategy-backlog]] (brainstorm 21, items 23 and 24)

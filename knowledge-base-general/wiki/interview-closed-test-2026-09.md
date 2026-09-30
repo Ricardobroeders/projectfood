@@ -58,8 +58,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   are important" and "No onboarding".** The same gap as the 2026-09-29 point, now from more than
   one person. Ricardo's direction the same day: three or four onboarding markers after the
   onboarding steps (log, tap a plant and the 1/30 chip, the Unlocks tab, achievements and per-plant
-  progress), coach-mark balloons like Avito's and Ozon's, always with a skip. Drafted as
-  [[decision-2026-09-30-first-minute-tutorial]] (status proposed, four balloons with copy).
+  progress), coach-mark balloons like Avito's and Ozon's, always with a skip. Decided and shipped
+  the same day, [[decision-2026-09-30-first-minute-tutorial]] (four balloons, the copy to the
+  person holding the phone, the last one on logging for the whole family), 1.0.7.
 
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
@@ -87,6 +88,10 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-09-30, 1.0.6 over the air (commit 8dd876c; Android group 7e3346f6, iOS group f16d2b6c),
   Ricardo's next look at Home: the goal gauge's half-lit wedge (a partly earned wedge at 45%
   opacity) read as a bug; wedges are now full colour or grey, lit once half their span is earned.
+- 2026-09-30, 1.0.7 over the air (commit 92a8253; Android group eb5a3aec, iOS group 42c3a8da):
+  the first-minute tutorial, four balloons once per phone (every tester sees it once on the next
+  launch), and the greeting by the hour. Answers "no onboarding", "why 30" and "Good evening in
+  the morning" above.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
