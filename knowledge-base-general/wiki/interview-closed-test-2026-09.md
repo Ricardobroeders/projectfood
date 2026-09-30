@@ -66,6 +66,9 @@ date, who (first name or role, never more), the words, what we did.
   always one tap away): dinners in a row, longest run, weeks at 30, best week, plants per week as
   bars against the 30 line, plants per day for the last four weeks, one sentence under each
   chart. Copy read and approved by Ricardo before the publish ([[strategy-backlog]] item 22).
+- 2026-09-30, 1.0.5 over the air (commit 6c1a215; Android group e2dea66f, iOS group 52fe7e63),
+  from Ricardo's first look on the OnePlus: an icon per record tile, "Longest run" renamed "Most
+  dinners in a row" (it was unclear), the day chart ends today so the bars fill the card.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

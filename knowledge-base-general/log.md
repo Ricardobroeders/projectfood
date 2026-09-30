@@ -981,5 +981,7 @@ only, no migration): four tiles, plants per week against the 30 line in the gaug
 colours, plants per day for the last four weeks, copy in en/nl/it. The chip is now a button in
 both states ("Your stats" when there is no streak). Ricardo approved the copy and it went over
 the air the same evening as 1.0.4 (fingerprints checked first: Android group 136895c6 on
-d8da0646, iOS group ee8ae253 on acf2e071). One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
+d8da0646, iOS group ee8ae253 on acf2e071). His first look the next morning led to 1.0.5 within
+the hour: icons on the tiles, "Most dinners in a row" instead of "Longest run", the day chart
+ending today (Android group e2dea66f, iOS group 52fe7e63). One-thing check: line 3 work, lines 1 and 2 are his today. Updated: the backlog
 (one thing line 3, new item 22), [[interview-closed-test-2026-09]].

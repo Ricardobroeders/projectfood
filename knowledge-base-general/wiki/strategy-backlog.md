@@ -79,9 +79,14 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     rows; `BarChart.tsx` is plain views, no SVG text. Reads `household_weekly_history` and
     `household_daily_activity`, which the achievements already keep warm, so no migration and
     JavaScript only. Copy approved and published the same evening as 1.0.4 (fingerprints measured first, both
-    unchanged): Android group 136895c6 on d8da0646, iOS group ee8ae253 on acf2e071. Next: Ricardo
-    checks it on the OnePlus and Alissa's iPhone; later, once families have more than twelve
-    weeks, the range grows back to the first log.
+    unchanged): Android group 136895c6 on d8da0646, iOS group ee8ae253 on acf2e071. Ricardo's
+    first look on the OnePlus the next morning ("looks great", liked the green for weeks at 30):
+    "Longest run" unclear, icons wanted on the four tiles, the day chart left a gap at the right
+    (the days still to come). Shipped as 1.0.5 the same morning (commit 6c1a215; Android group
+    e2dea66f, iOS group 52fe7e63, runtimes unchanged): tiles with an icon in a white disc (flame,
+    trophy, target, star), "Most dinners in a row", the day chart ends today with Mondays labelled
+    where they fall. Next: his look at 1.0.5; later, once families have more than twelve weeks,
+    the range grows back to the first log.
 16. Then the deferred v1 features in order: cheers between households, albums, Sunday shopper advice with RevenueCat. Ricardo reopened the friends and social layer on 2026-09-20 and rates it a main success driver (new row 17); it is a brainstorm topic first, not a build step — the social unit and the kids' safeguarding line have to be settled before it can be ordered against these.
 
 **Brainstorms to hold**
