@@ -1078,3 +1078,11 @@ below twelve. Line 1 of the one thing fell: the block now reads (1) Apple's 2.1 
 stay twelve until 2026-10-14 with the application answered from the feedback page, (3) the
 fourteen days used well. Ladder redone for 2026-09-30. Item 14 and the interview page carry the
 date; tester names stay out of the wiki.
+
+## [2026-09-30] ops | Apple 2.1 reply sent; one-thing block moved along
+Ricardo sent the Guideline 2.1 answers to App Review in the evening, with the screen recording
+from Alissa's iPhone (the app as delivered over the air, tour and stats included) and the Notes
+text; the recording's Account screen reads 1.0.12 while the binary stays 1.0.2 (1), covered in
+point 1. Block now: (1) twelve stay twelve until 2026-10-14, (2) Apple's answer, waiting, with
+the manual-release timing decision behind it, (3) the fourteen days used well. Updated: the ASO
+page "App Review Information", backlog.
