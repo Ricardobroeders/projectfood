@@ -34,10 +34,12 @@ type UiState = {
   goldCard: { plantId: string; memberIds: string[] } | null;
   /** The in-app pre-prompt before the OS push permission dialog. */
   pushPrompt: boolean;
-  /** The first-minute tutorial: the step on screen (1-based) or none; when it was finished or
-   *  skipped (persisted, once per phone); where its three controls are while it runs. */
+  /** The first-minute tutorial: the step on screen (1-based) or none; per household, when it was
+   *  finished or skipped on this phone (persisted: a new account on the same phone starts fresh,
+   *  Ricardo 2026-09-30, after his deleted-and-recreated account got no tutorial); where its three
+   *  controls are while it runs. */
   tutorialStep: number | null;
-  tutorialSeenAt: string | null;
+  tutorialSeen: Record<string, string>;
   tutorialAnchors: Partial<Record<TutorialAnchor, Rect>>;
 
   setDefaultIds: (householdId: string, ids: string[]) => void;
@@ -55,7 +57,7 @@ type UiState = {
   closePushPrompt: () => void;
   startTutorial: () => void;
   setTutorialStep: (step: number) => void;
-  endTutorial: () => void;
+  endTutorial: (householdId: string | undefined) => void;
   setTutorialAnchor: (name: TutorialAnchor, rect: Rect) => void;
 };
 
@@ -71,7 +73,7 @@ export const useUi = create<UiState>()(
       goldCard: null,
       pushPrompt: false,
       tutorialStep: null,
-      tutorialSeenAt: null,
+      tutorialSeen: {},
       tutorialAnchors: {},
 
       setDefaultIds: (householdId, ids) => set((s) => ({ defaultIds: { ...s.defaultIds, [householdId]: ids } })),
@@ -89,7 +91,8 @@ export const useUi = create<UiState>()(
       closePushPrompt: () => set({ pushPrompt: false }),
       startTutorial: () => set({ tutorialStep: 1 }),
       setTutorialStep: (step) => set({ tutorialStep: step }),
-      endTutorial: () => set({ tutorialStep: null, tutorialSeenAt: new Date().toISOString(), tutorialAnchors: {} }),
+      endTutorial: (householdId) =>
+        set((s) => ({ tutorialStep: null, tutorialAnchors: {}, tutorialSeen: householdId ? { ...s.tutorialSeen, [householdId]: new Date().toISOString() } : s.tutorialSeen })),
       // Same rectangle again is not a change; the anchors re-measure on every layout.
       setTutorialAnchor: (name, rect) =>
         set((s) => {
@@ -101,7 +104,7 @@ export const useUi = create<UiState>()(
     {
       name: 'pf-ui',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: (s) => ({ defaultIds: s.defaultIds, holdHintSeen: s.holdHintSeen, pushPromptDeclinedAt: s.pushPromptDeclinedAt, tutorialSeenAt: s.tutorialSeenAt }),
+      partialize: (s) => ({ defaultIds: s.defaultIds, holdHintSeen: s.holdHintSeen, pushPromptDeclinedAt: s.pushPromptDeclinedAt, tutorialSeen: s.tutorialSeen }),
     },
   ),
 );

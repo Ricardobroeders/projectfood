@@ -56,7 +56,7 @@ export function TutorialOverlay() {
   const next = () => {
     track('tutorial', { step, action: step === total ? 'done' : 'next' }, hid);
     if (step === total) {
-      endTutorial();
+      endTutorial(hid);
       return;
     }
     const nextDef = TUTORIAL_STEPS[step];
@@ -65,7 +65,7 @@ export function TutorialOverlay() {
   };
   const skip = () => {
     track('tutorial', { step, action: 'skip' }, hid);
-    endTutorial();
+    endTutorial(hid);
   };
 
   const rect = anchors[def.anchor];
