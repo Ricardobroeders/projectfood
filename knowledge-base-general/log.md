@@ -1096,3 +1096,9 @@ day, 12 of 14 notifications granted, 141 unlocks in 13 households, 2 at 30 plant
 them on 2026-10-14. Two findings: Google can extend the test for low engagement, so the window is
 about use; and most test households use the app alone (2 of 14 have a second member), which
 speaks to the solo-adult audience of row 3. Ricardo's picks: ease of recruiting, install range.
+
+## [2026-10-01] build | learn: plant-diversity (nl) written and published by the nightly routine
+
+Family rewrite of the Dutch 30 plants pillar (slug kept, legacy flag removed), 1585 words, 6 FAQ entries.
+Links the live cluster what-counts-as-a-plant and announces as-a-family (sentence copied into its queue row).
+Learn:check: 0 errors, 0 warnings for nl.
