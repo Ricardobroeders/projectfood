@@ -51,7 +51,7 @@ In een gezin deelt iedereen één teller. Het huishouden telt per soort, niet pe
 
 Dat maakt het getal haalbaar op een manier die het voor één persoon niet is. Vier mensen die elk een eigen bord leegeten, komen samen op veel meer verschillende soorten dan één persoon die zijn best doet. De ene eet de olijven, de ander de komkommer, de derde proeft de peterselie. Jullie lijst groeit zonder dat iemand zijn bord als score hoeft te zien.
 
-Hoe een hele week met vier eters aan 30 planten komt, zonder dat je twee keer kookt, krijgt een eigen artikel.
+Hoe een hele week met vier eters aan 30 planten komt, zonder dat je twee keer kookt, lees je in het artikel over [30 planten per week met kinderen](/nl/leer/plant-diversity/30-planten-als-gezin).
 
 ## De proeftelling is van het kind
 

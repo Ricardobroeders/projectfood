@@ -422,7 +422,8 @@
       ],
       "pillar_mention": "Hoe een hele week met vier eters aan 30 planten komt, zonder dat je twee keer kookt, krijgt een eigen artikel.",
       "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png",
+      "done": "2026-10-02"
     },
     {
       "internal": "what-counts-as-a-plant",
