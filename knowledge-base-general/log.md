@@ -1102,3 +1102,12 @@ speaks to the solo-adult audience of row 3. Ricardo's picks: ease of recruiting,
 Family rewrite of the Dutch 30 plants pillar (slug kept, legacy flag removed), 1585 words, 6 FAQ entries.
 Links the live cluster what-counts-as-a-plant and announces as-a-family (sentence copied into its queue row).
 Learn:check: 0 errors, 0 warnings for nl.
+
+## [2026-10-02] query | One-tap sign-in code assessed and parked
+Ricardo asked for GitHub's "Copy code" experience on the sign-in email (code copied from the email or
+the notification, ideally no typing). Found: the verify screen already declares a one-time code field,
+the email carries the code without it in the subject, no app links exist. Three layers written into
+the parking lot of [[strategy-backlog]] (rows 4, 13): code in the subject (email only), clipboard
+fill over the air, and an app-link button in the email (native, after both store clocks). Nothing
+built; it becomes item 25 on Ricardo's go.
+
