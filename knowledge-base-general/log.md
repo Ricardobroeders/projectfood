@@ -1102,3 +1102,9 @@ speaks to the solo-adult audience of row 3. Ricardo's picks: ease of recruiting,
 Family rewrite of the Dutch 30 plants pillar (slug kept, legacy flag removed), 1585 words, 6 FAQ entries.
 Links the live cluster what-counts-as-a-plant and announces as-a-family (sentence copied into its queue row).
 Learn:check: 0 errors, 0 warnings for nl.
+
+## [2026-10-02] build | learn: 30-planten-als-gezin (nl) written and published by the nightly routine
+
+Dutch cluster as-a-family under plant-diversity, 1119 words, 6 FAQ entries, meta title 50 and description 155.
+Pillar plant-diversity (nl) now links it in place of the announcement sentence; a Monday to Sunday week of 31 plants.
+Learn:check: 0 errors, 0 warnings for as-a-family nl; the pillar's 8 warnings are the en and it legacy files.
