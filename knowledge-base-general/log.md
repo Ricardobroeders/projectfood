@@ -1111,3 +1111,8 @@ the parking lot of [[strategy-backlog]] (rows 4, 13): code in the subject (email
 fill over the air, and an app-link button in the email (native, after both store clocks). Nothing
 built; it becomes item 25 on Ricardo's go.
 
+
+## [2026-10-03] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
+Dutch family rewrite of the does-it-count page, 903 words, 20-row table, 5 FAQ entries, legacy flag gone, slug kept.
+Warnings accepted: related "as-a-family" has no folder on this branch yet; length sits just above the 900 minimum.
+The pillar plant-diversity (nl) already links this page, so it is republished unchanged.
