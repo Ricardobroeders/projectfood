@@ -1111,3 +1111,8 @@ the parking lot of [[strategy-backlog]] (rows 4, 13): code in the subject (email
 fill over the air, and an app-link button in the email (native, after both store clocks). Nothing
 built; it becomes item 25 on Ricardo's go.
 
+
+## [2026-10-05] build | learn: plant-diversity (it) written and published by the nightly routine
+Italian family pillar for the 30 plants page, replacing the 2026-05 adult article: 1,586 words, 6 FAQ entries,
+meta 50/144, zero check warnings. Cluster announcement sentence for as-a-family (it) copied into its queue row.
+Note: the 10-03 and 10-04 branches both rewrote what-counts-as-a-plant (nl); this run skipped that row, it is already live.
