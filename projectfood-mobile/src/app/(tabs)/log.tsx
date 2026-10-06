@@ -1,7 +1,7 @@
 import { ChevronDown, Hand, Search, X } from 'lucide-react-native';
 import { useCallback, useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, Keyboard, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import { MemberAvatar } from '@/components/MemberAvatar';
@@ -10,7 +10,7 @@ import { SkeletonRows } from '@/components/Skeleton';
 import { Tabs, type Tab } from '@/components/Tabs';
 import { WeekMeter } from '@/components/WeekMeter';
 import { TutorialAnchorView } from '@/features/tutorial/useTutorialAnchor';
-import { Loading, PrimaryButton, Screen } from '@/components/ui';
+import { Loading, PrimaryButton, Screen, TextButton } from '@/components/ui';
 import { revealFor } from '@/constants/motion';
 import { CAT_ORDER, colors, fonts, radii, type Category } from '@/constants/theme';
 import { useSession } from '@/features/auth/useSession';
@@ -163,6 +163,15 @@ export default function LogScreen() {
     if (tutorialStep === 2) listRef.current?.scrollToOffset({ offset: 0, animated: false });
   }, [tutorialStep]);
 
+  const clearSearch = useCallback(() => {
+    setQuery('');
+    setSubmitted(null);
+  }, []);
+  // The "sent" note stays long enough to read, then the search clears and the list comes back.
+  // It used to stay until the query was edited: with the query still live every tab showed the
+  // note instead of plants, and a tester restarted the app to log again (2026-10-06).
+  const sentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => void (sentTimer.current && clearTimeout(sentTimer.current)), []);
   const submitMissing = async () => {
     if (!session || !debounced.trim()) return;
     setSending(true);
@@ -171,6 +180,9 @@ export default function LogScreen() {
     if (!error) {
       setSubmitted(debounced.trim());
       track('plant_suggested', { name: debounced.trim() }, hid);
+      Keyboard.dismiss();
+      if (sentTimer.current) clearTimeout(sentTimer.current);
+      sentTimer.current = setTimeout(clearSearch, 2200);
     }
   };
 
@@ -178,11 +190,17 @@ export default function LogScreen() {
   const forLabel = defaults.length === 0 ? t('log.nobody') : defaults.length === members.length ? t('log.everyone') : defaults.map((m) => m.name).join(', ');
 
   // The suggestion block: alone when nothing matches, under the results when something does.
+  // Under results it is a text link, not the filled button: "Straw" and "Spinazie" were suggested
+  // with Strawberry and Spinazie on screen, the button read as "add this" (2026-10-06).
   const missingBlock = (
     <View style={styles.missing}>
       <Text style={styles.missingTitle}>{submitted ? t('log.suggestionSent') : t('log.missingTitle')}</Text>
       <Text style={styles.missingBody}>{submitted ? t('log.suggestionSentSub') : t('log.missingBody', { query: debounced.trim() })}</Text>
-      {!submitted ? <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} /> : null}
+      {submitted ? null : plants.length > 0 ? (
+        <TextButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} disabled={sending} />
+      ) : (
+        <PrimaryButton label={sending ? t('log.sending') : t('log.submitSuggestion')} onPress={submitMissing} loading={sending} style={{ marginTop: 8 }} />
+      )}
     </View>
   );
 
@@ -243,7 +261,7 @@ export default function LogScreen() {
           )}
         </View>
         {query ? (
-          <Pressable onPress={() => setQuery('')} hitSlop={8} accessibilityRole="button">
+          <Pressable onPress={clearSearch} hitSlop={8} accessibilityRole="button">
             <X size={18} color={colors.ink3} />
           </Pressable>
         ) : null}

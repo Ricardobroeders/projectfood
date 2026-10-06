@@ -111,6 +111,29 @@ screen shows which one), who (first name or role, never more), the words, what w
   dashboard, the app already accepts 6 to 8. Also: the code field's caret sat at the right of the
   centred, letter-spaced placeholder on Android; 1.0.14 left-aligns it.
 
+- **2026-10-06, 1.0.12 or 1.0.14 (Play), a tester after a week of use ("I already noticed that I
+  try to eat more healthy with it"), three points.** (1) **A week that starts mid-week is
+  shorter**: they expected seven days from the first log, or a smaller goal. Ricardo's call,
+  2026-10-06: weeks stay Monday to Sunday, so events and promotions can run on one shared
+  period; no change. (2) **The "Curious achievement unlocked" badge covers the fun fact and
+  never goes away** (screenshot: the green bean fact's last lines under the badge). Cause: the
+  badge was drawn on every card back once the achievement existed. 1.0.15: it appears on the
+  flip that unlocks it, once per household, with room reserved under the fact; long facts shrink
+  to fit. (3) **After submitting a plant suggestion they could not log anything until they
+  restarted the app.** Cause found in the events: "Suggestion sent" stayed until the search text
+  was edited, and with the search still live every tab showed the note instead of plants; a
+  restart cleared it. 1.0.15: the note stays two seconds, then the search clears and the list
+  comes back; the X on the search clears it too.
+  The suggestions themselves (10 since 2026-09-27, none reviewed) show two more causes behind
+  "the plant is not there": Spinazie, Sperziebonen, Straw, Falafel, Bimi and Groene kool were all
+  in the catalogue; the search only knew the name in the app's language (Dutch typed into an
+  English app found nothing), and under a found result the filled "Submit suggestion" button
+  read as "add this" (Straw was sent with Strawberry on screen). 1.0.15 searches the name in
+  every language and makes the under-results suggestion a text link. Matcha (twice) and Wasabi
+  were genuinely missing and Ricardo added them on 2026-10-06; those three testers were not told.
+  The process question (notify when the plant lands, let the taste count straight away) is in the
+  parking lot of [[strategy-backlog]] as "Log it now, name it later".
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -159,6 +182,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   notifications row reads the phone's permission; the sign-in email subject starts with the code.
 - 2026-10-06, 1.0.14 over the air (runtimes unchanged): the code field left-aligned, letter
   spacing only on typed digits.
+- 2026-10-06, 1.0.15 over the air (Android group 2d245d6a, iOS group 663f36ce, runtimes
+  unchanged): the Curious badge only on the unlocking flip, long facts fit the card; a sent
+  suggestion clears the search after two seconds; the search matches the plant's name in every
+  language; the under-results suggestion is a text link. Catalogue: "falafel" and "hummus" added
+  as aliases of Chickpeas (cabbage and broccoli already carried "groene kool" and "bimi").
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

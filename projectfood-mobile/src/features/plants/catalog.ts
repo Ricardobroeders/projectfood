@@ -20,6 +20,8 @@ export type Plant = {
   superfood: boolean;
   seasonMonths: number[] | null;
   aliases: string[];
+  /** The name in every locale (English included): Dutch typed into an English app still finds the plant. */
+  names: string[];
   imageUrl: string | null;
 };
 
@@ -29,7 +31,8 @@ export type Catalog = {
   bySlug: Record<string, Plant>;
 };
 
-export const catalogKey = (locale: string) => ['catalog', locale] as const;
+// The trailing shape tag retires a persisted catalogue that predates a field (2: `names`, 1.0.15).
+export const catalogKey = (locale: string) => ['catalog', locale, 2] as const;
 
 async function fetchCatalog(locale: string): Promise<Catalog> {
   const { data, error } = await supabase
@@ -47,6 +50,7 @@ async function fetchCatalog(locale: string): Promise<Catalog> {
     superfood: p.is_superfood,
     seasonMonths: p.season_months,
     aliases: p.search_aliases ?? [],
+    names: [p.name, ...p.plant_translations.map((t) => t.name)],
     imageUrl: p.image_url,
   }));
   plants.sort((a, b) => a.name.localeCompare(b.name, locale));
@@ -72,10 +76,14 @@ export function usePlantCatalog() {
   return { ...q, catalog: q.data ?? EMPTY };
 }
 
-/** Fuzzy search over name + aliases (same settings as the PWA). Empty query = every plant. */
+/**
+ * Fuzzy search over the name in every locale + aliases (threshold as in the PWA). Empty query =
+ * every plant. Testers suggested "Spinazie" and "Sperziebonen" while the app was in English
+ * (2026-10-06): the search only knew the English name.
+ */
 export function usePlantSearch(plants: Plant[], query: string): Plant[] {
   const fuse = useMemo(
-    () => new Fuse(plants, { keys: ['name', 'aliases'], threshold: 0.35, ignoreLocation: true }),
+    () => new Fuse(plants, { keys: ['name', 'names', 'aliases'], threshold: 0.35, ignoreLocation: true }),
     [plants],
   );
   return useMemo(() => {

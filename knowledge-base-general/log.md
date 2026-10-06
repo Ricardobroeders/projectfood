@@ -1139,3 +1139,11 @@ stale cache of a per-account flag, not a per-language setting; 1.0.13 (Android 9
 357abfea, runtimes unchanged) bases the row on the phone's permission and refreshes the cache after
 token registration. Entries on [[interview-closed-test-2026-09]]; parking-lot note in [[strategy-backlog]].
 
+
+## [2026-10-06] build | 1.0.15 over the air; tester feedback on the Curious badge, suggestions and the week
+A tester's three points (short first week, the Curious badge over the fact, no logging after a
+suggestion). Weeks stay Monday-based (Ricardo). 1.0.15 (Android 2d245d6a, iOS 663f36ce, runtimes
+unchanged): the badge once, on the unlocking flip; a sent suggestion clears the search; the search
+matches names in every language; the under-results suggestion is a text link. Found in the data:
+10 suggestions, none reviewed, 7 were search misses. Proposal "Log it now, name it later" parked
+in [[strategy-backlog]]; findings on [[interview-closed-test-2026-09]].

@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import { X } from 'lucide-react-native';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withDelay, withSpring } from 'react-native-reanimated';
@@ -39,11 +39,16 @@ export function FunFactCard({ host = 'root' }: { host?: FactCardHost }) {
   const openedRef = useRef(opened);
   openedRef.current = opened;
   const visible = !!factCard;
+  // The badge is for the flip that unlocks Curious, once per household. It used to stay on every
+  // card after that and sat on top of long facts (tester, 2026-10-06). Decided when the card opens
+  // so the unlock itself does not reflow the fact.
+  const [firstFlip, setFirstFlip] = useState(false);
 
   useEffect(() => {
     if (visible) {
       rotation.value = 0;
-      badge.value = openedRef.current ? 1 : 0;
+      badge.value = 0;
+      setFirstFlip(!openedRef.current);
       enter.value = 0;
       enter.value = withSpring(1, motion.modal); // modal class: appears in place, gentle settle
     }
@@ -99,18 +104,23 @@ export function FunFactCard({ host = 'root' }: { host?: FactCardHost }) {
               <Text style={styles.name}>{plant.name}</Text>
               <Text style={styles.hint}>{t('plant.tapToFlip')}</Text>
             </Animated.View>
-            <Animated.View style={[styles.face, { backgroundColor: colors.surface }, backStyle]}>
+            <Animated.View style={[styles.face, { backgroundColor: colors.surface }, firstFlip && styles.faceWithBadge, backStyle]}>
               <View style={[styles.miniTile, { backgroundColor: ground }]}>
                 <PlantImage plant={plant} size={60} gold={gold} />
               </View>
               <Text style={[styles.eyebrow, { color: eyebrow }]}>{t('plant.didYouKnow').toUpperCase()}</Text>
-              <Text style={styles.fact}>{fact?.kid_fact ?? plant.name}</Text>
-              <Animated.View style={[styles.badge, badgeStyle]}>
-                <Stamp size={44} color={ACHIEVEMENT_BY_ID.curious.color}>
-                  <CuriousIcon size={iconFor(44)} color="#FFFFFF" />
-                </Stamp>
-                <Text style={styles.badgeText}>{t('celebration.curiousUnlocked')}</Text>
-              </Animated.View>
+              {/* Long facts shrink rather than run under the card's edge. */}
+              <Text style={styles.fact} adjustsFontSizeToFit numberOfLines={8} minimumFontScale={0.75}>
+                {fact?.kid_fact ?? plant.name}
+              </Text>
+              {firstFlip ? (
+                <Animated.View style={[styles.badge, badgeStyle]}>
+                  <Stamp size={44} color={ACHIEVEMENT_BY_ID.curious.color}>
+                    <CuriousIcon size={iconFor(44)} color="#FFFFFF" />
+                  </Stamp>
+                  <Text style={styles.badgeText}>{t('celebration.curiousUnlocked')}</Text>
+                </Animated.View>
+              ) : null}
             </Animated.View>
           </Pressable>
           <Pressable style={styles.close} onPress={hide} accessibilityRole="button" accessibilityLabel={t('common.close')}>
@@ -127,6 +137,7 @@ const styles = StyleSheet.create({
   stage: { alignItems: 'center', gap: 20 },
   cardBox: { width: CARD_W, height: CARD_H },
   face: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radii.xl, padding: 24, alignItems: 'center', justifyContent: 'center', gap: 12, backfaceVisibility: 'hidden' },
+  faceWithBadge: { paddingBottom: 24 + 56 + 12 },
   eyebrow: { fontFamily: fonts.bold, fontSize: 12, lineHeight: 16, letterSpacing: 1.2 },
   name: { fontFamily: fonts.extrabold, fontSize: 30, lineHeight: 36, color: colors.ink, textAlign: 'center' },
   hint: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2, position: 'absolute', bottom: 22 },
