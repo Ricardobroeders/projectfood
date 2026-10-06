@@ -450,7 +450,9 @@
     "prompt_cta": "Enquête invullen",
     "prompt_dismiss": "Misschien later",
     "new_questions": "{count} nieuwe vragen sinds je laatste bezoek",
-    "save_go_back": "Opslaan & terug",
+    "remove_answers": "Mijn antwoorden verwijderen",
+    "remove_title": "Je antwoorden verwijderen?",
+    "remove_body": "Alles wat je hebt ingevuld verdwijnt, ook je toestemming. Je kunt altijd opnieuw beginnen.",
     "other": "Anders"
   },
   "levels": {

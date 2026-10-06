@@ -243,6 +243,12 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.28 over the air (Android eff2dacd, iOS a8055096): the week chip on the Log page
   in the ring's green (successSoft) instead of the accent yellow; the snowflake for a used streak
   freeze dropped from the Home streak chip (Ricardo: not a streak symbol, the flame is).
+- 2026-10-06, 1.0.29 and 1.0.30 over the air (Android 1e765dfd / 4d82c49d, iOS 3b55714b /
+  fe66b364): a tester tapped Start survey and saw nothing for 4 to 5 s (the consent save
+  round-tripped first, then 29 fields mounted at once). The form now opens on the tap and the
+  questions mount a screen at a time (FlatList). Footer: "Save & go back" gone (answers save as
+  they are filled in, back is at the top); "Remove my answers" added, with a confirm, deleting
+  the user's rows including consent.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

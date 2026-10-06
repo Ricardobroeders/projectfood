@@ -450,7 +450,9 @@
     "prompt_cta": "Compila il sondaggio",
     "prompt_dismiss": "Forse più tardi",
     "new_questions": "{count} nuove domande dalla tua ultima visita",
-    "save_go_back": "Salva e torna",
+    "remove_answers": "Rimuovi le mie risposte",
+    "remove_title": "Rimuovere le tue risposte?",
+    "remove_body": "Tutto quello che hai compilato sparisce, compreso il consenso. Puoi ricominciare quando vuoi.",
     "other": "Altro"
   },
   "levels": {

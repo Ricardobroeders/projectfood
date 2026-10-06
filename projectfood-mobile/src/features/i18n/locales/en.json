@@ -450,7 +450,9 @@
     "prompt_cta": "Take survey",
     "prompt_dismiss": "Maybe later",
     "new_questions": "{count} new questions since your last visit",
-    "save_go_back": "Save & go back",
+    "remove_answers": "Remove my answers",
+    "remove_title": "Remove your answers?",
+    "remove_body": "Everything you filled in goes, including your consent. You can start again any time.",
     "other": "Other"
   },
   "levels": {

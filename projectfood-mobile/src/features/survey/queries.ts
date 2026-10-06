@@ -113,6 +113,20 @@ export function useSubmitSurvey() {
   });
 }
 
+/** "Remove my answers": every row of this user goes, consent included, so the gate shows again. */
+export function useRemoveAnswers() {
+  const qc = useQueryClient();
+  const { session } = useSession();
+  return useMutation({
+    mutationFn: async () => {
+      const { error } = await supabase.from('survey_responses').delete().eq('user_id', session!.user.id);
+      if (error) throw error;
+    },
+    onSuccess: () => qc.setQueryData<Record<string, SurveyResponse>>(responsesKey, {}),
+    onSettled: () => qc.invalidateQueries({ queryKey: responsesKey }),
+  });
+}
+
 function isAnswered(a: SurveyAnswer | undefined): boolean {
   if (a === null || a === undefined) return false;
   if (Array.isArray(a)) return a.length > 0;
