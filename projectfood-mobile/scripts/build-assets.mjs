@@ -127,15 +127,20 @@ async function run() {
       }
     }
     // Gold plant renders: absent for most plants, so a miss is silent and simply means no gold art yet.
+    // Looked up by the normal render's file name first, then by slug: six were uploaded under the
+    // slug (pickle.png for gherkin.png, chickpea.png for chickpeas.png, ...) and never bundled (2026-10-06).
     for (const item of catalog) {
       const dest = join(ROOT, `assets/plants-gold/${item.slug}.webp`);
       if (existsSync(dest)) continue;
-      try {
-        const src = await fetchCached(`${PLANTS_GOLD_URL}/${item.file}`, `gold-${item.file}`);
-        await toWebp(src, dest);
-        process.stdout.write(`gold ${item.slug}\n`);
-      } catch {
-        // no gold render for this plant yet
+      for (const file of [...new Set([item.file, `${item.slug}.png`])]) {
+        try {
+          const src = await fetchCached(`${PLANTS_GOLD_URL}/${file}`, `gold-${file}`);
+          await toWebp(src, dest);
+          process.stdout.write(`gold ${item.slug} (${file})\n`);
+          break;
+        } catch {
+          // no gold render under this name
+        }
       }
     }
     // the notification glyph and every app icon come from scripts/build-icons.mjs

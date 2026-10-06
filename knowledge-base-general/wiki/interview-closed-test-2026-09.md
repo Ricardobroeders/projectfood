@@ -225,6 +225,10 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.23 over the air (Android ec906fd6, iOS 90fb170a): gradient drawn at the sheet's
   measured width (a strip on the right stayed white on Android); the sheet says "Gold plant" and
   "The plant is gold from now on", not card (Ricardo: it is the plant that turns gold, not a card).
+- 2026-10-06, 1.0.24 over the air (Android 7c6c9ec3, iOS 0bde08fb): eight gold renders that sat
+  in the bucket under the slug name (pickle.png, chickpea.png, black-bean, kidney-bean,
+  lambs-lettuce, sweetcorn, mustard-seed, nectarine) while the script looked for the normal file
+  name (gherkin.png, chickpeas.png, ...). The script now tries both; 114 of 230 plants have gold.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
