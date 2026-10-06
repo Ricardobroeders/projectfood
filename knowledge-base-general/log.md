@@ -1152,3 +1152,7 @@ in [[strategy-backlog]]; findings on [[interview-closed-test-2026-09]].
 Ricardo keeps the plant pipeline by hand (script, renders, shrink, build), so "Log it now, name it
 later" stays an idea. The sent note now says the plant is checked by hand and arrives with an app
 update. Android fdcc87a9, iOS 77d5ac97, runtimes unchanged.
+
+## [2026-10-06] query | Apple: 1.0.2 (1) resubmitted for review
+Six days without an answer to the 2.1 reply; Ricardo resubmitted the build, status now pending
+review (was the rejection). Line 2 of the one thing in [[strategy-backlog]] updated.
