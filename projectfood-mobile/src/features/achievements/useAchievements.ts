@@ -65,8 +65,9 @@ export function useAchievements() {
       streak: streak.data ?? null,
       plantsById: catalog.byId,
       curiousOpened: levels.has(levelKey('curious', null)),
+      dinnerTime: hh?.household.dinner_time?.slice(0, 5) ?? null,
     }),
-    [members, tasteCounts.data, weekLogs.data, daily.data, weekly.data, streak.data, catalog.byId, levels],
+    [members, tasteCounts.data, weekLogs.data, daily.data, weekly.data, streak.data, catalog.byId, levels, hh?.household.dinner_time],
   );
 
   const progress = useMemo(() => (ready ? computeProgress(ctx) : EMPTY_PROGRESS), [ctx, ready]);

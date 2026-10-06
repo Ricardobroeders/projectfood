@@ -43,6 +43,9 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
 
   const v = stampView(entry, level);
   const unlocked = level > 0;
+  // A secret keeps its name and its number until it is found: greyed render, "Secret", a "?" for the count.
+  const hidden = !!achievement.secret && !unlocked;
+  const shownLabel = hidden ? t('unlocks.secret') : label;
   return (
     <Pressable
       style={({ pressed }) => [styles.item, { width: width ?? size + 12 }, pressed && { opacity: 0.7 }]}
@@ -51,7 +54,7 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
         onPress();
       }}
       accessibilityRole="button"
-      accessibilityLabel={`${label}, ${v.maxed ? t('unlocks.complete') : `${v.current} / ${v.target}`}`}>
+      accessibilityLabel={hidden ? t('unlocks.secret') : `${label}, ${v.maxed ? t('unlocks.complete') : `${v.current} / ${v.target}`}`}>
       <Animated.View style={style}>
         <Stamp size={size} color={achievement.color} locked={!unlocked}>
           <StampArt achievement={achievement} size={size} unlocked={unlocked} />
@@ -59,11 +62,11 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
       </Animated.View>
       <LevelPips level={level} max={v.maxLevel} />
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
-        {label}
+        {shownLabel}
       </Text>
       {/* green while there is somewhere left to go, gold once the whole ladder is done (Ricardo, 2026-09-26) */}
-      <ProgressBar value={v.current} max={v.target} height={4} color={v.maxed ? colors.gold : colors.success} style={{ width: size - 8, alignSelf: 'center' }} />
-      <Text style={[styles.count, v.maxed && { color: colors.goldInk }]}>{v.maxed ? t('unlocks.complete') : `${v.current}/${v.target}`}</Text>
+      <ProgressBar value={hidden ? 0 : v.current} max={v.target} height={4} color={v.maxed ? colors.gold : colors.success} style={{ width: size - 8, alignSelf: 'center' }} />
+      <Text style={[styles.count, v.maxed && { color: colors.goldInk }]}>{hidden ? '?' : v.maxed ? t('unlocks.complete') : `${v.current}/${v.target}`}</Text>
     </Pressable>
   );
 }

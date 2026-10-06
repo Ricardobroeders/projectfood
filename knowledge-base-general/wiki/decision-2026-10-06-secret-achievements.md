@@ -1,0 +1,37 @@
+---
+title: Three secret achievements
+type: decision
+tags: [achievements, retention, app]
+created: 2026-10-06
+updated: 2026-10-06
+sources: [interview-closed-test-2026-09.md]
+---
+
+# Three secret achievements (decided 2026-10-06)
+
+**Decision.** The shelf gets three hidden achievements, one level each, shipped over the air as
+1.0.20: **Nice try** (100 different plants logged in one day), **Full spectrum** (all 7
+categories at one dinner), **At the table** (a plant logged within 5 minutes after the household's
+dinner time). Ricardo's cut of the six candidates from the 2026-09-23/24 brainstorm, with two
+changes to Claude's proposal: Nice try at 100 instead of 50, At the table at 5 minutes instead of 15.
+
+**Rules carried over** ([[concept-achievement-system]]): one level, never a ladder; never a goal on
+Home, never in a push, never in the paid layer; the shelf shows a greyed render with the name
+"Secret" and a "?" for the count, the sheet says "Hidden until it happens."; found once, found for
+good (an unlock row like any other level). No data is touched by Nice try; its text says why a
+bulk day earns nothing else (a level only counts a plant tasted on 2 different days).
+
+**Why these three.** Nice try has the story Ricardo wanted from day one and protects the ladder.
+Full spectrum is the one secret that teaches something and is exactly the behaviour the app wants.
+At the table rewards the loop itself, logging while the plates are still out. Dropped: Night owl
+(rewards the phone at midnight), Same again (rewards sameness), Everyone different (a family of one
+can never get it; waits for the social layer).
+
+**Art.** Greyed art is fine when the render is a symbol, not the trigger: a referee's whistle, a
+7-wedge plate, a dinner bell on a plate. Ricardo renders them (`achievement-<id>.png` in the
+`achievements` bucket); the asset script picks them up; until then the tiles show a lock.
+
+**Technically.** `secret: true` on the definition, `dinnerTime` added to the progress context,
+`nearestGoals` skips secrets, the server ladder ignores unknown ids. No migration.
+
+Related: [[strategy-backlog]] (row 5, brainstorm 17), [[interview-closed-test-2026-09]].

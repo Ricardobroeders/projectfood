@@ -225,7 +225,8 @@ lookup, like the plants. Frames are drawn in code.
 16. Full table: a family of avatars around one shared plate.
 17. Curious: an open book with a plant growing out of the page.
 
-### Secret achievements (brainstorm 2026-09-23/24, not yet decided)
+### Secret achievements (decided 2026-10-06, see [[decision-2026-10-06-secret-achievements]])
+Shipped in 1.0.20: Nice try (100 plants in one day), Full spectrum (all 7 categories at one dinner), At the table (logged within 5 minutes after dinner time). The brainstorm that led there:
 A hidden layer under the ladder, for the "what is left" after the shelf is known (Ricardo's input of
 2026-09-20, worked through with Claude on 2026-09-23/24; the live state sits in the parking lot of
 [[strategy-backlog]], item 16). Rules agreed so far: one level only, never a ladder; hidden tiles show
@@ -313,7 +314,7 @@ definition plus copy (`achievement_unlocks.achievement_id` is unconstrained text
 - Where achievements live in navigation is open. Ricardo's Figma tab bar (2026-09-10) has
   Log / Family / Groceries / Account; if achievements are the backbone they need a first-class
   home (a Collection tab, or the kid's Family page).
-- Secret achievements: six candidates await Ricardo's cut to five (section above, 2026-09-24).
+- Secret achievements: decided 2026-10-06, three shipped (section above).
 - Store POC 2026-09-16: the 16 goals run on real history
   (`projectfood-mobile/src/features/achievements/definitions.ts`) and unlock rows live in
   `achievement_unlocks`. The ladder shipped on 2026-09-18 with the proposed targets; still open: whether the targets

@@ -195,7 +195,10 @@
     "nextLevel": "Volgende: {level}",
     "done": "Klaar",
     "next": "Volgende",
-    "levelOf": "Level {n} van {m}"
+    "levelOf": "Level {n} van {m}",
+    "secret": "Geheim",
+    "secretTitle": "Geheime prestatie",
+    "secretBody": "Verborgen tot het gebeurt."
   },
   "stats": {
     "title": "Jouw statistieken",
@@ -332,6 +335,18 @@
     "family_of_thirty": {
       "title": "Familie van dertig",
       "body": "{n} weken met 30 verschillende planten"
+    },
+    "nice_try": {
+      "title": "Leuk geprobeerd",
+      "body": "100 planten op 1 dag. Een niveau telt een plant pas na 2 verschillende dagen."
+    },
+    "full_spectrum": {
+      "title": "Het hele spectrum",
+      "body": "Alle 7 categorieën bij 1 avondeten"
+    },
+    "at_the_table": {
+      "title": "Aan tafel",
+      "body": "Gelogd binnen 5 minuten na etenstijd"
     }
   },
   "family": {

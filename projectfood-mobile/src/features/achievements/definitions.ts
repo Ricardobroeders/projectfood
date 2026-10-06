@@ -1,6 +1,6 @@
-import { Bean, BookOpen, CalendarCheck, CalendarDays, Carrot, Cherry, Flame, FlaskConical, LayoutGrid, Leaf, type LucideIcon, Nut, Rainbow, Smile, Sparkles, Stamp as StampIcon, Trophy, Users, Utensils, Wheat } from 'lucide-react-native';
+import { Bean, BellRing, BookOpen, CalendarCheck, CalendarDays, Carrot, Cherry, Flame, FlaskConical, Hand, LayoutGrid, Leaf, type LucideIcon, Nut, Palette, Rainbow, Smile, Sparkles, Stamp as StampIcon, Trophy, Users, Utensils, Wheat } from 'lucide-react-native';
 
-import { CATS, colors, type Category } from '@/constants/theme';
+import { CAT_ORDER, CATS, colors, type Category } from '@/constants/theme';
 import type { Member } from '@/features/household/queries';
 import { type LogRow, weekStartOf } from '@/features/logs/model';
 import type { DailyRow, Streak, TasteCount, WeekRow } from '@/features/logs/queries';
@@ -26,7 +26,10 @@ export type AchievementId =
   | 'tomato_family'
   | 'regulars'
   | 'table_talk'
-  | 'family_of_thirty';
+  | 'family_of_thirty'
+  | 'nice_try'
+  | 'full_spectrum'
+  | 'at_the_table';
 
 /** member = one stamp per kid, never ranked; household = shared by the family (KB rule 7). */
 export type Scope = 'member' | 'household';
@@ -46,6 +49,8 @@ export type ProgressCtx = {
   streak: Streak | null;
   plantsById: Record<string, Plant>;
   curiousOpened: boolean;
+  /** The household's dinner time, "HH:MM", for the secret that rewards logging right after it. */
+  dinnerTime: string | null;
 };
 
 type Metric = (ctx: ProgressCtx, memberId?: string) => number;
@@ -69,6 +74,11 @@ export type Achievement = {
   twice?: boolean;
   /** `memberId` is set for member-scoped achievements. */
   progress: Metric;
+  /**
+   * Secret (Ricardo, 2026-09-20, cut 2026-10-06): one level, hidden name and text until found, never a
+   * goal on Home, never in a push. The shelf shows the greyed render and says how many are hidden.
+   */
+  secret?: boolean;
 };
 
 /** Plants this member has tasted on at least `minDays` different days (a taste row is one plant on one day). */
@@ -229,6 +239,68 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
 ];
 
+/** Plants of one day as the household, from the aggregate plus this week's rows (today's optimistic rows may be ahead of the server). */
+function bestDay(c: ProgressCtx): number {
+  let best = 0;
+  for (const d of c.daily) if (d.member_id === null) best = Math.max(best, d.distinct_plants);
+  const perDay = new Map<string, Set<string>>();
+  for (const r of c.weekLogs) (perDay.get(r.logged_on) ?? perDay.set(r.logged_on, new Set()).get(r.logged_on)!).add(r.plant_id);
+  for (const s of perDay.values()) best = Math.max(best, s.size);
+  return best;
+}
+
+/**
+ * The secrets. Each is one rung with a 0 / 1 metric; the unlock engine records them like any other
+ * level, so a secret found once stays found. Full spectrum and At the table read this week's rows,
+ * which is where the engine sees the dinner that earns them.
+ */
+const SECRETS: Achievement[] = [
+  // 100 different plants in one day: the bulk-logging badge. No data is touched; the text says why a
+  // bulk day earns nothing else (the twice rule).
+  { id: 'nice_try', image: 'nice_try', scope: 'household', icon: Hand, color: '#7A5C3E', secret: true, rungs: rungs(1), progress: (c) => (bestDay(c) >= 100 ? 1 : 0) },
+  // all seven categories at one dinner
+  {
+    id: 'full_spectrum',
+    image: 'full_spectrum',
+    scope: 'household',
+    icon: Palette,
+    color: '#C62A85',
+    secret: true,
+    rungs: rungs(1),
+    progress: (c) => {
+      const perDay = new Map<string, Set<Category>>();
+      for (const r of c.weekLogs) {
+        const cat = c.plantsById[r.plant_id]?.category;
+        if (cat) (perDay.get(r.logged_on) ?? perDay.set(r.logged_on, new Set()).get(r.logged_on)!).add(cat);
+      }
+      for (const s of perDay.values()) if (s.size >= CAT_ORDER.length) return 1;
+      return 0;
+    },
+  },
+  // a plant logged within 5 minutes after the dinner time (local clock), plates still on the table
+  {
+    id: 'at_the_table',
+    image: 'at_the_table',
+    scope: 'household',
+    icon: BellRing,
+    color: '#3E7CB1',
+    secret: true,
+    rungs: rungs(1),
+    progress: (c) => {
+      if (!c.dinnerTime) return 0;
+      const [h, m] = c.dinnerTime.split(':').map(Number);
+      const dinner = h * 60 + m;
+      for (const r of c.weekLogs) {
+        const at = new Date(r.logged_at);
+        const minutes = at.getHours() * 60 + at.getMinutes();
+        if (minutes >= dinner && minutes <= dinner + 5) return 1;
+      }
+      return 0;
+    },
+  },
+];
+ACHIEVEMENTS.push(...SECRETS);
+
 export const ACHIEVEMENT_BY_ID = Object.fromEntries(ACHIEVEMENTS.map((a) => [a.id, a])) as Record<AchievementId, Achievement>;
 
 export type RungProgress = { current: number; target: number };
@@ -279,6 +351,7 @@ export type NextGoal = { id: AchievementId; memberId: string | null; level: numb
 export function nearestGoals(progress: Progress, levels: Map<string, number>, limit = 3): NextGoal[] {
   const out: NextGoal[] = [];
   const push = (id: AchievementId, memberId: string | null, e: ProgressEntry) => {
+    if (ACHIEVEMENT_BY_ID[id].secret) return; // found, never aimed at
     const v = stampView(e, levels.get(levelKey(id, memberId)) ?? 0);
     // remaining 0 while not maxed means the unlock row is on its way; nothing left to aim at
     if (v.maxed || v.remaining === 0) return;

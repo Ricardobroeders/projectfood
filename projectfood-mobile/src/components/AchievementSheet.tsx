@@ -36,6 +36,7 @@ export function AchievementSheet() {
   const v = stampView(entry, level);
   const member = memberId ? members.find((m) => m.id === memberId) : null;
   const rungs = entry?.rungs ?? [];
+  const hidden = !!a.secret && level === 0;
 
   return (
     <Sheet visible={open !== null} onRequestClose={close}>
@@ -44,11 +45,11 @@ export function AchievementSheet() {
           <StampArt achievement={a} size={STAMP_SIZE} unlocked={level > 0} />
         </Stamp>
         <LevelPips level={level} max={v.maxLevel} size={7} />
-        <Text style={styles.title}>{t(`stamps.${target.id}.title`)}</Text>
+        <Text style={styles.title}>{hidden ? t('unlocks.secretTitle') : t(`stamps.${target.id}.title`)}</Text>
         {v.maxLevel > 1 ? (
           <Text style={styles.levelLine}>{level > 0 ? `${t('unlocks.levelOf', { n: level, m: v.maxLevel })} · ${levelLabel(t, level)}` : t('unlocks.levelOf', { n: 0, m: v.maxLevel })}</Text>
         ) : null}
-        <Text style={styles.body}>{v.maxed ? t('unlocks.complete') : rungBody(t, a, level + 1, v.target)}</Text>
+        <Text style={styles.body}>{hidden ? t('unlocks.secretBody') : v.maxed ? t('unlocks.complete') : rungBody(t, a, level + 1, v.target)}</Text>
         {member ? (
           <View style={styles.who}>
             <MemberAvatar member={member} size={24} />
@@ -57,15 +58,19 @@ export function AchievementSheet() {
         ) : null}
       </View>
 
-      <View style={styles.progressRow}>
-        <Text style={[styles.progressLabel, v.maxed && { color: colors.goldInk }]}>
-          {v.maxed ? t('unlocks.complete') : v.remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: v.remaining })}
-        </Text>
-        <Text style={styles.progressNumber}>
-          {v.current}/{v.target}
-        </Text>
-      </View>
-      <ProgressBar value={v.current} max={v.target} height={8} color={v.maxed ? colors.gold : colors.success} />
+      {hidden ? null : (
+        <>
+          <View style={styles.progressRow}>
+            <Text style={[styles.progressLabel, v.maxed && { color: colors.goldInk }]}>
+              {v.maxed ? t('unlocks.complete') : v.remaining === 1 ? t('unlocks.remainingOne') : t('unlocks.remaining', { n: v.remaining })}
+            </Text>
+            <Text style={styles.progressNumber}>
+              {v.current}/{v.target}
+            </Text>
+          </View>
+          <ProgressBar value={v.current} max={v.target} height={8} color={v.maxed ? colors.gold : colors.success} />
+        </>
+      )}
 
       {rungs.length > 1 ? (
         <View style={styles.ladder}>

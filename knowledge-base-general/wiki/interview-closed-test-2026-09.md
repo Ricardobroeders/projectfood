@@ -215,6 +215,8 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.19 over the air (Android 7f14929e, iOS 66d9c36c): the Log rows show every plant
   in its category colour with the normal render again; with many gold cards the rows had all gone
   the same yellow and were hard to tell apart (Ricardo). Gold stays on the Unlocks page.
+- 2026-10-06, 1.0.20 over the air (Android dab3a49a, iOS dccf3277): three secret achievements,
+  [[decision-2026-10-06-secret-achievements]].
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

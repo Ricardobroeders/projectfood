@@ -195,7 +195,10 @@
     "nextLevel": "Prossimo: {level}",
     "done": "Fatto",
     "next": "Prossimo",
-    "levelOf": "Livello {n} di {m}"
+    "levelOf": "Livello {n} di {m}",
+    "secret": "Segreto",
+    "secretTitle": "Traguardo segreto",
+    "secretBody": "Nascosto finché non succede."
   },
   "stats": {
     "title": "Le tue statistiche",
@@ -332,6 +335,18 @@
     "family_of_thirty": {
       "title": "Famiglia dei trenta",
       "body": "{n} settimane con 30 piante diverse"
+    },
+    "nice_try": {
+      "title": "Bel tentativo",
+      "body": "100 piante in 1 giorno. Un livello conta una pianta solo dopo 2 giorni diversi."
+    },
+    "full_spectrum": {
+      "title": "Tutto lo spettro",
+      "body": "Tutte le 7 categorie in 1 cena"
+    },
+    "at_the_table": {
+      "title": "A tavola",
+      "body": "Registrato entro 5 minuti dall’ora di cena"
     }
   },
   "family": {

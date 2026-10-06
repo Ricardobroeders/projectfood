@@ -77,6 +77,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[decision-2026-09-26-card-levels]] — card levels raised to bronze 3 / silver 8 / gold 15, each placed so the first one lands before a churn moment; the card itself stays on the first taste; platinum 25 and diamond 50 held for cup renders; one target set for every plant.
 - [[decision-2026-09-29-one-thing-way-of-working]] — Ricardo's way of working from *The One Thing*: a top-3 block heads \"Next to pick up\", each line the lead domino and what it unlocks; Claude opens every session with it and parks deviations in one sentence.
 - [[decision-2026-09-30-first-minute-tutorial]] — four coach-mark balloons after onboarding (Log tab, first plant row, week chip with the why-30 line, the who-logs bar for the family), once per phone, X to skip, copy to the person holding the phone; shipped as 1.0.7; answers brainstorm 21 and the "no onboarding / why 30" tester points.
+- [[decision-2026-10-06-secret-achievements]] — three hidden achievements (Nice try 100, Full spectrum, At the table 5 min), shipped 1.0.20, art pending
 - [[decision-2026-09-07-app-v1-scope]] — greenfield Expo app; stack S1–S6 (Supabase-only, Free at launch, RevenueCat, Rive, five locales); eleven v1 features; out-of-scope list; design-library re-brief.
 - [[decision-2026-09-06-family-mode-pivot]] — family mode + native iOS/Android (Expo); household data model; cooperative goals; plant cards; class launch; D1–D14.
 

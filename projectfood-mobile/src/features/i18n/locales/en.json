@@ -195,7 +195,10 @@
     "nextLevel": "Next: {level}",
     "done": "Done",
     "next": "Next",
-    "levelOf": "Level {n} of {m}"
+    "levelOf": "Level {n} of {m}",
+    "secret": "Secret",
+    "secretTitle": "Secret achievement",
+    "secretBody": "Hidden until it happens."
   },
   "stats": {
     "title": "Your stats",
@@ -332,6 +335,18 @@
     "family_of_thirty": {
       "title": "Family of thirty",
       "body": "{n} weeks with 30 different plants"
+    },
+    "nice_try": {
+      "title": "Nice try",
+      "body": "100 plants in one day. A level only counts a plant tasted on 2 different days."
+    },
+    "full_spectrum": {
+      "title": "Full spectrum",
+      "body": "All 7 categories at one dinner"
+    },
+    "at_the_table": {
+      "title": "At the table",
+      "body": "Logged within 5 minutes of dinner time"
     }
   },
   "family": {
