@@ -1167,3 +1167,8 @@ withering (resting plants instead); brainstorms 17 and 18.
 A tester's "not every day" was a 26-hour dedupe window against a fixed clock time: every second
 evening skipped, for everyone. send-notifications v3 compares the household's calendar day;
 1.0.17 awaits the open mark; 17 opens backfilled. Findings on [[interview-closed-test-2026-09]].
+
+## [2026-10-06] build | Three notifications and no more
+Ricardo retires the card teaser and the rung nudge; the Sunday nudge joins the essential group.
+Sender v4, migration sunday_nudge_essential, app 1.0.18 over the air. Row 4 and
+[[interview-closed-test-2026-09]] updated.

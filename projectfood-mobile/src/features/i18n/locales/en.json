@@ -386,7 +386,7 @@
     "systemOff": "Notifications are off for Project Food on this phone.",
     "openSettings": "Open phone settings",
     "essential": "Essential",
-    "essentialDesc": "The dinner question and your streak. On by default.",
+    "essentialDesc": "The dinner question, your streak and the Sunday nudge. On by default.",
     "marketing": "Tips & news",
     "marketingDesc": "Card and achievement teasers and the Sunday nudge. Off by default.",
     "types": {

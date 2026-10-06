@@ -1,9 +1,9 @@
 // Dinner-time push for every household, every 15 minutes (pg_cron -> pg_net -> here).
 // Rules (KB retention loop): the copy is a question that opens logging (D10); the streak keeper only
-// when the streak is at risk (D7 freeze); marketing kinds off by default; three ignored in a row ->
+// when the streak is at risk (D7 freeze); the Sunday nudge at 25 to 29; three ignored in a row ->
 // a week of silence; sent / delivered / opened / logged-within-3h recorded for every message.
-// The rung nudge (KB achievement system) names one achievement that passed 50% or 75% of its next level,
-// before dinner, at most one per household every three days, each mark once.
+// Retired 2026-10-06, code kept: the card teaser and the rung nudge (one achievement past 50% or
+// 75% of its next level, before dinner, at most one per household every three days).
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
@@ -11,7 +11,11 @@ import { type Ctx, levelKey, nextRungs, type PlantRow, type RungState, type Thre
 import { rungCopy } from './rung-copy.ts';
 
 type Kind = 'dinner_question' | 'streak_keeper' | 'card_teaser' | 'family_30_nudge' | 'rung_nudge';
-const ESSENTIAL = new Set<Kind>(['dinner_question', 'streak_keeper']);
+// Three kinds and no more (Ricardo, 2026-10-06: "I don't want to spam people"): the dinner question,
+// the streak keeper and the Sunday nudge, all in the essential group. The card teaser and the rung
+// nudge no longer fire; their code stays below for the day they come back.
+const ESSENTIAL = new Set<Kind>(['dinner_question', 'streak_keeper', 'family_30_nudge']);
+const RETIRED = new Set<Kind>(['card_teaser', 'rung_nudge']);
 const EXPO_PUSH = 'https://exp.host/--/api/v2/push';
 /** A household hears about a rung at most this often. */
 const RUNG_NUDGE_GAP_MS = 3 * 86400_000;
@@ -75,12 +79,10 @@ type NudgeRow = { member_id: string | null; achievement_id: string; level: numbe
 type Candidate = { kind: Kind; vars: Vars; url?: string; after?: () => Promise<void>; sent?: boolean };
 
 function allowed(s: Settings, kind: Kind): boolean {
-  if (ESSENTIAL.has(kind)) {
-    if (!s.notif_essential) return false;
-    return kind === 'dinner_question' ? s.notif_daily_reminder : s.notif_streak_rescue;
-  }
-  if (!s.notif_marketing) return false;
-  return kind === 'card_teaser' || kind === 'rung_nudge' ? s.notif_reengagement : s.notif_weekly_nudge;
+  if (RETIRED.has(kind) || !s.notif_essential) return false;
+  if (kind === 'dinner_question') return s.notif_daily_reminder;
+  if (kind === 'streak_keeper') return s.notif_streak_rescue;
+  return s.notif_weekly_nudge;
 }
 
 /** The plant catalogue, fetched once per run and only when a ladder needs it. */
@@ -172,7 +174,6 @@ async function sendPhase(now: Date) {
   if (error) throw error;
   if (!households?.length) return stats;
   const hids = households.map((h) => h.id);
-  const plants = plantsOnce();
 
   const { data: hus } = await admin.from('household_users').select('household_id, user_id').in('household_id', hids);
   const userIds = [...new Set((hus ?? []).map((x) => x.user_id))];
@@ -193,10 +194,9 @@ async function sendPhase(now: Date) {
     if (!users.some((u) => tokensBy.has(u))) continue;
     const local = localParts(h.timezone || 'Europe/Amsterdam', now);
     const dinner = toMinutes(h.dinner_time.slice(0, 5));
-    const prepWindow = local.minutes >= dinner - 90 && local.minutes < dinner - 75;
     const askWindow = local.minutes >= dinner + 30 && local.minutes < dinner + 45;
     const keeperWindow = local.minutes >= Math.max(dinner + 90, 20 * 60 + 30) && local.minutes < 22 * 60 + 45;
-    if (!askWindow && !keeperWindow && !prepWindow) continue;
+    if (!askWindow && !keeperWindow) continue;
 
     const { data: days } = await admin.from('plant_logs').select('logged_on').eq('household_id', h.id).gte('logged_on', shiftDate(local.date, -3));
     const loggedDays = new Set((days ?? []).map((d) => d.logged_on));
@@ -205,34 +205,19 @@ async function sendPhase(now: Date) {
     const kids = hhMembers.filter((m) => m.kind === 'kid').map((m) => m.name);
     const kidsLabel = kids.length ? (kids.length === 1 ? kids[0] : `${kids.slice(0, -1).join(', ')} & ${kids[kids.length - 1]}`) : undefined;
 
-    // household-level candidates in precedence order
+    // household-level candidates in precedence order; one essential push a day, so on a Sunday
+    // at 25 to 29 the nudge is the dinner question
     const candidates: Candidate[] = [];
     if (keeperWindow && !loggedToday) {
       const { data: streakRows } = await admin.rpc('household_streak', { p_household_id: h.id });
       const s = streakRows?.[0];
       if (s?.at_risk) candidates.push({ kind: 'streak_keeper', vars: { n: s.current_streak } });
     }
-    if (askWindow && !loggedToday) candidates.push({ kind: 'dinner_question', vars: { kids: kidsLabel } });
-    if (askWindow && loggedDays.size === 0) {
-      const { data: counts } = await admin.rpc('member_taste_counts', { p_household_id: h.id });
-      const close = ((counts ?? []) as { member_id: string; plant_id: string; tastes: number }[]).filter((c) => c.tastes === 4 || c.tastes === 9).sort((a, b) => b.tastes - a.tastes)[0];
-      let vars: Vars = {};
-      if (close) {
-        const member = hhMembers.find((m) => m.id === close.member_id);
-        const { data: tr } = await admin.from('plant_translations').select('locale, name').eq('plant_id', close.plant_id);
-        vars = { member: member?.name, plant: tr?.find((x) => x.locale === 'en')?.name };
-        (vars as Vars & { names?: Record<string, string> }).names = Object.fromEntries((tr ?? []).map((x) => [x.locale, x.name]));
-      }
-      candidates.push({ kind: 'card_teaser', vars });
-    }
     if (askWindow && local.weekday === 'Sun') {
       const { data: variety } = await admin.rpc('household_weekly_variety', { p_household_id: h.id });
       if (typeof variety === 'number' && variety >= 25 && variety <= 29) candidates.push({ kind: 'family_30_nudge', vars: { n: 30 - variety } });
     }
-    if (prepWindow) {
-      const rung = await rungCandidate(h.id, hhMembers, now, await plants());
-      if (rung) candidates.push(rung);
-    }
+    if (askWindow && !loggedToday) candidates.push({ kind: 'dinner_question', vars: { kids: kidsLabel } });
     if (!candidates.length) continue;
 
     for (const uid of users) {

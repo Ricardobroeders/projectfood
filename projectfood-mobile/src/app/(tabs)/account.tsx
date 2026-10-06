@@ -39,7 +39,7 @@ export default function AccountScreen() {
       void getPermissionState().then(setPerm);
     }, []),
   );
-  const notificationsOn = perm === 'granted' && !!settings && (settings.notif_essential || settings.notif_marketing);
+  const notificationsOn = perm === 'granted' && !!settings && settings.notif_essential;
   // Pull the latest over-the-air update on demand: the launch check downloads in the background
   // and only applies on the next start, which makes "did it change?" a guess without this.
   const [checking, setChecking] = useState(false);

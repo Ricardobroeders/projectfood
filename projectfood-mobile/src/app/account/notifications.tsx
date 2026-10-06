@@ -10,11 +10,11 @@ import { track } from '@/features/events/track';
 import { type Settings, useSettings, useUpdateSettings } from '@/features/household/queries';
 import { getPermissionState, openSystemSettings, type PermissionState, registerPushToken, requestPermission } from '@/features/notifications/push';
 
-type Flag = keyof Pick<Settings, 'notif_essential' | 'notif_marketing' | 'notif_daily_reminder' | 'notif_streak_rescue' | 'notif_reengagement' | 'notif_weekly_nudge'>;
+type Flag = keyof Pick<Settings, 'notif_essential' | 'notif_daily_reminder' | 'notif_streak_rescue' | 'notif_weekly_nudge'>;
 
 /**
- * Essential (the dinner question, the streak keeper) is on by default; Tips & news (card teaser,
- * Sunday nudge) is off by default. The OS permission is asked at onboarding (ping row), else after the first log, else here.
+ * One group, on by default: the dinner question, the streak keeper, the Sunday nudge. The OS
+ * permission is asked at onboarding (ping row), else after the first log, else here.
  */
 export default function NotificationsScreen() {
   const { t } = useTranslation();
@@ -59,15 +59,9 @@ export default function NotificationsScreen() {
           <Row label={t('notifications.essential')} value={s.notif_essential} onChange={toggle('notif_essential')} bold />
           <Row label={t('notifications.types.dinnerQuestion.label')} desc={t('notifications.types.dinnerQuestion.description')} value={s.notif_daily_reminder} onChange={toggle('notif_daily_reminder')} disabled={!s.notif_essential} />
           <Row label={t('notifications.types.streakKeeper.label')} desc={t('notifications.types.streakKeeper.description')} value={s.notif_streak_rescue} onChange={toggle('notif_streak_rescue')} disabled={!s.notif_essential} />
+          <Row label={t('notifications.types.sundayNudge.label')} desc={t('notifications.types.sundayNudge.description')} value={s.notif_weekly_nudge} onChange={toggle('notif_weekly_nudge')} disabled={!s.notif_essential} />
         </View>
-
-        <SectionTitle>{t('notifications.marketing')}</SectionTitle>
-        <Text style={styles.desc}>{t('notifications.marketingDesc')}</Text>
-        <View style={styles.group}>
-          <Row label={t('notifications.marketing')} value={s.notif_marketing} onChange={toggle('notif_marketing')} bold />
-          <Row label={t('notifications.types.cardTeaser.label')} desc={t('notifications.types.cardTeaser.description')} value={s.notif_reengagement} onChange={toggle('notif_reengagement')} disabled={!s.notif_marketing} />
-          <Row label={t('notifications.types.sundayNudge.label')} desc={t('notifications.types.sundayNudge.description')} value={s.notif_weekly_nudge} onChange={toggle('notif_weekly_nudge')} disabled={!s.notif_marketing} />
-        </View>
+        {/* The "Tips & news" group (card and achievement teasers) went on 2026-10-06: three notifications and no more (Ricardo). */}
       </ScrollView>
     </Screen>
   );

@@ -206,6 +206,12 @@ screen shows which one), who (first name or role, never more), the words, what w
   never reached the server. 1.0.17 over the air (Android 9ad4e15e, iOS ec761c1c): opens recorded.
   Still at the old 5 / 10 levels: the card teaser's "one taste from the next level" test (4 or 9
   tastes); marketing pushes are off for every tester, so nothing fires from it yet.
+- 2026-10-06, three notifications and no more (Ricardo: "I don't want to spam people"):
+  `send-notifications` v4 retires the card teaser and the rung nudge (code kept) and moves the
+  Sunday nudge into the essential group (on by default, migration `sunday_nudge_essential`); 1.0.18
+  over the air (Android eee47a10, iOS f9a9383a) drops the "Tips & news" group from the Notifications
+  screen, the Sunday nudge sits under Essential. One essential push a day still holds, so a Sunday at
+  25 to 29 gets the nudge instead of the dinner question.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
