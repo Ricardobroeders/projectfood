@@ -10,7 +10,7 @@ import { colors, fonts, radii } from '@/constants/theme';
 import { track } from '@/features/events/track';
 import { SECTION_ORDER, type SurveyAnswer, useSaveAnswer, useSubmitSurvey, useSurveyProgress, useSurveyQuestions, useSurveyResponses } from '@/features/survey/queries';
 
-/** The PWA feedback survey, ported: consent gate, sectioned form with autosave, submit, thank-you. */
+/** The feedback survey (questions in survey_questions, rewritten for the family app 2026-10-06): consent gate, sectioned form with autosave, submit, thank-you. */
 export default function SurveyScreen() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -85,7 +85,6 @@ export default function SurveyScreen() {
               <Text style={styles.h2}>{t(`survey.section_${s}` as 'survey.section_why')}</Text>
               {qs.map((q) => (
                 <View key={q.id} style={styles.question}>
-                  {q.key === 'sus-1' ? <Text style={styles.intro}>{t('survey.sus_intro')}</Text> : null}
                   <Text style={styles.label}>{q.label}</Text>
                   {q.help_text && q.type !== 'scale' ? <Text style={styles.help}>{q.help_text}</Text> : null}
                   <QuestionField q={q} value={responses.data?.[q.id]?.answer} onChange={(v) => setAnswer(q.id, v)} />
@@ -117,7 +116,6 @@ const styles = StyleSheet.create({
   checkOn: { backgroundColor: colors.accent, borderColor: colors.accent },
   section: { gap: 16 },
   question: { gap: 8 },
-  intro: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2, padding: 12, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   label: { fontFamily: fonts.semibold, fontSize: 16, lineHeight: 22, color: colors.ink },
   help: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink3, marginTop: -4 },
 });

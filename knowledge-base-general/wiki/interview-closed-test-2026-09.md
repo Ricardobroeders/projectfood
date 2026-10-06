@@ -235,6 +235,11 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.26 over the air (Android 6ec8215a, iOS 967eaeb3): the "Logging for" bar on the
   Log page only shows with 2 or more members; a family of one always logs for that one and the
   list gets the 74 px back.
+- 2026-10-06, 1.0.27 over the air (Android 8b2467b6, iOS eafcaf96) plus migration
+  `survey_family_questions`: the feedback survey rewritten for the family app. 30 questions (was
+  37): leaderboard, friends, invites and the 10 SUS items out; who taps, when, the kids' interest,
+  what changed at the table, the dinner notification, family-app features in. Old answers (PWA era,
+  2 people) deleted with the old questions; every tester sees the banner again.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

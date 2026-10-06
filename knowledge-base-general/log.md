@@ -1181,3 +1181,7 @@ Art brief given in chat (whistle, 7-wedge plate, dinner bell); greyed render as 
 ## [2026-10-06] build | Gold card sheet staged (1.0.22)
 Ricardo designed the gold moment in Figma: gradient sheet, sunburst, big gold render. Built as a
 drawn SVG burst (`SunRays`) turning once per 48 s, no bounce beyond the existing reward pop.
+
+## [2026-10-06] build | Survey rewritten for the family app (1.0.27)
+Generator `supabase/scripts/survey-family-questions.py` writes the migration; edit the Python, rerun,
+apply. Sections now: why, using the app, at your table, features, pricing, wrap-up.
