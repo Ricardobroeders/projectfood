@@ -1147,3 +1147,8 @@ unchanged): the badge once, on the unlocking flip; a sent suggestion clears the 
 matches names in every language; the under-results suggestion is a text link. Found in the data:
 10 suggestions, none reviewed, 7 were search misses. Proposal "Log it now, name it later" parked
 in [[strategy-backlog]]; findings on [[interview-closed-test-2026-09]].
+
+## [2026-10-06] build | 1.0.16 over the air; the suggest-a-plant process stays manual
+Ricardo keeps the plant pipeline by hand (script, renders, shrink, build), so "Log it now, name it
+later" stays an idea. The sent note now says the plant is checked by hand and arrives with an app
+update. Android fdcc87a9, iOS 77d5ac97, runtimes unchanged.

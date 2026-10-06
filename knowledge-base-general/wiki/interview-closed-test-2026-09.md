@@ -187,6 +187,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   suggestion clears the search after two seconds; the search matches the plant's name in every
   language; the under-results suggestion is a text link. Catalogue: "falafel" and "hummus" added
   as aliases of Chickpeas (cabbage and broccoli already carried "groene kool" and "bimi").
+- 2026-10-06, 1.0.16 over the air (Android group fdcc87a9, iOS group 77d5ac97): the sent note
+  says what happens, "We check it by hand. New plants arrive with an app update, so it can take a
+  few weeks." (nl, it alike), shown 5 seconds before the search clears.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

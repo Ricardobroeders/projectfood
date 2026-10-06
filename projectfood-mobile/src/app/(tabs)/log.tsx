@@ -167,7 +167,7 @@ export default function LogScreen() {
     setQuery('');
     setSubmitted(null);
   }, []);
-  // The "sent" note stays long enough to read, then the search clears and the list comes back.
+  // The "sent" note stays long enough to read (two sentences, 5 s), then the search clears and the list comes back.
   // It used to stay until the query was edited: with the query still live every tab showed the
   // note instead of plants, and a tester restarted the app to log again (2026-10-06).
   const sentTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -182,7 +182,7 @@ export default function LogScreen() {
       track('plant_suggested', { name: debounced.trim() }, hid);
       Keyboard.dismiss();
       if (sentTimer.current) clearTimeout(sentTimer.current);
-      sentTimer.current = setTimeout(clearSearch, 2200);
+      sentTimer.current = setTimeout(clearSearch, 5000);
     }
   };
 
