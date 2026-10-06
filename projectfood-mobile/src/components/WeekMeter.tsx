@@ -99,7 +99,8 @@ export function WeekMeter({ value, max, label }: Props) {
 
 const styles = StyleSheet.create({
   // Same chip as the streak on Home: 36 high, small radius, the soft accent.
-  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, height: 36, paddingHorizontal: 12, borderRadius: radii.sm, backgroundColor: colors.accentSoft },
+  // Green like the ring it holds, not the accent's yellow (Ricardo, 2026-10-06).
+  chip: { flexDirection: 'row', alignItems: 'center', gap: 6, height: 36, paddingHorizontal: 12, borderRadius: radii.sm, backgroundColor: colors.successSoft },
   row: { flexDirection: 'row', alignItems: 'baseline' },
   count: { minWidth: 18, textAlign: 'right', fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
   max: { fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },

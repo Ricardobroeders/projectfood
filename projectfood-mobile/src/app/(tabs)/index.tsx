@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { ChartNoAxesColumn, Flame, Plus, Snowflake } from 'lucide-react-native';
+import { ChartNoAxesColumn, Flame, Plus } from 'lucide-react-native';
 import { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
@@ -72,7 +72,6 @@ export default function HomeScreen() {
               <>
                 <Flame size={16} color={colors.accentPressed} />
                 <Text style={styles.streakText}>{streak.current_streak === 1 ? t('home.streakOne') : t('home.streak', { n: streak.current_streak })}</Text>
-                {streak.freeze_used_on ? <Snowflake size={14} color={colors.ink3} /> : null}
               </>
             ) : (
               <>

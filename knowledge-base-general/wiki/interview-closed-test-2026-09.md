@@ -240,6 +240,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   37): leaderboard, friends, invites and the 10 SUS items out; who taps, when, the kids' interest,
   what changed at the table, the dinner notification, family-app features in. Old answers (PWA era,
   2 people) deleted with the old questions; every tester sees the banner again.
+- 2026-10-06, 1.0.28 over the air (Android eff2dacd, iOS a8055096): the week chip on the Log page
+  in the ring's green (successSoft) instead of the accent yellow; the snowflake for a used streak
+  freeze dropped from the Home streak chip (Ricardo: not a streak symbol, the flame is).
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
