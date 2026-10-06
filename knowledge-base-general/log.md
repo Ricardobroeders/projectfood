@@ -1156,3 +1156,9 @@ update. Android fdcc87a9, iOS 77d5ac97, runtimes unchanged.
 ## [2026-10-06] query | Apple: 1.0.2 (1) resubmitted for review
 Six days without an answer to the 2.1 reply; Ricardo resubmitted the build, status now pending
 review (was the rejection). Line 2 of the one thing in [[strategy-backlog]] updated.
+
+## [2026-10-06] query | The garden: a visible result for preventive eating
+Ricardo and his girlfriend named the retention gap (no scale, no mirror; achievements carry
+little) and proposed a Habbo-style garden built with XP / coins, possibly withering. Parked in
+[[strategy-backlog]] with Claude's read: build it from the plants tasted, no coin economy, no
+withering (resting plants instead); brainstorms 17 and 18.
