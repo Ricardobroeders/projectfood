@@ -188,7 +188,7 @@
     "moreToBronze": "Ancora {n} assaggi per il bronzo",
     "moreToSilver": "Ancora {n} assaggi per l'argento",
     "moreToGold": "Ancora {n} assaggi per l'oro",
-    "goldReached": "Carta d'oro",
+    "goldReached": "Pianta d'oro",
     "firstTaste": "Il primo assaggio sblocca la carta",
     "complete": "Completo",
     "levelsUnlocked": "{n} di {m} livelli",
@@ -239,7 +239,7 @@
     "curiousUnlocked": "Traguardo Curioso sbloccato",
     "levelUpTitle": "Livello su!",
     "levelUpBody": "{stamp} ora è {level}",
-    "goldCardBody": "{n} assaggi. La carta è d'oro da ora in poi."
+    "goldCardBody": "{n} assaggi. La pianta è d'oro da ora in poi."
   },
   "stamps": {
     "explorer": {

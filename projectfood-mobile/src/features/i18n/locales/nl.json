@@ -188,7 +188,7 @@
     "moreToBronze": "Nog {n} keer proeven voor brons",
     "moreToSilver": "Nog {n} keer proeven voor zilver",
     "moreToGold": "Nog {n} keer proeven voor goud",
-    "goldReached": "Gouden kaart",
+    "goldReached": "Gouden plant",
     "firstTaste": "De eerste hap ontgrendelt de kaart",
     "complete": "Compleet",
     "levelsUnlocked": "{n} van {m} levels",
@@ -239,7 +239,7 @@
     "curiousUnlocked": "Prestatie Nieuwsgierig behaald",
     "levelUpTitle": "Level omhoog!",
     "levelUpBody": "{stamp} is nu {level}",
-    "goldCardBody": "{n} keer geproefd. De kaart is vanaf nu goud."
+    "goldCardBody": "{n} keer geproefd. De plant is vanaf nu goud."
   },
   "stamps": {
     "explorer": {

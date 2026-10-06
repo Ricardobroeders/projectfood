@@ -222,6 +222,9 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.22 over the air (Android e88b5555, iOS 25aeab9b): the gold card sheet staged
   after Ricardo's Figma (node 201-297): gold-to-white gradient, a slow-turning white sunburst
   behind the 240 px gold render, the words and button on the white end. Copy unchanged.
+- 2026-10-06, 1.0.23 over the air (Android ec906fd6, iOS 90fb170a): gradient drawn at the sheet's
+  measured width (a strip on the right stayed white on Android); the sheet says "Gold plant" and
+  "The plant is gold from now on", not card (Ricardo: it is the plant that turns gold, not a card).
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

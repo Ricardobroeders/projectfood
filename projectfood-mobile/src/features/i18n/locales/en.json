@@ -188,7 +188,7 @@
     "moreToBronze": "{n} more tastes to bronze",
     "moreToSilver": "{n} more tastes to silver",
     "moreToGold": "{n} more tastes to gold",
-    "goldReached": "Gold card",
+    "goldReached": "Gold plant",
     "firstTaste": "First taste unlocks the card",
     "complete": "Complete",
     "levelsUnlocked": "{n} of {m} levels",
@@ -239,7 +239,7 @@
     "curiousUnlocked": "Curious achievement unlocked",
     "levelUpTitle": "Level up!",
     "levelUpBody": "{stamp} is now {level}",
-    "goldCardBody": "{n} tastes. The card is gold from now on."
+    "goldCardBody": "{n} tastes. The plant is gold from now on."
   },
   "stamps": {
     "explorer": {

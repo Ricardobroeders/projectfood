@@ -38,6 +38,9 @@ export function GoldCardSheet() {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
+  // The sheet's own size for the gradient: a percentage width on the Svg came up short of the
+  // right edge on Android (Ricardo's screenshot, 2026-10-06), so it is drawn at measured pixels.
+  const [box, setBox] = useState({ w: width, h: 0 });
   const goldCard = useUi((s) => s.goldCard);
   const picker = useUi((s) => s.picker);
   const factCard = useUi((s) => s.factCard);
@@ -108,17 +111,19 @@ export function GoldCardSheet() {
         <Animated.View style={[styles.backdrop, backdropStyle]}>
           <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityRole="button" />
         </Animated.View>
-        <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
-          <Svg pointerEvents="none" style={StyleSheet.absoluteFill} width="100%" height="100%">
-            <Defs>
-              <LinearGradient id="goldSheet" x1="0" y1="0" x2="0" y2="1">
-                <Stop offset="0" stopColor={colors.goldSoft} />
-                <Stop offset="1" stopColor={colors.surface} />
-              </LinearGradient>
-            </Defs>
-            <Rect x="0" y="0" width="100%" height="100%" fill="url(#goldSheet)" />
-          </Svg>
-          <SunRays cx={width / 2} cy={STAGE / 2} radius={width} play={visible} />
+        <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]} onLayout={(e) => setBox({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
+          {box.h > 0 ? (
+            <Svg pointerEvents="none" style={StyleSheet.absoluteFill} width={box.w} height={box.h}>
+              <Defs>
+                <LinearGradient id="goldSheet" x1="0" y1="0" x2="0" y2="1">
+                  <Stop offset="0" stopColor={colors.goldSoft} />
+                  <Stop offset="1" stopColor={colors.surface} />
+                </LinearGradient>
+              </Defs>
+              <Rect x="0" y="0" width={box.w} height={box.h} fill="url(#goldSheet)" />
+            </Svg>
+          ) : null}
+          <SunRays cx={box.w / 2} cy={STAGE / 2} radius={box.w} play={visible} />
           <View style={styles.stage}>
             <Animated.View style={tileStyle}>
               <PlantImage plant={plant} size={PLANT} gold />
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
   root: { flex: 1, justifyContent: 'flex-end' },
   backdrop: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(31,27,22,0.32)' },
   // overflow hidden keeps the gradient and the turning rays inside the rounded top.
-  sheet: { backgroundColor: colors.surface, borderTopLeftRadius: radii.xl, borderTopRightRadius: radii.xl, overflow: 'hidden', paddingHorizontal: 24, alignItems: 'center', gap: 8 },
+  sheet: { backgroundColor: colors.goldSoft, borderTopLeftRadius: radii.xl, borderTopRightRadius: radii.xl, overflow: 'hidden', paddingHorizontal: 24, alignItems: 'center', gap: 8 },
   stage: { height: STAGE, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center' },
   eyebrowRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   eyebrow: { fontFamily: fonts.bold, fontSize: 12, lineHeight: 16, letterSpacing: 1.2, color: colors.goldInk, textTransform: 'uppercase' },
