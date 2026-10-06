@@ -217,21 +217,24 @@ export default function LogScreen() {
         </TutorialAnchorView>
       </View>
 
-      {/* Who a plain tap logs for. Tapping opens the same member menu as holding a plant, from the finger. */}
-      <Pressable style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
-        <View style={styles.forAvatars}>
-          {members.slice(0, 5).map((m) => (
-            <MemberAvatar key={m.id} member={m} size={32} muted={!defaultIds.includes(m.id)} />
-          ))}
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text style={styles.forLabel}>{t('log.loggingFor')}</Text>
-          <Text style={styles.forNames} numberOfLines={1}>
-            {forLabel}
-          </Text>
-        </View>
-        <ChevronDown size={18} color={colors.ink3} />
-      </Pressable>
+      {/* Who a plain tap logs for. Tapping opens the same member menu as holding a plant, from the finger.
+          A family of one has nobody to choose; the bar went so the list gets the room (Ricardo, 2026-10-06). */}
+      {members.length > 1 ? (
+        <Pressable style={styles.forBar} onPress={(e) => openPicker(null, { x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })} accessibilityRole="button">
+          <View style={styles.forAvatars}>
+            {members.slice(0, 5).map((m) => (
+              <MemberAvatar key={m.id} member={m} size={32} muted={!defaultIds.includes(m.id)} />
+            ))}
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.forLabel}>{t('log.loggingFor')}</Text>
+            <Text style={styles.forNames} numberOfLines={1}>
+              {forLabel}
+            </Text>
+          </View>
+          <ChevronDown size={18} color={colors.ink3} />
+        </Pressable>
+      ) : null}
 
       <View style={styles.searchWrap}>
         <Search size={18} color={colors.ink3} />

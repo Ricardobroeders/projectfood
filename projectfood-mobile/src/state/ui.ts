@@ -114,7 +114,8 @@ export function useDefaultIds(householdId: string | undefined, memberIds: string
   const all = useUi((s) => s.defaultIds);
   if (!householdId) return [];
   const stored = all[householdId];
-  // Until the parent picks, a plain tap logs for everyone at the table.
-  if (!stored) return memberIds;
+  // Until the parent picks, a plain tap logs for everyone at the table. One member is always the
+  // taster: the Log page hides the "Logging for" bar for a family of one (Ricardo, 2026-10-06).
+  if (!stored || memberIds.length <= 1) return memberIds;
   return stored.filter((id) => memberIds.includes(id));
 }
