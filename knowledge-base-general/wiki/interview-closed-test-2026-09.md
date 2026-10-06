@@ -134,6 +134,17 @@ screen shows which one), who (first name or role, never more), the words, what w
   The process question (notify when the plant lands, let the taste count straight away) is in the
   parking lot of [[strategy-backlog]] as "Log it now, name it later".
 
+- **2026-10-06, 1.0.12 (Play 8), a tester: "I didn't receive a notification every day."** True for
+  everyone, not one phone. The sender refused a second essential push within 26 hours of the last
+  one; the dinner question goes out at the same clock time every evening, so every second day was
+  inside that window: sent, skipped, sent, skipped (33 dinner questions to 11 testers in 10 days,
+  about half of what was due). Fixed server-side the same day: "already sent today" is now the
+  household's calendar day. Found alongside: a tapped notification was never recorded as opened
+  (the app's `mark_notification_opened` call was a query builder that was never awaited, 17 taps
+  tracked, 0 marked); fixed in 1.0.17 and the 17 backfilled from the event log. The three testers in
+  a week of quiet had genuinely ignored four pushes each (no tap, no log), so that rule held.
+  Delivery itself was clean: every ticket accepted, every receipt ok.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -190,6 +201,11 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-06, 1.0.16 over the air (Android group fdcc87a9, iOS group 77d5ac97): the sent note
   says what happens, "We check it by hand. New plants arrive with an app update, so it can take a
   few weeks." (nl, it alike), shown 5 seconds before the search clears.
+- 2026-10-06, `send-notifications` v3 deployed from Claude's shell (Supabase MCP, no CLI login):
+  the per-day rule, and the 2026-09-26 card levels (8 / 15) for the Regulars ladder, which had
+  never reached the server. 1.0.17 over the air (Android 9ad4e15e, iOS ec761c1c): opens recorded.
+  Still at the old 5 / 10 levels: the card teaser's "one taste from the next level" test (4 or 9
+  tastes); marketing pushes are off for every tester, so nothing fires from it yet.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

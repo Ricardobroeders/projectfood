@@ -1162,3 +1162,8 @@ Ricardo and his girlfriend named the retention gap (no scale, no mirror; achieve
 little) and proposed a Habbo-style garden built with XP / coins, possibly withering. Parked in
 [[strategy-backlog]] with Claude's read: build it from the plants tasted, no coin economy, no
 withering (resting plants instead); brainstorms 17 and 18.
+
+## [2026-10-06] fix | Dinner question every other day; opens never recorded
+A tester's "not every day" was a 26-hour dedupe window against a fixed clock time: every second
+evening skipped, for everyone. send-notifications v3 compares the household's calendar day;
+1.0.17 awaits the open mark; 17 opens backfilled. Findings on [[interview-closed-test-2026-09]].

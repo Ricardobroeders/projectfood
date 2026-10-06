@@ -179,7 +179,6 @@ async function sendPhase(now: Date) {
   const { data: settingsRows } = await admin.from('user_settings').select('user_id, locale, notif_essential, notif_marketing, notif_daily_reminder, notif_streak_rescue, notif_reengagement, notif_weekly_nudge, notif_backoff_until, notifications_enabled').in('user_id', userIds);
   const { data: tokens } = await admin.from('push_tokens').select('id, user_id, expo_push_token, failure_count').in('user_id', userIds);
   const { data: members } = await admin.from('household_members').select('id, household_id, name, kind').in('household_id', hids).is('archived_at', null);
-  const since = new Date(now.getTime() - 26 * 3600_000).toISOString();
   const { data: recentLogs } = await admin.from('notification_log').select('id, user_id, type, sent_at, opened_at, logged_within_3h').in('user_id', userIds).gte('sent_at', new Date(now.getTime() - 8 * 86400_000).toISOString()).order('sent_at', { ascending: false });
 
   const settingsBy = new Map((settingsRows ?? []).map((s) => [s.user_id, s as Settings]));
@@ -247,8 +246,13 @@ async function sendPhase(now: Date) {
         stats.skipped++;
         continue;
       }
-      const sentToday = (kind: Kind) => history.some((l) => l.type === kind && l.sent_at >= since);
-      const essentialToday = history.some((l) => ESSENTIAL.has(l.type as Kind) && l.sent_at >= since);
+      // "Today" is the household's calendar day. A 26-hour window stood here until 2026-10-06 and,
+      // with the ask at the same clock time every evening, blocked every second day (every
+      // tester's log read sent, skipped, sent, skipped; a tester noticed).
+      const tz = h.timezone || 'Europe/Amsterdam';
+      const onLocalDay = (l: LogRow) => localParts(tz, new Date(l.sent_at)).date === local.date;
+      const sentToday = (kind: Kind) => history.some((l) => l.type === kind && onLocalDay(l));
+      const essentialToday = history.some((l) => ESSENTIAL.has(l.type as Kind) && onLocalDay(l));
       const pick = candidates.find((c) => allowed(s, c.kind) && !sentToday(c.kind) && !(ESSENTIAL.has(c.kind) && essentialToday));
       if (!pick) {
         stats.skipped++;

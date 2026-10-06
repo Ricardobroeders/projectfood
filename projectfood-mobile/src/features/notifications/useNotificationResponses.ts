@@ -19,7 +19,9 @@ export function useNotificationResponses() {
       if (handled.current === id) return;
       handled.current = id;
       const data = (response.notification.request.content.data ?? {}) as PushData;
-      if (data.log_id) void supabase.rpc('mark_notification_opened', { p_id: data.log_id });
+      // A query builder only runs once awaited: `void supabase.rpc(...)` sent nothing, so every
+      // open read as ignored until 2026-10-06 (17 taps tracked, 0 marked).
+      if (data.log_id) void supabase.rpc('mark_notification_opened', { p_id: data.log_id }).then(({ error }) => error && __DEV__ && console.warn('[push] mark opened', error.message));
       track('notification_opened', { type: data.type ?? null, log_id: data.log_id ?? null });
       router.push((data.url as never) ?? '/log');
     };
