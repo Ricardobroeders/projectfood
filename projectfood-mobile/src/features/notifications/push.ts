@@ -3,7 +3,9 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { Linking, Platform } from 'react-native';
 
+import { settingsKey } from '@/features/household/queries';
 import { supabase } from '@/features/supabase/client';
+import { queryClient } from '@/features/supabase/queryClient';
 
 export type PermissionState = 'granted' | 'denied' | 'undetermined' | 'unavailable';
 
@@ -61,4 +63,8 @@ export async function registerPushToken(userId: string): Promise<void> {
   const { error } = await supabase.from('push_tokens').upsert(row, { onConflict: 'expo_push_token' });
   if (error && __DEV__) console.warn('[push] token upsert', error.message);
   await supabase.from('user_settings').update({ notifications_enabled: true }).eq('user_id', userId);
+  // The settings query is usually already loaded by now (it gates the language); without this the
+  // Account row keeps the stale "Off" until something else refetches (Ricardo saw it flip on a
+  // language switch, 2026-10-06).
+  void queryClient.invalidateQueries({ queryKey: settingsKey });
 }

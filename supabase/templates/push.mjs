@@ -12,9 +12,11 @@ import { fileURLToPath } from 'node:url';
 const REF = 'lkmfmdehysmbstnfdbyg';
 const DIR = dirname(fileURLToPath(import.meta.url));
 // Supabase sends "magic_link" to existing accounts and "confirmation" to new ones when the app asks for a code.
+// The code leads the subject so the phone's notification shows it and offers Copy without the
+// email being opened (Ricardo, 2026-10-02); Supabase renders {{ .Token }} in subjects.
 const TEMPLATES = {
-  magic_link: { subject: 'Your Project Food code', file: 'magic-link.html' },
-  confirmation: { subject: 'Your Project Food code', file: 'confirm-signup.html' },
+  magic_link: { subject: '{{ .Token }} is your Project Food code', file: 'magic-link.html' },
+  confirmation: { subject: '{{ .Token }} is your Project Food code', file: 'confirm-signup.html' },
 };
 
 const tokenFile = join(homedir(), '.supabase', 'access-token');

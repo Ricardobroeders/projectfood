@@ -152,6 +152,9 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   its own browser and often does not hand over to the app, so the button is reliable on Android and in
   Apple Mail. Becomes item 25 when Ricardo says go. _(Ricardo, 2026-10-02; touches row 4 onboarding
   friction and row 13 email templates; the per-language email note in `supabase/templates/README.md`)_
+  **Layer 1 done 2026-10-06** (Ricardo's go: the code copiable from the notification and visible in
+  its first words): subjects in `supabase/templates/push.mjs` now lead with `{{ .Token }}`, pasted
+  into the dashboard by Ricardo. Layers 2 and 3 still parked.
 - **How to do the printables (row 6).** The printables hub (roadmap 2.7: tasting chart, plant cards, veg bingo as PDFs with landing pages) is parked; Ricardo wants to think through the approach first: what the printables are, how they are made from the renders, what a parent downloads and what the site shows. _(Ricardo, 2026-09-30; touches [[seo-roadmap]] row 2.7, [[seo-content-types]] format 3 and the link-magnet plan in batch 3)_
 - **Why 30, and a 3-step tutorial (rows 1, 4).** _Left the parking lot 2026-09-30: [[decision-2026-09-30-first-minute-tutorial]] (accepted, shipped as 1.0.7)._ A tester found the goal unexplained on first open; Ricardo wants to think before fixing it, possibly a three-step tutorial after onboarding that carries the why along with the how. Two drafted options (a sentence at onboarding step 1, a "Why 30?" sheet from the Home gauge, copy inside [[brand-stats-and-claims]] row 7) wait in [[interview-closed-test-2026-09]]. _(Ricardo, 2026-09-29; challenged by brainstorm 21)_
 - **Gold / XP economy (row 5, 9).** Earn gold per person per tasted plant; when several family

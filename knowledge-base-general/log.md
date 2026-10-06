@@ -1130,3 +1130,12 @@ dated updates on [[concept-engagement-snapshot]], [[concept-logging-behaviour]],
 Open questions: is the drop after 2026-10-03 a weekend dip or the week-1 cliff, and does it put
 the 2026-10-14 production application at risk (Google can extend for low engagement)? Should the
 friends comparison be replaced by a household-level driver? Re-read churn on 2026-10-13.
+
+## [2026-10-06] build | 1.0.13 over the air; sign-in code leads the email subject
+Ricardo's go on layer 1 of the one-tap sign-in code: both auth email subjects in
+`supabase/templates/push.mjs` now start with `{{ .Token }}` (he pastes them in the dashboard). His
+Apple-video observation that the Account "Notifications" row flipped on a language switch was a
+stale cache of a per-account flag, not a per-language setting; 1.0.13 (Android 9b864af4, iOS
+357abfea, runtimes unchanged) bases the row on the phone's permission and refreshes the cache after
+token registration. Entries on [[interview-closed-test-2026-09]]; parking-lot note in [[strategy-backlog]].
+

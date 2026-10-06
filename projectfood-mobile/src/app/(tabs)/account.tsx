@@ -1,10 +1,10 @@
 import Constants from 'expo-constants';
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import * as Updates from 'expo-updates';
 import * as WebBrowser from 'expo-web-browser';
 import { Bell, Clock, FileText, LogOut, MessageSquare, Shield, Trash2, Users } from 'lucide-react-native';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -17,6 +17,7 @@ import { useSession } from '@/features/auth/useSession';
 import { useHousehold, useSettings } from '@/features/household/queries';
 import { useLocale } from '@/features/i18n';
 import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
+import { getPermissionState, type PermissionState } from '@/features/notifications/push';
 import { ENV } from '@/features/supabase/env';
 import { useSurveyProgress } from '@/features/survey/queries';
 
@@ -30,6 +31,15 @@ export default function AccountScreen() {
   const locale = useLocale();
   const scrollRef = useRef<ScrollView>(null);
   useScrollToTopOnTab(scrollRef);
+  // "On" means this phone can receive them and a group is switched on; the account flag alone said
+  // "On" after the phone's permission was revoked and "Off" until the first refetch.
+  const [perm, setPerm] = useState<PermissionState>('undetermined');
+  useFocusEffect(
+    useCallback(() => {
+      void getPermissionState().then(setPerm);
+    }, []),
+  );
+  const notificationsOn = perm === 'granted' && !!settings && (settings.notif_essential || settings.notif_marketing);
   // Pull the latest over-the-air update on demand: the launch check downloads in the background
   // and only applies on the next start, which makes "did it change?" a guess without this.
   const [checking, setChecking] = useState(false);
@@ -76,7 +86,7 @@ export default function AccountScreen() {
           <SettingsRow icon={Users} label={t('account.family')} value={hh ? t('account.members', { n: hh.members.length }) : undefined} onPress={() => router.push('/account/members')} />
           <SettingsRow icon={Clock} label={t('account.dinnerTime')} value={hh?.household.dinner_time.slice(0, 5)} onPress={() => router.push('/account/household')} />
           <SettingsRow leading={<Image source={FLAGS[locale]} style={styles.flag} contentFit="cover" />} label={t('account.language')} value={t(`languages.${locale}`)} onPress={() => router.push('/account/language')} />
-          <SettingsRow icon={Bell} label={t('account.notifications')} value={settings?.notifications_enabled ? t('common.on') : t('common.off')} onPress={() => router.push('/account/notifications')} />
+          <SettingsRow icon={Bell} label={t('account.notifications')} value={notificationsOn ? t('common.on') : t('common.off')} onPress={() => router.push('/account/notifications')} />
           <SettingsRow icon={MessageSquare} label={t('account.feedback')} value={survey.total ? t('account.feedbackAnswered', { answered: survey.answered, total: survey.total }) : undefined} onPress={() => router.push('/account/survey')} />
         </View>
 

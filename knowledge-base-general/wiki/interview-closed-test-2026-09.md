@@ -3,7 +3,7 @@ title: Closed test feedback (Play, from 2026-09-27)
 type: interview
 tags: [user-research, closed-test, feedback, play]
 created: 2026-09-29
-updated: 2026-09-30
+updated: 2026-10-06
 date: 2026-09-27
 participant: the closed-test group (friends and family on Android, 13 invited)
 sources: []
@@ -92,6 +92,18 @@ screen shows which one), who (first name or role, never more), the words, what w
   1.0.12 removes the banner; the survey stays under Account, and the moment to ask comes later
   ([[research-survey-plan]]).
 
+- **2026-10-02 and 2026-10-06, 1.0.12 (Play 7), Ricardo: the sign-in code should be copiable from
+  the email notification and visible in its first words,** so you never leave the app to sign in
+  (GitHub's sudo email as the reference). 2026-10-06: the code leads the email subject, no app
+  change. Layers 2 and 3 (clipboard fill, an app link in the email) in the parking lot.
+
+- **2026-10-06, 1.0.2 (TestFlight 1), Ricardo while recording the Apple video: the Account row
+  "Notifications: On / Off" changed when he switched the language en → nl → en,** so he asked
+  whether the setting is per language or per phone. It is per account; the row read a cached
+  account flag that the push-token registration set on the server but never refreshed, and the
+  language switch was the first thing to refetch it. 1.0.13: the row follows the phone's
+  permission plus the account's groups, and the registration refreshes the cache.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -136,6 +148,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   the tutorial in motion, see the decision page's "Motion" item; the start wait halved.
 - 2026-09-30, 1.0.12 over the air (commit 0485896; Android group 7b73bf4a, iOS group d94dd0c3):
   no survey banner on Home.
+- 2026-10-06, 1.0.13 over the air (Android group 9b864af4, iOS group 357abfea): the Account
+  notifications row reads the phone's permission; the sign-in email subject starts with the code.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

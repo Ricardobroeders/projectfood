@@ -10,7 +10,8 @@ rather than edited there.
 Both are built for dark mode: `color-scheme: light` so mail clients do not invert them, every
 colour set inline and again under `prefers-color-scheme: dark` and the Outlook `data-ogsb` /
 `data-ogsc` hooks, no images (a transparent logo is what breaks first), dark text on a light card.
-The only variable is `{{ .Token }}`. Copy is English only; per-language templates would need the
+The only variable is `{{ .Token }}`, and since 2026-10-06 it also leads the subject ("12345678 is your
+Project Food code"), so the notification on the phone shows the code and Android offers Copy on it. Copy is English only; per-language templates would need the
 locale in user metadata, which the app does not store (backlog row 13).
 
 Push: `SUPABASE_ACCESS_TOKEN=sbp_... node supabase/templates/push.mjs` (`--dry-run` to preview).
