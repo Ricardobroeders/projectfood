@@ -1,12 +1,14 @@
 import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Animated, { interpolate, useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleOnRN } from 'react-native-worklets';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
 import { Cup } from '@/components/Cup';
+import { SunRays } from '@/components/SunRays';
 import { motion, REWARD_POP_FROM } from '@/constants/motion';
 import { colors, fonts, radii } from '@/constants/theme';
 import { useHousehold } from '@/features/household/queries';
@@ -15,13 +17,18 @@ import { usePlantCatalog } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
 import { useUi } from '@/state/ui';
 
-const HIDDEN_Y = 640;
-const TILE = 200;
+const HIDDEN_Y = 900;
+// The render is 256 px; shown close to that so it fills the stage without going soft.
+const PLANT = 240;
+const STAGE = 400;
 
 /**
  * The gold card celebration (Ricardo, 2026-09-27): the 15th taste of one plant mints its gold card,
  * and that is the moment the render and the ground turn gold everywhere in the app. The sheet shows
  * the plant the way it will look from now on, which is the whole reward.
+ *
+ * Staged like Ricardo's Figma (2026-10-06): the sheet itself goes gold to white top to bottom, a
+ * sunburst turns slowly behind the gold render, and the words and the button sit on the white end.
  *
  * Fired from the log mutation, so a tap on the row and a chip in the member menu both reach it. It
  * waits for the member menu and the fact card to be out of the way, and the achievement celebration
@@ -30,6 +37,7 @@ const TILE = 200;
 export function GoldCardSheet() {
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
   const goldCard = useUi((s) => s.goldCard);
   const picker = useUi((s) => s.picker);
   const factCard = useUi((s) => s.factCard);
@@ -101,14 +109,25 @@ export function GoldCardSheet() {
           <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityRole="button" />
         </Animated.View>
         <Animated.View style={[styles.sheet, { paddingBottom: 20 + insets.bottom }, sheetStyle]}>
-          <View style={styles.handle} />
+          <Svg pointerEvents="none" style={StyleSheet.absoluteFill} width="100%" height="100%">
+            <Defs>
+              <LinearGradient id="goldSheet" x1="0" y1="0" x2="0" y2="1">
+                <Stop offset="0" stopColor={colors.goldSoft} />
+                <Stop offset="1" stopColor={colors.surface} />
+              </LinearGradient>
+            </Defs>
+            <Rect x="0" y="0" width="100%" height="100%" fill="url(#goldSheet)" />
+          </Svg>
+          <SunRays cx={width / 2} cy={STAGE / 2} radius={width} play={visible} />
+          <View style={styles.stage}>
+            <Animated.View style={tileStyle}>
+              <PlantImage plant={plant} size={PLANT} gold />
+            </Animated.View>
+          </View>
           <View style={styles.eyebrowRow}>
             <Cup level="gold" size={22} />
             <Text style={styles.eyebrow}>{t('unlocks.goldReached')}</Text>
           </View>
-          <Animated.View style={[styles.tile, tileStyle]}>
-            <PlantImage plant={plant} size={152} gold />
-          </Animated.View>
           <Text style={styles.title}>{plant.name}</Text>
           <Text style={styles.body}>{who ? `${who} · ${body}` : body}</Text>
           <Pressable style={({ pressed }) => [styles.primary, pressed && { backgroundColor: colors.accentPressed }]} onPress={close} accessibilityRole="button">
@@ -123,11 +142,11 @@ export function GoldCardSheet() {
 const styles = StyleSheet.create({
   root: { flex: 1, justifyContent: 'flex-end' },
   backdrop: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(31,27,22,0.32)' },
-  sheet: { backgroundColor: colors.surface, borderTopLeftRadius: radii.xl, borderTopRightRadius: radii.xl, paddingHorizontal: 24, paddingTop: 12, alignItems: 'center', gap: 8 },
-  handle: { width: 40, height: 4, borderRadius: radii.full, backgroundColor: colors.hairline, marginBottom: 2 },
+  // overflow hidden keeps the gradient and the turning rays inside the rounded top.
+  sheet: { backgroundColor: colors.surface, borderTopLeftRadius: radii.xl, borderTopRightRadius: radii.xl, overflow: 'hidden', paddingHorizontal: 24, alignItems: 'center', gap: 8 },
+  stage: { height: STAGE, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center' },
   eyebrowRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   eyebrow: { fontFamily: fonts.bold, fontSize: 12, lineHeight: 16, letterSpacing: 1.2, color: colors.goldInk, textTransform: 'uppercase' },
-  tile: { width: TILE, height: TILE, borderRadius: radii.xl, backgroundColor: colors.goldSoft, alignItems: 'center', justifyContent: 'center', marginTop: 4 },
   title: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, textAlign: 'center', marginTop: 4 },
   body: { fontFamily: fonts.medium, fontSize: 16, lineHeight: 22, color: colors.ink2, textAlign: 'center', maxWidth: 300 },
   primary: { alignSelf: 'stretch', backgroundColor: colors.accent, borderRadius: radii.md, height: 54, alignItems: 'center', justifyContent: 'center', marginTop: 14 },

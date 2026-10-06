@@ -1177,3 +1177,7 @@ Sender v4, migration sunday_nudge_essential, app 1.0.18 over the air. Row 4 and
 Ricardo's cut: Nice try at 100 plants a day, Full spectrum, At the table within 5 minutes after
 dinner time. Decision page [[decision-2026-10-06-secret-achievements]]; the parking-lot entry left.
 Art brief given in chat (whistle, 7-wedge plate, dinner bell); greyed render as the hidden tile.
+
+## [2026-10-06] build | Gold card sheet staged (1.0.22)
+Ricardo designed the gold moment in Figma: gradient sheet, sunburst, big gold render. Built as a
+drawn SVG burst (`SunRays`) turning once per 48 s, no bounce beyond the existing reward pop.

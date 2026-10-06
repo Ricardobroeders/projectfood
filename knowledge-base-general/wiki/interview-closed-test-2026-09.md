@@ -219,6 +219,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   [[decision-2026-10-06-secret-achievements]].
 - 2026-10-06, 1.0.21 over the air: the three secret renders; locked achievements in greyscale; the
   secret's name shows on the shelf, the how stays hidden until achieved.
+- 2026-10-06, 1.0.22 over the air (Android e88b5555, iOS 25aeab9b): the gold card sheet staged
+  after Ricardo's Figma (node 201-297): gold-to-white gradient, a slow-turning white sunburst
+  behind the 240 px gold render, the words and button on the white end. Copy unchanged.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
