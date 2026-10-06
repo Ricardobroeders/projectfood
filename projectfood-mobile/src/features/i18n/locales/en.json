@@ -174,6 +174,7 @@
     "bronze": "bronze",
     "silver": "silver",
     "gold": "gold",
+    "plantsTried": "Plants tried",
     "foodsTried": "Foods tried",
     "ofTotal": "of {total}",
     "tried": "Tried",

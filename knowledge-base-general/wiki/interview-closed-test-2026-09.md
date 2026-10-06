@@ -229,6 +229,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   in the bucket under the slug name (pickle.png, chickpea.png, black-bean, kidney-bean,
   lambs-lettuce, sweetcorn, mustard-seed, nectarine) while the script looked for the normal file
   name (gherkin.png, chickpeas.png, ...). The script now tries both; 114 of 230 plants have gold.
+- 2026-10-06, 1.0.25 over the air (Android 17ca09e0, iOS ae5afa21): the Unlocks page split into
+  two tabs, Achievements and Plants tried (cups row plus the categories); the title's count
+  follows the tab (levels held, plants tried). Ricardo: the two read as one list before.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

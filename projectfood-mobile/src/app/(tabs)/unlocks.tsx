@@ -9,6 +9,7 @@ import { Cup } from '@/components/Cup';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { StampGrid } from '@/components/StampShelf';
+import { Tabs, type Tab } from '@/components/Tabs';
 import { Loading, Screen, ScreenTitle, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, levelKey, progressFor } from '@/features/achievements/definitions';
@@ -19,7 +20,13 @@ import { CARD_LEVELS } from '@/features/plants/cardLevel';
 import { usePlantCatalog } from '@/features/plants/catalog';
 import { useUi } from '@/state/ui';
 
-/** Stats, reborn as Unlocks: stamps, card levels and the foods tried, per kid (never ranked) with the family's shared stamps. */
+type UnlocksTab = 'achievements' | 'plants';
+
+/**
+ * Stats, reborn as Unlocks: achievements on one tab, the cups and the plants tried on the other
+ * (Ricardo, 2026-10-06: two things that read as one list were clearer apart), per kid (never
+ * ranked) with the family's shared achievements.
+ */
 export default function UnlocksScreen() {
   const { t } = useTranslation();
   const router = useRouter();
@@ -27,6 +34,8 @@ export default function UnlocksScreen() {
   const { catalog } = usePlantCatalog();
   const openAchievement = useUi((s) => s.openAchievement);
   const [view, setView] = useState<string | null>(null);
+  const [tab, setTab] = useState<UnlocksTab>('achievements');
+  const tabs = useMemo<Tab<UnlocksTab>[]>(() => [{ key: 'achievements', label: t('unlocks.stamps') }, { key: 'plants', label: t('unlocks.plantsTried') }], [t]);
   const scrollRef = useRef<ScrollView>(null);
   useScrollToTopOnTab(scrollRef);
   const memberId = view ?? members[0]?.id ?? null;
@@ -56,7 +65,7 @@ export default function UnlocksScreen() {
   return (
     <Screen>
       <ScrollView ref={scrollRef} contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <ScreenTitle meta={t('unlocks.levelsUnlocked', { n: levelsHeld, m: levelsTotal })}>{t('unlocks.title')}</ScreenTitle>
+        <ScreenTitle meta={tab === 'achievements' ? t('unlocks.levelsUnlocked', { n: levelsHeld, m: levelsTotal }) : `${triedTotal} ${t('unlocks.ofTotal', { total: catalog.plants.length })}`}>{t('unlocks.title')}</ScreenTitle>
 
         {members.length > 1 ? (
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.switcher}>
@@ -72,64 +81,73 @@ export default function UnlocksScreen() {
           </ScrollView>
         ) : null}
 
-        <SectionTitle>{t('unlocks.stamps')}</SectionTitle>
-        <StampGrid entries={entries} levelOf={levelOf} onPress={(id) => openAchievement(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)} />
-
-        <SectionTitle meta={t('unlocks.cardsUnlocked', { n: cards.unlocked })}>{t('unlocks.cards')}</SectionTitle>
-        <View style={styles.cardsRow}>
-          <View style={[styles.cardStat, { backgroundColor: '#F1DFC4' }]}>
-            <Cup level="bronze" size={36} />
-            <View style={styles.cardText}>
-              <Text style={styles.cardNumber}>{cards.bronze}</Text>
-              <Text style={styles.cardLabel} numberOfLines={1}>
-                {t('unlocks.bronze')}
-              </Text>
-            </View>
-          </View>
-          <View style={[styles.cardStat, { backgroundColor: '#E9E9EC' }]}>
-            <Cup level="silver" size={36} />
-            <View style={styles.cardText}>
-              <Text style={styles.cardNumber}>{cards.silver}</Text>
-              <Text style={styles.cardLabel} numberOfLines={1}>
-                {t('unlocks.silver')}
-              </Text>
-            </View>
-          </View>
-          <View style={[styles.cardStat, { backgroundColor: '#FBEDB5' }]}>
-            <Cup level="gold" size={36} />
-            <View style={styles.cardText}>
-              <Text style={styles.cardNumber}>{cards.gold}</Text>
-              <Text style={styles.cardLabel} numberOfLines={1}>
-                {t('unlocks.gold')}
-              </Text>
-            </View>
-          </View>
+        <View style={styles.tabs}>
+          <Tabs tabs={tabs} value={tab} onChange={setTab} />
         </View>
 
-        <SectionTitle meta={`${triedTotal} ${t('unlocks.ofTotal', { total: catalog.plants.length })}`}>{t('unlocks.foodsTried')}</SectionTitle>
-        <View style={styles.cats}>
-          {perCat.map(({ c, tried, total }) => (
-            <Pressable
-              key={c}
-              onPress={() => {
-                perfStart('→category');
-                router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } });
-              }}
-              style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
-              <CategoryImage category={c} size={64} style={styles.catImage} />
-              <View style={{ flex: 1, gap: 6 }}>
-                <View style={styles.catHead}>
-                  <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
-                  <Text style={[styles.catCount, { color: CATS[c].fg }]}>
-                    {tried}/{total}
+        {tab === 'achievements' ? (
+          <View style={styles.pane}>
+            <StampGrid entries={entries} levelOf={levelOf} onPress={(id) => openAchievement(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)} />
+          </View>
+        ) : (
+          <>
+            <SectionTitle meta={t('unlocks.cardsUnlocked', { n: cards.unlocked })}>{t('unlocks.cards')}</SectionTitle>
+            <View style={styles.cardsRow}>
+              <View style={[styles.cardStat, { backgroundColor: '#F1DFC4' }]}>
+                <Cup level="bronze" size={36} />
+                <View style={styles.cardText}>
+                  <Text style={styles.cardNumber}>{cards.bronze}</Text>
+                  <Text style={styles.cardLabel} numberOfLines={1}>
+                    {t('unlocks.bronze')}
                   </Text>
                 </View>
-                <ProgressBar value={tried} max={total} height={4} color={CATS[c].fg} />
               </View>
-              <ChevronRight size={18} color={CATS[c].fg} />
-            </Pressable>
-          ))}
-        </View>
+              <View style={[styles.cardStat, { backgroundColor: '#E9E9EC' }]}>
+                <Cup level="silver" size={36} />
+                <View style={styles.cardText}>
+                  <Text style={styles.cardNumber}>{cards.silver}</Text>
+                  <Text style={styles.cardLabel} numberOfLines={1}>
+                    {t('unlocks.silver')}
+                  </Text>
+                </View>
+              </View>
+              <View style={[styles.cardStat, { backgroundColor: '#FBEDB5' }]}>
+                <Cup level="gold" size={36} />
+                <View style={styles.cardText}>
+                  <Text style={styles.cardNumber}>{cards.gold}</Text>
+                  <Text style={styles.cardLabel} numberOfLines={1}>
+                    {t('unlocks.gold')}
+                  </Text>
+                </View>
+              </View>
+            </View>
+
+            <SectionTitle meta={`${triedTotal} ${t('unlocks.ofTotal', { total: catalog.plants.length })}`}>{t('unlocks.foodsTried')}</SectionTitle>
+            <View style={styles.cats}>
+              {perCat.map(({ c, tried, total }) => (
+                <Pressable
+                  key={c}
+                  onPress={() => {
+                    perfStart('→category');
+                    router.push({ pathname: '/unlocks/[category]', params: { category: c, member: memberId ?? '' } });
+                  }}
+                  style={({ pressed }) => [styles.catRow, { backgroundColor: CATS[c].bg }, pressed && { opacity: 0.8 }]}>
+                  <CategoryImage category={c} size={64} style={styles.catImage} />
+                  <View style={{ flex: 1, gap: 6 }}>
+                    <View style={styles.catHead}>
+                      <Text style={[styles.catTitle, { color: CATS[c].fg }]}>{t(`categoriesPlural.${c}`)}</Text>
+                      <Text style={[styles.catCount, { color: CATS[c].fg }]}>
+                        {tried}/{total}
+                      </Text>
+                    </View>
+                    <ProgressBar value={tried} max={total} height={4} color={CATS[c].fg} />
+                  </View>
+                  <ChevronRight size={18} color={CATS[c].fg} />
+                </Pressable>
+              ))}
+            </View>
+          </>
+        )}
       </ScrollView>
     </Screen>
   );
@@ -138,6 +156,9 @@ export default function UnlocksScreen() {
 const styles = StyleSheet.create({
   content: { paddingBottom: 32 },
   switcher: { paddingHorizontal: 20, gap: 8, marginTop: 14 },
+  tabs: { marginTop: 8 },
+  // The section title used to give the grid its air above; the tab bar takes that place.
+  pane: { paddingTop: 16 },
   memberChip: { flexDirection: 'row', alignItems: 'center', gap: 8, height: 36, paddingLeft: 6, paddingRight: 14, borderRadius: radii.sm, backgroundColor: colors.bgSoft },
   memberChipText: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 18, color: colors.ink },
   cardsRow: { flexDirection: 'row', gap: 8, paddingHorizontal: 20 },
