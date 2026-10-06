@@ -47,8 +47,9 @@ export default function VerifyScreen() {
       <View style={styles.body}>
         <Text style={styles.title}>{t('auth.codeSentBody', { email })}</Text>
         <View style={styles.codeWrap}>
+        {/* Left-aligned: centred text put Android's caret after the spaced-out placeholder (Ricardo, 2026-10-06). */}
         <TextInput
-          style={styles.code}
+          style={[styles.code, code.length > 0 && styles.codeTyped]}
           value={code}
           onChangeText={(v) => setCode(v.replace(/\D/g, '').slice(0, 8))}
           placeholder={t('auth.codePlaceholder')}
@@ -75,5 +76,6 @@ const styles = StyleSheet.create({
   body: { paddingHorizontal: 24, paddingTop: 24, gap: 12 },
   title: { fontFamily: fonts.semibold, fontSize: 18, lineHeight: 26, color: colors.ink, marginBottom: 8 },
   codeWrap: { height: 64, borderRadius: radii.md, backgroundColor: colors.bgSoft, paddingHorizontal: 16, justifyContent: 'center' },
-  code: { fontFamily: fonts.extrabold, fontSize: 28, letterSpacing: 6, color: colors.ink, textAlign: 'center', paddingVertical: 0, textAlignVertical: 'center' },
+  code: { fontFamily: fonts.extrabold, fontSize: 28, color: colors.ink, paddingVertical: 0, textAlignVertical: 'center' },
+  codeTyped: { letterSpacing: 6 },
 });

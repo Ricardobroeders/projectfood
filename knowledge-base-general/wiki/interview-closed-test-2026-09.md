@@ -104,6 +104,13 @@ screen shows which one), who (first name or role, never more), the words, what w
   language switch was the first thing to refetch it. 1.0.13: the row follows the phone's
   permission plus the account's groups, and the registration refreshes the cache.
 
+- **2026-10-06, 1.0.13 (Play 7), Ricardo testing the new subject: the code shows in the shade, but
+  Gmail's notification has no Copy action** (he wanted Windows Phone Link's "Copy 920806" chip),
+  and eight digits are too many to remember. Gmail allows no sender-added actions; its own Copy
+  chip sits in the inbox list. Supabase's floor is 6 digits: Ricardo sets the length to 6 in the
+  dashboard, the app already accepts 6 to 8. Also: the code field's caret sat at the right of the
+  centred, letter-spaced placeholder on Android; 1.0.14 left-aligns it.
+
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,
 > relayed by Ricardo)
@@ -150,6 +157,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   no survey banner on Home.
 - 2026-10-06, 1.0.13 over the air (Android group 9b864af4, iOS group 357abfea): the Account
   notifications row reads the phone's permission; the sign-in email subject starts with the code.
+- 2026-10-06, 1.0.14 over the air (runtimes unchanged): the code field left-aligned, letter
+  spacing only on typed digits.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)
