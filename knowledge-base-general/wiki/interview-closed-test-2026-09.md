@@ -212,6 +212,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   over the air (Android eee47a10, iOS f9a9383a) drops the "Tips & news" group from the Notifications
   screen, the Sunday nudge sits under Essential. One essential push a day still holds, so a Sunday at
   25 to 29 gets the nudge instead of the dinner question.
+- 2026-10-06, 1.0.19 over the air (Android 7f14929e, iOS 66d9c36c): the Log rows show every plant
+  in its category colour with the normal render again; with many gold cards the rows had all gone
+  the same yellow and were hard to tell apart (Ricardo). Gold stays on the Unlocks page.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

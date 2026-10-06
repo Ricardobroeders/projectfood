@@ -24,7 +24,6 @@ import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
 import { supabase } from '@/features/supabase/client';
 import { type Point, useDefaultIds, useUi } from '@/state/ui';
-import { useGoldPlants } from '@/features/plants/useGoldPlants';
 import { useLocale } from '@/features/i18n';
 
 type Filter = 'all' | Category;
@@ -85,13 +84,10 @@ export default function LogScreen() {
   const tastes = useMemo(() => tasteMapFor(logs, today), [logs, today]);
   const weekCount = useMemo(() => distinctPlants(logs).length, [logs]);
 
-  const goldIds = useGoldPlants();
   const locale = useLocale();
 
   // Alphabetical, in the reader's own locale (Ricardo, 2026-09-26). It used to be the household's
-  // frequent plants first, which sorted every gold card into one block at the top; scattering them
-  // means you come across a gold plant while scrolling, which is the thing that makes you want the
-  // rest gold too. The speed the old order bought is covered by the search field and the tabs.
+  // frequent plants first. The speed the old order bought is covered by the search field and the tabs.
   //
   // It also removes a whole mechanism. The order no longer depends on what has been tasted, so a
   // plant logged tonight cannot move, and the frozen-per-visit order that fixed that (2026-09-24)
@@ -150,7 +146,9 @@ export default function LogScreen() {
 
   const renderItem = useCallback(
     ({ item, index }: { item: Plant; index: number }) => {
-      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} gold={goldIds.has(item.id)} onTap={onTap} onHold={onHold} />;
+      // No gold here since 2026-10-06 (Ricardo): with many gold cards every row went the same colour
+      // and the category colour that tells rows apart was lost. Gold stays on the Unlocks page.
+      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />;
       // The tutorial's second balloon points at the first row.
       return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow" inset={ROW_INSET}>{row}</TutorialAnchorView> : row}</Animated.View>;
     },
