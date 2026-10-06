@@ -196,9 +196,7 @@
     "done": "Fatto",
     "next": "Prossimo",
     "levelOf": "Livello {n} di {m}",
-    "secret": "Segreto",
-    "secretTitle": "Traguardo segreto",
-    "secretBody": "Nascosto finché non succede."
+    "secretBody": "Nascosto finché non raggiunto."
   },
   "stats": {
     "title": "Le tue statistiche",

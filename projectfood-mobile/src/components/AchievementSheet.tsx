@@ -45,7 +45,7 @@ export function AchievementSheet() {
           <StampArt achievement={a} size={STAMP_SIZE} unlocked={level > 0} />
         </Stamp>
         <LevelPips level={level} max={v.maxLevel} size={7} />
-        <Text style={styles.title}>{hidden ? t('unlocks.secretTitle') : t(`stamps.${target.id}.title`)}</Text>
+        <Text style={styles.title}>{t(`stamps.${target.id}.title`)}</Text>
         {v.maxLevel > 1 ? (
           <Text style={styles.levelLine}>{level > 0 ? `${t('unlocks.levelOf', { n: level, m: v.maxLevel })} · ${levelLabel(t, level)}` : t('unlocks.levelOf', { n: 0, m: v.maxLevel })}</Text>
         ) : null}

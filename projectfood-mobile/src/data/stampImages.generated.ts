@@ -3,6 +3,9 @@ import type { ImageSourcePropType } from 'react-native';
 
 /** Prize renders by stamp image id (bucket achievements/achievement-<id>.png), 256 px webp with alpha. */
 export const STAMP_IMAGES: Record<string, ImageSourcePropType> = {
+  nice_try: require('@/assets/stamps/nice_try.webp'),
+  full_spectrum: require('@/assets/stamps/full_spectrum.webp'),
+  at_the_table: require('@/assets/stamps/at_the_table.webp'),
   explorer: require('@/assets/stamps/explorer.webp'),
   green_machine: require('@/assets/stamps/green_machine.webp'),
   fruit_basket: require('@/assets/stamps/fruit_basket.webp'),
@@ -22,4 +25,30 @@ export const STAMP_IMAGES: Record<string, ImageSourcePropType> = {
   regulars: require('@/assets/stamps/regulars.webp'),
   full_table: require('@/assets/stamps/full_table.webp'),
   curious: require('@/assets/stamps/curious.webp'),
+};
+
+/** The same renders in greyscale, for the locked state. */
+export const STAMP_IMAGES_GREY: Record<string, ImageSourcePropType> = {
+  nice_try: require('@/assets/stamps/nice_try_grey.webp'),
+  full_spectrum: require('@/assets/stamps/full_spectrum_grey.webp'),
+  at_the_table: require('@/assets/stamps/at_the_table_grey.webp'),
+  explorer: require('@/assets/stamps/explorer_grey.webp'),
+  green_machine: require('@/assets/stamps/green_machine_grey.webp'),
+  fruit_basket: require('@/assets/stamps/fruit_basket_grey.webp'),
+  herb_garden: require('@/assets/stamps/herb_garden_grey.webp'),
+  nutcracker: require('@/assets/stamps/nutcracker_grey.webp'),
+  bean_counter: require('@/assets/stamps/bean_counter_grey.webp'),
+  grain_train: require('@/assets/stamps/grain_train_grey.webp'),
+  bubbly: require('@/assets/stamps/bubbly_grey.webp'),
+  superfood: require('@/assets/stamps/superfood_grey.webp'),
+  tomato_family: require('@/assets/stamps/tomato_family_grey.webp'),
+  rainbow: require('@/assets/stamps/rainbow_grey.webp'),
+  big_dinner: require('@/assets/stamps/big_dinner_grey.webp'),
+  regular_table: require('@/assets/stamps/regular_table_grey.webp'),
+  steady_weeks: require('@/assets/stamps/steady_weeks_grey.webp'),
+  table_talk: require('@/assets/stamps/table_talk_grey.webp'),
+  family_of_thirty: require('@/assets/stamps/family_of_thirty_grey.webp'),
+  regulars: require('@/assets/stamps/regulars_grey.webp'),
+  full_table: require('@/assets/stamps/full_table_grey.webp'),
+  curious: require('@/assets/stamps/curious_grey.webp'),
 };

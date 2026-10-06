@@ -196,9 +196,7 @@
     "done": "Done",
     "next": "Next",
     "levelOf": "Level {n} of {m}",
-    "secret": "Secret",
-    "secretTitle": "Secret achievement",
-    "secretBody": "Hidden until it happens."
+    "secretBody": "Hidden until achieved."
   },
   "stats": {
     "title": "Your stats",

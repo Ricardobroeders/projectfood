@@ -217,6 +217,8 @@ screen shows which one), who (first name or role, never more), the words, what w
   the same yellow and were hard to tell apart (Ricardo). Gold stays on the Unlocks page.
 - 2026-10-06, 1.0.20 over the air (Android dab3a49a, iOS dccf3277): three secret achievements,
   [[decision-2026-10-06-secret-achievements]].
+- 2026-10-06, 1.0.21 over the air: the three secret renders; locked achievements in greyscale; the
+  secret's name shows on the shelf, the how stays hidden until achieved.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

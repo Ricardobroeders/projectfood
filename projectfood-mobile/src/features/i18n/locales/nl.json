@@ -196,9 +196,7 @@
     "done": "Klaar",
     "next": "Volgende",
     "levelOf": "Level {n} van {m}",
-    "secret": "Geheim",
-    "secretTitle": "Geheime prestatie",
-    "secretBody": "Verborgen tot het gebeurt."
+    "secretBody": "Verborgen tot behaald."
   },
   "stats": {
     "title": "Jouw statistieken",

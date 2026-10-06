@@ -43,9 +43,9 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
 
   const v = stampView(entry, level);
   const unlocked = level > 0;
-  // A secret keeps its name and its number until it is found: greyed render, "Secret", a "?" for the count.
+  // A secret shows its name but keeps the how until it is found: greyed render, a "?" for the count
+  // (Ricardo, 2026-10-06: the name on the shelf, not "Secret").
   const hidden = !!achievement.secret && !unlocked;
-  const shownLabel = hidden ? t('unlocks.secret') : label;
   return (
     <Pressable
       style={({ pressed }) => [styles.item, { width: width ?? size + 12 }, pressed && { opacity: 0.7 }]}
@@ -54,7 +54,7 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
         onPress();
       }}
       accessibilityRole="button"
-      accessibilityLabel={hidden ? t('unlocks.secret') : `${label}, ${v.maxed ? t('unlocks.complete') : `${v.current} / ${v.target}`}`}>
+      accessibilityLabel={hidden ? `${label}, ${t('unlocks.secretBody')}` : `${label}, ${v.maxed ? t('unlocks.complete') : `${v.current} / ${v.target}`}`}>
       <Animated.View style={style}>
         <Stamp size={size} color={achievement.color} locked={!unlocked}>
           <StampArt achievement={achievement} size={size} unlocked={unlocked} />
@@ -62,7 +62,7 @@ export function ShelfStamp({ achievement, entry, level, label, size = 64, width,
       </Animated.View>
       <LevelPips level={level} max={v.maxLevel} />
       <Text style={[styles.label, !unlocked && { color: colors.ink3 }]} numberOfLines={1}>
-        {shownLabel}
+        {label}
       </Text>
       {/* green while there is somewhere left to go, gold once the whole ladder is done (Ricardo, 2026-09-26) */}
       <ProgressBar value={hidden ? 0 : v.current} max={v.target} height={4} color={v.maxed ? colors.gold : colors.success} style={{ width: size - 8, alignSelf: 'center' }} />
