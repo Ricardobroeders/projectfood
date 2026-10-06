@@ -199,7 +199,11 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   row 17's 2× signal). Cost: the clay renders exist per plant, so a first garden is a plot of the
   owned renders grouped by category, grown by level, animated in Rive; still a big build and after
   the store launch. Challenged by brainstorm 17 (economy) and 18 (social); outcome = a decision
-  page before any design.
+  page before any design. **Ricardo, 2026-10-06: for later, once the basic principle is a working
+  thing**, thought through well and tested with several POCs before it is executed; and social
+  (looking up other users) is different territory from what the stores were applied for: the Play
+  declarations (18+ target audience, no user-generated content, Data safety) and Apple's rating and
+  UGC rules (reporting, blocking, moderation) plus the privacy page all reopen with it, see row 14.
 - **How to do the printables (row 6).** The printables hub (roadmap 2.7: tasting chart, plant cards, veg bingo as PDFs with landing pages) is parked; Ricardo wants to think through the approach first: what the printables are, how they are made from the renders, what a parent downloads and what the site shows. _(Ricardo, 2026-09-30; touches [[seo-roadmap]] row 2.7, [[seo-content-types]] format 3 and the link-magnet plan in batch 3)_
 - **Why 30, and a 3-step tutorial (rows 1, 4).** _Left the parking lot 2026-09-30: [[decision-2026-09-30-first-minute-tutorial]] (accepted, shipped as 1.0.7)._ A tester found the goal unexplained on first open; Ricardo wants to think before fixing it, possibly a three-step tutorial after onboarding that carries the why along with the how. Two drafted options (a sentence at onboarding step 1, a "Why 30?" sheet from the Home gauge, copy inside [[brand-stats-and-claims]] row 7) wait in [[interview-closed-test-2026-09]]. _(Ricardo, 2026-09-29; challenged by brainstorm 21)_
 - **Gold / XP economy (row 5, 9).** Earn gold per person per tasted plant; when several family
