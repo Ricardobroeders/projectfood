@@ -12,7 +12,7 @@ export const supabase = createClient<Database>(ENV.supabaseUrl, ENV.supabaseAnon
     storage: new LargeSecureStore(),
     autoRefreshToken: true,
     persistSession: true,
-    // implicit flow (the default) makes signInWithOtp send the 8-digit code, as the PWA does
+    // implicit flow (the default) makes signInWithOtp send the code (6 digits since 2026-10-06), as the PWA does
     detectSessionInUrl: false,
   },
 });
