@@ -251,7 +251,12 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   "Long time no see" (a plant tasted again after 90 days) needs a last-tasted date the
   `member_taste_counts` RPC does not return. Technically free: `achievement_unlocks.achievement_id`
   is unconstrained text, so a secret is a definition plus copy in `definitions.ts`, no migration,
-  OTA-shippable. Waiting on Ricardo's cut (item 17).
+  OTA-shippable. Waiting on Ricardo's cut (item 17). **Revisited 2026-10-06:** Ricardo wants 2 or 3,
+  with greyed-out achievement art on the shelf and the full art once found. Claude's cut: Nice try,
+  Full spectrum, At the table (Night owl rewards the phone at midnight, Same again rewards sameness,
+  Everyone different needs a family of two or more). Greyed art is fine when the render is a symbol
+  (a wink, a rainbow plate, a plate with a clock), not the trigger; name and text stay hidden until
+  found. Awaiting Ricardo's go; then copy through pf-voice and an over-the-air build, art from Ricardo.
 - **Advocacy / community achievement (rows 5, 7, 12).** An achievement for people who talk about
   Project Food online — Ricardo's example is active Reddit contribution — on the reasoning that
   it genuinely helps the product. He notes himself that it is hard to measure. To work out: how
