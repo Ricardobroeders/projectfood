@@ -1111,3 +1111,22 @@ the parking lot of [[strategy-backlog]] (rows 4, 13): code in the subject (email
 fill over the air, and an app-link button in the email (native, after both store clocks). Nothing
 built; it becomes item 25 on Ricardo's go.
 
+
+## [2026-10-06] ingest | Weekly metrics refresh
+Aggregates written to a new "Weekly refresh (2026-10-06)" section of [[source-supabase-metrics]];
+dated updates on [[concept-engagement-snapshot]], [[concept-logging-behaviour]],
+[[concept-engagement-drivers]] and the Metrics section of [[overview]].
+- **The closed test shows up:** WAU 19 for the week of 2026-09-28, the all-time high (was 7;
+  earlier peak 10 on 2026-05-11). 28-day MAU 21. Goal completion 36.8% (7 of 19).
+- Registered 31 (was 20), with logs 27 (was 16), 4,689 logs (was 4,021). 19 of 31 households
+  onboarded (was 7); 123 achievement unlocks that week (was 72). First 2 `kid` members, 21 tastes.
+  Only 2 of 31 households have a second active member.
+- Daily actives 15 on 2026-09-30, down to 3 on 2026-10-04. Churn view 68.4% for the two-day-old
+  week of 2026-10-05 (artefact likely, not yet proven).
+- Same-day logging 99.9% local (4 of 4,689 differ); median 9 plants per active day (was 10).
+- Friends cohort gap now measures PWA tenure (the family app has no friends); the notifications
+  gap narrowed from 12.25 vs 4.25 to 5.33 vs 4.00 active weeks as testers granted push.
+- `notification_log` 37 rows (was 3); `notification_opened` 14 since 2026-09-28.
+Open questions: is the drop after 2026-10-03 a weekend dip or the week-1 cliff, and does it put
+the 2026-10-14 production application at risk (Google can extend for low engagement)? Should the
+friends comparison be replaced by a household-level driver? Re-read churn on 2026-10-13.

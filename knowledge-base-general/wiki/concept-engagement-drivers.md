@@ -3,7 +3,7 @@ title: Engagement drivers (correlations)
 type: concept
 tags: [metrics, retention, correlations]
 created: 2026-05-30
-updated: 2026-09-28
+updated: 2026-10-06
 sources: [source-supabase-metrics.md]
 ---
 
@@ -48,6 +48,18 @@ social connection stands out. **Correlational, n=13, not causal.** Source:
 - The family app has no friends feature and no child members yet, so neither signal says
   anything about households. The first family-app driver to watch is the dinner-time nudge
   (`notification_opened` is now recorded in `app_events`: 3 so far).
+
+## Update (2026-10-06, weekly refresh in [[source-supabase-metrics]])
+- **Friends:** with (n=8) 11.0 active weeks and 6.50 weeks hitting 30, vs none (n=19) 1.89 and
+  0.58 (was n=9 vs 7, 9.33/5.56 vs 2.29/0.86, 2026-09-28). The family app has no friends feature,
+  so every closed-test user sits in "none": this comparison now measures PWA tenure, not social
+  pull. Retire it as a driver unless a household-level equivalent is defined.
+- **Notifications on (n=12) vs off (n=15):** 5.33 vs 4.00 active weeks, 4.08 vs 0.93 weeks
+  hitting 30 (was n=4, 12.25 vs 4.25). The flag now includes testers who granted push in the
+  family app (12 `push_permission` events, 2 declines since 2026-09-28); the gap shrank once the
+  sample stopped being only power users.
+- **Family-app signal to watch:** `notification_opened` 14 since 2026-09-28 (was 3), against 37
+  rows in `notification_log`.
 
 ## Contradictions / open questions
 - Direction of causality is unknown for both signals (engaged people may simply add friends and

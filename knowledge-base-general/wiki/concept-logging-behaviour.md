@@ -3,7 +3,7 @@ title: Logging behaviour
 type: concept
 tags: [metrics, product, behaviour]
 created: 2026-05-30
-updated: 2026-09-28
+updated: 2026-10-06
 sources: [source-supabase-metrics.md]
 ---
 
@@ -52,6 +52,17 @@ diet, and clear under-logged categories. Source: [[source-supabase-metrics]].
   (2.6 → 5.4, 2.0 → 3.0); legumes stay the smallest-grown gap (3.5 → 3.6).
 - **Long tail:** 196 of 224 plants ever logged (28 never), was 191 (2026-09-07).
 - Since 2026-09-16 part of these logs come from the family app (adult members only so far).
+
+## Update (2026-10-06, weekly refresh in [[source-supabase-metrics]])
+- **Same-day logging holds:** 4 of 4,689 logs (0.1%) on a different local day (was 0 of 4,021,
+  2026-09-28).
+- **Session depth dipped:** median 9 plants per active day (avg 10.6, max 63) over 439 user-days;
+  was median 10, avg 11.0 (2026-09-28). New testers log smaller days.
+- **Category mix since 2026-09-28** (671 logs): vegetable 43.4 · fruit 19.7 · nut/seed 14.2 ·
+  herb 8.5 · whole grain 5.8 · ferment 4.6 · legume 3.9. Whole grains are up (all-time 3.0 →
+  3.4); legumes remain the smallest category (3.6).
+- **Long tail:** 200 of 224 plants ever logged (24 never), was 196 (2026-09-28).
+- First tastes logged on `kid` members: 21.
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-brand-pillars]] · [[concept-stickiness-moat]] ·

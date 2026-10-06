@@ -3,7 +3,7 @@ title: Engagement snapshot
 type: concept
 tags: [metrics, kpi, retention]
 created: 2026-05-30
-updated: 2026-09-28
+updated: 2026-10-06
 sources: [source-supabase-metrics.md]
 ---
 
@@ -64,6 +64,18 @@ users, ~5 weeks) that logs actively and is trending up on goal completion. Sourc
 - **Churn view** reads normally (0% for 2026-09-21); the 100% for 2026-09-28 is a one-day-old week.
 - Open question: what brought three dormant PWA users back in one week — the family-app beta
   invite, the new website, or a push? `app_events` shows only one of them on the new app.
+
+## Update (2026-10-06, weekly refresh in [[source-supabase-metrics]])
+- **The closed test filled the funnel.** WAU 19 in the week of 2026-09-28, the all-time high (was
+  7, 2026-09-21; earlier peak 10, 2026-05-11). 28-day MAU 21 (was 8). 14 new accounts, 10 logging.
+- **Adoption:** 31 registered (was 20), 27 ever logged (was 16), 4,689 logs (was 4,021,
+  2026-09-28). 19 of 31 households onboarded (was 7). 123 achievement unlocks that week (was 72).
+- **Goal completion** 36.8% (7 of 19) for 2026-09-28, up from 28.6%; 10 of 27 have ever hit 30.
+- **Watch the drop-off:** daily actives peaked at 15 on 2026-09-30 and fell to 3 by Sunday
+  2026-10-04. The churn view reads 68.4% for the two-day-old week of 2026-10-05; re-read
+  2026-10-13 before calling it the week-1 cliff seen in May. Google can extend a closed test for
+  low engagement, so this matters before 2026-10-14.
+- **First children:** 2 `kid` members, 21 tastes. Household sharing remains rare (2 of 31).
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-logging-behaviour]] · [[concept-engagement-drivers]] ·
