@@ -24,6 +24,12 @@ faq:
     a: Ja, elk kruid en elke specerij telt als eigen plant, ook in een klein snufje. Een snuf kaneel in de pap is 1 plant, een handje peterselie op de soep nog 1. Een kruidenmengsel telt voor elk kruid dat je op het etiket herkent.
   - q: Telt een erwt en een kikkererwt als twee planten?
     a: "Ja, het zijn twee verschillende soorten en ze tellen allebei mee. Dat geldt voor de meeste peulvruchten, ook voor bonen. Bruine, witte en zwarte bonen zijn drie planten. De regel is ruim: een andere soort is een nieuwe plant, dezelfde soort in een andere vorm blijft één."
+citations:
+  - author: McDonald D, Hyde E, Debelius JW, et al.
+    title: "American Gut: an open platform for citizen science microbiome research"
+    year: 2018
+    doi: 10.1128/mSystems.00031-18
+    url: https://doi.org/10.1128/mSystems.00031-18
 ---
 Wat telt als plant? Alles wat van een plant komt en wat je bij naam kunt noemen, en elke soort telt één keer per week. Dat is genoeg om de meeste vragen aan tafel te beantwoorden. Het is ook het uitgangspunt van [30 planten per week als gezin](/nl/leer/plant-diversity). Een snuf kaneel in de pap is een plant, en er komt niemand controleren.
 
@@ -35,7 +41,7 @@ De richtlijn komt uit het American Gut Project, een groot burgeronderzoek uit 20
 
 ## De drankjes, het ontbijt en het tussendoortje
 
-**Koffie telt, één keer.** De koffieboon is een zaad, en een kopje of vijf kopjes is 1 plant. Thee is een ander blad en telt apart.
+**Koffie telt, één keer.** De koffieboon is een zaad, en één kopje of vijf is samen 1 plant. Thee is een ander blad en telt apart.
 
 **Chocolade telt via de cacao.** Pure chocolade en cacaopoeder zijn cacao, 1 plant. De suiker en de melk in een reep tellen niet.
 
@@ -43,7 +49,7 @@ De richtlijn komt uit het American Gut Project, een groot burgeronderzoek uit 20
 
 **Popcorn is maïs.** Een zak popcorn is 1 plant, een kolf maïs op het bord ook, en het is dezelfde plant.
 
-**Brood telt via het graan.** Een boterham is tarwe, roggebrood is rogge. Volkoren is het volkoren graan uit de lijst van acht, wit brood is nog steeds een graan dat je bij naam kunt noemen.
+**Brood telt via het graan.** Een boterham is tarwe, roggebrood is rogge. Volkoren en wit brood zijn allebei graan dat je bij naam kunt noemen, dus beide tellen.
 
 ## De keuken: aardappel, saus en pasta
 
