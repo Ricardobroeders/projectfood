@@ -124,7 +124,7 @@ screen shows which one), who (first name or role, never more), the words, what w
   was edited, and with the search still live every tab showed the note instead of plants; a
   restart cleared it. 1.0.15: the note stays two seconds, then the search clears and the list
   comes back; the X on the search clears it too.
-  The suggestions themselves (10 since 2026-09-27, none reviewed) show two more causes behind
+  The suggestions themselves (10 since 2026-09-27; all reviewed by Ricardo in another session on 2026-10-06: Matcha and Wasabi approved, 5 duplicates linked to their plant, Falafel, Straw and Romesco rejected) show two more causes behind
   "the plant is not there": Spinazie, Sperziebonen, Straw, Falafel, Bimi and Groene kool were all
   in the catalogue; the search only knew the name in the app's language (Dutch typed into an
   English app found nothing), and under a found result the filled "Submit suggestion" button

@@ -160,8 +160,9 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 - **Log it now, name it later: the suggest-a-plant process (rows 4, 13).** Ricardo's three gaps,
   2026-10-06, after a tester's report: nobody is told when a suggested plant lands; a taste of a
   plant that is not in the list is not logged; nobody comes back a week later to log it. State found
-  the same day: 10 suggestions since the test opened, none reviewed, `plant_submissions` already has
-  `status` and `linked_plant_id` but nothing acts on them; 7 of the 10 were search misses rather than
+  the same day: 10 suggestions since the test opened, `plant_submissions` has `status` and
+  `linked_plant_id` (Ricardo reviewed all 10 by hand the same day in another session) but the app
+  acts on neither; 7 of the 10 were search misses rather than
   missing plants (fixed in 1.0.15, see [[interview-closed-test-2026-09]]); the 3 real ones (Matcha
   ×2, Wasabi) Ricardo added by hand and the testers never heard. Claude's proposal, in order of
   value: (1) **the taste counts at once**: when nothing matches, the suggest button logs the typed
