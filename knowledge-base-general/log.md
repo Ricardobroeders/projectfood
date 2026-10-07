@@ -1185,3 +1185,7 @@ drawn SVG burst (`SunRays`) turning once per 48 s, no bounce beyond the existing
 ## [2026-10-06] build | Survey rewritten for the family app (1.0.27)
 Generator `supabase/scripts/survey-family-questions.py` writes the migration; edit the Python, rerun,
 apply. Sections now: why, using the app, at your table, features, pricing, wrap-up.
+
+## [2026-10-07] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
+967 words, 5 FAQ items, meta title 46 and description 145 characters. Legacy page rewritten for the family; slug kept.
+Warnings accepted: related "as-a-family" has no folder yet (the nl page is live in the database). The pillar already linked this article.
