@@ -1197,3 +1197,6 @@ brainstorm 25 in [[strategy-backlog]] pending his cut. Nothing built.
 ## [2026-10-07] decision | Stats against the typical household (1.0.31)
 [[decision-2026-10-07-stats-typical-household]]: category mix bars with the typical mark, typical
 lines in both charts, the day chart as a line, "In season" on Log with a Europe season table.
+
+## [2026-10-07] update | Closed test: a thirteenth tester installed Android
+Ricardo asked one more person to install the Android build this morning and they did; the Play count should read 13 soon. Recorded in the one-thing block of [[strategy-backlog]] (buffer of one above the floor of twelve; a join does not restart the fourteen-day clock that runs to 2026-10-14). No name recorded.
