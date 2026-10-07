@@ -138,6 +138,11 @@ avoided; and the reward has to be **immediate**, because the outcome never is.
 
 ## Ricardo's three calls (open, 2026-10-07)
 
+Thinking space: the Claude Doc "Habits at the table"
+(https://claude.ai/code/artifact/dc27deb7-674e-492a-be3b-886e457f0572, private to Ricardo), with
+the four-laws table, a decision dropdown per call, a quest-candidates table to add to, and the
+build steps a decision unlocks. Decisions made there come back to this page and to a decision page.
+
 1. Whose habit: the parent's logging, with the kid as the reward (Claude's position, argued
    above), or the kid's tasting with a kid-mode screen.
 2. Never miss twice: should the app notice the second missed day, and say what, inside the
