@@ -82,6 +82,39 @@ avoided; and the reward has to be **immediate**, because the outcome never is.
 | Data | In the PWA, 7 of 13 hit 30 at least once and 5 of them still left: a reward that resets on Monday does not accumulate ([[concept-retention-loop]]). The family app's rewards accumulate, but most arrive at the first taste and then at the 15th, weeks later. | The 3 / 8 / 15 placements were chosen for the churn moments; whether a kid feels the gap between 3 and 8 is untested. |
 | Gap | **A habit tracker that never breaks.** The streak with one freeze is a tracker; the second miss ends it, and the app says nothing. "Never miss twice" wants a quiet nudge on the second day only, framed as keeping, never losing (the resolution already in [[concept-retention-loop]]). **The Goldilocks rule**: nothing adapts to the household's level. A rotating weekly quest ("3 legumes this week", "1 plant you never tasted", "2 in season") is the missing middle between the weekly number and the ladders; it is built from data we hold (categories, the season table, taste counts) and pays out on Sunday. | **Immediate satisfaction at the table**: the celebration should happen while the kid is looking. Everything we add on this side must be visible in the same minute as the log. The garden (parking lot) is a slow, cumulative version of this and belongs after the quests, not before. |
 
+## The 20 chapters, mapped (the website pillar's spine, Ricardo 2026-10-07)
+
+Ricardo's idea for backlog item 27: the "How it works" pillar walks the 20 chapters of _Atomic
+Habits_ and says, per chapter, what the app does for you. Chapter ideas in our words, the book
+named once, no quotes, no endorsement implied. "Not yet" rows are the public reason for what the
+quests brainstorm and the second-miss nudge will add.
+
+| # | Chapter idea (Clear, 2018) | What Project Food does | State |
+|---|---|---|---|
+| 1 | Small gains compound; results lag effort (the plateau of latent potential) | One taste a day, counted; the collection grows for years and never resets | Built |
+| 2 | Habits shape identity; every action is a vote for who you are | Each log is a vote for "someone who tastes things"; the identity line itself is call 3 | Partly |
+| 3 | A habit has four steps: cue, craving, response, reward | The daily question, the card, the one-minute log, the collection: one loop a day | Built |
+| 4 | Awareness first: you cannot change what you do not notice | The week chip and the stats page show what you actually ate, by category, against typical | Built |
+| 5 | Implementation intentions and habit stacking: "after X, I do Y" | The dinner time you type is the anchor; "after we have eaten, we tap" is the stacking line the copy will carry | Partly |
+| 6 | Environment beats motivation: put the cue in plain sight | The question lands after your last meal; a fridge printable and the kid as cue are the next layer | Partly |
+| 7 | Self-control is a short-term strategy: remove the cue, do not fight it | The app never scolds and never shows what you did not eat; nothing to resist | Built |
+| 8 | Temptation bundling and anticipation: the craving comes before the reward | The card teaser and the "2 more tastes to silver" line; the kid at the table is the bundle | Partly |
+| 9 | We copy the close, the many and the powerful: join a culture where the habit is normal | Everyone at the table on one account; friends and classes come later | Not yet |
+| 10 | Reframe the habit: "I get to", not "I have to" | Joy, not guilt: celebrate what was tasted, never what was refused | Built |
+| 11 | Motion is not action: repetitions build the habit, not planning | Log every day; days in a row, not plans | Built |
+| 12 | The law of least effort: cut friction | One tap per plant, repeat last meal, the people under your finger | Built |
+| 13 | The two-minute rule: a habit starts with a version that takes two minutes | A log takes under a minute | Built |
+| 14 | Make it inevitable: commitment devices and automation | The daily question is on by default once you allow it; it stops itself when ignored | Built |
+| 15 | The cardinal rule: what is rewarded immediately is repeated | The card flips at the first taste; the gold plant at the fifteenth; the gap between is the quest's job | Partly |
+| 16 | Track the habit, never miss twice | The streak with one free freeze; the second-miss nudge is call 2 | Partly |
+| 17 | An accountability partner, a habit contract | The household on one account; a cheer from another household is a deferred feature | Not yet |
+| 18 | Play the game that suits you: choose where the odds favour you | Alone or with everyone at the table; your usual plants first; no diet, no clean plate | Built |
+| 19 | The Goldilocks rule: just above your current level keeps it interesting | The weekly quest, set from your own last weeks | Not yet |
+| 20 | Review and reflect; do not let the habit become the identity's prison | The monthly recap; the stats page; no scores against other people | Partly |
+
+Counts today: 10 built, 7 partly, 3 not yet. The three "not yet" (9, 17, 19) are the social layer and
+the quest; the partly rows are copy and small nudges, the cheap half.
+
 ## Why it matters to Project Food
 
 - It names the problem precisely. "There is little reward and we work on something
