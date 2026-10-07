@@ -263,6 +263,10 @@ screen shows which one), who (first name or role, never more), the words, what w
   (render and number side by side, bold title and the what-is-counted line under them); the
   week bars get the same value axis and faint grid as the day line; every legend sits under its
   text line; more room at the bottom of the page.
+- 2026-10-07, 1.0.34 over the air (Android 8fdebbbd, iOS dabe07b9): streaks say days, not
+  dinners, everywhere (Home chip, the two record tiles, the Regular table and Steady weeks
+  achievement bodies). Ricardo: a streak counts any food logged that day, "dinners" sent people
+  the wrong way.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

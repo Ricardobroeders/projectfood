@@ -133,8 +133,8 @@
     "logFirstPlant": "Log je eerste plant",
     "logFirstPlantSub": "Tik op Loggen en vink aan wat het gezin vandaag heeft geproefd.",
     "nextGoals": "Volgende doelen",
-    "streak": "{n} avondmalen op rij",
-    "streakOne": "1 avondmaal gelogd",
+    "streak": "{n} dagen op rij",
+    "streakOne": "1 dag op rij",
     "statsChip": "Jouw statistieken",
     "freezeUsed": "Joker gebruikt",
     "cta": "Eten van vandaag loggen",
@@ -202,8 +202,8 @@
   },
   "stats": {
     "title": "Jouw statistieken",
-    "dinnersInARow": "Avondmalen op rij",
-    "mostInARow": "Meeste avondmalen op rij",
+    "dinnersInARow": "Dagen op rij",
+    "mostInARow": "Meeste dagen op rij",
     "weeksAtGoal": "Weken op {n}",
     "bestWeek": "Beste week",
     "perWeekTitle": "Planten per week",
@@ -281,7 +281,7 @@
     },
     "steady_weeks": {
       "title": "Vaste weken",
-      "body": "{n} weken met 4 gelogde avondmalen"
+      "body": "{n} weken met 4 gelogde dagen"
     },
     "green_machine": {
       "title": "Groentekanjer",
@@ -340,7 +340,7 @@
     },
     "table_talk": {
       "title": "Tafelpraat",
-      "body": "Log {n} avondmalen achter elkaar"
+      "body": "Log {n} dagen achter elkaar"
     },
     "family_of_thirty": {
       "title": "Familie van dertig",

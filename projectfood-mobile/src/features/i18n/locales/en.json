@@ -133,8 +133,8 @@
     "logFirstPlant": "Log your first plant",
     "logFirstPlantSub": "Tap Log and check off what the family tasted today.",
     "nextGoals": "Next goals",
-    "streak": "{n} dinners in a row",
-    "streakOne": "1 dinner logged",
+    "streak": "{n} days in a row",
+    "streakOne": "1 day in a row",
     "statsChip": "Your stats",
     "freezeUsed": "Freeze used",
     "cta": "Log today's food",
@@ -202,8 +202,8 @@
   },
   "stats": {
     "title": "Your stats",
-    "dinnersInARow": "Dinners in a row",
-    "mostInARow": "Most dinners in a row",
+    "dinnersInARow": "Days in a row",
+    "mostInARow": "Most days in a row",
     "weeksAtGoal": "Weeks at {n}",
     "bestWeek": "Best week",
     "perWeekTitle": "Plants per week",
@@ -281,7 +281,7 @@
     },
     "steady_weeks": {
       "title": "Steady weeks",
-      "body": "{n} weeks with 4 dinners logged"
+      "body": "{n} weeks with 4 days logged"
     },
     "green_machine": {
       "title": "Green machine",
@@ -340,7 +340,7 @@
     },
     "table_talk": {
       "title": "Table talk",
-      "body": "Log {n} dinners in a row"
+      "body": "Log {n} days in a row"
     },
     "family_of_thirty": {
       "title": "Family of thirty",

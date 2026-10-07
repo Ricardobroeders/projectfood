@@ -133,8 +133,8 @@
     "logFirstPlant": "Registra la tua prima pianta",
     "logFirstPlantSub": "Tocca Registra e segna cosa ha assaggiato la famiglia oggi.",
     "nextGoals": "Prossimi traguardi",
-    "streak": "{n} cene di fila",
-    "streakOne": "1 cena registrata",
+    "streak": "{n} giorni di fila",
+    "streakOne": "1 giorno di fila",
     "statsChip": "Le tue statistiche",
     "freezeUsed": "Jolly usato",
     "cta": "Registra il cibo di oggi",
@@ -202,8 +202,8 @@
   },
   "stats": {
     "title": "Le tue statistiche",
-    "dinnersInARow": "Cene di fila",
-    "mostInARow": "Più cene di fila",
+    "dinnersInARow": "Giorni di fila",
+    "mostInARow": "Più giorni di fila",
     "weeksAtGoal": "Settimane a {n}",
     "bestWeek": "Settimana migliore",
     "perWeekTitle": "Piante per settimana",
@@ -281,7 +281,7 @@
     },
     "steady_weeks": {
       "title": "Settimane costanti",
-      "body": "{n} settimane con 4 cene registrate"
+      "body": "{n} settimane con 4 giorni registrati"
     },
     "green_machine": {
       "title": "Macchina verde",
@@ -340,7 +340,7 @@
     },
     "table_talk": {
       "title": "Chiacchiere a tavola",
-      "body": "Registra {n} cene di fila"
+      "body": "Registra {n} giorni di fila"
     },
     "family_of_thirty": {
       "title": "Famiglia dei trenta",
