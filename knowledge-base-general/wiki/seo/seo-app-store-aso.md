@@ -655,7 +655,9 @@ second sentence ("the family tastes, you tap") and the Play frames say the same;
 [[decision-2026-10-07-two-ways-to-use-it]] the audience is the adult who holds the phone, alone
 or for everyone at the table. Names, subtitles and short descriptions are already goal-first and
 need no change. Apple: after the verdict on 1.0.2 (the version is locked in review). Play: after
-the production application of 2026-10-14, nothing on the listing during the closed test.
+the production application of 2026-10-14, nothing on the listing during the closed test. Ricardo,
+2026-10-07: the frames get a fresh pass anyway, not only new words; Claude writes the content brief
+([[feedback-visual-assets-brief-not-images]] rule: he builds the images in Figma).
 Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy published (eight types,
 "Data Linked to You" only, no tracking), Pricing $0.00 and availability in all 175 territories,
 no pre-order, Content rights set, and the demo account with its password under App Review
