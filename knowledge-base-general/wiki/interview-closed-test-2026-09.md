@@ -259,6 +259,10 @@ screen shows which one), who (first name or role, never more), the words, what w
   line curved and taller with a value axis and faint grid lines; the mix bars with the label above
   the full-width track and near-square ends (the full rounding hid whether a bar reached the
   mark). 30 more gold renders rode along (144 of 230 plants).
+- 2026-10-07, 1.0.33 over the air (Android cb92e9b8, iOS 58a41615): record tiles restacked
+  (render and number side by side, bold title and the what-is-counted line under them); the
+  week bars get the same value axis and faint grid as the day line; every legend sits under its
+  text line; more room at the bottom of the page.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

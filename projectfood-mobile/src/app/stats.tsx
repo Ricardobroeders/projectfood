@@ -130,22 +130,22 @@ export default function StatsScreen() {
               <SectionTitle>{t('stats.mixTitle')}</SectionTitle>
               <View style={styles.card}>
                 <CategoryMix rows={mix} />
-                <Legend items={[{ kind: 'bar', label: t('stats.legendYou') }, { kind: 'mark', label: t('stats.legendTypical') }]} />
                 <Text style={styles.body}>{t('stats.mixBody')}</Text>
+                <Legend items={[{ kind: 'bar', label: t('stats.legendYou') }, { kind: 'mark', label: t('stats.legendTypical') }]} />
               </View>
 
               <SectionTitle>{t('stats.perWeekTitle')}</SectionTitle>
               <View style={styles.card}>
-                <BarChart bars={weekBars} goal={GOAL} typical={BENCHMARKS.weekTypical} height={150} showValues />
-                <Legend items={[{ kind: 'line', label: t('stats.legendGoal', { n: GOAL }) }, { kind: 'dashed', label: t('stats.legendTypical') }]} />
+                <BarChart bars={weekBars} goal={GOAL} typical={BENCHMARKS.weekTypical} height={160} showValues />
                 <Text style={styles.body}>{t('stats.perWeekBody')}</Text>
+                <Legend items={[{ kind: 'line', label: t('stats.legendGoal', { n: GOAL }) }, { kind: 'dashed', label: t('stats.legendTypical') }]} />
               </View>
 
               <SectionTitle>{t('stats.perDayTitle')}</SectionTitle>
               <View style={styles.card}>
-                <LineChart points={dayPoints} typical={BENCHMARKS.dayTypical} height={120} />
-                <Legend items={[{ kind: 'dashed', label: t('stats.legendTypical') }]} />
+                <LineChart points={dayPoints} typical={BENCHMARKS.dayTypical} height={160} />
                 <Text style={styles.body}>{t('stats.perDayBody')}</Text>
+                <Legend items={[{ kind: 'dashed', label: t('stats.legendTypical') }]} />
               </View>
 
               <Text style={styles.footnote}>{t('stats.typicalNote')}</Text>
@@ -168,17 +168,20 @@ function Tile({ image, icon: Icon, tint, label, desc, value }: { image: StatKey;
   const source = STAT_IMAGES[image];
   return (
     <View style={[styles.tile, { backgroundColor: tint }]}>
-      {source ? (
-        <Image source={source} style={styles.tileImage} contentFit="contain" />
-      ) : (
-        <View style={styles.tileDisc}>
-          <Icon size={16} color={colors.ink} />
-        </View>
-      )}
+      {/* Render and number side by side, the words under them (Ricardo, 2026-10-07: four stacked elements wasted the tile). */}
+      <View style={styles.tileTop}>
+        {source ? (
+          <Image source={source} style={styles.tileImage} contentFit="contain" />
+        ) : (
+          <View style={styles.tileDisc}>
+            <Icon size={16} color={colors.ink} />
+          </View>
+        )}
+        <Text style={styles.tileValue}>{value}</Text>
+      </View>
       <Text style={styles.tileLabel} numberOfLines={2}>
         {label}
       </Text>
-      <Text style={styles.tileValue}>{value}</Text>
       <Text style={styles.tileDesc} numberOfLines={3}>
         {desc}
       </Text>
@@ -201,19 +204,20 @@ function Legend({ items }: { items: { kind: 'bar' | 'mark' | 'line' | 'dashed'; 
 }
 
 const styles = StyleSheet.create({
-  content: { paddingTop: 8, paddingBottom: 32, gap: 10 },
+  content: { paddingTop: 8, paddingBottom: 72, gap: 10 },
   tileRow: { flexDirection: 'row', gap: 10, paddingHorizontal: 20 },
   tile: { flex: 1, padding: 14, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 2 },
-  tileDisc: { width: 32, height: 32, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 8 },
-  tileImage: { width: 56, height: 56, marginBottom: 6, marginLeft: -4 },
-  tileDesc: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2, marginTop: 4, opacity: 0.85 },
-  // Two lines so "Most dinners in a row" fits a half-width tile; the height is fixed so the numbers line up.
-  tileLabel: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, minHeight: 36, color: colors.ink2 },
-  tileValue: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, letterSpacing: -0.6 },
+  tileTop: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
+  tileDisc: { width: 32, height: 32, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
+  tileImage: { width: 52, height: 52, marginLeft: -6 },
+  // Two lines so "Most dinners in a row" fits a half-width tile; the height is fixed so the descriptions line up.
+  tileLabel: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18, minHeight: 36, color: colors.ink },
+  tileDesc: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
+  tileValue: { fontFamily: fonts.extrabold, fontSize: 30, lineHeight: 36, color: colors.ink, letterSpacing: -0.6 },
   card: { marginHorizontal: 20, padding: 16, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 12 },
   body: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
   footnote: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, marginHorizontal: 20 },
-  legend: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: -4 },
+  legend: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: -2 },
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   legendText: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
   legendBar: { width: 14, height: 8, borderRadius: 4, backgroundColor: colors.ink2 },

@@ -39,6 +39,12 @@ const VALUE_H = 16;
 /** Room for the goal number at the right end of its line. */
 const GOAL_GUTTER = 28;
 
+/** Tick step so the axis shows 3 to 5 round numbers (same rule as the line chart). */
+function tickStep(max: number): number {
+  for (const step of [1, 2, 5, 10, 20, 50]) if (max / step <= 5) return step;
+  return 100;
+}
+
 /**
  * The stats screen's two charts (2026-09-30, the PWA's "Weekly history" brought over): plain
  * views, no SVG text, so the labels use the app's own font. The bars grow once on mount with the
@@ -51,14 +57,27 @@ export function BarChart({ bars, goal, typical, height = 140, showValues = false
   }, [grow]);
 
   const headroom = showValues ? VALUE_H : 4;
-  const yMax = Math.max(goal ?? 0, typical ?? 0, ...bars.map((b) => b.value), 1);
+  const rawMax = Math.max(goal ?? 0, typical ?? 0, ...bars.map((b) => b.value), 1);
+  const step = tickStep(rawMax);
+  // Grid lines at round steps (Ricardo, 2026-10-07); the scale rounds up to the next one.
+  const yMax = Math.ceil(rawMax / step) * step;
+  const ticks = Array.from({ length: Math.floor(yMax / step) + 1 }, (_, i) => i * step);
   const barMaxH = height - headroom;
-  const goalBottom = goal ? LABEL_H + (goal / yMax) * barMaxH : 0;
-  const typicalBottom = typical ? LABEL_H + (typical / yMax) * barMaxH : 0;
-  const gutter = goal || typical ? GOAL_GUTTER : 0;
+  const bottomOf = (v: number) => LABEL_H + (v / yMax) * barMaxH;
+  const goalBottom = goal ? bottomOf(goal) : 0;
+  const typicalBottom = typical ? bottomOf(typical) : 0;
+  const gutter = GOAL_GUTTER;
+  // A tick number steps aside for the goal or typical number on the same height.
+  const tickShown = (v: number) => (!goal || Math.abs(bottomOf(v) - goalBottom) >= 12) && (!typical || Math.abs(bottomOf(v) - typicalBottom) >= 12);
 
   return (
     <View style={[styles.root, { height: height + LABEL_H }, style]}>
+      {ticks.map((v) => (
+        <View key={v} pointerEvents="none">
+          <View style={[styles.gridLine, { bottom: bottomOf(v), right: gutter }]} />
+          {tickShown(v) ? <Text style={[styles.tickLabel, { bottom: bottomOf(v) - 6 }]}>{v}</Text> : null}
+        </View>
+      ))}
       {goal ? (
         <>
           <View pointerEvents="none" style={[styles.goalLine, { bottom: goalBottom, right: gutter }]} />
@@ -117,6 +136,8 @@ const styles = StyleSheet.create({
   label: { position: 'absolute', bottom: 0, fontFamily: fonts.medium, fontSize: 11, lineHeight: 16, color: colors.ink3 },
   labelCenter: { left: -24, right: -24, textAlign: 'center' },
   labelStart: { left: 0, width: 64, textAlign: 'left' },
+  gridLine: { position: 'absolute', left: 0, height: 1, backgroundColor: colors.hairline },
+  tickLabel: { position: 'absolute', right: 0, fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink3 },
   goalLine: { position: 'absolute', left: 0, right: 0, height: 1, backgroundColor: colors.ink3, opacity: 0.6 },
   typicalLine: { position: 'absolute', left: 0, right: 0, height: 0, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.ink2, borderRadius: 1 },
   typicalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink2 },
