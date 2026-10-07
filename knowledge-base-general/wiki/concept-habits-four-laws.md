@@ -138,8 +138,9 @@ avoided; and the reward has to be **immediate**, because the outcome never is.
 
 ## Ricardo's three calls (open, 2026-10-07)
 
-Thinking space: the Claude Doc "Habits at the table"
-(https://claude.ai/code/artifact/dc27deb7-674e-492a-be3b-886e457f0572, private to Ricardo), with
+Thinking space: the tab "Habits at the table" in the Claude Doc "Project Food Docs"
+(https://claude.ai/code/artifact/dc27deb7-674e-492a-be3b-886e457f0572, private to Ricardo; one
+tab per topic since 2026-10-07, brand guide, business model and value proposition to follow), with
 the four-laws table, a decision dropdown per call, a quest-candidates table to add to, and the
 build steps a decision unlocks. Decisions made there come back to this page and to a decision page.
 

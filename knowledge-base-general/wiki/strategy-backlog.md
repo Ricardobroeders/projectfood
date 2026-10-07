@@ -217,7 +217,9 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   proposed order: habits page, then the quests brainstorm with it in hand, brand book in parallel.
   **Ricardo picked the habits page, written the same day: [[concept-habits-four-laws]]** (three
   laws built, the fourth thin; three calls for Ricardo: whose habit, never miss twice, the
-  identity line). The quests brainstorm is item 26 below. Brand book still waiting for a go.
+  identity line). The quests brainstorm is item 26 below. Thinking space: the Claude Doc "Project
+  Food Docs" (link on that page), one tab per topic; Ricardo's planned tabs: brand guide, business
+  model, value proposition canvas. Brand book still waiting for a go; it becomes that tab.
   Challenged by brainstorms 17 (economy) and 26; outcome = a decision page.
 - **The garden: a place the plants you tasted build (rows 4, 5, 17).** Ricardo with his girlfriend,
   2026-10-06. The problem named: eating varied is preventive, so unlike the scale or the mirror
