@@ -112,7 +112,10 @@ quests brainstorm and the second-miss nudge will add.
 | 19 | The Goldilocks rule: just above your current level keeps it interesting | The weekly quest, set from your own last weeks | Not yet |
 | 20 | Review and reflect; do not let the habit become the identity's prison | The monthly recap; the stats page; no scores against other people | Partly |
 
-Counts today: 10 built, 7 partly, 3 not yet. The three "not yet" (9, 17, 19) are the social layer and
+Not every chapter has to appear (Ricardo, 2026-10-07): the pillar uses the ones that fit and skips
+the rest. Claude's first cut skips 7 (breaking habits, covered by row 10's line), 11 (says what 13
+says), 18 (talent, belongs in the intro) and 20 (reflection, nothing concrete in the app): 16
+sections remain. Counts today: 10 built, 7 partly, 3 not yet. The three "not yet" (9, 17, 19) are the social layer and
 the quest; the partly rows are copy and small nudges, the cheap half.
 
 ## Why it matters to Project Food

@@ -132,8 +132,10 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     follows [[decision-2026-10-07-two-ways-to-use-it]] (never presumes kids). **Spine (Ricardo,
     2026-10-07): the 20 chapters of _Atomic Habits_**, one short section each on the pillar (idea in
     our words, what the app does, one visual), grouped under the fundamentals, the four laws and the
-    advanced tactics; the clusters go deep per law (5 or 6 pages). The mapping is on
-    [[concept-habits-four-laws]] ("The 20 chapters, mapped": 10 built, 7 partly, 3 not yet). Outcome =
+    advanced tactics; the clusters go deep per law (5 or 6 pages). **Only the chapters that fit,
+    the rest are skipped, no padding** (Ricardo, 2026-10-07). The mapping is on
+    [[concept-habits-four-laws]] ("The 20 chapters, mapped": 10 built, 7 partly, 3 not yet; Claude's
+    first cut skips 7, 11, 18 and 20, leaving 16 sections). Outcome =
     a page plan (sections, clusters, visual briefs) in the knowledge base, then the pages in en, nl, it.
 
 **Brainstorms to hold**
