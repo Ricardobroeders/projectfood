@@ -267,6 +267,9 @@ screen shows which one), who (first name or role, never more), the words, what w
   dinners, everywhere (Home chip, the two record tiles, the Regular table and Steady weeks
   achievement bodies). Ricardo: a streak counts any food logged that day, "dinners" sent people
   the wrong way.
+- 2026-10-07, 1.0.35 over the air (Android 51080acd, iOS 9d12de96): the week chart's grid lines
+  and tick numbers had escaped the card (a wrapper view in flow anchored them at the top);
+  siblings of the columns now.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

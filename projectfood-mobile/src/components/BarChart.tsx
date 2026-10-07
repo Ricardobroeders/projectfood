@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { type StyleProp, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import Animated, { type SharedValue, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -72,11 +72,16 @@ export function BarChart({ bars, goal, typical, height = 140, showValues = false
 
   return (
     <View style={[styles.root, { height: height + LABEL_H }, style]}>
+      {/* Siblings of the columns, not wrapped: a wrapper in flow would anchor them at the top of the chart. */}
       {ticks.map((v) => (
-        <View key={v} pointerEvents="none">
-          <View style={[styles.gridLine, { bottom: bottomOf(v), right: gutter }]} />
-          {tickShown(v) ? <Text style={[styles.tickLabel, { bottom: bottomOf(v) - 6 }]}>{v}</Text> : null}
-        </View>
+        <Fragment key={v}>
+          <View pointerEvents="none" style={[styles.gridLine, { bottom: bottomOf(v), right: gutter }]} />
+          {tickShown(v) ? (
+            <Text pointerEvents="none" style={[styles.tickLabel, { bottom: bottomOf(v) - 6 }]}>
+              {v}
+            </Text>
+          ) : null}
+        </Fragment>
       ))}
       {goal ? (
         <>
