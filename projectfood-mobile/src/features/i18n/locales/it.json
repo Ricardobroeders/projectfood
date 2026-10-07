@@ -216,7 +216,11 @@
     "legendYou": "Tu",
     "legendTypical": "Media",
     "legendGoal": "Obiettivo {n}",
-    "typicalNote": "Media è il punto medio di tutte le famiglie su Project Food."
+    "typicalNote": "Media è il punto medio di tutte le famiglie su Project Food.",
+    "dinnersInARowDesc": "Giorni di fila con almeno 1 pianta registrata",
+    "mostInARowDesc": "La tua serie più lunga finora",
+    "weeksAtGoalDesc": "Settimane con {n} piante diverse o più",
+    "bestWeekDesc": "Più piante diverse in 1 settimana"
   },
   "plant": {
     "family": "Famiglia",

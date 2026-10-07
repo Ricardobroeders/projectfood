@@ -216,7 +216,11 @@
     "legendYou": "You",
     "legendTypical": "Typical",
     "legendGoal": "Goal {n}",
-    "typicalNote": "Typical is the middle of all households on Project Food."
+    "typicalNote": "Typical is the middle of all households on Project Food.",
+    "dinnersInARowDesc": "Days in a row with at least 1 plant logged",
+    "mostInARowDesc": "Your longest run so far",
+    "weeksAtGoalDesc": "Weeks with {n} different plants or more",
+    "bestWeekDesc": "Most different plants in 1 week"
   },
   "plant": {
     "family": "Family",

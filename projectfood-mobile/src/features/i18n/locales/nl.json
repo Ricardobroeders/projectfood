@@ -216,7 +216,11 @@
     "legendYou": "Jij",
     "legendTypical": "Gemiddeld",
     "legendGoal": "Doel {n}",
-    "typicalNote": "Gemiddeld is het midden van alle huishoudens op Project Food."
+    "typicalNote": "Gemiddeld is het midden van alle huishoudens op Project Food.",
+    "dinnersInARowDesc": "Dagen op rij met minstens 1 plant gelogd",
+    "mostInARowDesc": "Je langste reeks tot nu toe",
+    "weeksAtGoalDesc": "Weken met {n} verschillende planten of meer",
+    "bestWeekDesc": "Meeste verschillende planten in 1 week"
   },
   "plant": {
     "family": "Familie",

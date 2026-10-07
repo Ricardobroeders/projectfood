@@ -254,6 +254,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   horizontal bars with the typical mark, the typical week dashed next to the goal line, plants per
   day as a line with the typical day; tinted record tiles. Log: an "In season" tab and a leaf on
   the row, Europe table, 106 plants. Testers' ask (solo adults): their behaviour against an average.
+- 2026-10-07, 1.0.32 over the air (Android 53968597, iOS e16331aa): Ricardo's four tile renders
+  (images/app-ui-images) on the record tiles with a line each saying what is counted; the day
+  line curved and taller with a value axis and faint grid lines; the mix bars with the label above
+  the full-width track and near-square ends (the full rounding hid whether a bar reached the
+  mark). 30 more gold renders rode along (144 of 230 plants).
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

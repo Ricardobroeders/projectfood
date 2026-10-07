@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import { Flame, type LucideIcon, Plus, Star, Target, Trophy } from 'lucide-react-native';
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Image } from 'expo-image';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { type Bar, BarChart } from '@/components/BarChart';
@@ -11,6 +12,7 @@ import { LineChart, type LinePoint } from '@/components/LineChart';
 import { BackHeader, Loading, PrimaryButton, Screen, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, type Category, colors, fonts, radii } from '@/constants/theme';
 import BENCHMARKS from '@/data/benchmarks.json';
+import { STAT_IMAGES, type StatKey } from '@/data/statImages.generated';
 import { track } from '@/features/events/track';
 import { useHousehold } from '@/features/household/queries';
 import { useLocale } from '@/features/i18n';
@@ -115,12 +117,12 @@ export default function StatsScreen() {
       ) : (
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.tileRow}>
-            <Tile icon={Flame} tint={colors.accentSoft} label={t('stats.dinnersInARow')} value={streak?.current_streak ?? 0} />
-            <Tile icon={Trophy} tint={colors.goldSoft} label={t('stats.mostInARow')} value={streak?.longest_streak ?? 0} />
+            <Tile image="streak" icon={Flame} tint={colors.accentSoft} label={t('stats.dinnersInARow')} desc={t('stats.dinnersInARowDesc')} value={streak?.current_streak ?? 0} />
+            <Tile image="longestStreak" icon={Trophy} tint={colors.goldSoft} label={t('stats.mostInARow')} desc={t('stats.mostInARowDesc')} value={streak?.longest_streak ?? 0} />
           </View>
           <View style={styles.tileRow}>
-            <Tile icon={Target} tint={colors.successSoft} label={t('stats.weeksAtGoal', { n: GOAL })} value={weeksAtGoal} />
-            <Tile icon={Star} tint="#DCE8FC" label={t('stats.bestWeek')} value={bestWeek} />
+            <Tile image="weeksAtGoal" icon={Target} tint={colors.successSoft} label={t('stats.weeksAtGoal', { n: GOAL })} desc={t('stats.weeksAtGoalDesc', { n: GOAL })} value={weeksAtGoal} />
+            <Tile image="bestWeek" icon={Star} tint="#DCE8FC" label={t('stats.bestWeek')} desc={t('stats.bestWeekDesc')} value={bestWeek} />
           </View>
 
           {hasHistory ? (
@@ -160,18 +162,26 @@ export default function StatsScreen() {
   );
 }
 
-/** The household's records. An icon in a white disc tells the four apart at a glance (Ricardo, 2026-09-30);
- *  each tile carries its own tint since 2026-10-07 (the streak in the Home chip's yellow), renders to follow. */
-function Tile({ icon: Icon, tint, label, value }: { icon: LucideIcon; tint: string; label: string; value: number }) {
+/** The household's records. Ricardo's render per tile on its own tint (2026-10-07; the icon in a disc
+ *  stays as the fallback), and a line that says what is counted, since the four read alike. */
+function Tile({ image, icon: Icon, tint, label, desc, value }: { image: StatKey; icon: LucideIcon; tint: string; label: string; desc: string; value: number }) {
+  const source = STAT_IMAGES[image];
   return (
     <View style={[styles.tile, { backgroundColor: tint }]}>
-      <View style={styles.tileDisc}>
-        <Icon size={16} color={colors.ink} />
-      </View>
+      {source ? (
+        <Image source={source} style={styles.tileImage} contentFit="contain" />
+      ) : (
+        <View style={styles.tileDisc}>
+          <Icon size={16} color={colors.ink} />
+        </View>
+      )}
       <Text style={styles.tileLabel} numberOfLines={2}>
         {label}
       </Text>
       <Text style={styles.tileValue}>{value}</Text>
+      <Text style={styles.tileDesc} numberOfLines={3}>
+        {desc}
+      </Text>
     </View>
   );
 }
@@ -195,6 +205,8 @@ const styles = StyleSheet.create({
   tileRow: { flexDirection: 'row', gap: 10, paddingHorizontal: 20 },
   tile: { flex: 1, padding: 14, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 2 },
   tileDisc: { width: 32, height: 32, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center', marginBottom: 8 },
+  tileImage: { width: 56, height: 56, marginBottom: 6, marginLeft: -4 },
+  tileDesc: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2, marginTop: 4, opacity: 0.85 },
   // Two lines so "Most dinners in a row" fits a half-width tile; the height is fixed so the numbers line up.
   tileLabel: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, minHeight: 36, color: colors.ink2 },
   tileValue: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, letterSpacing: -0.6 },

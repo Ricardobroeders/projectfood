@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Animated, { type SharedValue, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { motion } from '@/constants/motion';
-import { type Category, CATS, colors, fonts, radii } from '@/constants/theme';
+import { type Category, CATS, colors, fonts } from '@/constants/theme';
 
 export type MixRow = {
   category: Category;
@@ -15,6 +15,8 @@ export type MixRow = {
 };
 
 const TRACK_H = 12;
+/** Nearly square ends (Ricardo, 2026-10-07): full rounding hid whether the bar reached the mark. */
+const RADIUS = 3;
 
 /**
  * Your mix by category against the typical household (brainstorm 25, Ricardo 2026-10-07: a
@@ -44,21 +46,25 @@ function Row({ row, max, grow }: { row: MixRow; max: number; grow: SharedValue<n
       <Text style={styles.label} numberOfLines={1}>
         {row.label}
       </Text>
-      <View style={styles.track}>
-        <Animated.View style={[styles.fill, { backgroundColor: CATS[row.category].fg }, fill]} />
-        <View pointerEvents="none" style={[styles.mark, { left: `${(row.typical / max) * 100}%` }]} />
+      <View style={styles.barRow}>
+        <View style={styles.track}>
+          <Animated.View style={[styles.fill, { backgroundColor: CATS[row.category].fg }, fill]} />
+          <View pointerEvents="none" style={[styles.mark, { left: `${(row.typical / max) * 100}%` }]} />
+        </View>
+        <Text style={styles.value}>{Math.round(row.share)}%</Text>
       </View>
-      <Text style={styles.value}>{Math.round(row.share)}%</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  root: { gap: 10 },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  label: { width: 96, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
-  track: { flex: 1, height: TRACK_H, borderRadius: radii.full, backgroundColor: colors.surface, overflow: 'visible' },
-  fill: { height: TRACK_H, borderRadius: radii.full },
+  root: { gap: 12 },
+  // The label on its own line, so the track gets the full width (Ricardo, 2026-10-07).
+  row: { gap: 4 },
+  label: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
+  barRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  track: { flex: 1, height: TRACK_H, borderRadius: RADIUS, backgroundColor: colors.surface, overflow: 'visible' },
+  fill: { height: TRACK_H, borderRadius: RADIUS },
   // The typical mark stands 4 px proud of the track on both sides, so it reads above a bar of the same length.
   mark: { position: 'absolute', top: -4, width: 2, height: TRACK_H + 8, marginLeft: -1, borderRadius: 1, backgroundColor: colors.ink },
   value: { width: 36, textAlign: 'right', fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
