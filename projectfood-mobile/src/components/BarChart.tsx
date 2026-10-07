@@ -58,7 +58,8 @@ export function BarChart({ bars, goal, typical, height = 140, showValues = false
 
   const headroom = showValues ? VALUE_H : 4;
   const rawMax = Math.max(goal ?? 0, typical ?? 0, ...bars.map((b) => b.value), 1);
-  const step = tickStep(rawMax);
+  // With a goal the grid runs in halves of it (15, 30, 45, ...), so the goal line sits on a grid line (Ricardo, 2026-10-07).
+  const step = goal ? goal / 2 : tickStep(rawMax);
   // Grid lines at round steps (Ricardo, 2026-10-07); the scale rounds up to the next one.
   const yMax = Math.ceil(rawMax / step) * step;
   const ticks = Array.from({ length: Math.floor(yMax / step) + 1 }, (_, i) => i * step);
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   gridLine: { position: 'absolute', left: 0, height: 1, backgroundColor: colors.hairline },
   tickLabel: { position: 'absolute', right: 0, fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink3 },
   goalLine: { position: 'absolute', left: 0, right: 0, height: 1, backgroundColor: colors.ink3, opacity: 0.6 },
-  typicalLine: { position: 'absolute', left: 0, right: 0, height: 0, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.ink2, borderRadius: 1 },
-  typicalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink2 },
+  typicalLine: { position: 'absolute', left: 0, right: 0, height: 2, backgroundColor: colors.typical, opacity: 0.85 },
+  typicalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.typical },
   goalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink2 },
 });

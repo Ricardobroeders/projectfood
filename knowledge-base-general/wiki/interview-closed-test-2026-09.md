@@ -270,6 +270,11 @@ screen shows which one), who (first name or role, never more), the words, what w
 - 2026-10-07, 1.0.35 over the air (Android 51080acd, iOS 9d12de96): the week chart's grid lines
   and tick numbers had escaped the card (a wrapper view in flow anchored them at the top);
   siblings of the columns now.
+- 2026-10-07, 1.0.36 over the air (Android 3827bfeb, iOS 5e049a4e): the week grid runs in halves
+  of the goal (15, 30, 45, 60, 75) so the goal line sits on a grid line; "typical" is one blue
+  (`colors.typical`, #1F6FEB) for the mix mark, both chart lines and the legends, solid instead of
+  dashed; tighter title-to-subtitle in the tiles and label-to-track in the mix; the stats screen's
+  section titles larger and closer to their card.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

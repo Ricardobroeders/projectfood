@@ -58,14 +58,14 @@ function Row({ row, max, grow }: { row: MixRow; max: number; grow: SharedValue<n
 }
 
 const styles = StyleSheet.create({
-  root: { gap: 12 },
+  root: { gap: 10 },
   // The label on its own line, so the track gets the full width (Ricardo, 2026-10-07).
-  row: { gap: 4 },
-  label: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
+  row: { gap: 2 },
+  label: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 16, color: colors.ink2 },
   barRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   track: { flex: 1, height: TRACK_H, borderRadius: RADIUS, backgroundColor: colors.surface, overflow: 'visible' },
   fill: { height: TRACK_H, borderRadius: RADIUS },
   // The typical mark stands 4 px proud of the track on both sides, so it reads above a bar of the same length.
-  mark: { position: 'absolute', top: -4, width: 2, height: TRACK_H + 8, marginLeft: -1, borderRadius: 1, backgroundColor: colors.ink },
+  mark: { position: 'absolute', top: -4, width: 2, height: TRACK_H + 8, marginLeft: -1, borderRadius: 1, backgroundColor: colors.typical },
   value: { width: 36, textAlign: 'right', fontFamily: fonts.semibold, fontSize: 13, lineHeight: 18, color: colors.ink },
 });

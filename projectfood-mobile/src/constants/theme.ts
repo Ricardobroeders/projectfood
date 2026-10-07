@@ -72,6 +72,8 @@ export const colors = {
    *  to an ordinary accent surface, and still pale enough for the gold clay render to stand on. */
   goldSoft: '#F9DE72',
   goldInk: '#7A5C00',
+  /** The typical household in the stats charts (2026-10-07): one colour for the mark, the lines and the legend, never a verdict colour. */
+  typical: '#1F6FEB',
   locked: '#ECEAE5',
   lockedInk: '#B8B2A9',
 } as const;

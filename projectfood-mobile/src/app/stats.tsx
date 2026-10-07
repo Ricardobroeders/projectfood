@@ -9,7 +9,7 @@ import { type Bar, BarChart } from '@/components/BarChart';
 import { CategoryMix, type MixRow } from '@/components/CategoryMix';
 import { bandColor } from '@/components/GoalGauge';
 import { LineChart, type LinePoint } from '@/components/LineChart';
-import { BackHeader, Loading, PrimaryButton, Screen, SectionTitle } from '@/components/ui';
+import { BackHeader, Loading, PrimaryButton, Screen } from '@/components/ui';
 import { CAT_ORDER, type Category, colors, fonts, radii } from '@/constants/theme';
 import BENCHMARKS from '@/data/benchmarks.json';
 import { STAT_IMAGES, type StatKey } from '@/data/statImages.generated';
@@ -127,25 +127,25 @@ export default function StatsScreen() {
 
           {hasHistory ? (
             <>
-              <SectionTitle>{t('stats.mixTitle')}</SectionTitle>
+              <Text style={styles.h2}>{t('stats.mixTitle')}</Text>
               <View style={styles.card}>
                 <CategoryMix rows={mix} />
                 <Text style={styles.body}>{t('stats.mixBody')}</Text>
                 <Legend items={[{ kind: 'bar', label: t('stats.legendYou') }, { kind: 'mark', label: t('stats.legendTypical') }]} />
               </View>
 
-              <SectionTitle>{t('stats.perWeekTitle')}</SectionTitle>
+              <Text style={styles.h2}>{t('stats.perWeekTitle')}</Text>
               <View style={styles.card}>
                 <BarChart bars={weekBars} goal={GOAL} typical={BENCHMARKS.weekTypical} height={160} showValues />
                 <Text style={styles.body}>{t('stats.perWeekBody')}</Text>
-                <Legend items={[{ kind: 'line', label: t('stats.legendGoal', { n: GOAL }) }, { kind: 'dashed', label: t('stats.legendTypical') }]} />
+                <Legend items={[{ kind: 'line', label: t('stats.legendGoal', { n: GOAL }) }, { kind: 'typical', label: t('stats.legendTypical') }]} />
               </View>
 
-              <SectionTitle>{t('stats.perDayTitle')}</SectionTitle>
+              <Text style={styles.h2}>{t('stats.perDayTitle')}</Text>
               <View style={styles.card}>
                 <LineChart points={dayPoints} typical={BENCHMARKS.dayTypical} height={160} />
                 <Text style={styles.body}>{t('stats.perDayBody')}</Text>
-                <Legend items={[{ kind: 'dashed', label: t('stats.legendTypical') }]} />
+                <Legend items={[{ kind: 'typical', label: t('stats.legendTypical') }]} />
               </View>
 
               <Text style={styles.footnote}>{t('stats.typicalNote')}</Text>
@@ -190,12 +190,12 @@ function Tile({ image, icon: Icon, tint, label, desc, value }: { image: StatKey;
 }
 
 /** What the marks in a chart mean, in the app's own text under it. */
-function Legend({ items }: { items: { kind: 'bar' | 'mark' | 'line' | 'dashed'; label: string }[] }) {
+function Legend({ items }: { items: { kind: 'bar' | 'mark' | 'line' | 'typical'; label: string }[] }) {
   return (
     <View style={styles.legend}>
       {items.map((it) => (
         <View key={it.label} style={styles.legendItem}>
-          {it.kind === 'bar' ? <View style={styles.legendBar} /> : it.kind === 'mark' ? <View style={styles.legendMark} /> : it.kind === 'line' ? <View style={styles.legendLine} /> : <View style={styles.legendDashed} />}
+          {it.kind === 'bar' ? <View style={styles.legendBar} /> : it.kind === 'mark' ? <View style={styles.legendMark} /> : it.kind === 'line' ? <View style={styles.legendLine} /> : <View style={styles.legendTypical} />}
           <Text style={styles.legendText}>{it.label}</Text>
         </View>
       ))}
@@ -205,14 +205,16 @@ function Legend({ items }: { items: { kind: 'bar' | 'mark' | 'line' | 'dashed'; 
 
 const styles = StyleSheet.create({
   content: { paddingTop: 8, paddingBottom: 72, gap: 10 },
+  // Larger than the shared section title and closer to its card (Ricardo, 2026-10-07).
+  h2: { fontFamily: fonts.extrabold, fontSize: 22, lineHeight: 28, color: colors.ink, marginHorizontal: 20, marginTop: 14, marginBottom: -2 },
   tileRow: { flexDirection: 'row', gap: 10, paddingHorizontal: 20 },
-  tile: { flex: 1, padding: 14, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 2 },
+  tile: { flex: 1, padding: 14, borderRadius: radii.lg, backgroundColor: colors.bgSoft },
   tileTop: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 6 },
   tileDisc: { width: 32, height: 32, borderRadius: radii.full, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
   tileImage: { width: 52, height: 52, marginLeft: -6 },
   // Two lines so "Most dinners in a row" fits a half-width tile; the height is fixed so the descriptions line up.
-  tileLabel: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18, minHeight: 36, color: colors.ink },
-  tileDesc: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
+  tileLabel: { fontFamily: fonts.bold, fontSize: 14, lineHeight: 18, color: colors.ink },
+  tileDesc: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2, marginTop: 1 },
   tileValue: { fontFamily: fonts.extrabold, fontSize: 30, lineHeight: 36, color: colors.ink, letterSpacing: -0.6 },
   card: { marginHorizontal: 20, padding: 16, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 12 },
   body: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
   legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   legendText: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
   legendBar: { width: 14, height: 8, borderRadius: 4, backgroundColor: colors.ink2 },
-  legendMark: { width: 2, height: 12, borderRadius: 1, backgroundColor: colors.ink },
-  legendLine: { width: 14, height: 1, backgroundColor: colors.ink3 },
-  legendDashed: { width: 14, height: 0, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.ink2 },
+  legendMark: { width: 2, height: 12, borderRadius: 1, backgroundColor: colors.typical },
+  legendLine: { width: 14, height: 1, backgroundColor: colors.ink2 },
+  legendTypical: { width: 14, height: 2, backgroundColor: colors.typical },
 });

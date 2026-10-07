@@ -77,7 +77,7 @@ export function LineChart({ points, typical, height = 160 }: Props) {
             {ticks.map((v) => (
               <Line key={v} x1={0} x2={plotW} y1={y(v)} y2={y(v)} stroke={colors.hairline} strokeWidth={1} />
             ))}
-            {typical ? <Line x1={0} x2={plotW} y1={y(typical)} y2={y(typical)} stroke={colors.ink2} strokeWidth={1} strokeDasharray="4 4" /> : null}
+            {typical ? <Line x1={0} x2={plotW} y1={y(typical)} y2={y(typical)} stroke={colors.typical} strokeWidth={2} strokeOpacity={0.85} /> : null}
             <Path d={area} fill="url(#lineFill)" />
             <Path d={line} stroke={colors.accentPressed} strokeWidth={2} fill="none" strokeLinejoin="round" strokeLinecap="round" />
             {last ? <Path d={`M${last[0]} ${last[1]} m-4 0 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0`} fill={colors.accentPressed} /> : null}
@@ -111,5 +111,5 @@ export function LineChart({ points, typical, height = 160 }: Props) {
 const styles = StyleSheet.create({
   label: { position: 'absolute', width: 64, fontFamily: fonts.medium, fontSize: 11, lineHeight: 16, color: colors.ink3 },
   tick: { position: 'absolute', right: 0, width: AXIS_W - 6, textAlign: 'right', fontFamily: fonts.medium, fontSize: 11, lineHeight: 14, color: colors.ink3 },
-  typicalLabel: { fontFamily: fonts.semibold, color: colors.ink2 },
+  typicalLabel: { fontFamily: fonts.semibold, color: colors.typical },
 });
