@@ -1,5 +1,5 @@
 import * as Haptics from 'expo-haptics';
-import { Check, Sparkles } from 'lucide-react-native';
+import { Check, Leaf, Sparkles } from 'lucide-react-native';
 import { memo, useEffect, useRef } from 'react';
 import { type GestureResponderEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming, ZoomIn } from 'react-native-reanimated';
@@ -21,6 +21,8 @@ type Props = {
   catLabel: string;
   /** Anyone at the table has this card at gold: the tile and the render turn gold. */
   gold?: boolean;
+  /** In season this month (Europe): a leaf in the tile's corner. */
+  inSeason?: boolean;
   /** `at` is where the finger was, in window coordinates: the member menu grows from that point. */
   onTap: (plantId: string, at: Point) => void;
   onHold: (plantId: string, at: Point) => void;
@@ -28,7 +30,7 @@ type Props = {
 
 const pointOf = (e: GestureResponderEvent): Point => ({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY });
 
-function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, onTap, onHold }: Props) {
+function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, inSeason, onTap, onHold }: Props) {
   const cat = CATS[plant.category];
   const tasted = tasters.length > 0;
   // The check circle fills when the whole default set has tasted it; a partial set shows as avatars.
@@ -97,6 +99,11 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, on
               <Sparkles size={11} color="#FFFFFF" strokeWidth={2.5} />
             </View>
           ) : null}
+          {inSeason ? (
+            <View style={styles.season}>
+              <Leaf size={11} color="#FFFFFF" strokeWidth={2.5} />
+            </View>
+          ) : null}
         </View>
         <View style={styles.text}>
           <Text style={styles.name} numberOfLines={1}>
@@ -130,6 +137,7 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', borderRadius: radii.lg, marginBottom: 10, height: 84, overflow: 'hidden' },
   tile: { width: 84, height: 84, alignItems: 'center', justifyContent: 'center' },
   superfood: { position: 'absolute', top: 8, left: 8, width: 20, height: 20, borderRadius: radii.full, backgroundColor: colors.success, alignItems: 'center', justifyContent: 'center' },
+  season: { position: 'absolute', top: 8, right: 8, width: 20, height: 20, borderRadius: radii.full, backgroundColor: '#4F7A3D', alignItems: 'center', justifyContent: 'center' },
   text: { flex: 1, paddingHorizontal: 16, gap: 4, justifyContent: 'center' },
   name: { fontFamily: fonts.semibold, fontSize: 17, lineHeight: 22, color: colors.ink },
   cat: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },

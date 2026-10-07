@@ -249,6 +249,11 @@ screen shows which one), who (first name or role, never more), the words, what w
   questions mount a screen at a time (FlatList). Footer: "Save & go back" gone (answers save as
   they are filled in, back is at the top); "Remove my answers" added, with a confirm, deleting
   the user's rows including consent.
+- 2026-10-07, 1.0.31 over the air plus migration `season_europe`: the stats screen against the
+  typical household ([[decision-2026-10-07-stats-typical-household]]): your mix by category as
+  horizontal bars with the typical mark, the typical week dashed next to the goal line, plants per
+  day as a line with the typical day; tinted record tiles. Log: an "In season" tab and a leaf on
+  the row, Europe table, 106 plants. Testers' ask (solo adults): their behaviour against an average.
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

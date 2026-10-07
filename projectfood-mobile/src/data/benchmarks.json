@@ -1,0 +1,9 @@
+{
+  "generatedOn": "2026-10-07",
+  "households": 22,
+  "householdWeeks": 31,
+  "categoryShare": { "vegetable": 41.3, "fruit": 19.4, "nut_seed": 16.4, "herb": 8.8, "whole_grain": 5.3, "ferment": 5.0, "legume": 3.8 },
+  "weekTypical": 22,
+  "dayTypical": 8,
+  "firstWeekTypical": 17
+}

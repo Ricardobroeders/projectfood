@@ -164,7 +164,8 @@
     "holdHint": "Hold a plant to choose who tasted it",
     "superfood": "Superfood",
     "logEmpty": "Add your family first, then log who tasted what.",
-    "goFamily": "Add family"
+    "goFamily": "Add family",
+    "inSeason": "In season"
   },
   "unlocks": {
     "title": "Unlocks",
@@ -206,10 +207,16 @@
     "weeksAtGoal": "Weeks at {n}",
     "bestWeek": "Best week",
     "perWeekTitle": "Plants per week",
-    "perWeekBody": "Different plants the family tasted, Monday to Sunday. The line is {n}, the lighter bar is this week.",
+    "perWeekBody": "Different plants the family tasted, Monday to Sunday. The lighter bar is this week.",
     "perDayTitle": "Plants per day",
     "perDayBody": "Different plants on the table each day, the last 4 weeks.",
-    "empty": "Log the first plant and the weeks start filling up here."
+    "empty": "Log the first plant and the weeks start filling up here.",
+    "mixTitle": "Your mix",
+    "mixBody": "Share of everything you logged, per category.",
+    "legendYou": "You",
+    "legendTypical": "Typical",
+    "legendGoal": "Goal {n}",
+    "typicalNote": "Typical is the middle of all households on Project Food."
   },
   "plant": {
     "family": "Family",

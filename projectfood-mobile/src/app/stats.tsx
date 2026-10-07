@@ -5,14 +5,18 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { type Bar, BarChart } from '@/components/BarChart';
+import { CategoryMix, type MixRow } from '@/components/CategoryMix';
 import { bandColor } from '@/components/GoalGauge';
+import { LineChart, type LinePoint } from '@/components/LineChart';
 import { BackHeader, Loading, PrimaryButton, Screen, SectionTitle } from '@/components/ui';
-import { colors, fonts, radii } from '@/constants/theme';
+import { CAT_ORDER, type Category, colors, fonts, radii } from '@/constants/theme';
+import BENCHMARKS from '@/data/benchmarks.json';
 import { track } from '@/features/events/track';
 import { useHousehold } from '@/features/household/queries';
 import { useLocale } from '@/features/i18n';
 import { addDays, dateKey, weekStartOf } from '@/features/logs/model';
-import { useDailyActivity, useStreak, useWeeklyHistory } from '@/features/logs/queries';
+import { useDailyActivity, useStreak, useTasteCounts, useWeeklyHistory } from '@/features/logs/queries';
+import { usePlantCatalog } from '@/features/plants/catalog';
 
 const GOAL = 30;
 const WEEKS_SHOWN = 12;
@@ -34,6 +38,8 @@ export default function StatsScreen() {
   const { data: streak } = useStreak(hid);
   const weekly = useWeeklyHistory(hid);
   const daily = useDailyActivity(hid);
+  const tasteCounts = useTasteCounts(hid);
+  const { catalog } = usePlantCatalog();
 
   useEffect(() => {
     if (hid) track('stats_open', {}, hid);
@@ -69,21 +75,33 @@ export default function StatsScreen() {
   }, [allWeeks, thisWeek, locale]);
 
   // The rows with no member are the household's distinct plants per day.
-  const dayBars: Bar[] = useMemo(() => {
+  const dayPoints: LinePoint[] = useMemo(() => {
     const byDay: Record<string, number> = {};
     for (const r of daily.data ?? []) if (r.member_id === null) byDay[r.day] = r.distinct_plants;
     const start = addDays(today, -(DAYS_SHOWN - 1));
     return Array.from({ length: DAYS_SHOWN }, (_, i) => {
       const day = addDays(start, i);
-      return {
-        key: day,
-        value: byDay[day] ?? 0,
-        color: day === today ? colors.accentPressed : colors.accent,
-        label: isMonday(day) ? fmtKey(day) : undefined,
-      };
+      return { key: day, value: byDay[day] ?? 0, label: isMonday(day) ? fmtKey(day) : undefined };
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [daily.data, today, locale]);
+
+  // Your mix: every taste logged, by category, against the typical household's share (bundled
+  // benchmark, refreshed with each update; never a live query across households).
+  const mix: MixRow[] = useMemo(() => {
+    const byCat: Record<string, number> = {};
+    let total = 0;
+    for (const c of tasteCounts.data ?? []) {
+      const cat = catalog.byId[c.plant_id]?.category;
+      if (!cat) continue;
+      byCat[cat] = (byCat[cat] ?? 0) + c.tastes;
+      total += c.tastes;
+    }
+    const share = (cat: Category) => (total ? (100 * (byCat[cat] ?? 0)) / total : 0);
+    return [...CAT_ORDER]
+      .map((cat) => ({ category: cat, label: t(`categoriesPlural.${cat}`), share: share(cat), typical: BENCHMARKS.categoryShare[cat] ?? 0 }))
+      .sort((a, b) => b.share - a.share);
+  }, [tasteCounts.data, catalog.byId, t]);
 
   const hasHistory = allWeeks.some((w) => w.variety > 0);
   const weeksAtGoal = allWeeks.filter((w) => w.hit_goal).length;
@@ -97,27 +115,38 @@ export default function StatsScreen() {
       ) : (
         <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.tileRow}>
-            <Tile icon={Flame} label={t('stats.dinnersInARow')} value={streak?.current_streak ?? 0} />
-            <Tile icon={Trophy} label={t('stats.mostInARow')} value={streak?.longest_streak ?? 0} />
+            <Tile icon={Flame} tint={colors.accentSoft} label={t('stats.dinnersInARow')} value={streak?.current_streak ?? 0} />
+            <Tile icon={Trophy} tint={colors.goldSoft} label={t('stats.mostInARow')} value={streak?.longest_streak ?? 0} />
           </View>
           <View style={styles.tileRow}>
-            <Tile icon={Target} label={t('stats.weeksAtGoal', { n: GOAL })} value={weeksAtGoal} />
-            <Tile icon={Star} label={t('stats.bestWeek')} value={bestWeek} />
+            <Tile icon={Target} tint={colors.successSoft} label={t('stats.weeksAtGoal', { n: GOAL })} value={weeksAtGoal} />
+            <Tile icon={Star} tint="#DCE8FC" label={t('stats.bestWeek')} value={bestWeek} />
           </View>
 
           {hasHistory ? (
             <>
+              <SectionTitle>{t('stats.mixTitle')}</SectionTitle>
+              <View style={styles.card}>
+                <CategoryMix rows={mix} />
+                <Legend items={[{ kind: 'bar', label: t('stats.legendYou') }, { kind: 'mark', label: t('stats.legendTypical') }]} />
+                <Text style={styles.body}>{t('stats.mixBody')}</Text>
+              </View>
+
               <SectionTitle>{t('stats.perWeekTitle')}</SectionTitle>
               <View style={styles.card}>
-                <BarChart bars={weekBars} goal={GOAL} height={150} showValues />
-                <Text style={styles.body}>{t('stats.perWeekBody', { n: GOAL })}</Text>
+                <BarChart bars={weekBars} goal={GOAL} typical={BENCHMARKS.weekTypical} height={150} showValues />
+                <Legend items={[{ kind: 'line', label: t('stats.legendGoal', { n: GOAL }) }, { kind: 'dashed', label: t('stats.legendTypical') }]} />
+                <Text style={styles.body}>{t('stats.perWeekBody')}</Text>
               </View>
 
               <SectionTitle>{t('stats.perDayTitle')}</SectionTitle>
               <View style={styles.card}>
-                <BarChart bars={dayBars} height={110} labelAlign="start" />
+                <LineChart points={dayPoints} typical={BENCHMARKS.dayTypical} height={120} />
+                <Legend items={[{ kind: 'dashed', label: t('stats.legendTypical') }]} />
                 <Text style={styles.body}>{t('stats.perDayBody')}</Text>
               </View>
+
+              <Text style={styles.footnote}>{t('stats.typicalNote')}</Text>
             </>
           ) : (
             <View style={[styles.card, { marginTop: 8 }]}>
@@ -131,10 +160,11 @@ export default function StatsScreen() {
   );
 }
 
-/** The household's records. An icon in a white disc tells the four apart at a glance (Ricardo, 2026-09-30). */
-function Tile({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: number }) {
+/** The household's records. An icon in a white disc tells the four apart at a glance (Ricardo, 2026-09-30);
+ *  each tile carries its own tint since 2026-10-07 (the streak in the Home chip's yellow), renders to follow. */
+function Tile({ icon: Icon, tint, label, value }: { icon: LucideIcon; tint: string; label: string; value: number }) {
   return (
-    <View style={styles.tile}>
+    <View style={[styles.tile, { backgroundColor: tint }]}>
       <View style={styles.tileDisc}>
         <Icon size={16} color={colors.ink} />
       </View>
@@ -142,6 +172,20 @@ function Tile({ icon: Icon, label, value }: { icon: LucideIcon; label: string; v
         {label}
       </Text>
       <Text style={styles.tileValue}>{value}</Text>
+    </View>
+  );
+}
+
+/** What the marks in a chart mean, in the app's own text under it. */
+function Legend({ items }: { items: { kind: 'bar' | 'mark' | 'line' | 'dashed'; label: string }[] }) {
+  return (
+    <View style={styles.legend}>
+      {items.map((it) => (
+        <View key={it.label} style={styles.legendItem}>
+          {it.kind === 'bar' ? <View style={styles.legendBar} /> : it.kind === 'mark' ? <View style={styles.legendMark} /> : it.kind === 'line' ? <View style={styles.legendLine} /> : <View style={styles.legendDashed} />}
+          <Text style={styles.legendText}>{it.label}</Text>
+        </View>
+      ))}
     </View>
   );
 }
@@ -156,4 +200,12 @@ const styles = StyleSheet.create({
   tileValue: { fontFamily: fonts.extrabold, fontSize: 28, lineHeight: 34, color: colors.ink, letterSpacing: -0.6 },
   card: { marginHorizontal: 20, padding: 16, borderRadius: radii.lg, backgroundColor: colors.bgSoft, gap: 12 },
   body: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18, color: colors.ink2 },
+  footnote: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink3, marginHorizontal: 20 },
+  legend: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginTop: -4 },
+  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  legendText: { fontFamily: fonts.medium, fontSize: 12, lineHeight: 16, color: colors.ink2 },
+  legendBar: { width: 14, height: 8, borderRadius: 4, backgroundColor: colors.ink2 },
+  legendMark: { width: 2, height: 12, borderRadius: 1, backgroundColor: colors.ink },
+  legendLine: { width: 14, height: 1, backgroundColor: colors.ink3 },
+  legendDashed: { width: 14, height: 0, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.ink2 },
 });

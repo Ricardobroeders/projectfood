@@ -31,8 +31,8 @@ export type Catalog = {
   bySlug: Record<string, Plant>;
 };
 
-// The trailing shape tag retires a persisted catalogue that predates a field (2: `names`, 1.0.15).
-export const catalogKey = (locale: string) => ['catalog', locale, 2] as const;
+// The trailing shape tag retires a persisted catalogue that predates a change (2: `names`, 1.0.15; 3: the Europe season table, 1.0.31).
+export const catalogKey = (locale: string) => ['catalog', locale, 3] as const;
 
 async function fetchCatalog(locale: string): Promise<Catalog> {
   const { data, error } = await supabase

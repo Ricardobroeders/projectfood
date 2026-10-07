@@ -22,11 +22,12 @@ import { useLogMutations, useWeekLogs } from '@/features/logs/queries';
 import { useScrollToTopOnTab } from '@/features/navigation/useScrollToTopOnTab';
 import { getPermissionState } from '@/features/notifications/push';
 import { type Plant, usePlantCatalog, usePlantSearch } from '@/features/plants/catalog';
+import { inSeason } from '@/features/plants/season';
 import { supabase } from '@/features/supabase/client';
 import { type Point, useDefaultIds, useUi } from '@/state/ui';
 import { useLocale } from '@/features/i18n';
 
-type Filter = 'all' | Category;
+type Filter = 'all' | 'season' | Category;
 const NONE: string[] = [];
 const NO_PLANTS: Plant[] = [];
 /** PlantRow height plus its bottom margin; the list top padding sits in front of row 0. */
@@ -97,7 +98,12 @@ export default function LogScreen() {
     [catalog.plants, locale],
   );
   const searched = usePlantSearch(ordered, debounced);
-  const plants = useMemo(() => (listFilter === 'all' ? searched : searched.filter((p) => p.category === listFilter)), [searched, listFilter]);
+  // "In season": one Europe table for every locale (Ricardo, 2026-10-07), by the phone's month.
+  const month = new Date().getMonth() + 1;
+  const plants = useMemo(
+    () => (listFilter === 'all' ? searched : listFilter === 'season' ? searched.filter((p) => inSeason(p, month)) : searched.filter((p) => p.category === listFilter)),
+    [searched, listFilter, month],
+  );
 
   // A new list starts at the top and fills in where the skeleton stood (reveal class); nothing travels.
   const listRef = useRef<FlatList<Plant>>(null);
@@ -114,7 +120,7 @@ export default function LogScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mounted]);
 
-  const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
+  const tabs = useMemo<Tab<Filter>[]>(() => [{ key: 'all', label: t('log.all') }, { key: 'season', label: t('log.inSeason') }, ...CAT_ORDER.map((c) => ({ key: c, label: t(`categoriesPlural.${c}`) }))], [t]);
 
   const maybePromptPush = useCallback(async () => {
     const s = settings.data;
@@ -148,11 +154,11 @@ export default function LogScreen() {
     ({ item, index }: { item: Plant; index: number }) => {
       // No gold here since 2026-10-06 (Ricardo): with many gold cards every row went the same colour
       // and the category colour that tells rows apart was lost. Gold stays on the Unlocks page.
-      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />;
+      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} inSeason={inSeason(item, month)} onTap={onTap} onHold={onHold} />;
       // The tutorial's second balloon points at the first row.
       return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow" inset={ROW_INSET}>{row}</TutorialAnchorView> : row}</Animated.View>;
     },
-    [tastes, members, defaultIds, t, onTap, onHold],
+    [tastes, members, defaultIds, t, month, onTap, onHold],
   );
 
   // The tutorial reads the first row and the week chip: bring the list to the top when it arrives here.

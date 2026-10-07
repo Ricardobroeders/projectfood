@@ -164,7 +164,8 @@
     "holdHint": "Houd een plant vast om te kiezen wie heeft geproefd",
     "superfood": "Superfood",
     "logEmpty": "Voeg eerst je gezin toe, log daarna wie wat heeft geproefd.",
-    "goFamily": "Gezin toevoegen"
+    "goFamily": "Gezin toevoegen",
+    "inSeason": "In het seizoen"
   },
   "unlocks": {
     "title": "Behaald",
@@ -206,10 +207,16 @@
     "weeksAtGoal": "Weken op {n}",
     "bestWeek": "Beste week",
     "perWeekTitle": "Planten per week",
-    "perWeekBody": "Verschillende planten die het gezin proefde, van maandag tot zondag. De lijn is {n}, de lichtere balk is deze week.",
+    "perWeekBody": "Verschillende planten die het gezin proefde, van maandag tot zondag. De lichtere balk is deze week.",
     "perDayTitle": "Planten per dag",
     "perDayBody": "Verschillende planten op tafel per dag, de laatste 4 weken.",
-    "empty": "Log de eerste plant en de weken vullen zich hier."
+    "empty": "Log de eerste plant en de weken vullen zich hier.",
+    "mixTitle": "Jouw mix",
+    "mixBody": "Aandeel van alles wat je logde, per categorie.",
+    "legendYou": "Jij",
+    "legendTypical": "Gemiddeld",
+    "legendGoal": "Doel {n}",
+    "typicalNote": "Gemiddeld is het midden van alle huishoudens op Project Food."
   },
   "plant": {
     "family": "Familie",

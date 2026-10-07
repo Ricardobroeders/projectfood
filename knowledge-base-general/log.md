@@ -1193,3 +1193,7 @@ Warnings accepted: related "as-a-family" has no folder yet (the nl page is live 
 ## [2026-10-07] brainstorm | Stats against the typical household
 Ricardo's ask from tester talks. Data pulled, shortlist and build order proposed; parked as
 brainstorm 25 in [[strategy-backlog]] pending his cut. Nothing built.
+
+## [2026-10-07] decision | Stats against the typical household (1.0.31)
+[[decision-2026-10-07-stats-typical-household]]: category mix bars with the typical mark, typical
+lines in both charts, the day chart as a line, "In season" on Log with a Europe season table.

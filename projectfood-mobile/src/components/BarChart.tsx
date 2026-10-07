@@ -21,6 +21,8 @@ type Props = {
   bars: Bar[];
   /** A line at this value with the number at its right end; the scale never drops below it. */
   goal?: number;
+  /** A dashed line at this value: the typical household (brainstorm 25). Drawn like the goal, lighter. */
+  typical?: number;
   /** Height of the bar area, without the value and date labels. */
   height?: number;
   /** The value above each bar; only for rows with a dozen bars or fewer. */
@@ -42,28 +44,38 @@ const GOAL_GUTTER = 28;
  * views, no SVG text, so the labels use the app's own font. The bars grow once on mount with the
  * `fill` class, the same motion as Home's gauge; nothing here bounces.
  */
-export function BarChart({ bars, goal, height = 140, showValues = false, labelAlign = 'center', style }: Props) {
+export function BarChart({ bars, goal, typical, height = 140, showValues = false, labelAlign = 'center', style }: Props) {
   const grow = useSharedValue(0);
   useEffect(() => {
     grow.value = withTiming(1, motion.fill);
   }, [grow]);
 
   const headroom = showValues ? VALUE_H : 4;
-  const yMax = Math.max(goal ?? 0, ...bars.map((b) => b.value), 1);
+  const yMax = Math.max(goal ?? 0, typical ?? 0, ...bars.map((b) => b.value), 1);
   const barMaxH = height - headroom;
   const goalBottom = goal ? LABEL_H + (goal / yMax) * barMaxH : 0;
+  const typicalBottom = typical ? LABEL_H + (typical / yMax) * barMaxH : 0;
+  const gutter = goal || typical ? GOAL_GUTTER : 0;
 
   return (
     <View style={[styles.root, { height: height + LABEL_H }, style]}>
       {goal ? (
         <>
-          <View pointerEvents="none" style={[styles.goalLine, { bottom: goalBottom }]} />
+          <View pointerEvents="none" style={[styles.goalLine, { bottom: goalBottom, right: gutter }]} />
           <Text pointerEvents="none" style={[styles.goalLabel, { bottom: goalBottom + 2 }]}>
             {goal}
           </Text>
         </>
       ) : null}
-      <View style={[styles.columns, { paddingRight: goal ? GOAL_GUTTER : 0, gap: bars.length > 14 ? 3 : 6 }]}>
+      {typical ? (
+        <>
+          <View pointerEvents="none" style={[styles.typicalLine, { bottom: typicalBottom, right: gutter }]} />
+          <Text pointerEvents="none" style={[styles.typicalLabel, { bottom: typicalBottom - 6 }]}>
+            {typical}
+          </Text>
+        </>
+      ) : null}
+      <View style={[styles.columns, { paddingRight: gutter, gap: bars.length > 14 ? 3 : 6 }]}>
         {bars.map((b) => (
           <Column key={b.key} bar={b} height={barMaxH * (b.value / yMax)} grow={grow} showValue={showValues} labelAlign={labelAlign} />
         ))}
@@ -106,5 +118,7 @@ const styles = StyleSheet.create({
   labelCenter: { left: -24, right: -24, textAlign: 'center' },
   labelStart: { left: 0, width: 64, textAlign: 'left' },
   goalLine: { position: 'absolute', left: 0, right: 0, height: 1, backgroundColor: colors.ink3, opacity: 0.6 },
+  typicalLine: { position: 'absolute', left: 0, right: 0, height: 0, borderTopWidth: 1, borderStyle: 'dashed', borderColor: colors.ink2, borderRadius: 1 },
+  typicalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink2 },
   goalLabel: { position: 'absolute', right: 0, fontFamily: fonts.semibold, fontSize: 11, lineHeight: 14, color: colors.ink2 },
 });

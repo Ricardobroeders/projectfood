@@ -164,7 +164,8 @@
     "holdHint": "Tieni premuta una pianta per scegliere chi l'ha assaggiata",
     "superfood": "Superfood",
     "logEmpty": "Prima aggiungi la tua famiglia, poi registra chi ha assaggiato cosa.",
-    "goFamily": "Aggiungi la famiglia"
+    "goFamily": "Aggiungi la famiglia",
+    "inSeason": "Di stagione"
   },
   "unlocks": {
     "title": "Collezione",
@@ -206,10 +207,16 @@
     "weeksAtGoal": "Settimane a {n}",
     "bestWeek": "Settimana migliore",
     "perWeekTitle": "Piante per settimana",
-    "perWeekBody": "Piante diverse assaggiate dalla famiglia, da lunedì a domenica. La linea è {n}, la barra più chiara è questa settimana.",
+    "perWeekBody": "Piante diverse assaggiate dalla famiglia, da lunedì a domenica. La barra più chiara è questa settimana.",
     "perDayTitle": "Piante per giorno",
     "perDayBody": "Piante diverse a tavola ogni giorno, le ultime 4 settimane.",
-    "empty": "Registra la prima pianta e le settimane si riempiono qui."
+    "empty": "Registra la prima pianta e le settimane si riempiono qui.",
+    "mixTitle": "Il tuo mix",
+    "mixBody": "Quota di tutto ciò che hai registrato, per categoria.",
+    "legendYou": "Tu",
+    "legendTypical": "Media",
+    "legendGoal": "Obiettivo {n}",
+    "typicalNote": "Media è il punto medio di tutte le famiglie su Project Food."
   },
   "plant": {
     "family": "Famiglia",
