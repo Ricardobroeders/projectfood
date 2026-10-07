@@ -201,6 +201,17 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   mix, days logged per week. Never: ranking members, streak percentiles. Ricardo's: the cut and
   order, the comparison word ("families" or "others on Project Food"), whether season data is
   expanded first, and whether stats leaves the streak chip for its own entry on Home.
+- **Log opens on "In season", "Alles" goes (rows 4, 5).** Ricardo, 2026-10-07: now that the Log
+  page has the season tab, "Alles" may be redundant, and opening on "In het seizoen" could get people
+  to skim it and buy in season. Claude's read the same day: the season table (Europe, 2026-10-07)
+  covers fruit and vegetables plus two nuts and one legume, about 40 of 230 plants in October; a
+  sitting of about 8 logged plants holds staples with no season (bread, oats, rice, lentils, coffee,
+  onion, nuts), each of which would need a category tab first, and "Alles" is also the search
+  surface (typing jumps back to it). So the default costs the one-minute log (pillar 3) during the
+  closed-test window. Two ways to the same nudge without the tax: (1) remember the last tab, so
+  "In season" becomes the default for whoever picks it; (2) an "In season now" group or strip at
+  the top of "Alles", the companion to the "Two in season" quest. Challenged by brainstorm 26
+  (quests); nothing on the Log tab's default before 2026-10-14.
 - **Shorter quests, a habits lens and a brand book: three ways to use the wait (rows 2, 4, 5, 9).**
   Ricardo, 2026-10-07, while the count and Apple's answer are waited on: the reward problem
   again (eating varied is preventive, little to see), and three threads. (a) Data insights that
