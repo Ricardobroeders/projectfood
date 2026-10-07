@@ -127,8 +127,13 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     the parent articles, with the same `pf-seo-article` gates; (3) the in-app target for tooltips
     and "read more" links, so explanations that do not belong in the app have a home (the tutorial's
     "Read the article" button already points at the site); (4) the page to send to external parties,
-    nutritionists and other partners, so they see the concept before a conversation (row 16). Open
-    before the build: its own route (`/how-it-works`) or a third learn pillar; the pillar's copy
+    nutritionists and other partners, so they see the concept before a conversation (row 16). Claude's
+    position (2026-10-07): the pillar is a product page on its own route (`/how-it-works`), 17
+    sections with Ricardo's visuals, no keyword to chase, for conversion, in-app links and partners;
+    the search value sits in at most five clusters under the learn hub as a third pillar (one per
+    law plus the fundamentals), only where a real query exists ("how to build healthy eating
+    habits", "habit stacking meals"), sized once item 9's DataForSEO access exists. Visuals for
+    the pillar first; the clusters reuse them. Ricardo is making the visuals in Figma. Still open: the pillar's copy
     follows [[decision-2026-10-07-two-ways-to-use-it]] (never presumes kids). **Spine (Ricardo,
     2026-10-07): the 20 chapters of _Atomic Habits_**, one short section each on the pillar (idea in
     our words, what the app does, one visual), grouped under the fundamentals, the four laws and the
