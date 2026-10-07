@@ -97,7 +97,7 @@ quests brainstorm and the second-miss nudge will add.
 | 4 | Awareness first: you cannot change what you do not notice | The week chip and the stats page show what you actually ate, by category, against typical | Built |
 | 5 | Implementation intentions and habit stacking: "after X, I do Y" | The dinner time you type is the anchor; "after we have eaten, we tap" is the stacking line the copy will carry | Partly |
 | 6 | Environment beats motivation: put the cue in plain sight | The question lands after your last meal; a fridge printable and the kid as cue are the next layer | Partly |
-| 7 | Self-control is a short-term strategy: remove the cue, do not fight it | The app never scolds and never shows what you did not eat; nothing to resist | Built |
+| 7 | Self-control is a short-term strategy: remove the cue, do not fight it | The shelf decides the week (Ricardo, 2026-10-07): what is in the house on shopping day is what gets tasted all week, so the supermarket is where you set the cues for the other six days. The "In season" tab as a shopping list, the mix showing which categories are thin, the Sunday shopper advice later (item 16). Never "cheat" or "unhealthy" in the copy ([[brand-voice]]) | Partly |
 | 8 | Temptation bundling and anticipation: the craving comes before the reward | The card teaser and the "2 more tastes to silver" line; the kid at the table is the bundle | Partly |
 | 9 | We copy the close, the many and the powerful: join a culture where the habit is normal | Everyone at the table on one account; friends and classes come later | Not yet |
 | 10 | Reframe the habit: "I get to", not "I have to" | Joy, not guilt: celebrate what was tasted, never what was refused | Built |
@@ -113,9 +113,10 @@ quests brainstorm and the second-miss nudge will add.
 | 20 | Review and reflect; do not let the habit become the identity's prison | The monthly recap; the stats page; no scores against other people | Partly |
 
 Not every chapter has to appear (Ricardo, 2026-10-07): the pillar uses the ones that fit and skips
-the rest. Claude's first cut skips 7 (breaking habits, covered by row 10's line), 11 (says what 13
-says), 18 (talent, belongs in the intro) and 20 (reflection, nothing concrete in the app): 16
-sections remain. Counts today: 10 built, 7 partly, 3 not yet. The three "not yet" (9, 17, 19) are the social layer and
+the rest. Claude's first cut skips 11 (says what 13 says), 18 (talent, belongs in the intro) and 20
+(reflection, nothing concrete in the app): 17 sections remain. Chapter 7 stays as the grocery
+chapter (Ricardo: in the supermarket you control the behaviour of the other days). Counts today:
+9 built, 8 partly, 3 not yet. The three "not yet" (9, 17, 19) are the social layer and
 the quest; the partly rows are copy and small nudges, the cheap half.
 
 ## Why it matters to Project Food

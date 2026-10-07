@@ -135,7 +135,8 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     advanced tactics; the clusters go deep per law (5 or 6 pages). **Only the chapters that fit,
     the rest are skipped, no padding** (Ricardo, 2026-10-07). The mapping is on
     [[concept-habits-four-laws]] ("The 20 chapters, mapped": 10 built, 7 partly, 3 not yet; Claude's
-    first cut skips 7, 11, 18 and 20, leaving 16 sections). Outcome =
+    first cut skips 11, 18 and 20, leaving 17 sections; chapter 7 is the grocery chapter, the shelf
+    decides the week). Outcome =
     a page plan (sections, clusters, visual briefs) in the knowledge base, then the pages in en, nl, it.
 
 **Brainstorms to hold**
