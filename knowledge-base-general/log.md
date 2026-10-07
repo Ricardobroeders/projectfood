@@ -1203,3 +1203,6 @@ Ricardo asked one more person to install the Android build this morning and they
 
 ## [2026-10-07] query | Using the wait: quests, a habits lens, a brand book
 Ricardo's three threads for the review and closed-test wait (reward problem: insights vs average, shorter quests, the garden; brand documentation; Atomic Habits research). Assessed against the backlog: insights shipped as brainstorm 25, garden stays parked, quests is the gap; the words side of the brand exists, the visual and motion side is code-only; the retention page uses the Hook model, Clear's fourth law is the thin one. Parked as one parking-lot entry in [[strategy-backlog]] with Claude's proposed order; no decision yet.
+
+## [2026-10-07] ingest | The four laws of habit, applied to the table
+Ricardo picked the habits page from the three wait-time threads. Written as [[concept-habits-four-laws]]: Clear's four laws read for the parent (owns the habit) and the kid (supplies the reward), with the app's state, the data and the gap per law; the fourth law (satisfying) is the thin one, which is the "preventive, little reward" problem. Hands the quests brainstorm (new item 26) its material; three calls for Ricardo listed on the page. Index, backlog row 4 and the parking-lot entry updated.
