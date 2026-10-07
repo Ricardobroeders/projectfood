@@ -191,6 +191,26 @@ Then suggest concrete next questions to investigate and sources to seek out.
 - Keep `overview.md` current as the synthesized big-picture entry point.
 - This whole directory is a git repo — meaningful changes are worth committing.
 
+## The shared doc ("Project Food Docs") and this wiki
+
+Since 2026-10-07 Ricardo and Claude think topics out in one Claude Doc, "Project Food Docs"
+(link in [[concept-habits-four-laws]]; one tab per topic: habits, then brand guide, business
+model, value proposition canvas). Ricardo's rule: the two must stay aligned in every choice,
+otherwise the two of us drift. So:
+
+1. **One record, one view.** This wiki is the record. The doc is the shared view of it. A choice
+   exists only once it is in the wiki (a `decision-` page or a dated line on the topic page).
+2. **Every tab names its page, every page names its tab.** A tab opens with "Record: `<page>`";
+   the page links the doc under its own "Thinking space" line.
+3. **A change in one place is a change in both, in the same session.** Ricardo edits or picks in
+   the doc: Claude reads the tab (the connector's `read` with `sinceRev`) before any other work on
+   that topic and carries the change into the wiki first. Claude changes the wiki: the tab is
+   updated in the same turn. Never a fact in one that is missing from the other.
+4. **Decisions:** taken in the doc through the Decision dropdown or a note in the row, then
+   written as a `decision-` page and the backlog row; the doc row is marked decided with the page
+   name. The doc never holds a choice the wiki does not.
+5. **New topics** become a new tab of the same doc, never a new doc.
+
 ## When in doubt
 
 This schema is a living document. If you and the human discover a better convention, update
