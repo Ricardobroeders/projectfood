@@ -1189,3 +1189,7 @@ apply. Sections now: why, using the app, at your table, features, pricing, wrap-
 ## [2026-10-07] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
 967 words, 5 FAQ items, meta title 46 and description 145 characters. Legacy page rewritten for the family; slug kept.
 Warnings accepted: related "as-a-family" has no folder yet (the nl page is live in the database). The pillar already linked this article.
+
+## [2026-10-07] brainstorm | Stats against the typical household
+Ricardo's ask from tester talks. Data pulled, shortlist and build order proposed; parked as
+brainstorm 25 in [[strategy-backlog]] pending his cut. Nothing built.

@@ -118,6 +118,7 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
 
 **Brainstorms to hold**
 17. Achievements economy (row 5, 9). **Secret achievements: decided 2026-10-06** ([[decision-2026-10-06-secret-achievements]], three shipped in 1.0.20). Earlier: **half settled on 2026-09-23/24**, see the parking-lot entry for the state. Agreed: one level only, never a ladder; hidden ones show as `?` on the grey locked tile (the existing locked treatment, minus the faded art that would give the answer away); count revealed, names not; never in a push or the paid layer; the cheating one is kept, as "Nice try" (an idiom all five locales have: Leuk geprobeerd · Bel tentativo · Netter Versuch · Bien tenté), fires at 50 distinct plants in one day (224 plants makes "all of them" unreachable; Big dinner L4 celebrates 30; the PWA bulk-loggers hit 51 and 63 and left), no data touched, body copy states the two-day rule. **Still Ricardo's:** cut the six candidates to five (Nice try, Full spectrum, At the table, Night owl, Same again, Everyone different) and confirm 50 and the name. **Golden Sprouts, the gold / XP economy, a fact per card level and the advocacy achievement stay in the parking lot** (Ricardo, 2026-09-23: "not sure yet what to do with this"); they get their own brainstorm against the D7 free freeze and the "rewards are earned, no pay-to-win" rule; outcome = a decision page and build steps here. **Half of that brainstorm ran on 2026-09-26** (Ricardo's pack-opening / rare-card question, full state in the parking lot): a pack may never grant a plant card, cheating has no payoff while the reward has no outside value so trading and purchasable Sprouts both drop, pulls pace per logged day not per plant, rarity by desert (the refused plant, a plant new to the household) beats rarity by dice, and the build order is Sunday reveal → foils on hard bites → paced pulls, currency probably never. **Still Ricardo's:** whether the reveal belongs to the kid at the table or the parent, and whether this becomes a decision page now or waits for what week 4 of the closed test says. **Added 2026-10-06:** the garden (parking lot) joins this brainstorm as the candidate "place" the economy would feed; the open question it brings is what the visible result of varied eating is in the app, for the solo adult in particular, since the family has the kid's taste count over months.
+25. **Stats compared to the typical household (rows 3, 4).** Brainstormed 2026-10-07 at Ricardo's ask (testers, the solo adults above all, want to know their own behaviour against an average); state and the shortlist in the parking-lot entry "Stats against the typical household". Outcome = Ricardo's cut and order, then a decision page and a build step here. The one thing stands; this is JavaScript-only and ships over the air once decided.
 18. Friends and social layer (row 17): the social unit (parent account, household or kid) and the kids' safeguarding line; personal streak first, friend streak as a later layer. Outcome = a decision page before any design.
 21. _Closed 2026-09-30._ The first minute (rows 1, 4): four coach-mark balloons after onboarding with the why-30 line on the week chip, [[decision-2026-09-30-first-minute-tutorial]] (accepted, built and over the air as 1.0.7, item 24). Was: what a newcomer has to understand before the first log, starting with why 30 different plants a week (tester feedback 2026-09-29, the app never says it) and whether a short tutorial after onboarding carries it. Took the parking-lot entry below and the two drafted options in [[interview-closed-test-2026-09]]. Outcome = a decision page plus build steps; nothing is built before it (Ricardo, 2026-09-29: "let's wait a bit longer before solving this problem").
 
@@ -179,6 +180,26 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   needs the script, the renders, the image shrink and a new build, so automating the hand-off is
   not worth it, less so once app versions diverge. 1.0.16 instead tells the suggester what happens
   (checked by hand, arrives with an app update, can take weeks). Stays here as the idea, no build.
+- **Stats against the typical household (rows 3, 4; brainstorm 25).** Ricardo, 2026-10-07, after
+  tester talks: the solo adults want their behaviour against an average; two of his examples were the
+  PWA dashboard's category donut and "plants per week after 7 days vs average", a third was eating in
+  season. Data found the same day (28 households, 22 active in the last 14 days, 4,791 logs): category
+  share of logs vegetable 40, fruit 22, nuts and seeds 16, herbs 10, ferments 5, legumes 4, whole
+  grains 3 (against the catalog's 34 / 22 / 12 / 12 / 3 / 9 / 7, so legumes and grains are the gap for
+  nearly everyone); 27 distinct plants per household-week on average, median 28, the last full week
+  22; 40 distinct plants per household so far over 16 logging days; only 41 of 230 plants carry a
+  season (one climate), 9.5 % of logs are seasonal plants and 57 % of those were out of season.
+  Claude's read: (1) a benchmark baked into the bundle (a `benchmarks.json` from a script, refreshed
+  per over-the-air update, never a live cross-household query), (2) "typical" as a marker next to your
+  own number, never "below average" (joy-not-guilt gate), (3) the category mix first because it is
+  the one that changes what people buy, as seven bars with a tick, not a donut, (4) a typical-week
+  line under the existing per-week chart and a first-week tile for new households, (5) season: an
+  "In season" filter on Log before any season stat, and the stat only once more plants carry seasons
+  per country; climate wording only with a sourced claim in [[brand-stats-and-claims]]. Candidates
+  held back: new plants this month vs typical, plant-family coverage (`botanical_family`), the colour
+  mix, days logged per week. Never: ranking members, streak percentiles. Ricardo's: the cut and
+  order, the comparison word ("families" or "others on Project Food"), whether season data is
+  expanded first, and whether stats leaves the streak chip for its own entry on Home.
 - **The garden: a place the plants you tasted build (rows 4, 5, 17).** Ricardo with his girlfriend,
   2026-10-06. The problem named: eating varied is preventive, so unlike the scale or the mirror
   there is no visible result, and achievements plus silver / gold cards carry little on their own;
