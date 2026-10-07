@@ -275,6 +275,17 @@ screen shows which one), who (first name or role, never more), the words, what w
   (`colors.typical`, #1F6FEB) for the mix mark, both chart lines and the legends, solid instead of
   dashed; tighter title-to-subtitle in the tiles and label-to-track in the mix; the stats screen's
   section titles larger and closer to their card.
+- 2026-10-07, 1.0.37 over the air (Android bb75a3d8, iOS ba79ac8f, runtimes unchanged; notification function version 5): the app no longer presumes a parent with kids and no longer
+  says "dinner" for the act of logging. Ricardo, reading the habits page: "Looking at my users
+  and testers everyone who uses it is doing this for themselves"; and "log your plants / what
+  you ate today" instead of "log your avondmaal" so nobody thinks only the evening meal counts.
+  Rewritten in en, nl, it: sign-in tagline, onboarding steps 2 and 3, the Log header ("Today's
+  plants, tap what you tasted today"), Home empty state, stats bodies, achievement names (Big
+  dinner → Big day, Family of thirty → Thirty club) and bodies, the people screen, Account rows,
+  notification labels and the permission prompt. The dinner time stays as the reminder anchor.
+  Notification copy redeployed ("What did you taste today?" when no kids are named; "you"
+  instead of "the family"; days, not dinners). Website static pages rewritten the same day.
+  Decision page: [[decision-2026-10-07-two-ways-to-use-it]].
 
 ## Feeds into
 - [[strategy-backlog]] (item 14, the production-access application; "The one thing" line 3)

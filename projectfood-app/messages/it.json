@@ -159,35 +159,35 @@
       "openApp": "Apri l'app"
     },
     "home": {
-      "metaTitle": "Project Food: l'app di famiglia, i bambini assaggiano 30 piante",
-      "metaDescription": "I bambini toccano cosa hanno assaggiato, ogni pianta nuova diventa una carta e la famiglia conta verso 30 piante a settimana. Ora in test su Google Play.",
+      "metaTitle": "Project Food: assaggia 30 piante diverse a settimana",
+      "metaDescription": "Tocca le piante che hai assaggiato, ogni pianta nuova diventa una carta e la settimana conta verso 30. Da solo o con tutti quelli a tavola. Ora in test su Google Play.",
       "heroLabel": "30 piante a settimana",
-      "heroTitle": "L'app di famiglia con cui i bambini assaggiano.",
+      "heroTitle": "Assaggia 30 piante diverse a settimana.",
       "heroSubtitle": "Ogni assaggio diventa una carta.",
-      "heroBody": "Dopo cena i bambini toccano le piante che hanno assaggiato. Ogni pianta nuova diventa una carta e tutta la famiglia conta verso 30 piante diverse a settimana. Un minuto a tavola, senza dover finire il piatto.",
+      "heroBody": "Dopo aver mangiato, tocca le piante che hai assaggiato. Ogni pianta nuova diventa una carta e la settimana conta verso 30 piante diverse. Un minuto al giorno, da solo o con tutti quelli a tavola. Senza dover finire il piatto.",
       "ctaPlay": "Disponibile su Google Play",
       "ctaPlayNote": "In test chiuso su Google Play. iPhone a seguire.",
       "whyWeDoThis": "Perché lo facciamo",
       "stepsTitle": "Come funziona",
       "step1Title": "Tocca cosa hai assaggiato",
-      "step1Body": "Dopo cena apri l'app e tocca le piante che erano in tavola. Tieni premuta una pianta per dire chi l'ha assaggiata. Anche una leccata conta.",
+      "step1Body": "Apri l'app e tocca le piante che erano nel tuo piatto oggi. Più persone a tavola? Tieni premuta una pianta per dire chi l'ha assaggiata. Anche una leccata conta.",
       "step2Title": "Colleziona le carte",
       "step2Body": "Ogni pianta nuova diventa una carta con un'immagine, una curiosità per la tavola e un consiglio per chi cucina. Le carte salgono di livello a 1, 5 e 10 assaggi.",
-      "step3Title": "Contate come famiglia",
-      "step3Body": "La famiglia condivide un solo conteggio verso 30 piante diverse a settimana. I traguardi in bronzo, argento, oro e platino segnano quello che la famiglia ha fatto a tavola.",
+      "step3Title": "Conta verso 30",
+      "step3Body": "Ogni settimana conta verso 30 piante diverse, per te solo o per tutti quelli a tavola su un unico account. I traguardi in bronzo, argento, oro e platino segnano quello che è successo a tavola.",
       "scienceTitle": "Perché assaggiare, non finire",
-      "science1": "La maggior parte dei bambini deve assaggiare un cibo nuovo da 8 a 15 volte prima di accettarlo, a volte di più. Anche una leccata conta.",
-      "science2": "In uno studio fatto a casa, due settimane di un assaggio al giorno sono bastate perché la maggior parte dei bambini iniziasse a gradire la verdura (Wardle, 2003). In Project Food è l'assaggio che conta.",
-      "learnTitle": "Da leggere prima di cena",
+      "science1": "La linea guida viene dall'American Gut Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una flora intestinale più varia. Conta la varietà, non la quantità.",
+      "science2": "A una tavola con bambini è l'assaggio che conta: la maggior parte deve assaggiare un cibo nuovo da 8 a 15 volte prima di accettarlo, e in uno studio fatto a casa due settimane di un assaggio al giorno sono bastate perché la maggior parte iniziasse a gradire la verdura (Wardle, 2003). Anche una leccata conta.",
+      "learnTitle": "Da leggere prima di cucinare",
       "learnBody": "Le pagine spiegano con onestà cosa funziona a tavola: perché i bambini rifiutano i cibi nuovi, quanti assaggi servono e cosa ottiene l'effetto opposto.",
       "learnPillar": "Come far mangiare le verdure ai bambini, senza battaglie",
       "learnCluster1": "Il bambino non mangia: cosa c'è dietro e cosa funziona",
       "learnCluster2": "Neofobia alimentare: normale tra i 2 e i 6 anni",
-      "faqTitle": "Le domande dei genitori",
+      "faqTitle": "Le domande che ci fanno",
       "faq1q": "Project Food è un'app per bambini?",
-      "faq1a": "No. È un'app di famiglia sul telefono del genitore. Un solo account adulto per famiglia; i bambini sono nomi al suo interno, non account. Tu tieni il telefono, loro toccano cosa hanno assaggiato.",
-      "faq2q": "Da che età?",
-      "faq2a": "Da quando un bambino sa indicare un'immagine. I più piccoli toccano insieme a te, i più grandi da soli. Rifiutare i cibi nuovi è normale tra i 2 e i 6 anni e passa da solo nella maggior parte dei bambini (Dovey, 2008), ed è lì che il conteggio degli assaggi aiuta di più.",
+      "faq1a": "No. È un'app per adulti, sul tuo telefono. Usala per te, oppure aggiungi chi mangia con te: un solo account adulto per casa, gli altri sono nomi al suo interno, non account.",
+      "faq2q": "I bambini possono partecipare?",
+      "faq2a": "Da quando un bambino sa indicare un'immagine. I più piccoli toccano insieme a te, i più grandi da soli. Rifiutare i cibi nuovi è normale tra i 2 e i 6 anni e passa da solo nella maggior parte dei bambini (Dovey, 2008), ed è lì che il conteggio degli assaggi aiuta di più. Senza bambini l'app è completa allo stesso modo.",
       "faq3q": "Una leccata conta?",
       "faq3a": "Sì. Un assaggio è un assaggio, che resti in bocca o torni fuori. Contiamo gli assaggi, mai i piatti vuoti.",
       "faq4q": "Cosa conta come pianta?",
@@ -195,9 +195,9 @@
       "faq5q": "Dove trovo l'app?",
       "faq5a": "È in test chiuso su Google Play, l'App Store arriva dopo. Chiedi un posto nel test dalla pagina contatti e ricevi il link in giornata.",
       "faq6q": "E la privacy?",
-      "faq6a": "Un solo account adulto per famiglia. I nomi dei tuoi bambini restano dentro la tua famiglia, non esistono account per bambini e non c'è pubblicità. La pagina privacy dice esattamente cosa conserviamo e per quanto.",
+      "faq6a": "Un solo account adulto per casa. I nomi che aggiungi restano al suo interno, non esistono account per bambini e non c'è pubblicità. La pagina privacy dice esattamente cosa conserviamo e per quanto.",
       "bottomTitle": "Stasera è una buona sera per cominciare.",
-      "bottomBody": "Un minuto dopo cena. La famiglia assaggia, tu tocchi."
+      "bottomBody": "Un minuto dopo aver mangiato. Assaggia, tocca, conta."
     },
     "footer": {
       "about": "Chi siamo",
@@ -220,12 +220,12 @@
       "discoveryTitle": "Poi abbiamo visto un documentario.",
       "discovery1": "Circa due anni fa, io e la mia ragazza abbiamo visto un documentario sulla salute dell'intestino su Netflix. Il messaggio era sorprendente: non si tratta di mangiare gli alimenti giusti più spesso, si tratta di mangiare una grande varietà di piante. Più è, meglio è.",
       "discovery2": "La linea guida dietro a tutto viene dall'American Gut Project (2018): gli adulti che mangiavano più di 30 piante diverse a settimana avevano una flora intestinale più varia di chi ne mangiava 10 o meno. Un'osservazione sugli adulti, non una promessa, e una ragione sufficiente per contare. Frutta, verdura, cereali, legumi, frutta secca, semi, erbe e spezie contano tutti.",
-      "callout": "30 piante a settimana. Ci contiamo insieme, come famiglia.",
+      "callout": "30 piante a settimana. Ci contiamo verso, ognuno alla propria tavola.",
       "appTitle": "Poi la domanda è cambiata.",
       "app1": "Per due anni ho contato le mie piante in un'app per note, e il primo Project Food era fatto per adulti come me. Una lista funziona per un adulto che vuole varietà. Non serve a niente al genitore il cui piatto torna indietro intatto, ed è a quella tavola che la varietà si decide. La ricerca su quella tavola è chiara: non convincere ma assaggiare, da 8 a 15 volte, a volte di più, e anche una leccata conta.",
-      "app2": "Così a settembre 2026 Project Food è diventata un'app di famiglia. I bambini toccano dopo cena cosa hanno assaggiato, ogni pianta nuova diventa una carta e tutta la famiglia conta verso 30 piante diverse a settimana. Un telefono, un account adulto, un minuto a tavola.",
+      "app2": "Così a settembre 2026 Project Food è diventata un'app per tutta la tavola. Tocchi cosa hai assaggiato, chi mangia con te può esserci anche lui, ogni pianta nuova diventa una carta e la settimana conta verso 30 piante diverse. Un telefono, un account adulto, un minuto al giorno.",
       "visionTitle": "Gioia, non senso di colpa.",
-      "vision1": "Project Food non riguarda il mangiare perfettamente, né il piatto vuoto. Riguarda l'assaggiare con curiosità: una pianta nuova in tavola, un assaggio, una carta da mostrare. Che tu sia cresciuto tra le verdure o che i tuoi bambini le stiano incontrando adesso, ce n'è sempre un'altra da provare.",
+      "vision1": "Project Food non riguarda il mangiare perfettamente, né il piatto vuoto. Riguarda l'assaggiare con curiosità: una pianta nuova in tavola, un assaggio, una carta da mostrare. Che tu sia cresciuto tra le verdure, conti per te, o i tuoi bambini le stiano incontrando adesso, ce n'è sempre un'altra da provare.",
       "ctaPlay": "Disponibile su Google Play"
     },
     "contact": {
@@ -242,7 +242,7 @@
         "success": "Messaggio inviato! Ti risponderemo presto.",
         "error": "Qualcosa è andato storto. Riprova."
       },
-      "metaDescription": "Domande su Project Food, l'app per famiglie in cui i bambini toccano quello che hanno assaggiato a cena. Scrivici, risponde Ricardo in persona."
+      "metaDescription": "Domande su Project Food, l'app in cui tocchi le piante che hai assaggiato. Scrivici, risponde Ricardo in persona."
     },
     "terms": {
       "title": "Termini di servizio",
@@ -272,24 +272,24 @@
       "s9Body": "Questi termini sono regolati dalla legge olandese. Qualsiasi controversia derivante da questi termini sarà soggetta alla giurisdizione esclusiva dei tribunali dei Paesi Bassi. In caso di discrepanza, prevale la versione in lingua olandese.",
       "s10Title": "10. Contatti",
       "s10Body": "Domande su questi termini? Unisciti alla nostra community su Discord.",
-      "metaDescription": "I termini di servizio di Project Food, l'app per famiglie: il tuo account, la famiglia che crei, cosa possiamo cambiare e come chiudere."
+      "metaDescription": "I termini di servizio di Project Food: il tuo account, la casa che crei, cosa possiamo cambiare e come chiudere."
     },
     "privacy": {
       "title": "Informativa sulla privacy",
-      "effectiveDate": "Data di entrata in vigore: 22 settembre 2026",
-      "intro": "Project Food è un'app per famiglie. Un genitore registra quali piante la famiglia ha assaggiato a cena, e i bambini collezionano carte e traguardi. Questa informativa spiega cosa conserviamo, perché, chi ci aiuta a far funzionare il servizio e come cancellare tutto. Vale per l'app Project Food e per projectfood.dev.",
+      "effectiveDate": "Data di entrata in vigore: 7 ottobre 2026",
+      "intro": "Project Food è un'app per adulti. Registri quali piante hai assaggiato, per te o per chi mangia con te, e ogni pianta nuova diventa una carta. Questa informativa spiega cosa conserviamo, perché, chi ci aiuta a far funzionare il servizio e come cancellare tutto. Vale per l'app Project Food e per projectfood.dev.",
       "sections": [
         {
           "title": "1. Chi siamo",
           "body": "Project Food è il titolare del trattamento dei dati descritti qui ed è gestito dai Paesi Bassi. Per qualsiasi questione sulla privacy scrivi a info@projectfood.dev."
         },
         {
-          "title": "2. Fatta per le famiglie, usata dai genitori",
-          "intro": "Solo gli adulti creano un account e accedono. I bambini non accedono mai, non ricevono mai email o notifiche da noi e non possono essere contattati tramite l'app.",
+          "title": "2. Fatta per gli adulti, con posto per tutti a tavola",
+          "intro": "Solo gli adulti creano un account e accedono. Se aggiungi dei bambini, loro non accedono mai, non ricevono mai email o notifiche da noi e non possono essere contattati tramite l'app.",
           "items": [
-            "Un genitore aggiunge ogni membro della famiglia come profilo: un nome o soprannome e se è un bambino o un adulto. Non chiediamo altro. Niente date di nascita, cognomi o foto.",
-            "Il genitore decide cosa inserire, può rinominare o rimuovere un profilo in qualsiasi momento e cancella tutto eliminando l'account.",
-            "I profili dei bambini non vengono mai usati per pubblicità o profilazione e non vengono mai condivisi con altre famiglie."
+            "Puoi usare l'app da solo. Se qualcuno mangia con te, lo aggiungi come profilo: un nome o soprannome e se è un bambino o un adulto. Non chiediamo altro. Niente date di nascita, cognomi o foto.",
+            "Decidi tu cosa inserire, puoi rinominare o rimuovere un profilo in qualsiasi momento e cancelli tutto eliminando l'account.",
+            "I profili dei bambini non vengono mai usati per pubblicità o profilazione e non vengono mai condivisi con altre case."
           ]
         },
         {
@@ -297,10 +297,10 @@
           "intro": "Quando usi l'app conserviamo:",
           "items": [
             "Account: il tuo indirizzo email e, se accedi con Google o Apple, il tuo nome e la tua immagine del profilo. I codici di accesso arrivano via email.",
-            "Famiglia: il nome della famiglia, l'ora di cena, il fuso orario e la lingua.",
-            "Membri della famiglia: nome o soprannome, bambino o adulto, un colore e un avatar scelto dal nostro set.",
-            "Assaggi: quali piante ogni membro ha assaggiato in quale giorno, e cosa sblocca (carte, traguardi, la serie di famiglia).",
-            "Notifiche: se hai consentito le notifiche push, le tue preferenze, un token push del dispositivo e, per ogni messaggio, se è stato consegnato, aperto e seguito da una registrazione entro tre ore. Ci serve per smettere di insistere con una famiglia che ci ignora.",
+            "Casa: il nome, l'ora di cena, il fuso orario e la lingua.",
+            "Persone a tavola: nome o soprannome, bambino o adulto, un colore e un avatar scelto dal nostro set.",
+            "Assaggi: quali piante ogni persona ha assaggiato in quale giorno, e cosa sblocca (carte, traguardi, la serie).",
+            "Notifiche: se hai consentito le notifiche push, le tue preferenze, un token push del dispositivo e, per ogni messaggio, se è stato consegnato, aperto e seguito da una registrazione entro tre ore. Ci serve per smettere di insistere con una casa che ci ignora.",
             "Eventi di prodotto: un piccolo insieme di eventi nell'app, come una pianta registrata, l'onboarding completato o un sondaggio inviato, collegati al tuo account. Nessun identificatore pubblicitario, nessun tracciamento tra app.",
             "Facoltativo: risposte al sondaggio e suggerimenti di piante, se li invii.",
             "Log tecnici dei nostri provider di hosting (indirizzo IP, tipo di dispositivo, orari) per mantenere sicuro il servizio."
@@ -311,7 +311,7 @@
           "items": [
             "Nessuna pubblicità nell'app e nessuna rete pubblicitaria.",
             "Nessuna vendita, affitto o scambio di dati personali.",
-            "Nessuna profilazione dei bambini e nessuna condivisione dei dati di famiglia con altre famiglie.",
+            "Nessuna profilazione dei bambini e nessuna condivisione dei dati della tua casa con altre case.",
             "Nessun SDK di analisi o tracciamento di terze parti nell'app."
           ]
         },
@@ -319,17 +319,17 @@
           "title": "5. Perché possiamo trattarli",
           "intro": "Ai sensi del GDPR ci basiamo su:",
           "items": [
-            "Contratto (art. 6(1)(b)): per fornire l'app a cui ti sei iscritto, compresi i profili di famiglia che crei.",
+            "Contratto (art. 6(1)(b)): per fornire l'app a cui ti sei iscritto, compresi i profili che crei.",
             "Consenso (art. 6(1)(a)): per le notifiche push e il sondaggio facoltativo. Puoi revocarlo in qualsiasi momento nell'app o nelle impostazioni del telefono.",
             "Interesse legittimo (art. 6(1)(f)): per mantenere sicuro il servizio e per capire, tramite i pochi eventi di prodotto sopra, se l'app funziona."
           ],
-          "outro": "I profili dei bambini sono trattati su istruzione del genitore, come parte dell'account del genitore. Project Food non raccoglie dati dai bambini."
+          "outro": "I profili dei bambini, se ci sono, sono trattati su istruzione dell'adulto, come parte del suo account. Project Food non raccoglie dati dai bambini."
         },
         {
           "title": "6. Notifiche",
           "intro": "L'app chiede il permesso per le notifiche push durante la configurazione, proprio dove scegli l'ora della cena, e puoi dire di no. Se lo salti, lo chiediamo un'altra volta dopo la tua prima registrazione e poi solo se lo attivi tu in Account → Notifiche.",
           "items": [
-            "Essenziali: la domanda della cena e il guardiano della serie. Attive di default una volta consentite le notifiche.",
+            "Essenziali: la domanda del giorno e il guardiano della serie. Attive di default una volta consentite le notifiche.",
             "Consigli e novità: anteprime di carte e traguardi e il promemoria della domenica. Disattive di default.",
             "Disattiva ogni tipo in Account → Notifiche, o tutte nelle impostazioni del telefono. Se tre messaggi di fila vengono ignorati, restiamo in silenzio per una settimana."
           ],
@@ -354,7 +354,7 @@
             "Nell'app: Account → Elimina account.",
             "Sul web: dalla pagina linkata qui sotto, con un codice inviato alla tua email."
           ],
-          "outro": "L'eliminazione rimuove subito il tuo account, la famiglia che hai creato con i suoi profili, carte e traguardi, la cronologia delle notifiche e i token push. Gli assaggi restano come statistiche anonime: quale pianta in quale giorno, sotto id casuali che non rimandano più a nessuna persona o famiglia. I backup del database scadono entro 30 giorni. Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia e i suoi assaggi restano a lui; se ne vanno solo il tuo account e il tuo accesso.",
+          "outro": "L'eliminazione rimuove subito il tuo account, la casa che hai creato con i suoi profili, carte e traguardi, la cronologia delle notifiche e i token push. Gli assaggi restano come statistiche anonime: quale pianta in quale giorno, sotto id casuali che non rimandano più a nessuna persona o casa. I backup del database scadono entro 30 giorni. Se ti sei unito a una casa creata da qualcun altro, quella casa e i suoi assaggi restano a quella persona; se ne vanno solo il tuo account e il tuo accesso.",
           "link": "deleteAccount",
           "linkLabel": "Elimina il tuo account dal web"
         },
@@ -410,7 +410,7 @@
       "errorCode": "Quel codice non ha funzionato. Richiedine uno nuovo e riprova.",
       "errorDelete": "Qualcosa è andato storto. Riprova, oppure scrivi a info@projectfood.dev dall'indirizzo del tuo account.",
       "fallback": "Non hai più accesso a quell'email? Scrivi a info@projectfood.dev e ce ne occupiamo a mano entro 30 giorni.",
-      "joined": "Se ti sei unito a una famiglia creata da un altro genitore, quella famiglia resta a lui."
+      "joined": "Se ti sei unito a una casa creata da qualcun altro, quella casa resta a quella persona."
     },
     "learn": {
       "nav": "Scopri",

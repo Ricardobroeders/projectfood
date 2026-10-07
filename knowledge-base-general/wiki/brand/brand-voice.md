@@ -3,7 +3,7 @@ title: Brand voice (tone of voice)
 type: brand
 tags: [brand, tone-of-voice, copy, writing-kit]
 created: 2026-09-24
-updated: 2026-09-24
+updated: 2026-10-07
 sources: [source-brand-promise-deck.md, source-family-mode-context.md, seo-app-store-aso.md]
 ---
 
@@ -26,14 +26,17 @@ product: parent-facing calm, kid-visible playful.
 - **The speaker** is a parent who did the reading. Not a nutritionist, not a coach, not a mascot.
   Knows the research, has stood at a table with a plate coming back untouched, and has stopped
   taking it personally.
-- **The listener** is the adult who holds the phone ([[persona-household-parent]]). Always
-  "you" (NL je, IT tu). The child is never addressed on the store, the site, in notifications or
-  in email.
+- **The listener** is the adult who holds the phone, counting for themselves
+  ([[persona-believer]]) or for everyone who eats with them ([[persona-household-parent]]);
+  both are first-class since [[decision-2026-10-07-two-ways-to-use-it]]. Always "you" (NL je,
+  IT tu). Nothing presumes children. The child is never addressed on the store, the site, in
+  notifications or in email.
 - **The child** appears in the third person. In the app's kid-visible surfaces (card fact,
   celebration sheet, achievement names) the child reads or hears a single line, and that line
   is still written by the calm parent.
-- **The family is the subject and the word.** "The family tastes, you tap" ([[seo-app-store-aso]]).
-  Website articles may use the search vocabulary ("kids", "kinderen", "bambini") in titles and
+- **You are the subject; the table is the place.** "Taste, tap, count." When the app knows who
+  else is at the table it names them ("What did Mia & Tom taste tonight?"); when it does not,
+  it says "you", never "the family" (2026-10-07). Website articles may use the search vocabulary ("kids", "kinderen", "bambini") in titles and
   body text; the store name, short description and screenshots never say "for kids".
 
 ---
@@ -62,7 +65,7 @@ The kid-visible register adds one thing: the words themselves may be playful.
 | Surface | Register | Rules | Limits |
 |---|---|---|---|
 | App chrome (buttons, labels, empty states, toasts) | Parent | Sentence case; no full stop on a label; empty state = one sentence + one action; toast = 2 to 4 words | Toast title ≤ 4 words |
-| Notification | Parent | A question that opens into logging: "What did the family taste tonight?" Never a nag, never a streak threat | Title ≤ 40 characters |
+| Notification | Parent | A question that opens into logging: "What did you taste today?", or the kids' names when the app knows them. Never a nag, never a streak threat | Title ≤ 40 characters |
 | Celebration sheet, achievement names | Kid-visible | One line the child can read or hear: "Full table is now silver". Names are two words with a wink. Progress is remaining effort ("2 more tastes to silver"), never a percentage | Headline ≤ 3 words, body one sentence |
 | Card back | Fact: kid-visible. Tip: parent | Fact: one true, surprising sentence, no health, no nutrition. Tip: one serving idea that makes a taste likely | Fact ≤ 140, tip ≤ 200 characters |
 | Store listing | Parent, family words | No "kids" in name, short description or frames; no "free"; no health claims; no exclamation marks; nothing reads as made for children | Name 30, short 80, full 4,000 |
@@ -88,7 +91,7 @@ The kid-visible register adds one thing: the words themselves may be playful.
 - **One science line per piece**, cited, then move on ([[brand-stats-and-claims]]).
 - **Recurring words:** tonight, the table, a taste, together, counts.
 - **Never "should", "must", "have to" aimed at the parent.** Say what works.
-- **Say what the family did, not what it did not do.** "Not yet tried", never "Failed to try".
+- **Say what you did, not what you did not do.** "Not yet tried", never "Failed to try".
   "22 of 30, 8 to go", never "8 short, try harder" ([[concept-brand-pillars]]).
 
 ---
@@ -100,8 +103,8 @@ The kid-visible register adds one thing: the words themselves may be playful.
 | EN | NL | IT | Note |
 |---|---|---|---|
 | taste, a taste, tasted | proeven, een hap, geproefd | assaggiare, un assaggio, assaggiato | The verb of the product. "Eat" is the outcome, "taste" is the act |
-| the family, the table | het gezin, aan tafel | la famiglia, a tavola | The subject |
-| tonight, dinner | vanavond, het avondeten | stasera, la cena | The moment |
+| you; the table, everyone at your table | jij; aan tafel, iedereen aan tafel | tu; a tavola, tutti a tavola | The subject is the adult who holds the phone; the table is the place, with or without others. "The family" only when the app knows there is one (2026-10-07) |
+| today, what you ate, the plants you tasted | vandaag, wat je gegeten hebt, de planten die je proefde | oggi, cosa hai mangiato, le piante che hai assaggiato | The act of logging; every meal counts. "Dinner" is only the reminder time (etenstijd, ora di cena) |
 | card | kaart | carta | One per plant |
 | achievement | prestatie | traguardo | Never "stamp" (renamed 2026-09-22) |
 | Unlocks (tab) | Behaald | Collezione | Tab names |
@@ -116,7 +119,8 @@ The kid-visible register adds one thing: the words themselves may be playful.
 | Word | Why | Say instead |
 |---|---|---|
 | stamp, stamps | Renamed 2026-09-22 | achievement |
-| for kids, kids app, children's app | Store policy and brand: a family app on the parent's phone | for your family, at the table |
+| for kids, kids app, children's app | Store policy and brand: an app for adults, alone or with a household | for you, for everyone at your table |
+| the family (as the default subject), log dinner, dinners in a row | Presumes kids; presumes one meal. Most testers count for themselves and every meal counts (2026-10-07) | you; log what you ate today; days in a row |
 | picky eater (as a label for a child) | Pillar 4. It is the parent's search phrase, not our word for a child | In a title when it is the query; in the body "a child who eats little", "een kind dat weinig lust", "un bambino che mangia poco" |
 | fix, cure, solve (a child) | Health claim and guilt in one word | help, learn, widen |
 | should, must, have to | A lecture | "one taste a day works" |
@@ -180,8 +184,9 @@ Run before anything ships, in this order.
 2. **No health claim for a child.** Nothing promised: gut, immune, growth, weight, mood, sleep.
    Behaviour only: tasting, trying, eating more different things. For adults, "the guideline",
    cited, never "boosts".
-3. **A family app, not a kids app.** Store: nothing "for kids", no child addressed, no child
-   pictured. Site: no named or pictured child; households and classes only.
+3. **For adults, alone or with a household, never a kids app.** Store: nothing "for kids", no
+   child addressed, no child pictured. Site: no named or pictured child. And nothing that
+   presumes the reader has children: a solo adult must read every line as written for them.
 
 Then the mechanical check: no exclamation mark, no em dash, no "stamp", sentence case, digits,
 the locale's referral word.
@@ -195,6 +200,8 @@ the locale's referral word.
 - What a Rive character says, if anything (backlog row 8).
 - "kids" is allowed in article titles on the site and forbidden in the store name, short
   description and frames. Recorded here so the two rule sets stop contradicting each other.
+- Until 2026-10-07 every surface presumed a parent with kids and said "dinner" for the act of
+  logging; [[decision-2026-10-07-two-ways-to-use-it]] rewrote the rules above and the copy.
 - The home page said "boosts gut diversity" until 2026-09-29; the family rewrite (roadmap batch 1) replaced it with the tasting line and the cited guideline on About.
 
 ## Related pages

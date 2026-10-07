@@ -159,35 +159,35 @@
       "openApp": "Open de app"
     },
     "home": {
-      "metaTitle": "Project Food: de gezinsapp waarmee kinderen 30 planten proeven",
-      "metaDescription": "Je kinderen tikken aan wat ze proefden, elke nieuwe plant wordt een kaart en het gezin telt naar 30 planten per week. Nu in test op Google Play.",
+      "metaTitle": "Project Food: proef 30 verschillende planten per week",
+      "metaDescription": "Tik aan welke planten je proefde, elke nieuwe wordt een kaart en de week telt naar 30. Voor jezelf of met iedereen aan tafel. Nu in test op Google Play.",
       "heroLabel": "30 planten per week",
-      "heroTitle": "De gezinsapp waarmee kinderen proeven.",
+      "heroTitle": "Proef 30 verschillende planten per week.",
       "heroSubtitle": "Elke hap wordt een kaart.",
-      "heroBody": "Na het avondeten tikken je kinderen aan welke planten ze geproefd hebben. Elke nieuwe wordt een kaart, en het hele gezin telt mee naar 30 verschillende planten per week. Eén minuut aan tafel, een leeg bord is niet nodig.",
+      "heroBody": "Tik na het eten aan welke planten je geproefd hebt. Elke nieuwe wordt een kaart, en de week telt naar 30 verschillende planten. Eén minuut per dag, voor jezelf of met iedereen aan tafel. Een leeg bord is niet nodig.",
       "ctaPlay": "Ontdek het op Google Play",
       "ctaPlayNote": "In gesloten test op Google Play. iPhone volgt.",
       "whyWeDoThis": "Waarom wij dit doen",
       "stepsTitle": "Zo werkt het",
       "step1Title": "Tik aan wat je proefde",
-      "step1Body": "Open na het eten de app en tik de planten aan die op tafel stonden. Houd een plant vast om te kiezen wie er geproefd heeft. Een likje telt.",
+      "step1Body": "Open de app en tik de planten aan die vandaag op je bord lagen. Meer mensen aan tafel? Houd een plant vast om te kiezen wie er geproefd heeft. Een likje telt.",
       "step2Title": "Spaar de kaarten",
       "step2Body": "Elke nieuwe plant wordt een kaart met een plaatje, een weetje voor aan tafel en een tip voor de kok. Kaarten gaan een level omhoog bij 1, 5 en 10 keer proeven.",
-      "step3Title": "Tel als gezin",
-      "step3Body": "Het huishouden deelt één teller naar 30 verschillende planten per week. Prestaties in brons, zilver, goud en platina markeren wat het gezin aan tafel deed.",
+      "step3Title": "Tel naar 30",
+      "step3Body": "Elke week telt naar 30 verschillende planten, voor jou alleen of voor iedereen aan tafel op één account. Prestaties in brons, zilver, goud en platina markeren wat er aan tafel gebeurde.",
       "scienceTitle": "Waarom proeven, niet opeten",
-      "science1": "De meeste kinderen moeten iets 8 tot 15 keer proeven voordat ze het lusten, soms vaker. Een likje telt.",
-      "science2": "In een thuisonderzoek was twee weken elke dag één hapje genoeg om de meeste kinderen de groente te laten lusten (Wardle, 2003). In Project Food is de hap wat telt.",
-      "learnTitle": "Lezen voor het avondeten",
+      "science1": "De richtlijn komt uit het American Gut Project (2018): volwassenen die meer dan 30 verschillende planten per week aten, hadden een gevarieerdere darmflora. Variatie telt, niet de hoeveelheid.",
+      "science2": "Aan een tafel met kinderen is de hap wat telt: de meeste kinderen moeten iets 8 tot 15 keer proeven voordat ze het lusten, en in een thuisonderzoek was twee weken elke dag één hapje genoeg om de meeste kinderen de groente te laten lusten (Wardle, 2003). Een likje telt.",
+      "learnTitle": "Lezen voor je gaat koken",
       "learnBody": "De leerpagina's beschrijven eerlijk wat werkt aan tafel: waarom kinderen nieuw eten weigeren, hoe vaak proeven nodig is en wat averechts werkt.",
       "learnPillar": "Kinderen en groente: zo leert je kind groente eten, zonder strijd",
       "learnCluster1": "Hoe vaak moet een kind iets proeven voordat het lekker wordt?",
       "learnCluster2": "Peuter wil niet eten: wat werkt en wat averechts werkt",
-      "faqTitle": "Wat ouders vragen",
+      "faqTitle": "Wat mensen vragen",
       "faq1q": "Is Project Food een kinderapp?",
-      "faq1a": "Nee. Het is een gezinsapp op de telefoon van de ouder. Eén volwassen account per huishouden; je kinderen zijn namen daarin, geen accounts. Jij houdt de telefoon vast, zij tikken aan wat ze proefden.",
-      "faq2q": "Vanaf welke leeftijd?",
-      "faq2a": "Zodra een kind een plaatje kan aanwijzen. Peuters tikken samen met jou, oudere kinderen tikken zelf. Nieuw eten weigeren piekt tussen de 2 en 6 jaar en gaat bij de meeste kinderen vanzelf over (Dovey, 2008), dus daar helpt de proefteller het meest.",
+      "faq1a": "Nee. Het is een app voor volwassenen, op je eigen telefoon. Gebruik hem voor jezelf, of voeg toe wie er met je meeëet: één volwassen account per huishouden, de anderen zijn namen daarin, geen accounts.",
+      "faq2q": "Kunnen de kinderen meedoen?",
+      "faq2a": "Zodra een kind een plaatje kan aanwijzen. Peuters tikken samen met jou, oudere kinderen tikken zelf. Nieuw eten weigeren piekt tussen de 2 en 6 jaar en gaat bij de meeste kinderen vanzelf over (Dovey, 2008), dus daar helpt de proefteller het meest. Zonder kinderen is de app net zo compleet.",
       "faq3q": "Telt een likje?",
       "faq3a": "Ja. Een hap is een hap, of die nu binnenblijft of weer naar buiten komt. We tellen happen, nooit lege borden.",
       "faq4q": "Wat telt als plant?",
@@ -195,9 +195,9 @@
       "faq5q": "Waar vind ik de app?",
       "faq5a": "Hij is in gesloten test op Google Play, de App Store volgt. Vraag via de contactpagina een plek in de test en je krijgt dezelfde dag de link.",
       "faq6q": "Hoe zit het met privacy?",
-      "faq6a": "Eén volwassen account per huishouden. De namen van je kinderen blijven binnen je huishouden, er zijn geen kinderaccounts en geen advertenties. De privacypagina zegt precies wat we bewaren en hoe lang.",
+      "faq6a": "Eén volwassen account per huishouden. De namen die je toevoegt blijven daarbinnen, er zijn geen kinderaccounts en geen advertenties. De privacypagina zegt precies wat we bewaren en hoe lang.",
       "bottomTitle": "Vanavond is een goed moment om te beginnen.",
-      "bottomBody": "Eén minuut na het eten. Het gezin proeft, jij tikt."
+      "bottomBody": "Eén minuut na het eten. Proeven, tikken, tellen."
     },
     "footer": {
       "about": "Over",
@@ -220,12 +220,12 @@
       "discoveryTitle": "Hack your Health",
       "discovery1": "Zo'n twee jaar geleden keken mijn vriendin en ik een documentaire over darmgezondheid op Netflix 'Hack your Health'. De boodschap was verrassend: het gaat niet om de juiste voeding vaker eten, het gaat om een grote verscheidenheid aan planten. Zo veel mogelijk.",
       "discovery2": "De richtlijn erachter komt uit het American Gut Project (2018): volwassenen die meer dan 30 verschillende planten per week aten, hadden een gevarieerdere darmflora dan wie er 10 of minder at. Een waarneming bij volwassenen, geen belofte, en reden genoeg om te tellen. Fruit, groente, granen, peulvruchten, noten, zaden, kruiden en specerijen tellen allemaal mee.",
-      "callout": "30 planten per week. Wij tellen ernaartoe als gezin.",
+      "callout": "30 planten per week. Wij tellen ernaartoe aan onze eigen tafel.",
       "appTitle": "Toen veranderde de vraag.",
       "app1": "Twee jaar lang hield ik mijn eigen planten bij in een notitie-app, en de eerste Project Food was gebouwd voor volwassenen zoals ik. Een lijst werkt voor een volwassene die variatie wil. Hij doet niets voor de ouder van wie het bord onaangeroerd terugkomt, en aan die tafel wordt variatie beslist. Het onderzoek over die tafel is duidelijk: geen overhalen maar proeven, 8 tot 15 keer, soms vaker, en een likje telt.",
-      "app2": "Dus in september 2026 werd Project Food een gezinsapp. De kinderen tikken na het eten aan wat ze proefden, elke nieuwe plant wordt een kaart, en het hele huishouden telt naar 30 verschillende planten per week. Eén telefoon, één volwassen account, één minuut aan tafel.",
+      "app2": "Dus in september 2026 werd Project Food een app voor de hele tafel. Jij tikt aan wat je proefde, wie er met je meeëet kan erbij, elke nieuwe plant wordt een kaart, en de week telt naar 30 verschillende planten. Eén telefoon, één volwassen account, één minuut per dag.",
       "visionTitle": "Plezier, geen schuld.",
-      "vision1": "Project Food gaat niet over perfect eten, en niet over een leeg bord. Het gaat over nieuwsgierig proeven: een nieuwe plant op tafel, één hap, een kaart om te laten zien. Of je nu opgroeide tussen de groenten of je kinderen ze nu pas ontmoeten, er is altijd nog een om te proberen.",
+      "vision1": "Project Food gaat niet over perfect eten, en niet over een leeg bord. Het gaat over nieuwsgierig proeven: een nieuwe plant op tafel, één hap, een kaart om te laten zien. Of je nu opgroeide tussen de groenten, voor jezelf telt, of je kinderen ze nu pas ontmoeten, er is altijd nog een om te proberen.",
       "ctaPlay": "Ontdek het op Google Play"
     },
     "contact": {
@@ -242,7 +242,7 @@
         "success": "Bericht verzonden! We nemen snel contact op.",
         "error": "Er is iets misgegaan. Probeer het opnieuw."
       },
-      "metaDescription": "Vragen over Project Food, de gezinsapp waarin kinderen aantikken wat ze bij het eten hebben geproefd. Stuur een bericht, Ricardo antwoordt zelf."
+      "metaDescription": "Vragen over Project Food, de app waarin je aantikt welke planten je hebt geproefd. Stuur een bericht, Ricardo antwoordt zelf."
     },
     "terms": {
       "title": "Gebruiksvoorwaarden",
@@ -272,24 +272,24 @@
       "s9Body": "Deze voorwaarden zijn onderworpen aan Nederlands recht. Eventuele geschillen voortvloeiend uit deze voorwaarden vallen onder de exclusieve bevoegdheid van de Nederlandse rechtbanken. De Nederlandstalige versie van deze voorwaarden prevaleert bij tegenstrijdigheden.",
       "s10Title": "10. Contact",
       "s10Body": "Vragen over deze voorwaarden? Word lid van onze Discord-community.",
-      "metaDescription": "De gebruiksvoorwaarden van Project Food, de gezinsapp: je account, het huishouden dat je aanmaakt, wat wij mogen wijzigen en hoe je stopt."
+      "metaDescription": "De gebruiksvoorwaarden van Project Food: je account, het huishouden dat je aanmaakt, wat wij mogen wijzigen en hoe je stopt."
     },
     "privacy": {
       "title": "Privacybeleid",
-      "effectiveDate": "Ingangsdatum: 22 september 2026",
-      "intro": "Project Food is een gezinsapp. Een ouder logt welke planten het gezin bij het eten heeft geproefd, en de kinderen sparen kaarten en prestaties. Dit beleid legt uit wat we opslaan, waarom, wie ons helpt de dienst te draaien en hoe je alles verwijdert. Het geldt voor de Project Food-app en voor projectfood.dev.",
+      "effectiveDate": "Ingangsdatum: 7 oktober 2026",
+      "intro": "Project Food is een app voor volwassenen. Je logt welke planten je hebt geproefd, voor jezelf of voor wie er met je meeëet, en elke nieuwe plant wordt een kaart. Dit beleid legt uit wat we opslaan, waarom, wie ons helpt de dienst te draaien en hoe je alles verwijdert. Het geldt voor de Project Food-app en voor projectfood.dev.",
       "sections": [
         {
           "title": "1. Wie we zijn",
           "body": "Project Food is de verwerkingsverantwoordelijke voor de gegevens die hier worden beschreven en wordt gerund vanuit Nederland. Voor alles rond privacy mail je naar info@projectfood.dev."
         },
         {
-          "title": "2. Gemaakt voor gezinnen, gebruikt door ouders",
-          "intro": "Alleen volwassenen maken een account aan en loggen in. Kinderen loggen nooit in, krijgen nooit e-mail of meldingen van ons en zijn via de app niet te bereiken.",
+          "title": "2. Gemaakt voor volwassenen, met plek voor iedereen aan tafel",
+          "intro": "Alleen volwassenen maken een account aan en loggen in. Voeg je kinderen toe, dan loggen zij nooit in, krijgen nooit e-mail of meldingen van ons en zijn via de app niet te bereiken.",
           "items": [
-            "Een ouder voegt elk gezinslid toe als profiel: een voornaam of bijnaam, en of het een kind of een volwassene is. Meer vragen we niet. Geen geboortedata, achternamen of foto's.",
-            "De ouder bepaalt wat er wordt ingevuld, kan een profiel op elk moment hernoemen of verwijderen, en verwijdert alles door het account te verwijderen.",
-            "Kinderprofielen worden nooit gebruikt voor advertenties of profilering en nooit gedeeld met andere gezinnen."
+            "Je kunt de app alleen gebruiken. Eet er iemand met je mee, dan voeg je die toe als profiel: een voornaam of bijnaam, en of het een kind of een volwassene is. Meer vragen we niet. Geen geboortedata, achternamen of foto's.",
+            "Jij bepaalt wat er wordt ingevuld, kunt een profiel op elk moment hernoemen of verwijderen, en verwijdert alles door het account te verwijderen.",
+            "Kinderprofielen worden nooit gebruikt voor advertenties of profilering en nooit gedeeld met andere huishoudens."
           ]
         },
         {
@@ -297,10 +297,10 @@
           "intro": "Als je de app gebruikt, slaan we het volgende op:",
           "items": [
             "Account: je e-mailadres, en je naam en profielfoto als je inlogt met Google of Apple. Inlogcodes gaan naar je e-mail.",
-            "Huishouden: de gezinsnaam, etenstijd, tijdzone en taal.",
-            "Gezinsleden: voornaam of bijnaam, kind of volwassene, een kleur, en een avatar uit onze set.",
-            "Hapjes: welke planten elk gezinslid op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, prestaties, de gezinsreeks).",
-            "Meldingen: of je pushmeldingen hebt toegestaan, je voorkeuren, een push-token van je telefoon, en per bericht of het is afgeleverd, geopend en binnen drie uur gevolgd door een log. Zo stoppen we met porren als een gezin ons negeert.",
+            "Huishouden: de naam, etenstijd, tijdzone en taal.",
+            "Mensen aan tafel: voornaam of bijnaam, kind of volwassene, een kleur, en een avatar uit onze set.",
+            "Hapjes: welke planten elke persoon op welke dag heeft geproefd, en wat dat ontgrendelt (kaarten, prestaties, de reeks).",
+            "Meldingen: of je pushmeldingen hebt toegestaan, je voorkeuren, een push-token van je telefoon, en per bericht of het is afgeleverd, geopend en binnen drie uur gevolgd door een log. Zo stoppen we met porren als een huishouden ons negeert.",
             "Productgebeurtenissen: een klein aantal gebeurtenissen in de app, zoals een gelogde plant, een afgeronde onboarding of een ingevulde enquête, gekoppeld aan je account. Geen advertentie-id's, geen tracking over apps heen.",
             "Optioneel: enquête-antwoorden en plantsuggesties, als je die instuurt.",
             "Technische logs van onze hostingproviders (IP-adres, apparaattype, tijdstippen) om de dienst veilig te houden."
@@ -311,7 +311,7 @@
           "items": [
             "Geen advertenties in de app en geen advertentienetwerken.",
             "Geen verkoop, verhuur of ruil van persoonsgegevens.",
-            "Geen profilering van kinderen en geen delen van gezinsgegevens met andere gezinnen.",
+            "Geen profilering van kinderen en geen delen van gegevens van je huishouden met andere huishoudens.",
             "Geen analytics- of tracking-SDK's van derden in de app."
           ]
         },
@@ -319,17 +319,17 @@
           "title": "5. Waarom we gegevens mogen verwerken",
           "intro": "Onder de AVG baseren we ons op:",
           "items": [
-            "Overeenkomst (art. 6(1)(b)): om de app te leveren waarvoor je je hebt aangemeld, inclusief de gezinsprofielen die je aanmaakt.",
+            "Overeenkomst (art. 6(1)(b)): om de app te leveren waarvoor je je hebt aangemeld, inclusief de profielen die je aanmaakt.",
             "Toestemming (art. 6(1)(a)): voor pushmeldingen en de optionele enquête. Je kunt die op elk moment intrekken in de app of in de instellingen van je telefoon.",
             "Gerechtvaardigd belang (art. 6(1)(f)): om de dienst veilig te houden en om via de paar productgebeurtenissen hierboven te zien of de app werkt."
           ],
-          "outro": "Kinderprofielen worden verwerkt in opdracht van de ouder, als onderdeel van het account van de ouder. Project Food verzamelt zelf geen gegevens van kinderen."
+          "outro": "Kinderprofielen, als die er zijn, worden verwerkt in opdracht van de volwassene, als onderdeel van diens account. Project Food verzamelt zelf geen gegevens van kinderen."
         },
         {
           "title": "6. Meldingen",
           "intro": "De app vraagt om toestemming voor pushmeldingen tijdens het instellen, precies waar je de etenstijd kiest, en je mag nee zeggen. Sla je het over, dan vragen we het nog één keer na je eerste log en daarna alleen als je het zelf aanzet in Account → Meldingen.",
           "items": [
-            "Essentieel: de etensvraag en de reeksbewaker. Standaard aan zodra je meldingen toestaat.",
+            "Essentieel: de dagelijkse vraag en de reeksbewaker. Standaard aan zodra je meldingen toestaat.",
             "Tips & nieuws: kaart- en prestatie-teasers en de zondagse herinnering. Standaard uit.",
             "Zet elke soort uit via Account → Meldingen, of allemaal in de instellingen van je telefoon. Worden drie berichten op rij genegeerd, dan zijn we een week stil."
           ],
@@ -354,7 +354,7 @@
             "In de app: Account → Account verwijderen.",
             "Op het web: via de pagina hieronder, met een code die naar je e-mail wordt gestuurd."
           ],
-          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en prestaties, de meldingsgeschiedenis en de push-tokens. De hapjes zelf blijven als anonieme statistiek bewaard: welke plant op welke dag, onder willekeurige id's die aan geen persoon of gezin meer te koppelen zijn. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van een andere ouder aangesloten, dan blijven dat huishouden en zijn hapjes bij die ouder; alleen je eigen account en inlog verdwijnen.",
+          "outro": "Verwijderen wist direct je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en prestaties, de meldingsgeschiedenis en de push-tokens. De hapjes zelf blijven als anonieme statistiek bewaard: welke plant op welke dag, onder willekeurige id's die aan geen persoon of huishouden meer te koppelen zijn. Databaseback-ups verlopen binnen 30 dagen. Ben je bij een huishouden van iemand anders aangesloten, dan blijven dat huishouden en zijn hapjes bij die persoon; alleen je eigen account en inlog verdwijnen.",
           "link": "deleteAccount",
           "linkLabel": "Je account verwijderen via het web"
         },
@@ -410,7 +410,7 @@
       "errorCode": "Die code werkte niet. Vraag een nieuwe aan en probeer het opnieuw.",
       "errorDelete": "Er ging iets mis. Probeer het opnieuw, of mail naar info@projectfood.dev vanaf het adres van je account.",
       "fallback": "Geen toegang meer tot dat e-mailadres? Mail naar info@projectfood.dev, dan regelen we het binnen 30 dagen met de hand.",
-      "joined": "Ben je aangesloten bij een huishouden dat een andere ouder heeft aangemaakt, dan blijft dat huishouden bij die ouder."
+      "joined": "Ben je aangesloten bij een huishouden dat iemand anders heeft aangemaakt, dan blijft dat huishouden bij die persoon."
     },
     "learn": {
       "nav": "Ontdekken",

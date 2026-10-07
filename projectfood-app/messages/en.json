@@ -159,35 +159,35 @@
       "openApp": "Open the app"
     },
     "home": {
-      "metaTitle": "Project Food: the family app where kids taste 30 plants a week",
-      "metaDescription": "Kids tap what they tasted at dinner, every new plant becomes a card, and the family counts towards 30 plants a week. Now in testing on Google Play.",
+      "metaTitle": "Project Food: taste 30 different plants a week",
+      "metaDescription": "Tap the plants you tasted, every new one becomes a card, and the week counts towards 30. On your own or with everyone at your table. Now in testing on Google Play.",
       "heroLabel": "30 plants a week",
-      "heroTitle": "The family app where kids taste.",
+      "heroTitle": "Taste 30 different plants a week.",
       "heroSubtitle": "Every taste becomes a card.",
-      "heroBody": "After dinner, your kids tap the plants they tasted. Each new one becomes a card, and the whole family counts towards 30 different plants a week. One minute at the table, no clean plate required.",
+      "heroBody": "After you've eaten, tap the plants you tasted. Each new one becomes a card, and the week counts towards 30 different plants. One minute a day, on your own or with everyone at the table. No clean plate required.",
       "ctaPlay": "Get it on Google Play",
       "ctaPlayNote": "In closed testing on Google Play. iPhone follows.",
       "whyWeDoThis": "Why we do this",
       "stepsTitle": "How it works",
       "step1Title": "Tap what you tasted",
-      "step1Body": "After dinner, open the app and tap the plants that were on the table. Hold a plant to say who tasted it. A lick counts.",
+      "step1Body": "Open the app and tap the plants that were on your plate today. More people at the table? Hold a plant to say who tasted it. A lick counts.",
       "step2Title": "Collect the cards",
       "step2Body": "Every new plant becomes a card with a picture, a fact for the table and a tip for the cook. Cards level up at 1, 5 and 10 tastes.",
-      "step3Title": "Count as a family",
-      "step3Body": "The household shares one count towards 30 different plants a week. Achievements in bronze, silver, gold and platinum mark what the family did at the table.",
+      "step3Title": "Count towards 30",
+      "step3Body": "Every week counts towards 30 different plants, for you alone or for everyone at the table on one account. Achievements in bronze, silver, gold and platinum mark what the table did.",
       "scienceTitle": "Why tasting, not finishing",
-      "science1": "Most children need 8 to 15 tastes of a new food before they accept it, sometimes more. A lick counts.",
-      "science2": "In one home trial, two weeks of a daily taste was enough for most children to start liking the vegetable (Wardle, 2003). Project Food makes the taste the thing that counts.",
-      "learnTitle": "Read before dinner",
+      "science1": "The guideline comes from the American Gut Project (2018): adults eating more than 30 different plants a week had a more varied gut flora. Variety counts, not amounts.",
+      "science2": "At a table with children the taste is what counts: most need 8 to 15 tastes of a new food before they accept it, and in one home trial two weeks of a daily taste was enough for most to start liking the vegetable (Wardle, 2003). A lick counts.",
+      "learnTitle": "Read before you cook",
       "learnBody": "The learn pages say honestly what works at the table: why children refuse new foods, how many tastes it takes, and what backfires.",
       "learnPillar": "How to get kids to eat vegetables, without the battle",
       "learnCluster1": "How many times does a child need to try a new food?",
       "learnCluster2": "Toddler won't eat: why it happens and what works",
-      "faqTitle": "Questions parents ask",
+      "faqTitle": "Questions people ask",
       "faq1q": "Is Project Food a kids app?",
-      "faq1a": "No. It is a family app on the parent's phone. One adult account per household; your children are names in it, not accounts. You hold the phone, they tap what they tasted.",
-      "faq2q": "From what age?",
-      "faq2a": "As soon as a child can point at a picture. Toddlers tap with you, older children tap themselves. Refusing new foods peaks between 2 and 6 and fades on its own for most children (Dovey, 2008), so that is the age the tasting count helps most.",
+      "faq1a": "No. It is an app for adults, on your own phone. Use it for yourself, or add the people who eat with you: one adult account per household, the others are names in it, not accounts.",
+      "faq2q": "Can the kids join?",
+      "faq2a": "As soon as a child can point at a picture. Toddlers tap with you, older children tap themselves. Refusing new foods peaks between 2 and 6 and fades on its own for most children (Dovey, 2008), so that is where the tasting count helps most. Without kids the app is just as complete.",
       "faq3q": "Does a lick count?",
       "faq3a": "Yes. A taste is a taste, whether it stays in or comes back out. The count is of tastes, never of empty plates.",
       "faq4q": "What counts as a plant?",
@@ -195,9 +195,9 @@
       "faq5q": "Where do I get the app?",
       "faq5a": "It is in closed testing on Google Play, with the App Store to follow. Ask for a place in the test through the contact page and you get the link the same day.",
       "faq6q": "What about privacy?",
-      "faq6a": "One adult account per household. Your children's names stay inside your household, there are no child accounts and no ads. The privacy page says exactly what is stored and for how long.",
+      "faq6a": "One adult account per household. The names you add stay inside it, there are no child accounts and no ads. The privacy page says exactly what is stored and for how long.",
       "bottomTitle": "Tonight is a good night to start.",
-      "bottomBody": "One minute after dinner. The family tastes, you tap."
+      "bottomBody": "One minute after you've eaten. Taste, tap, count."
     },
     "footer": {
       "about": "About",
@@ -220,12 +220,12 @@
       "discoveryTitle": "Then we watched a documentary.",
       "discovery1": "About two years ago, my girlfriend and I watched a gut health documentary on Netflix. The message was surprising: it's not about eating the right foods more often, it's about eating a wide variety of plants. As many different ones as possible.",
       "discovery2": "The guideline behind it comes from the American Gut Project (2018), where adults eating more than 30 different plants a week had a more varied gut flora than those eating 10 or fewer. An observation in adults, not a promise, and a good enough reason to count. Fruit, vegetables, grains, legumes, nuts, seeds, herbs and spices all count.",
-      "callout": "30 plants a week. We count towards it as a family.",
+      "callout": "30 plants a week. We count towards it at our own table.",
       "appTitle": "Then the question changed.",
       "app1": "For two years I tracked my own plants in a notes app, and the first Project Food was built for adults like me. A list works for an adult who wants variety. It does nothing for the parent whose plate comes back untouched, and that table is where variety is decided. The research on that table is clear: not persuasion but tastes, 8 to 15 of them, sometimes more, and a lick counts.",
-      "app2": "So in September 2026 Project Food became a family app. The kids tap what they tasted after dinner, every new plant becomes a card, and the whole household counts towards 30 different plants a week. One phone, one adult account, one minute at the table.",
+      "app2": "So in September 2026 Project Food became an app for the whole table. You tap what you tasted, the people who eat with you can be in it too, every new plant becomes a card, and the week counts towards 30 different plants. One phone, one adult account, one minute a day.",
       "visionTitle": "Joy, not guilt.",
-      "vision1": "Project Food is not about eating perfectly, or about an empty plate. It is about tasting curiously: a new plant on the table, one taste, a card to show for it. Whether you grew up between the vegetables or your kids are meeting them now, there is always another one to try.",
+      "vision1": "Project Food is not about eating perfectly, or about an empty plate. It is about tasting curiously: a new plant on the table, one taste, a card to show for it. Whether you grew up between the vegetables, count for yourself, or your kids are meeting them now, there is always another one to try.",
       "ctaPlay": "Get it on Google Play"
     },
     "contact": {
@@ -242,7 +242,7 @@
         "success": "Message sent! We'll get back to you soon.",
         "error": "Something went wrong. Please try again."
       },
-      "metaDescription": "Questions about Project Food, the family app where kids tap what they tasted at dinner. Send a message and Ricardo answers himself."
+      "metaDescription": "Questions about Project Food, the app where you tap the plants you tasted. Send a message and Ricardo answers himself."
     },
     "terms": {
       "title": "Terms of Service",
@@ -272,24 +272,24 @@
       "s9Body": "These Terms are governed by Dutch law. Any disputes arising from these Terms will be subject to the exclusive jurisdiction of the courts of the Netherlands. The Dutch language version of these Terms prevails in case of discrepancy.",
       "s10Title": "10. Contact",
       "s10Body": "Questions about these Terms? Join us on our Discord community.",
-      "metaDescription": "The terms of service for Project Food, the family app: your account, the household you create, what we may change and how you end it."
+      "metaDescription": "The terms of service for Project Food: your account, the household you create, what we may change and how you end it."
     },
     "privacy": {
       "title": "Privacy Policy",
-      "effectiveDate": "Effective date: 22 September 2026",
-      "intro": "Project Food is a family app. A parent logs which plants the family tasted at dinner, and the kids collect cards and achievements. This policy explains what we store, why, who helps us run the service and how you delete everything. It applies to the Project Food app and to projectfood.dev.",
+      "effectiveDate": "Effective date: 7 October 2026",
+      "intro": "Project Food is an app for adults. You log which plants you tasted, for yourself or for the people who eat with you, and every new plant becomes a card. This policy explains what we store, why, who helps us run the service and how you delete everything. It applies to the Project Food app and to projectfood.dev.",
       "sections": [
         {
           "title": "1. Who we are",
           "body": "Project Food is the data controller for the data described here. It is run from the Netherlands. For anything privacy related, write to info@projectfood.dev."
         },
         {
-          "title": "2. Made for families, used by parents",
-          "intro": "Only adults create an account and sign in. Children never sign in, never get email or notifications from us and cannot be contacted through the app.",
+          "title": "2. Made for adults, with room for everyone at the table",
+          "intro": "Only adults create an account and sign in. If you add children, they never sign in, never get email or notifications from us and cannot be contacted through the app.",
           "items": [
-            "A parent adds each family member as a profile: a first name or nickname, and whether they are a child or an adult. That is all we ask. No birth dates, surnames or photos.",
-            "The parent decides what is entered, can rename or remove a profile at any time, and removes everything by deleting the account.",
-            "Children's profiles are never used for advertising or profiling and are never shared with other families."
+            "You can use the app on your own. If others eat with you, you add each of them as a profile: a first name or nickname, and whether they are a child or an adult. That is all we ask. No birth dates, surnames or photos.",
+            "You decide what is entered, can rename or remove a profile at any time, and remove everything by deleting the account.",
+            "Children's profiles are never used for advertising or profiling and are never shared with other households."
           ]
         },
         {
@@ -297,10 +297,10 @@
           "intro": "When you use the app we store:",
           "items": [
             "Account: your email address, and your name and profile picture if you sign in with Google or Apple. Sign-in codes go to your email.",
-            "Household: the family name, dinner time, time zone and language.",
-            "Family members: first name or nickname, child or adult, a colour, and an avatar chosen from our set.",
-            "Tastes: which plants each member tasted on which day, and what that unlocks (cards, achievements, the family streak).",
-            "Notifications: whether you allowed push notifications, your preferences, a device push token, and per message whether it was delivered, opened and followed by a log within three hours. We use this to stop nudging a family that ignores us.",
+            "Household: its name, dinner time, time zone and language.",
+            "People at your table: first name or nickname, child or adult, a colour, and an avatar chosen from our set.",
+            "Tastes: which plants each person tasted on which day, and what that unlocks (cards, achievements, the streak).",
+            "Notifications: whether you allowed push notifications, your preferences, a device push token, and per message whether it was delivered, opened and followed by a log within three hours. We use this to stop nudging a household that ignores us.",
             "Product events: a small set of in-app events such as a plant logged, onboarding completed or a survey submitted, tied to your account. No advertising identifiers, no tracking across apps.",
             "Optional: survey answers and plant suggestions, if you submit them.",
             "Technical logs kept by our hosting providers (IP address, device type, timestamps) to keep the service secure."
@@ -311,7 +311,7 @@
           "items": [
             "No advertising in the app and no ad networks.",
             "No selling, renting or trading of personal data.",
-            "No profiling of children and no sharing of family data with other families.",
+            "No profiling of children and no sharing of household data with other households.",
             "No third-party analytics or tracking SDKs inside the app."
           ]
         },
@@ -319,17 +319,17 @@
           "title": "5. Why we may process it",
           "intro": "Under the GDPR we rely on:",
           "items": [
-            "Contract (Art. 6(1)(b)): to provide the app you signed up for, including the family profiles you create.",
+            "Contract (Art. 6(1)(b)): to provide the app you signed up for, including the profiles you create.",
             "Consent (Art. 6(1)(a)): for push notifications and the optional survey. You can withdraw it at any time in the app or in your phone settings.",
             "Legitimate interest (Art. 6(1)(f)): to keep the service secure and to see, through the few product events above, whether the app works."
           ],
-          "outro": "Children's profiles are processed on the parent's instruction, as part of the parent's account. Project Food does not collect data from children itself."
+          "outro": "Children's profiles, if any, are processed on the adult's instruction, as part of the adult's account. Project Food does not collect data from children itself."
         },
         {
           "title": "6. Notifications",
-          "intro": "The app asks for push permission while you set up your family, right where you choose the dinner time, and you can say no. If you skip it, we ask once more after your first log, and after that only when you turn it on in Account → Notifications.",
+          "intro": "The app asks for push permission while you set up, right where you choose the dinner time, and you can say no. If you skip it, we ask once more after your first log, and after that only when you turn it on in Account → Notifications.",
           "items": [
-            "Essential: the dinner question and the streak keeper. On by default once you allow notifications.",
+            "Essential: the daily question and the streak keeper. On by default once you allow notifications.",
             "Tips & news: card and achievement teasers and the Sunday nudge. Off by default.",
             "Turn each kind off in Account → Notifications, or all of them in your phone settings. If three messages in a row are ignored, we stay quiet for a week."
           ],
@@ -354,7 +354,7 @@
             "In the app: Account → Delete account.",
             "On the web: the delete-account page linked below, with a code sent to your email."
           ],
-          "outro": "Deleting removes your account, the household you created with its member profiles, cards and achievements, notification history and push tokens, immediately. The tastes themselves stay as anonymous statistics: which plant on which day, under random ids that no longer link to any person or family. Database backups expire within 30 days. If you joined a household created by another parent, that household and its tastes stay with them; only your account and sign-in go.",
+          "outro": "Deleting removes your account, the household you created with its member profiles, cards and achievements, notification history and push tokens, immediately. The tastes themselves stay as anonymous statistics: which plant on which day, under random ids that no longer link to any person or household. Database backups expire within 30 days. If you joined a household created by someone else, that household and its tastes stay with them; only your account and sign-in go.",
           "link": "deleteAccount",
           "linkLabel": "Delete your account on the web"
         },
@@ -410,7 +410,7 @@
       "errorCode": "That code did not work. Request a new one and try again.",
       "errorDelete": "Something went wrong. Please try again, or write to info@projectfood.dev from the address of your account.",
       "fallback": "No access to that email any more? Write to info@projectfood.dev and we handle it by hand within 30 days.",
-      "joined": "If you joined a household that another parent created, that household stays with them."
+      "joined": "If you joined a household that someone else created, that household stays with them."
     },
     "learn": {
       "nav": "Learn",

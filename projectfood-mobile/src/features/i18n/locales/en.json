@@ -18,7 +18,7 @@
     "yesterday": "Yesterday",
     "you": "You",
     "everyone": "Everyone",
-    "household": "Family",
+    "household": "Household",
     "loading": "Loading…"
   },
   "nav": {
@@ -63,7 +63,7 @@
     "fr": "Français"
   },
   "auth": {
-    "tagline": "Every plant your family tastes, collected.",
+    "tagline": "Every plant you taste, collected.",
     "heading": "Sign in or create an account",
     "continueWithGoogle": "Continue with Google",
     "continueWithApple": "Continue with Apple",
@@ -86,15 +86,15 @@
   "onboarding": {
     "step": "Step {n} of {m}",
     "youTitle": "Let's start with you",
-    "youSub": "Your name, a face and a colour. Everyone who eats with you comes next.",
+    "youSub": "Your name, a face and a colour. Anyone who eats with you comes next.",
     "yourName": "Your name",
-    "familyTitle": "Who's at the table?",
-    "familySub": "Add everyone who eats with you. First names or nicknames are enough.",
+    "familyTitle": "Who else is at the table?",
+    "familySub": "Just you is fine. Add anyone who eats with you, a first name or nickname is enough.",
     "addPerson": "Add a person",
     "dinnerTitle": "When do you usually eat dinner?",
-    "dinnerSub": "This sets the moment for the dinner question. You can change it any time.",
-    "pingLabel": "Ping us after dinner",
-    "pingSub": "One question around {time}: what did everyone taste? Nothing else unless you ask for it.",
+    "dinnerSub": "This sets the moment for the daily question. You can change it any time.",
+    "pingLabel": "A reminder after dinner",
+    "pingSub": "One question around {time}: what did you taste today? Nothing else unless you ask for it.",
     "finish": "Start tasting"
   },
   "tutorial": {
@@ -131,7 +131,7 @@
     "today": "Tasted today",
     "thisWeeksCollection": "This week's collection",
     "logFirstPlant": "Log your first plant",
-    "logFirstPlantSub": "Tap Log and check off what the family tasted today.",
+    "logFirstPlantSub": "Tap Log and tick what you tasted today.",
     "nextGoals": "Next goals",
     "streak": "{n} days in a row",
     "streakOne": "1 day in a row",
@@ -141,8 +141,8 @@
     "tastedBy": "{name}: {n}"
   },
   "log": {
-    "title": "Tonight's dinner",
-    "subtitle": "Tap what the family tasted",
+    "title": "Today's plants",
+    "subtitle": "Tap what you tasted today",
     "searchPlaceholder": "Search 200+ plants…",
     "all": "All",
     "yourUsual": "Your usual",
@@ -163,8 +163,8 @@
     "defaultHint": "Your pick becomes the default for the next plants",
     "holdHint": "Hold a plant to choose who tasted it",
     "superfood": "Superfood",
-    "logEmpty": "Add your family first, then log who tasted what.",
-    "goFamily": "Add family",
+    "logEmpty": "Add who eats with you first, then log who tasted what.",
+    "goFamily": "Add people",
     "inSeason": "In season"
   },
   "unlocks": {
@@ -207,16 +207,16 @@
     "weeksAtGoal": "Weeks at {n}",
     "bestWeek": "Best week",
     "perWeekTitle": "Plants per week",
-    "perWeekBody": "Different plants the family tasted, Monday to Sunday. The lighter bar is this week.",
+    "perWeekBody": "Different plants you logged, Monday to Sunday. The lighter bar is this week.",
     "perDayTitle": "Plants per day",
-    "perDayBody": "Different plants on the table each day, the last 4 weeks.",
+    "perDayBody": "Different plants logged each day, the last 4 weeks.",
     "empty": "Log the first plant and the weeks start filling up here.",
     "mixTitle": "Your mix",
     "mixBody": "Share of everything you logged, per category.",
     "legendYou": "You",
     "legendTypical": "Typical",
     "legendGoal": "Goal {n}",
-    "typicalNote": "Typical is the middle of all households on Project Food.",
+    "typicalNote": "Typical is the middle of everyone on Project Food.",
     "dinnersInARowDesc": "Days in a row with at least 1 plant logged",
     "mostInARowDesc": "Your longest run so far",
     "weeksAtGoalDesc": "Weeks with {n} different plants or more",
@@ -265,19 +265,19 @@
     },
     "full_table": {
       "title": "Full table",
-      "body": "{n} plants the whole family has tasted"
+      "body": "{n} plants everyone at the table has tasted"
     },
     "rainbow": {
       "title": "Rainbow",
       "body": "{n} weeks with 5 colours on the table"
     },
     "big_dinner": {
-      "title": "Big dinner",
-      "body": "Taste {n} plants in one dinner"
+      "title": "Big day",
+      "body": "Taste {n} plants in 1 day"
     },
     "regular_table": {
       "title": "Regular table",
-      "body": "Log dinner on {n} different days"
+      "body": "Log on {n} different days"
     },
     "steady_weeks": {
       "title": "Steady weeks",
@@ -343,7 +343,7 @@
       "body": "Log {n} days in a row"
     },
     "family_of_thirty": {
-      "title": "Family of thirty",
+      "title": "Thirty club",
       "body": "{n} weeks with 30 different plants"
     },
     "nice_try": {
@@ -352,7 +352,7 @@
     },
     "full_spectrum": {
       "title": "Full spectrum",
-      "body": "All 7 categories at one dinner"
+      "body": "All 7 categories in 1 day"
     },
     "at_the_table": {
       "title": "At the table",
@@ -360,10 +360,10 @@
     }
   },
   "family": {
-    "title": "Your family",
-    "empty": "Who's at the table? Add everyone who eats with you.",
-    "add": "Add family member",
-    "edit": "Edit member",
+    "title": "At your table",
+    "empty": "Add anyone who eats with you.",
+    "add": "Add a person",
+    "edit": "Edit person",
     "namePlaceholder": "Name",
     "colour": "Colour",
     "kid": "Kid",
@@ -373,17 +373,17 @@
     "avatarGroup_male": "Boys",
     "avatarGroup_unknown": "Other",
     "noAvatar": "Initial only",
-    "removeConfirm": "Remove {name} from the family? Their tastes stay in the collection.",
+    "removeConfirm": "Remove {name} from the table? Their tastes stay in the collection.",
     "tonight": "{n} tonight",
     "you": "That's you"
   },
   "account": {
     "title": "Account",
     "settings": "Settings",
-    "family": "Family",
-    "members": "{n} members",
+    "family": "People",
+    "members": "{n} at the table",
     "household": "Household",
-    "householdName": "Family name",
+    "householdName": "Household name",
     "dinnerTime": "Dinner time",
     "language": "Language",
     "notifications": "Notifications",
@@ -395,10 +395,10 @@
     "signOut": "Sign out",
     "deleteAccount": "Delete account",
     "deleteTitle": "Delete your account?",
-    "deleteBody": "This removes your family, its profiles, cards and achievements for good. Your tastes stay only as anonymous statistics, linked to no one. There is no undo.",
+    "deleteBody": "This removes your household, its profiles, cards and achievements for good. Your tastes stay only as anonymous statistics, linked to no one. There is no undo.",
     "deleteCta": "Delete everything",
     "deletedTitle": "Your account is deleted",
-    "deletedBody": "Your family, its profiles, cards and achievements are gone. Your tastes stay only as anonymous statistics, linked to no one. Thank you for having been at the table.",
+    "deletedBody": "Your household, its profiles, cards and achievements are gone. Your tastes stay only as anonymous statistics, linked to no one. Thank you for having been at the table.",
     "deletedCta": "Close",
     "version": "Version {v}",
     "updateCheck": "Check for updates",
@@ -411,31 +411,31 @@
     "systemOff": "Notifications are off for Project Food on this phone.",
     "openSettings": "Open phone settings",
     "essential": "Essential",
-    "essentialDesc": "The dinner question, your streak and the Sunday nudge. On by default.",
+    "essentialDesc": "The daily question, your streak and the Sunday nudge. On by default.",
     "marketing": "Tips & news",
     "marketingDesc": "Card and achievement teasers and the Sunday nudge. Off by default.",
     "types": {
       "dinnerQuestion": {
-        "label": "Dinner question",
-        "description": "\"What did the family taste tonight?\" about half an hour after dinner"
+        "label": "Daily question",
+        "description": "\"What did you taste today?\" about half an hour after dinner"
       },
       "streakKeeper": {
         "label": "Streak keeper",
-        "description": "Only when the family streak is at risk"
+        "description": "Only when your streak is at risk"
       },
       "cardTeaser": {
         "label": "Card & achievement teasers",
-        "description": "After a few quiet dinners: which card is close. And before dinner, when an achievement passes halfway to its next level"
+        "description": "After a few quiet days: which card is close. And before dinner, when an achievement passes halfway to its next level"
       },
       "sundayNudge": {
         "label": "Sunday nudge",
-        "description": "When the family is a few plants from 30"
+        "description": "When you are a few plants from 30"
       }
     },
     "permissionPrompt": {
-      "title": "Want the dinner question?",
-      "body": "One gentle question after dinner, about {time}. Nothing else unless you ask for it.",
-      "allow": "Yes, remind us",
+      "title": "Want the daily question?",
+      "body": "One gentle question after dinner, around {time}. Nothing else unless you ask for it.",
+      "allow": "Yes, remind me",
       "notNow": "Not now"
     }
   },

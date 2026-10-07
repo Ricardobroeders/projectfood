@@ -18,7 +18,7 @@
     "yesterday": "Gisteren",
     "you": "Jij",
     "everyone": "Iedereen",
-    "household": "Gezin",
+    "household": "Huishouden",
     "loading": "Laden…"
   },
   "nav": {
@@ -63,7 +63,7 @@
     "fr": "Français"
   },
   "auth": {
-    "tagline": "Elke plant die je gezin proeft, verzameld.",
+    "tagline": "Elke plant die je proeft, verzameld.",
     "heading": "Inloggen of een account maken",
     "continueWithGoogle": "Doorgaan met Google",
     "continueWithApple": "Doorgaan met Apple",
@@ -86,15 +86,15 @@
   "onboarding": {
     "step": "Stap {n} van {m}",
     "youTitle": "Eerst jij",
-    "youSub": "Je naam, een gezicht en een kleur. Daarna iedereen die meeëet.",
+    "youSub": "Je naam, een gezicht en een kleur. Daarna wie er met je meeëet.",
     "yourName": "Jouw naam",
-    "familyTitle": "Wie zit er aan tafel?",
-    "familySub": "Voeg iedereen toe die meeëet. Een voornaam of bijnaam is genoeg.",
+    "familyTitle": "Wie zit er nog meer aan tafel?",
+    "familySub": "Alleen jij is prima. Voeg toe wie er meeëet, een voornaam of bijnaam is genoeg.",
     "addPerson": "Iemand toevoegen",
     "dinnerTitle": "Hoe laat eten jullie meestal?",
-    "dinnerSub": "Dit bepaalt wanneer de etensvraag komt. Je kunt het altijd aanpassen.",
-    "pingLabel": "Stuur ons na het eten een seintje",
-    "pingSub": "Eén vraag rond {time}: wat heeft iedereen geproefd? Verder niets, tenzij je erom vraagt.",
+    "dinnerSub": "Dit bepaalt wanneer de dagelijkse vraag komt. Je kunt het altijd aanpassen.",
+    "pingLabel": "Een seintje na het eten",
+    "pingSub": "Eén vraag rond {time}: wat heb je vandaag geproefd? Verder niets, tenzij je erom vraagt.",
     "finish": "Beginnen met proeven"
   },
   "tutorial": {
@@ -131,7 +131,7 @@
     "today": "Vandaag geproefd",
     "thisWeeksCollection": "Collectie deze week",
     "logFirstPlant": "Log je eerste plant",
-    "logFirstPlantSub": "Tik op Loggen en vink aan wat het gezin vandaag heeft geproefd.",
+    "logFirstPlantSub": "Tik op Loggen en vink aan wat je vandaag hebt geproefd.",
     "nextGoals": "Volgende doelen",
     "streak": "{n} dagen op rij",
     "streakOne": "1 dag op rij",
@@ -141,11 +141,11 @@
     "tastedBy": "{name}: {n}"
   },
   "log": {
-    "title": "Avondeten van vandaag",
-    "subtitle": "Tik aan wat het gezin heeft geproefd",
+    "title": "Planten van vandaag",
+    "subtitle": "Tik aan wat je vandaag hebt geproefd",
     "searchPlaceholder": "Zoek 200+ planten…",
     "all": "Alles",
-    "yourUsual": "Jullie vaste prik",
+    "yourUsual": "Je vaste prik",
     "noResults": "Geen planten gevonden voor \"{query}\"",
     "searchPrompt": "Zoek een plant of kies een categorie",
     "missingTitle": "Staat hij er niet tussen?",
@@ -163,8 +163,8 @@
     "defaultHint": "Je keuze wordt de standaard voor de volgende planten",
     "holdHint": "Houd een plant vast om te kiezen wie heeft geproefd",
     "superfood": "Superfood",
-    "logEmpty": "Voeg eerst je gezin toe, log daarna wie wat heeft geproefd.",
-    "goFamily": "Gezin toevoegen",
+    "logEmpty": "Voeg eerst toe wie er meeëet, log daarna wie wat heeft geproefd.",
+    "goFamily": "Mensen toevoegen",
     "inSeason": "In het seizoen"
   },
   "unlocks": {
@@ -207,16 +207,16 @@
     "weeksAtGoal": "Weken op {n}",
     "bestWeek": "Beste week",
     "perWeekTitle": "Planten per week",
-    "perWeekBody": "Verschillende planten die het gezin proefde, van maandag tot zondag. De lichtere balk is deze week.",
+    "perWeekBody": "Verschillende planten die je logde, van maandag tot zondag. De lichtere balk is deze week.",
     "perDayTitle": "Planten per dag",
-    "perDayBody": "Verschillende planten op tafel per dag, de laatste 4 weken.",
+    "perDayBody": "Verschillende planten gelogd per dag, de laatste 4 weken.",
     "empty": "Log de eerste plant en de weken vullen zich hier.",
     "mixTitle": "Jouw mix",
     "mixBody": "Aandeel van alles wat je logde, per categorie.",
     "legendYou": "Jij",
     "legendTypical": "Gemiddeld",
     "legendGoal": "Doel {n}",
-    "typicalNote": "Gemiddeld is het midden van alle huishoudens op Project Food.",
+    "typicalNote": "Gemiddeld is het midden van iedereen op Project Food.",
     "dinnersInARowDesc": "Dagen op rij met minstens 1 plant gelogd",
     "mostInARowDesc": "Je langste reeks tot nu toe",
     "weeksAtGoalDesc": "Weken met {n} verschillende planten of meer",
@@ -265,19 +265,19 @@
     },
     "full_table": {
       "title": "Volle tafel",
-      "body": "{n} planten die het hele gezin heeft geproefd"
+      "body": "{n} planten die iedereen aan tafel heeft geproefd"
     },
     "rainbow": {
       "title": "Regenboog",
       "body": "{n} weken met 5 kleuren op tafel"
     },
     "big_dinner": {
-      "title": "Groot diner",
-      "body": "Proef {n} planten bij één avondeten"
+      "title": "Grote dag",
+      "body": "Proef {n} planten op 1 dag"
     },
     "regular_table": {
       "title": "Vaste tafel",
-      "body": "Log het avondeten op {n} verschillende dagen"
+      "body": "Log op {n} verschillende dagen"
     },
     "steady_weeks": {
       "title": "Vaste weken",
@@ -343,7 +343,7 @@
       "body": "Log {n} dagen achter elkaar"
     },
     "family_of_thirty": {
-      "title": "Familie van dertig",
+      "title": "Club van dertig",
       "body": "{n} weken met 30 verschillende planten"
     },
     "nice_try": {
@@ -352,7 +352,7 @@
     },
     "full_spectrum": {
       "title": "Het hele spectrum",
-      "body": "Alle 7 categorieën bij 1 avondeten"
+      "body": "Alle 7 categorieën op 1 dag"
     },
     "at_the_table": {
       "title": "Aan tafel",
@@ -360,10 +360,10 @@
     }
   },
   "family": {
-    "title": "Jouw gezin",
-    "empty": "Wie zit er aan tafel? Voeg iedereen toe die meeëet.",
-    "add": "Gezinslid toevoegen",
-    "edit": "Gezinslid bewerken",
+    "title": "Aan jouw tafel",
+    "empty": "Voeg toe wie er met je meeëet.",
+    "add": "Iemand toevoegen",
+    "edit": "Persoon bewerken",
     "namePlaceholder": "Naam",
     "colour": "Kleur",
     "kid": "Kind",
@@ -373,17 +373,17 @@
     "avatarGroup_male": "Jongens",
     "avatarGroup_unknown": "Anders",
     "noAvatar": "Alleen initiaal",
-    "removeConfirm": "{name} uit het gezin verwijderen? De geproefde planten blijven in de collectie.",
+    "removeConfirm": "{name} van tafel halen? De geproefde planten blijven in de collectie.",
     "tonight": "{n} vanavond",
     "you": "Dat ben jij"
   },
   "account": {
     "title": "Account",
     "settings": "Instellingen",
-    "family": "Gezin",
-    "members": "{n} gezinsleden",
+    "family": "Mensen",
+    "members": "{n} aan tafel",
     "household": "Huishouden",
-    "householdName": "Gezinsnaam",
+    "householdName": "Naam van het huishouden",
     "dinnerTime": "Etenstijd",
     "language": "Taal",
     "notifications": "Meldingen",
@@ -395,10 +395,10 @@
     "signOut": "Uitloggen",
     "deleteAccount": "Account verwijderen",
     "deleteTitle": "Je account verwijderen?",
-    "deleteBody": "Dit verwijdert je gezin, de profielen, kaarten en prestaties voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
+    "deleteBody": "Dit verwijdert je huishouden, de profielen, kaarten en prestaties voorgoed. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Dit kan niet ongedaan worden gemaakt.",
     "deleteCta": "Alles verwijderen",
     "deletedTitle": "Je account is verwijderd",
-    "deletedBody": "Je gezin, de profielen, kaarten en prestaties zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
+    "deletedBody": "Je huishouden, de profielen, kaarten en prestaties zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Bedankt dat je aan tafel zat.",
     "deletedCta": "Sluiten",
     "version": "Versie {v}",
     "updateCheck": "Controleren op updates",
@@ -411,31 +411,31 @@
     "systemOff": "Meldingen staan uit voor Project Food op deze telefoon.",
     "openSettings": "Telefooninstellingen openen",
     "essential": "Essentieel",
-    "essentialDesc": "De etensvraag, je reeks en de zondagse herinnering. Standaard aan.",
+    "essentialDesc": "De dagelijkse vraag, je reeks en de zondagse herinnering. Standaard aan.",
     "marketing": "Tips & nieuws",
     "marketingDesc": "Kaart- en prestatie-teasers en de zondagse herinnering. Standaard uit.",
     "types": {
       "dinnerQuestion": {
-        "label": "Etensvraag",
-        "description": "\"Wat heeft het gezin vanavond geproefd?\" ongeveer een half uur na het eten"
+        "label": "Dagelijkse vraag",
+        "description": "\"Wat heb je vandaag geproefd?\" ongeveer een half uur na het eten"
       },
       "streakKeeper": {
         "label": "Reeksbewaker",
-        "description": "Alleen als de gezinsreeks in gevaar is"
+        "description": "Alleen als je reeks in gevaar is"
       },
       "cardTeaser": {
         "label": "Kaart- en prestatie-teasers",
-        "description": "Na een paar stille avonden: welke kaart bijna klaar is. En voor het eten, als een prestatie halverwege het volgende niveau is"
+        "description": "Na een paar stille dagen: welke kaart bijna klaar is. En voor het eten, als een prestatie halverwege het volgende niveau is"
       },
       "sundayNudge": {
         "label": "Zondagse herinnering",
-        "description": "Als het gezin nog een paar planten van de 30 is"
+        "description": "Als je nog een paar planten van de 30 bent"
       }
     },
     "permissionPrompt": {
-      "title": "Wil je de etensvraag?",
+      "title": "Wil je de dagelijkse vraag?",
       "body": "Eén vriendelijke vraag na het eten, rond {time}. Verder niets, tenzij je erom vraagt.",
-      "allow": "Ja, herinner ons",
+      "allow": "Ja, herinner me",
       "notNow": "Niet nu"
     }
   },

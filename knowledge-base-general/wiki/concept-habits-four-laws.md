@@ -14,6 +14,16 @@ against the family app, twice over: once for the parent who holds the phone and 
 once for the kid at the table who supplies the reward. Three laws are built; the fourth is thin,
 and that is the "little reward, preventive work" problem Ricardo keeps naming.
 
+## Two readers, not one (added 2026-10-07)
+
+The tables below say "parent" and "kid". Since [[decision-2026-10-07-two-ways-to-use-it]]
+the app serves two customer types: the solo adult, who is most of the closed test, and the
+household. Read "parent" as the adult who holds the phone and "kid" as "the others at the
+table, if any". For a solo adult the kid column is empty, so laws 2 and 4 lean entirely on the
+adult's own rewards (the card, the gold plant, the streak, the stats, a quest); for a household the
+kid supplies the craving and the satisfaction. When a feature is built, both readers are taken
+into account, or the journey is split on purpose once more than one member is active.
+
 ## Explanation
 
 _Atomic Habits_ (Clear, 2018) describes a habit as a four-step loop, cue → craving → response →

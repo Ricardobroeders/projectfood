@@ -18,7 +18,7 @@
     "yesterday": "Ieri",
     "you": "Tu",
     "everyone": "Tutti",
-    "household": "Famiglia",
+    "household": "Casa",
     "loading": "Caricamento…"
   },
   "nav": {
@@ -63,7 +63,7 @@
     "fr": "Français"
   },
   "auth": {
-    "tagline": "Ogni pianta che la tua famiglia assaggia, collezionata.",
+    "tagline": "Ogni pianta che assaggi, collezionata.",
     "heading": "Accedi o crea un account",
     "continueWithGoogle": "Continua con Google",
     "continueWithApple": "Continua con Apple",
@@ -86,15 +86,15 @@
   "onboarding": {
     "step": "Passo {n} di {m}",
     "youTitle": "Iniziamo da te",
-    "youSub": "Il tuo nome, un volto e un colore. Poi tutti quelli che mangiano con te.",
+    "youSub": "Il tuo nome, un volto e un colore. Poi chi mangia con te.",
     "yourName": "Il tuo nome",
-    "familyTitle": "Chi c'è a tavola?",
-    "familySub": "Aggiungi tutti quelli che mangiano con te. Basta il nome o un soprannome.",
+    "familyTitle": "Chi altro c'è a tavola?",
+    "familySub": "Va bene anche solo tu. Aggiungi chi mangia con te, basta il nome o un soprannome.",
     "addPerson": "Aggiungi una persona",
     "dinnerTitle": "A che ora cenate di solito?",
-    "dinnerSub": "Così sappiamo quando fare la domanda della cena. Puoi cambiarlo quando vuoi.",
-    "pingLabel": "Mandaci un promemoria dopo cena",
-    "pingSub": "Una domanda verso le {time}: cosa ha assaggiato ognuno? Nient'altro, a meno che tu non lo chieda.",
+    "dinnerSub": "Così sappiamo quando fare la domanda del giorno. Puoi cambiarlo quando vuoi.",
+    "pingLabel": "Un promemoria dopo cena",
+    "pingSub": "Una domanda verso le {time}: cosa hai assaggiato oggi? Nient'altro, a meno che tu non lo chieda.",
     "finish": "Iniziamo ad assaggiare"
   },
   "tutorial": {
@@ -131,7 +131,7 @@
     "today": "Assaggiato oggi",
     "thisWeeksCollection": "Collezione di questa settimana",
     "logFirstPlant": "Registra la tua prima pianta",
-    "logFirstPlantSub": "Tocca Registra e segna cosa ha assaggiato la famiglia oggi.",
+    "logFirstPlantSub": "Tocca Registra e segna cosa hai assaggiato oggi.",
     "nextGoals": "Prossimi traguardi",
     "streak": "{n} giorni di fila",
     "streakOne": "1 giorno di fila",
@@ -141,11 +141,11 @@
     "tastedBy": "{name}: {n}"
   },
   "log": {
-    "title": "La cena di stasera",
-    "subtitle": "Tocca cosa ha assaggiato la famiglia",
+    "title": "Le piante di oggi",
+    "subtitle": "Tocca cosa hai assaggiato oggi",
     "searchPlaceholder": "Cerca 200+ piante…",
     "all": "Tutte",
-    "yourUsual": "Le vostre solite",
+    "yourUsual": "Le tue solite",
     "noResults": "Nessuna pianta trovata per \"{query}\"",
     "searchPrompt": "Cerca una pianta o scegli una categoria",
     "missingTitle": "Non è nella lista?",
@@ -163,8 +163,8 @@
     "defaultHint": "La tua scelta diventa quella predefinita per le prossime piante",
     "holdHint": "Tieni premuta una pianta per scegliere chi l'ha assaggiata",
     "superfood": "Superfood",
-    "logEmpty": "Prima aggiungi la tua famiglia, poi registra chi ha assaggiato cosa.",
-    "goFamily": "Aggiungi la famiglia",
+    "logEmpty": "Prima aggiungi chi mangia con te, poi registra chi ha assaggiato cosa.",
+    "goFamily": "Aggiungi persone",
     "inSeason": "Di stagione"
   },
   "unlocks": {
@@ -207,16 +207,16 @@
     "weeksAtGoal": "Settimane a {n}",
     "bestWeek": "Settimana migliore",
     "perWeekTitle": "Piante per settimana",
-    "perWeekBody": "Piante diverse assaggiate dalla famiglia, da lunedì a domenica. La barra più chiara è questa settimana.",
+    "perWeekBody": "Piante diverse che hai registrato, da lunedì a domenica. La barra più chiara è questa settimana.",
     "perDayTitle": "Piante per giorno",
-    "perDayBody": "Piante diverse a tavola ogni giorno, le ultime 4 settimane.",
+    "perDayBody": "Piante diverse registrate ogni giorno, le ultime 4 settimane.",
     "empty": "Registra la prima pianta e le settimane si riempiono qui.",
     "mixTitle": "Il tuo mix",
     "mixBody": "Quota di tutto ciò che hai registrato, per categoria.",
     "legendYou": "Tu",
     "legendTypical": "Media",
     "legendGoal": "Obiettivo {n}",
-    "typicalNote": "Media è il punto medio di tutte le famiglie su Project Food.",
+    "typicalNote": "Media è il punto medio di tutti su Project Food.",
     "dinnersInARowDesc": "Giorni di fila con almeno 1 pianta registrata",
     "mostInARowDesc": "La tua serie più lunga finora",
     "weeksAtGoalDesc": "Settimane con {n} piante diverse o più",
@@ -265,19 +265,19 @@
     },
     "full_table": {
       "title": "Tavola piena",
-      "body": "{n} piante assaggiate da tutta la famiglia"
+      "body": "{n} piante assaggiate da tutti a tavola"
     },
     "rainbow": {
       "title": "Arcobaleno",
       "body": "{n} settimane con 5 colori in tavola"
     },
     "big_dinner": {
-      "title": "Grande cena",
-      "body": "Assaggia {n} piante in una cena"
+      "title": "Grande giornata",
+      "body": "Assaggia {n} piante in 1 giorno"
     },
     "regular_table": {
       "title": "Tavola regolare",
-      "body": "Registra la cena in {n} giorni diversi"
+      "body": "Registra in {n} giorni diversi"
     },
     "steady_weeks": {
       "title": "Settimane costanti",
@@ -343,7 +343,7 @@
       "body": "Registra {n} giorni di fila"
     },
     "family_of_thirty": {
-      "title": "Famiglia dei trenta",
+      "title": "Club dei trenta",
       "body": "{n} settimane con 30 piante diverse"
     },
     "nice_try": {
@@ -352,7 +352,7 @@
     },
     "full_spectrum": {
       "title": "Tutto lo spettro",
-      "body": "Tutte le 7 categorie in 1 cena"
+      "body": "Tutte le 7 categorie in 1 giorno"
     },
     "at_the_table": {
       "title": "A tavola",
@@ -360,10 +360,10 @@
     }
   },
   "family": {
-    "title": "La tua famiglia",
-    "empty": "Chi c'è a tavola? Aggiungi tutti quelli che mangiano con te.",
-    "add": "Aggiungi un familiare",
-    "edit": "Modifica familiare",
+    "title": "Alla tua tavola",
+    "empty": "Aggiungi chi mangia con te.",
+    "add": "Aggiungi una persona",
+    "edit": "Modifica persona",
     "namePlaceholder": "Nome",
     "colour": "Colore",
     "kid": "Bambino",
@@ -373,17 +373,17 @@
     "avatarGroup_male": "Bambini",
     "avatarGroup_unknown": "Altro",
     "noAvatar": "Solo iniziale",
-    "removeConfirm": "Rimuovere {name} dalla famiglia? I suoi assaggi restano nella collezione.",
+    "removeConfirm": "Togliere {name} dalla tavola? I suoi assaggi restano nella collezione.",
     "tonight": "{n} stasera",
     "you": "Sei tu"
   },
   "account": {
     "title": "Account",
     "settings": "Impostazioni",
-    "family": "Famiglia",
-    "members": "{n} familiari",
+    "family": "Persone",
+    "members": "{n} a tavola",
     "household": "Casa",
-    "householdName": "Nome della famiglia",
+    "householdName": "Nome della casa",
     "dinnerTime": "Ora di cena",
     "language": "Lingua",
     "notifications": "Notifiche",
@@ -395,10 +395,10 @@
     "signOut": "Disconnetti",
     "deleteAccount": "Elimina account",
     "deleteTitle": "Eliminare il tuo account?",
-    "deleteBody": "Questo rimuove per sempre la tua famiglia, i profili, le carte e i traguardi. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Non si può annullare.",
+    "deleteBody": "Questo rimuove per sempre la tua casa, i profili, le carte e i traguardi. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Non si può annullare.",
     "deleteCta": "Elimina tutto",
     "deletedTitle": "Il tuo account è stato eliminato",
-    "deletedBody": "La tua famiglia, i profili, le carte e i traguardi non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Grazie per essere stato a tavola con noi.",
+    "deletedBody": "La tua casa, i profili, le carte e i traguardi non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. Grazie per essere stato a tavola con noi.",
     "deletedCta": "Chiudi",
     "version": "Versione {v}",
     "updateCheck": "Controlla aggiornamenti",
@@ -411,31 +411,31 @@
     "systemOff": "Le notifiche di Project Food sono disattivate su questo telefono.",
     "openSettings": "Apri le impostazioni del telefono",
     "essential": "Essenziali",
-    "essentialDesc": "La domanda della cena, la tua serie e il promemoria della domenica. Attive di default.",
+    "essentialDesc": "La domanda del giorno, la tua serie e il promemoria della domenica. Attive di default.",
     "marketing": "Consigli e novità",
     "marketingDesc": "Anteprime di carte e traguardi e il promemoria della domenica. Disattive di default.",
     "types": {
       "dinnerQuestion": {
-        "label": "Domanda della cena",
-        "description": "\"Cosa ha assaggiato la famiglia stasera?\" circa mezz'ora dopo cena"
+        "label": "Domanda del giorno",
+        "description": "\"Cosa hai assaggiato oggi?\" circa mezz'ora dopo cena"
       },
       "streakKeeper": {
         "label": "Custode della serie",
-        "description": "Solo quando la serie di famiglia è a rischio"
+        "description": "Solo quando la tua serie è a rischio"
       },
       "cardTeaser": {
         "label": "Anteprime carte e traguardi",
-        "description": "Dopo qualche cena tranquilla: quale carta è vicina. E prima di cena, quando un traguardo supera metà del prossimo livello"
+        "description": "Dopo qualche giorno tranquillo: quale carta è vicina. E prima di cena, quando un traguardo supera metà del prossimo livello"
       },
       "sundayNudge": {
         "label": "Promemoria domenicale",
-        "description": "Quando alla famiglia mancano poche piante per 30"
+        "description": "Quando ti mancano poche piante per 30"
       }
     },
     "permissionPrompt": {
-      "title": "Vuoi la domanda della cena?",
+      "title": "Vuoi la domanda del giorno?",
       "body": "Una domanda gentile dopo cena, verso le {time}. Nient'altro, a meno che tu non lo chieda.",
-      "allow": "Sì, ricordacelo",
+      "allow": "Sì, ricordamelo",
       "notNow": "Non ora"
     }
   },

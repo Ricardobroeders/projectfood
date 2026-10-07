@@ -80,6 +80,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[decision-2026-09-30-first-minute-tutorial]] — four coach-mark balloons after onboarding (Log tab, first plant row, week chip with the why-30 line, the who-logs bar for the family), once per phone, X to skip, copy to the person holding the phone; shipped as 1.0.7; answers brainstorm 21 and the "no onboarding / why 30" tester points.
 - [[decision-2026-10-06-secret-achievements]] — three hidden achievements (Nice try 100, Full spectrum, At the table 5 min), shipped 1.0.20, art pending
 - [[decision-2026-10-07-stats-typical-household]] — stats against the typical household: category mix bars, typical lines, day line, In season on Log (Europe table), shipped 1.0.31
+- [[decision-2026-10-07-two-ways-to-use-it]] — alone or with everyone at your table: the adult who holds the phone is the audience, copy never presumes kids, "the plants you tasted today" replaces "dinner" everywhere except the reminder time; app, notifications and website rewritten the same day.
 - [[decision-2026-09-07-app-v1-scope]] — greenfield Expo app; stack S1–S6 (Supabase-only, Free at launch, RevenueCat, Rive, five locales); eleven v1 features; out-of-scope list; design-library re-brief.
 - [[decision-2026-09-06-family-mode-pivot]] — family mode + native iOS/Android (Expo); household data model; cooperative goals; plant cards; class launch; D1–D14.
 

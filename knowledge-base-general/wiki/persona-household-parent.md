@@ -3,7 +3,7 @@ title: The dinner-table parent (household)
 type: persona
 tags: [persona, target-user, family-mode]
 created: 2026-09-06
-updated: 2026-09-07
+updated: 2026-10-07
 sources: [source-family-mode-context.md]
 ---
 
@@ -12,7 +12,9 @@ sources: [source-family-mode-context.md]
 **One-liner:** A parent of primary-school-age kids (roughly 3–12) who wants the kids to learn
 to eat everything without dinner becoming a battle, holds the phone, pays for the app, and
 logs what the household ate while the kid does the tapping. **Primary persona since
-2026-09-06** ([[source-family-mode-context]]). Provisional: built from one observation and the
+2026-09-06** ([[source-family-mode-context]]); **one of two since 2026-10-07**, next to the solo
+adult ([[persona-believer]], [[decision-2026-10-07-two-ways-to-use-it]]): copy is written for the
+adult who holds the phone and never presumes kids. Provisional: built from one observation and the
 founder's own household; to be validated with five parent conversations.
 
 ## Profile

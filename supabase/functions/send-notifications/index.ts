@@ -27,24 +27,24 @@ type Vars = { n?: number; kids?: string; member?: string; plant?: string; family
 type Copy = { title: string; body: string };
 const COPY: Record<string, Record<Kind, (v: Vars) => Copy>> = {
   en: {
-    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `What did ${v.kids} taste tonight?` : 'What did the family taste tonight?' }),
-    streak_keeper: (v) => ({ title: 'One plant keeps the streak', body: `One plant tonight keeps the family streak at ${v.n}.` }),
-    card_teaser: (v) => ({ title: 'A card is waiting', body: v.plant ? `${v.member}'s ${v.plant} card is one taste from the next level.` : 'The collection is waiting for tonight’s tastes.' }),
-    family_30_nudge: (v) => ({ title: 'Almost 30', body: `${v.n} plants finish the family week.` }),
+    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `What did ${v.kids} taste today?` : 'What did you taste today?' }),
+    streak_keeper: (v) => ({ title: 'One plant keeps the streak', body: `One plant today keeps the streak at ${v.n}.` }),
+    card_teaser: (v) => ({ title: 'A card is waiting', body: v.plant ? `${v.member}'s ${v.plant} card is one taste from the next level.` : 'The collection is waiting for today’s tastes.' }),
+    family_30_nudge: (v) => ({ title: 'Almost 30', body: `${v.n} plants finish the week.` }),
     rung_nudge: (v) => rungCopy('en', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
   nl: {
-    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Wat heeft ${v.kids} vanavond geproefd?` : 'Wat heeft het gezin vanavond geproefd?' }),
-    streak_keeper: (v) => ({ title: 'Eén plant houdt de reeks', body: `Eén plant vanavond houdt de gezinsreeks op ${v.n}.` }),
-    card_teaser: (v) => ({ title: 'Er wacht een kaart', body: v.plant ? `De ${v.plant}-kaart van ${v.member} is één hap van het volgende niveau.` : 'De collectie wacht op de hapjes van vanavond.' }),
-    family_30_nudge: (v) => ({ title: 'Bijna 30', body: `Nog ${v.n} planten en de gezinsweek is rond.` }),
+    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Wat heeft ${v.kids} vandaag geproefd?` : 'Wat heb je vandaag geproefd?' }),
+    streak_keeper: (v) => ({ title: 'Eén plant houdt de reeks', body: `Eén plant vandaag houdt de reeks op ${v.n}.` }),
+    card_teaser: (v) => ({ title: 'Er wacht een kaart', body: v.plant ? `De ${v.plant}-kaart van ${v.member} is één hap van het volgende niveau.` : 'De collectie wacht op de hapjes van vandaag.' }),
+    family_30_nudge: (v) => ({ title: 'Bijna 30', body: `Nog ${v.n} planten en de week is rond.` }),
     rung_nudge: (v) => rungCopy('nl', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
   it: {
-    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Cosa ha assaggiato ${v.kids} stasera?` : 'Cosa ha assaggiato la famiglia stasera?' }),
-    streak_keeper: (v) => ({ title: 'Una pianta salva la serie', body: `Una pianta stasera tiene la serie di famiglia a ${v.n}.` }),
-    card_teaser: (v) => ({ title: 'Una carta ti aspetta', body: v.plant ? `La carta ${v.plant} di ${v.member} è a un assaggio dal prossimo livello.` : 'La collezione aspetta gli assaggi di stasera.' }),
-    family_30_nudge: (v) => ({ title: 'Quasi 30', body: `${v.n} piante completano la settimana di famiglia.` }),
+    dinner_question: (v) => ({ title: 'Project Food', body: v.kids ? `Cosa ha assaggiato ${v.kids} oggi?` : 'Cosa hai assaggiato oggi?' }),
+    streak_keeper: (v) => ({ title: 'Una pianta salva la serie', body: `Una pianta oggi tiene la serie a ${v.n}.` }),
+    card_teaser: (v) => ({ title: 'Una carta ti aspetta', body: v.plant ? `La carta ${v.plant} di ${v.member} è a un assaggio dal prossimo livello.` : 'La collezione aspetta gli assaggi di oggi.' }),
+    family_30_nudge: (v) => ({ title: 'Quasi 30', body: `${v.n} piante completano la settimana.` }),
     rung_nudge: (v) => rungCopy('it', v.rung!, v.owner ?? null, v.threshold ?? 50),
   },
 };

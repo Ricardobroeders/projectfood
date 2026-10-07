@@ -650,6 +650,12 @@ labels, pricing and availability, content rights, the demo password, attaching t
 Submit for Review.
 
 ### What remains, by owner
+**2026-10-07, both stores, after they unlock:** the full descriptions turn family-first in their
+second sentence ("the family tastes, you tap") and the Play frames say the same; since
+[[decision-2026-10-07-two-ways-to-use-it]] the audience is the adult who holds the phone, alone
+or for everyone at the table. Names, subtitles and short descriptions are already goal-first and
+need no change. Apple: after the verdict on 1.0.2 (the version is locked in review). Play: after
+the production application of 2026-10-14, nothing on the listing during the closed test.
 Done by Ricardo in App Store Connect on 2026-09-28 evening: App Privacy published (eight types,
 "Data Linked to You" only, no tracking), Pricing $0.00 and availability in all 175 territories,
 no pre-order, Content rights set, and the demo account with its password under App Review
