@@ -200,6 +200,21 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   mix, days logged per week. Never: ranking members, streak percentiles. Ricardo's: the cut and
   order, the comparison word ("families" or "others on Project Food"), whether season data is
   expanded first, and whether stats leaves the streak chip for its own entry on Home.
+- **Shorter quests, a habits lens and a brand book: three ways to use the wait (rows 2, 4, 5, 9).**
+  Ricardo, 2026-10-07, while the count and Apple's answer are waited on: the reward problem
+  again (eating varied is preventive, little to see), and three threads. (a) Data insights that
+  beat an average: shipped this week as the typical-household lines (brainstorm 25); next is the
+  testers' reaction, not more stats. (b) Weekly or monthly quests, Duolingo-style: the gap between
+  the weekly number that resets and the achievement ladders that take months; a rotating "this
+  week" challenge built from data we hold (categories, the season table, taste counts), paid out on
+  Sunday, JavaScript-only. Claude's pick to brainstorm first. (c) The garden stays parked (entry
+  above). Plus two writing threads: a brand book page for the visual and motion choices that today
+  live only in code and Figma (row 2; the words side exists in `wiki/brand/`), and an Atomic
+  Habits mapping (Clear's four laws against the app; the fourth, make it satisfying, is the thin
+  one; the parent builds the habit, the kid supplies the satisfaction), to feed the quests
+  brainstorm; a loyalty programme belongs to row 9 once the free and paid line is drawn. Claude's
+  proposed order: habits page, then the quests brainstorm with it in hand, brand book in parallel.
+  Awaiting Ricardo's pick. Challenged by brainstorm 17 (economy); outcome = a decision page.
 - **The garden: a place the plants you tasted build (rows 4, 5, 17).** Ricardo with his girlfriend,
   2026-10-06. The problem named: eating varied is preventive, so unlike the scale or the mirror
   there is no visible result, and achievements plus silver / gold cards carry little on their own;

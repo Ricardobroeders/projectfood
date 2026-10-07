@@ -1200,3 +1200,6 @@ lines in both charts, the day chart as a line, "In season" on Log with a Europe 
 
 ## [2026-10-07] update | Closed test: a thirteenth tester installed Android
 Ricardo asked one more person to install the Android build this morning and they did; the Play count should read 13 soon. Recorded in the one-thing block of [[strategy-backlog]] (buffer of one above the floor of twelve; a join does not restart the fourteen-day clock that runs to 2026-10-14). No name recorded.
+
+## [2026-10-07] query | Using the wait: quests, a habits lens, a brand book
+Ricardo's three threads for the review and closed-test wait (reward problem: insights vs average, shorter quests, the garden; brand documentation; Atomic Habits research). Assessed against the backlog: insights shipped as brainstorm 25, garden stays parked, quests is the gap; the words side of the brand exists, the visual and motion side is code-only; the retention page uses the Hook model, Clear's fourth law is the thin one. Parked as one parking-lot entry in [[strategy-backlog]] with Claude's proposed order; no decision yet.
