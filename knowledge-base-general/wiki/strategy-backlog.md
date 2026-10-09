@@ -148,10 +148,16 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     2026-10-09). Step 1 shipped the same day: `projectfood-admin/scripts/assets.mjs` plus the
     `asset_jobs` table replace the n8n image workflow (plant, gold, achievement and UI renders;
     same prompts, buckets and file names; verified end to end on a throwaway UI image, then
-    removed). Next, in order: (a) Next.js app in `projectfood-admin/`, Supabase auth, an
-    `is_admin` flag on the account, deployed on Vercel at admin.projectfood.dev; (b) first page the
-    asset queue: list, previews from Storage, an "add" form per kind, a run button that drains the
-    queue in a background function (or shows the command to run locally); (c) the SEO backlog
+    removed). **Step 2 shipped the same day, local only** (Ricardo: try it on localhost first,
+    going online is a later decision, "if we even want that"; local is fine security-wise): the
+    Next.js app in `projectfood-admin/` (`npm run dev`, 127.0.0.1:3100, no login, secrets read
+    from the site's env file at start) with the asset queue page: add form per kind, Run button
+    (one job per request, the page refreshes as renders land), Done grid with previews, Again /
+    Retry / Remove; the terminal command and the page share `lib/pipeline.js`. Verified end to
+    end through the browser's run endpoint on a throwaway UI image, then removed. The sheet and
+    n8n are out: only Supabase and OpenAI remain. Next, in order: (a) only if it goes online:
+    Supabase auth with an admin allow-list, a Vercel project with the two secrets, the subdomain
+    admin.projectfood.dev; (c) the SEO backlog
     (today `content/learn/queue.json` plus item 9e) as a table with status and the live URL;
     (d) customer-journey mapping (stages × touchpoints × what we have); later the notification
     campaigns and plant content the 2026-09-22 note named. Fits the tester window: nothing in the
@@ -504,7 +510,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
 | 10 | Market | drafted | Kids-food competitor teardown + NL/IT household sizing |
 | 11 | KPIs / success definition | open | Instrumentation live since 2026-09-16 (`app_events`, `notification_log` sent/delivered/opened/logged-within-3h); still to pick the five numbers before TestFlight |
 | 12 | Go-to-market & acquisition | open | How the first class is recruited; founder-seeded vs organic (added by Claude) |
-| 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled; an admin panel for facts, translations and card copy parked 2026-09-22 (parking lot, with row 4); **2026-10-09:** the panel's first module is the image pipeline that replaces the borrowed n8n flow (asset_jobs table + script, then the admin app), built the same day as item 29 step 1 (`projectfood-admin/`), the admin app is the next step |
+| 13 | Content & localisation pipeline | drafted | Facts generated for en/nl/it on 2026-09-16 (`plant_facts`, status generated) by `scripts/generate-plant-facts.mjs`; Ricardo reviews; de/fr facts + 448 plant names when DE/FR listings are scheduled; an admin panel for facts, translations and card copy parked 2026-09-22 (parking lot, with row 4); **2026-10-09:** the panel's first module is the image pipeline that replaces the borrowed n8n flow (asset_jobs table + script, then the admin app), built the same day as item 29 (`projectfood-admin/`: terminal command plus a local admin page over one queue, n8n and the sheet gone); next modules SEO backlog and journey map |
 | 14 | Privacy & kids' data | drafted | Privacy page rewritten 2026-09-20 for the family app (kids' profiles, what is stored, processors, notifications, deletion, rights) in en/nl/it at projectfood.dev/{locale}/privacy, plus `/delete-account` with an email-code web flow; tastes outlive the account as anonymous rows ([[decision-2026-09-20-tastes-outlive-the-account]]); Ricardo reads the controller wording once before Play review; de/fr with those listings |
 | 15 | Naming & store presence | open | Bundle id `dev.projectfood.app` fixed on 2026-09-16; keep "Project Food"? Icon set generated 2026-09-20 from the Figma export (`scripts/build-icons.mjs`; Play 512 in `assets/brand/store`); still needed: feature graphic 1024×500, screenshots, a drawn monochrome glyph if the auto silhouette disappoints | Play category picked 2026-09-22: **Parenting**, not Health & Fitness. Reasons: Health & Fitness is one of the most competitive categories on Play so a new app cannot chart in it, Parenting is small enough to be visible, the listing copy is family-first, and the launch channel is a link in a class WhatsApp group rather than store browsing. Category is changeable at any time in Store settings with no re-review, so it is a weak, reversible lever; the strong levers are the title, short description and full description, which carry the search terms for any audience.
 | 16 | Partnerships (schools, brands) | parked | Revisit after the first class replicates (added by Claude) |

@@ -1,15 +1,29 @@
 {
   "name": "projectfood-admin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Project Food internal tools: the asset pipeline today, the admin app at admin.projectfood.dev later.",
+  "description": "Project Food internal tools: the asset pipeline (terminal + local admin app); later SEO backlog and journey map.",
   "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 3100",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 3100",
     "assets": "node scripts/assets.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",
     "dotenv": "^17.2.3",
-    "openai": "^6.35.0"
+    "next": "15.5.15",
+    "openai": "^6.35.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

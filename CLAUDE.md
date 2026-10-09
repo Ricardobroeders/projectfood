@@ -16,10 +16,10 @@ then the memory index; open the knowledge base when the work touches product or 
 - `knowledge-base-general/` — the knowledge hub (LLM wiki). Its own `CLAUDE.md` is the schema;
   read it before writing there. The app spec is `wiki/decision-2026-09-07-app-v1-scope.md` plus
   `wiki/concept-retention-loop.md`. Undecided ideas: `wiki/strategy-backlog.md`.
-- `projectfood-admin/` — internal tools. Today the asset pipeline (`npm run assets -- …`, the
-  `asset_jobs` table; replaced the n8n image workflow on 2026-10-09, README there); later the
-  admin app at admin.projectfood.dev (asset queue, SEO backlog, journey map). Secrets fall back to
-  `projectfood-app/.env.local`.
+- `projectfood-admin/` — internal tools, local only (`npm run dev` → 127.0.0.1:3100, no login).
+  Today the asset queue (browser page and `npm run assets -- …` over the same `asset_jobs` table;
+  replaced the n8n image workflow on 2026-10-09, README there); next the SEO backlog and the
+  journey map. Secrets fall back to `projectfood-app/.env.local`; going online is undecided.
 - `design-library/` — gitignored, local only; its README holds the family-mode re-brief.
 - `.claude/skills/` — `pf-voice` (the writing voice) and `pf-seo-article` (the learn-article
   routine). The brand files they read live in `knowledge-base-general/wiki/brand/`.

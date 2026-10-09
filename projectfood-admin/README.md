@@ -1,23 +1,44 @@
 # projectfood-admin
 
-Internal tools for Project Food. Today: the asset pipeline (a script plus a job table). Later: the
-admin app at admin.projectfood.dev (decided 2026-09-22: own folder, Supabase auth with an admin
-flag) with the asset queue, the SEO backlog, customer-journey mapping and notification campaigns.
+Internal tools for Project Food, local only for now (Ricardo, 2026-10-09: try it on localhost
+first; going online at admin.projectfood.dev is a later decision, item 29 in the backlog). Today:
+the asset pipeline, as a browser page and as a terminal command over the same queue. Later on the
+same shell: the SEO backlog and customer-journey mapping.
 
-## Asset pipeline
+Only two services are involved: Supabase (the queue table and Storage) and OpenAI (gpt-image-1,
+the key the site already uses). No spreadsheet, no n8n.
 
-Replaced the n8n "Content creation workflow" on 2026-10-09. Same prompts, same buckets, same file
-names, so new renders sit in the family of the existing ones.
+## Run it
+
+```bash
+cd projectfood-admin
+npm install          # once
+npm run dev          # http://127.0.0.1:3100
+```
+
+Secrets are read from `projectfood-admin/.env` or, when that file is absent, from
+`../projectfood-app/.env.local` (Supabase URL, service role key, OpenAI key). Nothing is copied
+and nothing is committed. The server binds to 127.0.0.1 only, so there is no login.
+
+## The asset queue
+
+Replaced the n8n "Content creation workflow" on 2026-10-09. Same prompts, buckets and file names,
+so new renders sit in the family of the existing ones. Prompts live in `lib/pipeline.js`.
 
 | kind | input | file | default quality |
 |---|---|---|---|
-| `plant` | plant slug (name, category, subcategory, family read from `plants`) | `food-images/<slug>.png`, then `plants.image_url` is set | medium |
-| `gold` | plant slug | `food-images/gold/<slug>.png` (build-assets picks it up by slug) | medium |
-| `achievement` | achievement id + description | `achievements/achievement-<id>.png` | high |
-| `ui` | file name + description | `images/app-ui-images/<name>.png` | high |
+| plant | plant slug (name, category, subcategory, family read from `plants`) | `food-images/<slug>.png`, then `plants.image_url` is set | medium |
+| gold | plant slug | `food-images/gold/<slug>.png` (build-assets picks it up by slug) | medium |
+| achievement | achievement id + description | `achievements/achievement-<id>.png` | high |
+| ui | file name + description | `images/app-ui-images/<name>.png` | high |
+
+In the browser: add a job with the form, press Run (one job per request, about 15 to 60 seconds
+each, the page refreshes as they land), see the renders in the Done grid; Again queues the same
+render once more, Retry puts a failed job back, Remove or Hide drops the row (the file stays).
+
+In the terminal, over the same queue:
 
 ```bash
-cd projectfood-admin && npm install            # once
 npm run assets -- add plant kohlrabi           # the plant must exist in public.plants first
 npm run assets -- add gold kohlrabi
 npm run assets -- add achievement 23 "a bronze trophy cup shaped like a carrot"
@@ -26,18 +47,16 @@ npm run assets -- scan-plants                  # queues every active plant witho
 npm run assets -- list                         # the queue, with the cost of what is pending
 npm run assets -- run --dry                    # prints the resolved prompts, no API calls
 npm run assets -- run                          # drains the queue, oldest first (--limit N)
-npm run assets -- retry <job-id>               # an error row back to pending
+npm run assets -- retry <job-id>
 ```
 
-Secrets come from `projectfood-admin/.env` or, when that file is absent, from
-`../projectfood-app/.env.local` (the site already holds the Supabase service role key and the
-OpenAI key). Nothing is committed.
-
 Notes
-- Quality low is for pipeline tests only (about one cent): transparent backgrounds come out
+- Quality low is for pipeline tests only (about one cent); transparent backgrounds come out
   unreliable at low. Medium is about four cents, high about seventeen.
 - A job is a row in `public.asset_jobs` (migration `supabase/migrations/20261009120000_asset_jobs.sql`,
   service role only). One open job per asset; a done or failed one can be queued again.
 - Mobile bundles renders at build time: after new plant or gold renders, run
   `node scripts/build-assets.mjs` in `projectfood-mobile` and ship with the next build or OTA.
 - The website's 128 px plant thumbnails come from the `/image-updater` routine, unchanged.
+- If this ever goes online: add Supabase auth with an admin allow-list before deploying, and move
+  the two secrets into that Vercel project.
