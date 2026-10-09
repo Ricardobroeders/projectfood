@@ -504,7 +504,7 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   (the app has used it since 2026-09-16); `send-notifications` now runs with verify_jwt off behind
   its cron secret and the cron call carries no anon key; then the JWT-based keys were disabled
   (old anon key verified refused, site, cron, admin tool and learn-publish verified working). User
-  sessions untouched. The OpenAI key, also stored in that n8n account, is still to rotate (Ricardo).
+  sessions untouched. The OpenAI keys followed the same day: `website` and `admin_local`, the n8n key and the old site key deleted, the site redeployed.
 
 - **"Moeilijke eter"-test** (2026-09-24, from the Semrush run: "moeilijke eter test" 20/month). A
   five-question self-test on the website ("is mijn kind een moeilijke eter?") that ends in the
