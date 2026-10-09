@@ -496,7 +496,15 @@ a build step. Source: `raw/ricardo-brainstorm-2026-09-10-plane.md`.
   map. Keeps its 2026-09-22 location; priority rises from "once the app is live" to "fits the tester
   window, touches nothing the clock depends on". Input needed from Ricardo: the n8n workflow export
   (JSON) for the sheet columns, the prompt template and the image settings. _(Ricardo, 2026-10-09;
-  touches rows 4, 6, 13)_ **Step 1 built the same day** (the export arrived): item 29 on the build list.
+  touches rows 4, 6, 13)_ **Step 1 built the same day** (the export arrived): item 29 on the build list. **Keys rotated the same day:** the n8n
+  export carried the legacy service_role JWT in plain text, so the n8n workflow and its
+  credentials were deleted and the project moved to the new API keys: one secret key per consumer
+  (`website` in Vercel and the site's env file, `edge_functions` as the `PF_SECRET_KEY` function
+  secret, `admin_local` in `projectfood-admin/.env`), the `default` publishable key for the site
+  (the app has used it since 2026-09-16); `send-notifications` now runs with verify_jwt off behind
+  its cron secret and the cron call carries no anon key; then the JWT-based keys were disabled
+  (old anon key verified refused, site, cron, admin tool and learn-publish verified working). User
+  sessions untouched. The OpenAI key, also stored in that n8n account, is still to rotate (Ricardo).
 
 - **"Moeilijke eter"-test** (2026-09-24, from the Semrush run: "moeilijke eter test" 20/month). A
   five-question self-test on the website ("is mijn kind een moeilijke eter?") that ends in the
