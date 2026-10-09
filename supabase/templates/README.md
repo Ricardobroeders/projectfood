@@ -12,7 +12,10 @@ colour set inline and again under `prefers-color-scheme: dark` and the Outlook `
 `data-ogsc` hooks, no images (a transparent logo is what breaks first), dark text on a light card.
 The only variable is `{{ .Token }}`, and since 2026-10-06 it also leads the subject ("12345678 is your
 Project Food code"), so the notification on the phone shows the code and Android offers Copy on it. Copy is English only; per-language templates would need the
-locale in user metadata, which the app does not store (backlog row 13).
+locale in user metadata, which the app does not store (backlog row 13). The deletion confirmation
+(`functions/delete-account`, since 2026-10-09) is not an Auth template: the function builds the same
+card itself, per locale from `user_settings.locale`, and sends it through Resend from
+info@projectfood.dev with the `RESEND_API_KEY` function secret.
 
 Push: `SUPABASE_ACCESS_TOKEN=sbp_... node supabase/templates/push.mjs` (`--dry-run` to preview).
 Known limit (2026-09-21): a token scoped to Auth Config read-write could read the config but the

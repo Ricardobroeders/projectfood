@@ -1215,3 +1215,6 @@ Ricardo asked for a website pillar on how the app works (features with visuals, 
 
 ## [2026-10-09] ingest | Brand book, the design side
 Ricardo's go on the brand book. New page [[brand-design]] in `wiki/brand/`: the visual and motion choices extracted from `theme.ts`, `motion.ts`, the device-test history in `design-library/README.md` and the brand pillars, with the open decisions (accent, brand mark, Rive style, role-named Figma variables, dark mode, reduced motion) and a table of where each rule lives. Mirrored as the "Brand book" tab of Project Food Docs (tab 5db6c208-d2ea). Root CLAUDE.md points to it; backlog row 2 and section 2 updated; index entry added.
+
+## [2026-10-09] build | Deletion confirmation email (backlog 8a and 13)
+Ricardo put `RESEND_API_KEY` into the Edge Function secrets. `delete-account` now reads the user's email and `user_settings.locale`, deletes the account, then sends a confirmation through Resend from info@projectfood.dev in en, nl or it, built as the same light card as the sign-in templates (dark-mode hooks, no images). Order chosen so a failed deletion never produces a "deleted" email and a failed email never blocks a deletion; the response reports `emailed`. Deployed through the Supabase connector. Items 8a and 13 ticked; Ricardo verifies with a throwaway account.
