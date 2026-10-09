@@ -8,7 +8,7 @@ export const PLACEHOLDERS = {
   manual: ['description', 'key'],
 };
 
-/** Sample inputs for the prompt preview on the Kinds page. */
+/** Sample inputs for the prompt preview under Asset settings. */
 export const SAMPLE_INPUTS = {
   plant: { key: 'kohlrabi', name: 'Kohlrabi', category: 'vegetable', subcategory: 'stem_vegetable', botanical_family: 'Brassicaceae' },
   manual: { key: 'streak-flame', description: 'a small friendly orange flame' },

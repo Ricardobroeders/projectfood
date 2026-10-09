@@ -1,7 +1,7 @@
 // The asset pipeline, shared by scripts/assets.mjs (terminal) and the admin app (browser).
 // A job row in public.asset_jobs → image model → PNG → Supabase Storage → (plants.image_url).
 // The steps are fixed here; what varies per kind (inputs, prompt, bucket, file name, quality,
-// model) is a row in public.asset_kinds, editable on the Kinds page (2026-10-09).
+// model) is a row in public.asset_kinds, editable under Asset settings in the admin app (2026-10-09).
 
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';

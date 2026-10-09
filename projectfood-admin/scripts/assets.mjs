@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Terminal front for the asset pipeline (lib/pipeline.js). The admin app is the browser front.
 //
-//   npm run assets -- add <kind> <key> ["description"]      kinds live in public.asset_kinds (Kinds page)
+//   npm run assets -- add <kind> <key> ["description"]      kinds live in public.asset_kinds (Asset settings)
 //   npm run assets -- add plant <slug>                      plant render, food-images/<slug>.png
 //   npm run assets -- add gold <slug>                       gold render, food-images/gold/<slug>.png
 //   npm run assets -- add achievement <id> "<description>"  achievements/achievement-<id>.png

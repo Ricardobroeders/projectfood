@@ -24,7 +24,7 @@ and nothing is committed. The server binds to 127.0.0.1 only, so there is no log
 
 - **Assets**: the queue. Add a job (kind, key, description for manual kinds, quality), open its
   prompt to edit it before running, press Run, see the renders in the Done grid.
-- **Kinds**: the flows. A kind is the data of one old n8n lane: where inputs come from (the plants
+- **Asset settings**: the kinds, one per flow. A kind is the data of one old n8n lane: where inputs come from (the plants
   table or a typed description), the prompt template with `{{placeholders}}` and a live preview,
   bucket and file name pattern, default quality, model, background, and whether to write
   `plants.image_url` when done. Edit a prompt, create a kind as a copy of another, delete one that
