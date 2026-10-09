@@ -1218,3 +1218,6 @@ Ricardo's go on the brand book. New page [[brand-design]] in `wiki/brand/`: the 
 
 ## [2026-10-09] build | Deletion confirmation email (backlog 8a and 13)
 Ricardo put `RESEND_API_KEY` into the Edge Function secrets. `delete-account` now reads the user's email and `user_settings.locale`, deletes the account, then sends a confirmation through Resend from info@projectfood.dev in en, nl or it, built as the same light card as the sign-in templates (dark-mode hooks, no images). Order chosen so a failed deletion never produces a "deleted" email and a failed email never blocks a deletion; the response reports `emailed`. Deployed through the Supabase connector. Items 8a and 13 ticked; Ricardo verifies with a throwaway account.
+
+## [2026-10-09] fix | Deletion email verified, lands in spam at Gmail
+Ricardo's test: the confirmation arrived, right look and words, SPF, DKIM and DMARC pass (Gmail's "Show original"), delivered to spam ("similar to messages identified as spam in the past"): reputation of a young domain, not authentication. Subject softened to read as a reply to the person's own request, in three languages; Ricardo reports it not spam. DMARC stays p=none for now. Item 13 verified in [[strategy-backlog]].
