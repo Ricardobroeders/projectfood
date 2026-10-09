@@ -1,0 +1,15 @@
+{
+  "name": "projectfood-admin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Project Food internal tools: the asset pipeline today, the admin app at admin.projectfood.dev later.",
+  "scripts": {
+    "assets": "node scripts/assets.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.104.1",
+    "dotenv": "^17.2.3",
+    "openai": "^6.35.0"
+  }
+}
