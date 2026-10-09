@@ -20,7 +20,7 @@ type Copy = { subject: string; title: string; body: string; keep: string; again:
 // Parent register, plain: say what happened and when, no warmth theatre (brand-voice, support emails).
 const COPY: Record<Locale, Copy> = {
   en: {
-    subject: 'Your Project Food account is deleted',
+    subject: 'Your Project Food account has been deleted, as you asked',
     title: 'Your account is deleted',
     body: 'Your account, the household you created with its profiles, cards and achievements, your notification history and push tokens are gone. Your tastes stay only as anonymous statistics, linked to no one. Database backups expire within 30 days.',
     keep: 'If you joined a household that someone else created, that household stays with them.',
@@ -28,7 +28,7 @@ const COPY: Record<Locale, Copy> = {
     thanks: 'Thank you for having been at the table.',
   },
   nl: {
-    subject: 'Je Project Food-account is verwijderd',
+    subject: 'Je Project Food-account is verwijderd, zoals je vroeg',
     title: 'Je account is verwijderd',
     body: 'Je account, het huishouden dat je hebt aangemaakt met de profielen, kaarten en prestaties, je meldingsgeschiedenis en push-tokens zijn weg. Je hapjes blijven alleen als anonieme statistiek bewaard, aan niemand gekoppeld. Databaseback-ups verlopen binnen 30 dagen.',
     keep: 'Ben je aangesloten bij een huishouden dat iemand anders heeft aangemaakt, dan blijft dat huishouden bij die persoon.',
@@ -36,7 +36,7 @@ const COPY: Record<Locale, Copy> = {
     thanks: 'Bedankt dat je aan tafel zat.',
   },
   it: {
-    subject: 'Il tuo account Project Food è stato eliminato',
+    subject: 'Il tuo account Project Food è stato eliminato, come richiesto',
     title: 'Il tuo account è stato eliminato',
     body: 'Il tuo account, la casa che hai creato con i suoi profili, carte e traguardi, la cronologia delle notifiche e i token push non ci sono più. I tuoi assaggi restano solo come statistiche anonime, senza collegamento a nessuno. I backup del database scadono entro 30 giorni.',
     keep: 'Se ti sei unito a una casa creata da qualcun altro, quella casa resta a quella persona.',
