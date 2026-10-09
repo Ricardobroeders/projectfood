@@ -6,7 +6,7 @@ import { Images, SlidersHorizontal, Search, Route, Leaf } from 'lucide-react';
 
 const ITEMS = [
   { href: '/assets', label: 'Assets', icon: Images },
-  { href: '/kinds', label: 'Kinds', icon: SlidersHorizontal },
+  { href: '/asset-settings', label: 'Asset settings', icon: SlidersHorizontal },
   { href: '/seo', label: 'SEO backlog', icon: Search, soon: true },
   { href: '/journey', label: 'Journey map', icon: Route, soon: true },
 ];

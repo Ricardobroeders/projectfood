@@ -75,7 +75,7 @@ export async function saveKind(id: string, _prev: ActionResult | null, form: For
     if (!row.path_template.includes('{{key}}')) throw new Error('The file name needs {{key}} so every job gets its own file');
     const { error } = await db().from('asset_kinds').update({ ...row, updated_at: new Date().toISOString() }).eq('id', id);
     if (error) throw new Error(error.message);
-    revalidatePath('/kinds');
+    revalidatePath('/asset-settings');
     revalidatePath('/assets');
     return { ok: true, message: 'Saved' };
   } catch (err) {
@@ -104,7 +104,7 @@ export async function createKind(_prev: ActionResult | null, form: FormData): Pr
     delete (row as { updated_at?: string }).updated_at;
     const { error } = await db().from('asset_kinds').insert(row);
     if (error) throw new Error(error.code === '23505' ? `A kind "${id}" exists already` : error.message);
-    revalidatePath('/kinds');
+    revalidatePath('/asset-settings');
     revalidatePath('/assets');
     return { ok: true, message: `Kind "${id}" created` };
   } catch (err) {
@@ -115,6 +115,6 @@ export async function createKind(_prev: ActionResult | null, form: FormData): Pr
 export async function deleteKind(id: string): Promise<void> {
   // Blocked by the foreign key while jobs reference it; the page shows the job count.
   await db().from('asset_kinds').delete().eq('id', id);
-  revalidatePath('/kinds');
+  revalidatePath('/asset-settings');
   revalidatePath('/assets');
 }

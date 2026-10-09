@@ -14,9 +14,9 @@ export default async function KindsPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1>Kinds</h1>
+        <h1>Asset settings</h1>
         <p className="meta mt-1">
-          A kind is one flow: where the inputs come from, the prompt, where the file goes. The steps themselves never change
+          Each kind of asset is one flow: where the inputs come from, the prompt, where the file goes. The steps themselves never change
           (inputs → prompt → image → upload → done), so a new image type is a new row here, not new code.
         </p>
       </div>

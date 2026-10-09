@@ -32,7 +32,7 @@ export default async function AssetsPage() {
         <div>
           <h1>Assets</h1>
           <p className="meta mt-1">
-            One row per render. The prompt is filled from the kind when a job is queued and can be edited while it waits.
+            One row per render. The prompt is filled from the kind (Asset settings) when a job is queued and can be edited while it waits.
             New plant and gold renders reach the app on the next build or OTA.
           </p>
         </div>

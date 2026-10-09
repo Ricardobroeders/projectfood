@@ -8,7 +8,7 @@ export type KindOption = { id: string; label: string; source: string; quality: s
 export function AddForm({ kinds }: { kinds: KindOption[] }) {
   const [kind, setKind] = useState<KindOption>(kinds[0]);
   const [state, action, busy] = useActionState<ActionResult | null, FormData>(addJob, null);
-  if (!kind) return <p className="surface meta p-5">No kinds yet. Create one on the Kinds page.</p>;
+  if (!kind) return <p className="surface meta p-5">No kinds yet. Create one under Asset settings.</p>;
   const isPlant = kind.source === 'plant';
 
   return (
