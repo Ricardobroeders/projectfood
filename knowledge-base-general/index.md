@@ -68,6 +68,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[brand-voice]] — the tone of voice: who speaks to whom, the four NN/g dials for the parent and the kid-visible register, rules per surface, sentence rules, vocabulary per locale (en/nl/it), examples, the three gates. Read by the `pf-voice` skill before any copy.
 - [[brand-humour]] — dry, one line, intros only (Ricardo, 2026-09-24): where humour belongs, where never, the style, on/off examples in three languages.
 - [[brand-stats-and-claims]] — the only numbers allowed in public copy with verified sources (8 to 15 tastes, Wardle 2003, Cooke 2011, Dovey 2008, Food Dudes, American Gut, AAP, CDC, Voedingscentrum), the claims we never make, how to cite, the contradictions handled honestly.
+- [[brand-design]] — the design side of the brand book: colour (neutrals, the open accent, role colours, category tints), type, shape and layout, imagery (clay plants, Rive), the motion classes, open decisions, where each rule lives.
 
 ## Interviews
 - [[interview-closed-test-2026-09]] — running log of what the Play closed testers say (from 2026-09-27), how they were recruited and what changed; the record for Google's production-access application. First point 2026-09-29: the app never explains why 30 plants a week.

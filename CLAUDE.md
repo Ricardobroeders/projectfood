@@ -8,7 +8,9 @@ then the memory index; open the knowledge base when the work touches product or 
 - `projectfood-mobile/` — the Expo SDK 57 + TypeScript app (Expo Router in `src/app`).
   Run: `cd projectfood-mobile && npx expo start --lan` (Expo Go on Ricardo's OnePlus).
   Design rules live in code: `src/constants/theme.ts` (tokens, `radiusFor`, `iconFor`, accent
-  switch via `EXPO_PUBLIC_ACCENT`) and `src/constants/motion.ts` (motion classes).
+  switch via `EXPO_PUBLIC_ACCENT`) and `src/constants/motion.ts` (motion classes); written up as
+  the brand book in `knowledge-base-general/wiki/brand/brand-design.md` (2026-10-09), which
+  follows the code, never the other way round.
 - `projectfood-app/` — the legacy Next.js PWA (adult "30 plants" tracker). Marketing site only
   from here on; do not extend the PWA.
 - `knowledge-base-general/` — the knowledge hub (LLM wiki). Its own `CLAUDE.md` is the schema;

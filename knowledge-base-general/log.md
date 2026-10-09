@@ -1212,3 +1212,6 @@ Ricardo, reading the habits tab: almost every tester counts for themselves, and 
 
 ## [2026-10-07] query | Backlog item 27 and the ordered to-do list
 Ricardo asked for a website pillar on how the app works (features with visuals, habit clusters on the four laws; for SEO, for in-app read-more links, for partners such as nutritionists): added as build step 27 in [[strategy-backlog]], with a note on row 6. He also asked for the whole list ordered by importance; given in chat, the one thing first.
+
+## [2026-10-09] ingest | Brand book, the design side
+Ricardo's go on the brand book. New page [[brand-design]] in `wiki/brand/`: the visual and motion choices extracted from `theme.ts`, `motion.ts`, the device-test history in `design-library/README.md` and the brand pillars, with the open decisions (accent, brand mark, Rive style, role-named Figma variables, dark mode, reduced motion) and a table of where each rule lives. Mirrored as the "Brand book" tab of Project Food Docs (tab 5db6c208-d2ea). Root CLAUDE.md points to it; backlog row 2 and section 2 updated; index entry added.
