@@ -123,7 +123,7 @@ Deno.serve(async (req: Request) => {
   const jwt = (req.headers.get('Authorization') ?? '').replace(/^Bearer\s+/i, '');
   if (!jwt) return json({ error: 'unauthorized' }, 401);
 
-  const admin = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!, {
+  const admin = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('PF_SECRET_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
   const { data, error } = await admin.auth.getUser(jwt);

@@ -20,7 +20,10 @@ const EXPO_PUSH = 'https://exp.host/--/api/v2/push';
 /** A household hears about a rung at most this often. */
 const RUNG_NUDGE_GAP_MS = 3 * 86400_000;
 
-const SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+// PF_SECRET_KEY is the `edge_functions` secret key (2026-10-09, after the legacy service key leaked
+// via n8n); the legacy key is the fallback until the legacy keys are disabled.
+const SERVICE_KEY = Deno.env.get('PF_SECRET_KEY') ?? Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+const LEGACY_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 const admin = createClient(Deno.env.get('SUPABASE_URL')!, SERVICE_KEY, { auth: { persistSession: false, autoRefreshToken: false } });
 
 type Vars = { n?: number; kids?: string; member?: string; plant?: string; family?: string; rung?: RungState; owner?: string | null; threshold?: Threshold };
@@ -362,10 +365,12 @@ async function probe(hid: string) {
   return { household: hh, members, states, due, nudges };
 }
 
-/** The scheduler proves itself with the vault-held cron secret (pg_cron -> pg_net); the service role key also works. */
+/** The scheduler proves itself with the vault-held cron secret (pg_cron -> pg_net); the secret key also works.
+ *  Deployed with verify_jwt off (2026-10-09): this check is the gate, so the cron call no longer
+ *  depends on the legacy anon JWT. */
 async function authorized(req: Request): Promise<boolean> {
   const bearer = (req.headers.get('Authorization') ?? '').replace(/^Bearer\s+/i, '');
-  if (bearer && bearer === SERVICE_KEY) return true;
+  if (bearer && (bearer === SERVICE_KEY || (LEGACY_SERVICE_KEY && bearer === LEGACY_SERVICE_KEY))) return true;
   const given = req.headers.get('x-cron-secret');
   if (!given) return false;
   const { data } = await admin.rpc('cron_secret');
