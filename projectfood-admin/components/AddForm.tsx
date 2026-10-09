@@ -3,33 +3,30 @@
 import { useActionState, useState } from 'react';
 import { addJob, type ActionResult } from '@/app/actions';
 
-const KIND_OPTIONS = [
-  { value: 'plant', label: 'Plant render', key: 'Plant slug (must exist in plants)', description: false, quality: 'medium' },
-  { value: 'gold', label: 'Gold plant render', key: 'Plant slug', description: false, quality: 'medium' },
-  { value: 'achievement', label: 'Achievement render', key: 'Achievement id (file: achievement-<id>.png)', description: true, quality: 'high' },
-  { value: 'ui', label: 'UI image', key: 'File name (file: app-ui-images/<name>.png)', description: true, quality: 'high' },
-];
+export type KindOption = { id: string; label: string; source: string; quality: string; path_template: string };
 
-export function AddForm() {
-  const [kind, setKind] = useState(KIND_OPTIONS[0]);
+export function AddForm({ kinds }: { kinds: KindOption[] }) {
+  const [kind, setKind] = useState<KindOption>(kinds[0]);
   const [state, action, busy] = useActionState<ActionResult | null, FormData>(addJob, null);
+  if (!kind) return <p className="surface meta p-5">No kinds yet. Create one on the Kinds page.</p>;
+  const isPlant = kind.source === 'plant';
 
   return (
-    <form action={action} className="surface flex flex-col gap-3 p-4">
-      <div className="grid gap-3 sm:grid-cols-[1fr_1fr_120px]">
-        <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[var(--ink-2)]">Kind</span>
-          <select name="kind" className="field" value={kind.value} onChange={(e) => setKind(KIND_OPTIONS.find((k) => k.value === e.target.value)!)}>
-            {KIND_OPTIONS.map((k) => <option key={k.value} value={k.value}>{k.label}</option>)}
+    <form action={action} className="surface flex flex-col gap-4 p-5">
+      <div className="grid gap-4 sm:grid-cols-[1fr_1fr_150px]">
+        <label className="flex flex-col gap-1.5">
+          <span className="label">Kind</span>
+          <select name="kind" className="field" value={kind.id} onChange={(e) => setKind(kinds.find((k) => k.id === e.target.value)!)}>
+            {kinds.map((k) => <option key={k.id} value={k.id}>{k.label}</option>)}
           </select>
         </label>
-        <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[var(--ink-2)]">{kind.key}</span>
-          <input name="key" className="field" required autoComplete="off" />
+        <label className="flex flex-col gap-1.5">
+          <span className="label">{isPlant ? 'Plant slug (must exist in plants)' : `Key → ${kind.path_template}`}</span>
+          <input name="key" className="field" required autoComplete="off" placeholder={isPlant ? 'kohlrabi' : 'streak-flame'} />
         </label>
-        <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[var(--ink-2)]">Quality</span>
-          <select name="quality" className="field" defaultValue="" key={kind.value}>
+        <label className="flex flex-col gap-1.5">
+          <span className="label">Quality</span>
+          <select name="quality" className="field" defaultValue="" key={kind.id}>
             <option value="">{kind.quality} (default)</option>
             <option value="low">low · test only</option>
             <option value="medium">medium · $0.04</option>
@@ -37,15 +34,15 @@ export function AddForm() {
           </select>
         </label>
       </div>
-      {kind.description && (
-        <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[var(--ink-2)]">What the image shows (one noun phrase; the style is added by the prompt)</span>
-          <textarea name="description" className="field" required placeholder="a bronze trophy cup shaped like a carrot" />
+      {!isPlant && (
+        <label className="flex flex-col gap-1.5">
+          <span className="label">What the image shows (fills the kind’s prompt)</span>
+          <textarea name="description" className="field" required placeholder="a bronze trophy cup shaped like a carrot" rows={2} />
         </label>
       )}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <button className="btn" type="submit" disabled={busy}>{busy ? 'Adding…' : 'Add to queue'}</button>
-        {state && <span className={`text-sm ${state.ok ? 'text-[var(--ok)]' : 'text-[var(--bad)]'}`}>{state.message}</span>}
+        {state && <span className={`text-sm font-semibold ${state.ok ? 'text-[var(--success)]' : 'text-[var(--bad)]'}`}>{state.message}</span>}
       </div>
     </form>
   );

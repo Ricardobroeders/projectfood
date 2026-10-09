@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Terminal front for the asset pipeline (lib/pipeline.js). The admin app is the browser front.
 //
+//   npm run assets -- add <kind> <key> ["description"]      kinds live in public.asset_kinds (Kinds page)
 //   npm run assets -- add plant <slug>                      plant render, food-images/<slug>.png
 //   npm run assets -- add gold <slug>                       gold render, food-images/gold/<slug>.png
 //   npm run assets -- add achievement <id> "<description>"  achievements/achievement-<id>.png
@@ -10,7 +11,7 @@
 //   npm run assets -- run [--limit N] [--dry]               drain pending jobs (oldest first)
 //   npm run assets -- retry <job-id>                        error → pending
 //
-// Options for add: --quality low|medium|high (defaults per kind in lib/pipeline.js).
+// Options for add: --quality low|medium|high (default per kind).
 
 import { config as loadEnv } from 'dotenv';
 import { dirname, resolve } from 'node:path';
@@ -20,7 +21,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 loadEnv({ path: resolve(HERE, '../.env'), quiet: true });
 loadEnv({ path: resolve(HERE, '../../projectfood-app/.env.local'), quiet: true });
 
-const { KINDS, PRICE, db, enqueue, promptFor, processNext } = await import('../lib/pipeline.js');
+const { PRICE, db, listKinds, enqueue, promptFor, processNext } = await import('../lib/pipeline.js');
 
 const [, , command, ...rest] = process.argv;
 const args = [];
@@ -48,7 +49,10 @@ try {
 
 async function add() {
   const [kind, key, description] = args;
-  if (!KINDS[kind] || !key) throw new Error('add <plant|gold|achievement|ui> <key> ["description"]');
+  if (!kind || !key) {
+    const kinds = (await listKinds()).map((k) => k.id).join('|');
+    throw new Error(`add <${kinds}> <key> ["description"]`);
+  }
   const { job, reason } = await enqueue({ kind, key, description, quality: flags.quality });
   if (!job) return console.log(reason);
   console.log(`queued ${job.kind} ${job.key} → ${job.bucket}/${job.path} (${job.quality}, ~$${PRICE[job.quality]})  id ${job.id}`);
@@ -107,7 +111,7 @@ async function run() {
   console.log(`${jobs.length} job(s), about $${cost.toFixed(2)}${dry ? ' (dry run: prompts only, no API calls)' : ''}\n`);
 
   if (dry) {
-    for (const job of jobs) console.log(`${job.kind} ${job.key} → ${job.bucket}/${job.path} (${job.quality})\n  ${promptFor(job)}\n`);
+    for (const job of jobs) console.log(`${job.kind} ${job.key} → ${job.bucket}/${job.path} (${job.quality})\n  ${await promptFor(job)}\n`);
     return;
   }
   let done = 0;

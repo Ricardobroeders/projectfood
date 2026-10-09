@@ -20,10 +20,26 @@ Secrets are read from `projectfood-admin/.env` or, when that file is absent, fro
 `../projectfood-app/.env.local` (Supabase URL, service role key, OpenAI key). Nothing is copied
 and nothing is committed. The server binds to 127.0.0.1 only, so there is no login.
 
+## Pages
+
+- **Assets**: the queue. Add a job (kind, key, description for manual kinds, quality), open its
+  prompt to edit it before running, press Run, see the renders in the Done grid.
+- **Kinds**: the flows. A kind is the data of one old n8n lane: where inputs come from (the plants
+  table or a typed description), the prompt template with `{{placeholders}}` and a live preview,
+  bucket and file name pattern, default quality, model, background, and whether to write
+  `plants.image_url` when done. Edit a prompt, create a kind as a copy of another, delete one that
+  has no jobs. The steps (inputs → prompt → image → upload → done) are fixed in `lib/pipeline.js`;
+  a new image type is a new row, not new code.
+- SEO backlog and Journey map: in the sidebar, not built yet (item 29c and 29d).
+
+Styling follows the brand book (`wiki/brand/brand-design.md`): white page, warm grey surfaces,
+ink text, marigold accent, Plus Jakarta Sans, radius by height, no shadows.
+
 ## The asset queue
 
-Replaced the n8n "Content creation workflow" on 2026-10-09. Same prompts, buckets and file names,
-so new renders sit in the family of the existing ones. Prompts live in `lib/pipeline.js`.
+Replaced the n8n "Content creation workflow" on 2026-10-09. The four kinds were seeded from it
+verbatim (migration `20261009140000_asset_kinds.sql`), so new renders sit in the family of the
+existing ones.
 
 | kind | input | file | default quality |
 |---|---|---|---|
@@ -32,9 +48,9 @@ so new renders sit in the family of the existing ones. Prompts live in `lib/pipe
 | achievement | achievement id + description | `achievements/achievement-<id>.png` | high |
 | ui | file name + description | `images/app-ui-images/<name>.png` | high |
 
-In the browser: add a job with the form, press Run (one job per request, about 15 to 60 seconds
-each, the page refreshes as they land), see the renders in the Done grid; Again queues the same
-render once more, Retry puts a failed job back, Remove or Hide drops the row (the file stays).
+Run sends one job per request, about 15 to 60 seconds each, and the page refreshes as they land.
+Again queues the same render once more with the kind's current prompt, Retry puts a failed job
+back, Remove or Hide drops the row (the file stays).
 
 In the terminal, over the same queue:
 
@@ -53,8 +69,11 @@ npm run assets -- retry <job-id>
 Notes
 - Quality low is for pipeline tests only (about one cent); transparent backgrounds come out
   unreliable at low. Medium is about four cents, high about seventeen.
-- A job is a row in `public.asset_jobs` (migration `supabase/migrations/20261009120000_asset_jobs.sql`,
-  service role only). One open job per asset; a done or failed one can be queued again.
+- A job is a row in `public.asset_jobs`, a kind a row in `public.asset_kinds` (migrations
+  `20261009120000_asset_jobs.sql` and `20261009140000_asset_kinds.sql`, service role only). One
+  open job per asset; a done or failed one can be queued again.
+- Never run `npm run build` while `npm run dev` is up: both write `.next/` and the dev server
+  starts answering 500 until restarted.
 - Mobile bundles renders at build time: after new plant or gold renders, run
   `node scripts/build-assets.mjs` in `projectfood-mobile` and ship with the next build or OTA.
 - The website's 128 px plant thumbnails come from the `/image-updater` routine, unchanged.

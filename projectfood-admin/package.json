@@ -13,6 +13,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",
     "dotenv": "^17.2.3",
+    "lucide-react": "^1.54.0",
     "next": "15.5.15",
     "openai": "^6.35.0",
     "react": "19.1.0",

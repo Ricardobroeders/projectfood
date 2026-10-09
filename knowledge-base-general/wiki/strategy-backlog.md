@@ -155,7 +155,15 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     (one job per request, the page refreshes as renders land), Done grid with previews, Again /
     Retry / Remove; the terminal command and the page share `lib/pipeline.js`. Verified end to
     end through the browser's run endpoint on a throwaway UI image, then removed. The sheet and
-    n8n are out: only Supabase and OpenAI remain. Next, in order: (a) only if it goes online:
+    n8n are out: only Supabase and OpenAI remain. **Step 3 the same afternoon** (Ricardo: edit
+    the prompts myself, a new flow per new image type without code; sidebar on the left for more
+    modules; the brand styling): kinds are rows in `asset_kinds` (source, prompt template with
+    placeholders and a live preview, bucket, file name pattern, quality, model, background,
+    writes plants.image_url), seeded from the four n8n lanes; a Kinds page edits, copies and
+    creates them; a job's prompt is resolved at queue time and editable while pending; left
+    sidebar with Assets, Kinds and two "soon" items; tokens from the brand book (marigold accent,
+    Plus Jakarta Sans, radius by height, no shadows). Where it stops: no node editor; a flow of a
+    different shape (text generation, a two-step edit) is a new module, not a kind. Next, in order: (a) only if it goes online:
     Supabase auth with an admin allow-list, a Vercel project with the two secrets, the subdomain
     admin.projectfood.dev; (c) the SEO backlog
     (today `content/learn/queue.json` plus item 9e) as a table with status and the live URL;
