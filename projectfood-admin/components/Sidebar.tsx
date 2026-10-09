@@ -27,8 +27,8 @@ export function Sidebar() {
       <nav className="flex flex-col gap-1">
         {ITEMS.map(({ href, label, icon: Icon, soon }) =>
           soon ? (
-            <span key={href} className="nav-item" data-soon="true" title="Coming soon">
-              <Icon size={18} /> {label} <span className="pill ml-auto">soon</span>
+            <span key={href} className="nav-item" data-soon="true" title="Not built yet">
+              <Icon size={18} /> {label}
             </span>
           ) : (
             <Link key={href} href={href} className="nav-item" data-active={pathname.startsWith(href)}>
