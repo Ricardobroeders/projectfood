@@ -1212,3 +1212,7 @@ Ricardo, reading the habits tab: almost every tester counts for themselves, and 
 
 ## [2026-10-07] query | Backlog item 27 and the ordered to-do list
 Ricardo asked for a website pillar on how the app works (features with visuals, habit clusters on the four laws; for SEO, for in-app read-more links, for partners such as nutritionists): added as build step 27 in [[strategy-backlog]], with a note on row 6. He also asked for the whole list ordered by importance; given in chat, the one thing first.
+
+## [2026-10-09] build | learn: plant-diversity (it) written and published by the nightly routine
+Family rewrite of the Italian 30 plants pillar (legacy flag gone, slug kept): 1,589 words, 6 FAQ, one citation (McDonald, 2018). Links the live cluster what-counts-as-a-plant and the Italian pillar 1; the as-a-family announcement sentence is stored as pillar_mention on its queue row.
+Warnings: none for it; the pillar publishes with one live Italian cluster (the as-a-family it cluster is still to come).
