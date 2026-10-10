@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { jakarta } from '@/lib/fonts'
 import { NextIntlClientProvider } from 'next-intl'
 import { setRequestLocale, getTranslations, getMessages } from 'next-intl/server'
 import { Analytics } from '@vercel/analytics/next'
@@ -16,12 +16,6 @@ import '../globals.css'
 // segment reads request headers, which turned every marketing page into a dynamic render
 // (cache-control: no-store on all of them, revalidate = 3600 never applied). Here the locale is
 // a route param, setRequestLocale() pins it, and the pages prerender.
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: ['400', '500', '600', '700', '800'],
-})
 
 export const viewport: Viewport = {
   themeColor: '#F5C518',
