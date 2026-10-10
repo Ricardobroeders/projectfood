@@ -1257,3 +1257,7 @@ learn:check: 0 errors, 0 warnings for the Italian file (the English legacy file 
 ## [2026-10-09] build | learn: plant-diversity (it) written and published by the nightly routine
 Family rewrite of the Italian 30 plants pillar (legacy flag gone, slug kept): 1,589 words, 6 FAQ, one citation (McDonald, 2018). Links the live cluster what-counts-as-a-plant and the Italian pillar 1; the as-a-family announcement sentence is stored as pillar_mention on its queue row.
 Warnings: none for it; the pillar publishes with one live Italian cluster (the as-a-family it cluster is still to come).
+## [2026-10-10] build | learn: plant-diversity (it) written and published by the nightly routine
+Italian family rewrite of the 30 plants pillar (replaces the 2026-05 adult article, legacy flag gone, slug kept): 1,611 words, 6 FAQ, 2 internal links, one citation (McDonald, 2018).
+learn:check: 0 errors; the only warnings are the legacy English file of the same folder (339 words, 3 FAQ, no cluster link), untouched and awaiting its own queue row.
+Announces the planned cluster 30-piante-in-famiglia in one sentence, copied into that queue row's pillar_mention.
