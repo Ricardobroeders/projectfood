@@ -1246,3 +1246,7 @@ The pillar plant-diversity (nl) already linked the cluster, so step 4 was a no-o
 Family rewrite of the does-it-count cluster, replacing the legacy adult page: 945 words, 5 FAQ entries, one cited science line (McDonald, 2018).
 Warnings accepted: related "as-a-family" has no folder on this branch yet (live in the database), plus the legacy en and it files that wait for their own rewrite.
 The pillar plant-diversity (nl) already links the cluster, so its text is unchanged.
+## [2026-10-05] build | learn: plant-diversity (it) written and published by the nightly routine
+Italian family pillar for the 30 plants page, replacing the 2026-05 adult article: 1,586 words, 6 FAQ entries,
+meta 50/144, zero check warnings. Cluster announcement sentence for as-a-family (it) copied into its queue row.
+Note: the 10-03 and 10-04 branches both rewrote what-counts-as-a-plant (nl); this run skipped that row, it is already live.

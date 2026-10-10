@@ -467,7 +467,8 @@
       "topic": "The family version of the 30 plants page, replacing the 2026-05 adult gut-science article (rewrite: the file is written fresh, legacy: true goes, slug stays). The guideline in one honest paragraph: the American Gut Project found that adults who ate 30 or more plant types a week had a more diverse gut microbiome (McDonald 2018); an observation in adults, never a promise for a child (brand-stats-and-claims). Then the part a family uses: what a plant is (frutta, verdura, legumi, cereali integrali, frutta secca, semi, erbe, spezie), why variety beats quantity, how one week of family meals adds up (una pasta al sugo is 4 or 5 plants), how to count as a household without it becoming a project, the tasting count as the child's side of the same game, the groceries moment. Sections: what the 30 means, what counts (short, links the live cluster /it/impara/plant-diversity/what-counts-as-a-plant), counting as a family (short, announces the planned cluster with one sentence copied verbatim into that row's pillar_mention), the first week, what backfires. No microbiome claim for children, no 'sano' as judgment.",
       "related": [],
       "pillar_mention": null,
-      "rewrite": true
+      "rewrite": true,
+      "done": "2026-10-05"
     },
     {
       "internal": "as-a-family",
@@ -488,7 +489,7 @@
         "what-counts-as-a-plant",
         "toddler-wont-eat"
       ],
-      "pillar_mention": null,
+      "pillar_mention": "Come una settimana intera con quattro persone a tavola arriva a 30 piante, senza cucinare due volte, ha un suo articolo.",
       "emoji": null,
       "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
     },
