@@ -468,7 +468,11 @@
       "related": [],
       "pillar_mention": null,
       "rewrite": true,
+<<<<<<< HEAD
       "done": "2026-10-05"
+=======
+      "done": "2026-10-08"
+>>>>>>> origin/claude/learn-nightly-2026-10-08
     },
     {
       "internal": "as-a-family",
@@ -489,7 +493,11 @@
         "what-counts-as-a-plant",
         "toddler-wont-eat"
       ],
+<<<<<<< HEAD
       "pillar_mention": "Come una settimana intera con quattro persone a tavola arriva a 30 piante, senza cucinare due volte, ha un suo articolo.",
+=======
+      "pillar_mention": "Come una settimana intera con quattro persone a tavola arriva a 30 piante, senza cucinare due volte, avrà un articolo tutto suo.",
+>>>>>>> origin/claude/learn-nightly-2026-10-08
       "emoji": null,
       "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
     },
@@ -811,7 +819,7 @@
       "topic": "The four-step loop applied to food, the honest number (about 10 weeks), one taste a day, add never remove, what backfires, the one question after the last meal, the household version; links every cluster.",
       "related": [
         "how-long-to-form-a-healthy-eating-habit",
-        "why-healthy-eating-is-hard-to-stick-to"
+        "how-to-stick-to-healthy-eating"
       ],
       "pillar_mention": null,
       "emoji": "🌱",
@@ -834,7 +842,7 @@
       ],
       "topic": "The number and its range (Lally 2010), why food sits at the long end, the valley where people quit, what a day counts as, one missed day does not matter.",
       "related": [
-        "why-healthy-eating-is-hard-to-stick-to",
+        "how-to-stick-to-healthy-eating",
         "never-miss-twice-healthy-eating"
       ],
       "pillar_mention": null,
@@ -843,11 +851,11 @@
       "done": "2026-10-10"
     },
     {
-      "internal": "why-healthy-eating-is-hard-to-stick-to",
+      "internal": "how-to-stick-to-healthy-eating",
       "type": "cluster",
       "pillar": "healthy-eating-habits",
       "locale": "en",
-      "slug": "why-healthy-eating-is-hard-to-stick-to",
+      "slug": "how-to-stick-to-healthy-eating",
       "display_order": 2,
       "title_hint": "Why is it so hard to stick to healthy eating?",
       "keywords": [
@@ -882,7 +890,7 @@
       ],
       "topic": "The formula, the anchor (the last meal of the day), the after-dinner tap, stacks for breakfast, lunch and the shop, why most stacks fail (the anchor is not daily).",
       "related": [
-        "why-healthy-eating-is-hard-to-stick-to",
+        "how-to-stick-to-healthy-eating",
         "healthy-grocery-shopping-habits"
       ],
       "pillar_mention": null,

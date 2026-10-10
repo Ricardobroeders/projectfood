@@ -1250,3 +1250,7 @@ The pillar plant-diversity (nl) already links the cluster, so its text is unchan
 Italian family pillar for the 30 plants page, replacing the 2026-05 adult article: 1,586 words, 6 FAQ entries,
 meta 50/144, zero check warnings. Cluster announcement sentence for as-a-family (it) copied into its queue row.
 Note: the 10-03 and 10-04 branches both rewrote what-counts-as-a-plant (nl); this run skipped that row, it is already live.
+## [2026-10-08] build | learn: plant-diversity (it) written and published by the nightly routine
+Pillar 2 rewritten for the family in Italian (rewrite row, slug kept, legacy flag gone): 2056 words in the file, 6 FAQ, meta title 50 and description 152.
+The only citation is McDonald 2018; the announcement of the planned cluster 30-piante-in-famiglia is copied into that queue row as pillar_mention.
+learn:check: 0 errors, 0 warnings for the Italian file (the English legacy file still warns, untouched).
