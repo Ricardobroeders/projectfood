@@ -1,0 +1,7 @@
+{
+  "type": "cluster",
+  "pillar": "healthy-eating-habits",
+  "display_order": 5,
+  "emoji": null,
+  "cover_image_url": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/plum.png"
+}

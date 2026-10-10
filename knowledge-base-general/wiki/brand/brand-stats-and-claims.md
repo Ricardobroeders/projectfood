@@ -3,7 +3,7 @@ title: Stats and claims
 type: brand
 tags: [brand, science, claims, citations, writing-kit]
 created: 2026-09-24
-updated: 2026-09-24
+updated: 2026-10-10
 sources: [source-30plants-origin-research.md, source-family-mode-context.md, seo-overview.md]
 ---
 
@@ -31,6 +31,9 @@ and the sentence we use it in; the numbers and claims we never publish; how to c
 | 7 | **30 plants a week** | Adults in the American Gut Project who ate more than 30 different plant types a week had a more diverse gut microbiome than those eating 10 or fewer. Citizen-science, observational, adults. | McDonald et al. 2018, *mSystems* 3(3) | EN: The 30 plants a week guideline comes from the American Gut Project (2018), where adults eating more than 30 different plants a week had a more varied gut flora than those eating 10 or fewer. We count towards it as a family. · Never a promise for children; on the family site it is "the guideline", once, cited. |
 | 8 | **Leren-lusten-plan** | The Voedingscentrum's plan: the child picks one food for the week, agrees tasting moments, gets compliments for trying, keeps a "succes-vel" on the wall. It advises against rewarding with desserts or stickers. | Voedingscentrum, "Het Leren-lusten-plan starten" (checked 2026-09-24) | NL only: Het Voedingscentrum noemt dit het Leren-lusten-plan: één product per week, vaste proefmomenten, een compliment voor het proberen. |
 | 9 | **Product numbers** | 224 plants in the catalogue, 62 botanical families, 8 colours; cards level at 1, 5 and 10 tastes; achievements in bronze, silver, gold and platinum. | The app, 2026-09 | Store copy says "over 200 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments". Articles may say 224 (checked 2026-09-24). |
+| 11 | **About 10 weeks, 66 days median, 18 to 254 days** | 96 adults each chose one daily eating, drinking or activity habit tied to a daily cue; automaticity rose and plateaued after a median of 66 days (range 18 to 254). Missing a single day made no material difference to the curve. | Lally, van Jaarsveld, Potts & Wardle 2010, *European Journal of Social Psychology* 40(6):998–1009, doi:10.1002/ejsp.674 (CrossRef checked 2026-10-10) | EN: "In the one study that measured it, a new daily habit took about 10 weeks to feel automatic, 66 days on average, and anything from 18 to 254 days (Lally, 2010)." _Proposed 2026-10-10 for pillar 3, pending Ricardo_ |
+| 12 | **Pick one small action, one daily cue, repeat; expect about 10 weeks** | Editorial advice to GPs on helping patients form habits: a specific small behaviour, performed in the same context every day, becomes automatic with repetition; patients are told to expect around 10 weeks. | Gardner, Lally & Wardle 2012, *British Journal of General Practice* 62(605):664–666, doi:10.3399/bjgp12X659466 (Europe PMC checked 2026-10-10) | EN: "The advice doctors are given is the same: one small action, the same moment every day, and about 10 weeks of patience (Gardner, 2012)." _Proposed 2026-10-10, pending Ricardo_ |
+| 13 | **The four laws, habit stacking, never miss twice** | A trade book, not a study: cue, craving, response, reward; make it obvious, attractive, easy, satisfying; "after X, I will Y"; missing once is an accident, twice starts a new habit. | Clear J (2018), *Atomic Habits*, Avery | Named once per page ("James Clear's Atomic Habits"), ideas in our words, never quoted at length, no endorsement implied. _Proposed 2026-10-10, pending Ricardo_ |
 | 10 | **The typical household (in-app only)** | Medians over Project Food households since 2026-09-07: 22 plants a week, 8 a logging day, 17 in the first week; category share of logs. | `projectfood-mobile/src/data/benchmarks.json` from `supabase/scripts/benchmarks.sql`, 2026-10-07 | In the app's stats charts as marks and dashed lines labelled "typical"; never in store, site or social copy, and the household count behind it is never shown (section 2). |
 
 ---
@@ -116,6 +119,14 @@ and the sentence we use it in; the numbers and claims we never publish; how to c
 - Cooke LJ, Chambers LC, Añez EV, Croker HA, Boniface D, Yeomans MR, Wardle J (2011). Eating
   for pleasure or profit: the effect of incentives on children's enjoyment of vegetables.
   *Psychological Science* 22(2):190–196. doi:10.1177/0956797610394662
+- Lally P, van Jaarsveld CHM, Potts HWW, Wardle J (2010). How are habits formed: modelling habit
+  formation in the real world. *European Journal of Social Psychology* 40(6):998–1009.
+  doi:10.1002/ejsp.674 (proposed 2026-10-10)
+- Gardner B, Lally P, Wardle J (2012). Making health habitual: the psychology of 'habit-formation'
+  and general practice. *British Journal of General Practice* 62(605):664–666.
+  doi:10.3399/bjgp12X659466 (proposed 2026-10-10)
+- Clear J (2018). Atomic Habits: An Easy and Proven Way to Build Good Habits and Break Bad Ones.
+  Avery. (proposed 2026-10-10; a book, used for the framework, never for a number)
 - McDonald D et al. (2018). American Gut: an open platform for citizen science microbiome
   research. *mSystems* 3(3):e00031-18. doi:10.1128/mSystems.00031-18
 - American Academy of Pediatrics (2018-04-26). 10 Tips for Parents of Picky Eaters.

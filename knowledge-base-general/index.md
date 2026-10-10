@@ -62,6 +62,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[seo-technical-audit]] — the 2026-09-06 codebase audit, superseded by the live audit; kept for its 14-gap list and numbering.
 - [[seo-site-architecture]] — sitemap in en/nl/it (home, two learn pillars with clusters, printables hub, gated plant pages), structured data per page type, the manual keyword-research brief and thresholds, the de/fr gate (2026-09-23).
 - [[seo-pillar-alles-leren-eten]] — pillar 1 keyword map: nine clusters with the reason for each, page-1 competitors per language (2026-09-23), primary/secondary/question keywords in NL/EN/IT, Semrush export files.
+- [[seo-pillar-healthy-eating-habits]] — pillar 3 for the adult reader: six habit clusters on Clear's four laws (how long, why hard, habit stacking, the grocery shelf, never miss twice, more vegetables), EN slugs and keyword map, sources proposed; EN drafts written 2026-10-10.
 - [[seo-roadmap]] — rewritten 2026-09-29 as an active track: batch 0 hygiene, batch 1 the home page and brand query, batch 2 the queue that feeds the nightly routine (pillar 2, IT and EN long tail, printables, plant pages, comparison), batch 3 authority; class content still gated on G1–G3; KPIs with the 2026-09-29 baseline.
 
 ## Brand & voice (folder `wiki/brand/`, the writing kit, first drafts 2026-09-24)
