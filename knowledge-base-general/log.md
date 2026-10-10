@@ -1261,3 +1261,6 @@ Warnings: none for it; the pillar publishes with one live Italian cluster (the a
 Italian family rewrite of the 30 plants pillar (replaces the 2026-05 adult article, legacy flag gone, slug kept): 1,611 words, 6 FAQ, 2 internal links, one citation (McDonald, 2018).
 learn:check: 0 errors; the only warnings are the legacy English file of the same folder (339 words, 3 FAQ, no cluster link), untouched and awaiting its own queue row.
 Announces the planned cluster 30-piante-in-famiglia in one sentence, copied into that queue row's pillar_mention.
+
+## [2026-10-10] fix | Vercel build failed on Google Fonts; font self-hosted, nightly branches merged
+The 03:08 preview build of the nightly branch failed: Google Fonts answered with `/l/font?kit=…&skey=…` URLs and Turbopack cannot parse them (open Next.js issue, random, not caused by the branch). Plus Jakarta Sans now lives in `projectfood-app/app/fonts/` (latin variable woff2, OFL) through next/font/local, so a build never calls Google. The nine unmerged `claude/learn-…` branches since 2026-09-30 were merged into main, newest publish per article wins (the Italian plant-diversity of 10-10, the Dutch what-counts of 10-07 already on main); queue.json needed a three-way rebuild after a whole-file resolution had dropped the pillar 3 rows. Lesson: never resolve queue.json per whole file.
