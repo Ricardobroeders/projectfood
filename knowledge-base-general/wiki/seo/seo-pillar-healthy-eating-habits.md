@@ -18,10 +18,46 @@ half ([[strategy-backlog]]); the product pillar "How it works" is a separate pag
 route and is not in this plan.
 
 > **Status 2026-10-10:** query shapes and page-1 competitors checked in live search (EN, ten
-> queries). **Volumes and difficulty are not in**: the DataForSEO connector is unauthorised (item
-> 9), so every "why" below is intent and competition, not size. English is written first; NL and
+> queries); Semrush volumes and KD for seven seeds came in the same day (section below). English is written first; NL and
 > IT follow once Ricardo is satisfied with the English set. Slugs below are final once Ricardo
 > confirms them: a published slug is an address.
+
+## First numbers (Semrush Keyword Magic Tool, UK and US, 2026-10-10)
+
+Ricardo's exports in `raw/semrush-exports/` (Vol 50+, KD 0 to 40, broad match; UK run at 50+ too,
+so the UK long tail under 50 is unseen). What they say, seed by seed:
+
+- **"healthy eating habits"** (UK 214 rows, US 357): the head phrase itself is absent, which at a KD
+  cap of 40 means it sits above the cap, owned by the NHS Eatwell pages, Harvard and WebMD. The
+  pillar is a hub, not a search page, and that was the plan. Useful rows: "healthy habits" UK
+  1,000 KD 28, "healthful habits" UK 880 KD 21, "how to break bad eating habits" US 90 KD 35,
+  "how can/do you change your eating habits" US 70 each. Added as pillar keywords and an H2 on
+  changing habits you already have (chapter 7 in reverse). Left alone: Eatwell, balanced diet,
+  weight loss, "clean eating", all institutional or off-brand.
+- **"stick to a diet"** came in through the big seed: **"how to stick to a diet" US 1,000 KD 21**,
+  "how do you stick to a diet" US 260 KD 11, "how to stick to diet" 70 KD 17, "how to stick with a
+  diet" 30 KD 15. The clearest winnable term in the set. Cluster 2 renamed from
+  `why-healthy-eating-is-hard-to-stick-to` to **`how-to-stick-to-healthy-eating`** (title "How to
+  stick to healthy eating, when diets never did"); the body keeps the mechanism and takes the
+  reader's word "diet" in the title and one H2 only.
+- **"how long habit"** (UK only): "how long does it take to break a habit" 590 KD 37, "how long to
+  make a habit" 260 KD 39, "how long to quit a habit" 210 KD 28. The forming phrase is above the
+  cap. Cluster 1 keeps its slug and gains an H2 on breaking one plus the two phrasings.
+- **"habit stacking"**: UK "what is habit stacking" 110 KD 35; US "habit stacking template" 90
+  **KD 9**, "habit stacking atomic habits" 90 KD 28, "habit stacking apps" 50 KD 38. The head term
+  is above the cap. Cluster 3 gains a template section and the two phrasings.
+- **"eat more vegetables"** (UK only): "how to eat more vegetables" 140 KD 34, "how can I eat more
+  vegetables" 110 KD 33. Cluster 6 matches; the second phrasing added. US run missing.
+- **"grocery shopping habits"** (US only): only market-research rows ("gen z grocery shopping
+  habits" 50). No consumer query at these filters. Cluster 4 stays as the chapter 7 page for the
+  pillar and the app, not as a search page; no slug change.
+- **"never miss twice"**: no rows. Cluster 5 stays as a supporting page for the same reason.
+- Not run: "eating habit tracker", "build eating habits" as a seed, the US side of "how long" and
+  "eat more vegetables", the UK side of grocery. A later pass, not a blocker.
+
+Reading: the set has one clear search page (stick to), three with modest winnable phrasings
+(how long, habit stacking, more vegetables), two supporting pages (grocery, never miss twice) and
+a hub pillar. The slugs stand as below with the one rename.
 
 ## The reader
 
@@ -40,7 +76,7 @@ slugs (folder names) equal the EN slugs. NL and IT get their own public slugs la
 |---|---|---|---|---|---|
 | P | `healthy-eating-habits` | "How do I build healthy eating habits that stick?" | WeightWatchers, Forks Over Knives, university wellness pages, Harvard Health: generic lists (start small, plan meals, mindful eating), no mechanism, no honest number | The four-step loop applied to food, the honest number (about 10 weeks, not 21 days), one taste a day, what backfires (restriction, all at once, willpower), the one question after the last meal | all |
 | 1 | `how-long-to-form-a-healthy-eating-habit` | "How long does it take to form a healthy eating habit?" | NutritionFacts, Healthline, local news syndications of one study: all cite the same figure and stop | The number and its range, why food habits sit at the long end, the valley where people quit, what a day counts as, the freeze | fundamentals |
-| 2 | `why-healthy-eating-is-hard-to-stick-to` | "Why is it so hard to stick to healthy eating?" | Harvard Health, Psychology Today, MDedge: restriction, willpower, cost and taste perceptions | The reward arrives too late and the cue is missing; add, never remove; identity ("someone who tastes things"); the clean plate | 2, 4 |
+| 2 | `how-to-stick-to-healthy-eating` | "How do I stick to it?" ("how to stick to a diet", "why is it so hard to stick to healthy eating") | Harvard Health, Psychology Today, MDedge: restriction, willpower, cost and taste perceptions | The reward arrives too late and the cue is missing; add, never remove; identity ("someone who tastes things"); the clean plate | 2, 4 |
 | 3 | `habit-stacking-healthy-eating` | "Habit stacking for healthy eating, examples?" | Holland & Barrett, American Heart Association, wellness newsletters: lists of "after coffee, eat fruit" | The one stack that holds: after the last meal, tap what you tasted; the dinner time as the anchor; stacks for breakfast, lunch and the shop | 1 |
 | 4 | `healthy-grocery-shopping-habits` | "How do I shop so I eat better all week?" | Canada's Food Guide, hospital blogs, NIH newsletter: perimeter, list, not hungry | The shelf decides the week: what is in the house on shopping day is what gets tasted; a list by category, "in season", the thin categories (beans, grains, ferments) | 3 (environment) |
 | 5 | `never-miss-twice-healthy-eating` | "I slipped, what now?" ("never miss twice", "two-day rule") | Newsletters and Substacks quoting Clear; no food page owns it | Missing once is an accident, twice is a new habit; the one-day freeze; the next meal, not Monday; no guilt | 4 |
@@ -68,7 +104,7 @@ entries (the "people also ask" seeds seen on 2026-10-10). Volumes to be added fr
 |---|---|---|---|
 | P | how to build healthy eating habits | healthy eating habits that stick · make healthy eating a habit · healthy eating habits examples · how to change eating habits · build better eating habits | why do my eating habits never stick · what are good eating habits · how do you start eating healthy and stick to it · is it better to change one habit at a time |
 | 1 | how long does it take to form a healthy eating habit | how long to form a habit · 21 days habit myth · 66 days habit · how long to change eating habits · how long until healthy eating feels normal | is it really 21 days · what if I miss a day · why does it take longer for food than for other habits · does it get easier |
-| 2 | why is it so hard to stick to healthy eating | why can't I stick to healthy eating · why healthy eating is hard · why diets fail · how to stop giving up on healthy eating | why do I always fall off · is it a willpower problem · why does restriction backfire · how do I make it feel normal |
+| 2 | how to stick to healthy eating (how to stick to a diet) | how do you stick to a diet · why is it so hard to stick to healthy eating · why diets fail · how to stop giving up on healthy eating | why do I always fall off · is it a willpower problem · why does restriction backfire · how do I make it feel normal |
 | 3 | habit stacking healthy eating | habit stacking examples · habit stacking for eating · after I will formula food · meal habit stacking · anchor habits eating | what is habit stacking · what are good habit stacks for eating · does habit stacking work · which habit do I stack on |
 | 4 | healthy grocery shopping habits | healthy grocery shopping list · how to shop for healthy eating · grocery habits · shop the perimeter · what to buy to eat healthier | what should I buy to eat healthier · how do I stop buying junk · should I shop with a list · how often should I shop |
 | 5 | never miss twice | never miss twice rule · two day rule habits · what to do when you break a healthy eating streak · getting back on track eating | what does never miss twice mean · does one bad day ruin progress · how do I get back on track after a slip · should I restart on Monday |

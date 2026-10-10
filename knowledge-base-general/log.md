@@ -1227,3 +1227,6 @@ Ricardo asked for the habit pillar and clusters with keyword research, English f
 ## [2026-09-30] build | learn: picky-eater-toddler (en) written and published by the nightly routine
 1,066 words, 5 FAQ entries, meta title 50 and description 153 characters. The pillar `learn-to-eat-everything` (en) now links the article in place of its announcement sentence.
 Accepted warnings: the "picky eater" search-phrase notices (title, subtitle, meta, body, FAQ), which are the query and not a label for a child.
+
+## [2026-10-10] ingest | Semrush exports for pillar 3 (UK and US) classified
+Ricardo exported seven seeds from Keyword Magic Tool (Vol 50+, KD 0 to 40) into `raw/semrush-exports/`. Classified on [[seo-pillar-healthy-eating-habits]] "First numbers": the head phrases sit above the KD cap (hub pillar as planned); "how to stick to a diet" (US 1,000, KD 21) is the one clear search term, so cluster 2 was renamed `how-to-stick-to-healthy-eating` with the reader's word in title and one H2; cluster 1 gained an H2 on breaking a habit (590 UK), cluster 3 a template section (KD 9), cluster 6 a phrasing; grocery and never-miss-twice have no consumer volume at these filters and stay as supporting pages. Pillar gained an H2 on changing existing habits. All seven lint clean, still unpublished.

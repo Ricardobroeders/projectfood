@@ -136,7 +136,8 @@ _Done 2026-09-29 evening as 1.0.3 (one thing #3): published per platform with `e
     the pillar first; the clusters reuse them. Ricardo is making the visuals in Figma. **2026-10-10:
     the search half is drafted in English**: [[seo-pillar-healthy-eating-habits]] (plan, slugs, keyword
     map, sources) and seven articles in `content/learn/` (pillar `healthy-eating-habits` plus six
-    clusters), lint clean, committed unpublished; Ricardo confirms the slugs and the three habit
+    clusters), lint clean, committed unpublished; Semrush numbers in the same day, cluster 2
+    renamed to `how-to-stick-to-healthy-eating` ("how to stick to a diet" US 1,000 KD 21); Ricardo confirms the slugs and the three habit
     sources proposed on [[brand-stats-and-claims]], then they publish in one go; NL and IT follow once
     the English set is approved. Still open: the pillar's copy
     follows [[decision-2026-10-07-two-ways-to-use-it]] (never presumes kids). **Spine (Ricardo,
