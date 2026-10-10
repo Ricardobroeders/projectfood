@@ -1235,3 +1235,7 @@ Ricardo exported seven seeds from Keyword Magic Tool (Vol 50+, KD 0 to 40) into 
 Dutch cluster as-a-family under plant-diversity, 1119 words, 6 FAQ entries, meta title 50 and description 155.
 Pillar plant-diversity (nl) now links it in place of the announcement sentence; a Monday to Sunday week of 31 plants.
 Learn:check: 0 errors, 0 warnings for as-a-family nl; the pillar's 8 warnings are the en and it legacy files.
+## [2026-10-03] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
+Dutch family rewrite of the does-it-count page, 903 words, 20-row table, 5 FAQ entries, legacy flag gone, slug kept.
+Warnings accepted: related "as-a-family" has no folder on this branch yet; length sits just above the 900 minimum.
+The pillar plant-diversity (nl) already links this page, so it is republished unchanged.
