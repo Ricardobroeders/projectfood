@@ -1242,3 +1242,7 @@ The pillar plant-diversity (nl) already links this page, so it is republished un
 ## [2026-10-04] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
 Family rewrite of the does-it-count cluster (legacy: true dropped, slug kept): 1019 words, 5 FAQ entries, a 20-row table, one cited science paragraph (McDonald, 2018).
 The pillar plant-diversity (nl) already linked the cluster, so step 4 was a no-op. Accepted warning: related "as-a-family" has no folder on this branch yet.
+## [2026-10-06] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
+Family rewrite of the does-it-count cluster, replacing the legacy adult page: 945 words, 5 FAQ entries, one cited science line (McDonald, 2018).
+Warnings accepted: related "as-a-family" has no folder on this branch yet (live in the database), plus the legacy en and it files that wait for their own rewrite.
+The pillar plant-diversity (nl) already links the cluster, so its text is unchanged.
