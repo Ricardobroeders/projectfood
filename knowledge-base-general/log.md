@@ -1221,3 +1221,8 @@ Ricardo put `RESEND_API_KEY` into the Edge Function secrets. `delete-account` no
 
 ## [2026-10-09] fix | Deletion email verified, lands in spam at Gmail
 Ricardo's test: the confirmation arrived, right look and words, SPF, DKIM and DMARC pass (Gmail's "Show original"), delivered to spam ("similar to messages identified as spam in the past"): reputation of a young domain, not authentication. Subject softened to read as a reply to the person's own request, in three languages; Ricardo reports it not spam. DMARC stays p=none for now. Item 13 verified in [[strategy-backlog]].
+
+## [2026-10-10] build | learn: plant-diversity (it) written and published by the nightly routine
+Italian family rewrite of the 30 plants pillar (replaces the 2026-05 adult article, legacy flag gone, slug kept): 1,611 words, 6 FAQ, 2 internal links, one citation (McDonald, 2018).
+learn:check: 0 errors; the only warnings are the legacy English file of the same folder (339 words, 3 FAQ, no cluster link), untouched and awaiting its own queue row.
+Announces the planned cluster 30-piante-in-famiglia in one sentence, copied into that queue row's pillar_mention.
