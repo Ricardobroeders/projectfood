@@ -1254,3 +1254,6 @@ Note: the 10-03 and 10-04 branches both rewrote what-counts-as-a-plant (nl); thi
 Pillar 2 rewritten for the family in Italian (rewrite row, slug kept, legacy flag gone): 2056 words in the file, 6 FAQ, meta title 50 and description 152.
 The only citation is McDonald 2018; the announcement of the planned cluster 30-piante-in-famiglia is copied into that queue row as pillar_mention.
 learn:check: 0 errors, 0 warnings for the Italian file (the English legacy file still warns, untouched).
+## [2026-10-09] build | learn: plant-diversity (it) written and published by the nightly routine
+Family rewrite of the Italian 30 plants pillar (legacy flag gone, slug kept): 1,589 words, 6 FAQ, one citation (McDonald, 2018). Links the live cluster what-counts-as-a-plant and the Italian pillar 1; the as-a-family announcement sentence is stored as pillar_mention on its queue row.
+Warnings: none for it; the pillar publishes with one live Italian cluster (the as-a-family it cluster is still to come).

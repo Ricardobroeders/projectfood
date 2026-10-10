@@ -377,8 +377,7 @@
         "toddler-wont-eat",
         "food-neophobia"
       ],
-      "pillar_mention": "What counts as ordinary fussiness and what does not gets its own article.",
-      "done": "2026-09-30"
+      "pillar_mention": "What counts as ordinary fussiness and what does not gets its own article."
     },
     {
       "internal": "plant-diversity",
@@ -422,8 +421,7 @@
       ],
       "pillar_mention": "Hoe een hele week met vier eters aan 30 planten komt, zonder dat je twee keer kookt, krijgt een eigen artikel.",
       "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png",
-      "done": "2026-10-02"
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
     },
     {
       "internal": "what-counts-as-a-plant",
@@ -468,11 +466,7 @@
       "related": [],
       "pillar_mention": null,
       "rewrite": true,
-<<<<<<< HEAD
-      "done": "2026-10-05"
-=======
-      "done": "2026-10-08"
->>>>>>> origin/claude/learn-nightly-2026-10-08
+      "done": "2026-10-09"
     },
     {
       "internal": "as-a-family",
@@ -493,11 +487,7 @@
         "what-counts-as-a-plant",
         "toddler-wont-eat"
       ],
-<<<<<<< HEAD
-      "pillar_mention": "Come una settimana intera con quattro persone a tavola arriva a 30 piante, senza cucinare due volte, ha un suo articolo.",
-=======
-      "pillar_mention": "Come una settimana intera con quattro persone a tavola arriva a 30 piante, senza cucinare due volte, avrà un articolo tutto suo.",
->>>>>>> origin/claude/learn-nightly-2026-10-08
+      "pillar_mention": "Come arrivare a 30 piante in una settimana intera con quattro persone a tavola, senza cucinare due volte, avrà un articolo tutto suo.",
       "emoji": null,
       "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/strawberry.png"
     },
@@ -800,175 +790,6 @@
       "pillar_mention": "Wat helpt: vaste eetmomenten, kleine porties, weinig drinken en snacks vlak voor het eten, en geen strijd.",
       "emoji": null,
       "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pear.png"
-    },
-    {
-      "internal": "healthy-eating-habits",
-      "type": "pillar",
-      "pillar": null,
-      "locale": "en",
-      "slug": "healthy-eating-habits",
-      "display_order": 3,
-      "title_hint": "How to build healthy eating habits that stick",
-      "keywords": [
-        "how to build healthy eating habits",
-        "healthy eating habits that stick",
-        "make healthy eating a habit",
-        "healthy eating habits examples",
-        "how to change eating habits"
-      ],
-      "topic": "The four-step loop applied to food, the honest number (about 10 weeks), one taste a day, add never remove, what backfires, the one question after the last meal, the household version; links every cluster.",
-      "related": [
-        "how-long-to-form-a-healthy-eating-habit",
-        "how-to-stick-to-healthy-eating"
-      ],
-      "pillar_mention": null,
-      "emoji": "🌱",
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pomegranate.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "how-long-to-form-a-healthy-eating-habit",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "how-long-to-form-a-healthy-eating-habit",
-      "display_order": 1,
-      "title_hint": "How long does it take to form a healthy eating habit?",
-      "keywords": [
-        "how long does it take to form a healthy eating habit",
-        "how long to form a habit",
-        "21 days habit myth",
-        "66 days habit"
-      ],
-      "topic": "The number and its range (Lally 2010), why food sits at the long end, the valley where people quit, what a day counts as, one missed day does not matter.",
-      "related": [
-        "how-to-stick-to-healthy-eating",
-        "never-miss-twice-healthy-eating"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pear.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "how-to-stick-to-healthy-eating",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "how-to-stick-to-healthy-eating",
-      "display_order": 2,
-      "title_hint": "Why is it so hard to stick to healthy eating?",
-      "keywords": [
-        "why is it so hard to stick to healthy eating",
-        "why can't I stick to healthy eating",
-        "why diets fail",
-        "how to stop giving up on healthy eating"
-      ],
-      "topic": "The reward arrives too late and the cue is missing; restriction backfires; add, never remove; identity; the clean plate; when to ask for help.",
-      "related": [
-        "how-long-to-form-a-healthy-eating-habit",
-        "habit-stacking-healthy-eating"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/lemon.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "habit-stacking-healthy-eating",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "habit-stacking-healthy-eating",
-      "display_order": 3,
-      "title_hint": "Habit stacking for healthy eating: the one stack that holds",
-      "keywords": [
-        "habit stacking healthy eating",
-        "habit stacking examples",
-        "habit stacking for eating",
-        "anchor habits eating"
-      ],
-      "topic": "The formula, the anchor (the last meal of the day), the after-dinner tap, stacks for breakfast, lunch and the shop, why most stacks fail (the anchor is not daily).",
-      "related": [
-        "how-to-stick-to-healthy-eating",
-        "healthy-grocery-shopping-habits"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/fig.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "healthy-grocery-shopping-habits",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "healthy-grocery-shopping-habits",
-      "display_order": 4,
-      "title_hint": "Healthy grocery shopping habits: the shelf decides the week",
-      "keywords": [
-        "healthy grocery shopping habits",
-        "healthy grocery shopping list",
-        "how to shop for healthy eating",
-        "what to buy to eat healthier"
-      ],
-      "topic": "What is in the house on shopping day is what gets tasted all week; a list by category, in season, the thin categories (beans, grains, ferments), one new plant a week, the list as the cue.",
-      "related": [
-        "habit-stacking-healthy-eating",
-        "eat-more-vegetables-every-day"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/artichoke.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "never-miss-twice-healthy-eating",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "never-miss-twice-healthy-eating",
-      "display_order": 5,
-      "title_hint": "Never miss twice: what to do after a bad eating day",
-      "keywords": [
-        "never miss twice",
-        "never miss twice rule",
-        "two day rule habits",
-        "getting back on track eating"
-      ],
-      "topic": "Missing once is an accident, twice is a new habit; the next meal not Monday; the freeze; no guilt; what a streak is for.",
-      "related": [
-        "how-long-to-form-a-healthy-eating-habit",
-        "eat-more-vegetables-every-day"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/plum.png",
-      "done": "2026-10-10"
-    },
-    {
-      "internal": "eat-more-vegetables-every-day",
-      "type": "cluster",
-      "pillar": "healthy-eating-habits",
-      "locale": "en",
-      "slug": "eat-more-vegetables-every-day",
-      "display_order": 6,
-      "title_hint": "How to eat more vegetables every day, one taste at a time",
-      "keywords": [
-        "how to eat more vegetables every day",
-        "eat more vegetables",
-        "ways to eat more vegetables",
-        "how to eat more plants"
-      ],
-      "topic": "One taste not a serving; variety over volume (the 30 plants guideline, adults); the two-minute version; frozen, tinned and herbs count; the weekly count; the table with kids in one sentence.",
-      "related": [
-        "healthy-grocery-shopping-habits",
-        "never-miss-twice-healthy-eating"
-      ],
-      "pillar_mention": null,
-      "emoji": null,
-      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/blueberry.png",
-      "done": "2026-10-10"
     }
   ]
 }
