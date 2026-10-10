@@ -1239,3 +1239,6 @@ Learn:check: 0 errors, 0 warnings for as-a-family nl; the pillar's 8 warnings ar
 Dutch family rewrite of the does-it-count page, 903 words, 20-row table, 5 FAQ entries, legacy flag gone, slug kept.
 Warnings accepted: related "as-a-family" has no folder on this branch yet; length sits just above the 900 minimum.
 The pillar plant-diversity (nl) already links this page, so it is republished unchanged.
+## [2026-10-04] build | learn: what-counts-as-a-plant (nl) written and published by the nightly routine
+Family rewrite of the does-it-count cluster (legacy: true dropped, slug kept): 1019 words, 5 FAQ entries, a 20-row table, one cited science paragraph (McDonald, 2018).
+The pillar plant-diversity (nl) already linked the cluster, so step 4 was a no-op. Accepted warning: related "as-a-family" has no folder on this branch yet.
