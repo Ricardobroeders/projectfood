@@ -10,8 +10,10 @@ keywords:
   - habit stacking for eating
   - anchor habits eating
   - after I will formula
+  - what is habit stacking
+  - habit stacking template
 related:
-  - why-healthy-eating-is-hard-to-stick-to
+  - how-to-stick-to-healthy-eating
   - healthy-grocery-shopping-habits
 faq:
   - q: What is habit stacking?
@@ -70,11 +72,22 @@ Once the evening stack runs by itself, a second one can go in front of it. One a
 
 The shopping stack is the one with the longest reach, because it sets the cues for the other six days; it has its own article, [healthy grocery shopping habits](/en/learn/healthy-eating-habits/healthy-grocery-shopping-habits).
 
+## A habit stacking template
+
+Write it down once, in this shape, and put it where the anchor happens:
+
+- After I [the daily thing I never skip], I will [one food action under a minute].
+- Where: [the room the anchor happens in].
+- The reward I will see: [a tick, a count, a card].
+- If I miss: at the next meal, not on Monday.
+
+One line per stack, one stack at a time. The template is the plan; the fridge door is the planner.
+
 ## Why most stacks fail
 
 Three failures account for nearly all of them. The anchor is not daily, so the cue does not fire. The action is too big, so on a tired day it is skipped and the skip becomes the habit. Or two or three new actions are stacked at once, so none gets the repetitions it needs.
 
-A fourth failure is quieter: the stack has no reward, so it runs on intention for a few weeks and then stops. The tap after dinner has a reward built in, a count that went up. A stack without one needs a tick, a line on a chart, anything that shows the day happened. [Why healthy eating is hard to stick to](/en/learn/healthy-eating-habits/why-healthy-eating-is-hard-to-stick-to) covers what the missing reward does to a habit.
+A fourth failure is quieter: the stack has no reward, so it runs on intention for a few weeks and then stops. The tap after dinner has a reward built in, a count that went up. A stack without one needs a tick, a line on a chart, anything that shows the day happened. [How to stick to healthy eating](/en/learn/healthy-eating-habits/how-to-stick-to-healthy-eating) covers what the missing reward does to a habit.
 
 ## When the anchor moves
 

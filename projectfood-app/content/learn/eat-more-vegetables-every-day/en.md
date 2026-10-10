@@ -7,6 +7,7 @@ meta_description: "How to eat more vegetables every day without changing everyth
 keywords:
   - how to eat more vegetables every day
   - eat more vegetables
+  - how can I eat more vegetables
   - ways to eat more vegetables
   - how to eat more plants
   - vegetables every day habit

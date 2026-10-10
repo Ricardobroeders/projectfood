@@ -10,8 +10,10 @@ keywords:
   - 21 days habit myth
   - 66 days habit
   - how long to change eating habits
+  - how long to make a habit
+  - how long does it take to break a habit
 related:
-  - why-healthy-eating-is-hard-to-stick-to
+  - how-to-stick-to-healthy-eating
   - never-miss-twice-healthy-eating
 faq:
   - q: Is it really 21 days to form a habit?
@@ -67,6 +69,10 @@ The fear of breaking the chain is bigger than the chain. In the data, a single m
 
 That also says what a tracker is for. A counter that resets to zero on one missed day punishes exactly the event the data says is harmless, and the rational move after a reset is to stop. A counter that gives you a free pass on a missed day, and only asks you to get back at the next meal, is the one that gets you to week 10. The rule has its own article: [never miss twice](/en/learn/healthy-eating-habits/never-miss-twice-healthy-eating).
 
+## And how long to break one
+
+Breaking an eating habit is not measured the same way, because you cannot count the days you did not do something you no longer notice. What the research suggests is that the old habit does not vanish; it stops being cued. The late snack goes when the cue goes, the bag in the cupboard, the screen on the sofa, and it comes back the week the cue does. So the honest answer is the same 10 weeks of building the replacement, plus whatever it takes to change the shelf.
+
 ## What to count as a day
 
 Count the smallest true thing. A day where you tasted one plant you do not usually eat is a day. Not a day where every meal was perfect, which is a standard nobody meets and which turns the count into a judgement.
@@ -77,7 +83,7 @@ Three things help the count survive the long middle:
 - A record that only shows what you did, never what you missed.
 - Something that accumulates across weeks, so a quiet week still adds to a total.
 
-The feeling that eating well is simply hard for you, rather than slow for everyone, has its own explanation in [why healthy eating is hard to stick to](/en/learn/healthy-eating-habits/why-healthy-eating-is-hard-to-stick-to).
+The feeling that eating well is simply hard for you, rather than slow for everyone, has its own explanation in [how to stick to healthy eating](/en/learn/healthy-eating-habits/how-to-stick-to-healthy-eating).
 
 ## How Project Food counts the days
 

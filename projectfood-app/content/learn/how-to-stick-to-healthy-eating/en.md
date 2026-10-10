@@ -1,15 +1,16 @@
 ---
-slug: why-healthy-eating-is-hard-to-stick-to
-title: "Why is it so hard to stick to healthy eating?"
-subtitle: "Because the reward comes months late and the cue is missing, not because you lack willpower. What to change instead."
-meta_title: "Why is it so hard to stick to healthy eating?"
-meta_description: "Healthy eating is hard to stick to because the reward comes months late and the cue is missing, not because you lack willpower. What to change instead."
+slug: how-to-stick-to-healthy-eating
+title: "How to stick to healthy eating, when diets never did"
+subtitle: "Diets fail because the reward comes months late and the cue is missing, not because you lack willpower. Here is what to change instead."
+meta_title: "How to stick to healthy eating when diets fail"
+meta_description: "How to stick to healthy eating: diets fail because the reward comes months late and the cue is missing, not for lack of willpower. What to change instead."
 keywords:
+  - how to stick to healthy eating
+  - how to stick to a diet
+  - how do you stick to a diet
   - why is it so hard to stick to healthy eating
-  - why can't I stick to healthy eating
   - why diets fail
   - how to stop giving up on healthy eating
-  - why healthy eating is hard
 related:
   - how-long-to-form-a-healthy-eating-habit
   - habit-stacking-healthy-eating
@@ -32,7 +33,7 @@ citations:
     url: https://doi.org/10.1002/ejsp.674
 ---
 
-Healthy eating is hard to stick to because it breaks the rules every lasting habit obeys: the reward arrives months late, the cue is missing, the action is big, and the plan usually leans on willpower at the one hour of the day when there is none left. None of that is a character flaw. This article is part of the guide to [healthy eating habits that stick](/en/learn/healthy-eating-habits); here we take the reasons apart one by one and say what to change instead. Spoiler: it is not you, it is the design.
+To stick to healthy eating, stop building it the way a diet is built. Diets break the rules every lasting habit obeys: the reward arrives months late, the cue is missing, the action is big, and the plan leans on willpower at the one hour of the day when there is none left. None of that is a character flaw, which is why the next diet fails the same way as the last. This article is part of the guide to [healthy eating habits that stick](/en/learn/healthy-eating-habits); here we take the reasons apart one by one and say what to change instead. Spoiler: it is not you, it is the design.
 
 ## The reward arrives too late
 
@@ -40,9 +41,9 @@ Every habit that sticks pays you back the same day. Coffee pays in minutes, a ru
 
 The fix is not to care more about the far-off outcome. It is to put a reward in the same day: a mark for the day you did it, a count that went up, a card for the plant you tasted. Small, visible, and never reset. The long middle, where the mirror shows nothing, is survivable only with something to look at. How long that middle lasts is in [how long it takes to form a healthy eating habit](/en/learn/healthy-eating-habits/how-long-to-form-a-healthy-eating-habit).
 
-## Restriction makes the forbidden louder
+## Why diets are hard to stick to: restriction makes the forbidden louder
 
-Most plans start by taking things away. That gives you a loss every day and a gain that may arrive next year, which is the wrong way round for a habit. It also does something to attention: a food you have forbidden is now a food you think about at every meal, which is more than you thought about it before.
+Most diets start by taking things away. That gives you a loss every day and a gain that may arrive next year, which is the wrong way round for a habit. It also does something to attention: a food you have forbidden is now a food you think about at every meal, which is more than you thought about it before.
 
 Turn it round. Add one plant a day and leave the rest of the plate alone. There is no loss to feel, nothing to resist, and the plate gets wider by itself. Variety, not restriction, is also what the adult guideline on plants is about: 30 different plants a week, not fewer of anything.
 

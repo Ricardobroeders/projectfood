@@ -10,9 +10,11 @@ keywords:
   - make healthy eating a habit
   - healthy eating habits examples
   - how to change eating habits
+  - how to break bad eating habits
+  - healthy habits
 related:
   - how-long-to-form-a-healthy-eating-habit
-  - why-healthy-eating-is-hard-to-stick-to
+  - how-to-stick-to-healthy-eating
 faq:
   - q: What is the easiest healthy eating habit to start with?
     a: One taste of a plant you do not usually eat, once a day, at the meal you already keep. It takes under a minute, needs no recipe and no shopping change, and it gives you something to count. Add a second habit only when the first one no longer needs reminding.
@@ -60,7 +62,7 @@ The formula is "after I do X, I will do Y", with X something you never skip. Bre
 
 Eating well is preventive. The outcome you are doing it for does not show up in the mirror next week, and most people quit in the gap between effort and result. The fix is not more motivation; it is a reward that arrives the same day. A tick, a count, a card for the plant you tasted. Something that goes up and never resets.
 
-That is also why restriction fails so reliably. Taking foods away gives you a daily loss and a distant gain. Adding one plant a day gives you a daily gain. The mechanics of why it feels so hard, and what to change instead, are in [why healthy eating is hard to stick to](/en/learn/healthy-eating-habits/why-healthy-eating-is-hard-to-stick-to).
+That is also why restriction fails so reliably. Taking foods away gives you a daily loss and a distant gain. Adding one plant a day gives you a daily gain. The mechanics of why it feels so hard, and what to change instead, are in [how to stick to healthy eating, when diets never did](/en/learn/healthy-eating-habits/how-to-stick-to-healthy-eating).
 
 ## Make it easy: one taste, under a minute
 
@@ -85,6 +87,12 @@ Food habits sit at the long end of that range, because a meal has more moving pa
 The easiest way to resist something is never to meet it, and your kitchen is set on the day you shop. What is in the house on Saturday is what gets eaten by Friday. That makes the supermarket the one place where you control the cues for the other six days, without any willpower at the table.
 
 Shop by category rather than by recipe, buy what is in season because it is the cheap kind of variety, and put one plant in the basket that you have not eaten this month. The list is in [healthy grocery shopping habits](/en/learn/healthy-eating-habits/healthy-grocery-shopping-habits).
+
+## How to change eating habits you already have
+
+Breaking a habit follows the same loop in reverse: remove the cue, make the action hard, take away the reward. The crisps at 22:00 have a cue (the sofa, the screen), an easy action (the bag is in the cupboard) and a quick reward. You do not win that fight at 22:00. You win it on shopping day, by not bringing the bag home, and on the sofa, by having something else within reach that you also like.
+
+Two rules make it workable. Replace rather than remove: the loop wants an action at that cue, so give it one, a bowl of something you bought on purpose. And change one habit at a time, the same way you build one, because attention is the scarce thing.
 
 ## What backfires
 
