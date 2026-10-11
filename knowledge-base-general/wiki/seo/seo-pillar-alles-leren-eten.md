@@ -381,7 +381,7 @@ Same method as NL: short two-word seeds, export everything, Claude classifies.
 core), "peuter fruit", "beloningskaart eten", "eetgedrag kind"; then UK, US and IT.
 
 ## Seeds still to run (2026-10-11, consolidated)
-Ricardo asked for the NL and IT lookups of the English pillar set. State on 2026-10-11: the
+State on 2026-10-11: the
 pillar and its clusters are live in all three languages (EN 5 clusters, NL 7, IT 3), each sized
 on its own run above. What is left is the gaps and the seeds the two runs never covered. Keyword
 Magic Tool, broad match, one export per seed, databases Netherlands and Italy; filters Vol 10+

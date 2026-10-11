@@ -3,7 +3,7 @@ title: SEO — pillar 3 "Healthy eating habits": clusters, slugs and keyword map
 type: seo
 tags: [seo, keywords, pillar, habits, atomic-habits, two-readers]
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-11
 sources: [concept-habits-four-laws.md, decision-2026-10-07-two-ways-to-use-it.md, seo-keyword-strategy.md, seo-site-architecture.md]
 ---
 
@@ -130,6 +130,31 @@ Habit science is not on [[brand-stats-and-claims]] yet; the rows below are propo
 - Already on the stats page: McDonald et al. 2018 (30 plants, adults, observational) and the
   children's tasting numbers (Wardle 2003, Cooke 2011, Dovey 2008) for the one table-with-kids
   sentence per page.
+
+## NL and IT seeds to run (2026-10-11)
+
+Ricardo wants the pillar and its six clusters in Dutch and Italian. Same method as the English
+run: Keyword Magic Tool, broad match, one export per seed, databases Netherlands and Italy, filters
+Vol 10+ (both markets are small; 50+ hides the long tail) and KD 0 to 40, files into
+`raw/semrush-exports/` as `<seed>_all-keywords_<nl|it>_<date>.csv`. Two seeds per page: the head
+phrase in the reader's words and the English term where Dutch and Italian readers use it as is
+("habit stacking", "never miss twice"). Claude classifies the exports here, sets the NL and IT
+slugs and adds the queue rows; a page whose seeds sum under 100 (NL) or 200 (IT) stays a section
+of the pillar.
+
+| Page | NL seeds | IT seeds |
+|---|---|---|
+| P healthy-eating-habits | gezonde eetgewoonten · eetgewoonten veranderen | abitudini alimentari sane · cambiare abitudini alimentari |
+| 1 how-long | gewoonte aanleren · 21 dagen gewoonte | quanto tempo abitudine · 21 giorni abitudine |
+| 2 stick-to | gezond eten volhouden · dieet volhouden | seguire la dieta · mantenere la dieta |
+| 3 habit-stacking | habit stacking · gewoontes koppelen | habit stacking · micro abitudini |
+| 4 grocery | gezond boodschappen doen · gezonde boodschappenlijst | spesa sana · lista spesa sana |
+| 5 never-miss-twice | never miss twice · terugvallen gezond eten | never miss twice · sgarro dieta |
+| 6 more-vegetables | meer groente eten · hoe meer groente eten | mangiare più verdure · come mangiare più verdura |
+
+Expect the shape of the English run: the head phrases above the KD cap and owned by the
+Voedingscentrum, Thuisarts and NHS-like sites, "volhouden" and "seguire la dieta" the one clear
+search term per language, and habit stacking and never miss twice present only in English wording.
 
 ## Build order
 
