@@ -3,7 +3,7 @@ title: SEO — pillar 1 "Alles leren eten": clusters and keyword map (NL / EN / 
 type: seo
 tags: [seo, keywords, pillar, family-mode, research]
 created: 2026-09-23
-updated: 2026-09-24
+updated: 2026-10-11
 sources: [seo-keyword-strategy.md, seo-site-architecture.md, seo-serp-landscape.md]
 ---
 
@@ -379,6 +379,23 @@ Same method as NL: short two-word seeds, export everything, Claude classifies.
 
 **Still to run (Ricardo):** seeds "kleuter eten" and "kleuter groente" (ages 4–6, the app's
 core), "peuter fruit", "beloningskaart eten", "eetgedrag kind"; then UK, US and IT.
+
+## Seeds still to run (2026-10-11, consolidated)
+Ricardo asked for the NL and IT lookups of the English pillar set. State on 2026-10-11: the
+pillar and its clusters are live in all three languages (EN 5 clusters, NL 7, IT 3), each sized
+on its own run above. What is left is the gaps and the seeds the two runs never covered. Keyword
+Magic Tool, broad match, one export per seed, databases Netherlands and Italy; filters Vol 10+
+(NL and IT are small, 50+ hides the long tail), KD 0 to 40; files into `raw/semrush-exports/`
+as `<seed>_all-keywords_<nl|it>_<date>.csv`.
+
+| Why | NL seeds | IT seeds |
+|---|---|---|
+| IT gaps against the EN set: the list page (`vegetables-kids-will-eat`) and the number page (`how-many-times-to-try-a-food`) measured 20 and 0 on 2026-09-24; one more look before they stay sections | – (both live in NL) | quali verdure · verdure piacciono bambini · quante volte assaggiare · bambino assaggia |
+| The three English pages queued in October (`picky-eater-food-list`, `picky-eater-chart`, `picky-eater-checklist`): do they exist as queries in NL and IT | eten moeilijke eter · beloningskaart eten · stickerkaart eten · moeilijke eter test | cibi bambino selettivo · tabella assaggi · tabella premi bambini · selettività alimentare test |
+| Left open by the 2026-09-24 runs (ages 4 to 6, fruit, behaviour, the table) | kleuter eten · kleuter groente · peuter fruit · eetgedrag kind | capricci a tavola · bambino frutta · bambino 2 anni mangia · bambini a tavola |
+
+Claude classifies the exports here and the queue rows follow; a seed that returns under 100
+summed (NL) or 200 (IT) stays a section, as the thresholds above say.
 
 ## Related pages
 - [[seo-site-architecture]] · [[seo-keyword-strategy]] · [[seo-content-types]] ·
