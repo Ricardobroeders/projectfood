@@ -79,6 +79,12 @@ type ArticleJsonLdBase = {
   hubTitle: string
   /** The share card (`…/og`), also the image Google wants on an Article. */
   image?: string
+  /** `reading_time_min` from the content row, emitted as ISO 8601 `timeRequired`. */
+  readingTimeMin?: number | null
+  /** The front-matter citations, emitted as `citation` nodes (the sources section renders them). */
+  citations?: Array<{ author: string; title: string; year: number; doi?: string; url?: string }> | null
+  /** `articleSection`: the pillar title for a cluster, the hub title for a pillar. */
+  section?: string
 }
 
 function articleNode(url: string, p: ArticleJsonLdBase, extra: object) {
@@ -97,6 +103,21 @@ function articleNode(url: string, p: ArticleJsonLdBase, extra: object) {
     dateModified: p.updatedAt,
     author: { '@id': AUTHOR_ID },
     publisher: { '@id': ORG_ID },
+    isAccessibleForFree: true,
+    ...(p.section ? { articleSection: p.section } : {}),
+    ...(p.readingTimeMin ? { timeRequired: `PT${p.readingTimeMin}M` } : {}),
+    ...(p.citations && p.citations.length > 0
+      ? {
+          citation: p.citations.map((c) => ({
+            '@type': 'ScholarlyArticle',
+            name: c.title,
+            author: c.author,
+            datePublished: String(c.year),
+            ...(c.doi ? { identifier: `doi:${c.doi}` } : {}),
+            ...(c.url ?? c.doi ? { url: c.url ?? `https://doi.org/${c.doi}` } : {}),
+          })),
+        }
+      : {}),
     ...extra,
   }
 }

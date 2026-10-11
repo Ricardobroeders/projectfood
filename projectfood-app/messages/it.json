@@ -160,7 +160,7 @@
     },
     "home": {
       "metaTitle": "Project Food: assaggia 30 piante diverse a settimana",
-      "metaDescription": "Tocca le piante che hai assaggiato, ogni pianta nuova diventa una carta e la settimana conta verso 30. Da solo o con tutti quelli a tavola. Ora in test su Google Play.",
+      "metaDescription": "Tocca le piante che assaggi, ogni pianta nuova diventa una carta e la settimana conta verso 30. Da solo o con tutti a tavola. Ora in test su Google Play.",
       "heroLabel": "30 piante a settimana",
       "heroTitle": "Assaggia 30 piante diverse a settimana.",
       "heroSubtitle": "Ogni assaggio diventa una carta.",
@@ -416,6 +416,8 @@
       "nav": "Scopri",
       "hubTitle": "La ricerca, in parole semplici",
       "hubSubtitle": "Leggiamo gli studi su bambini e alimentazione e scriviamo quello che dicono davvero. Con la fonte, ogni volta.",
+      "hubMetaTitle": "Ricerca su cibo e famiglia, in parole semplici",
+      "hubMetaDescription": "Guide su bambini e verdure, 30 piante a settimana e abitudini alimentari che durano. Leggiamo gli studi e scriviamo quello che dicono, con la fonte.",
       "hubLabel": "Per genitori",
       "readingTime": "{min} min di lettura",
       "backToLearn": "Tutti gli argomenti",

@@ -22,11 +22,11 @@ export async function generateMetadata({
   const { canonical, languages } = getAlternates('/learn', locale)
   const image = `${learnUrl(locale)}/og`
   return {
-    title: t('hubTitle'),
-    description: t('hubSubtitle'),
+    title: t('hubMetaTitle'),
+    description: t('hubMetaDescription'),
     alternates: { canonical, languages, types: { 'application/atom+xml': `${learnUrl(locale)}/feed` } },
-    openGraph: { type: 'website', url: canonical, title: t('hubTitle'), description: t('hubSubtitle'), siteName: 'Project Food', images: [{ url: image, width: 1200, height: 630 }] },
-    twitter: { card: 'summary_large_image', title: t('hubTitle'), description: t('hubSubtitle'), images: [image] },
+    openGraph: { type: 'website', url: canonical, title: t('hubMetaTitle'), description: t('hubMetaDescription'), siteName: 'Project Food', images: [{ url: image, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title: t('hubMetaTitle'), description: t('hubMetaDescription'), images: [image] },
   }
 }
 

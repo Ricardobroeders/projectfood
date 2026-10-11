@@ -31,7 +31,9 @@ export async function generateMetadata({
   const description = pillar.meta_description ?? pillar.subtitle ?? undefined
   const image = `${learnUrl(locale, pillarSlug)}/og`
   return {
-    title,
+    // Absolute: no " | Project Food" suffix on article pages. The suffix pushed 39 of 43 titles past
+    // 60 characters (audit 2026-10-11); Google shows the site name on its own.
+    title: { absolute: title },
     description,
     alternates: { canonical, languages },
     keywords: pillar.sd_keywords,
@@ -66,6 +68,9 @@ export default async function PillarPage({
         wordCount={countWords(pillar.body_md)}
         publishedAt={pillar.published_at}
         updatedAt={lastModified(pillar)}
+        readingTimeMin={pillar.reading_time_min}
+        citations={pillar.sd_citations}
+        section={t('hubTitle')}
         faq={faq}
         hubTitle={t('hubTitle')}
         image={`${learnUrl(locale, pillarSlug)}/og`}

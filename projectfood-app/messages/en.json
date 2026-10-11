@@ -160,7 +160,7 @@
     },
     "home": {
       "metaTitle": "Project Food: taste 30 different plants a week",
-      "metaDescription": "Tap the plants you tasted, every new one becomes a card, and the week counts towards 30. On your own or with everyone at your table. Now in testing on Google Play.",
+      "metaDescription": "Tap the plants you tasted, each new one becomes a card, and the week counts towards 30. Alone or with everyone at your table. Now testing on Google Play.",
       "heroLabel": "30 plants a week",
       "heroTitle": "Taste 30 different plants a week.",
       "heroSubtitle": "Every taste becomes a card.",
@@ -416,6 +416,8 @@
       "nav": "Learn",
       "hubTitle": "Research, in plain words",
       "hubSubtitle": "We read the studies on children and food and write down what they actually say. With the source, every time.",
+      "hubMetaTitle": "Food and family research, in plain words",
+      "hubMetaDescription": "Guides on children and vegetables, 30 plants a week and eating habits that stick. We read the studies and write down what they say, with the source.",
       "hubLabel": "For parents",
       "readingTime": "{min} min read",
       "backToLearn": "All topics",
