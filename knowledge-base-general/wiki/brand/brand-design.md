@@ -3,7 +3,7 @@ title: Brand book, the design side: colour, type, shape, imagery, motion
 type: brand
 tags: [brand, design, motion, colour, typography, imagery, design-system]
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-10-11
 sources: [concept-brand-pillars.md, brand-voice.md, decision-2026-09-07-app-v1-scope.md, decision-2026-10-07-two-ways-to-use-it.md]
 ---
 
@@ -122,7 +122,9 @@ word by word ([[brand-voice]] section 6).
 - **Icons are Lucide**, sized at about 45% of their container (`iconFor`), minimum 16.
 - **Gutters are 20 px**; stacks use 8, 12 and 16; sections breathe with 14 to 24 above.
 - **Tabs are underlines, not pills**: 16 px label, bold accent when active, a 36 × 3 indicator on a
-  2 px hairline track.
+  2 px hairline track. The content under a strip can be swiped sideways to the neighbouring tab
+  (since 1.0.38, 2026-10-11): the indicator slides as on a tap, the content does not move, and a
+  vertical drag always wins.
 - **Sheets, not modals**, for anything that slides in: a bottom sheet with a 40 × 4 handle,
   32 radius, swipe down to close; the keyboard shrinks it rather than pushing it off screen.
 - **Tap targets** at least 44 pt; the logging rows are taller so a kid can hit them.
