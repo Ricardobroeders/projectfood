@@ -3,7 +3,7 @@ title: SEO — technical audit of projectfood.dev (family mode)
 type: seo
 tags: [seo, technical, audit, family-mode]
 created: 2026-09-06
-updated: 2026-09-29
+updated: 2026-10-11
 sources: [seo-content-types.md, seo-app-store-aso.md, source-family-mode-context.md]
 ---
 
@@ -65,3 +65,42 @@ than grown. Audited from the codebase on 2026-09-06, not from a live crawl.
 ## Related pages
 - [[seo-overview]] · [[seo-content-types]] · [[seo-app-store-aso]] · [[seo-roadmap]] ·
   [[source-family-mode-context]]
+
+## Structured data and metadata audit of the learn hub (2026-10-11)
+
+Live pages read in three languages (pillar 3 EN, two clusters NL and IT, the hubs, home, about)
+plus a scan of the 43 live content files. What is there and correct: canonical, hreflang with
+x-default in head and sitemap, Open Graph and Twitter cards with a 1200×630 share image per page,
+one `@graph` per page with Article (headline, description, inLanguage, wordCount, keywords, dates,
+author Person, publisher Organization with logo, isPartOf/hasPart between pillar and clusters),
+BreadcrumbList, FAQPage mirroring the accordion, CollectionPage on the hubs, WebSite and
+Organization on the home, atom feed per locale, robots.txt, lastmod in the sitemap. Nothing invalid.
+
+What is missing or costs value, in order:
+
+1. **Rendered titles are too long.** The layout appends " | Project Food", so 39 of 43 article
+   titles exceed 60 characters and 19 exceed 65 (NL pillar 3 is 70, IT sgarro 71). Google cuts at
+   about 60 and rewrites long ones. Fix: article pages set an absolute title (no suffix; Google
+   shows the site name on its own since 2022), or the meta_title cap drops from 55 to 45.
+2. **No author profile.** `AUTHOR_SAME_AS` in `lib/seo.ts` is still empty (waiting for Ricardo's
+   URLs since 2026-10-07), the Person node has only name and url, and the about page carries no
+   Person/ProfilePage node. E-E-A-T and AI attribution both key on this.
+3. **The cover render is not on the page.** Every article has a plant render as share image and
+   `Article.image`, but the page itself shows no image, so Google sees an image it cannot find in
+   the content and Discover is out of reach. Fix: render the cover at the top with alt text, and
+   serve the share route in 16:9, 4:3 and 1:1 so `image` carries three ratios.
+4. **Cheap Article properties not emitted:** `citation` (the DOIs are in the front matter),
+   `timeRequired` (reading_time_min is in the database), `articleSection` (the pillar title),
+   `isAccessibleForFree`. `datePublished` on an NL or IT page is the article's English date, not
+   the day that language went live.
+5. **Hub and home metadata.** Hub descriptions are 98 to 110 characters (floor is 120) and the hub
+   titles carry no search phrase; home descriptions EN 163 and IT 167 characters (cut at 155).
+6. **Keyword placement is uneven on the English pillar 3 set** (written in one go on 2026-10-10):
+   by a rough scan the primary phrase is absent from the first 100 words on 17 of 43 files and
+   from every H2 on 23, mostly English. The check script does not test this; a warning rule would.
+7. Organization has no `sameAs` (Play listing once public, LinkedIn page); no image sitemap
+   entries; FAQ rich results are not shown to sites like ours since 2023 (the node still feeds AI
+   answers, keep it).
+
+Not needed: `meta keywords` (ignored, harmless), SearchAction (no site search), SoftwareApplication
+(gated until a store page is public, correct).
