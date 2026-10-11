@@ -1267,3 +1267,8 @@ The 03:08 preview build of the nightly branch failed: Google Fonts answered with
 
 ## [2026-10-10] build | learn: pillar 3 "healthy eating habits" published, EN, pillar and six clusters
 Ricardo confirmed the slugs and the three habit sources (now rows 11 to 13 on [[brand-stats-and-claims]]). `learn:publish --publish` from the local environment: seven content rows written, site revalidated, IndexNow 200 for the seven URLs. Live: /en/learn/healthy-eating-habits and its clusters how-long-to-form-a-healthy-eating-habit, how-to-stick-to-healthy-eating, habit-stacking-healthy-eating, healthy-grocery-shopping-habits, never-miss-twice-healthy-eating, eat-more-vegetables-every-day. Plan page [[seo-pillar-healthy-eating-habits]] marked published; backlog item 27 and row 6 updated. Next: the Dutch set, then Italian, each with its own slugs.
+
+## [2026-10-11] build | learn: 30-piante-in-famiglia (it) written and published by the nightly routine
+1130 words, 6 FAQ entries, meta title 52 and description 151 characters.
+Pillar plant-diversity (it) now links the article in place of its announcement sentence.
+No warnings; learn:check clean for both pages.

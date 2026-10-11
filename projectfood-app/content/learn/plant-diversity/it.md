@@ -51,7 +51,7 @@ In famiglia c'è un solo conteggio, di tutti. Si conta per tipo di pianta, non p
 
 Questo rende il numero raggiungibile in un modo che per una persona sola non è. Quattro persone che finiscono ciascuna il proprio piatto arrivano insieme a molti più tipi di una persona sola che si impegna. Uno mangia le olive, un altro il cetriolo, un terzo assaggia il prezzemolo. La lista cresce senza che nessuno debba guardare il proprio piatto come un punteggio.
 
-Come si arriva a 30 piante in una settimana con quattro persone a tavola, senza cucinare due volte, avrà un articolo tutto suo.
+Come si arriva a 30 piante in una settimana con quattro persone a tavola, senza cucinare due volte, lo trovi in [30 piante a settimana con i bambini](/it/impara/plant-diversity/30-piante-in-famiglia).
 
 ## Il conteggio degli assaggi è del bambino
 
