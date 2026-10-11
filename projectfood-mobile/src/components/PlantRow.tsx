@@ -1,12 +1,13 @@
 import * as Haptics from 'expo-haptics';
-import { Check, Leaf, Sparkles } from 'lucide-react-native';
+import { Check } from 'lucide-react-native';
 import { memo, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { type GestureResponderEvent, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Easing, interpolate, interpolateColor, useAnimatedStyle, useSharedValue, withSequence, withSpring, withTiming, ZoomIn } from 'react-native-reanimated';
 
 import { AvatarStack } from '@/components/MemberAvatar';
 import { motion, REWARD_BUMP_PEAK } from '@/constants/motion';
-import { CATS, colors, fonts, radii } from '@/constants/theme';
+import { CATS, colors, fonts, radii, radiusFor } from '@/constants/theme';
 import type { Member } from '@/features/household/queries';
 import type { Plant } from '@/features/plants/catalog';
 import { PlantImage } from '@/features/plants/PlantImage';
@@ -21,8 +22,6 @@ type Props = {
   catLabel: string;
   /** Anyone at the table has this card at gold: the tile and the render turn gold. */
   gold?: boolean;
-  /** In season this month (Europe): a leaf in the tile's corner. */
-  inSeason?: boolean;
   /** `at` is where the finger was, in window coordinates: the member menu grows from that point. */
   onTap: (plantId: string, at: Point) => void;
   onHold: (plantId: string, at: Point) => void;
@@ -30,7 +29,8 @@ type Props = {
 
 const pointOf = (e: GestureResponderEvent): Point => ({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY });
 
-function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, inSeason, onTap, onHold }: Props) {
+function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, onTap, onHold }: Props) {
+  const { t } = useTranslation();
   const cat = CATS[plant.category];
   const tasted = tasters.length > 0;
   // The check circle fills when the whole default set has tasted it; a partial set shows as avatars.
@@ -94,28 +94,27 @@ function PlantRowInner({ plant, tasters, members, defaultIds, catLabel, gold, in
           <Animated.View style={imageStyle}>
             <PlantImage plant={plant} size={58} gold={gold} />
           </Animated.View>
-          {plant.superfood ? (
-            <View style={styles.superfood}>
-              <Sparkles size={11} color="#FFFFFF" strokeWidth={2.5} />
-            </View>
-          ) : null}
-          {inSeason ? (
-            <View style={styles.season}>
-              <Leaf size={11} color="#FFFFFF" strokeWidth={2.5} />
-            </View>
-          ) : null}
         </View>
         <View style={styles.text}>
           <Text style={styles.name} numberOfLines={1}>
             {plant.name}
           </Text>
-          {who.length > 0 && members.length > 1 ? (
-            <AvatarStack members={who} size={22} ring={colors.checkedRow} />
-          ) : (
-            <Text style={[styles.cat, { color: gold ? colors.goldInk : cat.fg }]} numberOfLines={1}>
-              {catLabel}
-            </Text>
-          )}
+          <View style={styles.meta}>
+            {/* Superfood as a word, not a sparkle in the tile's corner (Ricardo, 2026-10-11: the icon
+                did not say what it was); the season leaf went the same day, the filter tab carries it. */}
+            {plant.superfood ? (
+              <View style={styles.chip}>
+                <Text style={styles.chipText}>{t('log.superfood')}</Text>
+              </View>
+            ) : null}
+            {who.length > 0 && members.length > 1 ? (
+              <AvatarStack members={who} size={22} ring={colors.checkedRow} />
+            ) : (
+              <Text style={[styles.cat, { color: gold ? colors.goldInk : cat.fg }]} numberOfLines={1}>
+                {catLabel}
+              </Text>
+            )}
+          </View>
         </View>
         <View style={styles.checkWrap}>
           <Animated.View style={[styles.circle, circleStyle]}>
@@ -136,11 +135,12 @@ export const PlantRow = memo(PlantRowInner);
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', borderRadius: radii.lg, marginBottom: 10, height: 84, overflow: 'hidden' },
   tile: { width: 84, height: 84, alignItems: 'center', justifyContent: 'center' },
-  superfood: { position: 'absolute', top: 8, left: 8, width: 20, height: 20, borderRadius: radii.full, backgroundColor: colors.success, alignItems: 'center', justifyContent: 'center' },
-  season: { position: 'absolute', top: 8, right: 8, width: 20, height: 20, borderRadius: radii.full, backgroundColor: '#4F7A3D', alignItems: 'center', justifyContent: 'center' },
   text: { flex: 1, paddingHorizontal: 16, gap: 4, justifyContent: 'center' },
   name: { fontFamily: fonts.semibold, fontSize: 17, lineHeight: 22, color: colors.ink },
-  cat: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },
+  meta: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  chip: { height: 18, paddingHorizontal: 6, borderRadius: radiusFor(18), backgroundColor: colors.gold, justifyContent: 'center' },
+  chipText: { fontFamily: fonts.bold, fontSize: 11, lineHeight: 14, color: colors.goldInk },
+  cat: { flexShrink: 1, fontFamily: fonts.medium, fontSize: 13, lineHeight: 18 },
   checkWrap: { width: 64, height: 84, alignItems: 'center', justifyContent: 'center' },
   circle: { width: 40, height: 40, borderRadius: radii.full, alignItems: 'center', justifyContent: 'center' },
 });

@@ -158,7 +158,7 @@ export default function LogScreen() {
     ({ item, index }: { item: Plant; index: number }) => {
       // No gold here since 2026-10-06 (Ricardo): with many gold cards every row went the same colour
       // and the category colour that tells rows apart was lost. Gold stays on the Unlocks page.
-      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} inSeason={inSeason(item, month)} onTap={onTap} onHold={onHold} />;
+      const row = <PlantRow plant={item} tasters={tastes[item.id] ?? NONE} members={members} defaultIds={defaultIds} catLabel={t(`categories.${item.category}`)} onTap={onTap} onHold={onHold} />;
       // The tutorial's second balloon points at the first row.
       return <Animated.View entering={revealFor(index)}>{index === 0 ? <TutorialAnchorView name="plantRow" inset={ROW_INSET}>{row}</TutorialAnchorView> : row}</Animated.View>;
     },
