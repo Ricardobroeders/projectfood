@@ -961,6 +961,356 @@
       "emoji": null,
       "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/blueberry.png",
       "done": "2026-10-10"
+    },
+    {
+      "internal": "healthy-eating-habits",
+      "type": "pillar",
+      "pillar": null,
+      "locale": "nl",
+      "slug": "gezonde-eetgewoonten",
+      "display_order": 3,
+      "title_hint": "Gezonde eetgewoonten opbouwen die blijven, zonder dieet",
+      "keywords": [
+        "gezonde eetgewoonten",
+        "eetgewoonten veranderen",
+        "gezond eten volhouden",
+        "gezonder eten tips",
+        "gezond eten met kinderen"
+      ],
+      "topic": "Pillar for the adult who holds the phone. The four-step loop applied to food (cue, craving, action, reward), the honest number (about 10 weeks, Lally 2010), one taste a day, add never remove, what backfires (restriction, all at once, willpower at 19:00), the one question after the last meal, the household version (Semrush: \"gezond eten met kinderen\" family ~1,200/month, KD 26-32, is the NL reader asking for the family version; one section, linking pillar 1). Links every NL cluster. Search vocabulary: \"gezonde eetgewoonten\" (30, KD 40), \"eetgewoonten veranderen\", \"gezonder eten tips\" (50, KD 21), \"waarom is gezond eten belangrijk\" (110, KD 27: one calm H2 answering it without a health claim).",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "how-to-stick-to-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": "🌱",
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pomegranate.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "how-long-to-form-a-healthy-eating-habit",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "hoe-lang-duurt-een-gewoonte",
+      "display_order": 1,
+      "title_hint": "Hoe lang duurt het om een gewoonte aan te leren? Niet 21 dagen",
+      "keywords": [
+        "hoe lang duurt het om een gewoonte aan te leren",
+        "gewoonte aanleren",
+        "21 dagen gewoonte",
+        "66 dagen gewoonte",
+        "hoe lang duurt het om eetgewoonten te veranderen"
+      ],
+      "topic": "The number and its range (Lally 2010: median 66 days, 18 to 254; Gardner 2012: about 10 weeks), why food habits sit at the long end, the valley where people quit, what a day counts as, one missed day does not matter. Not measured in Semrush NL (seed not run); written for the reader and the pillar.",
+      "related": [
+        "how-to-stick-to-healthy-eating",
+        "never-miss-twice-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pear.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "how-to-stick-to-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "dieet-volhouden",
+      "display_order": 2,
+      "title_hint": "Hoe hou je een dieet vol? Niet, en dit werkt wel",
+      "keywords": [
+        "hoe dieet volhouden",
+        "hoe een dieet volhouden",
+        "motivatie dieet volhouden",
+        "gezond eten volhouden",
+        "waarom lukt gezond eten niet"
+      ],
+      "topic": "The NL reader says \"dieet volhouden\" (hoe dieet volhouden 70, hoe een dieet volhouden 50, motivatie dieet volhouden 40; KD 14 to 16, the one measured search page in NL). Title and one H2 take the reader's word \"dieet\"; the body says why diets break every habit rule (reward months late, cue missing, action too big, willpower at 19:00), restriction makes the forbidden louder, add never remove, identity, the clean plate, when it is more than a habit problem (huisarts).",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "habit-stacking-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/lemon.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "habit-stacking-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "habit-stacking",
+      "display_order": 3,
+      "title_hint": "Habit stacking voor gezond eten: de ene stapel die blijft staan",
+      "keywords": [
+        "habit stacking",
+        "habit stacking voorbeelden",
+        "gewoontes koppelen",
+        "gewoonte koppelen aan bestaande gewoonte",
+        "gezond eten op werk"
+      ],
+      "topic": "Dutch readers use the English term. The formula \"na X doe ik Y\", why most stacks fall over (the anchor is not daily, the action too big), the one stack that holds: after the last meal, tap what you tasted; stacks for breakfast, lunch at work (\"gezond eten op werk\" 140, KD 18, one H2), the shop. Not measured beyond that.",
+      "related": [
+        "how-to-stick-to-healthy-eating",
+        "healthy-grocery-shopping-habits"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/fig.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "healthy-grocery-shopping-habits",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "gezond-boodschappen-doen",
+      "display_order": 4,
+      "title_hint": "Gezond boodschappen doen: de kast bepaalt de week",
+      "keywords": [
+        "gezond boodschappen doen",
+        "gezonde boodschappenlijst",
+        "boodschappenlijst gezond eten",
+        "gezond eten goedkoop",
+        "gezond eten zonder koken"
+      ],
+      "topic": "The shelf decides the week: what is in the house on shopping day is what gets tasted; a list by category, in season, the thin categories (peulvruchten, volkoren, gefermenteerd); shopping once a week not hungry; \"gezond eten goedkoop\" (260 to 320, KD 32 to 40) answered in one H2 with the cheap plants (beans, oats, frozen, seasonal), \"gezond eten zonder koken\" (70, KD 17) in one H2. Seed not run; the numbers come from the gezond-eten export.",
+      "related": [
+        "habit-stacking-healthy-eating",
+        "eat-more-vegetables-every-day"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/artichoke.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "never-miss-twice-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "never-miss-twice",
+      "display_order": 5,
+      "title_hint": "Never miss twice: wat je doet na een slechte eetdag",
+      "keywords": [
+        "never miss twice",
+        "never miss twice regel",
+        "terugvallen gezond eten",
+        "weer op de rails na een slechte dag",
+        "slechte eetdag"
+      ],
+      "topic": "Missing once is an accident, twice is a new habit; the one-day freeze (Lally 2010: a single missed day made no material difference); the next meal, not Monday; no guilt; the count keeps standing. Dutch readers meet the term in English. Not measured in NL.",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "eat-more-vegetables-every-day"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/plum.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "eat-more-vegetables-every-day",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "nl",
+      "slug": "meer-groente-eten",
+      "display_order": 6,
+      "title_hint": "Meer groente eten, elke dag: een hap per keer",
+      "keywords": [
+        "meer groente eten",
+        "hoe meer groente eten",
+        "meer groente eten tips",
+        "elke dag groente eten",
+        "meer planten eten"
+      ],
+      "topic": "\"meer groente eten\" 90/month, KD 15. One taste, not a portion; variety over volume (30 different plants a week, the adult observation, McDonald 2018, cited as adult and observational); the two-minute version; the weekly count; herbs, frozen and tinned count. Links pillar 2 (plant-diversity nl) once.",
+      "related": [
+        "healthy-grocery-shopping-habits",
+        "never-miss-twice-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/blueberry.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "healthy-eating-habits",
+      "type": "pillar",
+      "pillar": null,
+      "locale": "it",
+      "slug": "abitudini-alimentari-sane",
+      "display_order": 3,
+      "title_hint": "Abitudini alimentari sane che durano, senza dieta",
+      "keywords": [
+        "abitudini alimentari sane",
+        "cambiare abitudini alimentari",
+        "come mangiare sano con costanza",
+        "buone abitudini alimentari",
+        "mangiare sano in famiglia"
+      ],
+      "topic": "Pillar for the adult who holds the phone, Italian reader. The four-step loop applied to food, the honest number (about 10 weeks, Lally 2010), un assaggio al giorno, add never remove, what backfires (restrizione, tutto in una volta, forza di volontà alle 19), the one question after the last meal, the household version (one section, links pillar 1 it). Links every IT cluster. Semrush IT found almost nothing for the habit phrasings (Ricardo, 2026-10-11): the pillar is a hub for the app's Italian users and for AI answers, not a volume page.",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "how-to-stick-to-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": "🌱",
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pomegranate.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "how-long-to-form-a-healthy-eating-habit",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "quanto-tempo-per-un-abitudine",
+      "display_order": 1,
+      "title_hint": "Quanto tempo ci vuole per creare un'abitudine? Non 21 giorni",
+      "keywords": [
+        "quanto tempo ci vuole per creare un'abitudine",
+        "21 giorni per un'abitudine",
+        "66 giorni abitudine",
+        "quanto tempo per cambiare abitudini alimentari",
+        "come si forma un'abitudine"
+      ],
+      "topic": "The number and its range (Lally 2010: median 66 days, 18 to 254; Gardner 2012: about 10 weeks), why food habits sit at the long end, the valley where people quit, what a day counts as, one missed day does not matter. Not measured in Semrush IT.",
+      "related": [
+        "how-to-stick-to-healthy-eating",
+        "never-miss-twice-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/pear.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "how-to-stick-to-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "seguire-la-dieta",
+      "display_order": 2,
+      "title_hint": "Perché è così difficile seguire una dieta, e cosa funziona invece",
+      "keywords": [
+        "seguire la dieta",
+        "non riesco a seguire la dieta",
+        "come mantenere la dieta",
+        "perché le diete falliscono",
+        "mangiare sano con costanza"
+      ],
+      "topic": "The reader's word is \"dieta\". Why diets break every habit rule (reward months late, cue missing, action too big, forza di volontà alle 19), restriction makes the forbidden louder, add never remove, identity, il piatto pulito, when it is more than a habit problem (medico di base). Not measured in Semrush IT.",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "habit-stacking-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/lemon.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "habit-stacking-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "habit-stacking",
+      "display_order": 3,
+      "title_hint": "Habit stacking per mangiare sano: l'unica catena che regge",
+      "keywords": [
+        "habit stacking",
+        "habit stacking esempi",
+        "abitudini concatenate",
+        "micro abitudini alimentari",
+        "agganciare un'abitudine"
+      ],
+      "topic": "Italian readers use the English term. The formula \"dopo X faccio Y\", why most stacks fall over, the one that holds: dopo l'ultimo pasto, segno cosa ho assaggiato; stacks for colazione, pranzo, la spesa. Not measured.",
+      "related": [
+        "how-to-stick-to-healthy-eating",
+        "healthy-grocery-shopping-habits"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/fig.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "healthy-grocery-shopping-habits",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "spesa-sana",
+      "display_order": 4,
+      "title_hint": "Spesa sana: lo scaffale decide la settimana",
+      "keywords": [
+        "spesa sana",
+        "lista della spesa sana",
+        "lista spesa sana",
+        "come fare una spesa sana",
+        "spesa sana ed economica"
+      ],
+      "topic": "Semrush IT: spesa sana 110 (KD 11), lista della spesa sana 90 (KD 10), lista spesa sana 90 (KD 12): 290/month, the second measured IT page. The shelf decides the week; a list by category, di stagione, the thin categories (legumi, cereali integrali, fermentati); once a week, never hungry; a printable-style list in the body (at most 7 items per list).",
+      "related": [
+        "habit-stacking-healthy-eating",
+        "eat-more-vegetables-every-day"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/artichoke.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "never-miss-twice-healthy-eating",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "sgarro-dieta",
+      "display_order": 5,
+      "title_hint": "Sgarro nella dieta: cosa fare il giorno dopo",
+      "keywords": [
+        "sgarro dieta",
+        "2 giorni di sgarro nella dieta",
+        "cosa fare dopo uno sgarro",
+        "never miss twice",
+        "ricominciare dopo uno sgarro"
+      ],
+      "topic": "Semrush IT: \"2 giorni di sgarro nella dieta\" 210 (KD 15), \"sgarro dieta\" 110 (KD 16): 320/month, the best measured IT term of the pillar. Title takes the reader's word \"sgarro\"; the body: missing once is an accident, twice is a new habit (never miss twice, Clear), the one-day freeze (Lally 2010: one missed day made no difference), the next meal not lunedì, no guilt, no compensation (no skipping meals or extra sport to \"make up\"), the count keeps standing. One H2 answers \"due giorni di sgarro\" directly.",
+      "related": [
+        "how-long-to-form-a-healthy-eating-habit",
+        "eat-more-vegetables-every-day"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/plum.png",
+      "done": "2026-10-11"
+    },
+    {
+      "internal": "eat-more-vegetables-every-day",
+      "type": "cluster",
+      "pillar": "healthy-eating-habits",
+      "locale": "it",
+      "slug": "mangiare-piu-verdure",
+      "display_order": 6,
+      "title_hint": "Mangiare più verdure ogni giorno, un assaggio alla volta",
+      "keywords": [
+        "mangiare più verdure",
+        "come mangiare più verdure",
+        "mangiare più verdura ogni giorno",
+        "mangiare più vegetali",
+        "abitudine verdure"
+      ],
+      "topic": "One taste, not a portion; variety over volume (30 different plants a week, McDonald 2018, adult and observational); the two-minute version; the weekly count; erbe, surgelati e legumi in scatola count. Links pillar 2 (plant-diversity it) once. Not measured.",
+      "related": [
+        "healthy-grocery-shopping-habits",
+        "never-miss-twice-healthy-eating"
+      ],
+      "pillar_mention": null,
+      "emoji": null,
+      "cover_image": "https://lkmfmdehysmbstnfdbyg.supabase.co/storage/v1/object/food-images/blueberry.png",
+      "done": "2026-10-11"
     }
   ]
 }

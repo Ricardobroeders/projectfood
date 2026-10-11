@@ -156,6 +156,33 @@ Expect the shape of the English run: the head phrases above the KD cap and owned
 Voedingscentrum, Thuisarts and NHS-like sites, "volhouden" and "seguire la dieta" the one clear
 search term per language, and habit stacking and never miss twice present only in English wording.
 
+## NL and IT numbers: what the exports say (2026-10-11)
+
+Eight exports in `raw/semrush-exports/` (`*_broad-match_<nl|it>_2026-10-11.csv`), broad match, Vol
+10+. Ricardo's reading, confirmed by the files: Italy has almost no habit phrasings in the database,
+the Netherlands a few. Every KD seen is 9 to 40.
+
+| Page | NL measured | IT measured | Decision |
+|---|---|---|---|
+| P healthy-eating-habits | "gezonde eetgewoonten" 30, KD 40; "eetgewoonten" 70 and "eetgewoontes" 110, but that seed is country cuisines ("italie eetgewoonten" 260). From the "gezond eten" seed (240 rows, 35,550/month, four fifths recipes, ordering, cities and weight loss): "waarom is gezond eten belangrijk" 110 KD 27, "gezonder eten tips" 50 KD 21, "gezond eten met kinderen" family about 1,200 at KD 26 to 32 | nothing returned for "abitudini alimentari sane" and "cambiare abitudini alimentari" | Hub pillar in both languages, as in English. NL slug `gezonde-eetgewoonten`, IT `abitudini-alimentari-sane`. One NL H2 answers "waarom is gezond eten belangrijk" without a health claim; the family section carries "gezond eten met kinderen" and links pillar 1 |
+| 1 how long | not run | not run | Written for the reader and the pillar: NL `hoe-lang-duurt-een-gewoonte`, IT `quanto-tempo-per-un-abitudine` |
+| 2 stick to | "hoe dieet volhouden" 70 KD 16, "hoe een dieet volhouden" 50 KD 14, "motivatie dieet volhouden" 40 KD 14: 160/month, the one NL search page | nothing for "seguire la dieta" | NL slug `dieet-volhouden`, the reader's word in title and one H2 (same move as the English rename). IT `seguire-la-dieta` |
+| 3 habit stacking | "healthy habits" returned only a gym ("healthy habits eindhoven" 260, navigational); "habit stacking" not run | not run | The English term in both languages: `habit-stacking` twice. "gezond eten op werk" 140 KD 18 (from the gezond-eten seed) is the NL lunch stack, one H2 |
+| 4 grocery | not run; from the gezond-eten seed: "goedkoop gezond eten" family 320 + 260 + 260 at KD 32 to 40, "gezond eten zonder koken" 70 KD 17 | "spesa sana" 110 KD 11, "lista della spesa sana" 90 KD 10, "lista spesa sana" 90 KD 12: 290/month (the rest of the seed is a bank, "intesa san paolo") | NL `gezond-boodschappen-doen` with an H2 on cheap plants and one on no-cook; IT `spesa-sana`, the list by category as the artefact |
+| 5 never miss twice | not run | "2 giorni di sgarro nella dieta" 210 KD 15, "sgarro dieta" 110 KD 16: 320/month, the best IT term of the pillar | NL `never-miss-twice` (the English term); IT `sgarro-dieta`, the reader's word "sgarro" in the title, one H2 on two days of sgarro, no compensation advice |
+| 6 more vegetables | "meer groente eten" 90 KD 15 | not run | NL `meer-groente-eten`, IT `mangiare-piu-verdure` |
+
+Left in the exports on purpose: recipes and "wat eten we vandaag" (6,000/month, recipe intent, a
+non-goal), weight loss ("gezond eten en afvallen" family about 2,500), ordering and city terms,
+"is X gezond" single-food questions, pregnancy, the bank rows in the IT spesa seed.
+
+Reading: NL has one measured search page (dieet volhouden) and two measured phrasings that fit
+existing pages (meer groente eten, gezond eten op werk); IT has two measured pages (sgarro, spesa
+sana) and nothing on habits as a word. Both sets are still written in full: the pillar needs its
+clusters to publish, the app's Dutch and Italian users read them, and the seeds not run (gewoonte
+aanleren, habit stacking, never miss twice, gezond boodschappen, the Italian habit seeds) can be
+measured later without changing a slug.
+
 ## Build order
 
 1. EN pillar plus the six EN clusters, checked, committed unpublished.
