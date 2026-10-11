@@ -190,6 +190,21 @@ trackers), whether a household plan retains better (no published data on family 
 and whether collectible cards hold past the Joon window of four to eight weeks (no trial has
 measured a card mechanic; the tasting trials behind it hold at three months).
 
+## 7. USP candidates read off the research (Ricardo and Claude, 2026-10-11)
+
+Ricardo's two, with the sharpening the evidence asks for, and a third the evidence adds. Tests:
+true today, provable, wanted (named in the research), hard to copy.
+
+| Claim | True today | Provable | Wanted | Hard to copy | Role |
+|---|---|---|---|---|---|
+| **One question after dinner, tap what you tasted, under a minute.** Lighter by construction: we count which plants, never how much, so no portions, grams, barcode, photo or database search | yes, if measured | median seconds per log from the closed test; say "under a minute" only while it holds | benefit 1 (and churn reason 1 when broken) | no: Eating30 and 30 Plants tap, the photo apps claim zero effort | the door line; gets people in, does not make them pay |
+| **For you, or for everyone at your table.** One account, one question, one count for the household, the kid's cards | yes | the testers' two halves (ages 25 to 68, solo and families) by 2026-10-14 | benefits 5 and 6; a second caregiver is a named paid feature | yes: every 30-plants tracker is solo, every family app is a parent tool or a kid game, none has the household count | the positioning; wording from [[decision-2026-10-07-two-ways-to-use-it]] ("for everyone" reads as "for nobody") |
+| **It only counts what you did.** The count never resets to zero, a missed day is absorbed, nothing shows what you did not eat, every taste becomes a card that stays | yes | the freeze, the card ladder, no "not eaten" view anywhere | benefit 2 (awareness, not restriction); churn reasons 6 and 7 (lost streaks, guilt) | yes, structurally: a calorie app cannot stop showing what you ate too much of | the promise; "joy, not guilt" as a product fact |
+
+Together they are the one sentence row 1 has been missing: one question a day, for you or for
+everyone at your table, that only counts what you did. Graduation (parking lot, 2026-10-11) is a
+fourth candidate once it exists: the app that tells you when the habit is yours.
+
 ## Contradictions and open questions
 
 - The adult trackers are tiny (tens of ratings), so their praise is anecdote; the mass apps are
