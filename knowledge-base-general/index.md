@@ -20,6 +20,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[source-supabase-metrics]] — aggregate usage metrics snapshot from the live DB (2026-05-30; May baseline).
 - [[source-30plants-origin-research]] — web research: origin & science of "30 plants a week".
 - [[source-competitor-scan]] — web research: the "30 plants" competitor landscape.
+- [[source-research-app-benefits-2026-10]] — web research (2026-10-11): what customers of food-logging and family-eating apps want, keep, pay for and leave over; benchmarks, streak literature, implications for rows 1, 4, 9, 10.
 
 ## Entities
 - [[entity-myfitnesspal]] — competitor cited as the anti-pattern Project Food positions against.

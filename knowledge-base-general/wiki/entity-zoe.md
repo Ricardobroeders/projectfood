@@ -3,7 +3,7 @@ title: ZOE
 type: entity
 tags: [competitor, premium, nutrition]
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-10-11
 sources: [source-competitor-scan.md, source-30plants-origin-research.md]
 ---
 
@@ -19,6 +19,7 @@ messaging is central to its content, and its app tracks plant variety toward 30.
 ## What we know
 - Core membership ~£/$9.99/mo; Plus ~$15.99/mo; full program with test ~$294 upfront + $29–39/mo
   _(as of 2026-01, [[source-competitor-scan]])_. A 60%-cheaper £9.99 tier launched Jan 2026.
+- **2026-10-11:** app-only membership £9.99 a month (£119.88 a year), 7-day trial £2.30, test plus a year £268.88 (Which?, 2026-09-08). Trustpilot 4.1 from 14,401 reviews; the praise is "an education not a diet", the 1-star page is subscription surprise and, after the test year, "essentially a food logging app". Daily 0 to 100 food scores, a weekly plant counter to 30, streaks. Detail in [[source-research-app-benefits-2026-10]].
 - ZOE 2.0 uses AI photo food logging and tracks plant variety toward 30; microbiome test is an
   optional add-on _(as of 2026-05, [[source-competitor-scan]])_.
 
