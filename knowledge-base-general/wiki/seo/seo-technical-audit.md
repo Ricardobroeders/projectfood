@@ -78,22 +78,22 @@ Organization on the home, atom feed per locale, robots.txt, lastmod in the sitem
 
 What is missing or costs value, in order:
 
-1. **Rendered titles are too long.** The layout appends " | Project Food", so 39 of 43 article
+1. **Done 2026-10-11.** **Rendered titles are too long.** The layout appends " | Project Food", so 39 of 43 article
    titles exceed 60 characters and 19 exceed 65 (NL pillar 3 is 70, IT sgarro 71). Google cuts at
    about 60 and rewrites long ones. Fix: article pages set an absolute title (no suffix; Google
    shows the site name on its own since 2022), or the meta_title cap drops from 55 to 45.
 2. **No author profile.** `AUTHOR_SAME_AS` in `lib/seo.ts` is still empty (waiting for Ricardo's
    URLs since 2026-10-07), the Person node has only name and url, and the about page carries no
    Person/ProfilePage node. E-E-A-T and AI attribution both key on this.
-3. **The cover render is not on the page.** Every article has a plant render as share image and
+3. **Ricardo collects the images (2026-10-11): one set per article folder, 16:9 at 1200×675, 4:3 at 1200×900, 1:1 at 1200×1200, named `<internal>-16x9.jpg`, `<internal>-4x3.jpg`, `<internal>-1x1.jpg`, no text in the image, in a public bucket `learn-covers`; then the page shows the 16:9 at the top with alt text from the front matter and `image` carries all three.** **The cover render is not on the page.** Every article has a plant render as share image and
    `Article.image`, but the page itself shows no image, so Google sees an image it cannot find in
    the content and Discover is out of reach. Fix: render the cover at the top with alt text, and
    serve the share route in 16:9, 4:3 and 1:1 so `image` carries three ratios.
-4. **Cheap Article properties not emitted:** `citation` (the DOIs are in the front matter),
+4. **Done 2026-10-11, except the per-locale date (the content table has no created_at).** **Cheap Article properties not emitted:** `citation` (the DOIs are in the front matter),
    `timeRequired` (reading_time_min is in the database), `articleSection` (the pillar title),
    `isAccessibleForFree`. `datePublished` on an NL or IT page is the article's English date, not
    the day that language went live.
-5. **Hub and home metadata.** Hub descriptions are 98 to 110 characters (floor is 120) and the hub
+5. **Done 2026-10-11.** **Hub and home metadata.** Hub descriptions are 98 to 110 characters (floor is 120) and the hub
    titles carry no search phrase; home descriptions EN 163 and IT 167 characters (cut at 155).
 6. **Keyword placement is uneven on the English pillar 3 set** (written in one go on 2026-10-10):
    by a rough scan the primary phrase is absent from the first 100 words on 17 of 43 files and
