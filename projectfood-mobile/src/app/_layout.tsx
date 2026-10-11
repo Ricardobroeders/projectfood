@@ -9,6 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { PrimaryButton } from '@/components/ui';
 import { colors, fonts } from '@/constants/theme';
@@ -112,7 +113,11 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
 
   const onboarded = !!hh.data?.household.onboarded_at;
 
+  // Every GestureDetector outside a sheet needs this root above it: on Android the library delivers
+  // touches only through it (the swipe between tabs and the plant page's swipe-down were silent
+  // there without it, 2026-10-11); the sheets keep their own because a Modal is its own window.
   return (
+    <GestureHandlerRootView style={styles.root}>
     <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.bg }, animation: 'ios_from_right' }}>
       <Stack.Protected guard={!signedIn}>
         <Stack.Screen name="(auth)" options={{ animation: 'fade' }} />
@@ -133,10 +138,12 @@ function Gate({ fontsLoaded }: { fontsLoaded: boolean }) {
         <Stack.Screen name="account/delete" />
       </Stack.Protected>
     </Stack>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: colors.bg },
   error: { flex: 1, backgroundColor: colors.bg, alignItems: 'center', justifyContent: 'center', gap: 16, padding: 32 },
   errorText: { fontFamily: fonts.medium, fontSize: 15, lineHeight: 22, color: colors.ink2, textAlign: 'center' },
 });
