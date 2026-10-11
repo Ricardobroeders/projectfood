@@ -1,7 +1,9 @@
 import * as Haptics from 'expo-haptics';
-import { useEffect, useRef, useState } from 'react';
-import { type LayoutChangeEvent, type NativeScrollEvent, type NativeSyntheticEvent, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { type PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
+import { type LayoutChangeEvent, type NativeScrollEvent, type NativeSyntheticEvent, Pressable, ScrollView, type StyleProp, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { scheduleOnRN } from 'react-native-worklets';
 
 import { colors, fonts } from '@/constants/theme';
 
@@ -96,6 +98,63 @@ export function Tabs<K extends string>({ tabs, value, onChange }: Props<K>) {
         <Animated.View pointerEvents="none" style={[styles.indicator, indicator]} />
       </ScrollView>
     </View>
+  );
+}
+
+/** Finger travel before a sideways drag counts as a swipe; a vertical drag past it is a scroll. */
+const SWIPE_SLOP = 14;
+/** Past this the tab changes on release whatever the speed; a flick changes it sooner. */
+const SWITCH_DISTANCE = 72;
+const SWITCH_VELOCITY = 700;
+
+type PaneProps<K extends string> = PropsWithChildren<Props<K> & { style?: StyleProp<ViewStyle> }>;
+
+/**
+ * The content under a tab strip, swipeable sideways to the neighbouring tab (Ricardo, 2026-10-11:
+ * skim the categories without reaching up to the strip). Activation is manual so a list inside
+ * keeps its vertical drags and its taps and holds: the swipe takes over only once the finger has
+ * moved sideways more than up or down. The strip's indicator slides as it does on a tap; the
+ * content itself does not move, so the Log list's deferred render stays as it is.
+ */
+export function TabPane<K extends string>({ tabs, value, onChange, style, children }: PaneProps<K>) {
+  const startX = useSharedValue(0);
+  const startY = useSharedValue(0);
+  const index = tabs.findIndex((tab) => tab.key === value);
+  const prev = index > 0 ? tabs[index - 1].key : null;
+  const next = index >= 0 && index < tabs.length - 1 ? tabs[index + 1].key : null;
+  const go = (key: K | null) => {
+    if (key === null) return;
+    Haptics.selectionAsync();
+    onChange(key);
+  };
+  const pan = useMemo(
+    () =>
+      Gesture.Pan()
+        .manualActivation(true)
+        .onTouchesDown((e) => {
+          startX.value = e.allTouches[0].x;
+          startY.value = e.allTouches[0].y;
+        })
+        .onTouchesMove((e, state) => {
+          const t = e.allTouches[0];
+          const dx = Math.abs(t.x - startX.value);
+          const dy = Math.abs(t.y - startY.value);
+          if (dy > SWIPE_SLOP && dy >= dx) state.fail();
+          else if (dx > SWIPE_SLOP && dx > dy) state.activate();
+        })
+        .onEnd((e) => {
+          const far = Math.abs(e.translationX) > SWITCH_DISTANCE || Math.abs(e.velocityX) > SWITCH_VELOCITY;
+          if (!far) return;
+          // Finger to the left pulls the next tab in; to the right, the previous one.
+          scheduleOnRN(go, e.translationX < 0 ? next : prev);
+        }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [prev, next, onChange, startX, startY],
+  );
+  return (
+    <GestureDetector gesture={pan}>
+      <View style={style}>{children}</View>
+    </GestureDetector>
   );
 }
 

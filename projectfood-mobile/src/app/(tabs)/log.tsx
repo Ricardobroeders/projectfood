@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { PlantRow } from '@/components/PlantRow';
 import { SkeletonRows } from '@/components/Skeleton';
-import { Tabs, type Tab } from '@/components/Tabs';
+import { TabPane, Tabs, type Tab } from '@/components/Tabs';
 import { WeekMeter } from '@/components/WeekMeter';
 import { TutorialAnchorView } from '@/features/tutorial/useTutorialAnchor';
 import { Loading, PrimaryButton, Screen, TextButton } from '@/components/ui';
@@ -67,6 +67,10 @@ export default function LogScreen() {
   const settings = useSettings();
 
   const [filter, setFilter] = useState<Filter>('all');
+  const onFilter = useCallback((k: Filter) => {
+    perfStart('log filter');
+    setFilter(k);
+  }, []);
   // The tab indicator moves at once; the list follows in a deferred render so the tap never waits on it.
   const listFilter = useDeferredValue(filter);
   // First paint is the skeleton; the rows come one frame later so the tab switch never freezes.
@@ -287,17 +291,10 @@ export default function LogScreen() {
       ) : null}
 
       <View style={styles.tabs}>
-        <Tabs
-          tabs={tabs}
-          value={filter}
-          onChange={(k) => {
-            perfStart('log filter');
-            setFilter(k);
-          }}
-        />
+        <Tabs tabs={tabs} value={filter} onChange={onFilter} />
       </View>
 
-      <View style={styles.listWrap}>
+      <TabPane tabs={tabs} value={filter} onChange={onFilter} style={styles.listWrap}>
         <FlatList
           ref={listRef}
           data={mounted ? plants : NO_PLANTS}
@@ -318,7 +315,7 @@ export default function LogScreen() {
           ListFooterComponent={mounted && debounced.trim() && plants.length > 0 ? missingBlock : null}
         />
         {pending ? <SkeletonRows count={8} height={84} tile={84} gap={10} style={styles.skeletonOverlay} /> : null}
-      </View>
+      </TabPane>
     </Screen>
   );
 }

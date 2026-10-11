@@ -9,7 +9,7 @@ import { Cup } from '@/components/Cup';
 import { MemberAvatar } from '@/components/MemberAvatar';
 import { ProgressBar } from '@/components/ProgressBar';
 import { StampGrid } from '@/components/StampShelf';
-import { Tabs, type Tab } from '@/components/Tabs';
+import { TabPane, Tabs, type Tab } from '@/components/Tabs';
 import { Loading, Screen, ScreenTitle, SectionTitle } from '@/components/ui';
 import { CAT_ORDER, CATS, colors, fonts, radii } from '@/constants/theme';
 import { ACHIEVEMENT_BY_ID, ACHIEVEMENTS, type AchievementId, levelKey, progressFor } from '@/features/achievements/definitions';
@@ -85,6 +85,7 @@ export default function UnlocksScreen() {
           <Tabs tabs={tabs} value={tab} onChange={setTab} />
         </View>
 
+        <TabPane tabs={tabs} value={tab} onChange={setTab}>
         {tab === 'achievements' ? (
           <View style={styles.pane}>
             <StampGrid entries={entries} levelOf={levelOf} onPress={(id) => openAchievement(id, ACHIEVEMENT_BY_ID[id].scope === 'member' ? memberId : null)} />
@@ -148,6 +149,7 @@ export default function UnlocksScreen() {
             </View>
           </>
         )}
+        </TabPane>
       </ScrollView>
     </Screen>
   );
