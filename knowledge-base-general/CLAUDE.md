@@ -191,25 +191,21 @@ Then suggest concrete next questions to investigate and sources to seek out.
 - Keep `overview.md` current as the synthesized big-picture entry point.
 - This whole directory is a git repo — meaningful changes are worth committing.
 
-## The shared doc ("Project Food Docs") and this wiki
+## The company deck and this wiki
 
-Since 2026-10-07 Ricardo and Claude think topics out in one Claude Doc, "Project Food Docs"
-(link in [[concept-habits-four-laws]]; one tab per topic: habits, then brand guide, business
-model, value proposition canvas). Ricardo's rule: the two must stay aligned in every choice,
-otherwise the two of us drift. So:
+Since 2026-10-11 the company-level view is a slide deck (why, who, how the app works, the habit
+principle and journey, achievements, social, business model, BMC, status, roadmap, open decisions,
+team). Ricardo reads and sends the deck; this wiki stays the record. The Claude Doc "Project Food
+Docs" used from 2026-10-07 is dropped (too textual, did not work well); do not read or update it.
 
-1. **One record, one view.** This wiki is the record. The doc is the shared view of it. A choice
-   exists only once it is in the wiki (a `decision-` page or a dated line on the topic page).
-2. **Every tab names its page, every page names its tab.** A tab opens with "Record: `<page>`";
-   the page links the doc under its own "Thinking space" line.
-3. **A change in one place is a change in both, in the same session.** Ricardo edits or picks in
-   the doc: Claude reads the tab (the connector's `read` with `sinceRev`) before any other work on
-   that topic and carries the change into the wiki first. Claude changes the wiki: the tab is
-   updated in the same turn. Never a fact in one that is missing from the other.
-4. **Decisions:** taken in the doc through the Decision dropdown or a note in the row, then
-   written as a `decision-` page and the backlog row; the doc row is marked decided with the page
-   name. The doc never holds a choice the wiki does not.
-5. **New topics** become a new tab of the same doc, never a new doc.
+1. **One record, one view.** A choice exists only once it is in the wiki (a `decision-` page or a
+   dated line on the topic page). The deck shows it; it never holds a choice the wiki does not.
+2. **Every slide names its page.** A slide footer carries the wiki page it summarises, so a slide
+   can be checked and the two cannot drift.
+3. **Deck work writes back the same session.** A choice made while building or discussing the
+   deck becomes the decision page and the backlog row in the same session.
+4. **Exports.** When Ricardo calls a deck round done, he exports it and places the export in the
+   wiki (`raw/` for the file, a dated line on the topic pages); Claude files and links it.
 
 ## When in doubt
 
