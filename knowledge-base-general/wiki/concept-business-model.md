@@ -100,6 +100,8 @@ introductory price or a founder-granted free year (see the advocacy "thank you" 
 [[strategy-backlog]]).
 
 ### Network effects, honestly
+> 2026-10-12: the principle and the feature test now live in [[concept-network-effects]] (Ricardo: success depends on whether growth can feed itself; costs barely grow).
+
 The kid's collection is single-household value; the network effects are local: one parent
 brings a class of 20–25 households, cheers run between households, the class milestone is
 shared. Growth is viral inside a class and jumps between classes through parents. That still

@@ -32,6 +32,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 
 ## Concepts
 - [[concept-30-plants-a-week]] — the core mechanic & brand promise; "the number is the product".
+- [[concept-network-effects]] — costs barely grow, so growth has to feed itself: viral loop vs social vs data network effects, retention first, the two-question test for every feature (Ricardo, 2026-10-12).
 - [[concept-brand-pillars]] — the four pillars and their "we never" guardrail rules.
 - [[concept-word-of-mouth]] — growth via three talkable moments, never nagging.
 - [[concept-stickiness-moat]] — retention via recurring weekly utility ("Sunday gets harder").

@@ -1344,3 +1344,6 @@ Ricardo's asks: markets as a multi-select so the numbers combine, one-year views
 
 ## [2026-10-12] note | In-app purchases parked next to the subscription
 Ricardo, reading the model (a €5,000 gross salary is hard on subscriptions alone): add revenue drivers like in-game additions, not pay to win, such as streak freezes and social skins. Parked in [[strategy-backlog]] with Claude's read: direct-bought cosmetics for the adult fit after the social layer; bought freezes conflict with pillar 4, the free freeze and the 2026-09-26 rule that rewards are earned by eating; lifetime plan, gift subscriptions and paid content sets are the other candidates. Challenged by brainstorms 17 and 28; row 9 noted.
+
+## [2026-10-12] concept | Network effects as the growth test
+Ricardo: costs barely grow, so success depends on getting a network effect off the ground; keep it in mind when building, it helps decide the social features. Filed as [[concept-network-effects]]: viral loop, social and data network effects told apart; retention first (78% churn leaks any loop); the two-question test (brings someone in, keeps someone because of a person); the household and local clusters as the network; limits (children never a profile, no feed, no dark patterns); what to measure. Linked from the social layer decision, the business model and row 17.
