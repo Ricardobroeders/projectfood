@@ -9,6 +9,10 @@ sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 
 # Business model (subscription first, affiliate as upside)
 
+> **Live numbers (2026-10-12):** prices, store fee, conversion, scenarios and the goal ladder are
+> calculated in the shared model artifact, https://claude.ai/artifact/D38Kfd3LBPcDQqd3sW2Sku. Change
+> an assumption there, not here; this page keeps the reasoning.
+
 **In one line:** A household subscription (€3.99 a month or €39.99 a year, proposed by Ricardo
 on 2026-09-10) sold to the parent once the app has shown evidence about the kid, with the
 weekly shopping list as the paid ritual and grocery affiliate revenue as a later, NL-only

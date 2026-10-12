@@ -17,6 +17,12 @@ a health or fitness app, the highest share of the five markets we looked at. The
 "worth continuing" stage needs about 15,000 to 21,000 Dutch installs, under 1% of the people
 who want to eat healthier. Germany, not Italy, is the next revenue market.
 
+> **Live numbers:** the model artifact "Project Food model" (https://claude.ai/artifact/D38Kfd3LBPcDQqd3sW2Sku,
+> built 2026-10-12) holds the editable assumptions, the markets with their sources, all 298 data
+> points and a change log. It is the source of truth for the numbers from now on; this page is the
+> method and the 2026-10-12 snapshot. The model blends annual and monthly payers (68% annual), so
+> its net per payer (€2.49 a month) is a little above the annual-only €2.34 used below.
+
 Ricardo's question (2026-10-12): "I don't know how big the market for our product is. Let's
 say we start in the Netherlands." Data in `raw/market-research-2026-10/` (298 rows, every one
 with its URL); this page is the synthesis. Status labels below: measured (official statistic),
