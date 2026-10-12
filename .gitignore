@@ -14,3 +14,8 @@ supabase/.temp/
 !.claude/skills/**
 !.claude/routines/
 !.claude/routines/**
+
+# Local design exports: working material stays off the repo. The tracked files in
+# app-logo-export/ (icon exports, favicon, pineapple.png for build-splash.mjs) stay tracked.
+app-logo-export/photos/
+app-logo-export/app-assets/
