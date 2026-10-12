@@ -42,10 +42,12 @@ a feed, and that leaderboards and open social features rank last in what users w
    friend code on the profile is the typed fallback when a link cannot be sent. There is no
    search by name.
 3. **Visible to friends only.** What a connected friend sees: your name and drawn avatar as
-   entered at onboarding, the table's plant count this week, weeks at 30, the streak, and the
-   achievements that belong to the household or to you. Never the member list, never a kid's
-   cards, never which plants on which day. No public directory and therefore no public toggle;
-   if a public profile ever matters, the switch can be added then, default off.
+   entered at onboarding, your own achievements and your own plant unlocks (the cards you hold
+   and their levels), plus the week's count, weeks at 30 and the streak. Household-scope
+   achievements are not shared (Ricardo, 2026-10-12: "just share their own achievements and
+   plant unlocks"). Never the member list, never a kid's cards, never which plants on which
+   day. No public directory and therefore no public toggle; if a public profile ever matters,
+   the switch can be added then, default off.
 4. **Remove or block is the single control.** Removing a friend ends the visibility both ways;
    blocking also refuses a new request from that account.
 5. **The smallest report path from day one.** A report button on a profile writes a row and
@@ -54,10 +56,29 @@ a feed, and that leaderboards and open social features rank last in what users w
 
 ## What follows
 
-- **Store work before the first social build:** privacy policy section on profiles and friends;
-  a fresh pass on Play Data safety and Apple privacy labels; Play content rating re-answered
-  ("users interact"); a second review account and updated review notes so a reviewer can see a
-  profile from the outside. Nothing on the closed-test track; iOS only after the first approval.
+- **The privacy and store changes are part of the same version** (Ricardo, 2026-10-12), not a
+  follow-up. The build is not done until all of these ship with it:
+  - Privacy policy (en, nl, it): a section "Friends and your profile" that says what a friend
+    sees (name, avatar, own achievements, own cards, week count, weeks at 30, streak), that
+    members at your table are never shown, that nobody can find you without your link or code,
+    how to remove or block a friend, how to report someone, and that removing a friend or
+    deleting the account ends the visibility. Section 2 (what we collect) gains the friend code
+    and the friend list; the retention line covers reports. Effective date bumped.
+  - Play Data safety: "Name" and "User IDs" marked as shared with other users is not a field,
+    so the collection answers stay and the privacy policy carries the disclosure; "Other user-
+    generated content" added if avatars count; the account-deletion URL unchanged.
+  - Play content rating: re-answer the questionnaire with "users can interact"; expect the
+    "Users interact" label, PEGI 3 kept.
+  - Apple privacy labels: re-check "Name", "User ID" and "Other user content" under data linked
+    to you; Apple's app-capability questions answered for user-to-user features.
+  - Review: a second review account that is already a friend of the first, so a reviewer sees a
+    profile from the outside; review notes updated on both stores; the report and block buttons
+    named in the notes.
+  - In-app: the first time someone taps Share or Accept, one sheet says in two lines what a
+    friend will see, with the link to the policy section; no other consent needed because
+    nothing is visible until the person connects.
+  - Timing: nothing on the closed-test track; iOS only after the first approval; the policy text
+    is written when the feature is built, never before it exists.
 - **Data:** the PWA's `friendships` table (requester, addressee, status) already models
   adult-to-adult links on auth users and can carry this; a friend code per account, a block
   state and a reports table are new. No child data enters any of them.

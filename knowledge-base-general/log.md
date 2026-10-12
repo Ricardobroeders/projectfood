@@ -1314,3 +1314,6 @@ Ricardo asked whether a social page (search users, see achievements and stats, v
 ## [2026-10-12] decision | social layer shape: link or QR, account holder as the profile, friends only
 Ricardo closed the two questions row 17 had held since 2026-09-20: the adult is the account, kids are members under it and never a profile; connecting by invite link or QR with a share button (generated at account creation, in Settings and later the social tab), a friend code as fallback, no search by name; visible to friends only, so no public switch for now; remove or block; the smallest report path. [[decision-2026-10-12-social-layer-shape]]; item 18 decided; the build waits for the unlocks and the store checklist.
 
+## [2026-10-12] decision | social layer amended: own achievements and cards only; privacy and store changes in the same version
+Ricardo: no household achievements in a profile, only the account holder's own achievements and plant unlocks; and the privacy policy and store implications ship in the same version as the feature. [[decision-2026-10-12-social-layer-shape]] now lists those changes item by item (policy section, Data safety, content rating, Apple labels, a second review account, the one in-app sheet before the first share or accept).
+
