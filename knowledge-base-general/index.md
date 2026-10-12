@@ -22,6 +22,7 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[source-competitor-scan]] — web research: the "30 plants" competitor landscape.
 - [[source-research-app-benefits-2026-10]] — web research (2026-10-11): what customers of food-logging and family-eating apps want, keep, pay for and leave over; benchmarks, streak literature, implications for rows 1, 4, 9, 10.
 - [[source-research-market-size-2026-10]] — market size (2026-10-12): NL funnel from 8.1M adults to 0.91M who already pay for a health app, three-year share scenarios against the goal ladder, NL/Flanders/IT/DE/FR compared, Dutch channels with reach; data with sources in `raw/market-research-2026-10/`.
+- [[source-research-app-downloads-2026-10]] — app downloads (2026-10-12): the model's install numbers are a top-10% outcome; realistic year 1 about 4k NL, 15k across markets; what took comparable apps past 100k; installs over time.
 
 ## Entities
 - [[entity-myfitnesspal]] — competitor cited as the anti-pattern Project Food positions against.
