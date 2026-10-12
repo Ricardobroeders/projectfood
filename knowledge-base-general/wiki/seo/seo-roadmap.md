@@ -3,7 +3,7 @@ title: SEO — roadmap & KPIs (family mode)
 type: seo
 tags: [seo, plan, roadmap, family-mode]
 created: 2026-09-06
-updated: 2026-09-29
+updated: 2026-10-12
 sources: [seo-audit-2026-09-29.md, source-family-mode-context.md, seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-app-store-aso.md]
 ---
 
