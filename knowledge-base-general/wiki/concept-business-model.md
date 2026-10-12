@@ -7,7 +7,7 @@ updated: 2026-10-12
 sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 ---
 
-# Business model (subscription first, affiliate as upside)
+# Business model (subscription first)
 
 > **Live numbers (2026-10-12):** prices, store fee, conversion, scenarios and the goal ladder are
 > calculated in the shared model artifact, https://claude.ai/artifact/D38Kfd3LBPcDQqd3sW2Sku. Change
@@ -107,6 +107,13 @@ means acquisition can be near-free, which is the point, but the free tier must i
 everything a parent needs to join a class and cheer, or the network never forms.
 
 ### The shopping cart and affiliate revenue
+> **Affiliate dropped as a revenue line (Ricardo, 2026-10-12).** At 1% of households ordering
+> through our link each week (€80 basket, 2.5%) it earns about €87 a month per 1,000 active
+> households, against about €3,100 a month from subscriptions in the base scenario, and it needs
+> the AH partner programme, a basket integration and upkeep, NL only. The shopping list stays as
+> a retention feature and a paid extra; no affiliate links. Other streams to research instead:
+> someone else pays for the user (insurers, employers, municipalities), see [[strategy-backlog]] row 9.
+
 Ricardo's idea (2026-09-10): checking off plants or seeing recommendations adds items to a
 cart; before the household's usual grocery time (set in the account) a reminder arrives; the
 cart can be pushed to an Albert Heijn list or online basket, earning affiliate commission.
