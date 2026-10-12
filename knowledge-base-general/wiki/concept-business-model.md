@@ -3,7 +3,7 @@ title: Business model (subscription first, affiliate as upside)
 type: concept
 tags: [business-model, pricing, monetisation, family-mode]
 created: 2026-09-10
-updated: 2026-09-22
+updated: 2026-10-12
 sources: [decision-2026-09-07-app-v1-scope.md, source-family-mode-context.md]
 ---
 
@@ -159,4 +159,5 @@ work" sequence.
 ## Related pages
 - [[strategy-backlog]] (row 9) · [[decision-2026-09-07-app-v1-scope]] ·
   [[concept-retention-loop]] · [[concept-achievement-system]] · [[concept-stickiness-moat]] ·
-  [[concept-brand-pillars]] · [[source-family-mode-context]]
+  [[concept-brand-pillars]] · [[source-family-mode-context]] ·
+  [[source-research-market-size-2026-10]] (how many people the goal ladder needs, 2026-10-12)
