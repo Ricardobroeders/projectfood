@@ -88,4 +88,5 @@ Open decisions: [[strategy-backlog]] — the standing register of undecided core
 - [[decision-2026-10-12-social-layer-shape]] — the social layer: invite link or QR with share, no name search; the account holder as the only profile, kids never visible; friends-only visibility, no public switch; report and block from day one; built after the unlocks with the store checklist first.
 - [[decision-2026-09-07-app-v1-scope]] — greenfield Expo app; stack S1–S6 (Supabase-only, Free at launch, RevenueCat, Rive, five locales); eleven v1 features; out-of-scope list; design-library re-brief.
 - [[decision-2026-09-06-family-mode-pivot]] — family mode + native iOS/Android (Expo); household data model; cooperative goals; plant cards; class launch; D1–D14.
+- [[decision-2026-10-12-germany-before-france]] — Germany before France and sooner: German search base from November 2026, the app in German in parallel, launch early 2027; French keeps the April 2027 gate.
 

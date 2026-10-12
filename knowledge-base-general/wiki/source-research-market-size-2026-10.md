@@ -66,6 +66,11 @@ public campaign (participant numbers not published).
 
 ## 3. What a realistic share looks like (Netherlands, three years)
 
+Revenue per payer: €39.99 a year, minus 21% Dutch VAT (€33.05), minus the 15% store commission
+both stores charge small developers on subscriptions = €28.10 a year, €2.34 a month. A €3.99
+monthly plan nets €2.80 a month; 68% of Health and Fitness subscriptions are annual (RevenueCat
+2026). Germany: 19% VAT, €28.56 a year.
+
 Assumptions: freemium (the habit free, extras paid, option A), download-to-paid 2.0% (RevenueCat
 2026, Western Europe, all categories) to 2.9% (Health and Fitness, global median), €28.10 net per
 annual payer (€39.99 after 21% VAT and 15% store commission, [[concept-business-model]]).
@@ -105,7 +110,8 @@ dependent children only). Flanders from Statistiek Vlaanderen and a population-s
 What it says:
 - **Germany is the next revenue market**, with 3.3 times the Dutch paying pool and the second
   highest pay share. The de/fr gate of 2026-09-23 treats German and French together; on these
-  numbers German comes first and French well after.
+  numbers German comes first and French well after. **Decided 2026-10-12:**
+  [[decision-2026-10-12-germany-before-france]] (German search base from November 2026).
 - **Italy is a reach market, not a revenue market.** Three times the Dutch population, two
   thirds of the paying pool; Italians pay for health apps at a fifth of the Dutch rate. The need
   is bigger: only 5.4% of Italians eat five portions of fruit and vegetables a day (ISTAT 2024)

@@ -3,7 +3,7 @@ title: SEO — site architecture (sitemap, page types, structured data, research
 type: seo
 tags: [seo, sitemap, structured-data, keyword-research, family-mode]
 created: 2026-09-23
-updated: 2026-09-24
+updated: 2026-10-12
 sources: [seo-keyword-strategy.md, seo-content-types.md, seo-technical-audit.md, seo-serp-landscape.md]
 ---
 
@@ -121,6 +121,10 @@ Deliverable: the tables in [[seo-keyword-strategy]] rewritten with dated numbers
 re-ordered, and the Search Console shortlist confirmed.
 
 ## "Proven", the gate for de/fr (decided 2026-09-23)
+> **Amended 2026-10-12** ([[decision-2026-10-12-germany-before-france]]): German no longer waits
+> for this gate; it starts after both stores are live and the Product Hunt launch (November
+> 2026). The gate below now holds for French only, which also waits until German is live.
+
 The roadmap's KPI table ([[seo-roadmap]]) is the gate. De/fr on the website waits for the
 **April 2027 column met for NL** (five shortlist terms in the top 10, 800 Search Console
 clicks a month, 300 printable downloads a month) **and** the app speaking de/fr with a Play
