@@ -1311,3 +1311,6 @@ Refreshed [[source-supabase-metrics]], [[concept-engagement-snapshot]], [[concep
 ## [2026-10-12] decision-input | social page idea parked with the store checklist (brainstorm 18)
 Ricardo asked whether a social page (search users, see achievements and stats, visibility toggle) changes the store process. Answer recorded in the parking lot: not a new process, but user-generated-content rules on both stores (report and block, privacy forms, content rating, a second review account, timing after the unlocks), and the kids never visible outside the household. Proposed: invite link over open search, private by default, reports into the admin app.
 
+## [2026-10-12] decision | social layer shape: link or QR, account holder as the profile, friends only
+Ricardo closed the two questions row 17 had held since 2026-09-20: the adult is the account, kids are members under it and never a profile; connecting by invite link or QR with a share button (generated at account creation, in Settings and later the social tab), a friend code as fallback, no search by name; visible to friends only, so no public switch for now; remove or block; the smallest report path. [[decision-2026-10-12-social-layer-shape]]; item 18 decided; the build waits for the unlocks and the store checklist.
+
