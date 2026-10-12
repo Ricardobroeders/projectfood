@@ -3,7 +3,7 @@ title: Logging behaviour
 type: concept
 tags: [metrics, product, behaviour]
 created: 2026-05-30
-updated: 2026-10-06
+updated: 2026-10-12
 sources: [source-supabase-metrics.md]
 ---
 
@@ -63,6 +63,18 @@ diet, and clear under-logged categories. Source: [[source-supabase-metrics]].
   3.4); legumes remain the smallest category (3.6).
 - **Long tail:** 200 of 224 plants ever logged (24 never), was 196 (2026-09-28).
 - First tastes logged on `kid` members: 21.
+
+## Update (2026-10-12, weekly refresh in [[source-supabase-metrics]])
+- **Same-day logging holds:** 4 of 5,102 logs (0.08%) on a different local day (was 4 of 4,689,
+  2026-10-06).
+- **Session depth steady:** median 9 plants per active day (avg 10.6, max 63) over 479 user-days;
+  was median 9, avg 10.6 over 439 (2026-10-06).
+- **Category mix, all logs:** vegetable 40.2 · fruit 22.1 · nut/seed 15.4 · herb 9.9 · ferment 5.1
+  · legume 3.8 · whole grain 3.5 (was legume 3.6 / whole grain 3.4, 2026-10-06). In the week of
+  2026-10-05 (494 logs) legumes were 4.9 and whole grains 4.7, the highest weekly shares seen;
+  ferments 2.6.
+- **Long tail:** 203 of 230 plants ever logged (27 never); was 200 of 224 (2026-10-06). The catalog
+  grew by 6 plants, so the never-logged count rose from 24 to 27.
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-brand-pillars]] · [[concept-stickiness-moat]] ·

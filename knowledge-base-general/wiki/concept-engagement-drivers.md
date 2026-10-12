@@ -3,7 +3,7 @@ title: Engagement drivers (correlations)
 type: concept
 tags: [metrics, retention, correlations]
 created: 2026-05-30
-updated: 2026-10-06
+updated: 2026-10-12
 sources: [source-supabase-metrics.md]
 ---
 
@@ -60,6 +60,15 @@ social connection stands out. **Correlational, n=13, not causal.** Source:
   sample stopped being only power users.
 - **Family-app signal to watch:** `notification_opened` 14 since 2026-09-28 (was 3), against 37
   rows in `notification_log`.
+
+## Update (2026-10-12, weekly refresh in [[source-supabase-metrics]])
+- **Friends:** with (n=8) 11.00 active weeks and 6.75 weeks hitting 30, vs none (n=21) 2.14 and
+  0.67 (was 11.0/6.50 vs 1.89/0.58, 2026-10-06). Same caveat: it measures PWA tenure, not social pull.
+- **Notifications on (n=13) vs off (n=12):** 5.54 vs 4.67 active weeks, 4.08 vs 1.25 weeks hitting
+  30 (was n=12/15, 5.33 vs 4.00 and 4.08 vs 0.93). 25 of 29 loggers have a settings row. The
+  weeks-hitting-30 gap is carried by the PWA power users.
+- **Family-app signal:** `notification_opened` 27 since 2026-09-28 (was 14), `notification_log` 69
+  rows (was 37): opens roughly doubled in a week.
 
 ## Contradictions / open questions
 - Direction of causality is unknown for both signals (engaged people may simply add friends and

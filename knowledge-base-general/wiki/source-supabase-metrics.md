@@ -3,7 +3,7 @@ title: Supabase metrics snapshot (2026-05-30)
 type: source
 tags: [data, metrics, supabase]
 created: 2026-05-30
-updated: 2026-10-06
+updated: 2026-10-12
 origin: Supabase project ProjectFood (lkmfmdehysmbstnfdbyg, eu-west-1)
 date_published: 2026-05-30
 ingested: 2026-05-30
@@ -14,6 +14,73 @@ ingested: 2026-05-30
 > **Superseded 2026-09-07:** a 19-week pull with retention curve, notification effectiveness and
 > hour-of-day data lives at [[source-supabase-metrics-2026-09]]. Keep this page as the May baseline.
 > The weekly scheduled refresh writes its latest numbers in the section directly below.
+
+## Weekly refresh (2026-10-12)
+*SQL pull via the Supabase MCP on 2026-10-12 (a Monday, so the week of 2026-10-12 is ~1 day old and
+the week of 2026-10-05 is complete). Aggregates only. Friends-and-family cohort plus the Play
+closed-test households: directional only, not market users. The views still mix PWA logging and
+family-app tastes.*
+
+**Read first — the feared cliff did not come.** The week of 2026-10-05 closed with WAU 14 (of 19
+the week before) and 493 logs; daily actives held at 3–10 instead of sliding to 3 (2026-10-04: 3,
+then 5, 10, 8, 3, 8, 7, 6 through 2026-10-11). Only 2 new accounts since 2026-10-06 (1 registered,
+2 first-time loggers), so the closed test is no longer adding people.
+
+| Metric | 2026-10-12 | Previous |
+|---|---|---|
+| Registered users | 31 | 31 (2026-10-06) |
+| Users with ≥1 log | 29 | 27 (2026-10-06) |
+| Total plant logs | 5,102 | 4,689 (2026-10-06) |
+| Avg logs / user with logs | 175.9 | 173.7 (2026-10-06) |
+| Avg distinct plants (all-time) / user | 41.0 | 40.8 (2026-10-06) |
+| Avg active weeks / user | 4.6 | 4.6 (2026-10-06) |
+| Avg best week / user | 23.0 | 24.1 (2026-10-06) |
+| Users who ever hit 30 in a week | 10 of 29 | 10 of 27 (2026-10-06) |
+| Plants ever logged | 203 of 230 | 200 of 224 (2026-10-06; catalog grew by 6) |
+| Achievement unlocks, week of 2026-10-05 | ~35 (292 all-time) | 123 (265 all-time at 2026-10-06), week of 2026-09-28 |
+
+**Weekly trend** (`analytics_*` views; PWA and family app mixed)
+| Week (Mon) | New users | WAU | 28-day MAU | Logs | Logs/active user | Goal completion |
+|---|---|---|---|---|---|---|
+| 2026-09-21 | 2 | 7 | 7 | 228 | 32.6 | 28.6% (2/7) |
+| 2026-09-28 | 12 | **19** | 21 | 590 | 31.1 | 36.8% (7/19) |
+| 2026-10-05 | 2 | 14 | 23 | 493 | 35.2 | 35.7% (5/14) |
+| 2026-10-12* | 0 | 1 | 23 | 1 | 1.0 | 0% (0/1) |
+
+*~1 day old, ignore. WAU 14 (2026-10-05) is the second-highest week ever; was 19 (2026-09-28) and
+6 when read two days into the week (2026-10-06). Registered accounts by creation week: 13 in the
+week of 2026-09-28, 1 in the week of 2026-10-05, 0 since.
+
+**Churn view:** `analytics_churn_rate` (week-over-week) reads 42.1% for 2026-10-05 (8 of 19 did
+not return; was 68.4% on 2026-10-06 when the week was two days old, so the feared week-1 cliff
+was mostly a partial-week artefact) and 92.9% for the one-day-old 2026-10-12 (artefact). The view
+is working (it tracks WAU); the old 28/56-day definition is gone. On n≤19 each user is 5+ points.
+
+**Category mix, all logs:** vegetable 40.2 · fruit 22.1 · nut/seed 15.4 · herb 9.9 · ferment 5.1 ·
+legume 3.8 · whole grain 3.5. Week of 2026-10-05 only (494 logs): vegetable 41.1 · fruit 20.0 ·
+nut/seed 14.0 · herb 12.8 · legume 4.9 · whole grain 4.7 · ferment 2.6. Legumes and whole grains
+are creeping up; ferments fell back (all-time 5.3 → 5.1).
+
+**Locale split (`user_settings`, 31):** en 21 · nl 9 · it 1 (was en 20 · nl 10 · it 1,
+2026-10-06; one account switched or changed locale, no new account explains it). Among users with
+logs: en 16 · nl 8 · it 1 (was en 14 · nl 9 · it 1).
+
+**Logging behaviour:** 4 of 5,102 logs (0.08%) fall on a different Europe/Amsterdam day than
+`logged_at` (was 4 of 4,689); 53 differ in UTC (unchanged). Active day: median 9 distinct plants
+(avg 10.6, max 63) over 479 user-days (was median 9, avg 10.6 over 439, 2026-10-06).
+
+**Cohort signals (directional, n=29):**
+- Has an accepted friend (n=8) vs none (n=21): avg active weeks 11.00 vs 2.14; avg weeks hitting
+  30 6.75 vs 0.67 (was 11.0/6.50 vs 1.89/0.58, 2026-10-06). Still mostly PWA tenure: every
+  closed-test user sits in "none".
+- Notifications on (n=13) vs off (n=12; 25 of 29 loggers have a settings row): avg active weeks
+  5.54 vs 4.67, weeks hitting 30 4.08 vs 1.25 (was n=12/15, 5.33 vs 4.00 and 4.08 vs 0.93).
+
+**Instrumentation:** `notification_log` 69 rows (was 37); `app_events` 1,930 rows (was 1,337), of
+which since 2026-09-28: `plant_logged` 1,095, `updates_state` 288, `stats_open` 47, `tutorial` 38,
+`notification_opened` 27 (was 14), `plant_suggested` 14, `onboarding_completed` 14,
+`push_permission` 11 (was 12 on 2026-10-06; small count shift, cause unknown),
+`push_prompt_declined` 3, `survey_submitted` 3 (was 1).
 
 ## Weekly refresh (2026-10-06)
 *SQL pull via the Supabase MCP on 2026-10-06 (a Tuesday, so the week of 2026-10-05 is ~2 days

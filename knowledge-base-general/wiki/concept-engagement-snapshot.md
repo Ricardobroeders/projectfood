@@ -3,7 +3,7 @@ title: Engagement snapshot
 type: concept
 tags: [metrics, kpi, retention]
 created: 2026-05-30
-updated: 2026-10-06
+updated: 2026-10-12
 sources: [source-supabase-metrics.md]
 ---
 
@@ -76,6 +76,20 @@ users, ~5 weeks) that logs actively and is trending up on goal completion. Sourc
   2026-10-13 before calling it the week-1 cliff seen in May. Google can extend a closed test for
   low engagement, so this matters before 2026-10-14.
 - **First children:** 2 `kid` members, 21 tastes. Household sharing remains rare (2 of 31).
+
+## Update (2026-10-12, weekly refresh in [[source-supabase-metrics]])
+- **The drop-off flattened.** WAU 14 in the complete week of 2026-10-05 (was 19, 2026-09-28; 6
+  when read two days in on 2026-10-06). Daily actives held at 3–10 through 2026-10-11 rather than
+  falling to 3. 28-day MAU 23 (was 21).
+- **Adoption:** 31 registered (unchanged), 29 ever logged (was 27), 5,102 logs (was 4,689,
+  2026-10-06). Two accounts logged for the first time; no new sign-ups since the closed test's
+  first week.
+- **Goal completion** 35.7% (5 of 14) for 2026-10-05, from 36.8%; 10 of 29 have ever hit 30.
+- **Churn view** reads 42.1% for 2026-10-05 (was 68.4% when two days old): 11 of 19 returned. The
+  week-1 cliff is softer than feared, though 8 of 19 still did not come back. `analytics_churn_rate`
+  works under the week-over-week definition; read the current week's value only once it is complete.
+- Open question: with sign-ups at zero, does WAU 14 hold in the week of 2026-10-12 without new
+  accounts? Re-read 2026-10-19.
 
 ## Related pages
 - [[source-supabase-metrics]] · [[concept-logging-behaviour]] · [[concept-engagement-drivers]] ·

@@ -3,7 +3,7 @@ title: Overview
 type: overview
 tags: [meta]
 created: 2026-05-30
-updated: 2026-10-06
+updated: 2026-10-12
 sources: [source-family-mode-context.md, source-brand-promise-deck.md, source-app-mockups.md, source-supabase-metrics.md]
 ---
 
@@ -89,6 +89,20 @@ live and its users are the current cohort.
 - **Social vs profile:** 12 friendships among 15 users; 5 of 15 customised an avatar.
 - **Catalog:** 224 plants with images, 62 botanical families, 8 colours, 39 seasonal — the
   metadata albums need already exists; per-plant facts do not.
+
+### Weekly refresh (2026-10-12)
+*Source: [[source-supabase-metrics]] (weekly refresh section). Views mix PWA and family app;
+closed-test households included.*
+- **WAU 14** in the complete week of 2026-10-05 (was 19, 2026-09-28; the all-time high). 28-day
+  MAU 23. Goal completion 35.7%. Daily actives held at 3–10 rather than falling to 3.
+- **Adoption:** 31 registered (unchanged), 29 with logs (was 27), 5,102 logs (was 4,689). Sign-ups
+  have stopped since the closed test's first week.
+- **Churn view:** 42.1% for 2026-10-05 (was 68.4% when two days old); working, not the cliff
+  feared. Still verify on complete weeks only.
+- **Behaviour:** same-day logging 99.9% local; median 9 plants per active day; legumes and whole
+  grains at their highest weekly shares (4.9 / 4.7). See [[concept-logging-behaviour]].
+- **Drivers:** friends gap still PWA tenure; notification opens doubled (27 vs 14). See
+  [[concept-engagement-drivers]], [[concept-engagement-snapshot]].
 
 ### Weekly refresh (2026-10-06)
 *Source: [[source-supabase-metrics]] (weekly refresh section). Views mix PWA and family app;
