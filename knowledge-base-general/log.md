@@ -1304,3 +1304,10 @@ Ricardo's review of the first version: show the app bigger and more playfully (c
 ## [2026-10-12] decision-input | Apple status request drafted (one thing, line 2)
 Fourteen days after the first submission and six after the resubmission, 1.0.2 (1) is still "Waiting for Review". Ricardo sends a status request through the Apple Developer contact form; Claude drafted it (timeline, identifiers, one question: is it in the queue and is anything missing). Noted in the one-thing block.
 
+
+## [2026-10-12] ingest | Weekly metrics refresh
+Refreshed [[source-supabase-metrics]], [[concept-engagement-snapshot]], [[concept-logging-behaviour]], [[concept-engagement-drivers]] and the Metrics section of [[overview]] from the live ProjectFood DB (aggregates only). Changes: WAU 14 for the complete week of 2026-10-05 (was 19, 2026-09-28; 6 when read two days in); daily actives held at 3–10 instead of falling to 3; 31 registered (unchanged), 29 with logs (was 27), 5,102 logs (was 4,689); goal completion 35.7% (was 36.8%); `analytics_churn_rate` 42.1% for 2026-10-05 (was 68.4% when the week was two days old), so the week-1 cliff was mostly a partial-week artefact; legumes/whole grains at 4.9/4.7% of logs in the latest week; `notification_opened` 27 (was 14). Open questions: does WAU hold in the week of 2026-10-12 with zero new sign-ups (re-read 2026-10-19)? Why did one account's locale flip nl to en, and why did `push_permission` events drop 12 to 11? Churn view is working under the week-over-week definition; only read it on complete weeks.
+
+## [2026-10-12] decision-input | social page idea parked with the store checklist (brainstorm 18)
+Ricardo asked whether a social page (search users, see achievements and stats, visibility toggle) changes the store process. Answer recorded in the parking lot: not a new process, but user-generated-content rules on both stores (report and block, privacy forms, content rating, a second review account, timing after the unlocks), and the kids never visible outside the household. Proposed: invite link over open search, private by default, reports into the admin app.
+
