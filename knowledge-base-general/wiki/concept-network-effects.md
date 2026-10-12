@@ -34,13 +34,13 @@ mind when building; it helps us make good decisions in the social features."
    "typical household" lines in stats, plant facts that improve with feedback.
 
 Project Food is a single-player habit at its core, so 2 has to be designed in; it does not come
-for free. 1 is where exponential growth lives; 2 is what makes 1 worth it.
+for free. 1 is where exponential growth lives; 2 is what makes 1 worth it. Both are worked on together.
 
-## Retention first, or the bucket leaks
+## Both loops at once, or the bucket leaks
 Every new user brought in by a loop leaves at the churn rate. With 78% of payers gone within a
 year (model default, RevenueCat medians), a loop has to run much faster just to stand still.
-Halving churn is worth as much as doubling invites. So the social features that keep people
-(2) come before the ones that only spread the app (1).
+Halving churn is worth as much as doubling invites. Ricardo, 2026-10-12: look at both. Bringing
+people in and keeping them are worked on together; a feature that does both comes first.
 
 ## The test for a feature
 Before a feature is built, answer two questions:

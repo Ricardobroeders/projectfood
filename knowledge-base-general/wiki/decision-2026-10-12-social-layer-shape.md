@@ -90,7 +90,7 @@ a feed, and that leaderboards and open social features rank last in what users w
   member-level profiles.
 
 ## Growth lens (added 2026-10-12)
-Every social feature is held against [[concept-network-effects]]: does it bring someone new in, does it make someone stay because of another person. Keep-features come before spread-features.
+Every social feature is held against [[concept-network-effects]]: does it bring someone new in, does it make someone stay because of another person. Bringing in and keeping are worked on together; a feature that does both comes first.
 
 ## Related pages
 
