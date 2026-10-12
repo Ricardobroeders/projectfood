@@ -107,8 +107,26 @@ export default async function MarketingLayout({
               <Link href={getLocalizedHref('/privacy', locale)} className="hover:text-[#1F1B16] transition-colors">{t('footer.privacy')}</Link>
             </nav>
           </div>
-          <div className="mt-8 pt-6 border-t border-[#E8E0D5] flex items-center justify-between gap-4">
+          <div className="mt-8 pt-6 border-t border-[#E8E0D5] flex flex-wrap items-center justify-between gap-4">
             <span className="text-xs text-[#6B645C]">© {new Date().getFullYear()} Project Food</span>
+            {/* Product Hunt badge. Until the launch on 2026-11-01 the follow badge (product id
+                1342647); on launch day swap to the featured badge with the vote count:
+                featured.svg?post_id=1277981. External SVG, so a plain img, not next/image. */}
+            <a
+              href="https://www.producthunt.com/products/project-food?embed=true&utm_source=badge-follow&utm_medium=badge&utm_campaign=site-footer"
+              target="_blank"
+              rel="noopener"
+              className="shrink-0"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1342647&theme=light"
+                alt="Project Food on Product Hunt"
+                width={200}
+                height={43}
+                loading="lazy"
+              />
+            </a>
             <MarketingLanguageSwitcher currentLocale={locale} />
           </div>
         </div>
