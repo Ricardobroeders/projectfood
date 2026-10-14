@@ -1353,3 +1353,7 @@ Ricardo agreed growth and staying are two things and wants both worked on togeth
 
 ## [2026-10-12] source | App downloads checked against the model
 Ricardo: are our install numbers realistic, and "100k installs seems a lot". Two research passes (AppBrain Play distribution, RevenueCat SoSA 2026, Adapty, indie reports, 40+ comparable apps with Play's exact counts and App Store ratings per country) filed as [[source-research-app-downloads-2026-10]], notes in `raw/market-research-2026-10/`. Finding: the model's installs are a top-10% outcome; realistic year 1 about 4k NL and 15k across markets; installs come as a launch spike plus a growing baseline; past 100k only with an audience or an institutional channel. Row 10 noted; the model's numbers wait for Ricardo's call.
+
+## [2026-10-14] build | learn: what-counts-as-a-plant (it) written and published by the nightly routine
+Italian rewrite of the does-it-count cluster for the family (legacy flag gone, slug kept): 990 words, 5 FAQ entries, 20-row table, one citation (McDonald, 2018). The pillar `plant-diversity` (it) already links it.
+Warnings accepted: `as-a-family` has no it file in the repo yet (it is live in the database from an unmerged branch), so the related card shows once that branch is merged.
