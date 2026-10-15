@@ -1358,3 +1358,6 @@ Ricardo: are our install numbers realistic, and "100k installs seems a lot". Two
 Rewrite of the live legacy Italian page as a family cluster: 991 words, a 20-row table of doubtful cases, 5 FAQ entries, 1 citation (McDonald, 2018).
 The pillar plant-diversity (it) already links the cluster, so no pillar edit. Meta title 51, meta description 149.
 Warning accepted: related as-a-family has no it file in this branch (it is live in the database).
+
+## [2026-10-15] build | Play production-access application submitted
+Ricardo submitted the application in Play Console (the Apply button turned active with all three closed-test criteria ticked). Claude compressed the 2026-09-30 draft to Google's 300-character fields and refreshed the figures from the live DB for 2026-09-27 to 2026-10-14 (1,304 logs, 9 households on 7+ days, 300 unlocks, 16 suggestions, 35 of 83 pushes opened; 13 push tokens = the Play testers). Picks: recruiting "Easy", installs "0 – 10K". The iOS sentence says "in Apple review", not "live", since 1.0.2 was still waiting on 2026-10-11. Final texts under "as submitted" in [[seo-app-store-aso]]; item 14 of [[strategy-backlog]] updated. Next: Google's answer, up to seven days.

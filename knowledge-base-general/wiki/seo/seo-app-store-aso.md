@@ -428,6 +428,13 @@ and replace every bracketed figure. Ricardo's picks are marked.
   iOS found while recording the iPhone flow; a survey banner appeared on first open. Every point
   was fixed and shipped within a day, see part 3."
 
+**Part 1 as submitted (2026-10-15, numbers from the live DB for 2026-09-27 to 2026-10-14; each ≤300 chars, Google's limit).**
+- Recruitment: "Friends and family, invited personally over WhatsApp on 27 Sept with the Play opt-in link. 13 invited, 12 opted in within three days after two reminders, a 13th joined on 7 Oct. No paid testing provider. All test on their own Android phones, mostly in the Netherlands and Italy."
+- Ease of recruiting: Easy.
+- Engagement: "Used like real users: after a meal they open the app and tap the plants they tasted. In 18 days: 1,304 plants logged, 9 households logged on 7+ days, 300 achievements unlocked, 16 plant suggestions, 35 of 83 notifications opened. Every feature was used. Difference: most log alone, not with family."
+- Feedback: "Collected over WhatsApp and in person, noted the same day with the app version, plus the in-app survey and plant suggestions. Main points: the 30-plants goal was not explained, no onboarding tour, \"good evening\" in the morning, no history view, skipped pushes. All fixed in updates within a day."
+- Source figures: 22 households logging in the window (all platforms, Ricardo's included), 13 push tokens, 300 unlocks across 16 households, 3 survey respondents.
+
 **Part 2, about the app.**
 - Target audience: "Adults 25 to 45 in the Netherlands and Italy first, then English-speaking
   markets. Two groups: parents of children aged 1 to 8 who want their children to taste more
@@ -442,6 +449,11 @@ and replace every bracketed figure. Ricardo's picks are marked.
   health claims: it counts variety."
 - Estimated installs in the first year: _Ricardo's pick_ (suggested: 1,000 to 10,000; two small
   launch markets, no paid acquisition planned).
+
+**Part 2 as submitted (2026-10-15, each ≤300 chars).**
+- Audience: "Adults 25 to 45 in the Netherlands and Italy first, then English-speaking markets. Two groups: adults who want more variety in their own diet, and parents of children aged 1 to 8 who want them to taste more vegetables. The account holder is always an adult (18+); children only appear as profiles."
+- Value: "Project Food turns the 30-different-plants-a-week guideline into a one-minute habit. Tap what you tasted; every new plant becomes a collectible card and your count runs toward 30 for the week, with achievements. A taste counts even if the plate is not finished. No calories, no diets: variety."
+- Installs first year: 0 – 10K.
 
 **Part 3, production readiness.**
 - Changes made from the closed test: "Sign-in screen now says it also creates the account and
@@ -458,6 +470,10 @@ and replace every bracketed figure. Ricardo's picks are marked.
   safety with the account-deletion page, working review credentials in App access verified by
   signing in with them. The same code runs on iOS under Apple's review. Usage and update state
   are reported server-side, so a broken update would show within a day."
+
+**Part 3 as submitted (2026-10-15, each ≤300 chars; Ricardo confirms Play vitals show no crashes or ANRs before pasting).**
+- Changes: "An in-app tour that explains the 30-plant goal; a stats screen (week, day, records); greeting by time of day; sign-in says it also creates the account; plant search in every language plus a suggest link; daily notification bug fixed; survey banner removed. 37 updates, each checked by its reporter."
+- Readiness: "13 testers on their own Android phones for 18 days, households logging rising through the window, no crashes or ANRs in Play vitals. Every reported issue was fixed and re-verified by its reporter. Content rating, data safety, 18+ audience and review credentials checked. Same code is in Apple review."
 
 **Queries for the day** (Supabase, read-only; all since 2026-09-27; exclude nothing, the numbers
 are small enough to read): households logging and rows per day from `plant_logs` grouped by
