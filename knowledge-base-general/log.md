@@ -1377,3 +1377,12 @@ A tester onboarded abroad (UTC-3) got the dinner question at 00:30 Dutch time fo
 after coming home; her first app open at home switched the household to Europe/Amsterdam.
 Picker advised against; two small changes (show the clock under the dinner time, re-check on
 foreground) offered and held. Recorded on [[interview-closed-test-2026-09]].
+
+## [2026-10-16] decision | App Store repositioning after the 4.3(a) rejection
+Ricardo did not want to wait for Apple's reply. Research: five "30 plants a week" apps on the
+App Store, all in Health & Fitness, three with our name suffix; our subtitle, keywords, first
+screenshot and review notes read like theirs. Ricardo picked "Project Food: plant cards" /
+"Log for everyone at your table" and Food & Drink first. Copy in en/nl/it, review notes and a
+screenshot brief on [[decision-2026-10-16-app-store-repositioning]]. iOS fingerprint checked
+(acf2e071 unchanged). The iOS build from Claude's shell was refused by the auto-mode classifier
+as a production deploy; Ricardo starts it. Backlog line 2 and item 20 updated.
