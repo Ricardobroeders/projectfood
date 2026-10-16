@@ -1358,3 +1358,8 @@ Ricardo: are our install numbers realistic, and "100k installs seems a lot". Two
 Rewrite of the live legacy Italian page as a family cluster: 991 words, a 20-row table of doubtful cases, 5 FAQ entries, 1 citation (McDonald, 2018).
 The pillar plant-diversity (it) already links the cluster, so no pillar edit. Meta title 51, meta description 149.
 Warning accepted: related as-a-family has no it file in this branch (it is live in the database).
+
+## [2026-10-16] build | learn: plant-diversity (en) written and published by the nightly routine
+Rewrite of the live legacy English pillar as the family version of the 30 plants page: 1575 words, 6 FAQ entries, 1 citation (McDonald, 2018), British spelling.
+Links the live cluster what-counts-as-a-plant and the tasting article; announces as-a-family (en) in one sentence, copied into that queue row as pillar_mention. Meta title 49, meta description 149.
+No warnings; legacy: true removed.
