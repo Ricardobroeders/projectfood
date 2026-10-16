@@ -144,6 +144,16 @@ screen shows which one), who (first name or role, never more), the words, what w
   tracked, 0 marked); fixed in 1.0.17 and the 17 backfilled from the event log. The three testers in
   a week of quiet had genuinely ignored four pushes each (no tap, no log), so that rule held.
   Delivery itself was clean: every ticket accepted, every receipt ok.
+- **A traveller's dinner question follows the phone only once the app opens (2026-10-16).** A
+  tester onboarded on holiday in South America (UTC-3) with dinner at 19:00; back home, the
+  question kept arriving at 00:30 Dutch time on 14, 15 and 16 October, because the household's
+  timezone is taken from the phone only on a cold start of the app. Her first open at home
+  (09:11 on 2026-10-16) switched the household to Europe/Amsterdam by itself; she had looked for a
+  timezone setting and found none. Ricardo asked for a picker; Claude advised against it (a phone
+  and a setting that disagree need a "follow my phone" switch) and proposed two JS-only changes
+  instead: show the clock under the dinner time ("19:00, Amsterdam time") and re-check the
+  timezone each time the app returns to the front. Not built; Ricardo was content that it fixes
+  itself.
 
 ## Notable quotes
 > "It's unclear why 30 different plants per week. Why is this the goal?" (tester, 2026-09-29,

@@ -1371,3 +1371,9 @@ many others. Ricardo replies in the review thread (one developer, one app, own c
 family logging from one phone, cards and achievements, Play closed test running; asks which
 apps or which part was compared). No resubmission and no metadata change before the reply;
 appeal and a sharper subtitle and keyword set are the second move. One-thing line 2 updated.
+
+## [2026-10-16] query | A traveller's timezone, fixed by the app itself
+A tester onboarded abroad (UTC-3) got the dinner question at 00:30 Dutch time for three nights
+after coming home; her first app open at home switched the household to Europe/Amsterdam.
+Picker advised against; two small changes (show the clock under the dinner time, re-check on
+foreground) offered and held. Recorded on [[interview-closed-test-2026-09]].
