@@ -1361,3 +1361,13 @@ Warning accepted: related as-a-family has no it file in this branch (it is live 
 
 ## [2026-10-15] build | Play production-access application submitted
 Ricardo submitted the application in Play Console (the Apply button turned active with all three closed-test criteria ticked). Claude compressed the 2026-09-30 draft to Google's 300-character fields and refreshed the figures from the live DB for 2026-09-27 to 2026-10-14 (1,304 logs, 9 households on 7+ days, 300 unlocks, 16 suggestions, 35 of 83 pushes opened; 13 push tokens = the Play testers). Picks: recruiting "Easy", installs "0 – 10K". The iOS sentence says "in Apple review", not "live", since 1.0.2 was still waiting on 2026-10-11. Final texts under "as submitted" in [[seo-app-store-aso]]; item 14 of [[strategy-backlog]] updated. Next: Google's answer, up to seven days.
+
+## [2026-10-16] decision-input | Apple rejects 1.0.2 (1) under 4.3(a) Spam; reply drafted
+Ten days after the resubmission Apple answered: Guideline 4.3(a), "similar binary, metadata
+and/or concept as apps by other developers", no app named. The 2.1 round is closed. Claude's
+read: the "30 plants a week" name, the generic subtitle and the keyword "tracker" put the
+listing on the shelf of small plant counters, and the Expo runtime makes the binary resemble
+many others. Ricardo replies in the review thread (one developer, one app, own code and assets,
+family logging from one phone, cards and achievements, Play closed test running; asks which
+apps or which part was compared). No resubmission and no metadata change before the reply;
+appeal and a sharper subtitle and keyword set are the second move. One-thing line 2 updated.
