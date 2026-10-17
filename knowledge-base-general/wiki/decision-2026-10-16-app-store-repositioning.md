@@ -3,7 +3,7 @@ title: App Store repositioning after the 4.3(a) rejection: plant cards and your 
 type: decision
 tags: [app-store, ios, aso, store-compliance, positioning]
 created: 2026-10-16
-updated: 2026-10-16
+updated: 2026-10-17
 sources: [seo/seo-app-store-aso.md, strategy-backlog.md, decision-2026-10-07-two-ways-to-use-it.md]
 status: accepted
 ---
@@ -49,19 +49,19 @@ next launch, so a new build shows the current app.
 
 ## The decision
 
-1. **Name and subtitle** (Ricardo picked option 1 of 3):
-   - en: **Project Food: plant cards** (25) / **Log for everyone at your table** (30)
-   - nl: **Project Food: plantenkaarten** (28) / **Voor jou en iedereen aan tafel** (30)
-   - it: **Project Food: carte di piante** (29) / **Per te e per tutti a tavola** (27)
+1. **Name and subtitle** (Ricardo picked option 1 of 3; subtitle sharpened to the family on 2026-10-17, see the second pass below):
+   - en: **Project Food: plant cards** (25) / **Eat more plants as a family** (27)
+   - nl: **Project Food: plantenkaarten** (28) / **Meer planten eten als gezin** (27)
+   - it: **Project Food: carte di piante** (29) / **Più piante, tutta la famiglia** (29)
 2. **Categories:** Food & Drink primary, Health & Fitness secondary (was the reverse).
 3. **Keywords** (no "tracker", no "gut health"; "30 plants" stays as a search word):
    - en: `30 plants,plant diversity,picky eater,tasting,family,dinner,vegetables,fruit,collection,food diary` (98)
    - nl: `30 planten,kind groente,moeilijke eter,proeven,gezin,avondeten,eetdagboek,fruit,groente,verzamelen` (98)
    - it: `30 piante,bambini verdura,neofobia,assaggiare,famiglia,cena,diario alimentare,frutta,collezione` (95)
 4. **Promotional text:**
-   - en: A card for every plant you taste, for you and everyone at your table. Tap what you tasted today and the collection grows toward 30 different plants a week. (155)
-   - nl: Een kaart voor elke plant die je proeft, voor jou en iedereen aan tafel. Tik aan wat je vandaag proefde en je collectie groeit richting 30 planten per week. (156)
-   - it: Una carta per ogni pianta che assaggi, per te e per tutti a tavola. Tocca cosa hai assaggiato oggi e la collezione cresce verso 30 piante diverse a settimana. (158)
+   - en: Eat more plants as a family. Tap what everyone tasted today, and every new plant becomes a card in your collection, on the way to 30 different plants a week. (157)
+   - nl: Meer planten eten als gezin. Tik aan wat iedereen vandaag proefde en elke nieuwe plant wordt een kaart in je collectie, op weg naar 30 planten per week. (152)
+   - it: Più piante, tutta la famiglia. Tocca cosa ha assaggiato ognuno oggi e ogni nuova pianta diventa una carta della collezione, verso 30 piante diverse a settimana. (160)
 5. **Description**, cards and the table first, the 30 last but one (below, per locale; same
    facts as the rejected text, "the family" as default subject replaced by "you" per
    [[decision-2026-10-07-two-ways-to-use-it]]).
@@ -78,13 +78,13 @@ next launch, so a new build shows the current app.
 ### Description en
 
 ```
-Project Food is a collection of plant cards that fills up at your table. Tap the plants you tasted today, for yourself or for each person at the table, and every new plant becomes a card with its own picture, a fact for the table and a tip for the cook.
+Project Food helps your family eat more plants together. After a meal you tap the plants everyone tasted, for yourself and for each person at the table, and every new plant becomes a card with its own picture, a fact for the table and a tip for the cook. Parents and children collect side by side, on one phone.
 
 A card for every plant
 Over 200 fruits, vegetables, herbs, nuts, seeds, legumes, whole grains and ferments, each a card with its own picture. Taste a plant again and its card levels up. The collection only grows; nothing ever resets.
 
-Everyone at your table, from one phone
-One account, yours. Add the people you eat with: a first name and a colour, nothing more. Tap a plant to log it for yourself, hold it to choose who tasted it. Each person builds their own collection. On your own, it counts just for you.
+The whole family, on one phone
+One account, yours. Add the people you eat with: a first name and a colour, nothing more. Tap a plant to log it for yourself, hold it to choose who tasted it. Each person builds their own collection. Children taste along at their own pace, and every small taste counts. On your own, it counts just for you.
 
 Something to talk about while you eat
 Every card comes with a fact for the table and a tip for the cook.
@@ -108,13 +108,13 @@ Project Food is available in English, Dutch and Italian. More languages are on t
 ### Description nl
 
 ```
-Project Food is een verzameling plantenkaarten die aan jouw tafel groeit. Tik aan welke planten je vandaag hebt geproefd, voor jezelf of voor iedereen aan tafel, en elke nieuwe plant wordt een kaart met een eigen plaatje, een weetje voor aan tafel en een tip voor de kok.
+Project Food helpt je gezin om samen meer planten te eten. Tik na het eten aan welke planten iedereen heeft geproefd, voor jezelf en voor iedereen aan tafel, en elke nieuwe plant wordt een kaart met een eigen plaatje, een weetje voor aan tafel en een tip voor de kok. Ouders en kinderen sparen naast elkaar, op één telefoon.
 
 Een kaart voor elke plant
 Meer dan 200 soorten fruit, groente, kruiden, noten, zaden, peulvruchten, volkoren granen en gefermenteerd eten, elk een kaart met een eigen plaatje. Proef je een plant opnieuw, dan gaat zijn kaart een level omhoog. De collectie wordt alleen maar groter; er gaat nooit iets verloren.
 
-Iedereen aan tafel, op één telefoon
-Eén account, van jou. Voeg de mensen toe met wie je eet: een voornaam en een kleur, meer niet. Tik op een plant om hem voor jezelf te loggen, houd hem vast om te kiezen wie heeft geproefd. Iedereen bouwt een eigen collectie. Eet je alleen, dan telt alles voor jou.
+Het hele gezin, op één telefoon
+Eén account, van jou. Voeg de mensen toe met wie je eet: een voornaam en een kleur, meer niet. Tik op een plant om hem voor jezelf te loggen, houd hem vast om te kiezen wie heeft geproefd. Iedereen bouwt een eigen collectie. Kinderen proeven mee in hun eigen tempo, en elke kleine hap telt. Eet je alleen, dan telt alles voor jou.
 
 Iets om over te praten tijdens het eten
 Bij elke kaart hoort een weetje voor aan tafel en een tip voor de kok.
@@ -138,13 +138,13 @@ Project Food is beschikbaar in het Nederlands, Engels en Italiaans. Meer talen v
 ### Description it
 
 ```
-Project Food è una collezione di carte di piante che cresce alla tua tavola. Tocca le piante che hai assaggiato oggi, per te o per ognuno a tavola, e ogni nuova pianta diventa una carta con la sua immagine, una curiosità per la tavola e un consiglio per chi cucina.
+Project Food aiuta la tua famiglia a mangiare più piante, insieme. Dopo il pasto tocchi le piante che ognuno ha assaggiato, per te e per ogni persona a tavola, e ogni nuova pianta diventa una carta con la sua immagine, una curiosità per la tavola e un consiglio per chi cucina. Genitori e figli collezionano fianco a fianco, su un solo telefono.
 
 Una carta per ogni pianta
 Oltre 200 tra frutta, verdura, erbe e spezie, noci, semi, legumi, cereali integrali e fermentati, ognuna una carta con la sua immagine. Assaggia di nuovo una pianta e la sua carta sale di livello. La collezione può solo crescere; niente si azzera mai.
 
-Tutti a tavola, da un solo telefono
-Un solo account, il tuo. Aggiungi le persone con cui mangi: un nome e un colore, niente di più. Tocca una pianta per registrarla per te, tienila premuta per scegliere chi l'ha assaggiata. Ognuno costruisce la propria collezione. Se a tavola ci sei solo tu, conta tutto per te.
+Tutta la famiglia, su un solo telefono
+Un solo account, il tuo. Aggiungi le persone con cui mangi: un nome e un colore, niente di più. Tocca una pianta per registrarla per te, tienila premuta per scegliere chi l'ha assaggiata. Ognuno costruisce la propria collezione. I bambini assaggiano al loro ritmo, e ogni piccolo assaggio conta. Se a tavola ci sei solo tu, conta tutto per te.
 
 Qualcosa di cui parlare mentre si mangia
 Ogni carta ha una curiosità per la tavola e un consiglio per chi cucina.
@@ -168,10 +168,10 @@ Project Food è disponibile in italiano, inglese e olandese. Altre lingue in arr
 ### Review notes (replace "PURPOSE AND AUDIENCE", add "WHAT IS DIFFERENT"; the other paragraphs stay)
 
 ```
-PURPOSE AND AUDIENCE: a plant card collection for one adult and the people they eat with, logged from one phone. After a meal the account holder taps the plants that were tasted; every new plant becomes a card with its own picture, a fact for the table and a tip for the cook, and the week counts toward 30 different plants. The account holder is always an adult; other people at the table (a partner, children) are profiles the adult creates on their own device, with a first name and a colour only. No medical purpose, no health claims.
+PURPOSE AND AUDIENCE: helps a family eat more plants together, logged by one adult on one phone. After a meal the account holder taps the plants each person tasted; every new plant becomes a card with its own picture, a fact for the table and a tip for the cook, and the week counts toward 30 different plants. The account holder is always an adult; other people at the table (a partner, children) are profiles the adult creates on their own device, with a first name and a colour only. No medical purpose, no health claims.
 
-WHAT IS DIFFERENT FROM OTHER PLANT-VARIETY APPS (Guideline 4.3):
-- Several people, one phone: on Log, tap and hold a plant to choose who tasted it (the demo household has a second member, Anna). Each person has their own collection on Unlocks.
+WHAT IS DIFFERENT (Guideline 4.3): plant-variety apps count one adult; picky-eater apps count one child for a reward. Project Food counts parents and children together, with no rewards to earn.
+- The whole family, one phone: on Log, tap and hold a plant to choose who tasted it (the demo household has a second member, Anna). Each person has their own collection on Unlocks.
 - A card per plant: over 200 plants, each with artwork made for this app, a fact for the table and a tip for the cook (tap any plant). Cards level up with repeated tastings.
 - Achievements for a shared table (Full table, Big dinner, Table talk) on Unlocks.
 - One question a day at the household's own dinner time, set in Account.
@@ -216,6 +216,11 @@ are live too, so price separates nothing. A paywall now would add review surface
 purchase, 3.1.2 subscription terms, restore, pricing screens) and a native module (RevenueCat),
 which moves both runtimes while Play production access is under review. The paid plan stays where
 the backlog has it.
+
+**Picked by Ricardo, 2026-10-17:** the subtitle becomes "Eat more plants as a family" / "Meer planten
+eten als gezin" / "Più piante, tutta la famiglia"; the description openings, promo text and review
+notes follow (parents and children side by side, a child tastes along at their own pace). The
+solo adult stays in the description and the keywords ("On your own, it counts just for you").
 
 ## What follows
 

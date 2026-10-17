@@ -1386,3 +1386,10 @@ screenshot and review notes read like theirs. Ricardo picked "Project Food: plan
 screenshot brief on [[decision-2026-10-16-app-store-repositioning]]. iOS fingerprint checked
 (acf2e071 unchanged). The iOS build from Claude's shell was refused by the auto-mode classifier
 as a production deploy; Ricardo starts it. Backlog line 2 and item 20 updated.
+
+## [2026-10-17] decision | App Store subtitle sharpened to the family
+Second research pass: at least eight picky-eater and baby-food apps on the App Store make "help
+your child eat" a crowded shelf of its own; none counts parents and children together. No sign
+Apple prefers paid apps (84% of apps free; Thirty Plants free and live). Ricardo picked the
+subtitle "Eat more plants as a family"; descriptions, promo and review notes updated on
+[[decision-2026-10-16-app-store-repositioning]]. Nothing pushed to App Store Connect yet.
