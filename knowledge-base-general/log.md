@@ -1386,3 +1386,7 @@ screenshot and review notes read like theirs. Ricardo picked "Project Food: plan
 screenshot brief on [[decision-2026-10-16-app-store-repositioning]]. iOS fingerprint checked
 (acf2e071 unchanged). The iOS build from Claude's shell was refused by the auto-mode classifier
 as a production deploy; Ricardo starts it. Backlog line 2 and item 20 updated.
+
+## [2026-10-17] build | learn: plant-diversity (en) written and published by the nightly routine
+Pillar 2 rewritten for the family in English (replaces the 2026-05 adult article, legacy flag gone): 1,534 words, 6 FAQ entries.
+learn:check 0 errors, 0 warnings. Announces the planned as-a-family cluster in one sentence (copied to its queue row), links what-counts-as-a-plant and how-many-times-to-try-a-food.
