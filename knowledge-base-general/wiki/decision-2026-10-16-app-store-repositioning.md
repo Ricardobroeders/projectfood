@@ -183,7 +183,7 @@ All code, artwork, the plant catalogue and the texts in English, Dutch and Itali
 | # | Headline (en) | Screen |
 |---|---|---|
 | 1 | A card for every plant you taste | Unlocks: the card collection (today's frame 03) |
-| 2 | Everyone at your table, from one phone | Log with the hold menu open at the finger, two or three people to choose (new capture) |
+| 2 | The whole family, on one phone | Log with the hold menu open at the finger, a parent and two children to choose (new capture) |
 | 3 | Levels, with the next one always visible | Achievement sheet (today's frame 04) |
 | 4 | 30 different plants a week | Home with the gauge (today's frame 02, moved to the end) |
 
