@@ -178,16 +178,28 @@ WHAT IS DIFFERENT (Guideline 4.3): plant-variety apps count one adult; picky-eat
 All code, artwork, the plant catalogue and the texts in English, Dutch and Italian are original to this app, built by one developer; no template or white-label code.
 ```
 
-### Screenshot brief (iPhone 6.9-inch, en / nl / it)
+### Screenshot brief (iPhone 6.9-inch, 1320 × 2868, en / nl / it)
 
-| # | Headline (en) | Screen |
-|---|---|---|
-| 1 | A card for every plant you taste | Unlocks: the card collection (today's frame 03) |
-| 2 | The whole family, on one phone | Log with the hold menu open at the finger, a parent and two children to choose (new capture) |
-| 3 | Levels, with the next one always visible | Achievement sheet (today's frame 04) |
-| 4 | 30 different plants a week | Home with the gauge (today's frame 02, moved to the end) |
+Revised 2026-10-17 for the family subtitle. The App Store shows the first three frames in search
+results, so those three carry what no look-alike has: cards, the whole family on one phone, a fact
+and a tip per plant. The 30 gauge moves to the end. Same Figma template as the Play set (headline
+with the key words in accent green, sub-line under it). Frame rule kept from 2026-09-20: no
+"kids", "children", "kinderen", "bambini" on a frame; the family is said with "family" and
+"everyone at your table". No "tracker", "gut" or "diversity" on any frame.
 
-The title artboard (01), if used, carries the new name. No frame says "tracker" or "gut".
+| # | Screen to capture | EN | NL | IT |
+|---|---|---|---|---|
+| 1 | Unlocks, Plants tab: card renders in the grid, the member switcher visible at the top (new capture; today's frame 03 shows the achievement grid instead) | **A card** for every plant you taste / Everyone at your table builds their own collection. Nothing ever resets. | **Een kaart** voor elke plant die je proeft / Iedereen aan tafel spaart een eigen collectie. Niets gaat ooit verloren. | **Una carta** per ogni pianta che assaggi / Ognuno a tavola ha la sua collezione. Niente si azzera mai. |
+| 2 | Log with the hold menu open at the finger over a plant, three people to choose (new capture) | **The whole family**, on one phone / Tap what you tasted. Hold a plant to choose who had it. | **Het hele gezin**, op één telefoon / Tik aan wat je proefde. Houd een plant vast om te kiezen wie hem had. | **Tutta la famiglia**, su un solo telefono / Tocca cosa hai assaggiato. Tieni premuta una pianta per scegliere chi l'ha assaggiata. |
+| 3 | A plant page: the render large, the fact, the tip, and "Tasted by" with two or three people (new capture) | **A fact for the table**, a tip for the cook / Every plant has something to tell and a way to serve it. | **Een weetje voor aan tafel**, een tip voor de kok / Elke plant heeft iets om te vertellen en een manier om het op tafel te zetten. | **Una curiosità per la tavola**, un consiglio per chi cucina / Ogni pianta ha qualcosa da raccontare e un modo per servirla. |
+| 4 | Achievement sheet, Superfood level 3 of 4 (today's frame 04, unchanged) | From **bronze** to **platinum** / Each achievement shows how far you are from the next level. | Van **brons** tot **platina** / Elke prestatie laat zien hoe ver je bent tot het volgende level. | Dal **bronzo** al **platino** / Ogni traguardo mostra quanto manca al livello successivo. |
+| 5 | Home with the gauge (today's frame 02, moved to the end) | **30 different plants** a week / One goal for everyone at your table, counted together. | **30 verschillende planten** per week / Eén doel voor iedereen aan tafel, samen geteld. | **30 piante diverse** a settimana / Un obiettivo per tutti a tavola, contato insieme. |
+
+If a title artboard (01) is part of the Apple set, it carries the new name and subtitle:
+"Project Food: plant cards" / "Eat more plants as a family" (nl "Project Food: plantenkaarten" /
+"Meer planten eten als gezin"; it "Project Food: carte di piante" / "Più piante, tutta la famiglia").
+Exports go to `projectfood-mobile/store/apple/screenshot/<en-US|nl-NL|it>/APP_IPHONE_67/` with a
+new file-name suffix; Claude updates `store.config.json` and pushes them.
 
 ## Second pass (2026-10-17): the kids shelf, and whether a paywall matters
 
