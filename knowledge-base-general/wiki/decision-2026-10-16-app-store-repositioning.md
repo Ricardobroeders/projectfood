@@ -189,6 +189,34 @@ All code, artwork, the plant catalogue and the texts in English, Dutch and Itali
 
 The title artboard (01), if used, carries the new name. No frame says "tracker" or "gut".
 
+## Second pass (2026-10-17): the kids shelf, and whether a paywall matters
+
+Ricardo asked whether the family and "helping your kids eat" are the USP others leave alone, and
+whether Apple would rather see a paid app than another free one.
+
+**The kids shelf is crowded too.** At least eight App Store apps sell "help your child eat":
+Yummi Picky Eater Food Tracker, Food Explorer Club, Playful Eats: Fix Picky Eating, EasyEaters,
+EatPal: Picky Eater Meal Plans, Food Hopper, Food Critic (Goally), Teach Your Monster Eating (a
+game for the child), plus baby-food trackers (Solid Starts, First Bites, BabyPal). Their shape:
+the child is the subject, the parent sets rewards or points traded for prizes, exposure ladders
+(look, touch, taste), "fix" and "selective eating" language. Moving the listing to "picky eater
+kids" would trade one crowded shelf for another and pull the store copy towards a children's app
+(Apple's Kids Category rules, Play's Families policy, the brand rule "never for kids").
+
+**The gap sits between the two shelves.** The plant counters count one adult; the picky-eater apps
+count one child for a prize. None counts the whole table together, adults included, one phone, no
+bribes: the parent's cards sit next to the child's. That is the USP to lead with: the family eats
+more plants together, and the child tastes along. "Helping your kids eat" stays a supporting line
+in the description and a search word (picky eater), never the headline.
+
+**No sign Apple prefers paid apps.** Apple's own figures: 84% of apps are free and their developers
+pay Apple nothing; 4.3 is judged on similarity, and no guideline asks for a business model. In our
+own niche Thirty Plants is free without any purchase and live; four look-alikes with subscriptions
+are live too, so price separates nothing. A paywall now would add review surface (3.1.1 in-app
+purchase, 3.1.2 subscription terms, restore, pricing screens) and a native module (RevenueCat),
+which moves both runtimes while Play production access is under review. The paid plan stays where
+the backlog has it.
+
 ## What follows
 
 - Order: new iOS build uploaded first, then `metadata:push` with `apple.version` 1.0.40 (renames
